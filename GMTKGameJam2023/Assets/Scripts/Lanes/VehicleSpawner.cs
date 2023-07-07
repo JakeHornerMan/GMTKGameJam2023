@@ -19,6 +19,13 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private float spawnZoneDivider = 0;
     [SerializeField] private Vector2 spawnOffset = new(0, 5);
 
+    private Camera mainCamera;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
@@ -28,7 +35,7 @@ public class VehicleSpawner : MonoBehaviour
     private void PlaceVehicle()
     {
         // Raycast toward Click
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
         // Return if Clicked Nothing
@@ -48,6 +55,7 @@ public class VehicleSpawner : MonoBehaviour
             spawnPos += (Vector3)spawnOffset;
             spawnRot = new Vector3(0, 0, 180);
         }
+
         // Clicked Bottom Half - Spawn on Bottom
         else if (hit.point.y <= spawnZoneDivider)
         {

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 2064613697904252181}
-  - component: {fileID: 6238851366903329210}
   - component: {fileID: 315510484514270918}
   - component: {fileID: 1496862927219537812}
+  - component: {fileID: 6238851366903329210}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Chicken
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6238851366903329210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7467406142021207113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minMoveTime: 0.5
-  maxMoveTime: 3
-  chickenSpeed: 5
-  laneDistance: 2
 --- !u!50 &315510484514270918
 Rigidbody2D:
   serializedVersion: 4
@@ -175,3 +159,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.02, y: 1.08}
   m_EdgeRadius: 0
+--- !u!114 &6238851366903329210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minMoveTime: 0.5
+  maxMoveTime: 3
+  chickenSpeed: 5
+  laneDistance: 2
