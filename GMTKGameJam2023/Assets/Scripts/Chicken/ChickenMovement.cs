@@ -17,7 +17,7 @@ public class ChickenMovement : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         moveTime = Random.Range(minMoveTime, maxMoveTime);
-        Debug.Log("Time: " + moveTime);
+        // Debug.Log("Time: " + moveTime);
         startMovement();
     }
 
