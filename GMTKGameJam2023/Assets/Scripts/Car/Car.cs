@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Car : MonoBehaviour
 {
+    [Header("Tags")]
+    [SerializeField] private string objectBoundsTag = "Deathbox";
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
@@ -18,18 +20,15 @@ public abstract class Car : MonoBehaviour
         } 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Chicken"))
         {
             Destroy(collision.gameObject);
             //collision.gameObject.GetComponent<ChickenMovement>().KillChicken();
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Death Box"))
+        if (collision.gameObject.CompareTag(objectBoundsTag))
         {
             Destroy(gameObject);
             
