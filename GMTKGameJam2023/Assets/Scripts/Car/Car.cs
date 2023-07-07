@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Car : MonoBehaviour
 {
     [Header("Tags")]
-    [SerializeField] private string objectBoundsTag = "Deathbox";
+    [SerializeField] private string objectBoundsTag = "Death Box";
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
