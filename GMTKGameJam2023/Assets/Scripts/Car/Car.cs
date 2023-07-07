@@ -14,9 +14,8 @@ public abstract class Car : MonoBehaviour
 
         if (rb != null)
         {
-            rb.velocity = new Vector2(0, carSpeed);
-        }
-        
+            rb.velocity = transform.up * carSpeed;
+        } 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

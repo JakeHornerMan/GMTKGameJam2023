@@ -6,7 +6,7 @@ using UnityEngine;
 public class VehicleSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] public GameObject selectedCarPrefab;
+    [SerializeField] public Car selectedCar;
     [SerializeField] private Transform spawnedVehiclesContainer;
 
     [Header("Input")]
@@ -39,20 +39,27 @@ public class VehicleSpawner : MonoBehaviour
         if (!hit.collider.gameObject.CompareTag(roadTag))
             return;
 
-        // Determine Spawn Position
         Vector3 spawnPos = hit.collider.transform.position;
+        Vector3 spawnRot = new();
+
         // Clicked Top Half - Spawn on Top
         if (hit.point.y > spawnZoneDivider)
+        {
             spawnPos += (Vector3)spawnOffset;
+            spawnRot = new Vector3(0, 0, 180);
+        }
         // Clicked Bottom Half - Spawn on Bottom
         else if (hit.point.y <= spawnZoneDivider)
+        {
             spawnPos -= (Vector3)spawnOffset;
+            spawnRot = new Vector3(0, 0, 0);
+        }
 
         // Spawn Car at Road at Position
         Instantiate(
-            selectedCarPrefab,
+            selectedCar.gameObject,
             spawnPos,
-            Quaternion.identity,
+            Quaternion.Euler(spawnRot),
             spawnedVehiclesContainer
         );
     }
