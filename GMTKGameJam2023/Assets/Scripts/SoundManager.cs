@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public  AudioClip death1, death2;
+    public  AudioClip death1, death2, carMove;
     static AudioSource audioSrc;
 
     void Start()
     {
         audioSrc = GetComponent<AudioSource>(); //find audio source component
-
-        //get sound resources
-        // death1 = Resources.Load<AudioClip>("Chicken_Death_1");
-        // death2 = Resources.Load<AudioClip>("Chicken_Death_1");
     }
 
     public void PlaySound(string sound) //function called in other sctipts to play sound
@@ -28,6 +24,9 @@ public class SoundManager : MonoBehaviour
                 else{
                     audioSrc.PlayOneShot(death2, 0.4f);
                 }
+                break;
+            case "newCar":
+                audioSrc.PlayOneShot(carMove, 0.4f);
                 break;
         }
     }

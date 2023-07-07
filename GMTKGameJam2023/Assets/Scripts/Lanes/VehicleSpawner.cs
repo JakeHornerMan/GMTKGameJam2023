@@ -62,5 +62,7 @@ public class VehicleSpawner : MonoBehaviour
             Quaternion.Euler(spawnRot),
             spawnedVehiclesContainer
         );
+        GameObject soundmanager = GameObject.Find("GameManger");
+        soundmanager.GetComponent<SoundManager>().PlaySound("newCar");
     }
 }
