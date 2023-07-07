@@ -22,9 +22,16 @@ public abstract class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Chicken"))
+        {
+            Destroy(collision.gameObject);
+            //collision.gameObject.GetComponent<ChickenMovement>().KillChicken();
+        }
+
         if (collision.gameObject.CompareTag(objectBoundsTag))
         {
             Destroy(gameObject);
+            
         }
     }
 }
