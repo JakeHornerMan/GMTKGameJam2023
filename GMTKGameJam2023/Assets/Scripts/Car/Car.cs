@@ -24,8 +24,8 @@ public abstract class Car : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Chicken"))
         {
-            Destroy(collision.gameObject);
-            //collision.gameObject.GetComponent<ChickenMovement>().KillChicken();
+            // Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<ChickenMovement>().KillChicken();
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
