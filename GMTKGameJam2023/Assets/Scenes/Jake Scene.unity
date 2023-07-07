@@ -153,16 +153,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSpots:
-  - {x: -10, y: -6, z: 0}
-  - {x: -10, y: -4, z: 0}
-  - {x: -10, y: -2, z: 0}
-  - {x: -10, y: 0, z: 0}
-  - {x: -10, y: 2, z: 0}
-  - {x: -10, y: 4, z: 0}
-  - {x: -10, y: 6, z: 0}
+  - position: {x: -10, y: -6, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: -4, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: -2, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: 0, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: 2, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: 4, z: 0}
+    spawnProbability: 0
+  - position: {x: -10, y: 6, z: 0}
+    spawnProbability: 0
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
-  minSpawnTime: 0
-  maxSpawnTime: 0
+  minSpawnTime: 3
+  maxSpawnTime: 6
 --- !u!4 &310482477
 Transform:
   m_ObjectHideFlags: 0
@@ -171,7 +178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310482475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.059834, y: -0.20108908, z: 0.017683133}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,7 +246,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
