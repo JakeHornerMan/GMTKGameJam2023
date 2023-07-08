@@ -10,6 +10,7 @@ public abstract class Car : MonoBehaviour
     [Header("Car Info")]
     [SerializeField] public Sprite carSprite;
     [SerializeField] public string carName;
+    [SerializeField] public int carPrice = 2;
 
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
