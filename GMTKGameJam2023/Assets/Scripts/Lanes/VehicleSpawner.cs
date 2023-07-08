@@ -99,6 +99,9 @@ public class VehicleSpawner : MonoBehaviour
 
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
+        if (currentActiveCar.carName == truck.correspondingCar.carName)
+            soundManager.PlaySound(SoundManager.SoundType.Truck);
+
         // Spawn Car at Road at Position
         Instantiate(
             currentActiveCar.gameObject,
