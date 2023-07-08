@@ -11,6 +11,10 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private SpriteRenderer carCursorFollower;
 
+    [Header("Select Indicators")]
+    [SerializeField] private Transform selectedCarIndicator;
+    [SerializeField] private Vector2 selectedCarIndicatorOffset = new(0, -1);
+
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
 
@@ -95,9 +99,9 @@ public class VehicleSpawner : MonoBehaviour
         soundManager.PlaySound(SoundManager.SoundType.NewCar);
     }
 
-    public void SelectCar(Car car)
+    public void SelectCar(CarButton carBtn)
     {
-        currentActiveCar = car;
+        currentActiveCar = carBtn.correspondingCar;
     }
 
     private void UpdateCarIndicator()
