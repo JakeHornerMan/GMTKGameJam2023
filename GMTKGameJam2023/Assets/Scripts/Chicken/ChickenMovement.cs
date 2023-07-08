@@ -4,50 +4,71 @@ using UnityEngine;
 
 public class ChickenMovement : MonoBehaviour
 {
-    float moveTime;
+    [Header("Tags")]
+    [SerializeField] private string objectBoundsTag = "Death Box";
+
+    [Header("Scoring")]
+    [SerializeField] public int pointsReward = 100;
 
     private Rigidbody2D rb;
+    private GameManager gameManager;
+    private SoundManager soundManager;
+
+    float moveTime;
 
     public float minMoveTime = 0.5f;
     public float maxMoveTime = 3f;
+
     public float chickenSpeed = 1f;
     public float laneDistance = 2f;
 
-    void Start()
+    private void Awake()
     {
-        rb = this.GetComponent<Rigidbody2D>();
-        moveTime = Random.Range(minMoveTime, maxMoveTime);
-        // Debug.Log("Time: " + moveTime);
-        startMovement();
+        rb = GetComponent<Rigidbody2D>();
+        soundManager = FindObjectOfType<SoundManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    void startMovement(){
+    private void Start()
+    {
+        moveTime = Random.Range(minMoveTime, maxMoveTime);
+        StartMovement();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Destroy Chickens When They Reach Off-Screen
+        if (collision.gameObject.CompareTag(objectBoundsTag))
+        {
+            gameManager.safelyCrossedChickens++;
+            Destroy(gameObject);
+        }
+    }
+
+    private void StartMovement()
+    {
         IEnumerator coroutine = WaitAndMove(moveTime);
         StartCoroutine(coroutine);
     }
 
-    IEnumerator WaitAndMove(float moveTime)
+    private IEnumerator WaitAndMove(float moveTime)
     {
         yield return new WaitForSeconds(moveTime);
-        moveChicken();
-        //restart timer
-        startMovement();
+        MoveChicken();
+
+        // Restart Timer
+        StartMovement();
     }
 
-    void moveChicken(){
-        // Debug.Log("Moving");
+    private void MoveChicken()
+    {
         Vector2 targetPoint = rb.position + new Vector2(laneDistance, 0f);
-        // Vector2 direction = targetPoint - rb.position;
-        // direction.Normalize();
-
-        // Vector2 movement = direction * chickenSpeed * Time.deltaTime;
-        // transform.pranslate(movement);
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, chickenSpeed);
     }
 
-    public void KillChicken(){
-        GameObject soundmanager = GameObject.Find("GameManger");
-        soundmanager.GetComponent<SoundManager>().PlaySound("death");
-        Destroy(this.gameObject);
+    public void KillChicken()
+    {
+        soundManager.PlaySound(SoundManager.SoundType.Death);
+        Destroy(gameObject);
     }
 }

@@ -4,51 +4,52 @@ using UnityEngine;
 
 public class ChickenSpawn : MonoBehaviour
 {
-    [SerializeField]
-    public SpawningPoint[] spawnSpots;
+    [Header("Spawning Values")]
+    [SerializeField] public SpawningPoint[] spawnSpots;
 
     public GameObject ChickenPrefab;
 
     public float minSpawnTime = 3f;
     public float maxSpawnTime = 6f;
 
-    void Start()
+    private void Start()
     {
-        spawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        startSpawn();
+        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        StartSpawn();
     }
 
-    void startSpawn(){
+    private void StartSpawn()
+    {
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         IEnumerator coroutine = WaitAndSpawn(spawnTime);
         StartCoroutine(coroutine);
     }
 
-    IEnumerator WaitAndSpawn(float moveTime)
+    private IEnumerator WaitAndSpawn(float moveTime)
     {
         yield return new WaitForSeconds(moveTime);
-        int selected = basedRandom();
-        // Debug.Log(basedRandom());
-        spawnChicken(spawnSpots[selected]);
-        //restart timer
-        startSpawn();
+        int selected = BasedRandom();
+        SpawnChicken(spawnSpots[selected]);
+
+        // Restart timer
+        StartSpawn();
     }
 
-    void spawnChicken(SpawningPoint point){
-        // Debug.Log("Spawning Chickens");
-        // foreach (SpawningPoint point in spawnSpots){
-        //     Instantiate(ChickenPrefab, point.position, Quaternion.identity);
-        // }
+    private void SpawnChicken(SpawningPoint point)
+    {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
     }
 
-    int basedRandom(){
+    private int BasedRandom()
+    {
         return Random.Range(1, spawnSpots.Length);
-        //we could use spawnProbability in SpawningPoint object to create smarter probability
+        // We could use spawnProbability in SpawningPoint object to create smarter probability
     }
 }
+
 [System.Serializable]
-public class SpawningPoint {
+public class SpawningPoint 
+{
     public Vector3 position;
     public float spawnProbability;
 }

@@ -4,32 +4,37 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public  AudioClip death1, death2, carMove;
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip death1, death2, carMove;
+
     static AudioSource audioSrc;
 
-    void Start()
+    public enum SoundType
     {
-        audioSrc = GetComponent<AudioSource>(); //find audio source component
+        Death,
+        NewCar
     }
 
-    public void PlaySound(string sound) //function called in other sctipts to play sound
+    void Awake()
     {
-        switch (sound) 
+        audioSrc = GetComponent<AudioSource>();
+    }
+
+    // Function Called by Other Scripts
+    public void PlaySound(SoundType soundType)
+    {
+        switch (soundType) 
         {
-            case "death":
+            case SoundType.Death:
                 int rando = Random.Range(1, 2);
-                if(rando == 2){
+                if (rando == 2)
                     audioSrc.PlayOneShot(death1, 0.4f);
-                }
-                else{
+                else
                     audioSrc.PlayOneShot(death2, 0.4f);
-                }
                 break;
-            case "newCar":
+            case SoundType.NewCar:
                 audioSrc.PlayOneShot(carMove, 0.4f);
                 break;
         }
     }
-
-
 }
