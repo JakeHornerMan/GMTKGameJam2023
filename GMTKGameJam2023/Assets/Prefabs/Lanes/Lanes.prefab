@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ddf724a3a13a40b2691b3d27a7195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  standardCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   spawnedVehiclesContainer: {fileID: 6528247484680453847}
   placeMouseBtn: 0
   roadTag: Road
@@ -75,6 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9790799240cd4494e932a0e5ca89cf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walletLimit: 15
+  startWalletCount: 10
+  refillDelaySeconds: 2
+  amountPerRefill: 1
+  carCount: 0
 --- !u!1 &4045037203581973327
 GameObject:
   m_ObjectHideFlags: 0

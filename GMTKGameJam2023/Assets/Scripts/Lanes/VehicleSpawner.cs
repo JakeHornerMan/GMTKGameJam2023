@@ -6,8 +6,10 @@ using UnityEngine;
 public class VehicleSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] public Car selectedCar;
+    [SerializeField] public Car standardCar;
+    [SerializeField] public Car currentActiveCar;
     [SerializeField] private Transform spawnedVehiclesContainer;
+    [SerializeField] private SpriteRenderer carCursorFollower;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -22,6 +24,7 @@ public class VehicleSpawner : MonoBehaviour
     private SoundManager soundManager;
     private CarWallet carWallet;
 
+    private Vector3 mousePos;
 
     private void Awake()
     {
@@ -30,17 +33,29 @@ public class VehicleSpawner : MonoBehaviour
         carWallet = GetComponent<CarWallet>();
     }
 
+    private void Start()
+    {
+        currentActiveCar = standardCar;
+    }
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
-            PlaceVehicle();
+            PlaceSelectedCar();
+
+        UpdateMousePos();
+        UpdateCarIndicator();
     }
 
-    private void PlaceVehicle()
+    private void UpdateMousePos()
+    {
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    private void PlaceSelectedCar()
     {
         // Raycast toward Click
-        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         // Return if Clicked Nothing
         if (hit.collider == null)
@@ -58,7 +73,7 @@ public class VehicleSpawner : MonoBehaviour
 
         // Spawn Car at Road at Position
         Instantiate(
-            selectedCar.gameObject,
+            currentActiveCar.gameObject,
             spawnPos,
             Quaternion.identity,
             spawnedVehiclesContainer
@@ -67,5 +82,16 @@ public class VehicleSpawner : MonoBehaviour
         carWallet.carCount--;
         
         soundManager.PlaySound(SoundManager.SoundType.NewCar);
+    }
+
+    public void SelectCar(Car car)
+    {
+        currentActiveCar = car;
+    }
+
+    private void UpdateCarIndicator()
+    {
+        carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+        carCursorFollower.sprite = currentActiveCar.carSprite;
     }
 }

@@ -7,6 +7,10 @@ public abstract class Car : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject scorePopUp;
 
+    [Header("Car Info")]
+    [SerializeField] public Sprite carSprite;
+    [SerializeField] public string carName;
+
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
 
