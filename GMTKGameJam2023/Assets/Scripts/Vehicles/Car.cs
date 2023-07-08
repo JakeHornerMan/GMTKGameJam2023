@@ -51,6 +51,13 @@ public abstract class Car : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
+
+        // If there's no ChickenMovement script on the game object, check the parent
+        if (chickenMovement == null && collision.transform.parent != null)
+        {
+            chickenMovement = collision.transform.parent.GetComponent<ChickenMovement>();
+        }
+
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
         if (chickenMovement != null)
