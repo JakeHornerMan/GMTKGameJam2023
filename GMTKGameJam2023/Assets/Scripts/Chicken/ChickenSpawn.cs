@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChickenSpawn : MonoBehaviour
 {
-    [SerializeField]
-    public SpawningPoint[] spawnSpots;
+    [Header("Spawning Values")]
+    [SerializeField] public SpawningPoint[] spawnSpots;
 
     public GameObject ChickenPrefab;
 
@@ -14,11 +14,12 @@ public class ChickenSpawn : MonoBehaviour
 
     void Start()
     {
-        spawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        startSpawn();
+        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        StartSpawn();
     }
 
-    void startSpawn(){
+    void StartSpawn()
+    {
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         IEnumerator coroutine = WaitAndSpawn(spawnTime);
         StartCoroutine(coroutine);
@@ -27,28 +28,27 @@ public class ChickenSpawn : MonoBehaviour
     IEnumerator WaitAndSpawn(float moveTime)
     {
         yield return new WaitForSeconds(moveTime);
-        int selected = basedRandom();
-        // Debug.Log(basedRandom());
-        spawnChicken(spawnSpots[selected]);
-        //restart timer
-        startSpawn();
+        int selected = BasedRandom();
+        SpawnChicken(spawnSpots[selected]);
+
+        // Restart timer
+        StartSpawn();
     }
 
-    void spawnChicken(SpawningPoint point){
-        // Debug.Log("Spawning Chickens");
-        // foreach (SpawningPoint point in spawnSpots){
-        //     Instantiate(ChickenPrefab, point.position, Quaternion.identity);
-        // }
+    void SpawnChicken(SpawningPoint point)
+    {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
     }
 
-    int basedRandom(){
+    int BasedRandom()
+    {
         return Random.Range(1, spawnSpots.Length);
-        //we could use spawnProbability in SpawningPoint object to create smarter probability
+        // We could use spawnProbability in SpawningPoint object to create smarter probability
     }
 }
 [System.Serializable]
-public class SpawningPoint {
+public class SpawningPoint 
+{
     public Vector3 position;
     public float spawnProbability;
 }
