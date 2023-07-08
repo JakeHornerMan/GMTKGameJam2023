@@ -28,6 +28,8 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private GameObject hopController;
     [SerializeField] private GameObject chickenSprite;
 
+    [SerializeField] private ParticleSystem featherParticles;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -209,6 +211,9 @@ public class ChickenMovement : MonoBehaviour
     public void KillChicken()
     {
         soundManager.PlaySound(SoundManager.SoundType.Death);
+
+        Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
+
         Destroy(gameObject);
     }
 }
