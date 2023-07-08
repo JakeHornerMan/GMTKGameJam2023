@@ -35,6 +35,7 @@ public abstract class Car : MonoBehaviour
     {
         ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
         TokenController token = collision.gameObject.GetComponent<TokenController>();
+
         if (chickenMovement != null)
         {
             chickenMovement.KillChicken();
@@ -48,9 +49,11 @@ public abstract class Car : MonoBehaviour
             // Increase Kill Count
             gameManager.killCount++;
         }
+
         if (token != null)
         {
             token.tokenCollected();
+            gameManager.tokens++;
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))

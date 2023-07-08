@@ -7,9 +7,13 @@ public class TokenController : MonoBehaviour
     private SoundManager soundManager;
     public float removeTime = 12f;
 
-    void Start()
+    private void Awake()
     {
         soundManager = FindObjectOfType<SoundManager>();
+    }
+
+    void Start()
+    {
         IEnumerator coroutine = WaitAndDie(removeTime);
         StartCoroutine(coroutine);
     }
