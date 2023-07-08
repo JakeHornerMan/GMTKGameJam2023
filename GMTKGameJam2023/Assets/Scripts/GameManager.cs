@@ -5,25 +5,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private ResultsUI resultsUI;
+
     [Header("Player Stats")]
     public int safelyCrossedChickens = 0;
     public int killCount = 0;
     public int playerScore = 0;
     public int tokens = 0;
     public int totalTokens = 0;
-    public float time = 120f;
+    public float startTime = 120f;
     public int intesitySetting = 0;
     public string currentRanking = "Animal Lover";
 
     private SoundManager soundManager;
     private Pause pause;
-    private ResultsUI resultsUI;
+
+    public float time = 120f;
 
     private void Awake()
     {
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
-        resultsUI = FindObjectOfType<ResultsUI>();
     }
 
     private void Start()
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
         playerScore = 0;
         tokens = 0;
         totalTokens = 0;
+
+        time = startTime;
+        resultsUI.gameObject.SetActive(false);
     }
 
     private void Update() {
@@ -65,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleResults()
     {
-        pause.PauseGame(showUI: false);
+        //pause.PauseGame(showUI: false);
         resultsUI.SetUI(currentRanking, killCount, safelyCrossedChickens, totalTokens);
         resultsUI.gameObject.SetActive(true);
     }
