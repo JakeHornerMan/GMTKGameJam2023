@@ -41,9 +41,10 @@ public class Pause : MonoBehaviour
         pauseUI.SetActive(false);
     }
 
-    public void PauseGame()
+    public void PauseGame(bool showUI = true)
     {
         Time.timeScale = pauseTimeScale;
-        pauseUI.SetActive(true);
+        if (showUI)
+            pauseUI.SetActive(true);
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int killCount = 0;
     public int playerScore = 0;
     public int tokens = 0;
+    public int totalTokens = 0;
     public float time = 120f;
     public int intesitySetting = 0;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         killCount = 0;
         playerScore = 0;
         tokens = 0;
+        totalTokens = 0;
     }
     private void Update() {
         setTime();
