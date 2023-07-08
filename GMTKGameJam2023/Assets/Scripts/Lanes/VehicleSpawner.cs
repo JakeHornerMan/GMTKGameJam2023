@@ -7,6 +7,9 @@ public class VehicleSpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public Car standardCar;
+    [SerializeField]public Car spikedCar;
+    [SerializeField]public Car superCar;
+    [SerializeField]public Car truck;
     [SerializeField] public Car currentActiveCar;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private SpriteRenderer carCursorFollower;
@@ -44,6 +47,20 @@ public class VehicleSpawner : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
+
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q))
+            SelectCar(standardCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W))
+            SelectCar(superCar);
+        
+        if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E))
+            SelectCar(spikedCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R))
+            SelectCar(truck);
+
+        
 
         UpdateMousePos();
         UpdateCarIndicator();
@@ -93,6 +110,7 @@ public class VehicleSpawner : MonoBehaviour
 
         // Play Car Spawn SFX
         soundManager.PlaySound(SoundManager.SoundType.NewCar);
+        SelectCar(standardCar);
     }
 
     public void SelectCar(Car car)
