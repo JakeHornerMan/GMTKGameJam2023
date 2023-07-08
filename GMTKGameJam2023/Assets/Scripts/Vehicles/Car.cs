@@ -81,7 +81,7 @@ public abstract class Car : MonoBehaviour
                 token.transform.position,
                 Quaternion.identity
             ).gameObject;
-            Destroy(tokenCollectParticles.gameObject, particleDestroyDelay);
+            Destroy(newTokenParticles.gameObject, particleDestroyDelay);
 
             ShowPopup(
                 token.transform.position,
