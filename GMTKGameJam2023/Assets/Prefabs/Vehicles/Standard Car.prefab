@@ -171,7 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   objectBoundsTag: Death Box
   carSpeed: 5
+  scorePopUpMsg: Points
+  popupDestroyDelay: 0.7
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
