@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 3
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &5356352089464385409
@@ -204,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 3
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -212,7 +212,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &5480477109877341422
@@ -268,17 +268,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275410180260309379, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6077706268648720092, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: m_Name
       value: Spiked Car
       objectReference: {fileID: 0}
+    - target: {fileID: 6709933049373621542, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
     - target: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: carPrice
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8251440986272331830, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8251440986272331830, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: m_LocalPosition.x
