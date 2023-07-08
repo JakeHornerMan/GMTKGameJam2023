@@ -6,13 +6,17 @@ using UnityEngine;
 public class VehicleSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] public Car standardCar;
-    [SerializeField]public Car spikedCar;
-    [SerializeField]public Car superCar;
-    [SerializeField]public Car truck;
+    [SerializeField] public CarButton standardCar;
+    [SerializeField] public CarButton spikedCar;
+    [SerializeField] public CarButton superCar;
+    [SerializeField] public CarButton truck;
     [SerializeField] public Car currentActiveCar;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private SpriteRenderer carCursorFollower;
+
+    [Header("Select Indicators")]
+    [SerializeField] private Transform selectedCarIndicator;
+    [SerializeField] private Vector2 selectedCarIndicatorOffset = new(0, -1);
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -40,7 +44,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        currentActiveCar = standardCar;
+        currentActiveCar = standardCar.correspondingCar;
     }
 
     private void Update()
@@ -59,9 +63,6 @@ public class VehicleSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R))
             SelectCar(truck);
-
-        
-
         UpdateMousePos();
         UpdateCarIndicator();
     }
@@ -113,9 +114,9 @@ public class VehicleSpawner : MonoBehaviour
         SelectCar(standardCar);
     }
 
-    public void SelectCar(Car car)
+    public void SelectCar(CarButton carBtn)
     {
-        currentActiveCar = car;
+        currentActiveCar = carBtn.correspondingCar;
     }
 
     private void UpdateCarIndicator()
