@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -148,6 +148,11 @@ MonoBehaviour:
   safelyCrossedChickens: 0
   killCount: 0
   playerScore: 0
+  tokens: 0
+  totalTokens: 0
+  time: 120
+  intesitySetting: 0
+  currentRanking: Animal Lover
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +183,7 @@ MonoBehaviour:
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
   minSpawnTime: 3
   maxSpawnTime: 6
+  gameManager: {fileID: 7716956080788538566}
 --- !u!114 &857913865922615603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +200,11 @@ MonoBehaviour:
   death2: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
   carMove: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
   powerUp: {fileID: 8300000, guid: 238a8f28f13e81944a095268a6ed786f, type: 3}
+  gameSpeed: {fileID: 8300000, guid: c34db61d4a4152941b370e6780f91ab1, type: 3}
+  chicken1: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
+  chicken2: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
+  chicken3: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
+  chicken4: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
 --- !u!114 &304815692333560699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +237,5 @@ MonoBehaviour:
   pointsText: {fileID: 0}
   killsText: {fileID: 0}
   carWalletCountText: {fileID: 0}
+  tokensText: {fileID: 0}
+  timeText: {fileID: 0}

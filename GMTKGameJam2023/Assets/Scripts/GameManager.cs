@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,18 +13,28 @@ public class GameManager : MonoBehaviour
     public int totalTokens = 0;
     public float time = 120f;
     public int intesitySetting = 0;
+    public string currentRanking = "Animal Lover";
 
     private SoundManager soundManager;
-    
+    private Pause pause;
+    private ResultsUI resultsUI;
+
+    private void Awake()
+    {
+        pause = FindObjectOfType<Pause>();
+        soundManager = FindObjectOfType<SoundManager>();
+        resultsUI = FindObjectOfType<ResultsUI>();
+    }
+
     private void Start()
     {
-        soundManager = FindObjectOfType<SoundManager>();
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
         tokens = 0;
         totalTokens = 0;
     }
+
     private void Update() {
         setTime();
     }
@@ -48,7 +59,14 @@ public class GameManager : MonoBehaviour
         }
         if ( time <= 0)
         {
-            // send to results screen
+            HandleResults();
         }
+    }
+
+    private void HandleResults()
+    {
+        pause.PauseGame(showUI: false);
+        resultsUI.SetUI(currentRanking, killCount, safelyCrossedChickens, totalTokens);
+        resultsUI.gameObject.SetActive(true);
     }
 }
