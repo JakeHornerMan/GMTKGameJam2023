@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CarWallet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Wallet Values")]
+    [SerializeField] private int startWalletCount = 10;
+    [SerializeField] private float refillDelaySeconds = 2f;
+    [SerializeField] private int amountPerRefill = 1;
+
+    public int carCount = 0;
+
+    private void Start()
     {
-        
+        carCount = startWalletCount;
+
+        InvokeRepeating(nameof(RefillCars), refillDelaySeconds, refillDelaySeconds);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void RefillCars()
     {
-        
+        carCount += amountPerRefill;
     }
 }

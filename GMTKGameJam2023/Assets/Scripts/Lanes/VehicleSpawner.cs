@@ -20,11 +20,14 @@ public class VehicleSpawner : MonoBehaviour
 
     private Camera mainCamera;
     private SoundManager soundManager;
+    private CarWallet carWallet;
+
 
     private void Awake()
     {
         mainCamera = Camera.main;
         soundManager = FindObjectOfType<SoundManager>();
+        carWallet = GetComponent<CarWallet>();
     }
 
     private void Update()
@@ -47,6 +50,10 @@ public class VehicleSpawner : MonoBehaviour
         if (!hit.collider.gameObject.CompareTag(roadTag))
             return;
 
+        // Check Car Wallet Budget
+        if (carWallet.carCount <= 0)
+            return;
+
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
         // Spawn Car at Road at Position
@@ -56,6 +63,8 @@ public class VehicleSpawner : MonoBehaviour
             Quaternion.identity,
             spawnedVehiclesContainer
         );
+
+        carWallet.carCount--;
         
         soundManager.PlaySound(SoundManager.SoundType.NewCar);
     }
