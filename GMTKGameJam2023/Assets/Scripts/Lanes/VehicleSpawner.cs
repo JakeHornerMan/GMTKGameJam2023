@@ -22,6 +22,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private Camera mainCamera;
     private SoundManager soundManager;
+    private GameManager gameManager;
     private CarWallet carWallet;
 
     private Vector3 mousePos;
@@ -30,6 +31,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         soundManager = FindObjectOfType<SoundManager>();
+        gameManager = FindObjectOfType<GameManager>();
         carWallet = GetComponent<CarWallet>();
     }
 
@@ -54,6 +56,14 @@ public class VehicleSpawner : MonoBehaviour
 
     private void PlaceSelectedCar()
     {
+        // Check Money
+        if (currentActiveCar.carPrice > gameManager.tokens)
+            return;
+
+        // Check Car Wallet Budget
+        if (carWallet.carCount <= 0)
+            return;
+
         // Raycast toward Click
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
@@ -63,10 +73,6 @@ public class VehicleSpawner : MonoBehaviour
 
         // Return if Did Not Click Road
         if (!hit.collider.gameObject.CompareTag(roadTag))
-            return;
-
-        // Check Car Wallet Budget
-        if (carWallet.carCount <= 0)
             return;
 
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
@@ -79,8 +85,13 @@ public class VehicleSpawner : MonoBehaviour
             spawnedVehiclesContainer
         );
 
+        // Reduce Car Wallet Count
         carWallet.carCount--;
-        
+
+        // Reduce Player Money
+        gameManager.tokens -= currentActiveCar.carPrice;
+
+        // Play Car Spawn SFX
         soundManager.PlaySound(SoundManager.SoundType.NewCar);
     }
 

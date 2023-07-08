@@ -270,7 +270,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077706268648720092, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: m_Name
-      value: Standard Car (1) Variant
+      value: Spiked Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+      propertyPath: carPrice
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8251440986272331830, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       propertyPath: m_RootOrder
