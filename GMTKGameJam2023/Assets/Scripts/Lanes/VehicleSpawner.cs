@@ -20,10 +20,12 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnOffset = new(0, 5);
 
     private Camera mainCamera;
+    private SoundManager soundManager;
 
     private void Awake()
     {
         mainCamera = Camera.main;
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Update()
@@ -70,7 +72,7 @@ public class VehicleSpawner : MonoBehaviour
             Quaternion.Euler(spawnRot),
             spawnedVehiclesContainer
         );
-        GameObject soundmanager = GameObject.Find("GameManger");
-        soundmanager.GetComponent<SoundManager>().PlaySound("newCar");
+        
+        soundManager.PlaySound(SoundManager.SoundType.NewCar);
     }
 }
