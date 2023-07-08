@@ -12,4 +12,6 @@ public class MainMenu : MonoBehaviour
     }
 
     public void EnterGame() => sceneFader.FadeToGame();
+    public void EnterTutorial() => sceneFader.FadeToTutorial();
+    public void EnterCredits() => sceneFader.FadeToCredits();
 }
