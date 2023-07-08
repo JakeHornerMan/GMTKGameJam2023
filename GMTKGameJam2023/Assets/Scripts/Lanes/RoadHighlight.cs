@@ -5,11 +5,7 @@ using UnityEngine;
 public class RoadHighlight : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject topHighlight;
     [SerializeField] private GameObject bottomHighlight;
-
-    [Header("Spawn Positioning")]
-    [SerializeField] private float spawnZoneDivider = 0;
 
     private Camera mainCamera;
 
@@ -30,15 +26,12 @@ public class RoadHighlight : MonoBehaviour
 
         if (hit.collider == null)
         {
-            topHighlight.SetActive(false);
             bottomHighlight.SetActive(false);
             return;
-        };
+        }
 
         bool touchingRoad = hit.collider.gameObject == gameObject;
-        bool mouseUp = mousePosition.y > spawnZoneDivider;
 
-        topHighlight.SetActive(mouseUp && touchingRoad);
-        bottomHighlight.SetActive(!mouseUp && touchingRoad);
+        bottomHighlight.SetActive(touchingRoad);
     }
 }
