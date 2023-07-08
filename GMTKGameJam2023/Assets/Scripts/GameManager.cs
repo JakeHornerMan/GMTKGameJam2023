@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float startTime = 120f;
     public int intesitySetting = 0;
     public string currentRanking = "Animal Lover";
+    public bool gameOver = false;
 
     private SoundManager soundManager;
     private Pause pause;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         }
         if ( time <= 0)
         {
+            gameOver = true;
             HandleResults();
         }
     }
