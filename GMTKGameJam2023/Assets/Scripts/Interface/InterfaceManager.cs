@@ -19,6 +19,6 @@ public class InterfaceManager : MonoBehaviour
     private void Update()
     {
         pointsText.text = gameManager.playerScore.ToString("0000");
-        killsText.text = gameManager.killCount.ToString("XXX");
+        killsText.text = gameManager.killCount.ToString("000");
     }
 }
