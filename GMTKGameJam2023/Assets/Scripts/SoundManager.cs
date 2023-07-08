@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip death1, death2, carMove, powerUp;
+    [SerializeField] private AudioClip death1, death2, carMove, powerUp, gameSpeed;
 
     static AudioSource audioSrc;
 
@@ -13,7 +13,8 @@ public class SoundManager : MonoBehaviour
     {
         Death,
         NewCar,
-        PowerUp
+        PowerUp,
+        GameSpeed
     }
 
     void Awake()
@@ -36,8 +37,8 @@ public class SoundManager : MonoBehaviour
             case SoundType.NewCar:
                 audioSrc.PlayOneShot(carMove, 0.4f);
                 break;
-            case SoundType.PowerUp:
-                audioSrc.PlayOneShot(powerUp, 0.5f);
+            case SoundType.GameSpeed:
+                audioSrc.PlayOneShot(gameSpeed, 0.5f);
                 break;
         }
     }
