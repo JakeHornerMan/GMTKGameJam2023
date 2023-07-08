@@ -31,6 +31,8 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.1f;
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
+    private int carKillCount =0;
+
     private GameManager gameManager;
     private CameraShaker cameraShaker;
 
@@ -62,10 +64,18 @@ public abstract class Car : MonoBehaviour
 
         if (chickenMovement != null)
         {
+            carKillCount++;
+
+            // x{{carKillCount}}
+            // ShowPopup(
+            //     chickenMovement.transform.position, 
+            //     $"{"x"carKillCount} {scorePopUpMsg}"
+            // );
+
             // +100 Points Pop-Up
             ShowPopup(
                 chickenMovement.transform.position, 
-                $"{chickenMovement.pointsReward} {scorePopUpMsg}"
+                $"{chickenMovement.pointsReward * carKillCount} {scorePopUpMsg}"
             );
 
             // Slaughter Poultry
@@ -75,7 +85,7 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
             // Increase Score
-            gameManager.playerScore += chickenMovement.pointsReward;
+            gameManager.playerScore += chickenMovement.pointsReward * carKillCount;
 
             // Increase Kill Count
             gameManager.killCount++;
