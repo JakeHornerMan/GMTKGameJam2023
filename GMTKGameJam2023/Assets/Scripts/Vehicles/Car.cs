@@ -4,11 +4,19 @@ using UnityEngine;
 
 public abstract class Car : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject scorePopUp;
+
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
+
+    [Header("PopUp Values")]
+    [SerializeField] private string scorePopUpMsg = "Points";
+    [SerializeField] private string tokenPopUpMsg = "Token";
+    [SerializeField] private float popupDestroyDelay = 0.7f;
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.1f;
@@ -38,8 +46,15 @@ public abstract class Car : MonoBehaviour
 
         if (chickenMovement != null)
         {
+            // +100 Points Pop-Up
+            ShowPopup(
+                chickenMovement.transform.position, 
+                $"{chickenMovement.pointsReward} {scorePopUpMsg}"
+            );
+
+            // Slaughter Poultry
             chickenMovement.KillChicken();
-                        
+
             // Canera Shake
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
@@ -52,11 +67,27 @@ public abstract class Car : MonoBehaviour
 
         if (token != null)
         {
+            ShowPopup(
+                token.transform.position,
+                $"{1} {tokenPopUpMsg}"
+            );
             token.tokenCollected();
             gameManager.tokens++;
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
             Destroy(gameObject);
+    }
+
+    private void ShowPopup(Vector3 position, string msg)
+    {
+        // Point Indicator
+        ScorePopup newPopUp = Instantiate(
+            scorePopUp,
+            position,
+            Quaternion.identity
+        ).GetComponent<ScorePopup>();
+        newPopUp.SetText(msg);
+        Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
 }
