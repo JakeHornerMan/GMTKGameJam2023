@@ -5,10 +5,16 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     private SoundManager soundManager;
-    public float removeTime = 12f;
+    public float removeTime = 12f; 
+    public float amplitude = 0.2f;     // The maximum distance of sway
+    public float frequency = 20f;     // The frequency of the sway motion
+    public float speed = 2f;         // The speed at which the object moves horizontally
 
-    private void Awake()
+    private Vector3 initialPosition;
+
+    void Awake()
     {
+        initialPosition = transform.position;
         soundManager = FindObjectOfType<SoundManager>();
     }
 
@@ -16,6 +22,14 @@ public class TokenController : MonoBehaviour
     {
         IEnumerator coroutine = WaitAndDie(removeTime);
         StartCoroutine(coroutine);
+    }
+
+    private void Update()
+    {
+        float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
+        float horizontalDisplacement = speed * Time.deltaTime;
+        Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
+        transform.Translate(newPosition - transform.position);
     }
 
     private IEnumerator WaitAndDie(float dieTime)
