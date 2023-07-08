@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class CarButton : MonoBehaviour
 {
@@ -11,16 +12,33 @@ public class CarButton : MonoBehaviour
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
 
+    [Header("Colors")]
+    [SerializeField] private Color positiveColor;
+    [SerializeField] private Color negativeColor;
+
     private VehicleSpawner vehicleSpawner;
+    private GameManager gameManager;
 
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
     {
         tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+    }
+
+    private void Update()
+    {
+        SetPriceColor();
+    }
+
+    private void SetPriceColor()
+    {
+        bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
+        tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
     }
 
     public void SelectCorrespondingCar()

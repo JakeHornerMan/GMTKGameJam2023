@@ -14,9 +14,12 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private SpriteRenderer carCursorFollower;
 
-    [Header("Select Indicators")]
+    [Header("Car Select Indicators")]
     [SerializeField] private Transform selectedCarIndicator;
-    [SerializeField] private Vector2 selectedCarIndicatorOffset = new(0, -1);
+    [SerializeField] private float standardCarX = 0;
+    [SerializeField] private float spikedCarX = 0;
+    [SerializeField] private float superCarX = 0;
+    [SerializeField] private float truckX = 0;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -44,7 +47,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        currentActiveCar = standardCar.correspondingCar;
+        SelectCar(standardCar);
     }
 
     private void Update()
@@ -63,8 +66,9 @@ public class VehicleSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R))
             SelectCar(truck);
+
         UpdateMousePos();
-        UpdateCarIndicator();
+        UpdateCarCursor();
     }
 
     private void UpdateMousePos()
@@ -117,9 +121,23 @@ public class VehicleSpawner : MonoBehaviour
     public void SelectCar(CarButton carBtn)
     {
         currentActiveCar = carBtn.correspondingCar;
+
+        float x;
+        if (carBtn == standardCar)
+            x = standardCarX;
+        else if (carBtn == superCar)
+            x = superCarX;
+        else if (carBtn == spikedCar)
+            x = spikedCarX;
+        else if (carBtn == truck)
+            x = truckX;
+        else
+            x = standardCarX;
+
+        selectedCarIndicator.transform.position = new Vector3(x, selectedCarIndicator.transform.position.y, 0);
     }
 
-    private void UpdateCarIndicator()
+    private void UpdateCarCursor()
     {
         carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         carCursorFollower.sprite = currentActiveCar.carSprite;
