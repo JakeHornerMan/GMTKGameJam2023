@@ -58,10 +58,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ddf724a3a13a40b2691b3d27a7195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  standardCar: {fileID: 0}
+  spikedCar: {fileID: 0}
+  superCar: {fileID: 0}
+  truck: {fileID: 0}
   currentActiveCar: {fileID: 0}
   spawnedVehiclesContainer: {fileID: 6528247484680453847}
   carCursorFollower: {fileID: 0}
+  selectedCarIndicator: {fileID: 0}
+  selectedCarIndicatorOffset: {x: 0, y: -1}
   placeMouseBtn: 0
   roadTag: Road
   spawnOffset: {x: 0, y: -10}
