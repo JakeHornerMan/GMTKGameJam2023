@@ -1658,17 +1658,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116085339}
   m_CullTransparentMesh: 1
---- !u!114 &1262509375 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-  m_PrefabInstance: {fileID: 2050601213}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1303650963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,26 +2812,6 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 93226405}
-    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: chicken1
-      value: 
-      objectReference: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
-    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: chicken2
-      value: 
-      objectReference: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
-    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: chicken3
-      value: 
-      objectReference: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
-    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: chicken4
-      value: 
-      objectReference: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
-    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: gameSpeed
-      value: 
-      objectReference: {fileID: 8300000, guid: c34db61d4a4152941b370e6780f91ab1, type: 3}
     - target: {fileID: 2160284341332244042, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2911,14 +2880,6 @@ PrefabInstance:
       propertyPath: carWalletCountText
       value: 
       objectReference: {fileID: 1460354038}
-    - target: {fileID: 7543842703582401103, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1262509375}
-    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: intesitySetting
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
