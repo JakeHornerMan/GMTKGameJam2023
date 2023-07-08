@@ -13,6 +13,10 @@ public abstract class Car : MonoBehaviour
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
 
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem tokenCollectParticles;
+    [SerializeField] private float particleDestroyDelay = 2f;
+
     [Header("PopUp Values")]
     [SerializeField] private string scorePopUpMsg = "Points";
     [SerializeField] private string tokenPopUpMsg = "Token";
@@ -67,6 +71,13 @@ public abstract class Car : MonoBehaviour
 
         if (token != null)
         {
+            GameObject newTokenParticles = Instantiate(
+                tokenCollectParticles.gameObject,
+                token.transform.position,
+                Quaternion.identity
+            ).gameObject;
+            Destroy(tokenCollectParticles.gameObject, particleDestroyDelay);
+
             ShowPopup(
                 token.transform.position,
                 $"{1} {tokenPopUpMsg}"
