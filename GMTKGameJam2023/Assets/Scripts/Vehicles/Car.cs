@@ -34,6 +34,7 @@ public abstract class Car : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
+        TokenController token = collision.gameObject.GetComponent<TokenController>();
         if (chickenMovement != null)
         {
             chickenMovement.KillChicken();
@@ -46,6 +47,10 @@ public abstract class Car : MonoBehaviour
 
             // Increase Kill Count
             gameManager.killCount++;
+        }
+        if (token != null)
+        {
+            token.tokenCollected();
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
