@@ -49,6 +49,9 @@ public abstract class Car : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
+        {
+            Debug.Log("CAR HIT END");
             Destroy(gameObject);
+        }
     }
 }
