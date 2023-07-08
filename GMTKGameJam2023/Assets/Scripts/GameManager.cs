@@ -30,22 +30,22 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         if(time <= 90f && intesitySetting == 0){
             intesitySetting ++;
-            Debug.Log("90 seconds");
+            // Debug.Log("90 seconds");
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
         if(time <= 60f && intesitySetting == 1){
             intesitySetting ++;
-            Debug.Log("60 seconds");
+            // Debug.Log("60 seconds");
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
         if(time <= 40f && intesitySetting == 2){
             intesitySetting ++;
-            Debug.Log("40 seconds");
+            // Debug.Log("40 seconds");
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
         if(time <= 20f && intesitySetting == 3){
             intesitySetting ++;
-            Debug.Log("20 seconds");
+            // Debug.Log("20 seconds");
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
         if ( time <= 0)
