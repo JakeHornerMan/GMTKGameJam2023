@@ -44,4 +44,10 @@ public class ChickenMovement : MonoBehaviour
         // transform.pranslate(movement);
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, chickenSpeed);
     }
+
+    public void KillChicken(){
+        GameObject soundmanager = GameObject.Find("GameManger");
+        soundmanager.GetComponent<SoundManager>().PlaySound("death");
+        Destroy(this.gameObject);
+    }
 }
