@@ -9,6 +9,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pointsText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI carWalletCountText;
+    [SerializeField] private TextMeshProUGUI tokensText;
 
     private GameManager gameManager;
     private CarWallet carWallet;
@@ -23,6 +24,7 @@ public class InterfaceManager : MonoBehaviour
     {
         pointsText.text = gameManager.playerScore.ToString("0000");
         killsText.text = gameManager.killCount.ToString("000");
+        tokensText.text = gameManager.tokens.ToString("000");
         carWalletCountText.text = carWallet.carCount.ToString("00");
     }
 }
