@@ -11,6 +11,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] public int pointsReward = 100;
 
     private Rigidbody2D rb;
+    private GameManager gameManager;
     private SoundManager soundManager;
 
     float moveTime;
@@ -25,6 +26,7 @@ public class ChickenMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         soundManager = FindObjectOfType<SoundManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
@@ -36,9 +38,11 @@ public class ChickenMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Destroy Chickens When They Reach Off-Screen
-        // TODO Increase Saved Chicken Count in GameManager here
         if (collision.gameObject.CompareTag(objectBoundsTag))
+        {
+            gameManager.safelyCrossedChickens++;
             Destroy(gameObject);
+        }
     }
 
     private void StartMovement()

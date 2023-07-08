@@ -10,6 +10,19 @@ public abstract class Car : MonoBehaviour
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
 
+    [Header("Camera Shake Values")]
+    [SerializeField] private float camShakeDuration = 0.1f;
+    [SerializeField] private float camShakeMagnitude = 0.1f;
+
+    private GameManager gameManager;
+    private CameraShaker cameraShaker;
+
+    private void Awake()
+    {
+        cameraShaker = FindObjectOfType<CameraShaker>();
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     protected virtual void SetCarSpeed()
     {
         gameObject.TryGetComponent(out Rigidbody2D rb);
@@ -22,8 +35,18 @@ public abstract class Car : MonoBehaviour
     {
         ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
         if (chickenMovement != null)
+        {
             chickenMovement.KillChicken();
-        // TODO ADD SCORE to gameManager using chickenMovement.pointsReward
+                        
+            // Canera Shake
+            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+
+            // Increase Score
+            gameManager.playerScore += chickenMovement.pointsReward;
+
+            // Increase Kill Count
+            gameManager.killCount++;
+        }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
             Destroy(gameObject);
