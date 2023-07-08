@@ -47,18 +47,21 @@ public class ChickenSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(moveTime);
         int selected = BasedRandom();
-        SpawnChicken(spawnSpots[selected]);
-        if(gameManager.intesitySetting >= 1){
-            SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        if(!gameManager.gameOver){
+            SpawnChicken(spawnSpots[selected]);
+            if(gameManager.intesitySetting >= 1){
+                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+            }
+            if(gameManager.intesitySetting >= 2){
+                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+            }
+            if(gameManager.intesitySetting >= 4){
+                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+            }
+            // Restart timer
+            StartSpawn();
         }
-        if(gameManager.intesitySetting >= 2){
-            SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        }
-        if(gameManager.intesitySetting >= 4){
-            SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        }
-        // Restart timer
-        StartSpawn();
+        
     }
 
     private void SpawnChicken(SpawningPoint point)
