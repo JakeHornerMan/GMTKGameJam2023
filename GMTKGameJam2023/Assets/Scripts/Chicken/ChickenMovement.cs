@@ -31,7 +31,6 @@ public class ChickenMovement : MonoBehaviour
 
     private void Start()
     {
-        soundManager.PlaySound(SoundManager.SoundType.ChickenNoise);
         moveTime = Random.Range(minMoveTime, maxMoveTime);
         StartMovement();
     }
@@ -48,8 +47,10 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        IEnumerator coroutine = WaitAndMove(moveTime);
-        StartCoroutine(coroutine);
+        if(!gameManager.gameOver){
+            IEnumerator coroutine = WaitAndMove(moveTime);
+            StartCoroutine(coroutine);
+        }
     }
 
     private IEnumerator WaitAndMove(float moveTime)
