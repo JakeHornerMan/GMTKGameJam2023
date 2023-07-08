@@ -1639,6 +1639,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116085339}
   m_CullTransparentMesh: 1
+--- !u!114 &1262509375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+  m_PrefabInstance: {fileID: 2050601213}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1303650963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +2876,14 @@ PrefabInstance:
       propertyPath: carWalletCountText
       value: 
       objectReference: {fileID: 1460354038}
+    - target: {fileID: 7543842703582401103, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1262509375}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: intesitySetting
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
