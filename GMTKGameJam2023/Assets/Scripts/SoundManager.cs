@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [Header("Audio Clips")]
-    [SerializeField] private AudioClip death1, death2, carMove, powerUp, gameSpeed, chicken1, chicken2, chicken3, chicken4;
+    [SerializeField] private AudioClip death1, death2, carMove, powerUp, gameSpeed, chicken1, chicken2, chicken3, chicken4, truck;
 
     static AudioSource audioSrc;
 
@@ -15,7 +15,8 @@ public class SoundManager : MonoBehaviour
         NewCar,
         PowerUp,
         GameSpeed,
-        ChickenNoise
+        ChickenNoise,
+        Truck
     }
 
     void Awake()
@@ -47,6 +48,9 @@ public class SoundManager : MonoBehaviour
                 if(rando1 ==2) audioSrc.PlayOneShot(chicken2, 0.5f);
                 if(rando1 ==3) audioSrc.PlayOneShot(chicken3, 0.5f);
                 if(rando1 ==4) audioSrc.PlayOneShot(chicken4, 0.5f);
+                break;
+            case SoundType.Truck:
+                audioSrc.PlayOneShot(truck, 0.5f);
                 break;
         }
     }
