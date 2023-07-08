@@ -81,7 +81,7 @@ public abstract class Car : MonoBehaviour
                 token.transform.position,
                 Quaternion.identity
             ).gameObject;
-            Destroy(newTokenParticles.gameObject, particleDestroyDelay);
+            Destroy(newTokenParticles, particleDestroyDelay);
 
             ShowPopup(
                 token.transform.position,
@@ -89,6 +89,7 @@ public abstract class Car : MonoBehaviour
             );
             token.tokenCollected();
             gameManager.tokens++;
+            gameManager.totalTokens++;
         }
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
