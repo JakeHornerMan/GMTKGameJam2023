@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ChickenMovement : MonoBehaviour
 {
+    [Header("Tags")]
+    [SerializeField] private string objectBoundsTag = "Death Box";
+
+    [Header("Scoring")]
+    [SerializeField] public int pointsReward = 100;
+
     private Rigidbody2D rb;
     private SoundManager soundManager;
 
@@ -21,19 +27,27 @@ public class ChickenMovement : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    void Start()
+    private void Start()
     {
         moveTime = Random.Range(minMoveTime, maxMoveTime);
         StartMovement();
     }
 
-    void StartMovement()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Destroy Chickens When They Reach Off-Screen
+        // TODO Increase Saved Chicken Count in GameManager here
+        if (collision.gameObject.CompareTag(objectBoundsTag))
+            Destroy(gameObject);
+    }
+
+    private void StartMovement()
     {
         IEnumerator coroutine = WaitAndMove(moveTime);
         StartCoroutine(coroutine);
     }
 
-    IEnumerator WaitAndMove(float moveTime)
+    private IEnumerator WaitAndMove(float moveTime)
     {
         yield return new WaitForSeconds(moveTime);
         MoveChicken();
@@ -42,7 +56,7 @@ public class ChickenMovement : MonoBehaviour
         StartMovement();
     }
 
-    void MoveChicken()
+    private void MoveChicken()
     {
         Vector2 targetPoint = rb.position + new Vector2(laneDistance, 0f);
         transform.position = Vector2.MoveTowards(transform.position, targetPoint, chickenSpeed);

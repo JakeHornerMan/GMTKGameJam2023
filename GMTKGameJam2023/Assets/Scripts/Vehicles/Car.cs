@@ -15,23 +15,17 @@ public abstract class Car : MonoBehaviour
         gameObject.TryGetComponent(out Rigidbody2D rb);
 
         if (rb != null)
-        {
             rb.velocity = transform.up * carSpeed;
-        } 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Chicken"))
-        {
-            // Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<ChickenMovement>().KillChicken();
-        }
+        ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
+        if (chickenMovement != null)
+            chickenMovement.KillChicken();
+        // TODO ADD SCORE to gameManager using chickenMovement.pointsReward
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
-        {
             Destroy(gameObject);
-            
-        }
     }
 }

@@ -12,20 +12,20 @@ public class ChickenSpawn : MonoBehaviour
     public float minSpawnTime = 3f;
     public float maxSpawnTime = 6f;
 
-    void Start()
+    private void Start()
     {
         SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
         StartSpawn();
     }
 
-    void StartSpawn()
+    private void StartSpawn()
     {
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         IEnumerator coroutine = WaitAndSpawn(spawnTime);
         StartCoroutine(coroutine);
     }
 
-    IEnumerator WaitAndSpawn(float moveTime)
+    private IEnumerator WaitAndSpawn(float moveTime)
     {
         yield return new WaitForSeconds(moveTime);
         int selected = BasedRandom();
@@ -35,17 +35,18 @@ public class ChickenSpawn : MonoBehaviour
         StartSpawn();
     }
 
-    void SpawnChicken(SpawningPoint point)
+    private void SpawnChicken(SpawningPoint point)
     {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
     }
 
-    int BasedRandom()
+    private int BasedRandom()
     {
         return Random.Range(1, spawnSpots.Length);
         // We could use spawnProbability in SpawningPoint object to create smarter probability
     }
 }
+
 [System.Serializable]
 public class SpawningPoint 
 {
