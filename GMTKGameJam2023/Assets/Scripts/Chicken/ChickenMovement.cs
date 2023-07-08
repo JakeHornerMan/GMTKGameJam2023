@@ -31,6 +31,7 @@ public class ChickenMovement : MonoBehaviour
 
     private void Start()
     {
+        soundManager.PlaySound(SoundManager.SoundType.ChickenNoise);
         moveTime = Random.Range(minMoveTime, maxMoveTime);
         StartMovement();
     }
