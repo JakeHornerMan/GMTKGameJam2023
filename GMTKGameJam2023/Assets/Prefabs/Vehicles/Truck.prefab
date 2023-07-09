@@ -362,7 +362,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1188136614146200542, guid: f1e55ff5a2be053499db551f75633327, type: 3}
     - {fileID: 6634941919401553099, guid: f1e55ff5a2be053499db551f75633327, type: 3}
@@ -382,13 +383,62 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8251440986272331830, guid: f1e55ff5a2be053499db551f75633327, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3121459147241726013}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6077706268648720092, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1735388934760480964}
   m_SourcePrefab: {fileID: 100100000, guid: f1e55ff5a2be053499db551f75633327, type: 3}
 --- !u!4 &6915514405043408541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8251440986272331830, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   m_PrefabInstance: {fileID: 3277448921649641131}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8728978607223943287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6077706268648720092, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  m_PrefabInstance: {fileID: 3277448921649641131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735388934760480964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728978607223943287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c752b84032755ab41afd100c3e8232d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 8995613761751722113}
+  carSprite: {fileID: 0}
+  carName: Truck of Doom
+  carPrice: 6
+  objectBoundsTag: Death Box
+  carSpeed: 8
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 1.2
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.15
+  cameraShaker: {fileID: 0}
+  truckShakeDuration: 3
+  truckShakeMagnitude: 0.18
+--- !u!114 &8995613761751722113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  m_PrefabInstance: {fileID: 3277448921649641131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5246310926591376760
 PrefabInstance:
   m_ObjectHideFlags: 0

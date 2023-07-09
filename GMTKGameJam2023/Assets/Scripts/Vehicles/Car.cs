@@ -37,7 +37,7 @@ public abstract class Car : MonoBehaviour
     private int carKillCount = 0;
 
     private GameManager gameManager;
-    private CameraShaker cameraShaker;
+    public CameraShaker cameraShaker;
 
     private void Awake()
     {
