@@ -50,22 +50,27 @@ public class GameManager : MonoBehaviour
     private void SetTime()
     {
         time -= Time.deltaTime;
-        if (time <= 110f && intesitySetting == 0)
+        if (time <= 170f && intesitySetting == 0)
         {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 90f && intesitySetting == 1)
+        if (time <= 150f && intesitySetting == 1)
         {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 60f && intesitySetting == 2)
+        if (time <= 120f && intesitySetting == 2)
         {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 40f && intesitySetting == 3)
+        if (time <= 100f && intesitySetting == 3)
+        {
+            intesitySetting ++;
+            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+        }
+        if (time <= 60f && intesitySetting == 4)
         {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
