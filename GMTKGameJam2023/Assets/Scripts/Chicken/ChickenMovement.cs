@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ChickenMovement : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject hopController;
+    [SerializeField] private GameObject chickenSprite;
+    [SerializeField] private ParticleSystem featherParticles;
+
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
 
@@ -25,10 +30,6 @@ public class ChickenMovement : MonoBehaviour
     private Vector2 targetPoint;
     [SerializeField] private Vector2 directionVector;
     private Vector2 desiredDirection;
-    [SerializeField] private GameObject hopController;
-    [SerializeField] private GameObject chickenSprite;
-
-    [SerializeField] private ParticleSystem featherParticles;
 
     private void Awake()
     {
@@ -55,19 +56,24 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        if(gameManager.intesitySetting == 1){
+        if (gameManager.intesitySetting == 1)
+        {
             maxMoveTime = 2.5f;
         }
-        if(gameManager.intesitySetting == 2){
+        if (gameManager.intesitySetting == 2)
+        {
             maxMoveTime = 2f;
         }
-        if(gameManager.intesitySetting == 3){
+        if (gameManager.intesitySetting == 3)
+        {
             maxMoveTime = 2f;
         }
-        if(gameManager.intesitySetting == 4){
+        if (gameManager.intesitySetting == 4)
+        {
             maxMoveTime = 1.5f;
         }
-        if(gameManager.intesitySetting == 5){
+        if (gameManager.intesitySetting == 5)
+        {
             maxMoveTime = 1f;
         }
         if (!gameManager.gameOver)
