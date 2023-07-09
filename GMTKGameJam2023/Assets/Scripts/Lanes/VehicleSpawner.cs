@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleSpawner : MonoBehaviour
 {
@@ -93,6 +94,9 @@ public class VehicleSpawner : MonoBehaviour
         if (hit.collider == null)
             return;
 
+        if (IsMouseOverUIElement())
+            return;
+
         // Return if Did Not Click Road
         if (!hit.collider.gameObject.CompareTag(roadTag))
             return;
@@ -149,5 +153,14 @@ public class VehicleSpawner : MonoBehaviour
     {
         carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         carCursorFollower.sprite = currentActiveCar.carSprite;
+    }
+
+    private bool IsMouseOverUIElement()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("UI"));
+        if (hit.collider != null && hit.collider.GetComponent<GraphicRaycaster>() != null)
+            return true;
+        return false;
     }
 }

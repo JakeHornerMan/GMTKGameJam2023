@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8614834387938461589}
   - component: {fileID: 2557463974196538456}
   - component: {fileID: 5996180526844374429}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hop Controller
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3631246900296472120}
   - component: {fileID: 3850760585555573283}
   - component: {fileID: 655462350724580983}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 315510484514270918}
   - component: {fileID: 1496862927219537812}
   - component: {fileID: 8089028048643985026}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Chicken
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -325,6 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hopController: {fileID: 469911086233366047}
+  chickenSprite: {fileID: 7432632716323759472}
+  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   objectBoundsTag: Death Box
   pointsReward: 100
   minMoveTime: 1
@@ -332,6 +335,3 @@ MonoBehaviour:
   chickenSpeed: 1.25
   laneDistance: 1.25
   directionVector: {x: 0, y: 0}
-  hopController: {fileID: 469911086233366047}
-  chickenSprite: {fileID: 7432632716323759472}
-  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
