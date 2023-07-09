@@ -13,10 +13,10 @@ public class MapGeneration : MonoBehaviour
         GenerateRoad();
     }
 
-    // Update is called once per frame
     void GenerateRoad()
     {
-        for(int i =0; i <= 10; i++){
+        for (int i =0; i <= 10; i++)
+        {
             GameObject road = roads[Random.Range(1, roads.Length)];
             Vector3 pos;
             switch (i) 
@@ -69,6 +69,7 @@ public class MapGeneration : MonoBehaviour
         }
     }
 }
+
 [System.Serializable]
 public class RoadRow 
 {

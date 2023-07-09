@@ -55,7 +55,8 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        if(!gameManager.gameOver){
+        if (!gameManager.gameOver)
+        {
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);
         }
@@ -63,13 +64,9 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator WaitAndMove(float moveTime)
     {
-
         BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);
-
-
-        
 
         // Restart Timer
         StartMovement();
@@ -77,7 +74,6 @@ public class ChickenMovement : MonoBehaviour
 
     private void BeginChickenMovement()
     {
-
         desiredDirection = ChooseNextDirection() * laneDistance;
 
         if (directionVector != new Vector2(0,0))
@@ -95,10 +91,6 @@ public class ChickenMovement : MonoBehaviour
         {
             MoveChicken();
         }
-        
-
-        
-        
     }
 
     private void MoveChicken()
@@ -128,7 +120,6 @@ public class ChickenMovement : MonoBehaviour
         //anim.Play("Idle");
 
         MoveChicken();
-
     }
 
     private void RotateChicken()
@@ -203,9 +194,7 @@ public class ChickenMovement : MonoBehaviour
             }
         }
         
-
         return directionVector;
-
     }
 
     public void KillChicken()

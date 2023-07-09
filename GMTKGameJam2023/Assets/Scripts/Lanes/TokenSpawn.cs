@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class TokenSpawn : MonoBehaviour
 {
-
-    [SerializeField] 
-    public Transform[] spawnSpots;
-    public GameObject[] tokenPrefabs;
+    [Header("Token Spawn Values")]
+    [SerializeField] public Transform[] spawnSpots;
+    [SerializeField] public GameObject[] tokenPrefabs;
 
     public float minSpawnTime = 5f;
     public float maxSpawnTime = 25f;
 
-    // Start is called before the first frame update
     void Start()
     {
         // foreach (Transform tansform in spawnSpots)
