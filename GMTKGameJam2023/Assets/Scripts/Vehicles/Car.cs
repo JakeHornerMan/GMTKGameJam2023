@@ -106,6 +106,35 @@ public abstract class Car : MonoBehaviour
 
             // Increase Kill Count
             gameManager.killCount++;
+
+            if (gameManager.killCount > 500)
+            {
+                gameManager.currentRanking = "Master Chicken Assassin";
+            }
+            else if (gameManager.killCount > 250)
+            {
+                gameManager.currentRanking = "Sadist";
+            }
+            else if (gameManager.killCount > 150)
+            {
+                gameManager.currentRanking = "KFC Worker";
+            }
+            else if (gameManager.killCount > 100)
+            {
+                gameManager.currentRanking = "Vehicularly Sus";
+            }
+            else if (gameManager.killCount > 60)
+            {
+                gameManager.currentRanking = "Accidents Happen";
+            }
+            else if (gameManager.killCount > 30)
+            {
+                gameManager.currentRanking = "Traffic Obeyer";
+            }
+            else if (gameManager.killCount == 0)
+            {
+                gameManager.currentRanking = "Animal Lover";
+            }
         }
 
         if (token != null)
