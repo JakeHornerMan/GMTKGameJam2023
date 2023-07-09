@@ -38,7 +38,7 @@ public class ResultsUI : MonoBehaviour
     {
         rankingText.text = ranking;
         killsText.text = kills.ToString("000");
-        missedChickensText.text = missedChickens.ToString("00") + missedChickensLabel;
+        missedChickensText.text = missedChickens.ToString("00") + " " + missedChickensLabel;
         totalTokensText.text = totalTokens.ToString("000");
     }
 }
