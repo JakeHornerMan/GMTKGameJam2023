@@ -4,8 +4,31 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [Header("Audio Clips")]
-    [SerializeField] private AudioClip death1, death2, carMove, powerUp, gameSpeed, chicken1, chicken2, chicken3, chicken4, truck, fastCar, slice1, slice2, newSpikeCar;
+    [Header("Clicken Death Clips")]
+    [SerializeField] private AudioClip death1;
+    [SerializeField] private AudioClip death2;
+
+    [Header("Car Engine Clips")]
+    [SerializeField] private AudioClip carMove;
+    [SerializeField] private AudioClip fastCar;
+    [SerializeField] private AudioClip newSpikeCar;
+
+    [Header("Truck Clips")]
+    [SerializeField] private AudioClip truck;
+
+    [Header("Game Info Clips")]
+    [SerializeField] private AudioClip powerUp;
+    [SerializeField] private AudioClip gameSpeed;
+
+    [Header("Chicken Noise Clips")]
+    [SerializeField] private AudioClip chicken1;
+    [SerializeField] private AudioClip chicken2;
+    [SerializeField] private AudioClip chicken3;
+    [SerializeField] private AudioClip chicken4;
+
+    [Header("Slice Clips")]
+    [SerializeField] private AudioClip slice1;
+    [SerializeField] private AudioClip slice2;
 
     static AudioSource audioSrc;
 
@@ -33,24 +56,16 @@ public class SoundManager : MonoBehaviour
         switch (soundType) 
         {
             case SoundType.Death:
-                int rando = Random.Range(1, 2);
-                if (rando == 2)
-                    audioSrc.PlayOneShot(death1, 0.4f);
-                else
-                    audioSrc.PlayOneShot(death2, 0.4f);
+                RandomDeathNoise();
                 break;
             case SoundType.NewCar:
                 audioSrc.PlayOneShot(carMove, 0.4f);
                 break;
             case SoundType.GameSpeed:
-                audioSrc.PlayOneShot(gameSpeed, 0.5f);
+                audioSrc.PlayOneShot(gameSpeed, 0.25f);
                 break;
             case SoundType.ChickenNoise:
-                int rando1 = Random.Range(1, 5);
-                if (rando1 == 1) audioSrc.PlayOneShot(chicken1, 0.5f);
-                if (rando1 == 2) audioSrc.PlayOneShot(chicken2, 0.5f);
-                if (rando1 == 3) audioSrc.PlayOneShot(chicken3, 0.5f);
-                if (rando1 == 4) audioSrc.PlayOneShot(chicken4, 0.5f);
+                RandomChickenNoise();
                 break;
             case SoundType.Truck:
                 audioSrc.PlayOneShot(truck, 0.5f);
@@ -59,13 +74,34 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(fastCar, 0.3f);
                 break;
             case (SoundType.Slice):
-                int rando2 = Random.Range(1, 3);
-                if (rando2 == 1) audioSrc.PlayOneShot(slice1, 0.5f);
-                if (rando2 == 2) audioSrc.PlayOneShot(slice2, 0.5f);
+                RandomSliceSound();
                 break;
             case (SoundType.NewSpikeCar):
                 audioSrc.PlayOneShot(newSpikeCar, 0.3f);
                 break;
         }
+    }
+
+    private void RandomDeathNoise()
+    {
+        int rando = Random.Range(1, 3);
+        if (rando == 1) audioSrc.PlayOneShot(death1, 0.4f);
+        else audioSrc.PlayOneShot(death2, 0.4f);
+    }
+
+    private void RandomSliceSound()
+    {
+        int rando = Random.Range(1, 3);
+        if (rando == 1) audioSrc.PlayOneShot(slice1, 0.5f);
+        if (rando == 2) audioSrc.PlayOneShot(slice2, 0.5f);
+    }
+
+    private void RandomChickenNoise()
+    {
+        int rando = Random.Range(1, 5);
+        if (rando == 1) audioSrc.PlayOneShot(chicken1, 0.5f);
+        if (rando == 2) audioSrc.PlayOneShot(chicken2, 0.5f);
+        if (rando == 3) audioSrc.PlayOneShot(chicken3, 0.5f);
+        if (rando == 4) audioSrc.PlayOneShot(chicken4, 0.5f);
     }
 }
