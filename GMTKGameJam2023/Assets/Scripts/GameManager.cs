@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
 
     private void HandleResults()
     {
-        //pause.PauseGame(showUI: false);
         resultsUI.SetUI(currentRanking, killCount, safelyCrossedChickens, playerScore);
         resultsUI.gameObject.SetActive(true);
     }
