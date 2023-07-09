@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Car : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject scorePopUp;
+    [SerializeField] private string comboSymbol = "x";
+    [SerializeField] private TextMeshProUGUI comboText;
 
     [Header("Car Info")]
     [SerializeField] public Sprite carSprite;
@@ -47,6 +50,12 @@ public abstract class Car : MonoBehaviour
         carKillCount = 0;
     }
 
+    private void Update()
+    {
+        // xKillCount Combo Text
+        comboText.text = $"{comboSymbol}{carKillCount}";
+    }
+
     protected virtual void SetCarSpeed()
     {
         gameObject.TryGetComponent(out Rigidbody2D rb);
@@ -71,8 +80,6 @@ public abstract class Car : MonoBehaviour
         {
             // Increase Car-Specific Kill Count
             carKillCount++;
-
-            // xKillCount Combo Text
 
             // +100 Points Pop-Up
             ShowPopup(
