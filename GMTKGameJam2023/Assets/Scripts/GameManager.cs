@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (time <= 18f)
         {
             soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
-            interfaceManager.ShowSpeedUpText("Hurry!!!");
+            //interfaceManager.ShowSpeedUpText("Hurry!!!");
         }
         if (time <= 0)
         {
