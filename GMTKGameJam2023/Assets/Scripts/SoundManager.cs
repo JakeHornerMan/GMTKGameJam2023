@@ -56,6 +56,10 @@ public class SoundManager : MonoBehaviour
     {
         audioSrc = GetComponent<AudioSource>();
         musicAudio = GameObject.Find("Music").GetComponent<AudioSource>();
+        musicAudio.Stop();
+        audioSrc.clip = gameMusic;
+        audioSrc.loop = false;
+        audioSrc.Play();
     }
 
     // Function Called by Other Scripts
@@ -70,7 +74,7 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(carMove, 0.4f);
                 break;
             case SoundType.GameSpeed:
-                audioSrc.PlayOneShot(gameSpeed, 0.25f);
+                audioSrc.PlayOneShot(gameSpeed, 0.3f);
                 break;
             case SoundType.ChickenNoise:
                 RandomChickenNoise();
@@ -88,7 +92,7 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(newSpikeCar, 0.3f);
                 break;
             case (SoundType.LastSeconds):
-                audioSrc.PlayOneShot(lastSeconds, 0.3f);
+                audioSrc.PlayOneShot(lastSeconds, 0.2f);
                 break;
         }
     }
@@ -117,8 +121,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayEndMuisc(){
-        // musicAudio.clip = endMusic;
+        audioSrc.Stop();
         musicAudio.PlayOneShot(endMusic, 0.05f);
-        musicAudio.loop = false;
     }
 }
