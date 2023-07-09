@@ -59,7 +59,6 @@ public class InterfaceManager : MonoBehaviour
 
     private void DeactivateSpeedUpText()
     {
-        speedUptextAnimator.ResetTrigger(speedUpTextFadeOutTrigger);
         speedUpText.gameObject.SetActive(false);
     }
 }
