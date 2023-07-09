@@ -14,18 +14,24 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentCarNameText;
     [SerializeField] private TextMeshProUGUI speedUpText;
 
+    [Header("Animation")]
+    [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
+
     [Header("Timing")]
-    [SerializeField] private float speedUpTextDuration = 1.3f; 
+    [SerializeField] private float speedUpTextDuration = 1.3f;
+    [SerializeField] private float speedUpTextDeactivationDelay = 2;
 
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
+    private Animator speedUptextAnimator;
 
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
+        speedUptextAnimator = speedUpText.GetComponent<Animator>();
     }
 
     private void Update()
@@ -42,8 +48,18 @@ public class InterfaceManager : MonoBehaviour
     {
         speedUpText.text = text;
         speedUpText.gameObject.SetActive(true);
-        Invoke(nameof(DeactivateSpeedUpText), speedUpTextDuration);
+        Invoke(nameof(FadeOut), speedUpTextDuration);
     }
 
-    private void DeactivateSpeedUpText() => speedUpText.gameObject.SetActive(false);
+    private void FadeOut()
+    {
+        speedUptextAnimator.SetTrigger(speedUpTextFadeOutTrigger);
+        Invoke(nameof(DeactivateSpeedUpText), speedUpTextDeactivationDelay);
+    }
+
+    private void DeactivateSpeedUpText()
+    {
+        speedUptextAnimator.ResetTrigger(speedUpTextFadeOutTrigger);
+        speedUpText.gameObject.SetActive(false);
+    }
 }
