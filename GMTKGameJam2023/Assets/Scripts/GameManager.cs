@@ -43,12 +43,19 @@ public class GameManager : MonoBehaviour
         totalTokens = 0;
 
         time = startTime;
-        resultsUI.gameObject.SetActive(false);
+        if (resultsUI != null)
+        {
+            resultsUI.gameObject.SetActive(false);
+        }
+        
     }
 
     private void Update()
     {
-        SetTime();
+        if (resultsUI != null)
+        {
+           SetTime();
+        }
     }
 
     private void SetTime()
