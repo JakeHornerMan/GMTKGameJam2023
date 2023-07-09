@@ -31,7 +31,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.1f;
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
-    private int carKillCount =0;
+    private int carKillCount = 0;
 
     private GameManager gameManager;
     private CameraShaker cameraShaker;
@@ -40,6 +40,11 @@ public abstract class Car : MonoBehaviour
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameManager = FindObjectOfType<GameManager>();
+    }
+
+    private void Start()
+    {
+        carKillCount = 0;
     }
 
     protected virtual void SetCarSpeed()
@@ -64,13 +69,10 @@ public abstract class Car : MonoBehaviour
 
         if (chickenMovement != null)
         {
+            // Increase Car-Specific Kill Count
             carKillCount++;
 
-            // x{{carKillCount}}
-            // ShowPopup(
-            //     chickenMovement.transform.position, 
-            //     $"{"x"carKillCount} {scorePopUpMsg}"
-            // );
+            // xKillCount Combo Text
 
             // +100 Points Pop-Up
             ShowPopup(
@@ -97,14 +99,15 @@ public abstract class Car : MonoBehaviour
                 tokenCollectParticles.gameObject,
                 token.transform.position,
                 Quaternion.identity
-            ).gameObject;
+            );
             Destroy(newTokenParticles, particleDestroyDelay);
 
             ShowPopup(
                 token.transform.position,
                 $"{1} {tokenPopUpMsg}"
             );
-            token.tokenCollected();
+
+            token.TokenCollected();
             gameManager.tokens++;
             gameManager.totalTokens++;
         }

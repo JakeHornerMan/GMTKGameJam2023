@@ -42,29 +42,35 @@ public class GameManager : MonoBehaviour
         resultsUI.gameObject.SetActive(false);
     }
 
-    private void Update() {
-        setTime();
+    private void Update()
+    {
+        SetTime();
     }
 
-    private void setTime(){
+    private void SetTime()
+    {
         time -= Time.deltaTime;
-        if(time <= 110f && intesitySetting == 0){
+        if (time <= 110f && intesitySetting == 0)
+        {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if(time <= 90f && intesitySetting == 1){
+        if (time <= 90f && intesitySetting == 1)
+        {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if(time <= 60f && intesitySetting == 2){
+        if (time <= 60f && intesitySetting == 2)
+        {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if(time <= 40f && intesitySetting == 3){
+        if (time <= 40f && intesitySetting == 3)
+        {
             intesitySetting ++;
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if ( time <= 0)
+        if (time <= 0)
         {
             gameOver = true;
             HandleResults();
