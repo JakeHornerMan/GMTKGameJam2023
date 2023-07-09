@@ -145,14 +145,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultsUI: {fileID: 0}
   safelyCrossedChickens: 0
   killCount: 0
   playerScore: 0
   tokens: 0
   totalTokens: 0
-  time: 120
+  startTime: 120
   intesitySetting: 0
   currentRanking: Animal Lover
+  gameOver: 0
+  time: 120
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +208,7 @@ MonoBehaviour:
   chicken2: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
   chicken3: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
   chicken4: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
+  truck: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
 --- !u!114 &304815692333560699
 MonoBehaviour:
   m_ObjectHideFlags: 0
