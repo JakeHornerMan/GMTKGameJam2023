@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 1.6
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -1368,8 +1368,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1427,8 +1427,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.9999
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1487,7 +1487,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -1427734293, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
+    - sprite: {fileID: -307795096, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
+    - sprite: {fileID: 1524856250, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -5093,6 +5095,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
   carName: Standard
   carPrice: 0
+  ignoreCoins: 0
   objectBoundsTag: Death Box
   carSpeed: 5
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
@@ -5102,6 +5105,7 @@ MonoBehaviour:
   popupDestroyDelay: 1.2
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
+  cameraShaker: {fileID: 0}
 --- !u!1 &6634941919401553099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,7 +5222,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
+      scalar: 1.6
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -6470,8 +6474,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -6529,8 +6533,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.9999
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6589,7 +6593,9 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -1427734293, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
+    - sprite: {fileID: -307795096, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
+    - sprite: {fileID: 1524856250, guid: 80d5aaee366d17740b5fcf04cbf7c4c8, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
