@@ -11,7 +11,7 @@ public class ResultsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI missedChickensText;
     [SerializeField] private TextMeshProUGUI totalTokensText;
 
-    [SerializeField] private string missedChickensLabel = "Missed Chickens";
+    [SerializeField] private string missedChickensLabel = " Missed Chickens";
 
     private SceneFader sceneFader;
     private Pause pause;
