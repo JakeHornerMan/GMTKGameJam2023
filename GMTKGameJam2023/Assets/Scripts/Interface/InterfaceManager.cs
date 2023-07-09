@@ -11,13 +11,16 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI carWalletCountText;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI currentCarNameText;
 
     private GameManager gameManager;
+    private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
 
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
+        vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
     }
 
@@ -28,6 +31,6 @@ public class InterfaceManager : MonoBehaviour
         tokensText.text = gameManager.tokens.ToString("000");
         carWalletCountText.text = carWallet.carCount.ToString("00");
         timeText.text = gameManager.time.ToString("0");
-;
+        currentCarNameText.text = vehicleSpawner.currentActiveCar.carName;
     }
 }
