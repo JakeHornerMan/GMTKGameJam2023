@@ -9,9 +9,10 @@ public class ResultsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rankingText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI missedChickensText;
-    [SerializeField] private TextMeshProUGUI totalTokensText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
 
     [SerializeField] private string missedChickensLabel = " Missed Chickens";
+    [SerializeField] private string pointsLabel = " Points";
 
     private SceneFader sceneFader;
     private Pause pause;
@@ -34,11 +35,11 @@ public class ResultsUI : MonoBehaviour
         sceneFader.ReloadScene();
     }
 
-    public void SetUI(string ranking, int kills, int missedChickens, int totalTokens)
+    public void SetUI(string ranking, int kills, int missedChickens, int finalScore)
     {
         rankingText.text = ranking;
         killsText.text = kills.ToString("000");
         missedChickensText.text = missedChickens.ToString("00") + " " + missedChickensLabel;
-        totalTokensText.text = totalTokens.ToString("000");
+        finalScoreText.text = finalScore.ToString("000") + " " + pointsLabel;
     }
 }

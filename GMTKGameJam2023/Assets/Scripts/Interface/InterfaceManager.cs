@@ -12,6 +12,10 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
+    [SerializeField] private TextMeshProUGUI speedUpText;
+
+    [Header("Timing")]
+    [SerializeField] private float speedUpTextDuration = 1.3f; 
 
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
@@ -33,4 +37,13 @@ public class InterfaceManager : MonoBehaviour
         timeText.text = gameManager.time.ToString("0");
         currentCarNameText.text = vehicleSpawner.currentActiveCar.carName;
     }
+
+    public void ShowSpeedUpText(string text = "Speed Up")
+    {
+        speedUpText.text = text;
+        speedUpText.gameObject.SetActive(true);
+        Invoke(nameof(DeactivateSpeedUpText), speedUpTextDuration);
+    }
+
+    private void DeactivateSpeedUpText() => speedUpText.gameObject.SetActive(false);
 }
