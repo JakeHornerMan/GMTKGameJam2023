@@ -37,6 +37,11 @@ public class ChickenSpawn : MonoBehaviour
             minSpawnTime = 1f;
             maxSpawnTime = 2f;
         }
+        if (gameManager.intesitySetting == 4)
+        {
+            minSpawnTime = 0.5f;
+            maxSpawnTime = 1.5f;
+        }
     }
 
     private void StartSpawn()
@@ -50,6 +55,7 @@ public class ChickenSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(moveTime);
         int selected = BasedRandom();
+        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
 
         if (!gameManager.gameOver)
         {
