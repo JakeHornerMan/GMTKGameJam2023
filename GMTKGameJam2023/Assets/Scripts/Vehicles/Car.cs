@@ -15,6 +15,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public string carName;
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreCoins = false;
+    [SerializeField] private bool isSpikeCar = false;
 
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
@@ -39,11 +40,13 @@ public abstract class Car : MonoBehaviour
 
     private GameManager gameManager;
     public CameraShaker cameraShaker;
+    private SoundManager soundManager;
 
     private void Awake()
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameManager = FindObjectOfType<GameManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Start()
@@ -90,6 +93,10 @@ public abstract class Car : MonoBehaviour
 
             // Slaughter Poultry
             chickenMovement.KillChicken();
+
+            // Slice Sound
+            if (isSpikeCar)
+                soundManager.PlaySound(SoundManager.SoundType.Slice);
 
             // Canera Shake
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
