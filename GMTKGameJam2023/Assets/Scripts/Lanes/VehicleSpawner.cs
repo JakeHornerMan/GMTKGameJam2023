@@ -117,7 +117,12 @@ public class VehicleSpawner : MonoBehaviour
         gameManager.tokens -= currentActiveCar.carPrice;
 
         // Play Car Spawn SFX
-        soundManager.PlaySound(SoundManager.SoundType.NewCar);
+        if (currentActiveCar == superCar.correspondingCar)
+            soundManager.PlaySound(SoundManager.SoundType.FastCar);
+        else if (currentActiveCar == spikedCar.correspondingCar)
+            soundManager.PlaySound(SoundManager.SoundType.NewSpikeCar);
+        else
+            soundManager.PlaySound(SoundManager.SoundType.NewCar);
         SelectCar(standardCar);
     }
 
