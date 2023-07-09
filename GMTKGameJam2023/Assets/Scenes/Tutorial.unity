@@ -404,7 +404,7 @@ MonoBehaviour:
 
 
     Take
-    out as many chickens as possible in the time frame
+    out as many chickens as possible before time runs out.
 
 
     Alternatives
@@ -1222,8 +1222,10 @@ MonoBehaviour:
   - position: {x: -10, y: -4, z: 0}
     spawnProbability: 0
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
+  GoldenChickenPrefab: {fileID: 0}
   minSpawnTime: 1
   maxSpawnTime: 2
+  goldenChickenOdds: 50
   gameManager: {fileID: 0}
 --- !u!4 &1171774513
 Transform:
@@ -1259,7 +1261,7 @@ MonoBehaviour:
   tokens: 0
   totalTokens: 0
   startTime: 120
-  intesitySetting: 4
+  intensitySetting: 0
   currentRanking: Animal Lover
   gameOver: 0
   time: 120

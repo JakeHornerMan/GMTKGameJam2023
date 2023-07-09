@@ -44,7 +44,7 @@ Transform:
   - {fileID: 2136478161826871466}
   - {fileID: 561120794869102665}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3579040378299406628
 MonoBehaviour:
@@ -67,9 +67,9 @@ MonoBehaviour:
   carCursorFollower: {fileID: 0}
   selectedCarIndicator: {fileID: 0}
   standardCarX: -4.2
-  spikedCarX: -1.55
-  superCarX: 1.55
-  truckX: 4.2
+  spikedCarX: 1.1
+  superCarX: -1.55
+  truckX: 3.825
   placeMouseBtn: 0
   roadTag: Road
   spawnOffset: {x: 0, y: -10}
