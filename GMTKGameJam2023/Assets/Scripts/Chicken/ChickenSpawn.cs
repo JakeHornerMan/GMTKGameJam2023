@@ -8,9 +8,12 @@ public class ChickenSpawn : MonoBehaviour
     [SerializeField] public SpawningPoint[] spawnSpots;
 
     public GameObject ChickenPrefab;
+    public GameObject GoldenChickenPrefab;
 
     public float minSpawnTime = 3f;
     public float maxSpawnTime = 5f;
+
+    public int goldenChickenOdds = 50;
 
     public GameManager gameManager;
 
@@ -21,26 +24,31 @@ public class ChickenSpawn : MonoBehaviour
         StartSpawn();
     }
 
-    private void Update(){
-        if (gameManager.intesitySetting == 2)
+    public void UpdateIntensity(int intensity)
+    {
+        if (intensity == 2)
         {
             minSpawnTime = 2f;
             maxSpawnTime = 4f;
+            goldenChickenOdds = 45;
         }
-        if (gameManager.intesitySetting == 3)
+        if (intensity == 3)
         {
             minSpawnTime = 2f;
             maxSpawnTime = 3f;
+            goldenChickenOdds = 40;
         }
-        if (gameManager.intesitySetting == 4)
+        if (intensity == 4)
         {
             minSpawnTime = 1f;
             maxSpawnTime = 2f;
+            goldenChickenOdds = 30;
         }
-        if (gameManager.intesitySetting == 5)
+        if (intensity == 5)
         {
             minSpawnTime = 0.5f;
             maxSpawnTime = 1.5f;
+            goldenChickenOdds = 15;
         }
     }
 
@@ -55,24 +63,36 @@ public class ChickenSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(moveTime);
         int selected = BasedRandom();
-        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+
+        int randomNum = Random.Range(0, goldenChickenOdds);
+
+        if (randomNum == 0)
+        {
+            SpawnGoldenChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        }
+        else
+        {
+            SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        }
+
+        
 
         if (!gameManager.gameOver)
         {
             SpawnChicken(spawnSpots[selected]);
-            if (gameManager.intesitySetting >= 1)
+            if (gameManager.intensitySetting >= 1)
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
-            if (gameManager.intesitySetting >= 2) 
+            if (gameManager.intensitySetting >= 2) 
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
-            if (gameManager.intesitySetting >= 4)
+            if (gameManager.intensitySetting >= 4)
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
-            if (gameManager.intesitySetting >= 5)
+            if (gameManager.intensitySetting >= 5)
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
@@ -84,6 +104,11 @@ public class ChickenSpawn : MonoBehaviour
     private void SpawnChicken(SpawningPoint point)
     {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
+    }
+
+    private void SpawnGoldenChicken(SpawningPoint point)
+    {
+        Instantiate(GoldenChickenPrefab, point.position, Quaternion.identity);
     }
 
     private int BasedRandom()

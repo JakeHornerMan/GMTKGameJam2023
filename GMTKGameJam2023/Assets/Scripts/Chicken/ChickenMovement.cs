@@ -56,24 +56,19 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        if (gameManager.intesitySetting == 1)
-        {
+        if(gameManager.intensitySetting == 1){
             maxMoveTime = 2.5f;
         }
-        if (gameManager.intesitySetting == 2)
-        {
+        if(gameManager.intensitySetting == 2){
             maxMoveTime = 2f;
         }
-        if (gameManager.intesitySetting == 3)
-        {
+        if(gameManager.intensitySetting == 3){
             maxMoveTime = 2f;
         }
-        if (gameManager.intesitySetting == 4)
-        {
+        if(gameManager.intensitySetting == 4){
             maxMoveTime = 1.5f;
         }
-        if (gameManager.intesitySetting == 5)
-        {
+        if(gameManager.intensitySetting == 5){
             maxMoveTime = 1f;
         }
         if (!gameManager.gameOver)

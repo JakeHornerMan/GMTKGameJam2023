@@ -15,12 +15,13 @@ public class GameManager : MonoBehaviour
     public int tokens = 0;
     public int totalTokens = 0;
     public float startTime = 120f;
-    public int intesitySetting = 0;
+    public int intensitySetting = 0;
     public string currentRanking = "Animal Lover";
     public bool gameOver = false;
 
     private SoundManager soundManager;
     private Pause pause;
+    private ChickenSpawn chickenSpawn;
 
     public float time = 120f;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
+        chickenSpawn = GetComponent<ChickenSpawn>();
     }
 
     private void Start()
@@ -49,30 +51,39 @@ public class GameManager : MonoBehaviour
 
     private void SetTime()
     {
-        time -= Time.deltaTime;
-        if (time <= 170f && intesitySetting == 0)
+        if (time > 0)
         {
-            intesitySetting ++;
+            time -= Time.deltaTime;
+        }
+        
+        if (time <= 170f && intensitySetting == 0)
+        {
+            intensitySetting ++;
+            chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 150f && intesitySetting == 1)
+        if (time <= 150f && intensitySetting == 1)
         {
-            intesitySetting ++;
+            intensitySetting ++;
+            chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 120f && intesitySetting == 2)
+        if (time <= 120f && intensitySetting == 2)
         {
-            intesitySetting ++;
+            intensitySetting ++;
+            chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 100f && intesitySetting == 3)
+        if (time <= 100f && intensitySetting == 3)
         {
-            intesitySetting ++;
+            intensitySetting ++;
+            chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
-        if (time <= 60f && intesitySetting == 4)
+        if (time <= 60f && intensitySetting == 4)
         {
-            intesitySetting ++;
+            intensitySetting ++;
+            chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
         if (time <= 0)
