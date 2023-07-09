@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     [Header("Game Info Clips")]
     [SerializeField] private AudioClip powerUp;
     [SerializeField] private AudioClip gameSpeed;
+    [SerializeField] private AudioClip lastSeconds;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private AudioClip chicken1;
@@ -47,7 +48,8 @@ public class SoundManager : MonoBehaviour
         Truck,
         FastCar,
         Slice,
-        NewSpikeCar
+        NewSpikeCar,
+        LastSeconds
     }
 
     void Awake()
@@ -84,6 +86,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case (SoundType.NewSpikeCar):
                 audioSrc.PlayOneShot(newSpikeCar, 0.3f);
+                break;
+            case (SoundType.LastSeconds):
+                audioSrc.PlayOneShot(lastSeconds, 0.3f);
                 break;
         }
     }
