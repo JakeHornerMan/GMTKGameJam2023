@@ -14,6 +14,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public Sprite carSprite;
     [SerializeField] public string carName;
     [SerializeField] public int carPrice = 2;
+    [SerializeField] private bool ignoreCoins = false;
 
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
@@ -102,6 +103,8 @@ public abstract class Car : MonoBehaviour
 
         if (token != null)
         {
+            if (ignoreCoins) return;
+
             GameObject newTokenParticles = Instantiate(
                 tokenCollectParticles.gameObject,
                 token.transform.position,
