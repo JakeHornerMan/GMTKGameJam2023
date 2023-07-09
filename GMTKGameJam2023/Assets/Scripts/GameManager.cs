@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         if (time <= 0)
         {
             gameOver = true;
+            soundManager.PlayEndMuisc();
             HandleResults();
         }
     }

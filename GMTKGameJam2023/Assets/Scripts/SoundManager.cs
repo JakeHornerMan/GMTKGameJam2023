@@ -30,7 +30,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip slice1;
     [SerializeField] private AudioClip slice2;
 
+    [Header("Game Music")]
+    [SerializeField] private AudioClip endMusic;
+    [SerializeField] private AudioClip gameMusic;
+
     static AudioSource audioSrc;
+    public AudioSource musicAudio;
 
     public enum SoundType
     {
@@ -48,6 +53,7 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
+        musicAudio = GameObject.Find("Music").GetComponent<AudioSource>();
     }
 
     // Function Called by Other Scripts
@@ -103,5 +109,11 @@ public class SoundManager : MonoBehaviour
         if (rando == 2) audioSrc.PlayOneShot(chicken2, 0.5f);
         if (rando == 3) audioSrc.PlayOneShot(chicken3, 0.5f);
         if (rando == 4) audioSrc.PlayOneShot(chicken4, 0.5f);
+    }
+
+    public void PlayEndMuisc(){
+        // musicAudio.clip = endMusic;
+        musicAudio.PlayOneShot(endMusic, 0.05f);
+        musicAudio.loop = false;
     }
 }
