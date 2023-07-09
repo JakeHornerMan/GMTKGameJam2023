@@ -92,7 +92,7 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(newSpikeCar, 0.3f);
                 break;
             case (SoundType.LastSeconds):
-                audioSrc.PlayOneShot(lastSeconds, 0.2f);
+                // audioSrc.PlayOneShot(lastSeconds, 0.3f);
                 break;
         }
     }
@@ -122,6 +122,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayEndMuisc(){
         audioSrc.Stop();
-        musicAudio.PlayOneShot(endMusic, 0.05f);
+        // musicAudio.PlayOneShot(endMusic, 0.05f);
     }
 }

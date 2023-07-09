@@ -100,9 +100,10 @@ public class GameManager : MonoBehaviour
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Poultry Panic");
         }
-        if (time <= 18f)
+        if (time <= 18f && intensitySetting == 5)
         {
             soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
+            intensitySetting ++;
             //interfaceManager.ShowSpeedUpText("Hurry!!!");
         }
         if (time <= 0)
