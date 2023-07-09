@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Poultry Panic");
         }
-        if (time <= 18f)
+        if (time <= 18.5f && time > 0f)
         {
             soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
             interfaceManager.ShowSpeedUpText("Time Nearly Up");

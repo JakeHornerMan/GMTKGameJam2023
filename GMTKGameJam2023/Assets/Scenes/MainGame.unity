@@ -2234,11 +2234,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.667
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2615,6 +2615,10 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 93226405}
+    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: gameMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
     - target: {fileID: 2160284341332244042, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2691,6 +2695,10 @@ PrefabInstance:
       propertyPath: currentCarNameText
       value: 
       objectReference: {fileID: 1572340593}
+    - target: {fileID: 6648390661545215355, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: resultsUI
       value: 
