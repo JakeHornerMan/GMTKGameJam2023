@@ -86,6 +86,10 @@ public class GameManager : MonoBehaviour
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
         }
+        if (time <= 18f)
+        {
+            soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
+        }
         if (time <= 0)
         {
             gameOver = true;
