@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
+    private InterfaceManager interfaceManager;
 
     public float time = 120f;
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
+        interfaceManager = GetComponent<InterfaceManager>();
     }
 
     private void Start()
@@ -61,34 +63,40 @@ public class GameManager : MonoBehaviour
             intensitySetting ++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+            interfaceManager.ShowSpeedUpText("Chickens Incoming!");
         }
         if (time <= 150f && intensitySetting == 1)
         {
             intensitySetting ++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+            interfaceManager.ShowSpeedUpText("Coop Cooperation");
         }
         if (time <= 120f && intensitySetting == 2)
         {
             intensitySetting ++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+            interfaceManager.ShowSpeedUpText("Flock Inbound");
         }
         if (time <= 100f && intensitySetting == 3)
         {
             intensitySetting ++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+            interfaceManager.ShowSpeedUpText("Chicken Horde");
         }
         if (time <= 60f && intensitySetting == 4)
         {
             intensitySetting ++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
+            interfaceManager.ShowSpeedUpText("Poultry Panic");
         }
         if (time <= 18f)
         {
             soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
+            interfaceManager.ShowSpeedUpText("Time Nearly Up");
         }
         if (time <= 0)
         {
