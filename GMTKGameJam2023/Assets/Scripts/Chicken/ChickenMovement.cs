@@ -56,19 +56,24 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        if(gameManager.intensitySetting == 1){
+        if (gameManager.intensitySetting == 1)
+        {
             maxMoveTime = 2.5f;
         }
-        if(gameManager.intensitySetting == 2){
+        if (gameManager.intensitySetting == 2)
+        {
             maxMoveTime = 2f;
         }
-        if(gameManager.intensitySetting == 3){
+        if (gameManager.intensitySetting == 3)
+        {
             maxMoveTime = 2f;
         }
-        if(gameManager.intensitySetting == 4){
+        if (gameManager.intensitySetting == 4)
+        {
             maxMoveTime = 1.5f;
         }
-        if(gameManager.intensitySetting == 5){
+        if (gameManager.intensitySetting == 5)
+        {
             maxMoveTime = 1f;
         }
         if (!gameManager.gameOver)
@@ -92,7 +97,7 @@ public class ChickenMovement : MonoBehaviour
     {
         desiredDirection = ChooseNextDirection() * laneDistance;
 
-        if (directionVector != new Vector2(0,0))
+        if (directionVector != new Vector2(0, 0))
         {
             RotateChicken();
         }
@@ -124,16 +129,10 @@ public class ChickenMovement : MonoBehaviour
 
         anim.SetBool("Hop", true);
 
-        //GetComponent<BoxCollider2D>().enabled = false;
-
         // Wait for the animation to finish
         yield return new WaitForSeconds(0.5f);
 
         anim.SetBool("Hop", false);
-
-        //GetComponent<BoxCollider2D>().enabled = true;
-
-        //anim.Play("Idle");
 
         MoveChicken();
     }
@@ -209,7 +208,7 @@ public class ChickenMovement : MonoBehaviour
                 directionApproved = true;
             }
         }
-        
+
         return directionVector;
     }
 

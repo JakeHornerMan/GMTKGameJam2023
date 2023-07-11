@@ -47,14 +47,14 @@ public class GameManager : MonoBehaviour
         {
             resultsUI.gameObject.SetActive(false);
         }
-        
+
     }
 
     private void Update()
     {
         if (resultsUI != null)
         {
-           SetTime();
+            SetTime();
         }
     }
 
@@ -64,38 +64,38 @@ public class GameManager : MonoBehaviour
         {
             time -= Time.deltaTime;
         }
-        
+
         if (time <= 170f && intensitySetting == 0)
         {
-            intensitySetting ++;
+            intensitySetting++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Chickens Incoming!");
         }
         if (time <= 150f && intensitySetting == 1)
         {
-            intensitySetting ++;
+            intensitySetting++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Coop Cooperation");
         }
         if (time <= 120f && intensitySetting == 2)
         {
-            intensitySetting ++;
+            intensitySetting++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Flock Inbound");
         }
         if (time <= 100f && intensitySetting == 3)
         {
-            intensitySetting ++;
+            intensitySetting++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Chicken Horde");
         }
         if (time <= 60f && intensitySetting == 4)
         {
-            intensitySetting ++;
+            intensitySetting++;
             chickenSpawn.UpdateIntensity(intensitySetting);
             soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
             interfaceManager.ShowSpeedUpText("Poultry Panic");
@@ -103,8 +103,7 @@ public class GameManager : MonoBehaviour
         if (time <= 18f && intensitySetting == 5)
         {
             soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
-            intensitySetting ++;
-            //interfaceManager.ShowSpeedUpText("Hurry!!!");
+            intensitySetting++;
         }
         if (time <= 0)
         {
