@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -47,7 +47,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -169,19 +169,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSpots:
-  - position: {x: -13.5, y: -6, z: 0}
+  - position: {x: -14.75, y: 5, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: -4, z: 0}
+  - position: {x: -14.75, y: 4.75, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: -2, z: 0}
+  - position: {x: -14.75, y: 4.5, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: 0, z: 0}
+  - position: {x: -14.75, y: 4.25, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: 2, z: 0}
+  - position: {x: -14.75, y: 4, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: 4, z: 0}
+  - position: {x: -14.75, y: 3.75, z: 0}
     spawnProbability: 0
-  - position: {x: -13.5, y: 6, z: 0}
+  - position: {x: -14.75, y: 3.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 3.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 3, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 2.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 2.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 2.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 2, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 1.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 1.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 1.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 1, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 0.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 0.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 0.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: 0, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -0.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -0.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -0.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -1, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -1.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -1.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -1.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -2, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -2.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -2.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -2.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -3, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -3.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -3.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -3.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -4, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -4.25, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -4.5, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -4.75, z: 0}
+    spawnProbability: 0
+  - position: {x: -14.75, y: -5, z: 0}
     spawnProbability: 0
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
   GoldenChickenPrefab: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -201,24 +269,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  death1: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
-  death2: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
-  carMove: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-  fastCar: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
-  newSpikeCar: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-  truck: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
-  powerUp: {fileID: 8300000, guid: 238a8f28f13e81944a095268a6ed786f, type: 3}
-  gameSpeed: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
-  lastSeconds: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
-  chicken1: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
-  chicken2: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
-  chicken3: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
-  chicken4: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
-  slice1: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
-  slice2: {fileID: 8300000, guid: f8b3ed6881a3f6b49a82289d222a916a, type: 3}
+  deathConfigs:
+  - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
+    volume: 0.4
+  - clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
+    volume: 0.4
+  standardCarConfig:
+    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
+    volume: 0.8
+  fastCarConfig:
+    clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
+    volume: 0.5
+  spikeCarConfig:
+    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
+    volume: 0.8
+  truckConfig:
+    clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
+    volume: 0.6
+  gameSpeedConfig:
+    clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
+    volume: 0.3
+  lastSecondsConfig:
+    clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
+    volume: 0.3
+  chickenConfigs:
+  - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
+    volume: 0.5
+  sliceConfigs:
+  - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: f8b3ed6881a3f6b49a82289d222a916a, type: 3}
+    volume: 0.5
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
-  gameMusic: {fileID: 0}
-  musicAudio: {fileID: 0}
+  gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
 --- !u!114 &304815692333560699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,4 +344,6 @@ MonoBehaviour:
   timeText: {fileID: 0}
   currentCarNameText: {fileID: 0}
   speedUpText: {fileID: 0}
+  speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
+  speedUpTextDeactivationDelay: 2

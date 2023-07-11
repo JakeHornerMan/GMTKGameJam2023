@@ -1,127 +1,116 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public class SoundConfig
+{
+    public AudioClip clip;
+    [Range(0f, 1f)] public float volume = 1f;
+}
 
 public class SoundManager : MonoBehaviour
 {
     [Header("Clicken Death Clips")]
-    [SerializeField] private AudioClip death1;
-    [SerializeField] private AudioClip death2;
+    [SerializeField] private SoundConfig[] deathConfigs;
 
     [Header("Car Engine Clips")]
-    [SerializeField] private AudioClip carMove;
-    [SerializeField] private AudioClip fastCar;
-    [SerializeField] private AudioClip newSpikeCar;
-
-    [Header("Truck Clips")]
-    [SerializeField] private AudioClip truck;
+    [SerializeField] private SoundConfig standardCarConfig;
+    [SerializeField] private SoundConfig fastCarConfig;
+    [SerializeField] private SoundConfig spikeCarConfig;
+    [SerializeField] private SoundConfig truckConfig;
 
     [Header("Game Info Clips")]
-    [SerializeField] private AudioClip powerUp;
-    [SerializeField] private AudioClip gameSpeed;
-    [SerializeField] private AudioClip lastSeconds;
+    [SerializeField] private SoundConfig gameSpeedConfig;
+    [SerializeField] private SoundConfig lastSecondsConfig;
 
     [Header("Chicken Noise Clips")]
-    [SerializeField] private AudioClip chicken1;
-    [SerializeField] private AudioClip chicken2;
-    [SerializeField] private AudioClip chicken3;
-    [SerializeField] private AudioClip chicken4;
+    [SerializeField] private SoundConfig[] chickenConfigs;
 
     [Header("Slice Clips")]
-    [SerializeField] private AudioClip slice1;
-    [SerializeField] private AudioClip slice2;
+    [SerializeField] private SoundConfig[] sliceConfigs;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
     [SerializeField] private AudioClip gameMusic;
 
-    static AudioSource audioSrc;
-    public AudioSource musicAudio;
-
-    public enum SoundType
-    {
-        Death,
-        NewCar,
-        PowerUp,
-        GameSpeed,
-        ChickenNoise,
-        Truck,
-        FastCar,
-        Slice,
-        NewSpikeCar,
-        LastSeconds
-    }
+    private AudioSource audioSrc;
+    private AudioSource musicAudio;
 
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
         musicAudio = GameObject.Find("Music").GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
         musicAudio.Stop();
         audioSrc.clip = gameMusic;
         audioSrc.loop = false;
         audioSrc.Play();
     }
 
-    // Function Called by Other Scripts
-    public void PlaySound(SoundType soundType)
+    public void PlayChickenDeath()
     {
-        switch (soundType) 
-        {
-            case SoundType.Death:
-                RandomDeathNoise();
-                break;
-            case SoundType.NewCar:
-                audioSrc.PlayOneShot(carMove, 0.4f);
-                break;
-            case SoundType.GameSpeed:
-                audioSrc.PlayOneShot(gameSpeed, 0.3f);
-                break;
-            case SoundType.ChickenNoise:
-                RandomChickenNoise();
-                break;
-            case SoundType.Truck:
-                audioSrc.PlayOneShot(truck, 0.5f);
-                break;
-            case SoundType.FastCar:
-                audioSrc.PlayOneShot(fastCar, 0.3f);
-                break;
-            case (SoundType.Slice):
-                RandomSliceSound();
-                break;
-            case (SoundType.NewSpikeCar):
-                audioSrc.PlayOneShot(newSpikeCar, 0.3f);
-                break;
-            case (SoundType.LastSeconds):
-                // audioSrc.PlayOneShot(lastSeconds, 0.3f);
-                break;
-        }
+        RandomPlaySound(deathConfigs);
     }
 
-    private void RandomDeathNoise()
+    public void PlayNewStandardCar()
     {
-        int rando = Random.Range(1, 3);
-        if (rando == 1) audioSrc.PlayOneShot(death1, 0.4f);
-        else audioSrc.PlayOneShot(death2, 0.4f);
+        PlaySound(standardCarConfig);
     }
 
-    private void RandomSliceSound()
+    public void PlayNewFastCar()
     {
-        int rando = Random.Range(1, 3);
-        if (rando == 1) audioSrc.PlayOneShot(slice1, 0.5f);
-        if (rando == 2) audioSrc.PlayOneShot(slice2, 0.5f);
+        PlaySound(fastCarConfig);
     }
 
-    private void RandomChickenNoise()
+    public void PlayNewSpikeCar()
     {
-        int rando = Random.Range(1, 5);
-        if (rando == 1) audioSrc.PlayOneShot(chicken1, 0.5f);
-        if (rando == 2) audioSrc.PlayOneShot(chicken2, 0.5f);
-        if (rando == 3) audioSrc.PlayOneShot(chicken3, 0.5f);
-        if (rando == 4) audioSrc.PlayOneShot(chicken4, 0.5f);
+        PlaySound(spikeCarConfig);
     }
 
-    public void PlayEndMuisc(){
+    public void PlayNewTruck()
+    {
+        PlaySound(truckConfig);
+    }
+
+    public void PlayGameSpeed()
+    {
+        PlaySound(gameSpeedConfig);
+    }
+
+    public void PlayLastSeconds()
+    {
+        PlaySound(lastSecondsConfig);
+    }
+
+    public void PlayRandomChicken()
+    {
+        RandomPlaySound(chickenConfigs);
+    }
+
+    public void PlayRandomSlice()
+    {
+        RandomPlaySound(sliceConfigs);
+    }
+
+    public void PlayEndMusic()
+    {
         audioSrc.Stop();
-        // musicAudio.PlayOneShot(endMusic, 0.05f);
+        musicAudio.PlayOneShot(endMusic, 0.05f);
+    }
+
+    private void PlaySound(SoundConfig soundConfig)
+    {
+        audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
+    }
+
+    private void RandomPlaySound(params SoundConfig[] soundConfigs)
+    {
+        if (soundConfigs.Length > 0)
+        {
+            int randomIndex = Random.Range(0, soundConfigs.Length);
+            PlaySound(soundConfigs[randomIndex]);
+        }
     }
 }

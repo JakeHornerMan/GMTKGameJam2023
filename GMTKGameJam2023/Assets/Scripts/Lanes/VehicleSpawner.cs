@@ -11,7 +11,6 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] public CarButton spikedCar;
     [SerializeField] public CarButton superCar;
     [SerializeField] public CarButton truck;
-    [SerializeField] public Car currentActiveCar;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private SpriteRenderer carCursorFollower;
 
@@ -35,6 +34,8 @@ public class VehicleSpawner : MonoBehaviour
     private SoundManager soundManager;
     private GameManager gameManager;
     private CarWallet carWallet;
+
+    public Car currentActiveCar;
 
     private Vector3 mousePos;
 
@@ -61,7 +62,7 @@ public class VehicleSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W))
             SelectCar(superCar);
-        
+
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E))
             SelectCar(spikedCar);
 
@@ -104,7 +105,7 @@ public class VehicleSpawner : MonoBehaviour
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
         if (currentActiveCar.carName == truck.correspondingCar.carName)
-            soundManager.PlaySound(SoundManager.SoundType.Truck);
+            soundManager.PlayNewTruck();
 
         // Spawn Car at Road at Position
         Instantiate(
@@ -122,11 +123,11 @@ public class VehicleSpawner : MonoBehaviour
 
         // Play Car Spawn SFX
         if (currentActiveCar == superCar.correspondingCar)
-            soundManager.PlaySound(SoundManager.SoundType.FastCar);
+            soundManager.PlayNewFastCar();
         else if (currentActiveCar == spikedCar.correspondingCar)
-            soundManager.PlaySound(SoundManager.SoundType.NewSpikeCar);
+            soundManager.PlayNewSpikeCar();
         else
-            soundManager.PlaySound(SoundManager.SoundType.NewCar);
+            soundManager.PlayNewStandardCar();
         SelectCar(standardCar);
     }
 

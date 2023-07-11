@@ -61,56 +61,47 @@ public class GameManager : MonoBehaviour
     private void SetTime()
     {
         if (time > 0)
-        {
             time -= Time.deltaTime;
-        }
 
         if (time <= 170f && intensitySetting == 0)
         {
-            intensitySetting++;
-            chickenSpawn.UpdateIntensity(intensitySetting);
-            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
-            interfaceManager.ShowSpeedUpText("Chickens Incoming!");
+            IncreaseIntensity("Chickens Incoming");
         }
         if (time <= 150f && intensitySetting == 1)
         {
-            intensitySetting++;
-            chickenSpawn.UpdateIntensity(intensitySetting);
-            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
-            interfaceManager.ShowSpeedUpText("Coop Cooperation");
+            IncreaseIntensity("Coop Cooperation");
         }
         if (time <= 120f && intensitySetting == 2)
         {
-            intensitySetting++;
-            chickenSpawn.UpdateIntensity(intensitySetting);
-            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
-            interfaceManager.ShowSpeedUpText("Flock Inbound");
+            IncreaseIntensity("Flock Inbound");
         }
         if (time <= 100f && intensitySetting == 3)
         {
-            intensitySetting++;
-            chickenSpawn.UpdateIntensity(intensitySetting);
-            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
-            interfaceManager.ShowSpeedUpText("Chicken Horde");
+            IncreaseIntensity("Chicken Horde");
         }
         if (time <= 60f && intensitySetting == 4)
         {
-            intensitySetting++;
-            chickenSpawn.UpdateIntensity(intensitySetting);
-            soundManager.PlaySound(SoundManager.SoundType.GameSpeed);
-            interfaceManager.ShowSpeedUpText("Poultry Panic");
+            IncreaseIntensity("Poultry Panic");
         }
         if (time <= 18f && intensitySetting == 5)
         {
-            soundManager.PlaySound(SoundManager.SoundType.LastSeconds);
+            soundManager.PlayLastSeconds();
             intensitySetting++;
         }
         if (time <= 0)
         {
             gameOver = true;
-            soundManager.PlayEndMuisc();
+            soundManager.PlayEndMusic();
             HandleResults();
         }
+    }
+
+    private void IncreaseIntensity(string speedUpText)
+    {
+        intensitySetting++;
+        chickenSpawn.UpdateIntensity(intensitySetting);
+        soundManager.PlayGameSpeed();
+        interfaceManager.ShowSpeedUpText(speedUpText);
     }
 
     private void HandleResults()

@@ -87,7 +87,7 @@ public abstract class Car : MonoBehaviour
 
             // +100 Points Pop-Up
             ShowPopup(
-                chickenMovement.transform.position, 
+                chickenMovement.transform.position,
                 $"{chickenMovement.pointsReward * carKillCount} {scorePopUpMsg}"
             );
 
@@ -96,7 +96,7 @@ public abstract class Car : MonoBehaviour
 
             // Slice Sound
             if (isSpikeCar)
-                soundManager.PlaySound(SoundManager.SoundType.Slice);
+                soundManager.PlayRandomSlice();
 
             // Canera Shake
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));

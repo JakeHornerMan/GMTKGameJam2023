@@ -5,7 +5,7 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     [Header("Sway Values")]
-    public float removeTime = 3f; 
+    public float removeTime = 3f;
     public float amplitude = 0.2f;     // The maximum distance of sway
     public float frequency = 20f;     // The frequency of the sway motion
     public float speed = 2f;         // The speed at which the object moves horizontally
@@ -14,7 +14,7 @@ public class TokenController : MonoBehaviour
     private Animator anim;
 
     private Vector3 initialPosition;
-   
+
     private float tokenShrinkAnimLength = 1.5f;
 
     void Awake()
@@ -51,7 +51,6 @@ public class TokenController : MonoBehaviour
 
     public void TokenCollected()
     {
-        soundManager.PlaySound(SoundManager.SoundType.PowerUp);
         RemoveToken();
     }
 

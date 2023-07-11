@@ -56,26 +56,23 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        if (gameManager.intensitySetting == 1)
+        switch (gameManager.intensitySetting)
         {
-            maxMoveTime = 2.5f;
+            case 1:
+                maxMoveTime = 2.5f;
+                break;
+            case 2:
+            case 3:
+                maxMoveTime = 2f;
+                break;
+            case 4:
+                maxMoveTime = 1.5f;
+                break;
+            case 5:
+                maxMoveTime = 1f;
+                break;
         }
-        if (gameManager.intensitySetting == 2)
-        {
-            maxMoveTime = 2f;
-        }
-        if (gameManager.intensitySetting == 3)
-        {
-            maxMoveTime = 2f;
-        }
-        if (gameManager.intensitySetting == 4)
-        {
-            maxMoveTime = 1.5f;
-        }
-        if (gameManager.intensitySetting == 5)
-        {
-            maxMoveTime = 1f;
-        }
+
         if (!gameManager.gameOver)
         {
             IEnumerator coroutine = WaitAndMove(moveTime);
@@ -214,9 +211,9 @@ public class ChickenMovement : MonoBehaviour
 
     public void KillChicken()
     {
-        soundManager.PlaySound(SoundManager.SoundType.Death);
+        soundManager.PlayChickenDeath();
 
-        Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
+        Instantiate(featherParticles, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
