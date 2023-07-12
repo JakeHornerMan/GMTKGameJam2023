@@ -18,10 +18,13 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool isSlicingCar = false;
 
     [Header("Tags")]
-    [SerializeField] private string objectBoundsTag = "Death Box";
+    [SerializeField] private string deathboxTag = "Death Box";
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
+
+    [Header("Damage")]
+    [SerializeField] private int damage = 120;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
@@ -71,20 +74,20 @@ public abstract class Car : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if Hit Chicken
-        ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
-        if (chickenMovement == null && collision.transform.parent != null)
-            chickenMovement = collision.transform.parent.GetComponent<ChickenMovement>();
+        ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
+        if (chickenHealth == null && collision.transform.parent != null)
+            chickenHealth = collision.transform.parent.GetComponent<ChickenHealth>();
 
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
-        if (chickenMovement != null)
-            HandleChickenCollision(chickenMovement);
+        if (chickenHealth != null)
+            HandleChickenCollision(chickenHealth);
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.CompareTag(objectBoundsTag))
+        if (collision.gameObject.CompareTag(deathboxTag))
             Destroy(gameObject);
     }
 
@@ -110,19 +113,10 @@ public abstract class Car : MonoBehaviour
         gameManager.totalTokens++;
     }
 
-    private void HandleChickenCollision(ChickenMovement chickenMovement)
+    private void HandleChickenCollision(ChickenHealth chickenHealth)
     {
-        // Increase Car-Specific Kill Count
-        carKillCount++;
-
-        // +100 Points Pop-Up
-        ShowPopup(
-            chickenMovement.transform.position,
-            $"{chickenMovement.pointsReward * carKillCount} {scorePopUpMsg}"
-        );
-
-        // Slaughter Poultry
-        chickenMovement.KillChicken();
+        // Impact Sound
+        soundManager.PlayChickenHit();
 
         // Slice Sound
         if (isSlicingCar)
@@ -131,11 +125,32 @@ public abstract class Car : MonoBehaviour
         // Canera Shake
         StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
+        // Check if Chicken Will DIe
+        if (chickenHealth.health - damage <= 0)
+        {
+            KillChicken(chickenHealth);
+        }
+
+        // Damage Poultry
+        chickenHealth.TakeDamage(damage);
+    }
+
+    private void KillChicken(ChickenHealth chickenHealth)
+    {
         // Increase Score
-        gameManager.playerScore += chickenMovement.pointsReward * carKillCount;
+        gameManager.playerScore += chickenHealth.pointsReward * carKillCount;
 
         // Increase Kill Count
         gameManager.killCount++;
+
+        // Increase Car-Specific Kill Count
+        carKillCount++;
+
+        // +100 Points Pop-Up
+        ShowPopup(
+            chickenHealth.transform.position,
+            $"{chickenHealth.pointsReward * carKillCount} {scorePopUpMsg}"
+        );
     }
 
     private void ShowPopup(Vector3 position, string msg)

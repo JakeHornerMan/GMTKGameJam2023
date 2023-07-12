@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
+  - component: {fileID: -5117147452543026932}
   m_Layer: 2
   m_Name: Chicken
   m_TagString: Chicken
@@ -232,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7467406142021207113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -281,11 +282,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
-  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   objectBoundsTag: Death Box
-  pointsReward: 100
   minMoveTime: 1
   maxMoveTime: 3
   chickenSpeed: 1.25
   laneDistance: 1.25
-  directionVector: {x: 0, y: 0}
+  animatorHopBool: Hop
+  animationFinishTime: 0.5
+--- !u!114 &-5117147452543026932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9242a8be3d2dada41bc2edcf772cd50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
+  featherParticlesZPos: -5
+  startHealth: 100
+  pointsReward: 100
+  health: 0

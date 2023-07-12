@@ -49,7 +49,7 @@ public class SoundManager : MonoBehaviour
         audioSrc.Play();
     }
 
-    public void PlayChickenDeath()
+    public void PlayChickenHit()
     {
         RandomPlaySound(deathConfigs);
     }

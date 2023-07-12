@@ -7,35 +7,31 @@ public class ChickenMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject hopController;
     [SerializeField] private GameObject chickenSprite;
-    [SerializeField] private ParticleSystem featherParticles;
 
-    [Header("Tags")]
-    [SerializeField] private string objectBoundsTag = "Death Box";
+    [Header("Movement Values")]
+    [SerializeField] private float minMoveTime = 0.5f;
+    [SerializeField] private float maxMoveTime = 3f;
+    [SerializeField] private float laneDistance = 2f;
 
-    [Header("Scoring")]
-    [SerializeField] public int pointsReward = 100;
+    [Header("Animation")]
+    [SerializeField] private string animatorHopBool = "Hop";
+    [SerializeField] private float animationFinishTime = 0.5f;
+
+    private float moveTime;
+
+    private Vector2 targetPoint;
+    private Vector2 directionVector;
+    private Vector2 desiredDirection;
 
     private Rigidbody2D rb;
     private GameManager gameManager;
-    private SoundManager soundManager;
-
-    float moveTime;
-
-    public float minMoveTime = 0.5f;
-    public float maxMoveTime = 3f;
-
-    public float chickenSpeed = 1f;
-    public float laneDistance = 2f;
-
-    private Vector2 targetPoint;
-    [SerializeField] private Vector2 directionVector;
-    private Vector2 desiredDirection;
+    private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        soundManager = FindObjectOfType<SoundManager>();
         gameManager = FindObjectOfType<GameManager>();
+        anim = hopController.GetComponent<Animator>();
     }
 
     private void Start()
@@ -44,18 +40,9 @@ public class ChickenMovement : MonoBehaviour
         StartMovement();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Destroy Chickens When They Reach Off-Screen
-        if (collision.gameObject.CompareTag(objectBoundsTag))
-        {
-            gameManager.safelyCrossedChickens++;
-            Destroy(gameObject);
-        }
-    }
-
     private void StartMovement()
     {
+        // TODO REFACTOR
         switch (gameManager.intensitySetting)
         {
             case 1:
@@ -94,21 +81,15 @@ public class ChickenMovement : MonoBehaviour
     {
         desiredDirection = ChooseNextDirection() * laneDistance;
 
-        if (directionVector != new Vector2(0, 0))
-        {
+        if (directionVector != Vector2.zero)
             RotateChicken();
-        }
 
         targetPoint = rb.position + desiredDirection;
 
-        if (desiredDirection != new Vector2(0, 0))
-        {
+        if (desiredDirection != Vector2.zero)
             StartCoroutine(AnimateChicken());
-        }
         else
-        {
             MoveChicken();
-        }
     }
 
     private void MoveChicken()
@@ -122,14 +103,12 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator AnimateChicken()
     {
-        Animator anim = hopController.GetComponent<Animator>();
-
-        anim.SetBool("Hop", true);
+        anim.SetBool(animatorHopBool, true);
 
         // Wait for the animation to finish
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(animationFinishTime);
 
-        anim.SetBool("Hop", false);
+        anim.SetBool(animatorHopBool, false);
 
         MoveChicken();
     }
@@ -157,8 +136,8 @@ public class ChickenMovement : MonoBehaviour
 
     private void ResetChickenRotation()
     {
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        hopController.transform.rotation = Quaternion.Euler(0, 0, 0);
+        gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+        hopController.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     private Vector2 ChooseNextDirection()
@@ -207,14 +186,5 @@ public class ChickenMovement : MonoBehaviour
         }
 
         return directionVector;
-    }
-
-    public void KillChicken()
-    {
-        soundManager.PlayChickenDeath();
-
-        Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
-
-        Destroy(gameObject);
     }
 }
