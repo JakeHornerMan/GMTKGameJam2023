@@ -10,7 +10,7 @@ public class CarWallet : MonoBehaviour
     [SerializeField] private float refillDelaySeconds = 2f;
     [SerializeField] private int amountPerRefill = 1;
 
-    public int carCount = 0;
+    [HideInInspector] public int carCount = 0;
 
     private void Start()
     {

@@ -12,6 +12,8 @@ public class Truck : Car
     {
         SetCarSpeed();
 
+        soundManager.PlayNewTruck();
+
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(truckShakeDuration, truckShakeMagnitude));
     }

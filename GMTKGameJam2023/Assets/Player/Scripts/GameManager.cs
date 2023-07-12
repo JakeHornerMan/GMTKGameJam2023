@@ -8,23 +8,23 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ResultsUI resultsUI;
 
-    [Header("Player Stats")]
-    public int safelyCrossedChickens = 0;
-    public int killCount = 0;
-    public int playerScore = 0;
-    public int tokens = 0;
-    public int totalTokens = 0;
-    public float startTime = 120f;
-    public int intensitySetting = 0;
-    public string currentRanking = "Animal Lover";
-    public bool gameOver = false;
+    [Header("Gameplay Settings")]
+    [SerializeField] private float startTime = 180f;
+
+    [HideInInspector] public int safelyCrossedChickens = 0;
+    [HideInInspector] public int killCount = 0;
+    [HideInInspector] public int playerScore = 0;
+    [HideInInspector] public int tokens = 0;
+    [HideInInspector] public int totalTokens = 0;
+    [HideInInspector] public int intensitySetting = 0;
+    [HideInInspector] public float time = 120f;
+    [HideInInspector] public string currentRanking = "Animal Lover";
+    [HideInInspector] public bool gameOver = false;
 
     private SoundManager soundManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
     private InterfaceManager interfaceManager;
-
-    public float time = 120f;
 
     private void Awake()
     {
@@ -43,11 +43,9 @@ public class GameManager : MonoBehaviour
         totalTokens = 0;
 
         time = startTime;
-        if (resultsUI != null)
-        {
-            resultsUI.gameObject.SetActive(false);
-        }
 
+        if (resultsUI != null)
+            resultsUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -55,6 +53,7 @@ public class GameManager : MonoBehaviour
         if (resultsUI != null)
         {
             SetTime();
+            UpdateRankings();
         }
     }
 
@@ -93,6 +92,35 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             soundManager.PlayEndMusic();
             HandleResults();
+        }
+    }
+
+    private void UpdateRankings()
+    {
+        // Update Rankings
+        switch (killCount)
+        {
+            case > 500:
+                currentRanking = "Master Chicken Assassin";
+                break;
+            case > 250:
+                currentRanking = "Sadist";
+                break;
+            case > 150:
+                currentRanking = "KFC Worker";
+                break;
+            case > 100:
+                currentRanking = "Vehicularly Sus";
+                break;
+            case > 60:
+                currentRanking = "Accidents Happen";
+                break;
+            case > 30:
+                currentRanking = "Traffic Obeyer";
+                break;
+            case 0:
+                currentRanking = "Animal Lover";
+                break;
         }
     }
 

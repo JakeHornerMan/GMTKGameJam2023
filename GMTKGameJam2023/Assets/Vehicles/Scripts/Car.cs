@@ -14,8 +14,8 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public Sprite carSprite;
     [SerializeField] public string carName;
     [SerializeField] public int carPrice = 2;
-    [SerializeField] private bool ignoreCoins = false;
-    [SerializeField] private bool isSpikeCar = false;
+    [SerializeField] private bool ignoreTokens = false;
+    [SerializeField] private bool isSlicingCar = false;
 
     [Header("Tags")]
     [SerializeField] private string objectBoundsTag = "Death Box";
@@ -39,8 +39,8 @@ public abstract class Car : MonoBehaviour
     private int carKillCount = 0;
 
     private GameManager gameManager;
-    public CameraShaker cameraShaker;
-    private SoundManager soundManager;
+    [HideInInspector] public CameraShaker cameraShaker;
+    [HideInInspector] public SoundManager soundManager;
 
     private void Awake()
     {
@@ -70,96 +70,72 @@ public abstract class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check if Hit Chicken
         ChickenMovement chickenMovement = collision.gameObject.GetComponent<ChickenMovement>();
-
-        // If there's no ChickenMovement script on the game object, check the parent
         if (chickenMovement == null && collision.transform.parent != null)
-        {
             chickenMovement = collision.transform.parent.GetComponent<ChickenMovement>();
-        }
 
+        // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
         if (chickenMovement != null)
-        {
-            // Increase Car-Specific Kill Count
-            carKillCount++;
+            HandleChickenCollision(chickenMovement);
 
-            // +100 Points Pop-Up
-            ShowPopup(
-                chickenMovement.transform.position,
-                $"{chickenMovement.pointsReward * carKillCount} {scorePopUpMsg}"
-            );
-
-            // Slaughter Poultry
-            chickenMovement.KillChicken();
-
-            // Slice Sound
-            if (isSpikeCar)
-                soundManager.PlayRandomSlice();
-
-            // Canera Shake
-            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
-
-            // Increase Score
-            gameManager.playerScore += chickenMovement.pointsReward * carKillCount;
-
-            // Increase Kill Count
-            gameManager.killCount++;
-
-            if (gameManager.killCount > 500)
-            {
-                gameManager.currentRanking = "Master Chicken Assassin";
-            }
-            else if (gameManager.killCount > 250)
-            {
-                gameManager.currentRanking = "Sadist";
-            }
-            else if (gameManager.killCount > 150)
-            {
-                gameManager.currentRanking = "KFC Worker";
-            }
-            else if (gameManager.killCount > 100)
-            {
-                gameManager.currentRanking = "Vehicularly Sus";
-            }
-            else if (gameManager.killCount > 60)
-            {
-                gameManager.currentRanking = "Accidents Happen";
-            }
-            else if (gameManager.killCount > 30)
-            {
-                gameManager.currentRanking = "Traffic Obeyer";
-            }
-            else if (gameManager.killCount == 0)
-            {
-                gameManager.currentRanking = "Animal Lover";
-            }
-        }
-
-        if (token != null)
-        {
-            if (ignoreCoins) return;
-
-            GameObject newTokenParticles = Instantiate(
-                tokenCollectParticles.gameObject,
-                token.transform.position,
-                Quaternion.identity
-            );
-            Destroy(newTokenParticles, particleDestroyDelay);
-
-            ShowPopup(
-                token.transform.position,
-                $"{1} {tokenPopUpMsg}"
-            );
-
-            token.TokenCollected();
-            gameManager.tokens++;
-            gameManager.totalTokens++;
-        }
+        if (token != null & !ignoreTokens)
+            HandleTokenCollision(token);
 
         if (collision.gameObject.CompareTag(objectBoundsTag))
             Destroy(gameObject);
+    }
+
+    private void HandleTokenCollision(TokenController token)
+    {
+        // Token Particles
+        GameObject newTokenParticles = Instantiate(
+                        tokenCollectParticles.gameObject,
+                        token.transform.position,
+                        Quaternion.identity
+                    );
+        Destroy(newTokenParticles, particleDestroyDelay);
+
+        // +1 Token Popup
+        ShowPopup(
+            token.transform.position,
+            $"{1} {tokenPopUpMsg}"
+        );
+
+        // Collect Tokens
+        token.TokenCollected();
+        gameManager.tokens++;
+        gameManager.totalTokens++;
+    }
+
+    private void HandleChickenCollision(ChickenMovement chickenMovement)
+    {
+        // Increase Car-Specific Kill Count
+        carKillCount++;
+
+        // +100 Points Pop-Up
+        ShowPopup(
+            chickenMovement.transform.position,
+            $"{chickenMovement.pointsReward * carKillCount} {scorePopUpMsg}"
+        );
+
+        // Slaughter Poultry
+        chickenMovement.KillChicken();
+
+        // Slice Sound
+        if (isSlicingCar)
+            soundManager.PlayRandomSlice();
+
+        // Canera Shake
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+
+        // Increase Score
+        gameManager.playerScore += chickenMovement.pointsReward * carKillCount;
+
+        // Increase Kill Count
+        gameManager.killCount++;
     }
 
     private void ShowPopup(Vector3 position, string msg)

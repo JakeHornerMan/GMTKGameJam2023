@@ -62,17 +62,17 @@ MonoBehaviour:
   spikedCar: {fileID: 0}
   superCar: {fileID: 0}
   truck: {fileID: 0}
-  currentActiveCar: {fileID: 0}
   spawnedVehiclesContainer: {fileID: 6528247484680453847}
   carCursorFollower: {fileID: 0}
   selectedCarIndicator: {fileID: 0}
-  standardCarX: -4.2
-  spikedCarX: 1.1
-  superCarX: -1.55
-  truckX: 3.825
+  standardCarX: -5
+  spikedCarX: 1.5
+  superCarX: -1.75
+  truckX: 4.75
   placeMouseBtn: 0
   roadTag: Road
   spawnOffset: {x: 0, y: -10}
+  currentActiveCar: {fileID: 0}
 --- !u!114 &8746173641645449034
 MonoBehaviour:
   m_ObjectHideFlags: 0

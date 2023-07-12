@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardCar : Car
+public class SpikeCar : Car
 {
-    void Start()
+    private void Start()
     {
         SetCarSpeed();
 
-        soundManager.PlayNewStandardCar();
+        soundManager.PlayNewSpikeCar();
     }
 }

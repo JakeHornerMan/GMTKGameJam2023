@@ -30,12 +30,12 @@ public class VehicleSpawner : MonoBehaviour
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
 
+    [HideInInspector] public Car currentActiveCar;
+
     private Camera mainCamera;
     private SoundManager soundManager;
     private GameManager gameManager;
     private CarWallet carWallet;
-
-    public Car currentActiveCar;
 
     private Vector3 mousePos;
 
@@ -102,12 +102,9 @@ public class VehicleSpawner : MonoBehaviour
         if (!hit.collider.gameObject.CompareTag(roadTag))
             return;
 
-        Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
-
-        if (currentActiveCar.carName == truck.correspondingCar.carName)
-            soundManager.PlayNewTruck();
 
         // Spawn Car at Road at Position
+        Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
         Instantiate(
             currentActiveCar.gameObject,
             spawnPos,
@@ -120,14 +117,6 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Player Money
         gameManager.tokens -= currentActiveCar.carPrice;
-
-        // Play Car Spawn SFX
-        if (currentActiveCar == superCar.correspondingCar)
-            soundManager.PlayNewFastCar();
-        else if (currentActiveCar == spikedCar.correspondingCar)
-            soundManager.PlayNewSpikeCar();
-        else
-            soundManager.PlayNewStandardCar();
         SelectCar(standardCar);
     }
 

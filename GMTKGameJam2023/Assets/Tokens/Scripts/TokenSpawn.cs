@@ -5,11 +5,12 @@ using UnityEngine;
 public class TokenSpawn : MonoBehaviour
 {
     [Header("Token Spawn Values")]
-    [SerializeField] public Transform[] spawnSpots;
-    [SerializeField] public GameObject[] tokenPrefabs;
+    [SerializeField] private Transform[] spawnSpots;
+    [SerializeField] private GameObject[] tokenPrefabs;
 
-    public float minSpawnTime = 5f;
-    public float maxSpawnTime = 25f;
+    [Header("Spawn Timing")]
+    [SerializeField] private float minSpawnTime = 5f;
+    [SerializeField] private float maxSpawnTime = 25f;
 
     void Start()
     {
