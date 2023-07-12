@@ -13,10 +13,6 @@ public class TokenSpawn : MonoBehaviour
 
     void Start()
     {
-        // foreach (Transform tansform in spawnSpots)
-        // {
-        //     Instantiate(tokenPrefabs[0], transform.position, Quaternion.identity);
-        // }
         StartSpawn();
     }
 

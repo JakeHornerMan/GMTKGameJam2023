@@ -213,7 +213,7 @@ public class ChickenMovement : MonoBehaviour
     {
         soundManager.PlayChickenDeath();
 
-        Instantiate(featherParticles, transform.position, Quaternion.identity);
+        Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
 
         Destroy(gameObject);
     }
