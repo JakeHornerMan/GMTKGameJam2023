@@ -12,7 +12,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] public CarButton superCar;
     [SerializeField] public CarButton truck;
     [SerializeField] private Transform spawnedVehiclesContainer;
-    [SerializeField] private SpriteRenderer carCursorFollower;
+    [SerializeField] private CurrentCarIndicator carCursorFollower;
 
     [Header("Car Select Indicators")]
     [SerializeField] private Transform selectedCarIndicator;
@@ -144,7 +144,7 @@ public class VehicleSpawner : MonoBehaviour
     private void UpdateCarCursor()
     {
         carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
-        carCursorFollower.sprite = currentActiveCar.carSprite;
+        carCursorFollower.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
     }
 
     private bool IsMouseOverUIElement()
