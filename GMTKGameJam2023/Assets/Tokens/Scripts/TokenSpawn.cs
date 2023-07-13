@@ -12,6 +12,13 @@ public class TokenSpawn : MonoBehaviour
     [SerializeField] private float minSpawnTime = 5f;
     [SerializeField] private float maxSpawnTime = 25f;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     void Start()
     {
         StartSpawn();
@@ -31,11 +38,13 @@ public class TokenSpawn : MonoBehaviour
         SpawnToken(spawnSpots[selected]);
 
         // Restart timer
+        if (gameManager.gameOver) yield return null;
         StartSpawn();
     }
 
     private void SpawnToken(Transform point)
     {
+        if (gameManager.gameOver) return;
         Instantiate(tokenPrefabs[0], point.position, Quaternion.identity);
     }
 }

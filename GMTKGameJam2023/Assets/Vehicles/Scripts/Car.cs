@@ -42,6 +42,7 @@ public abstract class Car : MonoBehaviour
     private int carKillCount = 0;
 
     private GameManager gameManager;
+    private Rigidbody2D rb;
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
 
@@ -50,6 +51,7 @@ public abstract class Car : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -65,14 +67,18 @@ public abstract class Car : MonoBehaviour
 
     protected virtual void SetCarSpeed()
     {
-        gameObject.TryGetComponent(out Rigidbody2D rb);
-
         if (rb != null)
             rb.velocity = transform.up * carSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (gameManager.gameOver)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         // Check if Hit Chicken
         ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
         if (chickenHealth == null && collision.transform.parent != null)
