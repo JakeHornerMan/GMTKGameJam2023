@@ -8,6 +8,7 @@ public abstract class Car : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject scorePopUp;
     [SerializeField] private string comboSymbol = "x";
+    [Tooltip("Synbol used before combo count, e.g. {x}4")]
     [SerializeField] private TextMeshProUGUI comboText;
 
     [Header("Car Info")]
@@ -32,7 +33,9 @@ public abstract class Car : MonoBehaviour
 
     [Header("PopUp Values")]
     [SerializeField] private string scorePopUpMsg = "Points";
+    [Tooltip("Text after getting points, e.g. 100 {Poitns}")]
     [SerializeField] private string tokenPopUpMsg = "Token";
+    [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
 
     [Header("Camera Shake Values")]

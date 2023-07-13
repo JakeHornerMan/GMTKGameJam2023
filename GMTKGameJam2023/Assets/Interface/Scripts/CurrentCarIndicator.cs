@@ -16,7 +16,10 @@ public class CurrentCarIndicator : MonoBehaviour
 
     [Header("UI Display")]
     [SerializeField] private string tokenLabel = "Token";
+    [Tooltip("Text to show after token cost, e.g. 2 {Token}")]
+
     [SerializeField] private string totalTokenLabel = "Total";
+    [Tooltip("Text to show after total tokens, e.g. 6 {Total}")]
 
     [Header("Colors")]
     [SerializeField] private Color positiveColor;

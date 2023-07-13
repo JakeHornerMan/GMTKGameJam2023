@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class SoundConfig
 {
-    public AudioClip clip;
-    [Range(0f, 1f)] public float volume = 1f;
+    [SerializeField] public AudioClip clip;
+    [SerializeField][Range(0f, 1f)] public float volume = 1f;
 }
 
 public class SoundManager : MonoBehaviour

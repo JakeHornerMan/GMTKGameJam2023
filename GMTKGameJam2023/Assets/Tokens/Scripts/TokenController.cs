@@ -5,10 +5,18 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     [Header("Sway Values")]
-    public float removeTime = 3f;
-    public float amplitude = 0.2f;     // The maximum distance of sway
-    public float frequency = 20f;     // The frequency of the sway motion
-    public float speed = 2f;         // The speed at which the object moves horizontally
+
+    [SerializeField] private float removeTime = 3f;
+    [Tooltip("How long token lasts")]
+
+    [SerializeField] private float amplitude = 0.2f;
+    [Tooltip("The maximum distance of sway")]
+
+    [SerializeField] private float frequency = 20f;
+    [Tooltip("The frequency of the sway motion")]
+
+    [SerializeField] private float speed = 2f;
+    [Tooltip("The speed at which the object moves horizontally")]
 
     private SoundManager soundManager;
     private Animator anim;
