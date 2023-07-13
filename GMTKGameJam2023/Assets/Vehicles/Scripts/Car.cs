@@ -26,6 +26,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Damage")]
     [SerializeField] private int damage = 120;
+    [SerializeField] private float comboPointsMultiplier = 0.2f;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
