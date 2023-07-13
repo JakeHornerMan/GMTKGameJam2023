@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 
@@ -8,6 +9,7 @@ public class CarButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI tokenPriceText;
+    [SerializeField] private Image dollarIconImg;
 
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
@@ -38,7 +40,7 @@ public class CarButton : MonoBehaviour
     private void SetPriceColor()
     {
         bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
-        tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
+        tokenPriceText.color = dollarIconImg.color = enoughMoney ? positiveColor : negativeColor;
     }
 
     public void SelectCorrespondingCar()
