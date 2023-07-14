@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 2866015988214356587}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuSceneName: MainMenu
   gameSceneName: MainGame
+  tutorialSceneName: Tutorial
+  creditsSceneName: Credits
   fadeImage: {fileID: 1217390781595913533}
   fadeAnimationCurve:
     serializedVersion: 2
