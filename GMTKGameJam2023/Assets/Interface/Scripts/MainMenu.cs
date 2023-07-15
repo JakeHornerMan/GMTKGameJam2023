@@ -11,9 +11,9 @@ public class MainMenu : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
     }
 
-    
 
-    public void EnterGame() => sceneFader.FadeToGame();
+
+    public void EnterLevelSelect() => sceneFader.FadeToLevels();
     public void EnterTutorial() => sceneFader.FadeToTutorial();
     public void EnterCredits() => sceneFader.FadeToCredits();
 
