@@ -256,7 +256,6 @@ MonoBehaviour:
   minSpawnTime: 3
   maxSpawnTime: 6
   goldenChickenOdds: 50
-  gameManager: {fileID: 7716956080788538566}
 --- !u!114 &857913865922615603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,9 +270,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
-    volume: 0.4
+    volume: 0.6
   - clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
-    volume: 0.4
+    volume: 0.6
   standardCarConfig:
     clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 0.8
@@ -294,8 +293,6 @@ MonoBehaviour:
     volume: 0.3
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
-    volume: 0.5
-  - clip: {fileID: 8300000, guid: ed1206708b951514cab5286fe1c4e81a, type: 3}
     volume: 0.5
   - clip: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
     volume: 0.5

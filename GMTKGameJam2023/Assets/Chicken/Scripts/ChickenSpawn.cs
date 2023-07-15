@@ -15,11 +15,17 @@ public class ChickenSpawn : MonoBehaviour
 
     public int goldenChickenOdds = 50;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
+    private SoundManager soundManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        soundManager = FindObjectOfType<SoundManager>();
+    }
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
         SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
         StartSpawn();
     }
@@ -75,8 +81,6 @@ public class ChickenSpawn : MonoBehaviour
             SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
         }
 
-        
-
         if (!gameManager.gameOver)
         {
             SpawnChicken(spawnSpots[selected]);
@@ -84,7 +88,7 @@ public class ChickenSpawn : MonoBehaviour
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
-            if (gameManager.intensitySetting >= 2) 
+            if (gameManager.intensitySetting >= 2)
             {
                 SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
             }
@@ -104,6 +108,7 @@ public class ChickenSpawn : MonoBehaviour
     private void SpawnChicken(SpawningPoint point)
     {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
+        soundManager.PlayRandomChicken();
     }
 
     private void SpawnGoldenChicken(SpawningPoint point)
@@ -119,7 +124,7 @@ public class ChickenSpawn : MonoBehaviour
 }
 
 [System.Serializable]
-public class SpawningPoint 
+public class SpawningPoint
 {
     public Vector3 position;
     public float spawnProbability;
