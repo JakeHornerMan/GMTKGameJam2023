@@ -108,7 +108,8 @@ public class ChickenSpawn : MonoBehaviour
     private void SpawnChicken(SpawningPoint point)
     {
         Instantiate(ChickenPrefab, point.position, Quaternion.identity);
-        soundManager.PlayRandomChicken();
+        if (soundManager != null)
+            soundManager.PlayRandomChicken();
     }
 
     private void SpawnGoldenChicken(SpawningPoint point)
