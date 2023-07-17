@@ -10,6 +10,7 @@ public class SceneFader : MonoBehaviour
     [SerializeField] private string levelSelectSceneName = "LevelSelect";
     [SerializeField] private string tutorialSceneName = "Tutorial";
     [SerializeField] private string creditsSceneName = "Credits";
+    [SerializeField] private string resultsSceneName = "Results";
 
     [Header("References")]
     [SerializeField] private Image fadeImage;
@@ -34,6 +35,7 @@ public class SceneFader : MonoBehaviour
     public void FadeToLevels() => FadeTo(levelSelectSceneName);
     public void FadeToTutorial() => FadeTo(tutorialSceneName);
     public void FadeToCredits() => FadeTo(creditsSceneName);
+    public void FadeToResults() => FadeTo(resultsSceneName);
 
     private IEnumerator FadeIn()
     {
