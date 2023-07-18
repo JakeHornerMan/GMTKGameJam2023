@@ -10,10 +10,7 @@ public class MainMenu : MonoBehaviour
     {
         sceneFader = FindObjectOfType<SceneFader>();
     }
-
-
-
-    public void EnterLevelSelect() => sceneFader.FadeToLevels();
+    public void EnterWorldSelect() => sceneFader.FadeToWorlds();
     public void EnterTutorial() => sceneFader.FadeToTutorial();
     public void EnterCredits() => sceneFader.FadeToCredits();
 
