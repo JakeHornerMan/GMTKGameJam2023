@@ -8,6 +8,7 @@ public class SceneFader : MonoBehaviour
     [Header("Scene Loading")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string worldSelectSceneName = "WorldSelect";
+    [SerializeField] private string levelSelectSceneName = "LevelSelect";
     [SerializeField] private string tutorialSceneName = "Tutorial";
     [SerializeField] private string creditsSceneName = "Credits";
 
@@ -32,6 +33,7 @@ public class SceneFader : MonoBehaviour
     public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
     public void FadeToMainMenu() => FadeTo(mainMenuSceneName);
     public void FadeToWorlds() => FadeTo(worldSelectSceneName);
+    public void FadeToLevelSelect() => FadeTo(levelSelectSceneName);
     public void FadeToTutorial() => FadeTo(tutorialSceneName);
     public void FadeToCredits() => FadeTo(creditsSceneName);
 

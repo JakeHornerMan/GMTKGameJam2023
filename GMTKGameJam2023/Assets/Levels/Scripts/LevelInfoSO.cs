@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelInfoSO : ScriptableObject
 {
     [Header("Basic Info")]
+    [SerializeField] public string levelBtnText = "1";
     [SerializeField] public string levelName = "Level 1";
 
     [Header("Scene Loading")]

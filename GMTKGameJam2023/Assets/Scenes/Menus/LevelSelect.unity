@@ -1387,6 +1387,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6754594239738981826, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1396,7 +1420,8 @@ PrefabInstance:
       value: LevelsCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6984315074592700172, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}

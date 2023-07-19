@@ -6,6 +6,8 @@ using TMPro;
 
 public class WorldSelectUI : MonoBehaviour
 {
+    // Choose Selected World and Assign to Static Value
+
     [Header("References")]
     [SerializeField] private TextMeshProUGUI selectedWorldName;
     [SerializeField] private Image selectedWorldBackground;
@@ -14,7 +16,7 @@ public class WorldSelectUI : MonoBehaviour
     [SerializeField] private WorldConfigSO[] worlds;
 
     private int selectedWorldIndex;
-    private WorldConfigSO selectedWorld;
+    public static WorldConfigSO selectedWorld;
 
     private SceneFader sceneFader;
 
@@ -53,6 +55,6 @@ public class WorldSelectUI : MonoBehaviour
 
     public void LoadWorldLevelSelect()
     {
-        sceneFader.FadeTo(selectedWorld.levelSelectSceneToLoad);
+        sceneFader.FadeToLevelSelect();
     }
 }

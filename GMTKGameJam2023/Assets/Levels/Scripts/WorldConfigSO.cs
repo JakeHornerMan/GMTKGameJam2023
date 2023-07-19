@@ -10,6 +10,6 @@ public class WorldConfigSO : ScriptableObject
     [SerializeField] public Sprite worldBackground;
     [SerializeField] public string worldName = "The Motorway";
 
-    [Header("Levels")]
-    [SerializeField] public string levelSelectSceneToLoad = "LevelSelect";
+    [Header("World Levels")]
+    [SerializeField] public LevelInfoSO[] worldLevels;
 }
