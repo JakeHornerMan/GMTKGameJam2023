@@ -555,7 +555,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.667
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1272,10 +1272,6 @@ PrefabInstance:
     - target: {fileID: 3006315385949949799, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
       propertyPath: m_Name
       value: CurrentCarCursor
-      objectReference: {fileID: 0}
-    - target: {fileID: 3006315385949949799, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293114595577314960, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
       propertyPath: m_RootOrder
