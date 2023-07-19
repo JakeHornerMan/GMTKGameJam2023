@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class LevelButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("References")]
+    [SerializeField] private LevelInfoSO correspondingLevel;
 
-    // Update is called once per frame
-    void Update()
+    public void HandleClick()
     {
-        
+        FindObjectOfType<SceneFader>()?.FadeTo(correspondingLevel.gameLevelToLoad);
     }
 }
