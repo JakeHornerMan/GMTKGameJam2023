@@ -1284,17 +1284,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5edd408162fb9445baa9176f6486717, type: 3}
---- !u!114 &1983929765 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1902645012971332710, guid: e5edd408162fb9445baa9176f6486717, type: 3}
-  m_PrefabInstance: {fileID: 1983929764}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dcce83df792d4a409cc150ecaf17c9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6757272793945288865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,41 +1376,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5416912163551477214, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6754594239738981826, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1983929765}
     - target: {fileID: 9144389388765290803, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
       propertyPath: m_Name
       value: LevelsCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6984315074592700172, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2024127482ca19478cc3a1df1f210a0, type: 3}

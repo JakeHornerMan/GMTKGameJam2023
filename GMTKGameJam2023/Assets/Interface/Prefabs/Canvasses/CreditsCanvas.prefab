@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 2722993408623421654}
   - component: {fileID: 3699254999689946317}
   - component: {fileID: 5913156148028616348}
+  - component: {fileID: 6887957351122544001}
   m_Layer: 5
   m_Name: MainMenuBtn
   m_TagString: Untagged
@@ -256,9 +257,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneFader, Assembly-CSharp
-        m_MethodName: FadeToMainMenu
+      - m_Target: {fileID: 6887957351122544001}
+        m_TargetAssemblyTypeName: MainMenuBtn, Assembly-CSharp
+        m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -268,6 +269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6887957351122544001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799057718243559513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80abf0c62a88c64d9f4a28804c58332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5632424639106154131
 GameObject:
   m_ObjectHideFlags: 0
