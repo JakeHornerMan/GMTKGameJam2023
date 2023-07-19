@@ -10,6 +10,9 @@ public class Settings : MonoBehaviour
     private const string musicToggleKey = "MusicEnabled";
     private const string sfxToggleKey = "SFXEnabled";
 
+    public static bool musicAllowed { get; private set; } = true;
+    public static bool sfxAllowed { get; private set; } = true;
+
     private void Start()
     {
         SetDefaultSettings();
@@ -39,6 +42,10 @@ public class Settings : MonoBehaviour
         // Update UI based on PlayerPrefs values
         musicToggle.isOn = IntToBool(PlayerPrefs.GetInt(musicToggleKey));
         sfxToggle.isOn = IntToBool(PlayerPrefs.GetInt(sfxToggleKey));
+
+        // Update public static variables
+        musicAllowed = musicToggle.isOn;
+        sfxAllowed = sfxToggle.isOn;
     }
 
     // Checkbox Update Functions

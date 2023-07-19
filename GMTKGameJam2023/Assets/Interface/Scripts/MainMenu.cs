@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Tags")]
+    [SerializeField] private string musicTag = "Music";
+
+    private AudioSource musicAudioSource;
     private SceneFader sceneFader;
 
     private void Awake()
     {
         sceneFader = FindObjectOfType<SceneFader>();
+        musicAudioSource = GameObject.FindGameObjectWithTag(musicTag).GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        musicAudioSource.mute = !Settings.musicAllowed;
     }
 
     public void EnterWorldSelect() => sceneFader.FadeToWorlds();
