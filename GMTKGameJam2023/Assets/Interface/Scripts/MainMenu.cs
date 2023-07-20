@@ -13,6 +13,10 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         sceneFader = FindObjectOfType<SceneFader>();
+    }
+
+    private void Start()
+    {
         musicAudioSource = GameObject.FindGameObjectWithTag(musicTag).GetComponent<AudioSource>();
     }
 

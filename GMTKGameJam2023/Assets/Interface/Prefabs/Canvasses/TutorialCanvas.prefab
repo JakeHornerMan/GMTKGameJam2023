@@ -3151,7 +3151,6 @@ GameObject:
   - component: {fileID: 3544354686900257802}
   - component: {fileID: 8734820154451427339}
   - component: {fileID: 6214763734577323973}
-  - component: {fileID: 2471090503782568020}
   - component: {fileID: 8218263355794403474}
   m_Layer: 5
   m_Name: TutorialCanvas
@@ -3256,19 +3255,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2471090503782568020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6553516688504202943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe3e9089bff29445bfdf5e0561655a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicTag: Music
 --- !u!95 &8218263355794403474
 Animator:
   serializedVersion: 5

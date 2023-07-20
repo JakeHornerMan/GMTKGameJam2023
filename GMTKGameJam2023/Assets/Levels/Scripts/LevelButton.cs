@@ -8,8 +8,13 @@ public class LevelButton : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI btnText;
 
+    [Header("Display Positioning")]
+    [SerializeField] private Vector2 displayPositionOffset = new Vector2(0, 0);
+
     [Header("Level")]
     [SerializeField] public LevelInfoSO correspondingLevel;
+
+    private LevelInfoDisplay levelInfoDisplay;
 
     public void SetUI()
     {
@@ -18,6 +23,9 @@ public class LevelButton : MonoBehaviour
 
     public void HandleClick()
     {
-        FindObjectOfType<SceneFader>()?.FadeTo(correspondingLevel.gameLevelToLoad);
+        if (levelInfoDisplay == null)
+            levelInfoDisplay = FindObjectOfType<LevelInfoDisplay>(true);
+        levelInfoDisplay.transform.position = transform.position + (Vector3)displayPositionOffset;
+        levelInfoDisplay.SetUI(correspondingLevel);
     }
 }

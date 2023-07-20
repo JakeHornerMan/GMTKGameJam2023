@@ -173,7 +173,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 25, y: 25}
-  m_SizeDelta: {x: 130, y: 130}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2722993408623421654
 CanvasRenderer:
@@ -574,7 +574,6 @@ GameObject:
   - component: {fileID: 1744534798482596837}
   - component: {fileID: 7610602339343106566}
   - component: {fileID: 4117753366168411946}
-  - component: {fileID: 8390552149309979007}
   - component: {fileID: 5968453705865026897}
   m_Layer: 5
   m_Name: CreditsCanvas
@@ -670,18 +669,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8390552149309979007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8743194725132456401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe3e9089bff29445bfdf5e0561655a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &5968453705865026897
 Animator:
   serializedVersion: 5

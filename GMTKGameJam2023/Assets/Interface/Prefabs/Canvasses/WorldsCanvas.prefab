@@ -515,7 +515,6 @@ GameObject:
   - component: {fileID: 4848767970796722987}
   - component: {fileID: 6678058029784858276}
   - component: {fileID: 4997496694972722393}
-  - component: {fileID: 3142656190859323771}
   - component: {fileID: 1278226830014990721}
   - component: {fileID: 2439473566206462462}
   m_Layer: 5
@@ -612,19 +611,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3142656190859323771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4512574251665889579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe3e9089bff29445bfdf5e0561655a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicTag: Music
 --- !u!95 &1278226830014990721
 Animator:
   serializedVersion: 5
@@ -1098,7 +1084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 36, y: 25}
+  m_AnchoredPosition: {x: 25, y: 25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1981510847211042162
