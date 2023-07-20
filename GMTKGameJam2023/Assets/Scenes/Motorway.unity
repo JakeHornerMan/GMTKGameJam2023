@@ -477,17 +477,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &1425813366 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3781421703170375056, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-  m_PrefabInstance: {fileID: 113452327119585473}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88bab8f8f8e1d3347b937a4b940aa167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1427239738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3283443625665889844, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -767,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: resultsUI
       value: 
-      objectReference: {fileID: 1425813366}
+      objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: startTime
       value: 180

@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay Settings")]
     [SerializeField] private float startTime = 180f;
-
+    [SerializeField] public int intensitySetting = 0;
+    
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
     [HideInInspector] public int playerScore = 0;
     [HideInInspector] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
-    [HideInInspector] public int intensitySetting = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
     [HideInInspector] public bool gameOver = false;
@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
         if (time <= 18f && intensitySetting == 5)
         {
             soundManager.PlayLastSeconds();
-            intensitySetting++;
         }
         if (time <= 0)
         {
