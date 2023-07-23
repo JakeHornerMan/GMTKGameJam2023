@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pointsText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI carWalletCountText;
-    [SerializeField] private Image carWalletRadialUI;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
@@ -41,16 +39,9 @@ public class InterfaceManager : MonoBehaviour
         pointsText.text = gameManager.playerScore.ToString("0000");
         killsText.text = gameManager.killCount.ToString("000");
         tokensText.text = gameManager.tokens.ToString("000");
+        carWalletCountText.text = carWallet.carCount.ToString("00");
         timeText.text = gameManager.time.ToString("0");
         currentCarNameText.text = vehicleSpawner.currentActiveCar.carName;
-
-        UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
-    }
-
-    private void UpdateCarWalletUI(float timeRemaining, float maxCooldownTime)
-    {
-        carWalletCountText.text = carWallet.carCount.ToString("00");
-        carWalletRadialUI.fillAmount = (timeRemaining / maxCooldownTime);
     }
 
     public void ShowSpeedUpText(string text = "Speed Up")
