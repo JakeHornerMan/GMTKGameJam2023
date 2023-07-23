@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarWallet : MonoBehaviour
 {
     [Header("Wallet Values")]
-    [SerializeField] private int walletLimit = 15;
+    [SerializeField] public int walletLimit = 15;
     [SerializeField] private int startWalletCount = 10;
 
     private bool walletEnabled = true;
@@ -31,7 +31,7 @@ public class CarWallet : MonoBehaviour
     private IEnumerator RefillCars()
     {
         // infinite loop, be careful with these!
-        while (walletEnabled)
+        while (walletEnabled && carCount < walletLimit)
         {
             // wait for the refill delay
             yield return new WaitForSeconds(refillDelaySeconds);
@@ -40,14 +40,26 @@ public class CarWallet : MonoBehaviour
             // reset timeUntilRefill
             timeUntilRefill = refillDelaySeconds;
         }
+
+        walletEnabled = false;
     }
 
     private void Update()
     {
         // Reduce timeUntilRefill by the time passed since last frame
-        if (timeUntilRefill > 0)
+        if (timeUntilRefill > 0 && carCount < walletLimit)
         {
             timeUntilRefill -= Time.deltaTime;
+        }
+
+        if (walletEnabled == false)
+        {
+            if (carCount < walletLimit)
+            {
+                walletEnabled = true;
+                // start the refill coroutine
+                StartCoroutine(RefillCars());
+            }
         }
     }
 }
