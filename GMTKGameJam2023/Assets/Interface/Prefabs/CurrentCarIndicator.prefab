@@ -363,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8293114595577314960
 Transform:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ Transform:
   m_Children:
   - {fileID: 7562965151912986913}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7606939791621064917
 SpriteRenderer:
@@ -444,6 +444,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f0302b57027bf409656b24e15e452b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCursor: 0
+  cornerPosition: {x: -13.5, y: -6.7}
   carSprite: {fileID: 7606939791621064917}
   carName: {fileID: 6943980434684806293}
   carCost: {fileID: 5412515826329600152}
