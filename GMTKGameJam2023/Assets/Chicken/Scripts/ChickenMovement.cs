@@ -42,7 +42,6 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        // TODO REFACTOR
         switch (gameManager.intensitySetting)
         {
             case 1:
@@ -60,7 +59,7 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
-        if (!gameManager.gameOver || gameManager == null)
+        if (!gameManager.gameOver)
         {
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);
