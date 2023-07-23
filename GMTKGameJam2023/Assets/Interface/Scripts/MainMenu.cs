@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Tags")]
+    [SerializeField] private string musicTag = "Music";
+
+    private AudioSource musicAudioSource;
     private SceneFader sceneFader;
 
     private void Awake()
@@ -11,11 +15,20 @@ public class MainMenu : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
     }
 
+    private void Start()
+    {
+        musicAudioSource = GameObject.FindGameObjectWithTag(musicTag).GetComponent<AudioSource>();
+    }
 
+    private void Update()
+    {
+        musicAudioSource.mute = !Settings.musicAllowed;
+    }
 
-    public void EnterLevelSelect() => sceneFader.FadeToLevels();
+    public void EnterWorldSelect() => sceneFader.FadeToWorlds();
     public void EnterTutorial() => sceneFader.FadeToTutorial();
     public void EnterCredits() => sceneFader.FadeToCredits();
+    public void EnterSettings() => sceneFader.FadeToSettings();
 
     public void QuitGame() => Application.Quit();
 }
