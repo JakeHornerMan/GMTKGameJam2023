@@ -26,13 +26,11 @@ public class ResultsUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        pause.UnpauseGame();
         sceneFader.FadeToMainMenu();
     }
 
     public void Restart()
     {
-        pause.UnpauseGame();
         sceneFader.ReloadScene();
     }
 
