@@ -104,7 +104,6 @@ public class VehicleSpawner : MonoBehaviour
         if (!hit.collider.gameObject.CompareTag(roadTag))
             return;
 
-
         // Spawn Car at Road at Position
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
         Instantiate(
