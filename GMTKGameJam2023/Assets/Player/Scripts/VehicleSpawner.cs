@@ -158,7 +158,8 @@ public class VehicleSpawner : MonoBehaviour
 
     private void UpdateCarCursor()
     {
-        carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+        if (carCursorFollower.followCursor)
+            carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         carCursorFollower.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
     }
 
