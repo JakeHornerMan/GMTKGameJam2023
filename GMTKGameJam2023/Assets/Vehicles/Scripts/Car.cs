@@ -26,8 +26,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Damage")]
     [SerializeField] private int damage = 120;
-    [SerializeField] private float comboMultiplier = 0.2f;
-    private float defaultComboMultiplier = 1f;
+    [SerializeField] private float comboPointsMultiplier = 0.2f;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
@@ -157,13 +156,10 @@ public abstract class Car : MonoBehaviour
         // Increase Car-Specific Kill Count
         carKillCount++;
 
-        // Change Combo Multiplier
-        float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));
-
         // +100 Points Pop-Up
         ShowPopup(
             chickenHealth.transform.position,
-            $"{chickenHealth.pointsReward * currentComboMultiplier} {scorePopUpMsg}"
+            $"{chickenHealth.pointsReward * carKillCount} {scorePopUpMsg}"
         );
     }
 

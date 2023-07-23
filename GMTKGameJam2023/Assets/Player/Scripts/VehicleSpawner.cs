@@ -32,6 +32,9 @@ public class VehicleSpawner : MonoBehaviour
 
     [HideInInspector] public Car currentActiveCar;
 
+    [HideInInspector]public bool spawnDisabled;
+    [HideInInspector]public float disableTime;
+
     private Camera mainCamera;
     private SoundManager soundManager;
     private GameManager gameManager;
@@ -45,6 +48,8 @@ public class VehicleSpawner : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         gameManager = FindObjectOfType<GameManager>();
         carWallet = GetComponent<CarWallet>();
+        spawnDisabled = false;
+        disableTime = 0.4f;
     }
 
     private void Start()
@@ -56,8 +61,8 @@ public class VehicleSpawner : MonoBehaviour
     {
         if (gameManager.gameOver) return;
 
-        if (Input.GetMouseButtonDown(placeMouseBtn))
-            PlaceSelectedCar();
+        if (Input.GetMouseButtonDown(placeMouseBtn) || (Input.touchCount > 1 && Input.touches[0].phase == TouchPhase.Began) )
+            if(!spawnDisabled) PlaceSelectedCar();
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space))
             SelectCar(standardCar);
@@ -119,7 +124,17 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Player Money
         gameManager.tokens -= currentActiveCar.carPrice;
+
         SelectCar(standardCar);
+        IEnumerator coroutine = DisableSpawn();
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator DisableSpawn()
+    {
+        spawnDisabled = true;
+        yield return new WaitForSeconds(disableTime);
+        spawnDisabled = false;
     }
 
     public void SelectCar(CarButton carBtn)
@@ -143,8 +158,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private void UpdateCarCursor()
     {
-        if (carCursorFollower.followCursor)
-            carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+        carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         carCursorFollower.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
     }
 

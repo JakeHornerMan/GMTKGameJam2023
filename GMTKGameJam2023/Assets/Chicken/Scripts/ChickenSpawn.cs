@@ -26,7 +26,7 @@ public class ChickenSpawn : MonoBehaviour
 
     private void Start()
     {
-        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        SpawnChicken(spawnSpots[Random.Range(0, spawnSpots.Length-1)]);
         StartSpawn();
     }
 

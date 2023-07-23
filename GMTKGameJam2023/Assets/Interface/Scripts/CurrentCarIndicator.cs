@@ -6,10 +6,6 @@ using TMPro;
 
 public class CurrentCarIndicator : MonoBehaviour
 {
-    [Header("Functionality")]
-    [SerializeField] public bool followCursor = false;
-    [SerializeField] private Vector2 cornerPosition;
-
     [Header("References")]
     [SerializeField] private SpriteRenderer carSprite;
     [SerializeField] private TextMeshProUGUI carName;
@@ -28,12 +24,6 @@ public class CurrentCarIndicator : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color positiveColor;
     [SerializeField] private Color negativeColor;
-
-    private void Start()
-    {
-        if (!followCursor)
-            transform.position = cornerPosition;
-    }
 
     public void SetUI(Car currentActiveCar, int playerCash, int carWalletCount)
     {
