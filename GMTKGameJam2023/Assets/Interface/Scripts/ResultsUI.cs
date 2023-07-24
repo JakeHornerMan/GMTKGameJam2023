@@ -21,25 +21,24 @@ public class ResultsUI : MonoBehaviour
     {
         sceneFader = FindObjectOfType<SceneFader>();
         pause = FindObjectOfType<Pause>();
+        SetUI();
     }
 
     public void ReturnToMenu()
     {
-        pause.UnpauseGame();
         sceneFader.FadeToMainMenu();
     }
 
     public void Restart()
     {
-        pause.UnpauseGame();
         sceneFader.ReloadScene();
     }
 
-    public void SetUI(string ranking, int kills, int missedChickens, int finalScore)
+    public void SetUI()
     {
-        rankingText.text = ranking;
-        killsText.text = kills.ToString("000");
-        missedChickensText.text = missedChickens.ToString("00") + " " + missedChickensLabel;
-        finalScoreText.text = finalScore.ToString("000") + " " + pointsLabel;
+        rankingText.text = Points.currentRanking;
+        killsText.text = Points.killCount.ToString("000");
+        missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
+        finalScoreText.text = Points.playerScore.ToString("000") + " " + pointsLabel;
     }
 }

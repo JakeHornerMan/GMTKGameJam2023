@@ -10,13 +10,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay Settings")]
     [SerializeField] private float startTime = 180f;
+    [SerializeField] public int intensitySetting = 0;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
     [HideInInspector] public int playerScore = 0;
     [HideInInspector] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
-    [HideInInspector] public int intensitySetting = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
     [HideInInspector] public bool gameOver = false;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
+    private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
 
     private void Awake()
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
         interfaceManager = GetComponent<InterfaceManager>();
+        sceneFader = FindObjectOfType<SceneFader>();
     }
 
     private void Start()
@@ -43,18 +45,12 @@ public class GameManager : MonoBehaviour
         totalTokens = 0;
 
         time = startTime;
-
-        if (resultsUI != null)
-            resultsUI.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (resultsUI != null)
-        {
-            SetTime();
-            UpdateRankings();
-        }
+        SetTime();
+        UpdateRankings();
     }
 
     private void SetTime()
@@ -85,12 +81,10 @@ public class GameManager : MonoBehaviour
         if (time <= 18f && intensitySetting == 5)
         {
             soundManager.PlayLastSeconds();
-            intensitySetting++;
         }
         if (time <= 0)
         {
             gameOver = true;
-            soundManager.PlayEndMusic();
             HandleResults();
         }
     }
@@ -134,7 +128,10 @@ public class GameManager : MonoBehaviour
 
     private void HandleResults()
     {
-        resultsUI.SetUI(currentRanking, killCount, safelyCrossedChickens, playerScore);
-        resultsUI.gameObject.SetActive(true);
+        Points.currentRanking = currentRanking;
+        Points.killCount = killCount;
+        Points.safelyCrossedChickens = safelyCrossedChickens;
+        Points.playerScore = playerScore;
+        sceneFader.FadeToResults();
     }
 }
