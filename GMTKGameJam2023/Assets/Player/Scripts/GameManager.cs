@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int totalTokens = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
+    [HideInInspector] public bool endSound = false;
     [HideInInspector] public bool gameOver = false;
     [HideInInspector] public int waveNumber = 0;
 
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void SetGameTime(){
         float gameTime = 0f;
-        if(waves != 0){
+        if(waves.Length != 0){
             foreach (ChickenWave value in waves)
             {
             gameTime = gameTime + value.roundTime;
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void SettingWaveInChickenSpawn(){
-        Debug.Log("Current Wave: "+ waveNumber);
+        // Debug.Log("Current Wave: "+ waveNumber);
         
         ChickenWave currentWave = waves[waveNumber];
         IncreaseIntensity(currentWave.wavePrompt);
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if(waveNumber <= waves.Length)
+        if(waveNumber < waves.Length)
             SettingWaveInChickenSpawn();
     }
 
@@ -100,30 +101,32 @@ public class GameManager : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
 
-        if (time <= 170f && intensitySetting == 0)
+        // if (time <= 170f && intensitySetting == 0)
+        // {
+        //     IncreaseIntensity("Chickens Incoming");
+        // }
+        // if (time <= 150f && intensitySetting == 1)
+        // {
+        //     IncreaseIntensity("Coop Cooperation");
+        // }
+        // if (time <= 120f && intensitySetting == 2)
+        // {
+        //     IncreaseIntensity("Flock Inbound");
+        // }
+        // if (time <= 100f && intensitySetting == 3)
+        // {
+        //     IncreaseIntensity("Chicken Horde");
+        // }
+        // if (time <= 60f && intensitySetting == 4)
+        // {
+        //     IncreaseIntensity("Poultry Panic");
+        // }
+        if (time <= 18f)
         {
-            IncreaseIntensity("Chickens Incoming");
-        }
-        if (time <= 150f && intensitySetting == 1)
-        {
-            IncreaseIntensity("Coop Cooperation");
-        }
-        if (time <= 120f && intensitySetting == 2)
-        {
-            IncreaseIntensity("Flock Inbound");
-        }
-        if (time <= 100f && intensitySetting == 3)
-        {
-            IncreaseIntensity("Chicken Horde");
-        }
-        if (time <= 60f && intensitySetting == 4)
-        {
-            IncreaseIntensity("Poultry Panic");
-        }
-        if (time <= 18f && intensitySetting == 5)
-        {
-            if(waves != null)
+            if(soundManager != null){
                 soundManager.PlayLastSeconds();
+                endSound = true;
+            }
         }
         if (time <= 0)
         {

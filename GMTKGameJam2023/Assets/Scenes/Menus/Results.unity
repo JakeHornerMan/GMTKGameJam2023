@@ -547,6 +547,11 @@ MonoBehaviour:
   minSpawnTime: 0.3
   maxSpawnTime: 0.5
   goldenChickenOdds: 1000000
+  currentWave:
+    roundTime: 0
+    wavePrompt: 
+    standardChickenAmounts: 0
+  waveChickenAmount: 0
 --- !u!4 &640435457
 Transform:
   m_ObjectHideFlags: 0
@@ -575,7 +580,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultsUI: {fileID: 0}
+  waves:
+  - roundTime: 10000
+    wavePrompt: 
+    standardChickenAmounts: 10000
   startTime: 0
+  devMode: 0
   intensitySetting: 0
   safelyCrossedChickens: 0
   killCount: 0
@@ -585,6 +595,7 @@ MonoBehaviour:
   time: 120
   currentRanking: Animal Lover
   gameOver: 0
+  waveNumber: 0
 --- !u!82 &640435459
 AudioSource:
   m_ObjectHideFlags: 0
