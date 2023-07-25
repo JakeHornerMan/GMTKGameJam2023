@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ResultsUI resultsUI;
 
+    [Header("ChickenWaves")]
+    [SerializeField] public ChickenWave[] waves;
+
     [Header("Gameplay Settings")]
-    [SerializeField] private float startTime = 180f;
+    [SerializeField] public float startTime = 180f;
+    [SerializeField] public bool devMode = false;
     [SerializeField] public int intensitySetting = 0;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
     [HideInInspector] public bool gameOver = false;
+    [HideInInspector] public int waveNumber = 0;
 
     private SoundManager soundManager;
     private Pause pause;
@@ -44,7 +49,44 @@ public class GameManager : MonoBehaviour
         tokens = 0;
         totalTokens = 0;
 
+        SetGameTime();
         time = startTime;
+
+        if(waves.Length != 0)
+            SettingWaveInChickenSpawn();
+    }
+
+    private void SetGameTime(){
+        float gameTime = 0f;
+        if(waves != 0){
+            foreach (ChickenWave value in waves)
+            {
+            gameTime = gameTime + value.roundTime;
+            }
+            startTime = gameTime;
+        }
+    }
+
+    private void SettingWaveInChickenSpawn(){
+        Debug.Log("Current Wave: "+ waveNumber);
+        
+        ChickenWave currentWave = waves[waveNumber];
+        IncreaseIntensity(currentWave.wavePrompt);
+
+        chickenSpawn.currentWave = currentWave;
+        // chickenSpawn.waveStartChickenAmount = currentWave.chickenAmounts;
+        chickenSpawn.StandardChickenNewWave();
+        
+        IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator WaitAndNextWave(float time)
+    {
+        yield return new WaitForSeconds(time);
+        waveNumber++;
+        if(waveNumber <= waves.Length)
+            SettingWaveInChickenSpawn();
     }
 
     private void Update()
@@ -80,7 +122,8 @@ public class GameManager : MonoBehaviour
         }
         if (time <= 18f && intensitySetting == 5)
         {
-            soundManager.PlayLastSeconds();
+            if(waves != null)
+                soundManager.PlayLastSeconds();
         }
         if (time <= 0)
         {
@@ -122,8 +165,10 @@ public class GameManager : MonoBehaviour
     {
         intensitySetting++;
         chickenSpawn.UpdateIntensity(intensitySetting);
-        soundManager.PlayGameSpeed();
-        interfaceManager.ShowSpeedUpText(speedUpText);
+        if (soundManager != null)
+            soundManager.PlayGameSpeed();
+        if (interfaceManager != null)
+            interfaceManager.ShowSpeedUpText(speedUpText);
     }
 
     private void HandleResults()
@@ -134,4 +179,13 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         sceneFader.FadeToResults();
     }
+}
+
+[System.Serializable]
+public class ChickenWave
+{
+    public float roundTime;
+    public String wavePrompt;
+    public int standardChickenAmounts;
+    
 }

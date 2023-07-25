@@ -7,16 +7,19 @@ public class ChickenSpawn : MonoBehaviour
     [Header("Spawning Values")]
     [SerializeField] public SpawningPoint[] spawnSpots;
 
-    public GameObject ChickenPrefab;
-    public GameObject GoldenChickenPrefab;
+    [Header("Chicken Types")]
+    [SerializeField] public GameObject ChickenPrefab;
+    [SerializeField] public GameObject GoldenChickenPrefab;
 
-    public float minSpawnTime = 3f;
-    public float maxSpawnTime = 5f;
-
-    public int goldenChickenOdds = 50;
+    [SerializeField] public float minSpawnTime = 3f;
+    [SerializeField] public float maxSpawnTime = 5f;
+    [SerializeField] public int goldenChickenOdds = 50;
 
     private GameManager gameManager;
     private SoundManager soundManager;
+
+    [HideInInspector] public ChickenWave currentWave;
+    [HideInInspector] public int waveChickenAmount;
 
     private void Awake()
     {
@@ -26,8 +29,33 @@ public class ChickenSpawn : MonoBehaviour
 
     private void Start()
     {
-        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        StartSpawn();
+        // SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+        // StartSpawn();
+    }
+
+    public void StandardChickenNewWave(){
+        float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
+        SpawnAChicken(ChickenPrefab);
+
+        waveChickenAmount--;
+
+        IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator WaitAndSpawnChicken(float time)
+    {
+        yield return new WaitForSeconds(time);
+        if(waveChickenAmount <= 0) 
+            StandardChickenNewWave();
+    }
+
+    private void SpawnAChicken(GameObject chicken)
+    {
+        SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
+        Instantiate(chicken, point.position, Quaternion.identity);
+        if (soundManager != null)
+            soundManager.PlayRandomChicken();
     }
 
     public void UpdateIntensity(int intensity)
