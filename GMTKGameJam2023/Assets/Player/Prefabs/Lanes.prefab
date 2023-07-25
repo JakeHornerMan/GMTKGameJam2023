@@ -70,8 +70,8 @@ MonoBehaviour:
   superCarX: -1.7
   truckX: 4.2
   placeMouseBtn: 0
-  roadTag: Road
   spawnOffset: {x: 0, y: -10}
+  invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
 --- !u!114 &8746173641645449034
 MonoBehaviour:
@@ -88,6 +88,7 @@ MonoBehaviour:
   walletLimit: 5
   startWalletCount: 5
   refillDelaySeconds: 2
+  timeUntilRefill: 0
   amountPerRefill: 1
   carCount: 0
 --- !u!1 &4045037203581973327

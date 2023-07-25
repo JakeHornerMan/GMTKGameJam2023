@@ -24,11 +24,11 @@ public class VehicleSpawner : MonoBehaviour
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
 
-    [Header("Tags")]
-    [SerializeField] private string roadTag = "Road";
-
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
+
+    [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
+    [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
 
     [HideInInspector] public Car currentActiveCar;
 
@@ -36,6 +36,7 @@ public class VehicleSpawner : MonoBehaviour
     private SoundManager soundManager;
     private GameManager gameManager;
     private CarWallet carWallet;
+    private CameraShaker cameraShaker;
 
     private Vector3 mousePos;
 
@@ -44,6 +45,7 @@ public class VehicleSpawner : MonoBehaviour
         mainCamera = Camera.main;
         soundManager = FindObjectOfType<SoundManager>();
         gameManager = FindObjectOfType<GameManager>();
+        cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
     }
 
@@ -100,9 +102,12 @@ public class VehicleSpawner : MonoBehaviour
         if (IsMouseOverUIElement())
             return;
 
-        // Return if Did Not Click Road
-        if (!hit.collider.gameObject.CompareTag(roadTag))
+        // Return if Car Cannot be Placed on Clicked Lane
+        if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
+        {
+            StartCoroutine(cameraShaker.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y));
             return;
+        }
 
         // Spawn Car at Road at Position
         Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;

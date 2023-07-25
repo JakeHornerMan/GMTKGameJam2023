@@ -21,6 +21,9 @@ public abstract class Car : MonoBehaviour
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
 
+    [Header("Placement Criteria")]
+    [SerializeField] public List<string> placeableLaneTags;
+
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
 
