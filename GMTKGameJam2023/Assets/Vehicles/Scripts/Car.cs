@@ -23,6 +23,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Placement Criteria")]
     [SerializeField] public List<string> placeableLaneTags;
+    [SerializeField] public bool placeableAnywhere = false;
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;

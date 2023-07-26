@@ -110,7 +110,12 @@ public class VehicleSpawner : MonoBehaviour
         }
 
         // Spawn Car at Road at Position
-        Vector3 spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
+        Vector3 spawnPos;
+        if (currentActiveCar.placeableAnywhere)
+            spawnPos = new Vector3(mousePos.x, mousePos.y, 1);
+        else
+            spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
+
         Instantiate(
             currentActiveCar.gameObject,
             spawnPos,
