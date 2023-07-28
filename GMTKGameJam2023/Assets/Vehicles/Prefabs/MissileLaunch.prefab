@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.38989684, b: 0.35294116, a: 0.43137255}
+  m_Color: {r: 1, g: 0.38989684, b: 0.35294116, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5033,7 +5033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -3}
+  m_AnchoredPosition: {x: 0, y: -4}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3628789908828156032
@@ -5238,6 +5238,7 @@ MonoBehaviour:
   camShakeMagnitude: 0.1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+  missileSprtie: {fileID: 2270964467784247881}
 --- !u!95 &4589522377124084721
 Animator:
   serializedVersion: 5
@@ -5286,8 +5287,8 @@ Transform:
   m_GameObject: {fileID: 7618215126840845903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8251440986272331830}
   m_RootOrder: -1
@@ -5330,10 +5331,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 78240989
-  m_SortingLayer: 3
+  m_SortingLayerID: -633477931
+  m_SortingLayer: 4
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -1898241107, guid: b637130d941586045a17f8e073a47366, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
