@@ -12,7 +12,6 @@ public class ResultsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalScoreText;
 
     [SerializeField] private string missedChickensLabel = " Missed Chickens";
-    [SerializeField] private string pointsLabel = " Points";
 
     private SceneFader sceneFader;
     private Pause pause;
@@ -39,6 +38,6 @@ public class ResultsUI : MonoBehaviour
         rankingText.text = Points.currentRanking;
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
-        finalScoreText.text = Points.playerScore.ToString("000") + " " + pointsLabel;
+        finalScoreText.text = Points.playerScore.ToString("000");
     }
 }

@@ -107,10 +107,13 @@ public class SoundManager : MonoBehaviour
 
     private void RandomPlaySound(params SoundConfig[] soundConfigs)
     {
-        if (soundConfigs.Length > 0)
-        {
-            int randomIndex = Random.Range(0, soundConfigs.Length);
-            PlaySound(soundConfigs[randomIndex]);
+        int willPlaySound = Random.Range(0, 1);
+        if(willPlaySound == 0){
+            if (soundConfigs.Length > 0)
+            {
+                int randomIndex = Random.Range(0, soundConfigs.Length);
+                PlaySound(soundConfigs[randomIndex]);
+            }
         }
     }
 }

@@ -38,13 +38,13 @@ public class TokenSpawn : MonoBehaviour
         SpawnToken(spawnSpots[selected]);
 
         // Restart timer
-        if (gameManager.gameOver) yield return null;
+        if (gameManager.isGameOver) yield return null;
         StartSpawn();
     }
 
     private void SpawnToken(Transform point)
     {
-        if (gameManager.gameOver) return;
+        if (gameManager.isGameOver) return;
         Instantiate(tokenPrefabs[0], point.position, Quaternion.identity);
     }
 }

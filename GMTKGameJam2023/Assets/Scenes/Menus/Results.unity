@@ -551,7 +551,10 @@ MonoBehaviour:
     roundTime: 0
     wavePrompt: 
     standardChickenAmounts: 0
+    specialChickens: []
+  specialChickens: []
   waveChickenAmount: 0
+  time: 0
 --- !u!4 &640435457
 Transform:
   m_ObjectHideFlags: 0
@@ -580,13 +583,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultsUI: {fileID: 0}
-  waves:
-  - roundTime: 10000
-    wavePrompt: 
-    standardChickenAmounts: 10000
+  waves: []
   startTime: 0
   devMode: 0
   intensitySetting: 0
+  isGameOver: 1
   safelyCrossedChickens: 0
   killCount: 0
   playerScore: 0
@@ -594,7 +595,7 @@ MonoBehaviour:
   totalTokens: 0
   time: 120
   currentRanking: Animal Lover
-  gameOver: 0
+  endSound: 0
   waveNumber: 0
 --- !u!82 &640435459
 AudioSource:

@@ -59,7 +59,7 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
-        if (!gameManager.gameOver || gameManager == null)
+        if (!gameManager.isGameOver || gameManager == null)
         {
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);

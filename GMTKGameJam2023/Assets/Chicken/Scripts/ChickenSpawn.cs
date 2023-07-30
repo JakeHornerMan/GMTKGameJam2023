@@ -22,6 +22,7 @@ public class ChickenSpawn : MonoBehaviour
     [HideInInspector] public List<SpecialChicken> specialChickens;
     [HideInInspector] public int waveChickenAmount;
     [HideInInspector] public float time = 0f;
+    [HideInInspector] public bool waveEnded = false;
 
     private void Awake()
     {
@@ -30,7 +31,9 @@ public class ChickenSpawn : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        WaveTime();
+        if(!waveEnded){
+            WaveTime();
+        }
     }
 
     public void SetNewWave(ChickenWave wave){
@@ -38,6 +41,7 @@ public class ChickenSpawn : MonoBehaviour
         specialChickens = wave.specialChickens;
         specialChickens.Sort((obj1,obj2)=>obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
         // specialChickens = specialChickens.OrderBy(i.timeToSpawn => i.timeToSpawn);
+        waveEnded = false;
         time = 0f; 
 
         if(currentWave.standardChickenAmounts > 0) 
@@ -45,24 +49,29 @@ public class ChickenSpawn : MonoBehaviour
     }
 
     private void WaveTime(){
-        if (time < currentWave.roundTime || specialChickens.Count > 0)
+        time += Time.deltaTime;
+        if (time < currentWave.roundTime)
         {
-            time += Time.deltaTime;
-            if(time >= specialChickens[0].timeToSpawn){
+            if(specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn){
                 SpawnAChicken(specialChickens[0].chicken);
                 specialChickens.RemoveAt(0);
             }
         }
+        if(time > currentWave.roundTime){
+            waveEnded = true;
+        }
     }
 
     public void StandardChickenNewWave(){
-        float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
-        SpawnAChicken(ChickenPrefab);
+        if(!waveEnded){
+            float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
+            SpawnAChicken(ChickenPrefab);
 
-        waveChickenAmount--;
+            waveChickenAmount--;
 
-        IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
-        StartCoroutine(coroutine);
+            IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
+            StartCoroutine(coroutine);
+        }
     }
 
     private IEnumerator WaitAndSpawnChicken(float time)
