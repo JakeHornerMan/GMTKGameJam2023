@@ -25,13 +25,11 @@ public class ChickenMovement : MonoBehaviour
     private Vector2 desiredDirection;
 
     private Rigidbody2D rb;
-    private GameManager gameManager;
     private Animator anim;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        gameManager = FindObjectOfType<GameManager>();
         anim = hopController.GetComponent<Animator>();
     }
 
@@ -65,11 +63,8 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
-        // if (!gameManager.isGameOver || gameManager == null)
-        // {
-            IEnumerator coroutine = WaitAndMove(moveTime);
-            StartCoroutine(coroutine);
-        // }
+        IEnumerator coroutine = WaitAndMove(moveTime);
+        StartCoroutine(coroutine);
     }
 
     private IEnumerator WaitAndMove(float moveTime)
