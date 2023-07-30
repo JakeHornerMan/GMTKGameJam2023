@@ -540,6 +540,12 @@ MonoBehaviour:
   spawnSpots:
   - position: {x: -9, y: 2, z: 0}
     spawnProbability: 1
+  - position: {x: -9, y: 1, z: 0}
+    spawnProbability: 1
+  - position: {x: -9, y: 0, z: 0}
+    spawnProbability: 1
+  - position: {x: -9, y: -1, z: 0}
+    spawnProbability: 1
   - position: {x: -9, y: -2, z: 0}
     spawnProbability: 1
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
@@ -551,10 +557,12 @@ MonoBehaviour:
     roundTime: 0
     wavePrompt: 
     standardChickenAmounts: 0
+    chickenIntesity: 0
     specialChickens: []
   specialChickens: []
   waveChickenAmount: 0
   time: 0
+  waveEnded: 0
 --- !u!4 &640435457
 Transform:
   m_ObjectHideFlags: 0

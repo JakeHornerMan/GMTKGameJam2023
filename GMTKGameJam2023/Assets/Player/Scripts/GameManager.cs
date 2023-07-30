@@ -206,6 +206,7 @@ public class ChickenWave
     public float roundTime;
     public String wavePrompt;
     public int standardChickenAmounts;
+    public int chickenIntesity = 0;
     public List<SpecialChicken> specialChickens;
 }
 

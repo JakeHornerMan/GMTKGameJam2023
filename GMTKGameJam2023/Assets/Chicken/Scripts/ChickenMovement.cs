@@ -9,8 +9,9 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private GameObject chickenSprite;
 
     [Header("Movement Values")]
+    [SerializeField] public int chickenIntesity = 0;
     [SerializeField] private float minMoveTime = 0.5f;
-    [SerializeField] private float maxMoveTime = 3f;
+    [SerializeField] private float maxMoveTime = 3.5f;
     [SerializeField] private float laneDistance = 2f;
 
     [Header("Animation")]
@@ -42,12 +43,17 @@ public class ChickenMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        switch (gameManager.intensitySetting)
+        switch (chickenIntesity)
         {
+            case 0:
+                maxMoveTime = 3.5f;
+                break;
             case 1:
-                maxMoveTime = 2.5f;
+                maxMoveTime = 3f;
                 break;
             case 2:
+                maxMoveTime = 2.5f;
+                break;
             case 3:
                 maxMoveTime = 2f;
                 break;
@@ -59,11 +65,11 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
-        if (!gameManager.isGameOver || gameManager == null)
-        {
+        // if (!gameManager.isGameOver || gameManager == null)
+        // {
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);
-        }
+        // }
     }
 
     private IEnumerator WaitAndMove(float moveTime)
