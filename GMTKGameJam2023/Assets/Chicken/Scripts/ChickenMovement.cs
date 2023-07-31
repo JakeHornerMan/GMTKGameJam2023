@@ -31,7 +31,6 @@ public class ChickenMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = hopController.GetComponent<Animator>();
-        gameManager = FindObjectOfType<GameManager>();
 
         if (hopController != null)
         {
