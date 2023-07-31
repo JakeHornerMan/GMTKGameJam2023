@@ -147,12 +147,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultsUI: {fileID: 0}
   startTime: 180
+  intensitySetting: 0
   safelyCrossedChickens: 0
   killCount: 0
   playerScore: 0
   tokens: 0
   totalTokens: 0
-  intensitySetting: 0
   time: 120
   currentRanking: Animal Lover
   gameOver: 0
@@ -337,6 +337,7 @@ MonoBehaviour:
   pointsText: {fileID: 0}
   killsText: {fileID: 0}
   carWalletCountText: {fileID: 0}
+  carWalletRadialUI: {fileID: 0}
   tokensText: {fileID: 0}
   timeText: {fileID: 0}
   currentCarNameText: {fileID: 0}

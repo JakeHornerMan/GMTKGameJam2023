@@ -25,7 +25,9 @@ public class LevelButton : MonoBehaviour
     {
         if (levelInfoDisplay == null)
             levelInfoDisplay = FindObjectOfType<LevelInfoDisplay>(true);
-        levelInfoDisplay.transform.position = transform.position + (Vector3)displayPositionOffset;
+
+        if (levelInfoDisplay == null) return;
+
         levelInfoDisplay.SetUI(correspondingLevel);
     }
 }

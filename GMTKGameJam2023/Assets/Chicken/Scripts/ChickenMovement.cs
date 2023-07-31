@@ -31,6 +31,12 @@ public class ChickenMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = hopController.GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (hopController != null)
+        {
+            anim = hopController.GetComponent<Animator>();
+        }
     }
 
     private void Start()
@@ -39,7 +45,7 @@ public class ChickenMovement : MonoBehaviour
         StartMovement();
     }
 
-    private void StartMovement()
+    protected virtual void StartMovement()
     {
         switch (chickenIntesity)
         {
@@ -140,7 +146,7 @@ public class ChickenMovement : MonoBehaviour
         hopController.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
-    private Vector2 ChooseNextDirection()
+    protected virtual Vector2 ChooseNextDirection()
     {
         bool directionApproved = false;
 

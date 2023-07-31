@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
     [HideInInspector] public int playerScore = 0;
-    [HideInInspector] public int tokens = 0;
+    [SerializeField] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
-        tokens = 0;
+        //tokens = 0;
         totalTokens = 0;
 
         SetGameTime();
@@ -115,38 +115,18 @@ public class GameManager : MonoBehaviour
     {
         if (time > 0)
             time -= Time.deltaTime;
-
-        // if (time <= 170f && intensitySetting == 0)
-        // {
-        //     IncreaseIntensity("Chickens Incoming");
-        // }
-        // if (time <= 150f && intensitySetting == 1)
-        // {
-        //     IncreaseIntensity("Coop Cooperation");
-        // }
-        // if (time <= 120f && intensitySetting == 2)
-        // {
-        //     IncreaseIntensity("Flock Inbound");
-        // }
-        // if (time <= 100f && intensitySetting == 3)
-        // {
-        //     IncreaseIntensity("Chicken Horde");
-        // }
-        // if (time <= 60f && intensitySetting == 4)
-        // {
-        //     IncreaseIntensity("Poultry Panic");
-        // }
+        
+        if (time <= 0)
+        {
+            isGameOver = true;
+            HandleResults();
+        }
         if (time <= 18f)
         {
             if(soundManager != null){
                 soundManager.PlayLastSeconds();
                 endSound = true;
             }
-        }
-        if (time <= 0)
-        {
-            isGameOver = true;
-            HandleResults();
         }
     }
 
@@ -182,7 +162,7 @@ public class GameManager : MonoBehaviour
     private void IncreaseIntensity(string speedUpText)
     {
         intensitySetting++;
-        // chickenSpawn.UpdateIntensity(intensitySetting);
+
         if (soundManager != null)
             soundManager.PlayGameSpeed();
         if (interfaceManager != null)

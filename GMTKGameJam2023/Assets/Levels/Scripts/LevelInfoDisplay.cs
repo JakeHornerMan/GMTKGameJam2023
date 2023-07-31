@@ -25,11 +25,6 @@ public class LevelInfoDisplay : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
     }
 
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void SetUI(LevelInfoSO levelInfo)
     {
         currentLevel = levelInfo;

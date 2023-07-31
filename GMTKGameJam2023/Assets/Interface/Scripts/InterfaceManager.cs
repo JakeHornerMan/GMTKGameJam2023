@@ -50,7 +50,7 @@ public class InterfaceManager : MonoBehaviour
     private void UpdateCarWalletUI(float timeRemaining, float maxCooldownTime)
     {
         carWalletCountText.text = carWallet.carCount.ToString("00");
-        carWalletRadialUI.fillAmount = (timeRemaining / maxCooldownTime);
+        carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
 
     public void ShowSpeedUpText(string text = "Speed Up")

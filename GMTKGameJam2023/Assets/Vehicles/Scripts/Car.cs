@@ -21,6 +21,10 @@ public abstract class Car : MonoBehaviour
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
 
+    [Header("Placement Criteria")]
+    [SerializeField] public List<string> placeableLaneTags;
+    [SerializeField] public bool placeableAnywhere = false;
+
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
 
@@ -67,7 +71,12 @@ public abstract class Car : MonoBehaviour
     private void Update()
     {
         // xKillCount Combo Text
-        comboText.text = $"{comboSymbol}{carKillCount}";
+
+        if (comboText != null)
+        {
+            comboText.text = $"{comboSymbol}{carKillCount}";
+        }
+        
     }
 
     protected virtual void SetCarSpeed()
