@@ -36,7 +36,7 @@ public class ChickenSpawn : MonoBehaviour
         time = 0f; 
 
         if(currentWave.standardChickenAmounts > 0) 
-            StandardChickenNewWave();
+            StandardChickenWave();
     }
 
     private void WaveTime(){
@@ -76,7 +76,7 @@ public class ChickenSpawn : MonoBehaviour
         return spawnPoint;
     }
 
-    public void StandardChickenNewWave(){
+    public void StandardChickenWave(){
         if(!waveEnded){
             float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
             SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
@@ -93,7 +93,7 @@ public class ChickenSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         if(waveChickenAmount <= 0) 
-            StandardChickenNewWave();
+            StandardChickenWave();
     }
 
     private void SpawnAChicken(GameObject chicken, SpawningPoint point)
