@@ -8,9 +8,14 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private ResultsUI resultsUI;
 
+    [Header("ChickenWaves")]
+    [SerializeField] public List<ChickenWave> waves;
+
     [Header("Gameplay Settings")]
-    [SerializeField] private float startTime = 180f;
-    [SerializeField] public int intensitySetting = 0;
+    [SerializeField] public float startTime = 180f;
+    [SerializeField] public bool devMode = false;
+    [SerializeField]  public int intensitySetting = 0;
+    [SerializeField]  public bool isGameOver = false;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
@@ -19,7 +24,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int totalTokens = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
-    [HideInInspector] public bool gameOver = false;
+    [HideInInspector] public bool endSound = false;
+    [HideInInspector] public int waveNumber = 0;
 
     private SoundManager soundManager;
     private Pause pause;
@@ -44,49 +50,83 @@ public class GameManager : MonoBehaviour
         //tokens = 0;
         totalTokens = 0;
 
+        SetGameTime();
         time = startTime;
+
+        if(waves.Count != 0)
+            SettingWaveInChickenSpawn();
+
+        if(isGameOver)
+            MissedChickensWave();
+
     }
 
-    private void Update()
+    private void SetGameTime(){
+        float gameTime = 0f;
+        if(waves.Count != 0){
+            foreach (ChickenWave value in waves)
+            {
+            gameTime = gameTime + value.roundTime;
+            }
+            startTime = gameTime;
+        }
+    }
+
+    private void SettingWaveInChickenSpawn(){
+        // Debug.Log("Current Wave: "+ waveNumber);
+        
+        ChickenWave currentWave = waves[waveNumber];
+        IncreaseIntensity(currentWave.wavePrompt);
+
+        chickenSpawn.SetNewWave(currentWave);
+        
+        IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
+        StartCoroutine(coroutine);
+    }
+
+    private IEnumerator WaitAndNextWave(float time)
     {
-        SetTime();
-        UpdateRankings();
+        yield return new WaitForSeconds(time);
+        waveNumber++;
+        if(waveNumber < waves.Count)
+            SettingWaveInChickenSpawn();
+    }
+
+    private void MissedChickensWave()
+    {
+        ChickenWave endWave = new ChickenWave();
+        endWave.roundTime = 10f;
+        endWave.standardChickenAmounts = Points.safelyCrossedChickens;
+        endWave.wavePrompt = "";
+        endWave.specialChickens = new List<SpecialChicken>();
+        waves.Add(endWave);
+        SettingWaveInChickenSpawn();
+    }
+
+    private void FixedUpdate()
+    {
+        if(!isGameOver){
+            SetTime();
+        }
+        // UpdateRankings();
     }
 
     private void SetTime()
     {
         if (time > 0)
             time -= Time.deltaTime;
-
-        if (time <= 170f && intensitySetting == 0)
-        {
-            IncreaseIntensity("Chickens Incoming");
-        }
-        if (time <= 150f && intensitySetting == 1)
-        {
-            IncreaseIntensity("Coop Cooperation");
-        }
-        if (time <= 120f && intensitySetting == 2)
-        {
-            IncreaseIntensity("Flock Inbound");
-        }
-        if (time <= 100f && intensitySetting == 3)
-        {
-            IncreaseIntensity("Chicken Horde");
-        }
-        if (time <= 60f && intensitySetting == 4)
-        {
-            IncreaseIntensity("Poultry Panic");
-        }
-        if (time <= 18f && intensitySetting == 5)
-        {
-            if (soundManager != null)
-                soundManager.PlayLastSeconds();
-        }
+        
         if (time <= 0)
         {
-            gameOver = true;
+            isGameOver = true;
             HandleResults();
+        }
+        if (time <= 18f)
+        {
+            if(soundManager != null){
+                soundManager.PlayLastSeconds();
+                endSound = true;
+            }
         }
     }
 
@@ -122,8 +162,7 @@ public class GameManager : MonoBehaviour
     private void IncreaseIntensity(string speedUpText)
     {
         intensitySetting++;
-        if (chickenSpawn != null)
-            chickenSpawn.UpdateIntensity(intensitySetting);
+
         if (soundManager != null)
             soundManager.PlayGameSpeed();
         if (interfaceManager != null)
@@ -138,4 +177,25 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         sceneFader.FadeToResults();
     }
+}
+
+[System.Serializable]
+public class ChickenWave
+{
+    public ChickenWave(){}
+    public float roundTime;
+    public String wavePrompt;
+    public int standardChickenAmounts;
+    public int chickenIntesity = 0;
+    public List<SpecialChicken> specialChickens;
+}
+
+[System.Serializable]
+public class SpecialChicken
+{
+    public float timeToSpawn;
+    public GameObject chicken;
+    public bool topSpawn;
+    public bool bottomSpawn;
+    
 }

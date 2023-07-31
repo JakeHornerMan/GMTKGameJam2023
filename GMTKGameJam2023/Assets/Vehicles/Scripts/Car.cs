@@ -87,7 +87,7 @@ public abstract class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameManager.gameOver)
+        if (gameManager.isGameOver)
         {
             rb.velocity = Vector2.zero;
             return;

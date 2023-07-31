@@ -7,126 +7,109 @@ public class ChickenSpawn : MonoBehaviour
     [Header("Spawning Values")]
     [SerializeField] public SpawningPoint[] spawnSpots;
 
-    public GameObject ChickenPrefab;
-    public GameObject GoldenChickenPrefab;
-
-    public float minSpawnTime = 3f;
-    public float maxSpawnTime = 5f;
-
-    public int goldenChickenOdds = 50;
-
-    private GameManager gameManager;
+    [Header("Chicken Types")]
+    [SerializeField] public GameObject ChickenPrefab;
     private SoundManager soundManager;
+
+    [HideInInspector] public ChickenWave currentWave;
+    [HideInInspector] public List<SpecialChicken> specialChickens;
+    [HideInInspector] public int waveChickenAmount;
+    [HideInInspector] public float time = 0f;
+    [HideInInspector] public bool waveEnded = false;
 
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    private void Start()
-    {
-        SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        StartSpawn();
-    }
-
-    public void UpdateIntensity(int intensity)
-    {
-        if (intensity == 2)
-        {
-            minSpawnTime = 2f;
-            maxSpawnTime = 4f;
-            goldenChickenOdds = 45;
-        }
-        if (intensity == 3)
-        {
-            minSpawnTime = 2f;
-            maxSpawnTime = 3f;
-            goldenChickenOdds = 40;
-        }
-        if (intensity == 4)
-        {
-            minSpawnTime = 1f;
-            maxSpawnTime = 2f;
-            goldenChickenOdds = 30;
-        }
-        if (intensity == 5)
-        {
-            minSpawnTime = 0.5f;
-            maxSpawnTime = 1.5f;
-            goldenChickenOdds = 15;
+    private void FixedUpdate() {
+        if(!waveEnded){
+            WaveTime();
         }
     }
 
-    private void StartSpawn()
-    {
-        float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-        IEnumerator coroutine = WaitAndSpawn(spawnTime);
-        StartCoroutine(coroutine);
+    public void SetNewWave(ChickenWave wave){
+        currentWave = wave;
+        specialChickens = wave.specialChickens;
+        specialChickens.Sort((obj1,obj2)=>obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
+        waveEnded = false;
+        time = 0f; 
+
+        if(currentWave.standardChickenAmounts > 0) 
+            StandardChickenWave();
     }
 
-    private IEnumerator WaitAndSpawn(float moveTime)
-    {
-        yield return new WaitForSeconds(moveTime);
-        int selected = BasedRandom();
-
-        int randomNum = Random.Range(0, goldenChickenOdds);
-
-        if (randomNum == 0)
+    private void WaveTime(){
+        time += Time.deltaTime;
+        if (time < currentWave.roundTime)
         {
-            SpawnGoldenChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
+            if(specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn){
+                SpawnAChicken(specialChickens[0].chicken, selectSpawn());
+                specialChickens.RemoveAt(0);
+            }
         }
-        else
-        {
-            SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-        }
-
-        if (!gameManager.gameOver)
-        {
-            SpawnChicken(spawnSpots[selected]);
-            if (gameManager.intensitySetting >= 1)
-            {
-                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-            }
-            if (gameManager.intensitySetting >= 2)
-            {
-                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-            }
-            if (gameManager.intensitySetting >= 4)
-            {
-                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-            }
-            if (gameManager.intensitySetting >= 5)
-            {
-                SpawnChicken(spawnSpots[Random.Range(1, spawnSpots.Length)]);
-            }
-            // Restart timer
-            StartSpawn();
+        if(time > currentWave.roundTime){
+            waveEnded = true;
         }
     }
 
-    private void SpawnChicken(SpawningPoint point)
+    private SpawningPoint selectSpawn(){
+        Vector3 spawn;
+        SpawningPoint spawnPoint = new SpawningPoint();
+        if(specialChickens[0].topSpawn && specialChickens[0].bottomSpawn){
+            float randomNum = Random.Range(-2f, 2f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else if(specialChickens[0].topSpawn){
+            float randomNum = Random.Range(0, 6f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else if(specialChickens[0].bottomSpawn){
+            float randomNum = Random.Range(0, -5f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else{
+            float randomNum = Random.Range(-5f, 6f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        spawnPoint.position = spawn;
+        return spawnPoint;
+    }
+
+    public void StandardChickenWave(){
+        if(!waveEnded){
+            float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
+            SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
+            SpawnAChicken(ChickenPrefab, point);
+
+            waveChickenAmount--;
+
+            IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
+            StartCoroutine(coroutine);
+        }
+    }
+
+    private IEnumerator WaitAndSpawnChicken(float time)
     {
-        Instantiate(ChickenPrefab, point.position, Quaternion.identity);
+        yield return new WaitForSeconds(time);
+        if(waveChickenAmount <= 0) 
+            StandardChickenWave();
+    }
+
+    private void SpawnAChicken(GameObject chicken, SpawningPoint point)
+    {
+        chicken = Instantiate(chicken, point.position, Quaternion.identity);
+        chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
         if (soundManager != null)
             soundManager.PlayRandomChicken();
     }
 
-    private void SpawnGoldenChicken(SpawningPoint point)
-    {
-        Instantiate(GoldenChickenPrefab, point.position, Quaternion.identity);
-    }
-
-    private int BasedRandom()
-    {
-        return Random.Range(1, spawnSpots.Length);
-        // We could use spawnProbability in SpawningPoint object to create smarter probability
-    }
 }
 
 [System.Serializable]
 public class SpawningPoint
 {
+    public SpawningPoint(){}
     public Vector3 position;
-    public float spawnProbability;
+    
 }

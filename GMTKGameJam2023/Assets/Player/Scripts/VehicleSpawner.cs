@@ -56,7 +56,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.gameOver) return;
+        if (gameManager.isGameOver) return;
 
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
