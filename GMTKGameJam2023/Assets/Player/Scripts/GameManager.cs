@@ -215,5 +215,7 @@ public class SpecialChicken
 {
     public float timeToSpawn;
     public GameObject chicken;
+    public bool topSpawn;
+    public bool bottomSpawn;
     
 }

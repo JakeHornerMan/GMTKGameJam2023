@@ -44,7 +44,7 @@ public class ChickenSpawn : MonoBehaviour
         if (time < currentWave.roundTime)
         {
             if(specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn){
-                SpawnAChicken(specialChickens[0].chicken);
+                SpawnAChicken(specialChickens[0].chicken, selectSpawn());
                 specialChickens.RemoveAt(0);
             }
         }
@@ -53,10 +53,34 @@ public class ChickenSpawn : MonoBehaviour
         }
     }
 
+    private SpawningPoint selectSpawn(){
+        Vector3 spawn;
+        SpawningPoint spawnPoint = new SpawningPoint();
+        if(specialChickens[0].topSpawn && specialChickens[0].bottomSpawn){
+            float randomNum = Random.Range(-2f, 2f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else if(specialChickens[0].topSpawn){
+            float randomNum = Random.Range(0, 6f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else if(specialChickens[0].bottomSpawn){
+            float randomNum = Random.Range(0, -5f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        else{
+            float randomNum = Random.Range(-5f, 6f);
+            spawn = new Vector3(-14.75f, randomNum, 0f);
+        }
+        spawnPoint.position = spawn;
+        return spawnPoint;
+    }
+
     public void StandardChickenNewWave(){
         if(!waveEnded){
             float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
-            SpawnAChicken(ChickenPrefab);
+            SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
+            SpawnAChicken(ChickenPrefab, point);
 
             waveChickenAmount--;
 
@@ -72,9 +96,8 @@ public class ChickenSpawn : MonoBehaviour
             StandardChickenNewWave();
     }
 
-    private void SpawnAChicken(GameObject chicken)
+    private void SpawnAChicken(GameObject chicken, SpawningPoint point)
     {
-        SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
         chicken = Instantiate(chicken, point.position, Quaternion.identity);
         chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
         if (soundManager != null)
@@ -86,6 +109,7 @@ public class ChickenSpawn : MonoBehaviour
 [System.Serializable]
 public class SpawningPoint
 {
+    public SpawningPoint(){}
     public Vector3 position;
-    public float spawnProbability;
+    
 }
