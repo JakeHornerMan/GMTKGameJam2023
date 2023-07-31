@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
         }
         if (time <= 18f && intensitySetting == 5)
         {
-            soundManager.PlayLastSeconds();
+            if (soundManager != null)
+                soundManager.PlayLastSeconds();
         }
         if (time <= 0)
         {
@@ -121,9 +122,12 @@ public class GameManager : MonoBehaviour
     private void IncreaseIntensity(string speedUpText)
     {
         intensitySetting++;
-        chickenSpawn.UpdateIntensity(intensitySetting);
-        soundManager.PlayGameSpeed();
-        interfaceManager.ShowSpeedUpText(speedUpText);
+        if (chickenSpawn != null)
+            chickenSpawn.UpdateIntensity(intensitySetting);
+        if (soundManager != null)
+            soundManager.PlayGameSpeed();
+        if (interfaceManager != null)
+            interfaceManager.ShowSpeedUpText(speedUpText);
     }
 
     private void HandleResults()

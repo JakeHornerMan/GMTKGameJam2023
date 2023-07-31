@@ -5095,10 +5095,14 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
   carName: Hatchback
   carPrice: 0
-  ignoreCoins: 0
-  isSpikeCar: 0
-  objectBoundsTag: Death Box
+  ignoreTokens: 0
+  isSlicingCar: 0
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
   carSpeed: 5
+  damage: 120
+  comboMultiplier: 0.2
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
@@ -5107,6 +5111,7 @@ MonoBehaviour:
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
   cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1 &6634941919401553099
 GameObject:
   m_ObjectHideFlags: 0

@@ -5229,8 +5229,12 @@ MonoBehaviour:
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 1
-  objectBoundsTag: Death Box
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
   carSpeed: 5
+  damage: 120
+  comboMultiplier: 0.2
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
