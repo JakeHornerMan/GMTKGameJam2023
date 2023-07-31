@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
     [HideInInspector] public int playerScore = 0;
-    [HideInInspector] public int tokens = 0;
+    [SerializeField] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
     [HideInInspector] public float time = 120f;
     [HideInInspector] public string currentRanking = "Animal Lover";
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
-        tokens = 0;
+        //tokens = 0;
         totalTokens = 0;
 
         time = startTime;

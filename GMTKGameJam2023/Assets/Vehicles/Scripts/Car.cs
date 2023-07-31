@@ -71,7 +71,12 @@ public abstract class Car : MonoBehaviour
     private void Update()
     {
         // xKillCount Combo Text
-        comboText.text = $"{comboSymbol}{carKillCount}";
+
+        if (comboText != null)
+        {
+            comboText.text = $"{comboSymbol}{carKillCount}";
+        }
+        
     }
 
     protected virtual void SetCarSpeed()
