@@ -21,6 +21,7 @@ public class SoundManager : MonoBehaviour
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
+    [SerializeField] private SoundConfig missedChicken;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
@@ -82,6 +83,11 @@ public class SoundManager : MonoBehaviour
     public void PlayLastSeconds()
     {
         PlaySound(lastSecondsConfig);
+    }
+
+    public void PlayMissedChicken()
+    {
+        PlaySound(missedChicken);
     }
 
     public void PlayRandomChicken()

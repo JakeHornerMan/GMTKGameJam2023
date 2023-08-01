@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool devMode = false;
     [SerializeField]  public int intensitySetting = 0;
     [SerializeField]  public bool isGameOver = false;
+    [SerializeField]  public int failureChickenAmount = 10;
+    [SerializeField]  public int lostChicenScore = 1000;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     private ChickenSpawn chickenSpawn;
     private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
+    private CameraShaker cameraShaker;
 
     private void Awake()
     {
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
         chickenSpawn = GetComponent<ChickenSpawn>();
         interfaceManager = GetComponent<InterfaceManager>();
         sceneFader = FindObjectOfType<SceneFader>();
+        cameraShaker = FindObjectOfType<CameraShaker>();
     }
 
     private void Start()
@@ -116,9 +120,10 @@ public class GameManager : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
         
-        if (time <= 0)
+        if (time <= 0 || failureChickenAmount == safelyCrossedChickens)
         {
             isGameOver = true;
+            UpdateRankings();
             HandleResults();
         }
         if (time <= 18f)
@@ -128,6 +133,21 @@ public class GameManager : MonoBehaviour
                 endSound = true;
             }
         }
+    }
+
+    public void SafelyCrossedChicken(){
+        safelyCrossedChickens++;
+        RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
+        soundManager.PlayMissedChicken();
+        StartCoroutine(cameraShaker.Shake(0.25f, 0.5f));
+    }
+
+    public void AddPlayerScore(int addAmount){
+        playerScore += addAmount;
+    }
+
+    public void RemovePlayerScore(int removeAmount){
+        playerScore -= removeAmount;
     }
 
     private void UpdateRankings()
@@ -156,6 +176,9 @@ public class GameManager : MonoBehaviour
             case 0:
                 currentRanking = "Animal Lover";
                 break;
+        }
+        if(failureChickenAmount == safelyCrossedChickens){
+            currentRanking = "You Failed";
         }
     }
 
