@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         safelyCrossedChickens++;
         RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
-        StartCoroutine(cameraShaker.Shake(0.25f, 0.5f));
+        StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
     }
 
     public void AddPlayerScore(int addAmount){
