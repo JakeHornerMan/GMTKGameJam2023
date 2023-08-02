@@ -26,6 +26,8 @@ public class VehicleSpawner : MonoBehaviour
 
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
+    public bool disableVehicleSpawn = false;
+
 
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
@@ -38,7 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
 
-    private Vector3 mousePos;
+    private Vector3 inputPos;
 
     private void Awake()
     {
@@ -57,7 +59,17 @@ public class VehicleSpawner : MonoBehaviour
     private void Update()
     {
         if (gameManager.isGameOver) return;
+        if(disableVehicleSpawn) return;
 
+        if(SystemInfo.deviceType == DeviceType.Desktop)
+            MouseInputs();
+        
+        if(SystemInfo.deviceType == DeviceType.Handheld)
+            TouchInputs();
+        
+    }
+
+    private void MouseInputs(){
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
@@ -77,23 +89,47 @@ public class VehicleSpawner : MonoBehaviour
         UpdateCarCursor();
     }
 
+    private void TouchInputs(){
+        // if (Input.touchCount > 0){
+        // Touch touch = Input.GetTouch(0);
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Handle finger movements based on TouchPhase
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    inputPos = mainCamera.ScreenToWorldPoint(touch.position);
+                    PlaceSelectedCar();
+                    break;
+                case TouchPhase.Moved:
+                    UpdateMousePos();
+                    UpdateCarCursor();
+                    break;
+
+                case TouchPhase.Ended:
+                    PlaceSelectedCar();
+                    break;
+            }
+            
+            
+        }
+    }
+
     private void UpdateMousePos()
     {
-        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void PlaceSelectedCar()
     {
-        // Check Money
-        if (currentActiveCar.carPrice > gameManager.tokens)
-            return;
-
-        // Check Car Wallet Budget
-        if (carWallet.carCount <= 0)
+        // Check Money, Check Car Wallet Budget
+        if (isTooExpensive() || notEnoughCarWallet())
             return;
 
         // Raycast toward Click
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
 
         // Return if Clicked Nothing
         if (hit.collider == null)
@@ -112,7 +148,7 @@ public class VehicleSpawner : MonoBehaviour
         // Spawn Car at Road at Position
         Vector3 spawnPos;
         if (currentActiveCar.placeableAnywhere)
-            spawnPos = new Vector3(mousePos.x, mousePos.y, 1);
+            spawnPos = new Vector3(inputPos.x, inputPos.y, 1);
         else
             spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
@@ -123,12 +159,40 @@ public class VehicleSpawner : MonoBehaviour
             spawnedVehiclesContainer
         );
 
+        disableVehicleSpawn = true;
+
         // Reduce Car Wallet Count
         carWallet.carCount--;
 
         // Reduce Player Money
         gameManager.tokens -= currentActiveCar.carPrice;
         SelectCar(standardCar);
+
+        StartCoroutine(WaitAndEnableSpawn(0.5f));
+    }
+
+    private IEnumerator WaitAndEnableSpawn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        disableVehicleSpawn = false;
+    }
+
+    public bool isTooExpensive(){
+        if (currentActiveCar.carPrice > gameManager.tokens){
+            return true;
+        }
+        else{
+            return false;
+        }     
+    }
+
+    public bool notEnoughCarWallet(){
+        if(carWallet.carCount <= 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void SelectCar(CarButton carBtn)
@@ -153,7 +217,7 @@ public class VehicleSpawner : MonoBehaviour
     private void UpdateCarCursor()
     {
         if (carCursorFollower.followCursor)
-            carCursorFollower.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+            carCursorFollower.transform.position = new Vector3(inputPos.x, inputPos.y, 0);
         carCursorFollower.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
     }
 
