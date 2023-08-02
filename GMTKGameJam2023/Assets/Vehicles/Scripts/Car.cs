@@ -170,7 +170,7 @@ public abstract class Car : MonoBehaviour
     private void KillChicken(ChickenHealth chickenHealth)
     {
         // Increase Score
-        gameManager.playerScore += chickenHealth.pointsReward * carKillCount;
+        gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
 
         // Increase Kill Count
         gameManager.killCount++;
