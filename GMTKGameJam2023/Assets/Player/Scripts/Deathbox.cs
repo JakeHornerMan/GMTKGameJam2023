@@ -19,7 +19,7 @@ public class Deathbox : MonoBehaviour
         if (other.gameObject.CompareTag(chickenTag))
         {
             Destroy(other.transform.parent.gameObject);
-            gameManager.safelyCrossedChickens++;
+            gameManager.SafelyCrossedChicken();
         }
     }
 }

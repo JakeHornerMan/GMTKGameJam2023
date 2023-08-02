@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 304815692333560699}
   - component: {fileID: 5068059985661225512}
   m_Layer: 0
-  m_Name: GameManger
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -146,8 +146,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultsUI: {fileID: 0}
+  waves: []
   startTime: 180
+  devMode: 0
   intensitySetting: 0
+  isGameOver: 0
+  failureChickenAmount: 10
+  lostChicenScore: 1000
   safelyCrossedChickens: 0
   killCount: 0
   playerScore: 0
@@ -155,7 +160,8 @@ MonoBehaviour:
   totalTokens: 0
   time: 120
   currentRanking: Animal Lover
-  gameOver: 0
+  endSound: 0
+  waveNumber: 0
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,92 +176,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnSpots:
   - position: {x: -14.75, y: 5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 4.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 4.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 4.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 4, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 3.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 3.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 3.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 3, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 2.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 2.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 2.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 2, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 1.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 1.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 1.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 1, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 0.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 0.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 0.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: 0, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -0.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -0.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -0.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -1, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -1.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -1.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -1.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -2, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -2.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -2.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -2.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -3, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -3.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -3.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -3.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -4, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -4.25, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -4.5, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -4.75, z: 0}
-    spawnProbability: 0
   - position: {x: -14.75, y: -5, z: 0}
-    spawnProbability: 0
   ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
-  GoldenChickenPrefab: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-  minSpawnTime: 3
-  maxSpawnTime: 6
-  goldenChickenOdds: 50
+  currentWave:
+    roundTime: 0
+    wavePrompt: 
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    specialChickens: []
+  specialChickens: []
+  waveChickenAmount: 0
+  time: 0
+  waveEnded: 0
 --- !u!114 &857913865922615603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +262,9 @@ MonoBehaviour:
   lastSecondsConfig:
     clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
     volume: 0.3
+  missedChicken:
+    clip: {fileID: 8300000, guid: 50d6d23344ed0be40b64917c29ac81aa, type: 3}
+    volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
     volume: 0.5
