@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private ResultsUI resultsUI;
-
-    [Header("ChickenWaves")]
-    [SerializeField] public List<ChickenWave> waves;
-
-    [Header("Gameplay Settings")]
+    [Header("Developer Settings")]
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
-    [SerializeField]  public int intensitySetting = 0;
     [SerializeField]  public bool isGameOver = false;
+    [Header("Gameplay Settings")]
+    [SerializeField]  public int failureChickenAmount = 10;
+    [SerializeField]  public int lostChicenScore = 1000;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
@@ -27,11 +23,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool endSound = false;
     [HideInInspector] public int waveNumber = 0;
 
+    [Header("ChickenWaves")]
+    [SerializeField] public List<ChickenWave> waves;
+
     private SoundManager soundManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
     private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
+    private CameraShaker cameraShaker;
 
     private void Awake()
     {
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         chickenSpawn = GetComponent<ChickenSpawn>();
         interfaceManager = GetComponent<InterfaceManager>();
         sceneFader = FindObjectOfType<SceneFader>();
+        cameraShaker = FindObjectOfType<CameraShaker>();
     }
 
     private void Start()
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log("Current Wave: "+ waveNumber);
         
         ChickenWave currentWave = waves[waveNumber];
-        IncreaseIntensity(currentWave.wavePrompt);
+        NewWavePopup(currentWave.wavePrompt);
 
         chickenSpawn.SetNewWave(currentWave);
         
@@ -116,9 +117,10 @@ public class GameManager : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
         
-        if (time <= 0)
+        if (time <= 0 || failureChickenAmount == safelyCrossedChickens)
         {
             isGameOver = true;
+            UpdateRankings();
             HandleResults();
         }
         if (time <= 18f)
@@ -128,6 +130,21 @@ public class GameManager : MonoBehaviour
                 endSound = true;
             }
         }
+    }
+
+    public void SafelyCrossedChicken(){
+        safelyCrossedChickens++;
+        RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
+        soundManager.PlayMissedChicken();
+        StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
+    }
+
+    public void AddPlayerScore(int addAmount){
+        playerScore += addAmount;
+    }
+
+    public void RemovePlayerScore(int removeAmount){
+        playerScore -= removeAmount;
     }
 
     private void UpdateRankings()
@@ -157,12 +174,13 @@ public class GameManager : MonoBehaviour
                 currentRanking = "Animal Lover";
                 break;
         }
+        if(failureChickenAmount == safelyCrossedChickens){
+            currentRanking = "You Failed";
+        }
     }
 
-    private void IncreaseIntensity(string speedUpText)
+    private void NewWavePopup(string speedUpText)
     {
-        intensitySetting++;
-
         if (soundManager != null)
             soundManager.PlayGameSpeed();
         if (interfaceManager != null)
