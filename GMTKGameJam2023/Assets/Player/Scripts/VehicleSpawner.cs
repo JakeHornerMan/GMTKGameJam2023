@@ -104,12 +104,11 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-                    UpdateMousePos();
-                    UpdateCarCursor();
+                    
                     break;
 
                 case TouchPhase.Ended:
-                    PlaceSelectedCar();
+                    
                     break;
             }
             
