@@ -3,6 +3,16 @@ using System.Collections;
 
 public class CameraShaker : MonoBehaviour
 {
+
+    public static CameraShaker instance;
+
+
+    private void Start()
+    {
+        instance = this;
+    }
+
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         // Store Original Camera Position
