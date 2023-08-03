@@ -43,7 +43,7 @@ public class InterfaceManager : MonoBehaviour
         killsText.text = gameManager.killCount.ToString("000");
         tokensText.text = gameManager.tokens.ToString("000");
         timeText.text = gameManager.time.ToString("0");
-        missedChickenCountText.text = gameManager.safelyCrossedChickens.ToString("00");
+        missedChickenCountText.text = gameManager.safelyCrossedChickens.ToString("000");
         currentCarNameText.text = vehicleSpawner.currentActiveCar.carName;
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
