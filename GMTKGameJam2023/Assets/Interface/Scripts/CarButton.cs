@@ -10,6 +10,7 @@ public class CarButton : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI tokenPriceText;
     [SerializeField] private Image dollarIconImg;
+    [SerializeField] private Image correspCarIcon;
 
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
@@ -30,6 +31,7 @@ public class CarButton : MonoBehaviour
     private void Start()
     {
         tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+        correspCarIcon.sprite = correspondingCar.carIcon;
     }
 
     private void Update()
