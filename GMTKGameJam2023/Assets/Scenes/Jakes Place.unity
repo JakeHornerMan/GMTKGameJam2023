@@ -768,6 +768,10 @@ PrefabInstance:
       propertyPath: currentCarNameText
       value: 
       objectReference: {fileID: 1572340593}
+    - target: {fileID: 5068059985661225512, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: missedChickenCountText
+      value: 
+      objectReference: {fileID: 113452327119585474}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: resultsUI
       value: 
@@ -1197,6 +1201,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+--- !u!114 &113452327119585474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8569890243764406724, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 113452327119585473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3871553453470244991
 PrefabInstance:
   m_ObjectHideFlags: 0
