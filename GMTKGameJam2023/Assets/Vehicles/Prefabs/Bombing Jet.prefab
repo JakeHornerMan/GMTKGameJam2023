@@ -4994,8 +4994,8 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5068,7 +5068,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 6.25, y: 6.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5092,8 +5092,8 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 5885361816208039466}
-  carSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
-  carIcon: {fileID: -911566480, guid: 0777a6added586647b56b41237cf0514, type: 3}
+  carSprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
+  carIcon: {fileID: 21300000, guid: 219d7c0a273407342b9560b8e3696ab7, type: 3}
   carName: Bombing Jet
   carPrice: 8
   ignoreTokens: 0
