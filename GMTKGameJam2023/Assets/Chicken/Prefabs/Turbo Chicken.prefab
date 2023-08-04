@@ -239,7 +239,7 @@ Transform:
   m_Children:
   - {fileID: 8614834387938461589}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &315510484514270918
 Rigidbody2D:
@@ -280,8 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eba7392919cbb94bb312bad5ef69fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hopController: {fileID: 0}
-  chickenSprite: {fileID: 0}
+  hopController: {fileID: 469911086233366047}
+  chickenSprite: {fileID: 7432632716323759472}
+  chickenIntesity: 0
   minMoveTime: 0.5
   maxMoveTime: 3
   laneDistance: 2
