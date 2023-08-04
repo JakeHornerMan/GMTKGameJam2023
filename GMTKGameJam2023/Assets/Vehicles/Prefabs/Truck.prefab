@@ -531,6 +531,7 @@ MonoBehaviour:
   comboSymbol: x
   comboText: {fileID: 8995613761751722113}
   carSprite: {fileID: 21300000, guid: 5da1fa202daf6af4eaa41a6bd62b8de8, type: 3}
+  carIcon: {fileID: 21300000, guid: 49d9e891c8ed2dc4dac4e9bcc5484dd1, type: 3}
   carName: Tactical Truck
   carPrice: 6
   ignoreTokens: 1
@@ -538,6 +539,7 @@ MonoBehaviour:
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
+  placeableAnywhere: 0
   carSpeed: 8
   damage: 120
   comboMultiplier: 0.2

@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     [Header("Developer Settings")]
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
-    [SerializeField]  public bool isGameOver = false;
+    [SerializeField] public bool isGameOver = false;
     [Header("Gameplay Settings")]
-    [SerializeField]  public int failureChickenAmount = 10;
-    [SerializeField]  public int lostChicenScore = 1000;
+    [SerializeField] public int failureChickenAmount = 10;
+    [SerializeField] public int lostChicenScore = 1000;
 
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int killCount = 0;
@@ -54,33 +54,36 @@ public class GameManager : MonoBehaviour
         SetGameTime();
         time = startTime;
 
-        if(waves.Count != 0)
+        if (waves.Count != 0)
             SettingWaveInChickenSpawn();
 
-        if(isGameOver)
+        if (isGameOver)
             MissedChickensWave();
 
     }
 
-    private void SetGameTime(){
+    private void SetGameTime()
+    {
         float gameTime = 0f;
-        if(waves.Count != 0){
+        if (waves.Count != 0)
+        {
             foreach (ChickenWave value in waves)
             {
-            gameTime = gameTime + value.roundTime;
+                gameTime = gameTime + value.roundTime;
             }
             startTime = gameTime;
         }
     }
 
-    private void SettingWaveInChickenSpawn(){
+    private void SettingWaveInChickenSpawn()
+    {
         // Debug.Log("Current Wave: "+ waveNumber);
-        
+
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
 
         chickenSpawn.SetNewWave(currentWave);
-        
+
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
         StartCoroutine(coroutine);
     }
@@ -89,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if(waveNumber < waves.Count)
+        if (waveNumber < waves.Count)
             SettingWaveInChickenSpawn();
     }
 
@@ -106,7 +109,8 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isGameOver){
+        if (!isGameOver)
+        {
             SetTime();
         }
         // UpdateRankings();
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour
     {
         if (time > 0)
             time -= Time.deltaTime;
-        
+
         if (time <= 0 || failureChickenAmount == safelyCrossedChickens)
         {
             isGameOver = true;
@@ -125,25 +129,29 @@ public class GameManager : MonoBehaviour
         }
         if (time <= 18f)
         {
-            if(soundManager != null){
+            if (soundManager != null)
+            {
                 soundManager.PlayLastSeconds();
                 endSound = true;
             }
         }
     }
 
-    public void SafelyCrossedChicken(){
+    public void SafelyCrossedChicken()
+    {
         safelyCrossedChickens++;
         RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
     }
 
-    public void AddPlayerScore(int addAmount){
+    public void AddPlayerScore(int addAmount)
+    {
         playerScore += addAmount;
     }
 
-    public void RemovePlayerScore(int removeAmount){
+    public void RemovePlayerScore(int removeAmount)
+    {
         playerScore -= removeAmount;
     }
 
@@ -174,7 +182,9 @@ public class GameManager : MonoBehaviour
                 currentRanking = "Animal Lover";
                 break;
         }
-        if(failureChickenAmount == safelyCrossedChickens){
+
+        if (failureChickenAmount == safelyCrossedChickens)
+        {
             currentRanking = "You Failed";
         }
     }
@@ -200,7 +210,7 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class ChickenWave
 {
-    public ChickenWave(){}
+    public ChickenWave() { }
     public float roundTime;
     public String wavePrompt;
     public int standardChickenAmounts;
@@ -215,5 +225,5 @@ public class SpecialChicken
     public GameObject chicken;
     public bool topSpawn;
     public bool bottomSpawn;
-    
+
 }

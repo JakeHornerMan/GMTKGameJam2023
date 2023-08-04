@@ -145,11 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultsUI: {fileID: 0}
-  waves: []
   startTime: 180
   devMode: 0
-  intensitySetting: 0
   isGameOver: 0
   failureChickenAmount: 10
   lostChicenScore: 1000
@@ -162,6 +159,7 @@ MonoBehaviour:
   currentRanking: Animal Lover
   endSound: 0
   waveNumber: 0
+  waves: []
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
