@@ -18,6 +18,9 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
+    [SerializeField] public bool canSpinOut = false;
+    [SerializeField] public bool isSpinning = false;
+    private float degreesPerSecond = 540f;
 
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
@@ -37,6 +40,9 @@ public abstract class Car : MonoBehaviour
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
     [SerializeField] private float particleDestroyDelay = 2f;
+
+    //[Header("References to Children")]
+    private GameObject carSpriteObject;
 
     [Header("PopUp Values")]
     [SerializeField] private string scorePopUpMsg = "Points";
@@ -73,6 +79,12 @@ public abstract class Car : MonoBehaviour
     {
         // xKillCount Combo Text
 
+        if (isSpinning)
+        {
+            carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
+        }
+
+        // should be moved to function
         if (comboText != null)
         {
             comboText.text = $"{comboSymbol}{carKillCount}";
@@ -188,4 +200,22 @@ public abstract class Car : MonoBehaviour
         newPopUp.SetText(msg);
         Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
+
+    public void SpinOutCar()
+    {
+        if (canSpinOut == true && isSpinning == false)
+        {
+            BoxCollider2D carCollider = GetComponent<BoxCollider2D>();
+
+            carCollider.size = new Vector2(1.8f, carCollider.size.y);
+
+            carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
+
+            isSpinning = true;
+
+
+        }
+    }
+
+    
 }
