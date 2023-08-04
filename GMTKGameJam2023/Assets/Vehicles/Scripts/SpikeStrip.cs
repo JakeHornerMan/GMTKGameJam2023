@@ -14,18 +14,28 @@ public class SpikeStrip : MonoBehaviour
 
     [SerializeField] private GameManager gameManager;
 
+    [SerializeField] private float spikeHealth;
+    private float spikeCurrentHealth;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+
+        spikeCurrentHealth = spikeHealth;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TakeSpikeDamage(float damageTaken)
     {
-        
+        spikeHealth -= damageTaken;
+
+        if (spikeHealth < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,10 +71,15 @@ public class SpikeStrip : MonoBehaviour
         // soundManager.PlayChickenHit();
 
         // Camera Shake
-        StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
 
-        if (car.canSpinOut == true)
+
+        
+        
+
+        if (car.canSpinOut == true && car.isSpinning == false && car.carName != "Police Car")
         {
+            StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
+            TakeSpikeDamage(5f);
             car.SpinOutCar();
         }
     }
@@ -82,6 +97,8 @@ public class SpikeStrip : MonoBehaviour
         {
             KillChicken(chickenHealth);
         }
+
+        TakeSpikeDamage(1f);
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);

@@ -18,7 +18,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
     [SerializeField] public bool canSpinOut = false;
-    [SerializeField] private bool isSpinning = false;
+    [SerializeField] public bool isSpinning = false;
     private float degreesPerSecond = 540f;
 
     [Header("Tags")]
@@ -202,7 +202,7 @@ public abstract class Car : MonoBehaviour
 
     public void SpinOutCar()
     {
-        if (canSpinOut == true)
+        if (canSpinOut == true && isSpinning == false)
         {
             BoxCollider2D carCollider = GetComponent<BoxCollider2D>();
 

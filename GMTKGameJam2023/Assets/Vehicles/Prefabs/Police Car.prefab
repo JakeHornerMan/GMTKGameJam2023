@@ -4840,6 +4840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358518566432079297}
   - component: {fileID: 882723343413867202}
+  - component: {fileID: 3711591378489207395}
   m_Layer: 0
   m_Name: Car Sprite
   m_TagString: Untagged
@@ -4903,8 +4904,8 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
-  m_Color: {r: 0.3443396, g: 0.46825513, b: 1, a: 1}
+  m_Sprite: {fileID: 149015047, guid: b41f9bb12029b7e469d5fef77ad08e0d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4914,6 +4915,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3711591378489207395
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072754100500811535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e784de058764c894187bb6766dfa48d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2768895229474700397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5147,10 +5169,12 @@ MonoBehaviour:
   camShakeMagnitude: 0.1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
-  policeShakeDuration: 3
+  policeShakeDuration: 1
   policeShakeMagnitude: 0.25
+  placeMultipleInLine: 0
+  placeOnClickLocation: 0
   spikePrefab: {fileID: 5724720806292706950, guid: 24dfbeb66139a3945aaaf0a66977cf12, type: 3}
-  numberOfSpikes: 5
+  numberOfSpikes: 3
   laneLength: 10
 --- !u!1 &6634941919401553099
 GameObject:
