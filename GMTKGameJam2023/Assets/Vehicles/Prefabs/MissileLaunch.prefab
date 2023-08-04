@@ -190,7 +190,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -954,7 +954,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 35
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5216,6 +5216,7 @@ MonoBehaviour:
   comboSymbol: x
   comboText: {fileID: 5885361816208039466}
   carSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
+  carIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
   carName: Missile Launch
   carPrice: 0
   ignoreTokens: 1
@@ -5455,7 +5456,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283523279
+    rgba: 4291797841
   m_fontColor: {r: 0.8117647, g: 0.37711194, b: 0.31764707, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

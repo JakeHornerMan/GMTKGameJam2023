@@ -13,6 +13,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Car Info")]
     [SerializeField] public Sprite carSprite;
+    [SerializeField] public Sprite carIcon;
     [SerializeField] public string carName;
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreTokens = false;
@@ -88,7 +89,7 @@ public abstract class Car : MonoBehaviour
         {
             comboText.text = $"{comboSymbol}{carKillCount}";
         }
-        
+
     }
 
     protected virtual void SetCarSpeed()

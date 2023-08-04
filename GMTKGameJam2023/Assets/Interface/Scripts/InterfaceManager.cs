@@ -15,6 +15,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
     [SerializeField] private TextMeshProUGUI speedUpText;
+    [SerializeField] private TextMeshProUGUI missedChickenCountText;
 
     [Header("Animation")]
     [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
@@ -42,6 +43,7 @@ public class InterfaceManager : MonoBehaviour
         killsText.text = gameManager.killCount.ToString("000");
         tokensText.text = gameManager.tokens.ToString("000");
         timeText.text = gameManager.time.ToString("0");
+        missedChickenCountText.text = gameManager.safelyCrossedChickens.ToString("000");
         currentCarNameText.text = vehicleSpawner.currentActiveCar.carName;
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
