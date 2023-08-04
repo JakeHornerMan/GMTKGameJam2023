@@ -56,6 +56,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
     private int carKillCount = 0;
+    private int totalPoints = 0;
 
     private GameManager gameManager;
     private Rigidbody2D rb;
@@ -120,8 +121,11 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.CompareTag(deathboxTag))
+        if (collision.gameObject.CompareTag(deathboxTag)){
+            if(totalPoints > 0)
+                gameManager.AddPlayerScore(totalPoints);
             Destroy(gameObject);
+        }   
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -170,14 +174,15 @@ public abstract class Car : MonoBehaviour
 
     private void KillChicken(ChickenHealth chickenHealth)
     {
-        // Increase Score
-        gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
-
         // Increase Kill Count
         gameManager.killCount++;
 
         // Increase Car-Specific Kill Count
         carKillCount++;
+
+        // Increase Score
+        totalPoints = totalPoints + (chickenHealth.pointsReward * carKillCount);
+        // gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
 
         // Change Combo Multiplier
         float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));

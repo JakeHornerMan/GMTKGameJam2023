@@ -16,6 +16,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentCarNameText;
     [SerializeField] private TextMeshProUGUI speedUpText;
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
+    [SerializeField] private GameObject canvas;
 
     [Header("Animation")]
     [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
@@ -29,12 +30,17 @@ public class InterfaceManager : MonoBehaviour
     private CarWallet carWallet;
     private Animator speedUptextAnimator;
 
+    [Header("Points Popups")]
+    [SerializeField] public GameObject positivePoints;
+    [SerializeField] public GameObject negativePoints;
+
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
+        canvas = GameObject.Find("Canvas");
     }
 
     private void Update()
@@ -71,5 +77,20 @@ public class InterfaceManager : MonoBehaviour
     private void DeactivateSpeedUpText()
     {
         speedUpText.gameObject.SetActive(false);
+    }
+
+    public void ScoreUI(int points, bool ispositive){
+        Vector3 spawnLocation = new Vector3(0, 0, 0);
+        if(ispositive){
+            GameObject score = GameObject.Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
+            score.GetComponent<RectTransform>().localPosition = new Vector3(125f, 350f, 0);
+            score.GetComponent<TextMeshProUGUI>().text = "+"+points.ToString();
+        }
+        else{
+            GameObject score = GameObject.Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
+            score.GetComponent<RectTransform>().localPosition = new Vector3(-125f, 350f, 0);
+            score.GetComponent<TextMeshProUGUI>().text = "-"+points.ToString();
+        }
+        
     }
 }
