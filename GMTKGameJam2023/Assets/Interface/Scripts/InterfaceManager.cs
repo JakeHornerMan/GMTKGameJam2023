@@ -51,7 +51,6 @@ public class InterfaceManager : MonoBehaviour
 
     private void Update()
     {
-        
         killsText.text = gameManager.killCount.ToString("000");
         tokensText.text = gameManager.tokens.ToString("000");
         timeText.text = gameManager.time.ToString("0");
@@ -61,11 +60,14 @@ public class InterfaceManager : MonoBehaviour
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
     }
 
-    private void FixedUpdate(){
-        if(scoreForText < gameManager.playerScore){
+    private void FixedUpdate()
+    {
+        if (scoreForText < gameManager.playerScore)
+        {
             scoreForText += scoreMoverPositive;
         }
-        else if(scoreForText > gameManager.playerScore){
+        else if (scoreForText > gameManager.playerScore)
+        {
             scoreForText -= scoreMoverNegative;
         }
         pointsText.GetComponent<TextMeshProUGUI>().text = scoreForText.ToString("0000");
@@ -95,22 +97,25 @@ public class InterfaceManager : MonoBehaviour
         speedUpText.gameObject.SetActive(false);
     }
 
-    public void ScoreUI(int points, bool ispositive){
-        Vector3 spawnLocation = new Vector3(0, 0, 0);
-        if(ispositive){
-            GameObject score = GameObject.Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
+    public void ScoreUI(int points, bool ispositive)
+    {
+        Vector3 spawnLocation = new(0, 0, 0);
+        if (ispositive)
+        {
+            GameObject score = Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
             score.GetComponent<RectTransform>().localPosition = new Vector3(125f, 350f, 0);
-            score.GetComponent<TextMeshProUGUI>().text = "+"+points.ToString();
-            scoreMoverPositive = points/50;
+            score.GetComponent<TextMeshProUGUI>().text = "+" + points.ToString();
+            scoreMoverPositive = points / 50;
             pointsText.GetComponent<Animator>().Play("Score");
         }
-        else{
-            GameObject score = GameObject.Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
+        else
+        {
+            GameObject score = Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
             score.GetComponent<RectTransform>().localPosition = new Vector3(-125f, 350f, 0);
-            score.GetComponent<TextMeshProUGUI>().text = "-"+points.ToString();
-            scoreMoverNegative = points/50;
+            score.GetComponent<TextMeshProUGUI>().text = "-" + points.ToString();
+            scoreMoverNegative = points / 50;
             pointsText.GetComponent<Animator>().Play("NegativeScore");
         }
-        
+
     }
 }
