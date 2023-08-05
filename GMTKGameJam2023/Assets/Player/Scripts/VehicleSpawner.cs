@@ -28,7 +28,6 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
     public bool disableVehicleSpawn = false;
 
-
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
 
@@ -59,17 +58,18 @@ public class VehicleSpawner : MonoBehaviour
     private void Update()
     {
         if (gameManager.isGameOver) return;
-        if(disableVehicleSpawn) return;
+        if (disableVehicleSpawn) return;
 
-        if(SystemInfo.deviceType == DeviceType.Desktop)
+        if (SystemInfo.deviceType == DeviceType.Desktop)
             MouseInputs();
-        
-        if(SystemInfo.deviceType == DeviceType.Handheld)
+
+        if (SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
-        
+
     }
 
-    private void MouseInputs(){
+    private void MouseInputs()
+    {
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
@@ -89,7 +89,8 @@ public class VehicleSpawner : MonoBehaviour
         UpdateCarCursor();
     }
 
-    private void TouchInputs(){
+    private void TouchInputs()
+    {
         // if (Input.touchCount > 0){
         // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
@@ -104,15 +105,13 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-                    
+
                     break;
 
                 case TouchPhase.Ended:
-                    
+
                     break;
             }
-            
-            
         }
     }
 
@@ -176,20 +175,26 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool isTooExpensive(){
-        if (currentActiveCar.carPrice > gameManager.tokens){
+    public bool isTooExpensive()
+    {
+        if (currentActiveCar.carPrice > gameManager.tokens)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
-        }     
+        }
     }
 
-    public bool notEnoughCarWallet(){
-        if(carWallet.carCount <= 0){
+    public bool notEnoughCarWallet()
+    {
+        if (carWallet.carCount <= 0)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
