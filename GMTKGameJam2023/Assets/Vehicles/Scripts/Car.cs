@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
+    [SerializeField] private bool canIBeBombed = true;
     [SerializeField] public bool canSpinOut = false;
     [SerializeField] public bool isSpinning = false;
     private float degreesPerSecond = 540f;
@@ -121,11 +123,12 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.CompareTag(deathboxTag)){
-            if(totalPoints > 0)
+        if (collision.gameObject.CompareTag(deathboxTag))
+        {
+            if (totalPoints > 0)
                 gameManager.AddPlayerScore(totalPoints);
             Destroy(gameObject);
-        }   
+        }
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -162,7 +165,7 @@ public abstract class Car : MonoBehaviour
         // Canera Shake
         StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
-        // Check if Chicken Will DIe
+        // Check if Chicken Will Die
         if (chickenHealth.health - damage <= 0)
         {
             KillChicken(chickenHealth);
@@ -170,6 +173,14 @@ public abstract class Car : MonoBehaviour
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
+
+        // Destroy Self if Bomb Chicken
+        BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
+        if (bombChickenHealth != null && canIBeBombed)
+        {
+            // Destroy the car as well
+            Destroy(gameObject);
+        }
     }
 
     private void KillChicken(ChickenHealth chickenHealth)
@@ -217,10 +228,11 @@ public abstract class Car : MonoBehaviour
             carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
 
             isSpinning = true;
-
-
         }
     }
 
-    
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }
