@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17f71e7d5ac2df94ebb5f62b7752d839
+guid: 9d5e95a62f0220a47aeaac6b67c87dfa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,11 +107,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,11 +120,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,12 +136,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gold_chickenv3_0
+      name: gold_chicken_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 31
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7aaafce72ed4cd40ae74f3bc076b103
-      internalID: -393714191
+      spriteID: a649ee013ad572d4b96e926cb3760027
+      internalID: 218766053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gold_chickenv3_1
+      name: gold_chicken_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 31
-        height: 31
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdfd7c3f254a5894698d6ae7b1f71f01
-      internalID: 189744964
+      spriteID: ac763a6c35e3c5649a7af082cb4a814e
+      internalID: 1112088024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gold_chickenv3_2
+      name: gold_chicken_2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
-        width: 31
-        height: 30
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 147dcefff49902749b5f2c73f957d9c1
-      internalID: -1726507560
+      spriteID: 5de3002640e9ca141af537b681282051
+      internalID: 80361896
       vertices: []
       indices: 
       edges: []
@@ -209,9 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gold_chickenv3_0: -393714191
-      gold_chickenv3_1: 189744964
-      gold_chickenv3_2: -1726507560
+      gold_chicken_0: 218766053
+      gold_chicken_1: 1112088024
+      gold_chicken_2: 80361896
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

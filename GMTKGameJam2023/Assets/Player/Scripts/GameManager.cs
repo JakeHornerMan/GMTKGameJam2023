@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
     [SerializeField] public bool isGameOver = false;
+
     [Header("Gameplay Settings")]
     [SerializeField] public int failureChickenAmount = 10;
     [SerializeField] public int lostChicenScore = 1000;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public string currentRanking = "Animal Lover";
     [HideInInspector] public bool endSound = false;
     [HideInInspector] public int waveNumber = 0;
+    
 
     [Header("ChickenWaves")]
     [SerializeField] public List<ChickenWave> waves;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
+    
 
     private void Awake()
     {
@@ -147,11 +150,13 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerScore(int addAmount)
     {
+        interfaceManager.ScoreUI(addAmount, true);
         playerScore += addAmount;
     }
 
     public void RemovePlayerScore(int removeAmount)
     {
+        interfaceManager.ScoreUI(removeAmount, false);
         playerScore -= removeAmount;
     }
 

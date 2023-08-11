@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -159,7 +159,50 @@ MonoBehaviour:
   currentRanking: Animal Lover
   endSound: 0
   waveNumber: 0
-  waves: []
+  waves:
+  - roundTime: 30
+    wavePrompt: Lets Go 1
+    standardChickenAmounts: 30
+    chickenIntesity: 5
+    specialChickens:
+    - timeToSpawn: 2
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 1
+      bottomSpawn: 1
+    - timeToSpawn: 4
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 1
+      bottomSpawn: 0
+    - timeToSpawn: 6
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 0
+      bottomSpawn: 1
+    - timeToSpawn: 10
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+  - roundTime: 30
+    wavePrompt: Lets Go 2
+    standardChickenAmounts: 20
+    chickenIntesity: 3
+    specialChickens:
+    - timeToSpawn: 10
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 1
+      bottomSpawn: 1
+    - timeToSpawn: 20
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 1
+      bottomSpawn: 1
+  - roundTime: 30
+    wavePrompt: Lets Go 3
+    standardChickenAmounts: 50
+    chickenIntesity: 1
+    specialChickens:
+    - timeToSpawn: 10
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +357,10 @@ MonoBehaviour:
   timeText: {fileID: 0}
   currentCarNameText: {fileID: 0}
   speedUpText: {fileID: 0}
+  missedChickenCountText: {fileID: 0}
+  canvas: {fileID: 0}
   speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
   speedUpTextDeactivationDelay: 2
+  positivePoints: {fileID: 7312448788404570237, guid: a8e0b7dbcceb3ba49960b10afa13cdf5, type: 3}
+  negativePoints: {fileID: 2036366478192065954, guid: 012179248d163534d9ae3669a54aa4c2, type: 3}
