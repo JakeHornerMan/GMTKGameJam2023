@@ -5098,6 +5098,8 @@ MonoBehaviour:
   carPrice: 8
   ignoreTokens: 0
   isSlicingCar: 0
+  canSpinOut: 0
+  isSpinning: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -5122,7 +5124,7 @@ MonoBehaviour:
   delayBeforeBombsAppear: 0.5
   bombPrefab: {fileID: 3716947289871644993, guid: 8a5c6f74d3c540444a232ec8d7370f0d, type: 3}
   numberOfBombs: 4
-  laneLength: 17
+  laneLength: 10
   delayBetweenBombs: 0.25
   bombLifetime: 2.5
 --- !u!1 &6634941919401553099
