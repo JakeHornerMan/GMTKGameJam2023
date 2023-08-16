@@ -27,11 +27,14 @@ public class RoadHighlight : MonoBehaviour
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-        bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
-        if (hit.collider == null || !amIPlaceable)
+        if (vehicleSpawner != null)
         {
-            bottomHighlight.SetActive(false);
-            return;
+            bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
+            if (hit.collider == null || !amIPlaceable)
+            {
+                bottomHighlight.SetActive(false);
+                return;
+            }
         }
 
         bool touchingRoad = hit.collider.gameObject == gameObject;
