@@ -7,11 +7,14 @@ public class RoadHighlight : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject bottomHighlight;
 
+    private VehicleSpawner vehicleSpawner;
+
     private Camera mainCamera;
 
     private void Awake()
     {
         mainCamera = Camera.main;
+        vehicleSpawner = FindObjectOfType<VehicleSpawner>();
     }
 
     private void Update()
@@ -24,10 +27,14 @@ public class RoadHighlight : MonoBehaviour
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-        if (hit.collider == null)
+        if (vehicleSpawner != null)
         {
-            bottomHighlight.SetActive(false);
-            return;
+            bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
+            if (hit.collider == null || !amIPlaceable)
+            {
+                bottomHighlight.SetActive(false);
+                return;
+            }
         }
 
         bool touchingRoad = hit.collider.gameObject == gameObject;

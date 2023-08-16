@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1117603106255636642}
   - component: {fileID: 2355304269964022646}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: FighterJetBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,8 +206,11 @@ MonoBehaviour:
   carIcon: {fileID: -1933525247, guid: b637130d941586045a17f8e073a47366, type: 3}
   carName: Bomb
   carPrice: 0
-  ignoreTokens: 0
+  ignoreTokens: 1
   isSlicingCar: 0
+  canIBeBombed: 0
+  canSpinOut: 0
+  isSpinning: 0
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0

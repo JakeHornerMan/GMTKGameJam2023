@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1889958539033141684, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1889958539033141684, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1889958539033141684, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
       propertyPath: m_LocalPosition.y
@@ -56,20 +56,52 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 964c16fa5d2a66444967405984532137, type: 3}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: spawnSpots.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441845084688362515, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.45
+      objectReference: {fileID: 0}
     - target: {fileID: 8249777430176998236, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
       propertyPath: m_Name
       value: BlankGrass
       objectReference: {fileID: 0}
     - target: {fileID: 8249777430176998236, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Grass
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9022450305103181319, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
-    - {fileID: 4635666400959951925, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
-    - {fileID: 5407350742392318600, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
-    - {fileID: 8637622475186126120, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
     - {fileID: 2987872895692902613, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []

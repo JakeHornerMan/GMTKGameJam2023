@@ -11,19 +11,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool isGameOver = false;
 
     [Header("Gameplay Settings")]
-    [SerializeField] public int failureChickenAmount = 10;
+    [SerializeField] public int startLives = 10;
     [SerializeField] public int lostChicenScore = 1000;
 
-    [HideInInspector] public int safelyCrossedChickens = 0;
-    [HideInInspector] public int killCount = 0;
-    [HideInInspector] public int playerScore = 0;
-    [SerializeField] public int tokens = 0;
-    [HideInInspector] public int totalTokens = 0;
-    [HideInInspector] public float time = 120f;
-    [HideInInspector] public string currentRanking = "Animal Lover";
-    [HideInInspector] public bool endSound = false;
-    [HideInInspector] public int waveNumber = 0;
-    
+    [Header("Player Stats (Don't Modify in Inspector)")]
+    public int safelyCrossedChickens = 0;
+    public int missedChickenLives = 0;
+    public int killCount = 0;
+    public int playerScore = 0;
+    public int tokens = 0;
+    public int totalTokens = 0;
+    public string currentRanking = "Animal Lover";
+
+    [Header("Current Time (Don't Modify in Inspector)")]
+    public float time = 120f;
+
+    [Header("Other Values (Don't Modify in Inspector)")]
+    public bool endSound = false;
+    public int waveNumber = 0;
 
     [Header("ChickenWaves")]
     [SerializeField] public List<ChickenWave> waves;
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
     private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
-    
+
 
     private void Awake()
     {
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (ChickenWave value in waves)
             {
-                gameTime = gameTime + value.roundTime;
+                gameTime += value.roundTime;
             }
             startTime = gameTime;
         }
@@ -101,11 +107,13 @@ public class GameManager : MonoBehaviour
 
     private void MissedChickensWave()
     {
-        ChickenWave endWave = new ChickenWave();
-        endWave.roundTime = 10f;
-        endWave.standardChickenAmounts = Points.safelyCrossedChickens;
-        endWave.wavePrompt = "";
-        endWave.specialChickens = new List<SpecialChicken>();
+        ChickenWave endWave = new()
+        {
+            roundTime = 10f,
+            standardChickenAmounts = Points.safelyCrossedChickens,
+            wavePrompt = "",
+            specialChickens = new List<SpecialChicken>()
+        };
         waves.Add(endWave);
         SettingWaveInChickenSpawn();
     }
@@ -124,7 +132,7 @@ public class GameManager : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
 
-        if (time <= 0 || failureChickenAmount == safelyCrossedChickens)
+        if (time <= 0 || missedChickenLives <= 0)
         {
             isGameOver = true;
             UpdateRankings();
@@ -143,6 +151,7 @@ public class GameManager : MonoBehaviour
     public void SafelyCrossedChicken()
     {
         safelyCrossedChickens++;
+        missedChickenLives--;
         RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
@@ -158,6 +167,7 @@ public class GameManager : MonoBehaviour
     {
         interfaceManager.ScoreUI(removeAmount, false);
         playerScore -= removeAmount;
+        playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
 
     private void UpdateRankings()
@@ -188,7 +198,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (failureChickenAmount == safelyCrossedChickens)
+        if (missedChickenLives <= 0)
         {
             currentRanking = "You Failed";
         }
