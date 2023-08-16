@@ -63,7 +63,8 @@ public class BombingJet : Car
 
                 GameObject currentBomb = Instantiate(bombPrefab, bombPosition, Quaternion.identity);
 
-                Destroy(currentBomb, bombLifetime);
+                // Destroy(currentBomb, bombLifetime);
+                StartCoroutine(DestroyBombs(currentBomb));
 
             }
 
@@ -72,6 +73,14 @@ public class BombingJet : Car
 
             
         }
+
+        Destroy(gameObject, bombLifetime);
         
+    }
+
+    private IEnumerator DestroyBombs(GameObject currentBomb)
+    {
+        yield return new WaitForSeconds(bombLifetime);
+        currentBomb.GetComponent<Car>().DestroyAndAddPoints();
     }
 }
