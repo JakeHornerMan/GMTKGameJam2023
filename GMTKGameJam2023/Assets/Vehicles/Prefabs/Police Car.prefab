@@ -4841,6 +4841,7 @@ GameObject:
   - component: {fileID: 358518566432079297}
   - component: {fileID: 882723343413867202}
   - component: {fileID: 3711591378489207395}
+  - component: {fileID: 4145143869056839675}
   m_Layer: 0
   m_Name: Car Sprite
   m_TagString: Untagged
@@ -4936,6 +4937,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4145143869056839675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072754100500811535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2768895229474700397
 GameObject:
   m_ObjectHideFlags: 0
