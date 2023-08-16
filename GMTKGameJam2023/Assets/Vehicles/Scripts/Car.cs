@@ -253,6 +253,8 @@ public abstract class Car : MonoBehaviour
 
     public void DestroySelf()
     {
+        if (totalPoints > 0)
+            gameManager.AddPlayerScore(totalPoints);
         Destroy(gameObject);
     }
 }

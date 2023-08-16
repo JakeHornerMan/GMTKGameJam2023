@@ -36,8 +36,6 @@ public class Bomb : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
 
         StartCoroutine(BombScoreManager());
-
-        
     }
 
     public void AssignJetParent(BombingJet jet)
@@ -79,7 +77,7 @@ public class Bomb : MonoBehaviour
         // Impact Sound
         soundManager.PlayChickenHit();
 
-        
+
 
         // Camera Shake
         StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
