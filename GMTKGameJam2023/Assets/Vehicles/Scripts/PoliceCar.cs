@@ -8,7 +8,6 @@ public class PoliceCar : Car
     [SerializeField] private float policeShakeDuration = 3f;
     [SerializeField] private float policeShakeMagnitude = 0.25f;
 
-
     [Header("Which method of placing spikes?")]
     [SerializeField] private bool placeMultipleInLine = false;
     [SerializeField] private bool placeOnClickLocation = false;
@@ -18,8 +17,6 @@ public class PoliceCar : Car
     [SerializeField] private float numberOfSpikes = 3f;
     private float numberOfSpikesDeployed = 1f;
     [SerializeField] private float laneLength = 17f;
-    //[SerializeField] private float delayBetweenBombs = 0.25f;
-    
 
     void Start()
     {
