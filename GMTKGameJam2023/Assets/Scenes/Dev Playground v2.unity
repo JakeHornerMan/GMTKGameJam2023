@@ -757,6 +757,22 @@ PrefabInstance:
       propertyPath: missedChickenCountText
       value: 
       objectReference: {fileID: 113452327119585474}
+    - target: {fileID: 7543842703582401103, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: ChickenPrefab
+      value: 
+      objectReference: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: tokens
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: lostChicenScore
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: failureChickenAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].wavePrompt
       value: Debug Wave
@@ -769,6 +785,18 @@ PrefabInstance:
       propertyPath: waves.Array.data[0].specialChickens.Array.size
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[0].chicken
+      value: 
+      objectReference: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[1].chicken
+      value: 
+      objectReference: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[2].chicken
+      value: 
+      objectReference: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[4].chicken
       value: 
@@ -996,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 9168841275190511153, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: correspondingCar
       value: 
-      objectReference: {fileID: -620051609290920513, guid: d88b644156c3a224697efd3585e1337a, type: 3}
+      objectReference: {fileID: 6250562015194746558, guid: 352dc83d38570494db1d1fb8daeee559, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -29,9 +29,9 @@ public class ChickenHealth : MonoBehaviour
             HandleDeath();
     }
 
-    private void HandleDeath()
+    protected virtual void HandleDeath()
     {
-        Vector3 particlePos = new Vector3(transform.position.x, transform.position.y, featherParticlesZPos);
+        Vector3 particlePos = new(transform.position.x, transform.position.y, featherParticlesZPos);
         Instantiate(featherParticles, particlePos, Quaternion.identity);
         Destroy(gameObject);
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
+    [SerializeField] private bool canIBeBombed = true;
     [SerializeField] public bool canSpinOut = false;
     [SerializeField] public bool isSpinning = false;
     private float degreesPerSecond = 540f;
@@ -56,9 +58,9 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
     private int carKillCount = 0;
-    private int totalPoints = 0;
+    protected int totalPoints = 0;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
     private Rigidbody2D rb;
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
@@ -122,9 +124,9 @@ public abstract class Car : MonoBehaviour
             HandleTokenCollision(token);
 
         if (collision.gameObject.CompareTag(deathboxTag)){
-            if(totalPoints > 0)
-                gameManager.AddPlayerScore(totalPoints);
-            Destroy(gameObject);
+            //if (totalPoints > 0)
+            //    gameManager.AddPlayerScore(totalPoints);
+            //Destroy(gameObject);
         }   
     }
 
@@ -162,14 +164,26 @@ public abstract class Car : MonoBehaviour
         // Canera Shake
         StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
-        // Check if Chicken Will DIe
+        // Check if Chicken Will Die
         if (chickenHealth.health - damage <= 0)
         {
             KillChicken(chickenHealth);
         }
 
+        //chickenHealth.gameObject.GetComponent<ChickenMovement>().PlayChickenHitstop();
+
+        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
+
+        // Destroy Self if Bomb Chicken
+        BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
+        if (bombChickenHealth != null && canIBeBombed)
+        {
+            // Destroy the car as well
+            Destroy(gameObject);
+        }
     }
 
     private void KillChicken(ChickenHealth chickenHealth)
@@ -186,6 +200,8 @@ public abstract class Car : MonoBehaviour
 
         // Change Combo Multiplier
         float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));
+
+        
 
         // +100 Points Pop-Up
         ShowPopup(
@@ -217,10 +233,28 @@ public abstract class Car : MonoBehaviour
             carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
 
             isSpinning = true;
-
-
         }
     }
 
-    
+    private IEnumerator CarHitStop(float hitStopLength)
+    {
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSecondsRealtime(hitStopLength);
+
+        rb.velocity = transform.up * carSpeed;
+    }
+
+    public virtual void CarGoesOffscreen()
+    {
+        if (totalPoints > 0)
+            gameManager.AddPlayerScore(totalPoints);
+        Destroy(gameObject);
+    }
+
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

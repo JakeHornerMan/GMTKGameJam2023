@@ -5199,7 +5199,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 5
+  m_Constraints: 7
 --- !u!114 &-1257477323556779182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5221,6 +5221,7 @@ MonoBehaviour:
   carPrice: 0
   ignoreTokens: 1
   isSlicingCar: 0
+  canIBeBombed: 0
   canSpinOut: 0
   isSpinning: 0
   deathboxTag: Death Box

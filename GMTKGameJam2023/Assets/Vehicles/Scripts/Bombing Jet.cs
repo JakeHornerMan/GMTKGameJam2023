@@ -19,6 +19,8 @@ public class BombingJet : Car
     [SerializeField] private float delayBetweenBombs = 0.25f;
     [SerializeField] private float bombLifetime = 5.0f;
 
+    private float numberOfBombsProcessed = 0;
+
     void Start()
     {
         SetCarSpeed();
@@ -63,7 +65,8 @@ public class BombingJet : Car
 
                 GameObject currentBomb = Instantiate(bombPrefab, bombPosition, Quaternion.identity);
 
-                Destroy(currentBomb, bombLifetime);
+                currentBomb.GetComponent<Bomb>().AssignJetParent(gameObject.GetComponent<BombingJet>());
+                
 
             }
 
@@ -73,5 +76,28 @@ public class BombingJet : Car
             
         }
         
+    }
+
+
+    public override void CarGoesOffscreen()
+    {
+        
+    }
+
+    
+
+    public void AddBombScore(int points)
+    {
+        totalPoints = totalPoints + points;
+
+
+        numberOfBombsProcessed++;
+
+        if (numberOfBombsProcessed == numberOfBombs * 2)
+        {
+            if (totalPoints > 0)
+                gameManager.AddPlayerScore(totalPoints);
+            Destroy(gameObject);
+        }
     }
 }

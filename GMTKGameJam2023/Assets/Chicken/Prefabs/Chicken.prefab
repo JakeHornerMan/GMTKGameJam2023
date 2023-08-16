@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 565913885
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -903673705, guid: b7ff4f39c5c518e489cb4aeeedba9617, type: 3}
+  m_Sprite: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -282,13 +282,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
-  objectBoundsTag: Death Box
+  chickenIntesity: 0
   minMoveTime: 1
   maxMoveTime: 3
-  chickenSpeed: 1.25
   laneDistance: 1.25
   animatorHopBool: Hop
   animationFinishTime: 0.5
+  hitStopLength: 0.06
 --- !u!114 &-5117147452543026932
 MonoBehaviour:
   m_ObjectHideFlags: 0

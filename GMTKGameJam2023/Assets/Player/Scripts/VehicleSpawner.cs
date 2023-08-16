@@ -26,6 +26,10 @@ public class VehicleSpawner : MonoBehaviour
 
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
+
+    private Collider2D lastLaneSpawned;
+    [SerializeField] private float timeUntilNextSpawn;
+    private float currentTimeUntilNextSpawn;
     public bool disableVehicleSpawn = false;
 
 
@@ -67,6 +71,11 @@ public class VehicleSpawner : MonoBehaviour
         if(SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
         
+        //Timer that decreases to prevent players from spamming cars down a single lane (but still allow multiple lane spawning)
+        if (currentTimeUntilNextSpawn > 0)
+        {
+            DecreaseSpawnTimer();
+        }
     }
 
     private void MouseInputs(){
@@ -151,6 +160,10 @@ public class VehicleSpawner : MonoBehaviour
         else
             spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
+        //To prevent car spamming on the same lane
+        if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
+            return;
+
         Instantiate(
             currentActiveCar.gameObject,
             spawnPos,
@@ -158,7 +171,8 @@ public class VehicleSpawner : MonoBehaviour
             spawnedVehiclesContainer
         );
 
-        disableVehicleSpawn = true;
+        lastLaneSpawned = hit.collider;
+        currentTimeUntilNextSpawn = timeUntilNextSpawn;
 
         // Reduce Car Wallet Count
         carWallet.carCount--;
@@ -167,7 +181,8 @@ public class VehicleSpawner : MonoBehaviour
         gameManager.tokens -= currentActiveCar.carPrice;
         SelectCar(standardCar);
 
-        StartCoroutine(WaitAndEnableSpawn(0.5f));
+        //disableVehicleSpawn = true;
+        //StartCoroutine(WaitAndEnableSpawn(0.5f));
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -227,5 +242,10 @@ public class VehicleSpawner : MonoBehaviour
         if (hit.collider != null && hit.collider.GetComponent<GraphicRaycaster>() != null)
             return true;
         return false;
+    }
+
+    private void DecreaseSpawnTimer()
+    {
+        currentTimeUntilNextSpawn -= Time.deltaTime;
     }
 }

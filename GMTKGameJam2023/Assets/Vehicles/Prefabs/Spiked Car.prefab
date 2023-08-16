@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5263969024512775508}
   - component: {fileID: 8997620375743524235}
+  - component: {fileID: 4535558386396164230}
   m_Layer: 0
   m_Name: Car Sprite
   m_TagString: Untagged
@@ -214,6 +215,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4535558386396164230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277175238170900822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422577954003274077
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,7 +5275,9 @@ MonoBehaviour:
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 1
+  canIBeBombed: 1
   canSpinOut: 0
+  isSpinning: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road

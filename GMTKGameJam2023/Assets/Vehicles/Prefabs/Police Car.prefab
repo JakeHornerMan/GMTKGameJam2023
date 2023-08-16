@@ -4841,6 +4841,7 @@ GameObject:
   - component: {fileID: 358518566432079297}
   - component: {fileID: 882723343413867202}
   - component: {fileID: 3711591378489207395}
+  - component: {fileID: 4145143869056839675}
   m_Layer: 0
   m_Name: Car Sprite
   m_TagString: Untagged
@@ -4936,6 +4937,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4145143869056839675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072754100500811535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2768895229474700397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5152,6 +5165,7 @@ MonoBehaviour:
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
+  canIBeBombed: 1
   canSpinOut: 0
   isSpinning: 0
   deathboxTag: Death Box
@@ -5163,7 +5177,7 @@ MonoBehaviour:
   comboMultiplier: 0.2
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
-  scorePopUpMsg: Points
+  scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
   camShakeDuration: 0.1
