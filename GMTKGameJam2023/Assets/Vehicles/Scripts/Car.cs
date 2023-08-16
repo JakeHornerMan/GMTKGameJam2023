@@ -56,7 +56,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
     private int carKillCount = 0;
-    [HideInInspector] public int totalPoints = 0;
+    private int totalPoints = 0;
 
     private GameManager gameManager;
     private Rigidbody2D rb;
@@ -220,12 +220,6 @@ public abstract class Car : MonoBehaviour
 
 
         }
-    }
-
-    public void DestroyAndAddPoints(){
-        if(totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
-        Destroy(gameObject);
     }
 
     
