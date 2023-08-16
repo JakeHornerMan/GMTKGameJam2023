@@ -15,6 +15,6 @@ public class MissileLaunch : Car
 
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        DestroyAndAddPoints();
     }
 }
