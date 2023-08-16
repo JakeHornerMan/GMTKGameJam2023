@@ -282,13 +282,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
-  objectBoundsTag: Death Box
+  chickenIntesity: 0
   minMoveTime: 1
   maxMoveTime: 3
-  chickenSpeed: 1.25
   laneDistance: 1.25
   animatorHopBool: Hop
   animationFinishTime: 0.5
+  hitStopLength: 0.06
 --- !u!114 &-5117147452543026932
 MonoBehaviour:
   m_ObjectHideFlags: 0
