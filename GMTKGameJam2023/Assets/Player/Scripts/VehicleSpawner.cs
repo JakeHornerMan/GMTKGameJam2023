@@ -26,7 +26,12 @@ public class VehicleSpawner : MonoBehaviour
 
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
+
+    private Collider2D lastLaneSpawned;
+    [SerializeField] private float timeUntilNextSpawn;
+    private float currentTimeUntilNextSpawn;
     public bool disableVehicleSpawn = false;
+
 
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
@@ -58,18 +63,22 @@ public class VehicleSpawner : MonoBehaviour
     private void Update()
     {
         if (gameManager.isGameOver) return;
-        if (disableVehicleSpawn) return;
+        if(disableVehicleSpawn) return;
 
-        if (SystemInfo.deviceType == DeviceType.Desktop)
+        if(SystemInfo.deviceType == DeviceType.Desktop)
             MouseInputs();
-
-        if (SystemInfo.deviceType == DeviceType.Handheld)
+        
+        if(SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
-
+        
+        //Timer that decreases to prevent players from spamming cars down a single lane (but still allow multiple lane spawning)
+        if (currentTimeUntilNextSpawn > 0)
+        {
+            DecreaseSpawnTimer();
+        }
     }
 
-    private void MouseInputs()
-    {
+    private void MouseInputs(){
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
@@ -89,8 +98,7 @@ public class VehicleSpawner : MonoBehaviour
         UpdateCarCursor();
     }
 
-    private void TouchInputs()
-    {
+    private void TouchInputs(){
         // if (Input.touchCount > 0){
         // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
@@ -105,13 +113,15 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-
+                    
                     break;
 
                 case TouchPhase.Ended:
-
+                    
                     break;
             }
+            
+            
         }
     }
 
@@ -150,6 +160,10 @@ public class VehicleSpawner : MonoBehaviour
         else
             spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
+        //To prevent car spamming on the same lane
+        if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
+            return;
+
         Instantiate(
             currentActiveCar.gameObject,
             spawnPos,
@@ -157,7 +171,8 @@ public class VehicleSpawner : MonoBehaviour
             spawnedVehiclesContainer
         );
 
-        disableVehicleSpawn = true;
+        lastLaneSpawned = hit.collider;
+        currentTimeUntilNextSpawn = timeUntilNextSpawn;
 
         // Reduce Car Wallet Count
         carWallet.carCount--;
@@ -166,7 +181,8 @@ public class VehicleSpawner : MonoBehaviour
         gameManager.tokens -= currentActiveCar.carPrice;
         SelectCar(standardCar);
 
-        StartCoroutine(WaitAndEnableSpawn(0.5f));
+        //disableVehicleSpawn = true;
+        //StartCoroutine(WaitAndEnableSpawn(0.5f));
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -175,26 +191,20 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool isTooExpensive()
-    {
-        if (currentActiveCar.carPrice > gameManager.tokens)
-        {
+    public bool isTooExpensive(){
+        if (currentActiveCar.carPrice > gameManager.tokens){
             return true;
         }
-        else
-        {
+        else{
             return false;
-        }
+        }     
     }
 
-    public bool notEnoughCarWallet()
-    {
-        if (carWallet.carCount <= 0)
-        {
+    public bool notEnoughCarWallet(){
+        if(carWallet.carCount <= 0){
             return true;
         }
-        else
-        {
+        else{
             return false;
         }
     }
@@ -232,5 +242,10 @@ public class VehicleSpawner : MonoBehaviour
         if (hit.collider != null && hit.collider.GetComponent<GraphicRaycaster>() != null)
             return true;
         return false;
+    }
+
+    private void DecreaseSpawnTimer()
+    {
+        currentTimeUntilNextSpawn -= Time.deltaTime;
     }
 }

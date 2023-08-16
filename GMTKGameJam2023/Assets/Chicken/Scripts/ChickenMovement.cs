@@ -20,6 +20,8 @@ public class ChickenMovement : MonoBehaviour
 
     private float moveTime;
 
+    [SerializeField] private float hitStopLength = 0.0f;
+
     private Vector2 targetPoint;
     private Vector2 directionVector;
     private Vector2 desiredDirection;
@@ -191,5 +193,16 @@ public class ChickenMovement : MonoBehaviour
         }
 
         return directionVector;
+    }
+
+
+    public void PlayChickenHitstop()
+    {
+        HitStop.instance.StartHitStop(hitStopLength);
+    }
+
+    public float GetChickenHitstop()
+    {
+        return hitStopLength;
     }
 }

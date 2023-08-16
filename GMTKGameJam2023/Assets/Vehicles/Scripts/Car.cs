@@ -58,9 +58,9 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.1f;
 
     private int carKillCount = 0;
-    private int totalPoints = 0;
+    protected int totalPoints = 0;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
     private Rigidbody2D rb;
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
@@ -123,12 +123,11 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.CompareTag(deathboxTag))
-        {
-            if (totalPoints > 0)
-                gameManager.AddPlayerScore(totalPoints);
-            Destroy(gameObject);
-        }
+        if (collision.gameObject.CompareTag(deathboxTag)){
+            //if (totalPoints > 0)
+            //    gameManager.AddPlayerScore(totalPoints);
+            //Destroy(gameObject);
+        }   
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -171,6 +170,10 @@ public abstract class Car : MonoBehaviour
             KillChicken(chickenHealth);
         }
 
+        //chickenHealth.gameObject.GetComponent<ChickenMovement>().PlayChickenHitstop();
+
+        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
@@ -197,6 +200,8 @@ public abstract class Car : MonoBehaviour
 
         // Change Combo Multiplier
         float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));
+
+        
 
         // +100 Points Pop-Up
         ShowPopup(
@@ -230,6 +235,23 @@ public abstract class Car : MonoBehaviour
             isSpinning = true;
         }
     }
+
+    private IEnumerator CarHitStop(float hitStopLength)
+    {
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSecondsRealtime(hitStopLength);
+
+        rb.velocity = transform.up * carSpeed;
+    }
+
+    public virtual void CarGoesOffscreen()
+    {
+        if (totalPoints > 0)
+            gameManager.AddPlayerScore(totalPoints);
+        Destroy(gameObject);
+    }
+
 
     public void DestroySelf()
     {

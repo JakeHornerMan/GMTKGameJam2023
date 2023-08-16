@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurboChickenMovement : ChickenMovement
 {
+    [Header("Turbo Chicken Values")]
     [SerializeField] private float speed = 1f; // The speed at which the chicken moves
 
     // Override the StartMovement method

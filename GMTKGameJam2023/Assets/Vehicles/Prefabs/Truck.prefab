@@ -95,6 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708767468316869461}
   - component: {fileID: 2577988633924209816}
+  - component: {fileID: 3672126602099327467}
   m_Layer: 0
   m_Name: Truck Sprite
   m_TagString: Untagged
@@ -169,6 +170,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3672126602099327467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244904662409200306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5149835441534736123
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +581,7 @@ MonoBehaviour:
   carPrice: 6
   ignoreTokens: 1
   isSlicingCar: 0
+  canIBeBombed: 1
   canSpinOut: 1
   isSpinning: 0
   deathboxTag: Death Box

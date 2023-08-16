@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 4551815322588997562}
   - component: {fileID: 3376756215294556231}
   - component: {fileID: 1117603106255636642}
-  - component: {fileID: 2355304269964022646}
+  - component: {fileID: 3671252868502066837}
   m_Layer: 0
-  m_Name: FighterJetBomb
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ Transform:
   - {fileID: 7998546684376845948}
   - {fileID: 7424650497563130959}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3376756215294556231
 Animator:
@@ -187,7 +187,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 2.5}
   m_EdgeRadius: 0
---- !u!114 &2355304269964022646
+--- !u!114 &3671252868502066837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,35 +196,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3716947289871644993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Script: {fileID: 11500000, guid: 02bda0a1d5c704943b9638c431c2860a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 0}
-  carSprite: {fileID: -1898241107, guid: b637130d941586045a17f8e073a47366, type: 3}
-  carIcon: {fileID: -1933525247, guid: b637130d941586045a17f8e073a47366, type: 3}
-  carName: Bomb
-  carPrice: 0
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  deathboxTag: Death Box
-  placeableLaneTags: []
-  placeableAnywhere: 0
-  carSpeed: 0
+  bombLifetime: 2.5
   damage: 120
   comboMultiplier: 0.2
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 1.2
-  camShakeDuration: 0.15
-  camShakeMagnitude: 0.05
-  cameraShaker: {fileID: 0}
+  camShakeDuration: 0.1
+  camShakeMagnitude: 0.1
   soundManager: {fileID: 0}
 --- !u!1 &5549060619228680741
 GameObject:
