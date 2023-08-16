@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -149,15 +149,16 @@ MonoBehaviour:
   startTime: 180
   devMode: 0
   isGameOver: 0
-  failureChickenAmount: 10
+  startLives: 10
   lostChicenScore: 1000
   safelyCrossedChickens: 0
+  missedChickenLives: 0
   killCount: 0
   playerScore: 0
   tokens: 0
   totalTokens: 0
-  time: 120
   currentRanking: Animal Lover
+  time: 120
   endSound: 0
   waveNumber: 0
   waves:
@@ -313,6 +314,9 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
     volume: 0.5
   - clip: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
+    volume: 0.5
+  cashChicken:
+    clip: {fileID: 8300000, guid: 747288a643919b9449ece77d3a6633a9, type: 3}
     volume: 0.5
   sliceConfigs:
   - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}

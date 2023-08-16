@@ -22,9 +22,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig gameSpeedConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
+    
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
+    [SerializeField] private SoundConfig cashChicken;
 
     [Header("Slice Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
@@ -90,9 +92,15 @@ public class SoundManager : MonoBehaviour
         PlaySound(missedChicken);
     }
 
+
     public void PlayRandomChicken()
     {
         RandomPlaySound(chickenConfigs);
+    }
+
+    public void PlayCashChicken()
+    {
+        PlaySound(cashChicken);
     }
 
     public void PlayRandomSlice()

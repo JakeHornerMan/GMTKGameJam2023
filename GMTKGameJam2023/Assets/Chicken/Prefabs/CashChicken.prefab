@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8207547, g: 0.10122108, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -217,9 +217,9 @@ GameObject:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
-  - component: {fileID: -5117147452543026932}
+  - component: {fileID: 5483124617823043416}
   m_Layer: 2
-  m_Name: Chicken
+  m_Name: CashChicken
   m_TagString: Chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,8 +288,8 @@ MonoBehaviour:
   laneDistance: 1.25
   animatorHopBool: Hop
   animationFinishTime: 0.5
-  hitStopLength: 0.03
---- !u!114 &-5117147452543026932
+  hitStopLength: 0.06
+--- !u!114 &5483124617823043416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,11 +298,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7467406142021207113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9242a8be3d2dada41bc2edcf772cd50b, type: 3}
+  m_Script: {fileID: 11500000, guid: df9f2a8f9696fa94bb74da6af4c0e14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
+  featherParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   featherParticlesZPos: -5
   startHealth: 100
-  pointsReward: 100
+  pointsReward: 200
   health: 0
+  tokenAmount: 5
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 0.7
