@@ -123,11 +123,12 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.CompareTag(deathboxTag)){
+        if (collision.gameObject.CompareTag(deathboxTag))
+        {
             //if (totalPoints > 0)
             //    gameManager.AddPlayerScore(totalPoints);
             //Destroy(gameObject);
-        }   
+        }
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -195,13 +196,11 @@ public abstract class Car : MonoBehaviour
         carKillCount++;
 
         // Increase Score
-        totalPoints = totalPoints + (chickenHealth.pointsReward * carKillCount);
+        totalPoints += chickenHealth.pointsReward * carKillCount;
         // gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
 
         // Change Combo Multiplier
         float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));
-
-        
 
         // +100 Points Pop-Up
         ShowPopup(
@@ -251,7 +250,6 @@ public abstract class Car : MonoBehaviour
             gameManager.AddPlayerScore(totalPoints);
         Destroy(gameObject);
     }
-
 
     public void DestroySelf()
     {
