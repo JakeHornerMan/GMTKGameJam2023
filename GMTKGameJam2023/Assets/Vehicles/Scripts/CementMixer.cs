@@ -12,6 +12,7 @@ public class CementMixer : Car
     [SerializeField] private int numCementToSpawn = 10;
     [SerializeField] private float initalCementDelay = 1f;
     [SerializeField] private float cementSpawnInterval = 0.5f;
+    [SerializeField] private float cementLifetime = 4f;
 
     private int cementSpawned = 0;
 
@@ -32,11 +33,13 @@ public class CementMixer : Car
             return;
         }
 
-        Instantiate(
+        GameObject newCement = Instantiate(
             cementPrefab,
             cementSpawnPos.position,
             Quaternion.identity
         );
+
+        Destroy(newCement, cementLifetime);
 
         cementSpawned++;
     }
