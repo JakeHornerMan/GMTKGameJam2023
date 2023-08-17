@@ -5151,7 +5151,7 @@ MonoBehaviour:
   placeableLaneTags:
   - Road
   placeableAnywhere: 0
-  carSpeed: 4.5
+  carSpeed: 3.5
   damage: 120
   comboMultiplier: 0.2
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
@@ -5166,9 +5166,9 @@ MonoBehaviour:
   cementPrefab: {fileID: 3519391268483037607, guid: 4b7a09ab34bb7af4f94cfa4814c29f37, type: 3}
   cementSpawnPos: {fileID: 218039303147299228}
   numCementToSpawn: 10
-  initalCementDelay: 1.3
+  initalCementDelay: 2
   cementSpawnInterval: 0.3
-  cementLifetime: 10.3
+  cementLifetime: 15
 --- !u!1 &6634941919401553099
 GameObject:
   m_ObjectHideFlags: 0
