@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class CarSprite : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
     private void OnBecameInvisible()
     {
         StartCoroutine(Wait());

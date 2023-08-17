@@ -24,6 +24,7 @@ public class TurboChickenMovement : ChickenMovement
     private void Update()
     {
         // Move the chicken continuously to the right at the speed defined
-        transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+        if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
+            transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
     }
 }
