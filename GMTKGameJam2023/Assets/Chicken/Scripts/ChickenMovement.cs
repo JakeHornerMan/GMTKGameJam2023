@@ -80,7 +80,25 @@ public class ChickenMovement : MonoBehaviour
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);
         }
+        else
+        {
+            // The chicken is on cement, so wait for the cement to disappear and then restart movement
+            StartCoroutine(WaitForDryCement());
+        }
     }
+
+    private IEnumerator WaitForDryCement()
+    {
+        while (chickenCollider.IsTouchingLayers(cementLayer))
+        {
+            yield return null; // Wait until the chicken is no longer on the cement
+        }
+
+
+        IEnumerator coroutine = WaitAndMove(moveTime);
+        StartCoroutine(coroutine);
+    }
+
 
     private IEnumerator WaitAndMove(float moveTime)
     {
