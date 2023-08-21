@@ -5,8 +5,8 @@ using UnityEngine;
 public class ChickenHealth : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private ParticleSystem featherParticles;
-    [SerializeField] private float featherParticlesZPos = -5;
+    [SerializeField] protected ParticleSystem featherParticles;
+    [SerializeField] protected float featherParticlesZPos = -5;
 
     [Header("Chicken Health Values")]
     [SerializeField] private int startHealth = 100;

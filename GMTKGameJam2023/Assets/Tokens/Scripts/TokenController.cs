@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TokenController : MonoBehaviour
 {
+    [Header("Token Type Values")]
+
+    [SerializeField] public int tokenValue = 1;
+    [SerializeField] private bool isSwaying = true;
+    
     [Header("Sway Values")]
 
     [SerializeField] private float removeTime = 3f;
@@ -40,10 +45,12 @@ public class TokenController : MonoBehaviour
 
     private void Update()
     {
-        float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
-        float horizontalDisplacement = speed * Time.deltaTime;
-        Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
-        transform.Translate(newPosition - transform.position);
+        if(isSwaying){
+            float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
+            float horizontalDisplacement = speed * Time.deltaTime;
+            Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
+            transform.Translate(newPosition - transform.position);
+        }
     }
 
     private IEnumerator WaitAndDie(float dieTime)

@@ -170,6 +170,19 @@ public class GameManager : MonoBehaviour
         playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
 
+    public void AddTokens(int addAmount)
+    {
+        // interfaceManager.TokenUI(addAmount, true);
+        tokens += addAmount;
+        totalTokens += addAmount;
+    }
+
+    public void RemoveTokens(int removeAmount)
+    {
+        // interfaceManager.TokenUI(removeAmount, false);
+        tokens -= removeAmount;
+    }
+
     private void UpdateRankings()
     {
         // Update Rankings
