@@ -7,12 +7,17 @@ public class ChickenMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject hopController;
     [SerializeField] private GameObject chickenSprite;
+    [SerializeField] public Collider2D chickenCollider;
 
     [Header("Movement Values")]
     [SerializeField] public int chickenIntesity = 0;
     [SerializeField] private float minMoveTime = 0.5f;
     [SerializeField] private float maxMoveTime = 3.5f;
     [SerializeField] private float laneDistance = 2f;
+
+    [Header("Detection Info")]
+    [SerializeField] public bool ignoreCement = false;
+    [SerializeField] public LayerMask cementLayer;
 
     [Header("Animation")]
     [SerializeField] private string animatorHopBool = "Hop";
@@ -70,9 +75,30 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
+        if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
+        {
+            IEnumerator coroutine = WaitAndMove(moveTime);
+            StartCoroutine(coroutine);
+        }
+        else
+        {
+            // The chicken is on cement, so wait for the cement to disappear and then restart movement
+            StartCoroutine(WaitForDryCement());
+        }
+    }
+
+    private IEnumerator WaitForDryCement()
+    {
+        while (chickenCollider.IsTouchingLayers(cementLayer))
+        {
+            yield return null; // Wait until the chicken is no longer on the cement
+        }
+
+
         IEnumerator coroutine = WaitAndMove(moveTime);
         StartCoroutine(coroutine);
     }
+
 
     private IEnumerator WaitAndMove(float moveTime)
     {

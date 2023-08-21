@@ -184,12 +184,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopController: {fileID: 8851517354825887726}
   chickenSprite: {fileID: 1978656475471651969}
+  chickenCollider: {fileID: 3415184185659452524}
   chickenIntesity: 0
   minMoveTime: 1
   maxMoveTime: 3
   laneDistance: 1.25
+  ignoreCement: 0
+  cementLayer:
+    serializedVersion: 2
+    m_Bits: 64
   animatorHopBool: Hop
   animationFinishTime: 0.5
+  hitStopLength: 0
 --- !u!114 &-2344362446231633396
 MonoBehaviour:
   m_ObjectHideFlags: 0

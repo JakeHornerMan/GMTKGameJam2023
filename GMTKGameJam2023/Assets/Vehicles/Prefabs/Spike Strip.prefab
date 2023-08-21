@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 4065737824021707048}
   - component: {fileID: 1421844320434742192}
   - component: {fileID: 8876300170255517794}
+  - component: {fileID: 4897835516640121997}
   m_Layer: 0
   m_Name: Spike Sprite
   m_TagString: Untagged
@@ -203,3 +204,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4897835516640121997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284573117357224111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
