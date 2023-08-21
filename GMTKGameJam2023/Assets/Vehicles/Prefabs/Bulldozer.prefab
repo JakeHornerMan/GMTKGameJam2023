@@ -4866,7 +4866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.16}
+  m_AnchoredPosition: {x: 0.25, y: -3.4099998}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3628789908828156032
@@ -5160,6 +5160,7 @@ MonoBehaviour:
   popupDestroyDelay: 1.2
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
+  carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &6634941919401553099
