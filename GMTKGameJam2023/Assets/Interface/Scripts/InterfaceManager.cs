@@ -34,9 +34,11 @@ public class InterfaceManager : MonoBehaviour
     private CarWallet carWallet;
     private Animator speedUptextAnimator;
 
-    [Header("Points Popups")]
+    [Header("UI Popups")]
     [SerializeField] public GameObject positivePoints;
     [SerializeField] public GameObject negativePoints;
+    [SerializeField] public GameObject positiveTokens;
+    [SerializeField] public GameObject negativeTokens;
 
     private void Awake()
     {
@@ -99,14 +101,13 @@ public class InterfaceManager : MonoBehaviour
 
     public void ScoreUI(int points, bool ispositive)
     {
-        Vector3 spawnLocation = new(0, 0, 0);
+        Vector3 spawnLocation = new Vector3(0, 0, 0);
         if (ispositive)
         {
             GameObject score = Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
             score.GetComponent<RectTransform>().localPosition = new Vector3(125f, 350f, 0);
             score.GetComponent<TextMeshProUGUI>().text = "+" + points.ToString();
             scoreMoverPositive = points / 50;
-            pointsText.GetComponent<Animator>().Play("Score");
         }
         else
         {
@@ -114,8 +115,24 @@ public class InterfaceManager : MonoBehaviour
             score.GetComponent<RectTransform>().localPosition = new Vector3(-125f, 350f, 0);
             score.GetComponent<TextMeshProUGUI>().text = "-" + points.ToString();
             scoreMoverNegative = points / 50;
-            pointsText.GetComponent<Animator>().Play("NegativeScore");
         }
 
+    }
+
+    public void TokenUI(int tokenAmount, bool ispositive)
+    {
+        Vector3 spawnLocation = new Vector3(0, 0, 0);
+        if (ispositive)
+        {
+            GameObject token = Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
+            token.GetComponent<RectTransform>().anchoredPosition = new Vector2(-40f, 40f);
+            token.GetComponent<TextMeshProUGUI>().text = "+" + tokenAmount.ToString();
+        }
+        else
+        {
+            GameObject token = Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
+            token.GetComponent<RectTransform>().localPosition = spawnLocation;
+            token.GetComponent<TextMeshProUGUI>().text = "-" + tokenAmount.ToString();
+        }
     }
 }

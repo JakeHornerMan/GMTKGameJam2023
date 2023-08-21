@@ -283,8 +283,8 @@ MonoBehaviour:
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenIntesity: 0
-  minMoveTime: 1
-  maxMoveTime: 3
+  minMoveTime: 0.75
+  maxMoveTime: 2
   laneDistance: 1.25
   animatorHopBool: Hop
   animationFinishTime: 0.5
@@ -306,7 +306,9 @@ MonoBehaviour:
   startHealth: 100
   pointsReward: 200
   health: 0
+  dropTheBag: 0
   tokenAmount: 5
+  tokenBag: {fileID: 9212655407886111783, guid: 7d64507227b83fa4bb112c85d69c415b, type: 3}
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7

@@ -143,13 +143,13 @@ public abstract class Car : MonoBehaviour
         // +1 Token Popup
         ShowPopup(
             token.transform.position,
-            $"{1} {tokenPopUpMsg}"
+            $"{token.tokenValue} {tokenPopUpMsg}"
         );
 
         // Collect Tokens
         token.TokenCollected();
-        gameManager.tokens++;
-        gameManager.totalTokens++;
+        gameManager.tokens += token.tokenValue;
+        gameManager.totalTokens += token.tokenValue;
     }
 
     private void HandleChickenCollision(ChickenHealth chickenHealth)
