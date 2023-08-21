@@ -60,6 +60,8 @@ public abstract class Car : MonoBehaviour
     private int carKillCount = 0;
     protected int totalPoints = 0;
 
+    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
+
     protected GameManager gameManager;
     private Rigidbody2D rb;
     [HideInInspector] public CameraShaker cameraShaker;
@@ -240,7 +242,7 @@ public abstract class Car : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
 
-        yield return new WaitForSecondsRealtime(hitStopLength);
+        yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
 
         rb.velocity = transform.up * carSpeed;
     }
