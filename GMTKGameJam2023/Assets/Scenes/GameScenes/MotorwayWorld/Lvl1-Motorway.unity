@@ -128,17 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8528590789526900445, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 113452327119585473}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &296198034 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4264280465173263798, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-  m_PrefabInstance: {fileID: 113452327119585473}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &525611497 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9168841275190511153, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -744,10 +733,6 @@ PrefabInstance:
       propertyPath: killsText
       value: 
       objectReference: {fileID: 1427239738}
-    - target: {fileID: 5068059985661225512, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-      propertyPath: pointsText
-      value: 
-      objectReference: {fileID: 296198034}
     - target: {fileID: 5068059985661225512, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: tokensText
       value: 
