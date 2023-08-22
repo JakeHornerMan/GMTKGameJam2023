@@ -1002,7 +1002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: carsInLevel.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: carsInLevel.Array.data[0]
@@ -1032,6 +1032,14 @@ PrefabInstance:
       propertyPath: carsInLevel.Array.data[6]
       value: 
       objectReference: {fileID: 7127396023849450930, guid: a4a014d736bec854fa4a93c2fbfdd503, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: carsInLevel.Array.data[7]
+      value: 
+      objectReference: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: carsInLevel.Array.data[8]
+      value: 
+      objectReference: {fileID: -952324110816968911, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].wavePrompt
       value: Debug Wave
