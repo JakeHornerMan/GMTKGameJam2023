@@ -282,10 +282,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
+  chickenCollider: {fileID: 5996180526844374429}
   chickenIntesity: 0
   minMoveTime: 0.75
   maxMoveTime: 2
   laneDistance: 1.25
+  ignoreCement: 0
+  cementLayer:
+    serializedVersion: 2
+    m_Bits: 64
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.06
@@ -301,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f2a8f9696fa94bb74da6af4c0e14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  featherParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  featherParticles: {fileID: 2811581772486231686, guid: 04de240046948864bb820656a832a9fd, type: 3}
   featherParticlesZPos: -5
   startHealth: 100
   pointsReward: 200
