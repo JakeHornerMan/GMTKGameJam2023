@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class VehicleSpawner : MonoBehaviour
 {
+    [Header("Placement Settings")]
+    [SerializeField] private bool selectDefaultOnPlace = true;
+
     [Header("References")]
-    [SerializeField] public CarButton standardCar;
-    [SerializeField] public CarButton spikedCar;
-    [SerializeField] public CarButton superCar;
-    [SerializeField] public CarButton truck;
+    [SerializeField] private Transform carSelectContainer;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private CurrentCarIndicator carCursorFollower;
+    [SerializeField] private GameObject carButtonPrefab;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -38,6 +39,8 @@ public class VehicleSpawner : MonoBehaviour
 
     private Vector3 inputPos;
 
+    public List<CarButton> carButtons;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -49,7 +52,9 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        SelectCar(standardCar);
+        CreateButtons();
+
+        SelectCar(carButtons[0]);
     }
 
     private void Update()
@@ -70,22 +75,35 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
+    private void CreateButtons()
+    {
+        foreach (Car car in gameManager.carsInLevel)
+        {
+            CarButton btn = Instantiate(
+                carButtonPrefab,
+                carSelectContainer
+            ).GetComponent<CarButton>();
+            carButtons.Add(btn);
+            btn.correspondingCar = car;
+        }
+    }
+
     private void MouseInputs()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space))
-            SelectCar(standardCar);
+            SelectCar(carButtons[0]);
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W))
-            SelectCar(superCar);
+            SelectCar(carButtons[1]);
 
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E))
-            SelectCar(spikedCar);
+            SelectCar(carButtons[2]);
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R))
-            SelectCar(truck);
+            SelectCar(carButtons[3]);
 
         UpdateMousePos();
         UpdateCarCursor();
@@ -107,11 +125,8 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-
                     break;
-
                 case TouchPhase.Ended:
-
                     break;
             }
         }
@@ -125,7 +140,7 @@ public class VehicleSpawner : MonoBehaviour
     private void PlaceSelectedCar()
     {
         // Check Money, Check Car Wallet Budget
-        if (isTooExpensive() || notEnoughCarWallet())
+        if (IsTooExpensive() || NotEnoughCarWallet())
             return;
 
         // Raycast toward Click
@@ -171,7 +186,9 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Player Money
         gameManager.tokens -= currentActiveCar.carPrice;
-        SelectCar(standardCar);
+
+        if (selectDefaultOnPlace)
+            SelectCar(carButtons[0]);
 
         //disableVehicleSpawn = true;
         //StartCoroutine(WaitAndEnableSpawn(0.5f));
@@ -183,28 +200,14 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool isTooExpensive()
+    public bool IsTooExpensive()
     {
-        if (currentActiveCar.carPrice > gameManager.tokens)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentActiveCar.carPrice > gameManager.tokens;
     }
 
-    public bool notEnoughCarWallet()
+    public bool NotEnoughCarWallet()
     {
-        if (carWallet.carCount <= 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return carWallet.carCount <= 0;
     }
 
     public void SelectCar(CarButton carBtn)

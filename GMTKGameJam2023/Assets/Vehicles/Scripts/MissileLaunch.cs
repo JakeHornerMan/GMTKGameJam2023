@@ -13,7 +13,7 @@ public class MissileLaunch : Car
         GetComponent<Animator>().SetTrigger("Explode");
     }
 
-    public void DestroySelf()
+    public new void DestroySelf()
     {
         if (totalPoints > 0)
             gameManager.AddPlayerScore(totalPoints);
