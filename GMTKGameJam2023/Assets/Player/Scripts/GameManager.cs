@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool devMode = false;
     [SerializeField] public bool isGameOver = false;
 
+    [Header("Cars in Level")]
+    [SerializeField] public Car[] carsInLevel;
+
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
     [SerializeField] public int lostChicenScore = 1000;

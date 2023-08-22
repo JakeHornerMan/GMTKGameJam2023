@@ -6,20 +6,14 @@ using UnityEngine.UI;
 
 public class VehicleSpawner : MonoBehaviour
 {
+    [Header("Placement Settings")]
+    [SerializeField] private bool selectDefaultOnPlace = true;
+
     [Header("References")]
-    [SerializeField] public CarButton standardCar;
-    [SerializeField] public CarButton spikedCar;
-    [SerializeField] public CarButton superCar;
-    [SerializeField] public CarButton truck;
+    [SerializeField] private Transform carSelectContainer;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private CurrentCarIndicator carCursorFollower;
-
-    [Header("Car Select Indicators")]
-    [SerializeField] private Transform selectedCarIndicator;
-    [SerializeField] private float standardCarX = 0;
-    [SerializeField] private float spikedCarX = 0;
-    [SerializeField] private float superCarX = 0;
-    [SerializeField] private float truckX = 0;
+    [SerializeField] private GameObject carButtonPrefab;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -32,9 +26,8 @@ public class VehicleSpawner : MonoBehaviour
     private float currentTimeUntilNextSpawn;
     public bool disableVehicleSpawn = false;
 
-
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
-    [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
+    [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
     [HideInInspector] public Car currentActiveCar;
 
@@ -45,6 +38,8 @@ public class VehicleSpawner : MonoBehaviour
     private CameraShaker cameraShaker;
 
     private Vector3 inputPos;
+
+    public List<CarButton> carButtons;
 
     private void Awake()
     {
@@ -57,20 +52,22 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        SelectCar(standardCar);
+        CreateButtons();
+
+        SelectCar(carButtons[0]);
     }
 
     private void Update()
     {
         if (gameManager.isGameOver) return;
-        if(disableVehicleSpawn) return;
+        if (disableVehicleSpawn) return;
 
-        if(SystemInfo.deviceType == DeviceType.Desktop)
+        if (SystemInfo.deviceType == DeviceType.Desktop)
             MouseInputs();
-        
-        if(SystemInfo.deviceType == DeviceType.Handheld)
+
+        if (SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
-        
+
         //Timer that decreases to prevent players from spamming cars down a single lane (but still allow multiple lane spawning)
         if (currentTimeUntilNextSpawn > 0)
         {
@@ -78,27 +75,42 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void MouseInputs(){
+    private void CreateButtons()
+    {
+        foreach (Car car in gameManager.carsInLevel)
+        {
+            CarButton btn = Instantiate(
+                carButtonPrefab,
+                carSelectContainer
+            ).GetComponent<CarButton>();
+            carButtons.Add(btn);
+            btn.correspondingCar = car;
+        }
+    }
+
+    private void MouseInputs()
+    {
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space))
-            SelectCar(standardCar);
+            SelectCar(carButtons[0]);
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W))
-            SelectCar(superCar);
+            SelectCar(carButtons[1]);
 
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E))
-            SelectCar(spikedCar);
+            SelectCar(carButtons[2]);
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R))
-            SelectCar(truck);
+            SelectCar(carButtons[3]);
 
         UpdateMousePos();
         UpdateCarCursor();
     }
 
-    private void TouchInputs(){
+    private void TouchInputs()
+    {
         // if (Input.touchCount > 0){
         // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
@@ -113,15 +125,10 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-                    
                     break;
-
                 case TouchPhase.Ended:
-                    
                     break;
             }
-            
-            
         }
     }
 
@@ -133,7 +140,7 @@ public class VehicleSpawner : MonoBehaviour
     private void PlaceSelectedCar()
     {
         // Check Money, Check Car Wallet Budget
-        if (isTooExpensive() || notEnoughCarWallet())
+        if (IsTooExpensive() || NotEnoughCarWallet())
             return;
 
         // Raycast toward Click
@@ -179,7 +186,9 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Player Money
         gameManager.tokens -= currentActiveCar.carPrice;
-        SelectCar(standardCar);
+
+        if (selectDefaultOnPlace)
+            SelectCar(carButtons[0]);
 
         //disableVehicleSpawn = true;
         //StartCoroutine(WaitAndEnableSpawn(0.5f));
@@ -191,41 +200,19 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool isTooExpensive(){
-        if (currentActiveCar.carPrice > gameManager.tokens){
-            return true;
-        }
-        else{
-            return false;
-        }     
+    public bool IsTooExpensive()
+    {
+        return currentActiveCar.carPrice > gameManager.tokens;
     }
 
-    public bool notEnoughCarWallet(){
-        if(carWallet.carCount <= 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public bool NotEnoughCarWallet()
+    {
+        return carWallet.carCount <= 0;
     }
 
     public void SelectCar(CarButton carBtn)
     {
         currentActiveCar = carBtn.correspondingCar;
-
-        float x;
-        if (carBtn == standardCar)
-            x = standardCarX;
-        else if (carBtn == superCar)
-            x = superCarX;
-        else if (carBtn == spikedCar)
-            x = spikedCarX;
-        else if (carBtn == truck)
-            x = truckX;
-        else
-            x = standardCarX;
-
-        selectedCarIndicator.transform.position = new Vector3(x, selectedCarIndicator.transform.position.y, 0);
     }
 
     private void UpdateCarCursor()

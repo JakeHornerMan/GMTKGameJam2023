@@ -58,19 +58,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ddf724a3a13a40b2691b3d27a7195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardCar: {fileID: 0}
-  spikedCar: {fileID: 0}
-  superCar: {fileID: 0}
-  truck: {fileID: 0}
+  selectDefaultOnPlace: 1
+  carSelectContainer: {fileID: 0}
   spawnedVehiclesContainer: {fileID: 6528247484680453847}
   carCursorFollower: {fileID: 0}
-  selectedCarIndicator: {fileID: 0}
-  standardCarX: -4.75
-  spikedCarX: 1.3
-  superCarX: -1.7
-  truckX: 4.2
+  carButtonPrefab: {fileID: 509220006034615292, guid: 4644ada4dd28f7443be2cf719cce66da, type: 3}
   placeMouseBtn: 0
   spawnOffset: {x: 0, y: -10}
+  timeUntilNextSpawn: 0
+  disableVehicleSpawn: 0
   invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
 --- !u!114 &8746173641645449034
