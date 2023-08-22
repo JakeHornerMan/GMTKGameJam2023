@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9212655407886111783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 78240989
-  m_SortingLayer: 3
+  m_SortingLayerID: -633477931
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c37c47fcaebaf634ca4af9eab19ebf77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1109756}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &764242908907394980
 MonoBehaviour:
@@ -146,10 +146,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tokenValue: 5
   isSwaying: 0
-  removeTime: 12
+  removeTime: 13
   amplitude: 1
   frequency: 1
   speed: 1
+  goToRoad: 1
+  closestRoad: {fileID: 0}
+  timeToReachTarget: 1
 --- !u!95 &5441951200392066576
 Animator:
   serializedVersion: 5
@@ -160,7 +163,7 @@ Animator:
   m_GameObject: {fileID: 9212655407886111783}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 370ebafe389b28140b2434c7844794e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 092232d328928e549a99fd8ad8e3e7c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

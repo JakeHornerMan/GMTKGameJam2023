@@ -5,11 +5,10 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     [Header("Token Type Values")]
-
     [SerializeField] public int tokenValue = 1;
-    [SerializeField] private bool isSwaying = true;
     
     [Header("Sway Values")]
+    [SerializeField] private bool isSwaying = true;
 
     [SerializeField] private float removeTime = 3f;
     [Tooltip("How long token lasts")]
@@ -30,6 +29,15 @@ public class TokenController : MonoBehaviour
 
     private float tokenShrinkAnimLength = 1.5f;
 
+    private float t = 0f;
+    private Vector3 startPosition;
+    private Vector3 target;
+
+    [Header("Sway Values")]
+    [SerializeField] private bool goToRoad = false;
+    public GameObject closestRoad;
+    [SerializeField] public float timeToReachTarget = 1f;
+
     void Awake()
     {
         initialPosition = transform.position;
@@ -39,17 +47,64 @@ public class TokenController : MonoBehaviour
 
     void Start()
     {
-        IEnumerator coroutine = WaitAndDie(removeTime);
-        StartCoroutine(coroutine);
+        StartCoroutine(WaitAndDie(removeTime));
+
+        if(goToRoad){
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            FindClosestRoad();
+            SetDestination();
+            // anim.Play("Token Shrink");
+        }
+        else {
+            this.GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 
     private void Update()
     {
         if(isSwaying){
-            float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
-            float horizontalDisplacement = speed * Time.deltaTime;
-            Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
-            transform.Translate(newPosition - transform.position);
+            Swaying();
+        }
+        
+        if(closestRoad != null){
+            if(this.transform.position != closestRoad.transform.position){
+            TravelToRoad();
+            }
+            else{
+                this.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+    }
+
+    private void Swaying(){
+        float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
+        float horizontalDisplacement = speed * Time.deltaTime;
+        Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
+        transform.Translate(newPosition - transform.position);
+    }
+
+    private void SetDestination()
+    {
+        startPosition = this.transform.position;
+        target = closestRoad.transform.position; 
+    }
+
+    private void TravelToRoad(){
+        t += Time.deltaTime/timeToReachTarget;
+        transform.position = Vector3.Lerp(startPosition, target, t);
+    }
+
+    private void FindClosestRoad()
+    {
+        float distanceToClosestRoad = Mathf.Infinity;
+        GameObject[] allRoads = GameObject.FindGameObjectsWithTag("Road");
+
+        foreach (GameObject road in allRoads){
+            float distanceToRoad = (road.transform.position - this.transform.position).sqrMagnitude;
+            if(distanceToRoad < distanceToClosestRoad){
+                distanceToClosestRoad = distanceToRoad;
+                closestRoad = road;
+            }
         }
     }
 

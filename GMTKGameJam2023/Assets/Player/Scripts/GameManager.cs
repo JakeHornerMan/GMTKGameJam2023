@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
 
     public void RemovePlayerScore(int removeAmount)
     {
-        interfaceManager.ScoreUI(removeAmount, false);
+        // interfaceManager.ScoreUI(removeAmount, false);
         playerScore -= removeAmount;
         playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
 
     public void RemoveTokens(int removeAmount)
     {
-        // interfaceManager.TokenUI(removeAmount, false);
+        interfaceManager.TokenUI(removeAmount, false);
         tokens -= removeAmount;
     }
 
