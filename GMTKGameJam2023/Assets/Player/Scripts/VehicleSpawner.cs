@@ -14,13 +14,6 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private CurrentCarIndicator carCursorFollower;
 
-    [Header("Car Select Indicators")]
-    [SerializeField] private Transform selectedCarIndicator;
-    [SerializeField] private float standardCarX = 0;
-    [SerializeField] private float spikedCarX = 0;
-    [SerializeField] private float superCarX = 0;
-    [SerializeField] private float truckX = 0;
-
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
 
@@ -32,9 +25,8 @@ public class VehicleSpawner : MonoBehaviour
     private float currentTimeUntilNextSpawn;
     public bool disableVehicleSpawn = false;
 
-
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
-    [SerializeField] private Vector2 invalidPlacementCamShake = new Vector2(0.15f, 0.2f);
+    [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
     [HideInInspector] public Car currentActiveCar;
 
@@ -63,14 +55,14 @@ public class VehicleSpawner : MonoBehaviour
     private void Update()
     {
         if (gameManager.isGameOver) return;
-        if(disableVehicleSpawn) return;
+        if (disableVehicleSpawn) return;
 
-        if(SystemInfo.deviceType == DeviceType.Desktop)
+        if (SystemInfo.deviceType == DeviceType.Desktop)
             MouseInputs();
-        
-        if(SystemInfo.deviceType == DeviceType.Handheld)
+
+        if (SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
-        
+
         //Timer that decreases to prevent players from spamming cars down a single lane (but still allow multiple lane spawning)
         if (currentTimeUntilNextSpawn > 0)
         {
@@ -78,7 +70,8 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void MouseInputs(){
+    private void MouseInputs()
+    {
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
@@ -98,7 +91,8 @@ public class VehicleSpawner : MonoBehaviour
         UpdateCarCursor();
     }
 
-    private void TouchInputs(){
+    private void TouchInputs()
+    {
         // if (Input.touchCount > 0){
         // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
@@ -113,15 +107,13 @@ public class VehicleSpawner : MonoBehaviour
                     PlaceSelectedCar();
                     break;
                 case TouchPhase.Moved:
-                    
+
                     break;
 
                 case TouchPhase.Ended:
-                    
+
                     break;
             }
-            
-            
         }
     }
 
@@ -191,20 +183,26 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool isTooExpensive(){
-        if (currentActiveCar.carPrice > gameManager.tokens){
+    public bool isTooExpensive()
+    {
+        if (currentActiveCar.carPrice > gameManager.tokens)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
-        }     
+        }
     }
 
-    public bool notEnoughCarWallet(){
-        if(carWallet.carCount <= 0){
+    public bool notEnoughCarWallet()
+    {
+        if (carWallet.carCount <= 0)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
@@ -212,20 +210,6 @@ public class VehicleSpawner : MonoBehaviour
     public void SelectCar(CarButton carBtn)
     {
         currentActiveCar = carBtn.correspondingCar;
-
-        float x;
-        if (carBtn == standardCar)
-            x = standardCarX;
-        else if (carBtn == superCar)
-            x = superCarX;
-        else if (carBtn == spikedCar)
-            x = spikedCarX;
-        else if (carBtn == truck)
-            x = truckX;
-        else
-            x = standardCarX;
-
-        selectedCarIndicator.transform.position = new Vector3(x, selectedCarIndicator.transform.position.y, 0);
     }
 
     private void UpdateCarCursor()
