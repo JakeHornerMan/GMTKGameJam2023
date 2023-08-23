@@ -5229,6 +5229,7 @@ MonoBehaviour:
   - Road
   - Pavement
   - Grass
+  - Bus Lane
   placeableAnywhere: 1
   carSpeed: 0
   damage: 120
@@ -5240,6 +5241,7 @@ MonoBehaviour:
   popupDestroyDelay: 0.7
   camShakeDuration: 0.4
   camShakeMagnitude: 0.1
+  carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   missileSprtie: {fileID: 2270964467784247881}
