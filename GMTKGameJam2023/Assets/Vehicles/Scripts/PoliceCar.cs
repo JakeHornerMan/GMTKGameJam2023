@@ -8,6 +8,10 @@ public class PoliceCar : Car
     [SerializeField] private float policeShakeDuration = 3f;
     [SerializeField] private float policeShakeMagnitude = 0.25f;
 
+    [Header("Which method of placing spikes?")]
+    [SerializeField] private bool placeMultipleInLine = false;
+    [SerializeField] private bool placeOnClickLocation = false;
+
     [Header("Spike Strip Parameters")]
     [SerializeField] private GameObject spikePrefab;
     [SerializeField] private float numberOfSpikes = 3f;
