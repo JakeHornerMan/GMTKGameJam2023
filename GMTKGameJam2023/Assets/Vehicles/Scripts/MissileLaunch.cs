@@ -7,6 +7,11 @@ public class MissileLaunch : Car
     [Header("Animation")]
     [SerializeField] private GameObject missileSprtie;
 
+    private void Start()
+    {
+        soundManager.PlayMissileLaunch();
+    }
+
     public void Explode()
     {
         Destroy(missileSprtie.gameObject);
