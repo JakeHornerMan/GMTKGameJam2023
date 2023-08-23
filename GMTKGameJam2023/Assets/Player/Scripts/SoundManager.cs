@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig busConfig;
 
     [Header("Player Attack Clips")]
+    [SerializeField] private SoundConfig[] sliceConfigs;
     [SerializeField] private SoundConfig missileLaunchConfig;
     [SerializeField] private SoundConfig fighterJetExplosion;
     [SerializeField] private SoundConfig explosionConfig;
@@ -43,9 +44,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig cashChicken;
     [SerializeField] private SoundConfig turboChicken;
     [SerializeField] private SoundConfig turboChickenDeath;
-
-    [Header("Slice Clips")]
-    [SerializeField] private SoundConfig[] sliceConfigs;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -86,6 +84,10 @@ public class SoundManager : MonoBehaviour
     // Player Attack Sounds
     public void PlayRandomSlice() => RandomPlaySound(sliceConfigs);
     public void PlayMissileLaunch() => PlaySound(missileLaunchConfig);
+    public void PlayFighterJetExplosion() => PlaySound(fighterJetExplosion);
+    public void PlayGenericExplosion() => PlaySound(explosionConfig);
+    public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
+    public void PlayCementPour() => PlaySound(cementPlaceConfig);
 
     // =============================
     // Game Info Sounds
@@ -99,6 +101,8 @@ public class SoundManager : MonoBehaviour
     public void PlayRandomChicken() => RandomPlaySound(chickenConfigs);
     public void PlayChickenHit() => RandomPlaySound(deathConfigs);
     public void PlayCashChicken() => PlaySound(cashChicken);
+    public void PlayTurboChicken() => PlaySound(turboChicken);
+    public void PlayTurboChickenDeath() => PlaySound(turboChickenDeath);
 
     // =============================
     // Other Functions
