@@ -378,17 +378,22 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
     volume: 1
   hovercraftConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f66e8da8f5f99f647a5aa53055518d06, type: 3}
     volume: 1
   cementMixerConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
     volume: 1
   bulldozerConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
   busConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
+  sliceConfigs:
+  - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: f8b3ed6881a3f6b49a82289d222a916a, type: 3}
+    volume: 0.5
   missileLaunchConfig:
     clip: {fileID: 8300000, guid: b2e76d78bad382846aa63840186e34d3, type: 3}
     volume: 1
@@ -434,10 +439,5 @@ MonoBehaviour:
   turboChickenDeath:
     clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
     volume: 1
-  sliceConfigs:
-  - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
-    volume: 0.5
-  - clip: {fileID: 8300000, guid: f8b3ed6881a3f6b49a82289d222a916a, type: 3}
-    volume: 0.5
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}

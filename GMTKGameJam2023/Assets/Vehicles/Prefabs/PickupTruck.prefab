@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 7127396023849450930}
+  - component: {fileID: 9117086086339291756}
   m_Layer: 2
   m_Name: PickupTruck
   m_TagString: Untagged
@@ -291,7 +291,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.875}
   m_EdgeRadius: 0
---- !u!114 &7127396023849450930
+--- !u!114 &9117086086339291756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Script: {fileID: 11500000, guid: 5878f903f0f008d4da03ac53120445a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
@@ -308,7 +308,7 @@ MonoBehaviour:
   comboText: {fileID: 5885361816208039466}
   carSprite: {fileID: 21300000, guid: 48fe14e9417353440b2c3c4e1a23b84d, type: 3}
   carIcon: {fileID: 21300000, guid: e6f36a3ae6b995a43bc2c37273354dd3, type: 3}
-  carName: Pickup
+  carName: The Pickup
   carPrice: 0
   ignoreTokens: 0
   isSlicingCar: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
-  popupDestroyDelay: 1.2
+  popupDestroyDelay: 0.7
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
   carHitStopEffectMultiplier: 1
