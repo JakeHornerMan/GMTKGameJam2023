@@ -91,7 +91,6 @@ public class SoundManager : MonoBehaviour
     public void PlayChickenHit() => RandomPlaySound(deathConfigs);
     public void PlayCashChicken() => PlaySound(cashChicken);
 
-
     // =============================
     // Other Functions
     public void PlayEndMusic()
