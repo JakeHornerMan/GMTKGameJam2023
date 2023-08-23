@@ -149,6 +149,11 @@ MonoBehaviour:
   startTime: 180
   devMode: 0
   isGameOver: 0
+  carsInLevel:
+  - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  - {fileID: -952324110816968911, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
+  - {fileID: -620051609290920513, guid: d88b644156c3a224697efd3585e1337a, type: 3}
+  - {fileID: 1735388934760480964, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
   startLives: 10
   lostChicenScore: 1000
   safelyCrossedChickens: 0
@@ -369,6 +374,8 @@ MonoBehaviour:
   speedUpTextDeactivationDelay: 2
   positivePoints: {fileID: 7312448788404570237, guid: a8e0b7dbcceb3ba49960b10afa13cdf5, type: 3}
   negativePoints: {fileID: 2036366478192065954, guid: 012179248d163534d9ae3669a54aa4c2, type: 3}
+  positiveTokens: {fileID: 0}
+  negativeTokens: {fileID: 0}
 --- !u!114 &8787489566123281814
 MonoBehaviour:
   m_ObjectHideFlags: 0
