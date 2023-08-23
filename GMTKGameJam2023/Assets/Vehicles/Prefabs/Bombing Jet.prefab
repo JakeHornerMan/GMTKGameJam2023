@@ -157,7 +157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
@@ -260,7 +260,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6666667}
@@ -398,7 +398,6 @@ MonoBehaviour:
   numberOfBombs: 4
   laneLength: 10
   delayBetweenBombs: 0.25
-  bombLifetime: 2.5
 --- !u!1 &8684162998331271806
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2159207730562167585, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.16078432
+      value: 0.64705884
       objectReference: {fileID: 0}
     - target: {fileID: 2159207730562167585, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: InitialModule.startColor.minColor.a
@@ -658,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2159207730562167585, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0.16078432
+      value: 0.64705884
       objectReference: {fileID: 0}
     - target: {fileID: 2159207730562167585, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: InitialModule.startColor.minColor.a

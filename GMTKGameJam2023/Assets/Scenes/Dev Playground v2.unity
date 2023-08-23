@@ -1057,7 +1057,7 @@ PrefabInstance:
     - target: {fileID: 7543842703582401103, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: ChickenPrefab
       value: 
-      objectReference: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      objectReference: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: tokens
       value: 1000
@@ -1116,7 +1116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[0].chicken
@@ -1163,6 +1163,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[12].chicken
+      value: 
+      objectReference: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[13].chicken
+      value: 
+      objectReference: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[4].timeToSpawn
       value: 10
       objectReference: {fileID: 0}
@@ -1192,6 +1200,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[11].timeToSpawn
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[12].timeToSpawn
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[13].timeToSpawn
       value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
