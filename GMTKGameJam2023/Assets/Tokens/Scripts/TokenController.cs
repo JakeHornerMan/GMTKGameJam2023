@@ -5,6 +5,7 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     [Header("Token Type Values")]
+    [SerializeField] private bool tokenBag = false;
     [SerializeField] public int tokenValue = 1;
     
     [Header("Sway Values")]
@@ -34,7 +35,6 @@ public class TokenController : MonoBehaviour
     private Vector3 target;
 
     [Header("Sway Values")]
-    [SerializeField] private bool goToRoad = false;
     public GameObject closestRoad;
     [SerializeField] public float timeToReachTarget = 1f;
 
@@ -49,7 +49,7 @@ public class TokenController : MonoBehaviour
     {
         StartCoroutine(WaitAndDie(removeTime));
 
-        if(goToRoad){
+        if(tokenBag){
             this.GetComponent<BoxCollider2D>().enabled = false;
             FindClosestRoad();
             SetDestination();
@@ -66,7 +66,7 @@ public class TokenController : MonoBehaviour
             Swaying();
         }
         
-        if(closestRoad != null){
+        if(closestRoad != null && tokenBag){
             if(this.transform.position != closestRoad.transform.position){
             TravelToRoad();
             }
