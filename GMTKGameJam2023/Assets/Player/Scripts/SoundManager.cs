@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -114,11 +115,13 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(SoundConfig soundConfig)
     {
+        // if (!Settings.sfxAllowed) return;
         audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
     }
 
     private void RandomPlaySound(params SoundConfig[] soundConfigs)
     {
+        // if (!Settings.sfxAllowed) return;
         int willPlaySound = Random.Range(0, 1);
         if (willPlaySound == 0)
         {
