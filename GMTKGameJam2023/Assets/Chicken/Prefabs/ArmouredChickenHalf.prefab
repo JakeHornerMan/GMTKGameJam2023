@@ -174,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 1912642439
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1341973423, guid: 825e5a279decac14cb90b87dbfaf66c3, type: 3}
+  m_Sprite: {fileID: -243067658, guid: c5e15d7370f658a458df2f552725bfb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,7 +195,7 @@ Animator:
   m_GameObject: {fileID: 7432632716323759472}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7cd8c0dda2d2bbb41be17362d9ffee77, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7b5d3c9047893f246b8779c3cb2d0071, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -216,10 +216,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 315510484514270918}
-  - component: {fileID: -6163354570426845532}
-  - component: {fileID: -5117147452543026932}
+  - component: {fileID: 8089028048643985026}
+  - component: {fileID: 3394038647060757474}
   m_Layer: 2
-  m_Name: Turbo Chicken
+  m_Name: ArmouredChickenHalf
   m_TagString: Chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6163354570426845532
+--- !u!114 &8089028048643985026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,25 +277,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 7467406142021207113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eba7392919cbb94bb312bad5ef69fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
   chickenIntesity: 0
-  minMoveTime: 0.5
+  minMoveTime: 1
   maxMoveTime: 3
-  laneDistance: 2
+  laneDistance: 1.25
   ignoreCement: 0
   cementLayer:
     serializedVersion: 2
     m_Bits: 64
   animatorHopBool: Hop
   animationFinishTime: 0.5
-  hitStopLength: 0.2
-  speed: 3.5
---- !u!114 &-5117147452543026932
+  hitStopLength: 0.03
+--- !u!114 &3394038647060757474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,15 +303,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7467406142021207113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9242a8be3d2dada41bc2edcf772cd50b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8890fb233a01c694295fc15506b04208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
-  startHealth: 100
+  startHealth: 200
   invinsibleForTime: 1
-  pointsReward: 250
+  pointsReward: 300
   health: 0
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}

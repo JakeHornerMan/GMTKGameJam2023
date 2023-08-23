@@ -17,7 +17,6 @@ public class BombingJet : Car
     [SerializeField] private float numberOfBombs = 4f;
     [SerializeField] private float laneLength = 17f;
     [SerializeField] private float delayBetweenBombs = 0.25f;
-    [SerializeField] private float bombLifetime = 5.0f;
 
     private float numberOfBombsProcessed = 0;
 
