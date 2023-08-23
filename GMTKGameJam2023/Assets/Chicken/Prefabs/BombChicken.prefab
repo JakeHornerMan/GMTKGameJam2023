@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 565913885
-  m_SortingLayer: 2
+  m_SortingLayerID: 1912642439
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1709115884, guid: 5e04e93471dd0d545a1357a34fc67326, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -210,9 +210,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   featherParticles: {fileID: 2811581772486231686, guid: 0fc67d0bca0fcdb4bbb9dfc0bf8c4a63, type: 3}
   featherParticlesZPos: -5
+  chickenSprite: {fileID: 1978656475471651969}
+  hopController: {fileID: 8851517354825887726}
   startHealth: 1
+  invinsibleForTime: 1
   pointsReward: 250
   health: 0
+  flashMaterial: {fileID: 0}
   explosionPrefab: {fileID: 3112727753274190021, guid: e34f14ac8da5ccd469a31c6d10c90e17, type: 3}
 --- !u!1 &4125393991728056117
 GameObject:
