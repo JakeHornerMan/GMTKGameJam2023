@@ -5017,8 +5017,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 565913885
-  m_SortingLayer: 2
+  m_SortingLayerID: 1912642439
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1167401932, guid: 1829c4feb42f13b4bb9c5f6562000af7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5153,14 +5153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f2a8f9696fa94bb74da6af4c0e14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  featherParticles: {fileID: 2811581772486231686, guid: 04de240046948864bb820656a832a9fd, type: 3}
+  featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   featherParticlesZPos: -5
+  chickenSprite: {fileID: 7432632716323759472}
+  hopController: {fileID: 469911086233366047}
   startHealth: 100
+  invinsibleForTime: 1
   pointsReward: 200
   health: 0
-  dropTheBag: 0
+  flashMaterial: {fileID: 0}
+  dropTheBag: 1
   tokenAmount: 5
   tokenBag: {fileID: 9212655407886111783, guid: 7d64507227b83fa4bb112c85d69c415b, type: 3}
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 0.7

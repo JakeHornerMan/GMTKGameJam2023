@@ -12,11 +12,4 @@ public class MissileLaunch : Car
         Destroy(missileSprtie.gameObject);
         GetComponent<Animator>().SetTrigger("Explode");
     }
-
-    public new void DestroySelf()
-    {
-        if (totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
-        Destroy(gameObject);
-    }
 }
