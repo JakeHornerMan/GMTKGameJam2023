@@ -17,16 +17,32 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig fastCarConfig;
     [SerializeField] private SoundConfig spikeCarConfig;
     [SerializeField] private SoundConfig truckConfig;
+    [SerializeField] private SoundConfig pickupTruckConfig;
+    [SerializeField] private SoundConfig[] fighterJetConfig;
+    [SerializeField] private SoundConfig[] policeCarConfig;
+    [SerializeField] private SoundConfig hovercraftConfig;
+    [SerializeField] private SoundConfig cementMixerConfig;
+    [SerializeField] private SoundConfig bulldozerConfig;
+    [SerializeField] private SoundConfig busConfig;
+
+    [Header("Player Attack Clips")]
+    [SerializeField] private SoundConfig missileLaunchConfig;
+    [SerializeField] private SoundConfig fighterJetExplosion;
+    [SerializeField] private SoundConfig explosionConfig;
+    [SerializeField] private SoundConfig spikePlaceConfig;
+    [SerializeField] private SoundConfig cementPlaceConfig;
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
-    
+    [SerializeField] private SoundConfig[] tokenCollect;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
     [SerializeField] private SoundConfig cashChicken;
+    [SerializeField] private SoundConfig turboChicken;
+    [SerializeField] private SoundConfig turboChickenDeath;
 
     [Header("Slice Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
@@ -52,62 +68,31 @@ public class SoundManager : MonoBehaviour
         audioSrc.Play();
     }
 
-    public void PlayChickenHit()
-    {
-        RandomPlaySound(deathConfigs);
-    }
+    // =============================
+    // Sounds Playing on Car Spawn
+    public void PlayNewStandardCar() => PlaySound(standardCarConfig);
+    public void PlayNewFastCar() => PlaySound(fastCarConfig);
+    public void PlayNewSpikeCar() => PlaySound(spikeCarConfig);
+    public void PlayNewTruck() => PlaySound(truckConfig);
 
-    public void PlayNewStandardCar()
-    {
-        PlaySound(standardCarConfig);
-    }
+    // =============================
+    // Player Attack Sounds
+    public void PlayRandomSlice() => RandomPlaySound(sliceConfigs);
 
-    public void PlayNewFastCar()
-    {
-        PlaySound(fastCarConfig);
-    }
+    // =============================
+    // Game Info Sounds
+    public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
+    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
+    public void PlayMissedChicken() => PlaySound(missedChicken);
 
-    public void PlayNewSpikeCar()
-    {
-        PlaySound(spikeCarConfig);
-    }
+    // =============================
+    // Chicken SFX
+    public void PlayRandomChicken() => RandomPlaySound(chickenConfigs);
+    public void PlayChickenHit() => RandomPlaySound(deathConfigs);
+    public void PlayCashChicken() => PlaySound(cashChicken);
 
-    public void PlayNewTruck()
-    {
-        PlaySound(truckConfig);
-    }
-
-    public void PlayGameSpeed()
-    {
-        PlaySound(gameSpeedConfig);
-    }
-
-    public void PlayLastSeconds()
-    {
-        PlaySound(lastSecondsConfig);
-    }
-
-    public void PlayMissedChicken()
-    {
-        PlaySound(missedChicken);
-    }
-
-
-    public void PlayRandomChicken()
-    {
-        RandomPlaySound(chickenConfigs);
-    }
-
-    public void PlayCashChicken()
-    {
-        PlaySound(cashChicken);
-    }
-
-    public void PlayRandomSlice()
-    {
-        RandomPlaySound(sliceConfigs);
-    }
-
+    // =============================
+    // Other Functions
     public void PlayEndMusic()
     {
         audioSrc.Stop();
@@ -122,7 +107,8 @@ public class SoundManager : MonoBehaviour
     private void RandomPlaySound(params SoundConfig[] soundConfigs)
     {
         int willPlaySound = Random.Range(0, 1);
-        if(willPlaySound == 0){
+        if (willPlaySound == 0)
+        {
             if (soundConfigs.Length > 0)
             {
                 int randomIndex = Random.Range(0, soundConfigs.Length);
