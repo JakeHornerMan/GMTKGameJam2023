@@ -74,16 +74,25 @@ public class SoundManager : MonoBehaviour
     public void PlayNewFastCar() => PlaySound(fastCarConfig);
     public void PlayNewSpikeCar() => PlaySound(spikeCarConfig);
     public void PlayNewTruck() => PlaySound(truckConfig);
+    public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
+    public void PlayNewFighterJet() => RandomPlaySound(fighterJetConfig);
+    public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
+    public void PlayNewHovercraft() => PlaySound(hovercraftConfig);
+    public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
+    public void PlayNewBulldozer() => PlaySound(bulldozerConfig);
+    public void PlayNewBus() => PlaySound(busConfig);
 
     // =============================
     // Player Attack Sounds
     public void PlayRandomSlice() => RandomPlaySound(sliceConfigs);
+    public void PlayMissileLaunch() => PlaySound(missileLaunchConfig);
 
     // =============================
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
+    public void PlayTokenCollect() => RandomPlaySound(tokenCollect);
 
     // =============================
     // Chicken SFX
@@ -117,3 +126,4 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
+
