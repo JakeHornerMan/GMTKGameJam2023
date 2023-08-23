@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Player Attack Clips")]
     [SerializeField] private SoundConfig missileLaunchConfig;
+    [SerializeField] private SoundConfig fighterJetExplosion;
     [SerializeField] private SoundConfig explosionConfig;
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
@@ -41,6 +42,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] chickenConfigs;
     [SerializeField] private SoundConfig cashChicken;
     [SerializeField] private SoundConfig turboChicken;
+    [SerializeField] private SoundConfig turboChickenDeath;
 
     [Header("Slice Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;

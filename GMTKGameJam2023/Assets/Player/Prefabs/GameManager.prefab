@@ -365,6 +365,11 @@ MonoBehaviour:
   pickupTruckConfig:
     clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 1
+  fighterJetConfig:
+  - clip: {fileID: 8300000, guid: e18f82c3e6a958545be1acd504f7fdd1, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: e188c742249368940bac28ad6dec2066, type: 3}
+    volume: 1
   policeCarConfig:
   - clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
     volume: 1
@@ -385,7 +390,10 @@ MonoBehaviour:
     clip: {fileID: 0}
     volume: 1
   missileLaunchConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: b2e76d78bad382846aa63840186e34d3, type: 3}
+    volume: 1
+  fighterJetExplosion:
+    clip: {fileID: 8300000, guid: 8a3498ba97008074bb7c5bdd2c2e5b3d, type: 3}
     volume: 1
   explosionConfig:
     clip: {fileID: 0}
@@ -401,11 +409,15 @@ MonoBehaviour:
     volume: 0.3
   lastSecondsConfig:
     clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
-    volume: 0.3
+    volume: 1
   missedChicken:
     clip: {fileID: 8300000, guid: 50d6d23344ed0be40b64917c29ac81aa, type: 3}
     volume: 1
-  tokenCollect: []
+  tokenCollect:
+  - clip: {fileID: 8300000, guid: d8fa14f4d7acd5b43b615446a6fddae5, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 0fdb498d20da89d42900889ee843ec50, type: 3}
+    volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
     volume: 0.5
@@ -417,7 +429,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 747288a643919b9449ece77d3a6633a9, type: 3}
     volume: 0.5
   turboChicken:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: df0348b19917d294780985cde2c673a7, type: 3}
+    volume: 1
+  turboChickenDeath:
+    clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
     volume: 1
   sliceConfigs:
   - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
