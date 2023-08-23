@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 275410180260309379}
   - component: {fileID: 7127396023849450930}
   m_Layer: 2
-  m_Name: Standard Car
+  m_Name: Bus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.875}
+  m_Size: {x: 1.25, y: 3.6}
   m_EdgeRadius: 0
 --- !u!114 &7127396023849450930
 MonoBehaviour:
@@ -307,9 +307,9 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 5885361816208039466}
-  carSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
-  carIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
-  carName: Hatchback
+  carSprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
+  carIcon: {fileID: 21300000, guid: 6a58921643d1cca418d19b07b0c2a093, type: 3}
+  carName: Touring Bus
   carPrice: 0
   ignoreTokens: 0
   isSlicingCar: 0
@@ -319,10 +319,11 @@ MonoBehaviour:
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
+  - Bus Lane
   placeableAnywhere: 0
-  carSpeed: 5
-  damage: 120
-  comboMultiplier: 0.2
+  carSpeed: 4.5
+  damage: 200
+  comboMultiplier: 0.5
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
@@ -400,7 +401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 0.2}
+  m_AnchoredPosition: {x: -0.33333337, y: -0.80000013}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3522165074283123073
@@ -588,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.75
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_LocalPosition.z
