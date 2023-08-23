@@ -362,6 +362,40 @@ MonoBehaviour:
   truckConfig:
     clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
     volume: 0.6
+  pickupTruckConfig:
+    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
+    volume: 1
+  policeCarConfig:
+  - clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 7a58d3ff0f3232b40b0a80d53d0842c4, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
+    volume: 1
+  hovercraftConfig:
+    clip: {fileID: 0}
+    volume: 1
+  cementMixerConfig:
+    clip: {fileID: 0}
+    volume: 1
+  bulldozerConfig:
+    clip: {fileID: 0}
+    volume: 1
+  busConfig:
+    clip: {fileID: 0}
+    volume: 1
+  missileLaunchConfig:
+    clip: {fileID: 0}
+    volume: 1
+  explosionConfig:
+    clip: {fileID: 0}
+    volume: 1
+  spikePlaceConfig:
+    clip: {fileID: 0}
+    volume: 1
+  cementPlaceConfig:
+    clip: {fileID: 0}
+    volume: 1
   gameSpeedConfig:
     clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
     volume: 0.3
@@ -371,6 +405,7 @@ MonoBehaviour:
   missedChicken:
     clip: {fileID: 8300000, guid: 50d6d23344ed0be40b64917c29ac81aa, type: 3}
     volume: 1
+  tokenCollect: []
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
     volume: 0.5
@@ -381,6 +416,9 @@ MonoBehaviour:
   cashChicken:
     clip: {fileID: 8300000, guid: 747288a643919b9449ece77d3a6633a9, type: 3}
     volume: 0.5
+  turboChicken:
+    clip: {fileID: 0}
+    volume: 1
   sliceConfigs:
   - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
     volume: 0.5

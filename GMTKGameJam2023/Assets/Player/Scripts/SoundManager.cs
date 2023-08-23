@@ -18,7 +18,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig spikeCarConfig;
     [SerializeField] private SoundConfig truckConfig;
     [SerializeField] private SoundConfig pickupTruckConfig;
-    [SerializeField] private SoundConfig policeCarConfig;
+    [SerializeField] private SoundConfig[] fighterJetConfig;
+    [SerializeField] private SoundConfig[] policeCarConfig;
     [SerializeField] private SoundConfig hovercraftConfig;
     [SerializeField] private SoundConfig cementMixerConfig;
     [SerializeField] private SoundConfig bulldozerConfig;
@@ -34,10 +35,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig gameSpeedConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
+    [SerializeField] private SoundConfig[] tokenCollect;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
     [SerializeField] private SoundConfig cashChicken;
+    [SerializeField] private SoundConfig turboChicken;
 
     [Header("Slice Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
