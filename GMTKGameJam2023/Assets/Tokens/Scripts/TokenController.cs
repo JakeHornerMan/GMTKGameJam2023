@@ -53,7 +53,6 @@ public class TokenController : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
             FindClosestRoad();
             SetDestination();
-            // anim.Play("Token Shrink");
         }
         else {
             this.GetComponent<BoxCollider2D>().enabled = true;
@@ -67,7 +66,7 @@ public class TokenController : MonoBehaviour
         }
         
         if(closestRoad != null && tokenBag){
-            if(this.transform.position != closestRoad.transform.position){
+            if(this.transform.position != target){
             TravelToRoad();
             }
             else{
@@ -86,7 +85,9 @@ public class TokenController : MonoBehaviour
     private void SetDestination()
     {
         startPosition = this.transform.position;
+        float randomYPos = Random.Range(-3.00f, 3.00f);
         target = closestRoad.transform.position; 
+        target.y = randomYPos;
     }
 
     private void TravelToRoad(){
