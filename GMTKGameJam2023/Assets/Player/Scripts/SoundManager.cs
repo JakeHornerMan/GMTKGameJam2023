@@ -34,6 +34,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig explosionConfig;
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
+    [SerializeField] private SoundConfig sheepConfig;
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
@@ -91,6 +92,7 @@ public class SoundManager : MonoBehaviour
     public void PlayGenericExplosion() => PlaySound(explosionConfig);
     public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
     public void PlayCementPour() => PlaySound(cementPlaceConfig);
+    public void PlaySheepNoise() => PlaySound(sheepConfig);
 
     // =============================
     // Game Info Sounds
