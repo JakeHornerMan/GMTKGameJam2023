@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
 
+    public delegate void EventType();
+    public static event EventType OnTokensUpdated;
+
+    //[Header("Events")]
+
+    
 
     private void Awake()
     {
@@ -173,6 +179,7 @@ public class GameManager : MonoBehaviour
         playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
 
+<<<<<<< Updated upstream
     public void AddTokens(int addAmount)
     {
         // interfaceManager.TokenUI(addAmount, true);
@@ -184,6 +191,27 @@ public class GameManager : MonoBehaviour
     {
         interfaceManager.TokenUI(removeAmount, false);
         tokens -= removeAmount;
+=======
+    //public void CollectToken()
+    //{
+    //    tokens++;
+    //    totalTokens++;
+
+    //    UpdateTokens();
+    //}
+
+    public void UpdateTokens(int tokenDifference)
+    {
+        tokens = tokens + tokenDifference;
+
+        if (tokenDifference > 0)
+        {
+            totalTokens = totalTokens + tokenDifference;
+        }
+        
+
+        OnTokensUpdated();
+>>>>>>> Stashed changes
     }
 
     private void UpdateRankings()
