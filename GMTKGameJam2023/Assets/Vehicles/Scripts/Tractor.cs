@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,16 @@ public class Tractor : Car
     {
         SetCarSpeed();
 
+        SpawnSheep();
+
         soundManager.PlayNewTractor();
+    }
+
+    private void SpawnSheep()
+    {
+        foreach (Transform spot in sheepSpawnSpots)
+        {
+            Instantiate(sheepPrefab, spot.position, Quaternion.identity);
+        }
     }
 }
