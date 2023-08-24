@@ -55,6 +55,8 @@ public class PoliceCar : Car
 
         GameObject currentSpike = Instantiate(spikePrefab, spikePosition, Quaternion.identity);
 
+        soundManager.PlaySpikePlacement();
+
         numberOfSpikesDeployed++;
 
     }

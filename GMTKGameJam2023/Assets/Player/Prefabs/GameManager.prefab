@@ -378,10 +378,10 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
     volume: 1
   hovercraftConfig:
-    clip: {fileID: 8300000, guid: f66e8da8f5f99f647a5aa53055518d06, type: 3}
+    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
   cementMixerConfig:
-    clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
+    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
   bulldozerConfig:
     clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
@@ -401,13 +401,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8a3498ba97008074bb7c5bdd2c2e5b3d, type: 3}
     volume: 1
   explosionConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 03de090bc18368d41a18c07bac87d636, type: 3}
     volume: 1
   spikePlaceConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
     volume: 1
   cementPlaceConfig:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f73a6bdf25c8d2343b16da555e17e0cc, type: 3}
     volume: 1
   gameSpeedConfig:
     clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
@@ -430,9 +430,13 @@ MonoBehaviour:
     volume: 0.5
   - clip: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
     volume: 0.5
-  cashChicken:
-    clip: {fileID: 8300000, guid: 747288a643919b9449ece77d3a6633a9, type: 3}
-    volume: 0.5
+  cashChickenSound:
+  - clip: {fileID: 8300000, guid: f73a6bdf25c8d2343b16da555e17e0cc, type: 3}
+    volume: 0
+  - clip: {fileID: 8300000, guid: 8b163f82e2bf4034ea08d4e318b3d308, type: 3}
+    volume: 0
+  - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
+    volume: 0
   turboChicken:
     clip: {fileID: 8300000, guid: df0348b19917d294780985cde2c673a7, type: 3}
     volume: 1

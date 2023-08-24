@@ -42,7 +42,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
-    [SerializeField] private SoundConfig cashChicken;
+    [SerializeField] private SoundConfig[] cashChickenSound;
     [SerializeField] private SoundConfig turboChicken;
     [SerializeField] private SoundConfig turboChickenDeath;
 
@@ -101,7 +101,7 @@ public class SoundManager : MonoBehaviour
     // Chicken SFX
     public void PlayRandomChicken() => RandomPlaySound(chickenConfigs);
     public void PlayChickenHit() => RandomPlaySound(deathConfigs);
-    public void PlayCashChicken() => PlaySound(cashChicken);
+    public void PlayCashChicken() => RandomPlaySound(cashChickenSound);
     public void PlayTurboChicken() => PlaySound(turboChicken);
     public void PlayTurboChickenDeath() => PlaySound(turboChickenDeath);
 

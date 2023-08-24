@@ -7,10 +7,18 @@ public class TurboChickenMovement : ChickenMovement
     [Header("Turbo Chicken Values")]
     [SerializeField] private float speed = 1f; // The speed at which the chicken moves
 
+    private SoundManager soundManager;
+
+    private void Awake()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
     // Override the StartMovement method
     protected override void StartMovement()
     {
         // We do nothing in this override since this chicken will continuously move
+        soundManager.PlayTurboChicken();
     }
 
     // Override the ChooseNextDirection method
@@ -26,5 +34,10 @@ public class TurboChickenMovement : ChickenMovement
         // Move the chicken continuously to the right at the speed defined
         if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+    }
+
+    private void OnDestroy()
+    {
+        soundManager.PlayTurboChickenDeath();
     }
 }

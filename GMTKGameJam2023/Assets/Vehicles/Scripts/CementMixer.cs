@@ -41,6 +41,8 @@ public class CementMixer : Car
             Quaternion.identity
         );
 
+        soundManager.PlayCementPour();
+
         Destroy(newCement, cementLifetime);
 
         cementSpawned++;
