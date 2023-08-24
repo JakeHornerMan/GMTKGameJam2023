@@ -974,6 +974,10 @@ PrefabInstance:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 93226405}
+    - target: {fileID: 857913865922615603, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: boatConfig.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     - target: {fileID: 2160284341332244042, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1068,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: carsInLevel.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: carsInLevel.Array.data[0]
@@ -1106,6 +1110,10 @@ PrefabInstance:
       propertyPath: carsInLevel.Array.data[8]
       value: 
       objectReference: {fileID: 512348543385223842, guid: 0bd4fea591d7e8a4c8eb2f8f23236a13, type: 3}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: carsInLevel.Array.data[9]
+      value: 
+      objectReference: {fileID: 1782800658000638442, guid: caff1d3d52fea304aa7453b28e6101ed, type: 3}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.data[0].wavePrompt
       value: Debug Wave
