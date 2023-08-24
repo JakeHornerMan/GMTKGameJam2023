@@ -25,6 +25,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig cementMixerConfig;
     [SerializeField] private SoundConfig bulldozerConfig;
     [SerializeField] private SoundConfig busConfig;
+    [SerializeField] private SoundConfig tractorConfig;
 
     [Header("Player Attack Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
@@ -80,6 +81,7 @@ public class SoundManager : MonoBehaviour
     public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
     public void PlayNewBulldozer() => PlaySound(bulldozerConfig);
     public void PlayNewBus() => PlaySound(busConfig);
+    public void PlayNewTractor() => PlaySound(tractorConfig);
 
     // =============================
     // Player Attack Sounds
