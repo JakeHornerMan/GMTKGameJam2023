@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5013618483087767452}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6581415338971503867
 SpriteRenderer:
@@ -200,6 +200,11 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+  sheepCollider: {fileID: 4047289718886028338}
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  allowSheepOnWater: 0
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,11 +287,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -303,6 +308,10 @@ PrefabInstance:
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_fontSize
