@@ -39,7 +39,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private Vector3 inputPos;
 
-    public List<CarButton> carButtons;
+    [HideInInspector] public List<CarButton> carButtons;
 
     private void Awake()
     {
