@@ -11,6 +11,12 @@ public class ChickenHealth : MonoBehaviour
     [SerializeField] private GameObject hopController;
     [HideInInspector] protected Animator anim;
 
+    [Header("Settings")]
+    [SerializeField] private bool damagedByHose = true;
+
+    [Header("Tags")]
+    [SerializeField] private string hoseWaterTag = "Hose Water";
+
     [Header("Chicken Health Values")]
     [SerializeField] private int startHealth = 100;
     [SerializeField] private float invinsibleForTime = 1f;
@@ -38,12 +44,14 @@ public class ChickenHealth : MonoBehaviour
     {
         health -= dmg;
 
-        if (health <= 0){
+        if (health <= 0)
+        {
             HandleDeath();
         }
-        else{
+        else
+        {
             HandleHit();
-        }    
+        }
     }
 
     protected virtual void HandleDeath()
@@ -55,7 +63,8 @@ public class ChickenHealth : MonoBehaviour
 
     protected virtual void HandleHit()
     {
-        if(!isInvinsible){
+        if (!isInvinsible)
+        {
             isInvinsible = true;
             StartCoroutine(StartInvinsibleTime());
         }
@@ -69,5 +78,14 @@ public class ChickenHealth : MonoBehaviour
         spriteRenderer.material = originalMaterial;
         hopController.GetComponent<BoxCollider2D>().enabled = true;
         isInvinsible = false;
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("Here");
+        if (other.gameObject.CompareTag(hoseWaterTag))
+        {
+            Debug.Log("Hit by hose");
+        }
     }
 }
