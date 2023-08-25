@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig busConfig;
     [SerializeField] private SoundConfig tractorConfig;
     [SerializeField] private SoundConfig boatConfig;
+    [SerializeField] private SoundConfig fireTruckConfig;
 
     [Header("Player Attack Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
@@ -85,6 +86,7 @@ public class SoundManager : MonoBehaviour
     public void PlayNewBus() => PlaySound(busConfig);
     public void PlayNewTractor() => PlaySound(tractorConfig);
     public void PlayNewBoat() => PlaySound(boatConfig);
+    public void PlayNewFireTruck() => PlaySound(fireTruckConfig);
 
     // =============================
     // Player Attack Sounds
