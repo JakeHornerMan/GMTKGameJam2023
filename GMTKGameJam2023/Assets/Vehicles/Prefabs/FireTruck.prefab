@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 888003340317358507}
   - component: {fileID: 2292567942085144680}
   - component: {fileID: 663251984899755014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HoseWater
   m_TagString: Hose Water
   m_Icon: {fileID: 0}
@@ -2685,7 +2685,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
   NoiseModule:
-    enabled: 0
+    enabled: 1
     strength:
       serializedVersion: 2
       minMaxState: 0
@@ -2846,7 +2846,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     separateAxes: 0
-    frequency: 0.5
+    frequency: 2.75
     damping: 1
     octaves: 1
     octaveMultiplier: 0.5
@@ -4837,6 +4837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7294196575422810474}
+  - component: {fileID: 5859826541960885489}
   m_Layer: 2
   m_Name: LadderContainer
   m_TagString: Untagged
@@ -4860,6 +4861,27 @@ Transform:
   m_Father: {fileID: 8251440986272331830}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5859826541960885489
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476089714626367706}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db29fc6ed5211d74f94629e89f488632, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4486076196281952895
 GameObject:
   m_ObjectHideFlags: 0
@@ -4999,7 +5021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8251440986272331830}
-  - component: {fileID: 4936820497001477568}
+  - component: {fileID: 4539437205507222648}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 5215653390924555505}
   - component: {fileID: 2780166048343802664}
@@ -5029,7 +5051,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4936820497001477568
+--- !u!50 &4539437205507222648
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
