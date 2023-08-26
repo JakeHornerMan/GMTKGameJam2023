@@ -6,12 +6,25 @@ public class WreckerCart : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 60;
     private Vector3 currentEulerAngles; 
-    [SerializeField] private float left = 1;
+    [SerializeField] public float left = 1;
     [SerializeField] private Transform pivotPoint;
+    private bool hitStop = false;
+    [SerializeField] private float carHitStopEffectMultiplier = 0.5f;
 
     private void Update(){
-        currentEulerAngles += new Vector3(0,0, left) * Time.deltaTime * rotationSpeed;
-        pivotPoint.transform.localEulerAngles = currentEulerAngles;
+        if(!hitStop){
+            currentEulerAngles += new Vector3(0,0, left) * Time.deltaTime * rotationSpeed;
+            pivotPoint.transform.localEulerAngles = currentEulerAngles;
+        }
+    }
+
+    public IEnumerator HandleHitStop(float hitStopLength)
+    {
+        hitStop = true;
+
+        yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
+
+        hitStop = false;
     }
 
 }
