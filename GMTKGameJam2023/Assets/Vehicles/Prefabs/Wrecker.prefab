@@ -457,7 +457,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 4}
+    oldSize: {x: 1.25, y: 4}
     newSize: {x: 0.32, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -509,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4421891079327587070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1882071, y: 0.018892823, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -609,8 +609,8 @@ MonoBehaviour:
   comboSymbol: x
   comboText: {fileID: 1465436027404781649}
   carSprite: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
-  carIcon: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
-  carName: 
+  carIcon: {fileID: 21300000, guid: c835af7cd292b2e4b9c10e56774fe770, type: 3}
+  carName: Wrecker
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
