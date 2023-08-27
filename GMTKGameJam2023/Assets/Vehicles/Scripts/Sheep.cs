@@ -29,7 +29,7 @@ public class Sheep : Car
         }
     }
 
-    protected override void HandleChickenCollision(ChickenHealth chickenHealth)
+    public override void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         base.HandleChickenCollision(chickenHealth);
 

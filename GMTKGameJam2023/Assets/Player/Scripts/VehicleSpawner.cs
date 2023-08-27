@@ -185,8 +185,11 @@ public class VehicleSpawner : MonoBehaviour
         carWallet.carCount--;
 
         // Reduce Player Money
-        gameManager.tokens -= currentActiveCar.carPrice;
-
+        if (currentActiveCar.carPrice > 0)
+        {
+            gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+        }
+        
         if (selectDefaultOnPlace)
             SelectCar(carButtons[0]);
 

@@ -151,9 +151,9 @@ public abstract class Car : MonoBehaviour
 
         // Collect Tokens
         token.TokenCollected();
-        gameManager.tokens += token.tokenValue;
-        gameManager.totalTokens += token.tokenValue;
-        soundManager.PlayTokenCollect();
+
+        gameManager.UpdateTokens(1);
+        
     }
 
     public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
@@ -240,11 +240,15 @@ public abstract class Car : MonoBehaviour
 
     private IEnumerator CarHitStop(float hitStopLength)
     {
-        rb.velocity = Vector3.zero;
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
 
-        yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
+            yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
 
-        rb.velocity = transform.up * carSpeed;
+            rb.velocity = transform.up * carSpeed;
+        }
+        
     }
 
     public virtual void CarGoesOffscreen()

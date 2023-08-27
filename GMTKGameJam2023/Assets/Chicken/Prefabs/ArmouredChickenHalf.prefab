@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8614834387938461589}
   - component: {fileID: 2557463974196538456}
   - component: {fileID: 5996180526844374429}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Hop Controller
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3631246900296472120}
   - component: {fileID: 3850760585555573283}
   - component: {fileID: 655462350724580983}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
   - component: {fileID: 3394038647060757474}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: ArmouredChickenHalf
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -288,6 +288,7 @@ MonoBehaviour:
   maxMoveTime: 3
   laneDistance: 1.25
   ignoreCement: 0
+  isStuck: 0
   cementLayer:
     serializedVersion: 2
     m_Bits: 64

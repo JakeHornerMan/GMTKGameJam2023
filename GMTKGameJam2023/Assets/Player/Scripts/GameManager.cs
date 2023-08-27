@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
 
+    public delegate void EventType();
+    public static event EventType OnTokensUpdated;
+
+    //[Header("Events")]
+
+    
 
     private void Awake()
     {
@@ -184,6 +190,19 @@ public class GameManager : MonoBehaviour
     {
         interfaceManager.TokenUI(removeAmount, false);
         tokens -= removeAmount;
+    }
+
+    public void UpdateTokens(int tokenDifference)
+    {
+        tokens = tokens + tokenDifference;
+
+        if (tokenDifference > 0)
+        {
+            totalTokens = totalTokens + tokenDifference;
+        }
+        
+
+        OnTokensUpdated();
     }
 
     private void UpdateRankings()

@@ -22,21 +22,35 @@ public class CarButton : MonoBehaviour
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
 
+
+
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         gameManager = FindObjectOfType<GameManager>();
     }
 
+
+    private void OnEnable()
+    {
+        GameManager.OnTokensUpdated += SetPriceColor;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnTokensUpdated -= SetPriceColor;
+    }
     private void Start()
     {
         tokenPriceText.text = correspondingCar.carPrice.ToString("0");
         correspCarIcon.sprite = correspondingCar.carIcon;
+
+        SetPriceColor();
     }
 
     private void Update()
     {
-        SetPriceColor();
+        
     }
 
     private void SetPriceColor()

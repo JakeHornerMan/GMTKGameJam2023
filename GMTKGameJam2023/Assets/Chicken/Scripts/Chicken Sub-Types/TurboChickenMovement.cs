@@ -31,9 +31,20 @@ public class TurboChickenMovement : ChickenMovement
     // We add a new Update method for this chicken to continuously move
     private void Update()
     {
-        // Move the chicken continuously to the right at the speed defined
-        if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
+        if (chickenCollider.IsTouchingLayers(cementLayer))
+        {
+            isStuck = true;  // Chicken is stuck
+        }
+        else
+        {
+            isStuck = false; // Chicken is not stuck
+        }
+
+        if (!isStuck || ignoreCement)
+        {
+            // Move the chicken continuously to the right at the speed defined
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+        }
     }
 
     private void OnDestroy()
