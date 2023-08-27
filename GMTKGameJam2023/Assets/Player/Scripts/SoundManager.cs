@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -24,13 +25,19 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig cementMixerConfig;
     [SerializeField] private SoundConfig bulldozerConfig;
     [SerializeField] private SoundConfig busConfig;
+    [SerializeField] private SoundConfig tractorConfig;
+    [SerializeField] private SoundConfig boatConfig;
+    [SerializeField] private SoundConfig fireTruckConfig;
+    [SerializeField] private SoundConfig combineHarvestorConfig;
 
     [Header("Player Attack Clips")]
+    [SerializeField] private SoundConfig[] sliceConfigs;
     [SerializeField] private SoundConfig missileLaunchConfig;
     [SerializeField] private SoundConfig fighterJetExplosion;
     [SerializeField] private SoundConfig explosionConfig;
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
+    [SerializeField] private SoundConfig sheepConfig;
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
@@ -40,12 +47,9 @@ public class SoundManager : MonoBehaviour
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
-    [SerializeField] private SoundConfig cashChicken;
+    [SerializeField] private SoundConfig[] cashChickenSound;
     [SerializeField] private SoundConfig turboChicken;
     [SerializeField] private SoundConfig turboChickenDeath;
-
-    [Header("Slice Clips")]
-    [SerializeField] private SoundConfig[] sliceConfigs;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -74,22 +78,42 @@ public class SoundManager : MonoBehaviour
     public void PlayNewFastCar() => PlaySound(fastCarConfig);
     public void PlayNewSpikeCar() => PlaySound(spikeCarConfig);
     public void PlayNewTruck() => PlaySound(truckConfig);
+    public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
+    public void PlayNewFighterJet() => RandomPlaySound(fighterJetConfig);
+    public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
+    public void PlayNewHovercraft() => PlaySound(hovercraftConfig);
+    public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
+    public void PlayNewBulldozer() => PlaySound(bulldozerConfig);
+    public void PlayNewBus() => PlaySound(busConfig);
+    public void PlayNewTractor() => PlaySound(tractorConfig);
+    public void PlayNewBoat() => PlaySound(boatConfig);
+    public void PlayNewFireTruck() => PlaySound(fireTruckConfig);
+    public void PlayNewHarvestor() => PlaySound(combineHarvestorConfig);
 
     // =============================
     // Player Attack Sounds
     public void PlayRandomSlice() => RandomPlaySound(sliceConfigs);
+    public void PlayMissileLaunch() => PlaySound(missileLaunchConfig);
+    public void PlayFighterJetExplosion() => PlaySound(fighterJetExplosion);
+    public void PlayGenericExplosion() => PlaySound(explosionConfig);
+    public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
+    public void PlayCementPour() => PlaySound(cementPlaceConfig);
+    public void PlaySheepNoise() => PlaySound(sheepConfig);
 
     // =============================
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
+    public void PlayTokenCollect() => RandomPlaySound(tokenCollect);
 
     // =============================
     // Chicken SFX
     public void PlayRandomChicken() => RandomPlaySound(chickenConfigs);
     public void PlayChickenHit() => RandomPlaySound(deathConfigs);
-    public void PlayCashChicken() => PlaySound(cashChicken);
+    public void PlayCashChicken() => RandomPlaySound(cashChickenSound);
+    public void PlayTurboChicken() => PlaySound(turboChicken);
+    public void PlayTurboChickenDeath() => PlaySound(turboChickenDeath);
 
     // =============================
     // Other Functions
@@ -101,11 +125,13 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(SoundConfig soundConfig)
     {
+        // if (!Settings.sfxAllowed) return;
         audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
     }
 
     private void RandomPlaySound(params SoundConfig[] soundConfigs)
     {
+        // if (!Settings.sfxAllowed) return;
         int willPlaySound = Random.Range(0, 1);
         if (willPlaySound == 0)
         {
@@ -117,3 +143,4 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
+

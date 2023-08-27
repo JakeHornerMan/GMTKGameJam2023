@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
                 currentRanking = "KFC Worker";
                 break;
             case > 100:
-                currentRanking = "Vehicularly Sus";
+                currentRanking = "Chickenslaughter";
                 break;
             case > 60:
                 currentRanking = "Accidents Happen";

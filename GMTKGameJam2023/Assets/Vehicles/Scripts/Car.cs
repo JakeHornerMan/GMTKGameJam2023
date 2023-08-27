@@ -47,15 +47,15 @@ public abstract class Car : MonoBehaviour
     private GameObject carSpriteObject;
 
     [Header("PopUp Values")]
-    [SerializeField] private string scorePopUpMsg = "Points";
+    [SerializeField] private string scorePopUpMsg = "";
     [Tooltip("Text after getting points, e.g. 100 {Poitns}")]
     [SerializeField] private string tokenPopUpMsg = "Token";
     [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
 
     [Header("Camera Shake Values")]
-    [SerializeField] private float camShakeDuration = 0.1f;
-    [SerializeField] private float camShakeMagnitude = 0.1f;
+    [SerializeField] private float camShakeDuration = 0.15f;
+    [SerializeField] private float camShakeMagnitude = 0.05f;
 
     private int carKillCount = 0;
     protected int totalPoints = 0;
@@ -153,9 +153,10 @@ public abstract class Car : MonoBehaviour
         token.TokenCollected();
         gameManager.tokens += token.tokenValue;
         gameManager.totalTokens += token.tokenValue;
+        soundManager.PlayTokenCollect();
     }
 
-    public void HandleChickenCollision(ChickenHealth chickenHealth)
+    public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         // Impact Sound
         soundManager.PlayChickenHit();

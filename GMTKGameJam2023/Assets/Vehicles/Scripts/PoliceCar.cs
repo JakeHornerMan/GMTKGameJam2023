@@ -24,7 +24,7 @@ public class PoliceCar : Car
 
         numberOfSpikesDeployed = 1f;
 
-        //soundManager.PlayNewJet();
+        soundManager.PlayNewPoliceCar();
 
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(policeShakeDuration, policeShakeMagnitude));
@@ -54,6 +54,8 @@ public class PoliceCar : Car
         Vector3 spikePosition = new Vector3(spikeX, spikeY, 1);
 
         GameObject currentSpike = Instantiate(spikePrefab, spikePosition, Quaternion.identity);
+
+        soundManager.PlaySpikePlacement();
 
         numberOfSpikesDeployed++;
 

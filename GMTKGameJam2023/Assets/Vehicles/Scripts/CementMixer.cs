@@ -20,6 +20,8 @@ public class CementMixer : Car
     {
         SetCarSpeed();
 
+        soundManager.PlayNewCementMixer();
+
         cementSpawned = 0;
 
         InvokeRepeating(nameof(InstantiateCement), initalCementDelay, cementSpawnInterval);
@@ -38,6 +40,8 @@ public class CementMixer : Car
             cementSpawnPos.position,
             Quaternion.identity
         );
+
+        soundManager.PlayCementPour();
 
         Destroy(newCement, cementLifetime);
 

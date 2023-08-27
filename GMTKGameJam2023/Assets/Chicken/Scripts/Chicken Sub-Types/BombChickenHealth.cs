@@ -7,6 +7,13 @@ public class BombChickenHealth : ChickenHealth
     [Header("References")]
     [SerializeField] private GameObject explosionPrefab;
 
+    private SoundManager soundManager;
+
+    private void Awake()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
     protected override void HandleDeath()
     {
         Instantiate(
@@ -14,6 +21,7 @@ public class BombChickenHealth : ChickenHealth
             transform.position,
             Quaternion.identity
         );
+        soundManager.PlayGenericExplosion();
         base.HandleDeath();
     }
 }
