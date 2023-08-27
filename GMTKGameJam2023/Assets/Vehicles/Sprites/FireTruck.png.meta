@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b637130d941586045a17f8e073a47366
+guid: 84b714ebf8ca7a049874fae934b019f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: expolosionSpriteSheet_0
+      name: FireTruck_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 519bc0a04377dcc44aef837b352bc679
-      internalID: -286522286
+      spriteID: 392146f3e45cd2641a97d886c921f0fa
+      internalID: -1659515160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_1
+      name: FireTruck_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,41 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b23c1c3eb38aba49885d4fdecfc0bcf
-      internalID: -97226666
+      spriteID: 01c4b8aec71489c479353201a441ba1b
+      internalID: 419241701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b6ae493ffe56a043bc5dccbe084e09d
-      internalID: 1671567013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: expolosionSpriteSheet_3
+      name: FireTruck_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 899b4e0dfc00bce4db3e4b32311a7790
-      internalID: -1898241107
+      spriteID: 18a929fcf9dc7d94e925f891d01f8ab6
+      internalID: 1462434921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_4
+      name: FireTruck_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 144
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,41 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88d408e252f2aa247b8d90f187818ee4
-      internalID: -1271083330
+      spriteID: 095c2711469848643b68e4a3f1daf0ad
+      internalID: -1674131532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd6c48c7299d34e478401476c20af890
-      internalID: -1933525247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: expolosionSpriteSheet_6
+      name: FireTruck_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c9408fbc26eb374b95f94e297388e3b
-      internalID: -286578369
+      spriteID: e478541364cfa6442ab183f9e458a3fa
+      internalID: 1402454628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_7
+      name: FireTruck_5
       rect:
         serializedVersion: 2
-        x: 224
+        x: 240
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,41 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7339f02a536ed54680439ce0aa6e37c
-      internalID: -485338344
+      spriteID: 0b8f95d7741acae4b8b958b472e772aa
+      internalID: -1243837337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30f3db212d6b48047ae1b796f7c4df35
-      internalID: -696534111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: expolosionSpriteSheet_9
+      name: FireTruck_6
       rect:
         serializedVersion: 2
         x: 288
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d40e0f7d7f5aff849a5fc070f75093b1
-      internalID: 2004997148
+      spriteID: f1e7b9d2446866841a0be8c7840e515e
+      internalID: -333856630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_10
+      name: FireTruck_7
       rect:
         serializedVersion: 2
-        x: 320
+        x: 336
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd2a2ad88bf7a154aad1171f5f345df3
-      internalID: 1310646504
+      spriteID: 88c93d36890362f4891b94be92ab8f16
+      internalID: -1121594847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: expolosionSpriteSheet_11
+      name: FireTruck_8
       rect:
         serializedVersion: 2
-        x: 352
+        x: 384
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,8 +318,239 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03f2783c97ff73d499351b3bad4b6350
-      internalID: -130183258
+      spriteID: 7afd4431c0f9b394f869340998381660
+      internalID: -966937539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01715fabd056a848b35cc8f833c301f
+      internalID: -1632699788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47850d3aeefee79429d7a5289ed74967
+      internalID: -1563163847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78cd386677e5b9944a5aceec80e06427
+      internalID: -879439952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d3ab6fb239fb464f8b75b2a1e2d9d4a
+      internalID: 1946352208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_13
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc8845d445558d4584b530178b69ad6
+      internalID: 1777042561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_14
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72f06c701525774b8d5be3b914a92c8
+      internalID: 1695000325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_15
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f5ca7a1f957a14ca6ba9bb32901430
+      internalID: -310028953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_16
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8da283272337e1642849178873efa20f
+      internalID: 1433924599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_17
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a2cdef67ebbc9498ea3d20d57b6088
+      internalID: -180724980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_18
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e07afb70910da14993780680a2dfa47
+      internalID: 805376147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireTruck_19
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 48
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84dc25e1f3bc4b49b9fa0fd82bfdc76
+      internalID: 900050264
       vertices: []
       indices: 
       edges: []
@@ -398,18 +566,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      expolosionSpriteSheet_0: -286522286
-      expolosionSpriteSheet_1: -97226666
-      expolosionSpriteSheet_10: 1310646504
-      expolosionSpriteSheet_11: -130183258
-      expolosionSpriteSheet_2: 1671567013
-      expolosionSpriteSheet_3: -1898241107
-      expolosionSpriteSheet_4: -1271083330
-      expolosionSpriteSheet_5: -1933525247
-      expolosionSpriteSheet_6: -286578369
-      expolosionSpriteSheet_7: -485338344
-      expolosionSpriteSheet_8: -696534111
-      expolosionSpriteSheet_9: 2004997148
+      FireTruck_0: -1659515160
+      FireTruck_1: 419241701
+      FireTruck_10: -1563163847
+      FireTruck_11: -879439952
+      FireTruck_12: 1946352208
+      FireTruck_13: 1777042561
+      FireTruck_14: 1695000325
+      FireTruck_15: -310028953
+      FireTruck_16: 1433924599
+      FireTruck_17: -180724980
+      FireTruck_18: 805376147
+      FireTruck_19: 900050264
+      FireTruck_2: 1462434921
+      FireTruck_3: -1674131532
+      FireTruck_4: 1402454628
+      FireTruck_5: -1243837337
+      FireTruck_6: -333856630
+      FireTruck_7: -1121594847
+      FireTruck_8: -966937539
+      FireTruck_9: -1632699788
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

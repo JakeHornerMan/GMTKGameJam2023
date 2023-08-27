@@ -11,7 +11,7 @@ public class CashChicken : ChickenHealth
     private GameManager gameManager;
     private SoundManager soundManager;
 
-     private void Awake()
+    private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
@@ -22,14 +22,11 @@ public class CashChicken : ChickenHealth
         Vector3 particlePos = new(transform.position.x, transform.position.y, featherParticlesZPos);
         Instantiate(featherParticles, particlePos, Quaternion.identity);
 
-        if(dropTheBag){
-            Instantiate(tokenBag, transform.position, Quaternion.identity);
-        }
-        else{        
-            gameManager.AddTokens(tokenAmount);
-            soundManager.PlayCashChicken();
-        }
-        
+        if (dropTheBag) Instantiate(tokenBag, transform.position, Quaternion.identity);
+        else gameManager.AddTokens(tokenAmount);
+
+        soundManager.PlayCashChicken();
+
         Destroy(gameObject);
     }
 }

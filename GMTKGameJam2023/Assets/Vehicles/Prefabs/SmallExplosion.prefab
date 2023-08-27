@@ -75,14 +75,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663547621, guid: 74e2c7d2d8d0493438e524a4739de955, type: 3}
+  m_Sprite: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,8 +130,8 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 0}
-  carSprite: {fileID: -950331208, guid: 74e2c7d2d8d0493438e524a4739de955, type: 3}
-  carIcon: {fileID: -1511555872, guid: 74e2c7d2d8d0493438e524a4739de955, type: 3}
+  carSprite: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
+  carIcon: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
   carName: Bomb Chicken Explosion
   carPrice: 2
   ignoreTokens: 1
@@ -152,6 +152,7 @@ MonoBehaviour:
   popupDestroyDelay: 0.7
   camShakeDuration: 0.1
   camShakeMagnitude: 0.1
+  carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!58 &4327572464095262486

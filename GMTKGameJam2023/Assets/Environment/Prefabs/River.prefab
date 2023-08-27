@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6277706213599112198}
   - component: {fileID: 4189665384950353047}
   - component: {fileID: 8384647058701174196}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: BottomHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8881346744128286055}
   - component: {fileID: 3761776394837721385}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: TopHighlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,11 +202,12 @@ GameObject:
   - component: {fileID: 74722354487794175}
   - component: {fileID: 8292855072235135747}
   - component: {fileID: 7038452698073691666}
+  - component: {fileID: 1656407066903896881}
   - component: {fileID: 6687431790765159456}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: River
   m_TagString: Water
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -217,7 +218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7991264885057282889}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -338,6 +339,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottomHighlight: {fileID: 6309948892400413341}
+--- !u!61 &1656407066903896881
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991264885057282889}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -10}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 17.1875}
+    newSize: {x: 2.5, y: 17.1875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 6}
+  m_EdgeRadius: 0
 --- !u!114 &6687431790765159456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +419,7 @@ GameObject:
   - component: {fileID: 9053324655672223208}
   - component: {fileID: 1887311615645707127}
   - component: {fileID: 5635668727811017886}
-  m_Layer: 2
+  m_Layer: 4
   m_Name: WaterParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
