@@ -13,20 +13,25 @@ public class ArmouredChicken : ChickenHealth
     {
         SetAnimation();
 
-        if(!isInvinsible){
+        if (!isInvinsible)
+        {
             isInvinsible = true;
             StartCoroutine(StartInvinsibleTime());
         }
     }
 
-    private void SetAnimation(){
-        if(health <= 200 && health > 100){
+    private void SetAnimation()
+    {
+        if (health <= 200 && health > 100)
+        {
             anim.Play("Armour1");
         }
-        else if(health <= 100){
+        else if (health <= 100)
+        {
             anim.Play("NoArmour");
         }
-        else{
+        else
+        {
             anim.Play("Armour2");
         }
     }

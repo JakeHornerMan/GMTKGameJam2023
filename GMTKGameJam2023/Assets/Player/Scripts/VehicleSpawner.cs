@@ -111,8 +111,6 @@ public class VehicleSpawner : MonoBehaviour
 
     private void TouchInputs()
     {
-        // if (Input.touchCount > 0){
-        // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -167,7 +165,7 @@ public class VehicleSpawner : MonoBehaviour
         else
             spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
-        //To prevent car spamming on the same lane
+        // To prevent car spamming on the same lane
         if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
             return;
 
@@ -189,12 +187,9 @@ public class VehicleSpawner : MonoBehaviour
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
         }
-        
+
         if (selectDefaultOnPlace)
             SelectCar(carButtons[0]);
-
-        //disableVehicleSpawn = true;
-        //StartCoroutine(WaitAndEnableSpawn(0.5f));
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)

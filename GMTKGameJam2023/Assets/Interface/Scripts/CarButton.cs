@@ -22,14 +22,11 @@ public class CarButton : MonoBehaviour
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
 
-
-
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         gameManager = FindObjectOfType<GameManager>();
     }
-
 
     private void OnEnable()
     {
@@ -46,11 +43,6 @@ public class CarButton : MonoBehaviour
         correspCarIcon.sprite = correspondingCar.carIcon;
 
         SetPriceColor();
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void SetPriceColor()

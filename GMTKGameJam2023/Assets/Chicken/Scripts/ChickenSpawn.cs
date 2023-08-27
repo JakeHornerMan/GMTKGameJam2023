@@ -22,53 +22,64 @@ public class ChickenSpawn : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    private void FixedUpdate() {
-        if(!waveEnded){
+    private void FixedUpdate()
+    {
+        if (!waveEnded)
+        {
             WaveTime();
         }
     }
 
-    public void SetNewWave(ChickenWave wave){
+    public void SetNewWave(ChickenWave wave)
+    {
         currentWave = wave;
         specialChickens = wave.specialChickens;
-        specialChickens.Sort((obj1,obj2)=>obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
+        specialChickens.Sort((obj1, obj2) => obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
         waveEnded = false;
-        time = 0f; 
+        time = 0f;
 
-        if(currentWave.standardChickenAmounts > 0) 
+        if (currentWave.standardChickenAmounts > 0)
             StandardChickenWave();
     }
 
-    private void WaveTime(){
+    private void WaveTime()
+    {
         time += Time.deltaTime;
         if (time < currentWave.roundTime)
         {
-            if(specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn){
+            if (specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn)
+            {
                 SpawnAChicken(specialChickens[0].chicken, selectSpawn());
                 specialChickens.RemoveAt(0);
             }
         }
-        if(time > currentWave.roundTime){
+        if (time > currentWave.roundTime)
+        {
             waveEnded = true;
         }
     }
 
-    private SpawningPoint selectSpawn(){
+    private SpawningPoint selectSpawn()
+    {
         Vector3 spawn;
         SpawningPoint spawnPoint = new SpawningPoint();
-        if(specialChickens[0].topSpawn && specialChickens[0].bottomSpawn){
+        if (specialChickens[0].topSpawn && specialChickens[0].bottomSpawn)
+        {
             float randomNum = Random.Range(-2f, 2f);
             spawn = new Vector3(-14.75f, randomNum, 0f);
         }
-        else if(specialChickens[0].topSpawn){
+        else if (specialChickens[0].topSpawn)
+        {
             float randomNum = Random.Range(0, 6f);
             spawn = new Vector3(-14.75f, randomNum, 0f);
         }
-        else if(specialChickens[0].bottomSpawn){
+        else if (specialChickens[0].bottomSpawn)
+        {
             float randomNum = Random.Range(0, -5f);
             spawn = new Vector3(-14.75f, randomNum, 0f);
         }
-        else{
+        else
+        {
             float randomNum = Random.Range(-5f, 6f);
             spawn = new Vector3(-14.75f, randomNum, 0f);
         }
@@ -76,10 +87,12 @@ public class ChickenSpawn : MonoBehaviour
         return spawnPoint;
     }
 
-    public void StandardChickenWave(){
-        if(!waveEnded){
-            float timeBetweenSpawns = currentWave.roundTime/currentWave.standardChickenAmounts;
-            SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length-1)];
+    public void StandardChickenWave()
+    {
+        if (!waveEnded)
+        {
+            float timeBetweenSpawns = currentWave.roundTime / currentWave.standardChickenAmounts;
+            SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length - 1)];
             SpawnAChicken(ChickenPrefab, point);
 
             waveChickenAmount--;
@@ -92,7 +105,7 @@ public class ChickenSpawn : MonoBehaviour
     private IEnumerator WaitAndSpawnChicken(float time)
     {
         yield return new WaitForSeconds(time);
-        if(waveChickenAmount <= 0) 
+        if (waveChickenAmount <= 0)
             StandardChickenWave();
     }
 
@@ -109,7 +122,7 @@ public class ChickenSpawn : MonoBehaviour
 [System.Serializable]
 public class SpawningPoint
 {
-    public SpawningPoint(){}
+    public SpawningPoint() { }
     public Vector3 position;
-    
+
 }

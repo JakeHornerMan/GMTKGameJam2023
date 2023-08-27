@@ -5,36 +5,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    [Header("Chicken Waves")]
+    [SerializeField] public List<ChickenWave> waves;
+
+    [Header("Cars in Level")]
+    [SerializeField] public Car[] carsInLevel;
+
     [Header("Developer Settings")]
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
     [SerializeField] public bool isGameOver = false;
 
-    [Header("Cars in Level")]
-    [SerializeField] public Car[] carsInLevel;
-
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
     [SerializeField] public int lostChicenScore = 1000;
 
-    [Header("Player Stats (Don't Modify in Inspector)")]
-    public int safelyCrossedChickens = 0;
-    public int missedChickenLives = 0;
-    public int killCount = 0;
-    public int playerScore = 0;
-    public int tokens = 0;
-    public int totalTokens = 0;
-    public string currentRanking = "Animal Lover";
+    // Player Stats
+    [HideInInspector] public int safelyCrossedChickens = 0;
+    [HideInInspector] public int missedChickenLives = 0;
+    [HideInInspector] public int killCount = 0;
+    [HideInInspector] public int playerScore = 0;
+    [HideInInspector] public int tokens = 0;
+    [HideInInspector] public int totalTokens = 0;
+    [HideInInspector] public string currentRanking = "Animal Lover";
 
-    [Header("Current Time (Don't Modify in Inspector)")]
-    public float time = 120f;
+    // Current Time
+    [HideInInspector] public float time = 120f;
 
-    [Header("Other Values (Don't Modify in Inspector)")]
-    public bool endSound = false;
-    public int waveNumber = 0;
-
-    [Header("ChickenWaves")]
-    [SerializeField] public List<ChickenWave> waves;
+    // Other Values
+    [HideInInspector] public bool endSound = false;
+    [HideInInspector] public int waveNumber = 0;
 
     private SoundManager soundManager;
     private Pause pause;
@@ -43,8 +44,8 @@ public class GameManager : MonoBehaviour
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
 
-    public delegate void EventType();
-    public static event EventType OnTokensUpdated;
+    [HideInInspector] public delegate void EventType();
+    [HideInInspector] public static event EventType OnTokensUpdated;
 
     private void Awake()
     {
@@ -62,7 +63,6 @@ public class GameManager : MonoBehaviour
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
-        //tokens = 0;
         totalTokens = 0;
 
         SetGameTime();
@@ -91,8 +91,6 @@ public class GameManager : MonoBehaviour
 
     private void SettingWaveInChickenSpawn()
     {
-        // Debug.Log("Current Wave: "+ waveNumber);
-
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
 
@@ -129,7 +127,6 @@ public class GameManager : MonoBehaviour
         {
             SetTime();
         }
-        // UpdateRankings();
     }
 
     private void SetTime()
@@ -197,7 +194,6 @@ public class GameManager : MonoBehaviour
             totalTokens = totalTokens + tokenDifference;
         }
 
-
         OnTokensUpdated();
     }
 
@@ -216,7 +212,7 @@ public class GameManager : MonoBehaviour
                 currentRanking = "KFC Worker";
                 break;
             case > 100:
-                currentRanking = "Chickenslaughter";
+                currentRanking = "Chicken Slaughter";
                 break;
             case > 60:
                 currentRanking = "Accidents Happen";
@@ -237,10 +233,8 @@ public class GameManager : MonoBehaviour
 
     private void NewWavePopup(string speedUpText)
     {
-        if (soundManager != null)
-            soundManager.PlayGameSpeed();
-        if (interfaceManager != null)
-            interfaceManager.ShowSpeedUpText(speedUpText);
+        soundManager?.PlayGameSpeed();
+        interfaceManager?.ShowSpeedUpText(speedUpText);
     }
 
     private void HandleResults()
@@ -258,7 +252,7 @@ public class ChickenWave
 {
     public ChickenWave() { }
     public float roundTime;
-    public String wavePrompt;
+    public string wavePrompt;
     public int standardChickenAmounts;
     public int chickenIntesity = 0;
     public List<SpecialChicken> specialChickens;

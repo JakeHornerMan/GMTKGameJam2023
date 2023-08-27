@@ -200,17 +200,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 360515fee1ade2245840a5f63cd4318f, type: 3}
---- !u!114 &893102824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 304815692333560699, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
-  m_PrefabInstance: {fileID: 2050601213}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c810c6cbca26dfb4dbffce72c5219983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1003555650 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2782696975077299370, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -398,10 +387,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 230380900558526716, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 893102824}
     - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

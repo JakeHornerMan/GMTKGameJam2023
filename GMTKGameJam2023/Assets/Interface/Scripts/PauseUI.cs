@@ -14,7 +14,7 @@ public class PauseUI : MonoBehaviour
     }
 
     public void ResumeGame() => pause.UnpauseGame();
-    
+
     public void ReturnToMenu()
     {
         pause.UnpauseGame();

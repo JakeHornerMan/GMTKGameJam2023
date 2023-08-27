@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class DeleteAfterSpawn : MonoBehaviour
 {
-    private float howLong = 2f;
+    [Header("Timing")]
+    [SerializeField] private float howLong = 2f;
+
     void Start()
     {
         StartCoroutine(WaitAndDelete(howLong));

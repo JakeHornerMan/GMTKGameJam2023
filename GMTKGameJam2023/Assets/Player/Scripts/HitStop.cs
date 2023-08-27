@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class HitStop : MonoBehaviour
 {
-
     private float currentTimeScale;
 
-    public static HitStop instance;
+    [HideInInspector] public static HitStop instance;
 
     private void Start()
     {
         instance = this;
     }
-
 
     public void StartHitStop(float hitStopLength)
     {
@@ -31,5 +29,5 @@ public class HitStop : MonoBehaviour
         Time.timeScale = currentTimeScale;
     }
 
-    
+
 }
