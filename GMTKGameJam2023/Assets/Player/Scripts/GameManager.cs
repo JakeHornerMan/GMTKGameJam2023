@@ -46,10 +46,6 @@ public class GameManager : MonoBehaviour
     public delegate void EventType();
     public static event EventType OnTokensUpdated;
 
-    //[Header("Events")]
-
-    
-
     private void Awake()
     {
         pause = FindObjectOfType<Pause>();
@@ -200,7 +196,7 @@ public class GameManager : MonoBehaviour
         {
             totalTokens = totalTokens + tokenDifference;
         }
-        
+
 
         OnTokensUpdated();
     }

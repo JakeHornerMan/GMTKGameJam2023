@@ -10,6 +10,9 @@ public class SoundConfig
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private string musicObjectName = "Music";
+
     [Header("Clicken Death Clips")]
     [SerializeField] private SoundConfig[] deathConfigs;
 
@@ -63,7 +66,7 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
-        musicAudio = GameObject.Find("Music").GetComponent<AudioSource>();
+        musicAudio = GameObject.Find(musicObjectName).GetComponent<AudioSource>();
     }
 
     private void Start()

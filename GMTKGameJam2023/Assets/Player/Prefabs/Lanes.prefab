@@ -44,7 +44,7 @@ Transform:
   - {fileID: 2136478161826871466}
   - {fileID: 561120794869102665}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3579040378299406628
 MonoBehaviour:
@@ -69,6 +69,7 @@ MonoBehaviour:
   disableVehicleSpawn: 0
   invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
+  carButtons: []
 --- !u!114 &8746173641645449034
 MonoBehaviour:
   m_ObjectHideFlags: 0
