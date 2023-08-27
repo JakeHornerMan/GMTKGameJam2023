@@ -38,6 +38,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
     [SerializeField] private SoundConfig sheepConfig;
+    [SerializeField] private SoundConfig sheepDeathConfig;
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
@@ -99,6 +100,7 @@ public class SoundManager : MonoBehaviour
     public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
     public void PlayCementPour() => PlaySound(cementPlaceConfig);
     public void PlaySheepNoise() => PlaySound(sheepConfig);
+    public void PlaySheepDeath() => PlaySound(sheepDeathConfig);
 
     // =============================
     // Game Info Sounds
