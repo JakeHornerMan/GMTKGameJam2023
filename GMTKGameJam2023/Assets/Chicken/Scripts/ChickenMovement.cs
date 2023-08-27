@@ -17,7 +17,8 @@ public class ChickenMovement : MonoBehaviour
 
     [Header("Detection Info")]
     [SerializeField] public bool ignoreCement = false;
-    [SerializeField] public LayerMask cementLayer;
+    [HideInInspector] public bool isStuck = false;
+    [HideInInspector] public LayerMask cementLayer;
 
     [Header("Animation")]
     [SerializeField] private string animatorHopBool = "Hop";
@@ -43,6 +44,9 @@ public class ChickenMovement : MonoBehaviour
         {
             anim = hopController.GetComponent<Animator>();
         }
+
+        int layerIndex = LayerMask.NameToLayer("Cement");
+        cementLayer = 1 << layerIndex; //Convert layer index to layer mask, to avoid setting in inspector
     }
 
     private void Start()
@@ -75,6 +79,8 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
+
+        //Rewrite code to use a general "stuck" check, instead of checking for cement specifically
         if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
         {
             IEnumerator coroutine = WaitAndMove(moveTime);

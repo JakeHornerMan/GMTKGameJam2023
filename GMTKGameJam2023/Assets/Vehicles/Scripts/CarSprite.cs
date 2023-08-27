@@ -6,7 +6,11 @@ public class CarSprite : MonoBehaviour
 {
     private void OnBecameInvisible()
     {
-        StartCoroutine(Wait());
+        if (gameObject.transform.position.y > 0)
+        {
+            StartCoroutine(Wait());
+        }
+        
     }
 
     private IEnumerator Wait()

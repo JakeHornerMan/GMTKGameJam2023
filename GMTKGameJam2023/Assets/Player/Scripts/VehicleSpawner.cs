@@ -185,19 +185,13 @@ public class VehicleSpawner : MonoBehaviour
         carWallet.carCount--;
 
         // Reduce Player Money
-<<<<<<< Updated upstream
-        gameManager.tokens -= currentActiveCar.carPrice;
-
-        if (selectDefaultOnPlace)
-            SelectCar(carButtons[0]);
-=======
         if (currentActiveCar.carPrice > 0)
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
         }
         
-        SelectCar(standardCar);
->>>>>>> Stashed changes
+        if (selectDefaultOnPlace)
+            SelectCar(carButtons[0]);
 
         //disableVehicleSpawn = true;
         //StartCoroutine(WaitAndEnableSpawn(0.5f));

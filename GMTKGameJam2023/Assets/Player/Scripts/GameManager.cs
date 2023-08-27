@@ -179,7 +179,6 @@ public class GameManager : MonoBehaviour
         playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
 
-<<<<<<< Updated upstream
     public void AddTokens(int addAmount)
     {
         // interfaceManager.TokenUI(addAmount, true);
@@ -191,14 +190,7 @@ public class GameManager : MonoBehaviour
     {
         interfaceManager.TokenUI(removeAmount, false);
         tokens -= removeAmount;
-=======
-    //public void CollectToken()
-    //{
-    //    tokens++;
-    //    totalTokens++;
-
-    //    UpdateTokens();
-    //}
+    }
 
     public void UpdateTokens(int tokenDifference)
     {
@@ -211,7 +203,6 @@ public class GameManager : MonoBehaviour
         
 
         OnTokensUpdated();
->>>>>>> Stashed changes
     }
 
     private void UpdateRankings()

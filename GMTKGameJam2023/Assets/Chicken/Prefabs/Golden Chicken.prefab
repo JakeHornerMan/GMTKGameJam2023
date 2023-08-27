@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5636072786985736137}
   - component: {fileID: 5270121813931883474}
   - component: {fileID: 8451908562165942150}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8661396914627768119}
   - component: {fileID: 869649516716330867}
   - component: {fileID: 4949350468780275965}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Golden Chicken
   m_TagString: Chicken
   m_Icon: {fileID: 0}
@@ -188,6 +188,7 @@ MonoBehaviour:
   maxMoveTime: 0.8
   laneDistance: 1.25
   ignoreCement: 0
+  isStuck: 0
   cementLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -226,7 +227,7 @@ GameObject:
   - component: {fileID: 855006338525906532}
   - component: {fileID: 6858545076096265641}
   - component: {fileID: 3415184185659452524}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Hop Controller
   m_TagString: Chicken
   m_Icon: {fileID: 0}
