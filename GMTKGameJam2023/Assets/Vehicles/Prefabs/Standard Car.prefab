@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,6 +291,10 @@ PrefabInstance:
     - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_Name
       value: Spinout Sparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4377522446804942571, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_RootOrder
@@ -357,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Name
       value: Exhaust
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder
