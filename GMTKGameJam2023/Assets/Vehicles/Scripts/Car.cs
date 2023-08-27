@@ -155,7 +155,7 @@ public abstract class Car : MonoBehaviour
         gameManager.totalTokens += token.tokenValue;
     }
 
-    private void HandleChickenCollision(ChickenHealth chickenHealth)
+    public void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         // Impact Sound
         soundManager.PlayChickenHit();
