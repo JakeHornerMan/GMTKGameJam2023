@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicObjectName: Music
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
     volume: 0.6
@@ -506,7 +507,7 @@ MonoBehaviour:
     volume: 0.8
   truckConfig:
     clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
-    volume: 0.6
+    volume: 1
   pickupTruckConfig:
     clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 1
