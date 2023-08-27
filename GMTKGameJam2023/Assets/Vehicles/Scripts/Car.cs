@@ -156,7 +156,7 @@ public abstract class Car : MonoBehaviour
         
     }
 
-    public void HandleChickenCollision(ChickenHealth chickenHealth)
+    public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         // Impact Sound
         soundManager.PlayChickenHit();
