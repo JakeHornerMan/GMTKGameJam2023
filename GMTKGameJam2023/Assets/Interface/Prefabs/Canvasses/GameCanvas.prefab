@@ -1849,7 +1849,7 @@ RectTransform:
   - {fileID: 1873092097041928964}
   - {fileID: 3280848216522624243}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 4915144423085904930}
   - component: {fileID: 1996723237454103902}
   - component: {fileID: 230380900558526716}
+  - component: {fileID: 2968253652490401088}
   m_Layer: 5
   m_Name: PauseBtn
   m_TagString: Untagged
@@ -2175,10 +2176,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 6
+      - m_Target: {fileID: 2968253652490401088}
+        m_TargetAssemblyTypeName: PauseBtn, Assembly-CSharp
+        m_MethodName: HandleClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2187,6 +2188,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &2968253652490401088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018874868407909500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4eb5559889dda4082a065ef61de14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2016687660926487768
 PrefabInstance:
   m_ObjectHideFlags: 0
