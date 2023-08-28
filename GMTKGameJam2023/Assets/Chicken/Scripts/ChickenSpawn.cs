@@ -49,7 +49,7 @@ public class ChickenSpawn : MonoBehaviour
         {
             if (specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn)
             {
-                SpawnAChicken(specialChickens[0].chicken, selectSpawn());
+                SpawnAChicken(specialChickens[0].chicken, SelectSpawn());
                 specialChickens.RemoveAt(0);
             }
         }
@@ -59,7 +59,7 @@ public class ChickenSpawn : MonoBehaviour
         }
     }
 
-    private SpawningPoint selectSpawn()
+    private SpawningPoint SelectSpawn()
     {
         Vector3 spawn;
         SpawningPoint spawnPoint = new SpawningPoint();
