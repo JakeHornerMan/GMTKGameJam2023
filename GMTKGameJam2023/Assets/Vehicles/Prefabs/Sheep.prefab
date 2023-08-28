@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1651646278425894839}
   - component: {fileID: 4047289718886028338}
   - component: {fileID: 2032628398341768708}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Sheep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
   carIcon: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
   carName: Sheep
+  carDescription: 
   carPrice: 0
   ignoreTokens: 1
   isSlicingCar: 0
@@ -220,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -308,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_IsActive

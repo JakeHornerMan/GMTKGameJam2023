@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class ChickenSpawn : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private string chickenContainer_Name = "ChickenContainer";
+
     [Header("Spawning Values")]
     [SerializeField] public SpawningPoint[] spawnSpots;
 
     [Header("Chicken Types")]
     [SerializeField] public GameObject ChickenPrefab;
+
     private SoundManager soundManager;
+    private GameObject chickenContainer;
 
     [HideInInspector] public ChickenWave currentWave;
     [HideInInspector] public List<SpecialChicken> specialChickens;
@@ -20,6 +25,7 @@ public class ChickenSpawn : MonoBehaviour
     private void Awake()
     {
         soundManager = FindObjectOfType<SoundManager>();
+        chickenContainer = GameObject.Find(chickenContainer_Name);
     }
 
     private void FixedUpdate()
@@ -111,7 +117,7 @@ public class ChickenSpawn : MonoBehaviour
 
     private void SpawnAChicken(GameObject chicken, SpawningPoint point)
     {
-        chicken = Instantiate(chicken, point.position, Quaternion.identity);
+        chicken = Instantiate(chicken, point.position, Quaternion.identity, chickenContainer.transform);
         chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
         if (soundManager != null)
             soundManager.PlayRandomChicken();

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 845809845966933664}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8232100632961114078}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 3455631154947636772}
   - component: {fileID: 4206642383323002128}
   - component: {fileID: 5622222937940492668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WreckingBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8549879171220742175}
   - component: {fileID: 8263989527632618388}
   - component: {fileID: 1761417369981310633}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: WreckerCart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 2089861779733227409}
   - component: {fileID: 322576651139750340}
   - component: {fileID: -540173590814842813}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Wrecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,6 +611,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
   carIcon: {fileID: 21300000, guid: c835af7cd292b2e4b9c10e56774fe770, type: 3}
   carName: Wrecker
+  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
@@ -645,7 +646,7 @@ GameObject:
   - component: {fileID: 8794598898562414325}
   - component: {fileID: 5314365092240106144}
   - component: {fileID: 3221486499642208498}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Spinout Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5475,7 +5476,7 @@ GameObject:
   - component: {fileID: 1802313755273665140}
   - component: {fileID: 366668116445416356}
   - component: {fileID: 5067064184770436789}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5572,7 +5573,7 @@ GameObject:
   - component: {fileID: 2699405958599039116}
   - component: {fileID: 8745397311674263603}
   - component: {fileID: 4070410790919000035}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10401,7 +10402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003566284009992075}
   - component: {fileID: 5498588264066737917}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10487,6 +10488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ComboCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10570,6 +10575,10 @@ PrefabInstance:
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
