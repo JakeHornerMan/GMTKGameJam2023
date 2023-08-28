@@ -46,8 +46,6 @@ public class InterfaceManager : MonoBehaviour
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
-        canvas = GameObject.Find("Canvas");
-        pointsText = GameObject.Find("ScoreText");
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
 

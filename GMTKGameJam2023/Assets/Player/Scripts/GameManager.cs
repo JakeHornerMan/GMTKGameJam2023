@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
         if (isGameOver)
             MissedChickensWave();
-
     }
 
     private void SetGameTime()

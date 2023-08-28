@@ -265,14 +265,11 @@ public abstract class Car : MonoBehaviour
 
             rb.velocity = transform.up * carSpeed;
         }
-
     }
 
     public virtual void CarGoesOffscreen()
     {
-        if (totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
-        Destroy(gameObject);
+        DestroySelf();
     }
 
     public void DestroySelf()
