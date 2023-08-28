@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Car[] carsInLevel;
 
     [Header("Developer Settings")]
+    [SerializeField] public bool isGameOver = false;
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
-    [SerializeField] public bool isGameOver = false;
+    [SerializeField] private int cheatTokenAmount = 500;
 
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
@@ -64,6 +65,9 @@ public class GameManager : MonoBehaviour
         killCount = 0;
         playerScore = 0;
         totalTokens = 0;
+
+        if (devMode)
+            tokens = cheatTokenAmount;
 
         SetGameTime();
         time = startTime;
@@ -166,14 +170,12 @@ public class GameManager : MonoBehaviour
 
     public void RemovePlayerScore(int removeAmount)
     {
-        // interfaceManager.ScoreUI(removeAmount, false);
         playerScore -= removeAmount;
         playerScore = Mathf.Clamp(playerScore, 0, playerScore);
     }
 
     public void AddTokens(int addAmount)
     {
-        // interfaceManager.TokenUI(addAmount, true);
         tokens += addAmount;
         totalTokens += addAmount;
     }
