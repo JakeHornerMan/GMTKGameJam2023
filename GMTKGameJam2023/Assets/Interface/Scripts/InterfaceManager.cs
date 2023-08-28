@@ -26,6 +26,12 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private string speedUpText_Name = "SpeedUpText";
     [SerializeField] private string missedChickenCount_Name = "MissCount";
 
+    [Header("UI Popups")]
+    [SerializeField] public GameObject positivePoints;
+    [SerializeField] public GameObject negativePoints;
+    [SerializeField] public GameObject positiveTokens;
+    [SerializeField] public GameObject negativeTokens;
+
     private int scoreForText;
     private int scoreMoverPositive;
     private int scoreMoverNegative;
@@ -47,12 +53,6 @@ public class InterfaceManager : MonoBehaviour
     private TextMeshProUGUI speedUpText;
     private TextMeshProUGUI missedChickenCountText;
 
-    [Header("UI Popups")]
-    [SerializeField] public GameObject positivePoints;
-    [SerializeField] public GameObject negativePoints;
-    [SerializeField] public GameObject positiveTokens;
-    [SerializeField] public GameObject negativeTokens;
-
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -64,6 +64,7 @@ public class InterfaceManager : MonoBehaviour
         pointsText = GameObject.Find(pointsText_Name);
         carWalletCountText = GameObject.Find(carWalletCount_Name).GetComponent<TextMeshProUGUI>();
         carWalletRadialUI = GameObject.Find(carWalletRadialUI_Name).GetComponent<Image>();
+        killsText = GameObject.Find(killsText_Name).GetComponent<TextMeshProUGUI>();
         tokensText = GameObject.Find(tokensText_Name).GetComponent<TextMeshProUGUI>();
         timeText = GameObject.Find(timeText_Name).GetComponent<TextMeshProUGUI>();
         currentCarNameText = GameObject.Find(currentCarText_Name).GetComponent<TextMeshProUGUI>();
