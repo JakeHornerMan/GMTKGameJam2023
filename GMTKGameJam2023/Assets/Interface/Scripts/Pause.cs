@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject pauseUI;
+
     [Header("User Input")]
     [SerializeField] private KeyCode pauseKey = KeyCode.P;
     [SerializeField] private KeyCode pauseKeyAlt = KeyCode.Escape;
@@ -12,16 +15,9 @@ public class Pause : MonoBehaviour
     [Header("Pause Values")]
     [SerializeField] private float pauseTimeScale = 0;
 
-    private GameObject pauseUI;
-
     private float startTimeScale = 1;
 
     [HideInInspector] public bool isPaused = false;
-
-    private void Awake()
-    {
-        pauseUI = FindObjectOfType<PauseUI>().gameObject;
-    }
 
     private void Start()
     {
