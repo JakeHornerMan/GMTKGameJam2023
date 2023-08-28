@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
+    [Header("UI References")]
+    [SerializeField] private GameObject pointsText;
+    [SerializeField] private TextMeshProUGUI killsText;
+    [SerializeField] private TextMeshProUGUI carWalletCountText;
+    [SerializeField] private Image carWalletRadialUI;
+    [SerializeField] private TextMeshProUGUI tokensText;
+    [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI currentCarNameText;
+    [SerializeField] private TextMeshProUGUI speedUpText;
+    [SerializeField] private TextMeshProUGUI missedChickenCountText;
+    [SerializeField] private GameObject canvas;
 
     [Header("Animation")]
     [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
@@ -13,18 +24,6 @@ public class InterfaceManager : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float speedUpTextDuration = 1.3f;
     [SerializeField] private float speedUpTextDeactivationDelay = 2;
-
-    [Header("UI References")]
-    [SerializeField] private string canvas_Name = "Canvas";
-    [SerializeField] private string pointsText_Name = "ScoreText";
-    [SerializeField] private string killsText_Name = "KillCount";
-    [SerializeField] private string carWalletCount_Name = "WalletCount";
-    [SerializeField] private string carWalletRadialUI_Name = "WalletRadial";
-    [SerializeField] private string tokensText_Name = "TokenCount";
-    [SerializeField] private string timeText_Name = "TimeText";
-    [SerializeField] private string currentCarText_Name = "SelectedCarNameText";
-    [SerializeField] private string speedUpText_Name = "SpeedUpText";
-    [SerializeField] private string missedChickenCount_Name = "MissCount";
 
     private int scoreForText;
     private int scoreMoverPositive;
@@ -34,18 +33,6 @@ public class InterfaceManager : MonoBehaviour
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
     private Animator speedUptextAnimator;
-
-    // UI References
-    private GameObject canvas;
-    private GameObject pointsText;
-    private TextMeshProUGUI killsText;
-    private TextMeshProUGUI carWalletCountText;
-    private Image carWalletRadialUI;
-    private TextMeshProUGUI tokensText;
-    private TextMeshProUGUI timeText;
-    private TextMeshProUGUI currentCarNameText;
-    private TextMeshProUGUI speedUpText;
-    private TextMeshProUGUI missedChickenCountText;
 
     [Header("UI Popups")]
     [SerializeField] public GameObject positivePoints;
@@ -59,20 +46,8 @@ public class InterfaceManager : MonoBehaviour
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
-
-        canvas = GameObject.Find(canvas_Name);
-        pointsText = GameObject.Find(pointsText_Name);
-        carWalletCountText = GameObject.Find(carWalletCount_Name).GetComponent<TextMeshProUGUI>();
-        carWalletRadialUI = GameObject.Find(carWalletRadialUI_Name).GetComponent<Image>();
-        tokensText = GameObject.Find(tokensText_Name).GetComponent<TextMeshProUGUI>();
-        timeText = GameObject.Find(timeText_Name).GetComponent<TextMeshProUGUI>();
-        currentCarNameText = GameObject.Find(currentCarText_Name).GetComponent<TextMeshProUGUI>();
-        speedUpText = GameObject.Find(speedUpText_Name).GetComponent<TextMeshProUGUI>();
-        missedChickenCountText = GameObject.Find(missedChickenCount_Name).GetComponent<TextMeshProUGUI>();
-    }
-
-    private void Start()
-    {
+        canvas = GameObject.Find("Canvas");
+        pointsText = GameObject.Find("ScoreText");
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
 
