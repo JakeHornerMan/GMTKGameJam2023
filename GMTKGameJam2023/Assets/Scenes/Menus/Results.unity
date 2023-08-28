@@ -459,10 +459,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves: []
+  carsInLevel: []
+  rankingCriteria: []
+  failureRanking: You Failed
+  isGameOver: 1
   startTime: 0
   devMode: 0
-  isGameOver: 1
-  carsInLevel: []
+  cheatTokenAmount: 500
   startLives: 10
   lostChicenScore: 1000
   safelyCrossedChickens: 0
@@ -475,7 +479,6 @@ MonoBehaviour:
   time: 120
   endSound: 0
   waveNumber: 0
-  waves: []
 --- !u!82 &640435459
 AudioSource:
   m_ObjectHideFlags: 0
@@ -711,6 +714,18 @@ PrefabInstance:
     - target: {fileID: 2520167930308169981, guid: 2ff3ab9fed3d00e4e905d5d418b9bbe9, type: 3}
       propertyPath: m_Name
       value: ResultsUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007848229483078507, guid: 2ff3ab9fed3d00e4e905d5d418b9bbe9, type: 3}
+      propertyPath: m_text
+      value: Master Chicken Assasin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007848229483078507, guid: 2ff3ab9fed3d00e4e905d5d418b9bbe9, type: 3}
+      propertyPath: m_fontSize
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007848229483078507, guid: 2ff3ab9fed3d00e4e905d5d418b9bbe9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -344,9 +344,26 @@ MonoBehaviour:
   - {fileID: -952324110816968911, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   - {fileID: -620051609290920513, guid: d88b644156c3a224697efd3585e1337a, type: 3}
   - {fileID: 1735388934760480964, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
+  rankingCriteria:
+  - minKills: 500
+    rankingString: Master Chicken Assasin
+  - minKills: 250
+    rankingString: Sadist
+  - minKills: 150
+    rankingString: KFC Employee
+  - minKills: 100
+    rankingString: Vehicularly Sus
+  - minKills: 50
+    rankingString: Accidents Happen
+  - minKills: 30
+    rankingString: Traffic Obeyer
+  - minKills: 0
+    rankingString: Animal Lover
+  failureRanking: You Failed
+  isGameOver: 0
   startTime: 180
   devMode: 0
-  isGameOver: 0
+  cheatTokenAmount: 500
   startLives: 10
   lostChicenScore: 1000
   safelyCrossedChickens: 0
@@ -631,7 +648,6 @@ MonoBehaviour:
   selectDefaultOnPlace: 1
   carSelectContainer: {fileID: 2168607213686167400}
   spawnedVehiclesContainer: {fileID: 6172053120600888936}
-  carCursorFollower: {fileID: 0}
   carButtonPrefab: {fileID: 509220006034615292, guid: 4644ada4dd28f7443be2cf719cce66da, type: 3}
   placeMouseBtn: 0
   spawnOffset: {x: 0, y: -10}

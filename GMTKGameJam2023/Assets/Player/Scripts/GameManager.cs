@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("Cars in Level")]
     [SerializeField] public Car[] carsInLevel;
 
+    [Header("Ranking Criteria, order highest to lowest")]
+    [SerializeField] private RankingRequirement[] rankingCriteria;
+    [SerializeField] private string failureRanking = "You Failed";
+
     [Header("Developer Settings")]
     [SerializeField] public bool isGameOver = false;
     [SerializeField] public float startTime = 180f;
@@ -201,37 +205,25 @@ public class GameManager : MonoBehaviour
 
     private void UpdateRankings()
     {
+        // Sort the ranking criteria array in descending order by minKills
+        Array.Sort(rankingCriteria, (a, b) => b.minKills.CompareTo(a.minKills));
+
         // Update Rankings
-        switch (killCount)
+        foreach (var requirement in rankingCriteria)
         {
-            case > 500:
-                currentRanking = "Master Chicken Assassin";
+            if (killCount > requirement.minKills)
+            {
+                currentRanking = requirement.rankingString;
                 break;
-            case > 250:
-                currentRanking = "Sadist";
-                break;
-            case > 150:
-                currentRanking = "KFC Worker";
-                break;
-            case > 100:
-                currentRanking = "Chicken Slaughter";
-                break;
-            case > 60:
-                currentRanking = "Accidents Happen";
-                break;
-            case > 30:
-                currentRanking = "Traffic Obeyer";
-                break;
-            case 0:
-                currentRanking = "Animal Lover";
-                break;
+            }
         }
 
         if (missedChickenLives <= 0)
         {
-            currentRanking = "You Failed";
+            currentRanking = failureRanking;
         }
     }
+
 
     private void NewWavePopup(string speedUpText)
     {
@@ -268,4 +260,11 @@ public class SpecialChicken
     public bool topSpawn;
     public bool bottomSpawn;
 
+}
+
+[System.Serializable]
+public class RankingRequirement
+{
+    public int minKills = 0;
+    public string rankingString = "Poultry Terrorizer";
 }
