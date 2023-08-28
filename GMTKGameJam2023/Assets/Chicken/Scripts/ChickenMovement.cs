@@ -24,6 +24,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] public bool ignoreCement = false;
     [HideInInspector] public bool isStuck = false;
     [HideInInspector] public LayerMask cementLayer;
+    [HideInInspector] private string cementLayerName = "Cement";
 
     [Header("Animation")]
     [SerializeField] private string animatorHopBool = "Hop";
@@ -50,7 +51,7 @@ public class ChickenMovement : MonoBehaviour
             anim = hopController.GetComponent<Animator>();
         }
 
-        int layerIndex = LayerMask.NameToLayer("Cement");
+        int layerIndex = LayerMask.NameToLayer(cementLayerName);
         cementLayer = 1 << layerIndex; //Convert layer index to layer mask, to avoid setting in inspector
     }
 
