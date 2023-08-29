@@ -29,7 +29,7 @@ public class PoliceCar : Car
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(policeShakeDuration, policeShakeMagnitude));
 
-        //StartCoroutine(WaitForBombStart());
+        // StartCoroutine(WaitForBombStart());
     }
 
     private void Update()
