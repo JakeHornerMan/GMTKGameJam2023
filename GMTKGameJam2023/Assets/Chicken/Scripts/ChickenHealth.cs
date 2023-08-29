@@ -82,10 +82,9 @@ public class ChickenHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Here");
         if (other.gameObject.CompareTag(hoseWaterTag))
         {
-            Debug.Log("Hit by hose");
+            return;
         }
     }
 }

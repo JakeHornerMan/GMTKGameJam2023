@@ -7,7 +7,7 @@ public class TokenController : MonoBehaviour
     [Header("Token Type Values")]
     [SerializeField] private bool tokenBag = false;
     [SerializeField] public int tokenValue = 1;
-    
+
     [Header("Sway Values")]
     [SerializeField] private bool isSwaying = true;
 
@@ -49,33 +49,40 @@ public class TokenController : MonoBehaviour
     {
         StartCoroutine(WaitAndDie(removeTime));
 
-        if(tokenBag){
+        if (tokenBag)
+        {
             this.GetComponent<BoxCollider2D>().enabled = false;
             FindClosestRoad();
             SetDestination();
         }
-        else {
+        else
+        {
             this.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 
     private void Update()
     {
-        if(isSwaying){
+        if (isSwaying)
+        {
             Swaying();
         }
-        
-        if(closestRoad != null && tokenBag){
-            if(this.transform.position != target){
-            TravelToRoad();
+
+        if (closestRoad != null && tokenBag)
+        {
+            if (this.transform.position != target)
+            {
+                TravelToRoad();
             }
-            else{
+            else
+            {
                 this.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
     }
 
-    private void Swaying(){
+    private void Swaying()
+    {
         float verticalDisplacement = amplitude * Mathf.Sin(Time.time * frequency);
         float horizontalDisplacement = speed * Time.deltaTime;
         Vector3 newPosition = initialPosition + new Vector3(horizontalDisplacement, verticalDisplacement, 0f);
@@ -86,12 +93,13 @@ public class TokenController : MonoBehaviour
     {
         startPosition = this.transform.position;
         float randomYPos = Random.Range(-3.00f, 3.00f);
-        target = closestRoad.transform.position; 
+        target = closestRoad.transform.position;
         target.y = randomYPos;
     }
 
-    private void TravelToRoad(){
-        t += Time.deltaTime/timeToReachTarget;
+    private void TravelToRoad()
+    {
+        t += Time.deltaTime / timeToReachTarget;
         transform.position = Vector3.Lerp(startPosition, target, t);
     }
 
@@ -100,9 +108,11 @@ public class TokenController : MonoBehaviour
         float distanceToClosestRoad = Mathf.Infinity;
         GameObject[] allRoads = GameObject.FindGameObjectsWithTag("Road");
 
-        foreach (GameObject road in allRoads){
+        foreach (GameObject road in allRoads)
+        {
             float distanceToRoad = (road.transform.position - this.transform.position).sqrMagnitude;
-            if(distanceToRoad < distanceToClosestRoad){
+            if (distanceToRoad < distanceToClosestRoad)
+            {
                 distanceToClosestRoad = distanceToRoad;
                 closestRoad = road;
             }

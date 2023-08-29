@@ -182,6 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenName: Bomb Chicken
+  chickenDescription: An explosive chicken, can explode or damage cars.
+  chickenSpriteImage: {fileID: -1709115884, guid: 5e04e93471dd0d545a1357a34fc67326, type: 3}
   hopController: {fileID: 8851517354825887726}
   chickenSprite: {fileID: 1978656475471651969}
   chickenCollider: {fileID: 3415184185659452524}
@@ -213,6 +216,8 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 1978656475471651969}
   hopController: {fileID: 8851517354825887726}
+  damagedByHose: 1
+  hoseWaterTag: Hose Water
   startHealth: 1
   invinsibleForTime: 1
   pointsReward: 250

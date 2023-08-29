@@ -180,6 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenName: Golden Chicken
+  chickenDescription: This lucky chicken provides you with extra score to the one
+    fortunate enough to kill it.
+  chickenSpriteImage: {fileID: 1112088024, guid: 9d5e95a62f0220a47aeaac6b67c87dfa, type: 3}
   hopController: {fileID: 8851517354825887726}
   chickenSprite: {fileID: 1978656475471651969}
   chickenCollider: {fileID: 3415184185659452524}
@@ -211,6 +215,8 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 1978656475471651969}
   hopController: {fileID: 8851517354825887726}
+  damagedByHose: 1
+  hoseWaterTag: Hose Water
   startHealth: 100
   invinsibleForTime: 1
   pointsReward: 100

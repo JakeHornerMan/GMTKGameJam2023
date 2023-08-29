@@ -5127,6 +5127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenName: Cash Chicken
+  chickenDescription: This millionaire chicken drops a bag of tokens when its killed.
+  chickenSpriteImage: {fileID: -248887144, guid: 1829c4feb42f13b4bb9c5f6562000af7, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -5158,6 +5161,8 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
+  damagedByHose: 1
+  hoseWaterTag: Hose Water
   startHealth: 100
   invinsibleForTime: 1
   pointsReward: 200

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 93265770884567665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6759192432498591885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (8)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3696074249126321961}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (3)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7448741811212344002}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (10)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8947098688703691711}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (12)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6130337432865221184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (11)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7522770766801737879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (13)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 255640662888507167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (7)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5146669644572414199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (9)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -385,7 +385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5289650928126797338}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 512348543385223842}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Tractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,6 +535,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: 7a1afee718f8c014c8d5eb3fc1aa3b16, type: 3}
   carIcon: {fileID: 21300000, guid: c9f8e2fe32c93ec4983f0f9b19810b62, type: 3}
   carName: Trusty Tractor
+  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
@@ -576,6 +577,7 @@ MonoBehaviour:
   - {fileID: 8947098688703691711}
   - {fileID: 7522770766801737879}
   - {fileID: 6435553332296362934}
+  sheepSpawnChance: 60
 --- !u!1 &6191628964686860359
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5304474695108624710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (5)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -616,7 +618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183542700905349101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (6)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -679,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072023135199035811}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheepSpawnSpots
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -725,7 +727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6435553332296362934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (14)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -756,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4668622444259767537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (2)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -787,7 +789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2424485838170588790}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnSheepHere (4)
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -820,6 +822,10 @@ PrefabInstance:
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -905,6 +911,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -941,6 +951,10 @@ PrefabInstance:
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Name
       value: Exhaust
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder

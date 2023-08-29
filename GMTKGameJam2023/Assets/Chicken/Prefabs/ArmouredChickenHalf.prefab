@@ -280,6 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenName: Half-Armoured Chicken
+  chickenDescription: A more vulnerable variant of the Armoured Chicken, with only
+    a helmet.
+  chickenSpriteImage: {fileID: -1614591918, guid: d60969400aae7204fb44b352b4687884, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -311,6 +315,8 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
+  damagedByHose: 1
+  hoseWaterTag: Hose Water
   startHealth: 200
   invinsibleForTime: 1
   pointsReward: 300

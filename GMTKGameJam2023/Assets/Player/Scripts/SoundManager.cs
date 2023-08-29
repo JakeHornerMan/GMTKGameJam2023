@@ -10,6 +10,9 @@ public class SoundConfig
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private string musicObjectName = "Music";
+
     [Header("Clicken Death Clips")]
     [SerializeField] private SoundConfig[] deathConfigs;
 
@@ -29,6 +32,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig boatConfig;
     [SerializeField] private SoundConfig fireTruckConfig;
     [SerializeField] private SoundConfig combineHarvestorConfig;
+    [SerializeField] private SoundConfig wreckerConfig;
 
     [Header("Player Attack Clips")]
     [SerializeField] private SoundConfig[] sliceConfigs;
@@ -38,6 +42,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
     [SerializeField] private SoundConfig sheepConfig;
+    [SerializeField] private SoundConfig sheepDeathConfig;
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
@@ -61,7 +66,7 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         audioSrc = GetComponent<AudioSource>();
-        musicAudio = GameObject.Find("Music").GetComponent<AudioSource>();
+        musicAudio = GameObject.Find(musicObjectName).GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -89,6 +94,7 @@ public class SoundManager : MonoBehaviour
     public void PlayNewBoat() => PlaySound(boatConfig);
     public void PlayNewFireTruck() => PlaySound(fireTruckConfig);
     public void PlayNewHarvestor() => PlaySound(combineHarvestorConfig);
+    public void PlayNewWrecker() => PlaySound(wreckerConfig);
 
     // =============================
     // Player Attack Sounds
@@ -99,6 +105,7 @@ public class SoundManager : MonoBehaviour
     public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
     public void PlayCementPour() => PlaySound(cementPlaceConfig);
     public void PlaySheepNoise() => PlaySound(sheepConfig);
+    public void PlaySheepDeath() => PlaySound(sheepDeathConfig);
 
     // =============================
     // Game Info Sounds

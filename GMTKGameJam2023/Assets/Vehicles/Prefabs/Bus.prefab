@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: -2808484990652700158}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Bus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,6 +225,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
   carIcon: {fileID: 21300000, guid: 6a58921643d1cca418d19b07b0c2a093, type: 3}
   carName: Touring Bus
+  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
@@ -258,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,6 +293,10 @@ PrefabInstance:
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2959971039763006544, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -385,6 +390,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_fontSize
       value: 1
@@ -425,6 +434,10 @@ PrefabInstance:
     - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_Name
       value: Spinout Sparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4377522446804942571, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_RootOrder
@@ -491,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Name
       value: Exhaust
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder

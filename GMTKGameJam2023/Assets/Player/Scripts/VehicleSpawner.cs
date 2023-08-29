@@ -12,7 +12,6 @@ public class VehicleSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform carSelectContainer;
     [SerializeField] private Transform spawnedVehiclesContainer;
-    [SerializeField] private CurrentCarIndicator carCursorFollower;
     [SerializeField] private GameObject carButtonPrefab;
 
     [Header("Input")]
@@ -21,16 +20,19 @@ public class VehicleSpawner : MonoBehaviour
     [Header("Spawn Positioning")]
     [SerializeField] private Vector2 spawnOffset = new(0, -5);
 
-    private Collider2D lastLaneSpawned;
+    [Header("Spawn Settings")]
     [SerializeField] private float timeUntilNextSpawn;
-    private float currentTimeUntilNextSpawn;
-    public bool disableVehicleSpawn = false;
+    [SerializeField] public bool disableVehicleSpawn = false;
 
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
     [HideInInspector] public Car currentActiveCar;
 
+    private float currentTimeUntilNextSpawn;
+
+    private Collider2D lastLaneSpawned;
+    private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private SoundManager soundManager;
     private GameManager gameManager;
@@ -48,6 +50,7 @@ public class VehicleSpawner : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
+        currentCarIndicator = FindObjectOfType<CurrentCarIndicator>();
     }
 
     private void Start()
@@ -111,8 +114,6 @@ public class VehicleSpawner : MonoBehaviour
 
     private void TouchInputs()
     {
-        // if (Input.touchCount > 0){
-        // Touch touch = Input.GetTouch(0);
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -167,7 +168,7 @@ public class VehicleSpawner : MonoBehaviour
         else
             spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
 
-        //To prevent car spamming on the same lane
+        // To prevent car spamming on the same lane
         if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
             return;
 
@@ -189,12 +190,9 @@ public class VehicleSpawner : MonoBehaviour
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
         }
-        
+
         if (selectDefaultOnPlace)
             SelectCar(carButtons[0]);
-
-        //disableVehicleSpawn = true;
-        //StartCoroutine(WaitAndEnableSpawn(0.5f));
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -220,9 +218,12 @@ public class VehicleSpawner : MonoBehaviour
 
     private void UpdateCarCursor()
     {
-        if (carCursorFollower.followCursor)
-            carCursorFollower.transform.position = new Vector3(inputPos.x, inputPos.y, 0);
-        carCursorFollower.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
+        if (currentCarIndicator != null)
+        {
+            if (currentCarIndicator.followCursor)
+                currentCarIndicator.transform.position = new Vector3(inputPos.x, inputPos.y, 0);
+            currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
+        }
     }
 
     private bool IsMouseOverUIElement()

@@ -17,7 +17,7 @@ public class Pause : MonoBehaviour
 
     private float startTimeScale = 1;
 
-    public bool isPaused = false;
+    [HideInInspector] public bool isPaused = false;
 
     private void Start()
     {
