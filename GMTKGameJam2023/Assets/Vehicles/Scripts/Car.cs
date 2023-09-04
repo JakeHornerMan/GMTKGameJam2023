@@ -24,6 +24,8 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public bool isSpinning = false;
     private float degreesPerSecond = 540f;
 
+    private bool carInAction = true;
+
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
 
@@ -181,6 +183,8 @@ public abstract class Car : MonoBehaviour
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
+        LaunchCar();
+
         // Destroy Self if Bomb Chicken
         BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
         if (bombChickenHealth != null && canIBeBombed)
@@ -240,15 +244,66 @@ public abstract class Car : MonoBehaviour
 
     private IEnumerator CarHitStop(float hitStopLength)
     {
-        if (rb != null)
+        if (rb != null && carInAction == true)
         {
             rb.velocity = Vector3.zero;
 
             yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
 
+            if (carInAction == false)
+            {
+                yield break;
+            }
+
             rb.velocity = transform.up * carSpeed;
         }
         
+    }
+
+    private void LaunchCar()
+    {
+
+        carInAction = false;
+
+        // Generate random x and y components between -10 and 10
+        float randomX = UnityEngine.Random.Range(-10f, 10f);
+        float randomY = UnityEngine.Random.Range(-10f, 10f);
+
+        // Create a Vector2 with the random components
+        Vector2 randomVector = new Vector2(randomX, randomY);
+
+        // Normalize the Vector2
+        Vector2 normalizedVector = randomVector.normalized;
+
+        GetComponent<Collider2D>().enabled = false;
+
+        rb.velocity = normalizedVector * 50;
+
+        StartCoroutine(LaunchCarCoroutine(new Vector3(25, 25, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
+    }
+
+    private IEnumerator LaunchCarCoroutine(Vector3 targetScale, Vector3 targetPos)
+    {
+        Vector3 initialScale = gameObject.transform.localScale;
+        Vector3 initialPos = gameObject.transform.position;
+        float t = 0;
+
+        float launchSpeed = 1.0f;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime * launchSpeed;
+
+            
+
+            // Linearly interpolate vehicle scale
+            gameObject.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
+
+            canSpinOut = true;
+            SpinOutCar();
+
+            yield return null;
+        }
     }
 
     public virtual void CarGoesOffscreen()
