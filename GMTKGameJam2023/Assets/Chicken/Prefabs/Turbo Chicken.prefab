@@ -280,6 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eba7392919cbb94bb312bad5ef69fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenName: Turbo Chicken
+  chickenDescription: What could go wrong giving a chicken a turbocharged V8?
+  chickenSpriteImage: {fileID: 50949104, guid: 825e5a279decac14cb90b87dbfaf66c3, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -312,6 +315,8 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
+  damagedByHose: 1
+  hoseWaterTag: Hose Water
   startHealth: 100
   invinsibleForTime: 1
   pointsReward: 250

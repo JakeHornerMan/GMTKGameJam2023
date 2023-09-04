@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1708767468316869461}
   - component: {fileID: 2577988633924209816}
   - component: {fileID: 3672126602099327467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Truck Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,6 +312,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: 5da1fa202daf6af4eaa41a6bd62b8de8, type: 3}
   carIcon: {fileID: 21300000, guid: 49d9e891c8ed2dc4dac4e9bcc5484dd1, type: 3}
   carName: Tactical Truck
+  carDescription: 
   carPrice: 6
   ignoreTokens: 0
   isSlicingCar: 0
@@ -393,6 +394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck Sparks Particles (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6074878188294623385, guid: 862be84287a3aa04bbee720675cb5859, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -459,6 +464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck Sparks Particles (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6074878188294623385, guid: 862be84287a3aa04bbee720675cb5859, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -480,6 +489,10 @@ PrefabInstance:
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -564,6 +577,10 @@ PrefabInstance:
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_fontSize
@@ -650,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck Sparks Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 6074878188294623385, guid: 862be84287a3aa04bbee720675cb5859, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -715,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 6074878188294623385, guid: 862be84287a3aa04bbee720675cb5859, type: 3}
       propertyPath: m_Name
       value: Truck Sparks Particles (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074878188294623385, guid: 862be84287a3aa04bbee720675cb5859, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

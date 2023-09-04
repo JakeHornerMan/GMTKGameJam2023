@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CashChicken : ChickenHealth
 {
+    [Header("Cash Chicken Values")]
     [SerializeField] public bool dropTheBag = false;
     [SerializeField] public int tokenAmount = 5;
+
+    [Header("References")]
     [SerializeField] private GameObject tokenBag;
 
     private GameManager gameManager;

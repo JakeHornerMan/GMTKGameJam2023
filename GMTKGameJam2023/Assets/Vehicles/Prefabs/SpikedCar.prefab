@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5540116040615898661}
   - component: {fileID: 4042703564125885742}
   - component: {fileID: 5356352089464385409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 5263969024512775508}
   - component: {fileID: 8997620375743524235}
   - component: {fileID: 4535558386396164230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4771122708870662046}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,6 +389,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
   carIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
   carName: Roadkill
+  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 1
@@ -423,7 +424,7 @@ GameObject:
   - component: {fileID: 1283398100030364759}
   - component: {fileID: 8640638684981829726}
   - component: {fileID: 5480477109877341422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exhaust
       objectReference: {fileID: 0}
+    - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -619,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -704,6 +713,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -736,6 +749,10 @@ PrefabInstance:
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Name
       value: Exhaust (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder

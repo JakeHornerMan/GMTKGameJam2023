@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8252793248268278067}
   - component: {fileID: 3004242203575901392}
   - component: {fileID: 4599915817287251352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FanCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: -537652370100449686}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Hovercraft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,6 +324,7 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: 0f234002db522ec47939d0f898307c7b, type: 3}
   carIcon: {fileID: 21300000, guid: f3efe2d2f7c15734ca5a0f502da597c3, type: 3}
   carName: Hovercraft
+  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
@@ -359,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +394,7 @@ GameObject:
   - component: {fileID: 7234016211048221761}
   - component: {fileID: 7608788870112864170}
   - component: {fileID: 7391833333371349618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HovercraftFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,6 +501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spinout Sparks
       objectReference: {fileID: 0}
+    - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4377522446804942571, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -565,6 +570,10 @@ PrefabInstance:
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -650,6 +659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -726,6 +739,10 @@ PrefabInstance:
     - target: {fileID: 7826078791388366233, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
       propertyPath: m_Name
       value: AirParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826078791388366233, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

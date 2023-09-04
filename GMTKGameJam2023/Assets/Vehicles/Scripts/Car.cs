@@ -16,6 +16,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public Sprite carSprite;
     [SerializeField] public Sprite carIcon;
     [SerializeField] public string carName;
+    [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public int carPrice = 2;
     [SerializeField] private bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
@@ -127,12 +128,23 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
+
         if (collision.gameObject.CompareTag(deathboxTag))
         {
             //if (totalPoints > 0)
             //    gameManager.AddPlayerScore(totalPoints);
             //Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+
+        // Check if Hit Sheep
+        Sheep sheep = other.gameObject.GetComponent<Sheep>();
+
+        if (sheep != null)
+            HandleSheepCollision(sheep);
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -155,7 +167,7 @@ public abstract class Car : MonoBehaviour
         token.TokenCollected();
 
         gameManager.UpdateTokens(1);
-        
+
     }
 
     public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
@@ -192,6 +204,11 @@ public abstract class Car : MonoBehaviour
             // Destroy the car as well
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void HandleSheepCollision(Sheep sheep)
+    {
+        sheep.HandleDeath();
     }
 
     private void KillChicken(ChickenHealth chickenHealth)
@@ -257,7 +274,6 @@ public abstract class Car : MonoBehaviour
 
             rb.velocity = transform.up * carSpeed;
         }
-        
     }
 
     private void LaunchCar()
@@ -308,9 +324,7 @@ public abstract class Car : MonoBehaviour
 
     public virtual void CarGoesOffscreen()
     {
-        if (totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
-        Destroy(gameObject);
+        DestroySelf();
     }
 
     public void DestroySelf()

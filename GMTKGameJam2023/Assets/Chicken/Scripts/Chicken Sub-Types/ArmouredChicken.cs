@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class ArmouredChicken : ChickenHealth
 {
+    [Header("Health Criteria")]
+    [SerializeField] private int noArmorHealth = 100;
+    [SerializeField] private int stage1ArmorHealth = 200;
+
+    [Header("Aniamtion Values")]
+    [SerializeField] private string noArmorKey = "NoArmour";
+    [SerializeField] private string armor1Key = "Armour1";
+    [SerializeField] private string armor2Key = "Armour2";
+
     private void Start()
     {
         SetAnimation();
@@ -13,21 +22,20 @@ public class ArmouredChicken : ChickenHealth
     {
         SetAnimation();
 
-        if(!isInvinsible){
+        if (!isInvinsible)
+        {
             isInvinsible = true;
             StartCoroutine(StartInvinsibleTime());
         }
     }
 
-    private void SetAnimation(){
-        if(health <= 200 && health > 100){
-            anim.Play("Armour1");
-        }
-        else if(health <= 100){
-            anim.Play("NoArmour");
-        }
-        else{
-            anim.Play("Armour2");
-        }
+    private void SetAnimation()
+    {
+        if (health <= stage1ArmorHealth && health > noArmorHealth)
+            anim.Play(armor1Key);
+        else if (health <= noArmorHealth)
+            anim.Play(noArmorKey);
+        else
+            anim.Play(armor2Key);
     }
 }

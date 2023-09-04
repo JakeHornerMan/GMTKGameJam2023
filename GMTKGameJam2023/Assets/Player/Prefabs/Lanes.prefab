@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4370118682285714038}
-  - component: {fileID: 3579040378299406628}
-  - component: {fileID: 8746173641645449034}
   m_Layer: 0
   m_Name: Lanes
   m_TagString: Untagged
@@ -44,49 +42,8 @@ Transform:
   - {fileID: 2136478161826871466}
   - {fileID: 561120794869102665}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3579040378299406628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864732136250003267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566ddf724a3a13a40b2691b3d27a7195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectDefaultOnPlace: 1
-  carSelectContainer: {fileID: 0}
-  spawnedVehiclesContainer: {fileID: 6528247484680453847}
-  carCursorFollower: {fileID: 0}
-  carButtonPrefab: {fileID: 509220006034615292, guid: 4644ada4dd28f7443be2cf719cce66da, type: 3}
-  placeMouseBtn: 0
-  spawnOffset: {x: 0, y: -10}
-  timeUntilNextSpawn: 0
-  disableVehicleSpawn: 0
-  invalidPlacementCamShake: {x: 0.05, y: 0.1}
-  currentActiveCar: {fileID: 0}
---- !u!114 &8746173641645449034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864732136250003267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9790799240cd4494e932a0e5ca89cf74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walletLimit: 5
-  startWalletCount: 5
-  refillDelaySeconds: 2
-  timeUntilRefill: 0
-  amountPerRefill: 1
-  carCount: 0
 --- !u!1 &4045037203581973327
 GameObject:
   m_ObjectHideFlags: 0

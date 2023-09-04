@@ -39,11 +39,12 @@ public class WreckingBall : MonoBehaviour
         if (chickenHealth == null && collision.transform.parent != null)
             chickenHealth = collision.transform.parent.GetComponent<ChickenHealth>();
 
-        if (chickenHealth != null){
+        if (chickenHealth != null)
+        {
             car.HandleChickenCollision(chickenHealth);
             // rb.AddForce(transform.up * 10f);
             StartCoroutine(wreckerCart.HandleHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
-        } 
+        }
 
         // Check if Hit Car
         Car hitCar = collision.gameObject.GetComponent<Car>();
@@ -51,8 +52,9 @@ public class WreckingBall : MonoBehaviour
         if (hitCar == null && collision.transform.parent != hitCar)
             hitCar = collision.transform.parent.GetComponent<Car>();
 
-        if (hitCar != null){
-            wreckerCart.left = wreckerCart.left *-1;
+        if (hitCar != null)
+        {
+            wreckerCart.left = wreckerCart.left * -1;
             Debug.Log("We hit a car: " + collision.gameObject.name);
             HandleCarCollision(hitCar);
         }
@@ -74,7 +76,7 @@ public class WreckingBall : MonoBehaviour
 
     private void RenderRope()
     {
-        Vector3[] positions = {this.transform.position, hook.transform.position};
+        Vector3[] positions = { this.transform.position, hook.transform.position };
         lineRenderer.SetPositions(positions);
     }
 }
