@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d4fa10c6674fac43975ed051d3c8f9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6d9e561345f64a4998ca3e6ab0cc1b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -341,7 +341,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 454f3192d4a208b41bac528a2c8c66c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ba16d7abf506e949b66adc21e92d7a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -425,7 +425,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d4fa10c6674fac43975ed051d3c8f9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6d9e561345f64a4998ca3e6ab0cc1b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 948894776}
   - component: {fileID: 948894777}
   m_Layer: 0
-  m_Name: Grass2 1 (1)
+  m_Name: BackgroundLanes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +858,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 964c16fa5d2a66444967405984532137, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd768fefb371a7341ae6739cad456533, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -942,7 +942,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 454f3192d4a208b41bac528a2c8c66c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ba16d7abf506e949b66adc21e92d7a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1026,7 +1026,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 454f3192d4a208b41bac528a2c8c66c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ba16d7abf506e949b66adc21e92d7a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1071,8 +1071,8 @@ Transform:
   - {fileID: 1678504705}
   - {fileID: 2008678505}
   - {fileID: 1181765726}
-  - {fileID: 31832516}
   - {fileID: 948894776}
+  - {fileID: 31832516}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 1678504705}
   - component: {fileID: 1678504704}
   m_Layer: 0
-  m_Name: Grass2 1
+  m_Name: BackgroundLanes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,7 +1134,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 964c16fa5d2a66444967405984532137, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd768fefb371a7341ae6739cad456533, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1334,7 +1334,7 @@ SpriteRenderer:
   m_SortingLayerID: 1178079085
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 454f3192d4a208b41bac528a2c8c66c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ba16d7abf506e949b66adc21e92d7a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1353,9 +1353,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 177068653927376579, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194562041806838065, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194562041806838065, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194562041806838065, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194562041806838065, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
     - target: {fileID: 6169087538686948154, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171594735155408272, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378641128644221037, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 245
       objectReference: {fileID: 0}
     - target: {fileID: 8263806329852754097, guid: 4323f8b0b01b6314a85e5d5e951a89b3, type: 3}
       propertyPath: m_Pivot.x
