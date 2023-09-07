@@ -18,7 +18,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public string carName;
     [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public int carPrice = 2;
-    [SerializeField] private bool ignoreTokens = false;
+    [SerializeField] public bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
     [SerializeField] private bool canIBeBombed = true;
     [SerializeField] public bool canSpinOut = false;

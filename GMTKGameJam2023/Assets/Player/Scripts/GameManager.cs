@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     private SoundManager soundManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
+    private TokenSpawner tokenSpawner;
     private SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
+        tokenSpawner = FindObjectOfType<TokenSpawner>();
         interfaceManager = GetComponent<InterfaceManager>();
         sceneFader = FindObjectOfType<SceneFader>();
         cameraShaker = FindObjectOfType<CameraShaker>();
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
         NewWavePopup(currentWave.wavePrompt);
 
         chickenSpawn.SetNewWave(currentWave);
+        tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
         StartCoroutine(coroutine);
@@ -249,6 +252,7 @@ public class ChickenWave
     public string wavePrompt;
     public int standardChickenAmounts;
     public int chickenIntesity = 0;
+    public int coinAmount  = 0;
     public List<SpecialChicken> specialChickens;
 }
 
