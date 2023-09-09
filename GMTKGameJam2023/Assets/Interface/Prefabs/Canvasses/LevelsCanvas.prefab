@@ -132,9 +132,9 @@ GameObject:
   - component: {fileID: 2371332742786952340}
   - component: {fileID: 4977923184687518787}
   - component: {fileID: 1107864543142328219}
-  - component: {fileID: 5784706167464814015}
+  - component: {fileID: 8275622352711687104}
   m_Layer: 5
-  m_Name: MainMenuBtn
+  m_Name: BackToWorldSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,9 +242,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5784706167464814015}
-        m_TargetAssemblyTypeName: MainMenuBtn, Assembly-CSharp
-        m_MethodName: ReturnToMainMenu
+      - m_Target: {fileID: 8275622352711687104}
+        m_TargetAssemblyTypeName: NavToWorldSelect, Assembly-CSharp
+        m_MethodName: ReturnToWorldSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5784706167464814015
+--- !u!114 &8275622352711687104
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4213692147127639447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80abf0c62a88c64d9f4a28804c58332, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ee4142ee6a95ed4ab159e37c0be9c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5170240058678382866
