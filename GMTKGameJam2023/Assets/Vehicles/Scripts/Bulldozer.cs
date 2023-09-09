@@ -8,6 +8,6 @@ public class Bulldozer : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewBulldozer();
+        soundManager?.PlayNewBulldozer();
     }
 }

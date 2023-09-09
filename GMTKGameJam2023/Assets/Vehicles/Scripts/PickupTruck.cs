@@ -8,6 +8,6 @@ public class PickupTruck : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewPickupTruck();
+        soundManager?.PlayNewPickupTruck();
     }
 }

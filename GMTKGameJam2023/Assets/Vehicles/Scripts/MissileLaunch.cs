@@ -9,7 +9,7 @@ public class MissileLaunch : Car
 
     private void Start()
     {
-        soundManager.PlayMissileLaunch();
+        soundManager?.PlayMissileLaunch();
     }
 
     public void Explode()

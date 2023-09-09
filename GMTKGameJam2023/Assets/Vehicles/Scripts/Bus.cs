@@ -8,6 +8,6 @@ public class Bus : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewBus();
+        soundManager?.PlayNewBus();
     }
 }

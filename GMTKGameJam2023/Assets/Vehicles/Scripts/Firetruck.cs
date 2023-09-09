@@ -8,6 +8,6 @@ public class Firetruck : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewFireTruck();
+        soundManager?.PlayNewFireTruck();
     }
 }

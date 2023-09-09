@@ -8,6 +8,6 @@ public class SpikeCar : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewSpikeCar();
+        soundManager?.PlayNewSpikeCar();
     }
 }

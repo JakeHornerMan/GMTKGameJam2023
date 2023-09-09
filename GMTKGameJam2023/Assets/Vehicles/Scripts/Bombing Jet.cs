@@ -24,7 +24,7 @@ public class BombingJet : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewFighterJet();
+        soundManager?.PlayNewFighterJet();
 
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(jetShakeDuration, jetShakeMagnitude));

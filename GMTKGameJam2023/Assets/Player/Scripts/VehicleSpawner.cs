@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class VehicleSpawner : MonoBehaviour
 {
+    [Header("Spawner Type")]
+    [SerializeField] private bool isForWorldSelect = false;
+
     [Header("Placement Settings")]
     [SerializeField] private bool selectDefaultOnPlace = true;
 
@@ -34,7 +37,6 @@ public class VehicleSpawner : MonoBehaviour
     private Collider2D lastLaneSpawned;
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
-    private SoundManager soundManager;
     private GameManager gameManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
@@ -46,7 +48,6 @@ public class VehicleSpawner : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        soundManager = FindObjectOfType<SoundManager>();
         gameManager = FindObjectOfType<GameManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
@@ -57,7 +58,8 @@ public class VehicleSpawner : MonoBehaviour
     {
         CreateButtons();
 
-        SelectCar(carButtons[0]);
+        if (carButtons.Count >= 1)
+            SelectCar(carButtons[0]);
     }
 
     private void Update()
@@ -155,7 +157,11 @@ public class VehicleSpawner : MonoBehaviour
             return;
 
         // Return if Car Cannot be Placed on Clicked Lane
-        if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
+        if (isForWorldSelect)
+        {
+            currentActiveCar = hit.collider.GetComponent<WorldSelectLaneCar>().worldSelectCar;
+        }
+        else if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
         {
             StartCoroutine(cameraShaker.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y));
             return;
@@ -186,7 +192,7 @@ public class VehicleSpawner : MonoBehaviour
         carWallet.carCount--;
 
         // Reduce Player Money
-        if (currentActiveCar.carPrice > 0)
+        if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
         }
