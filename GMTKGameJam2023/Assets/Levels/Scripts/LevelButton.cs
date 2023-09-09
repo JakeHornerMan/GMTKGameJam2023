@@ -18,7 +18,7 @@ public class LevelButton : MonoBehaviour
 
     public void SetUI()
     {
-        btnText.text = correspondingLevel.levelBtnText;
+        btnText.text = correspondingLevel.levelNum;
     }
 
     public void HandleClick()
