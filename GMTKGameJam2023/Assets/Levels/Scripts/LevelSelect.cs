@@ -17,10 +17,10 @@ public class LevelSelect : MonoBehaviour
 
     private void CreateButtons()
     {
-        if (WorldSelectUI.selectedWorld == null || WorldSelectUI.selectedWorld.worldLevels == null)
+        if (WorldSelect.selectedWorld == null || WorldSelect.selectedWorld.worldLevels == null)
             return;
 
-        foreach (LevelInfoSO level in WorldSelectUI.selectedWorld.worldLevels)
+        foreach (LevelInfoSO level in WorldSelect.selectedWorld.worldLevels)
         {
             LevelButton newBtn = Instantiate(
                 lvlBtnPrefab,

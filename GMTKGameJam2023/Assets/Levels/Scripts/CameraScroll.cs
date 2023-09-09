@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class WorldSelectScroll : MonoBehaviour
+public class CameraScroll : MonoBehaviour
 {
     [Header("Camera Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
