@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] sliceConfigs;
     [SerializeField] private SoundConfig missileLaunchConfig;
     [SerializeField] private SoundConfig fighterJetExplosion;
-    [SerializeField] private SoundConfig explosionConfig;
+    [SerializeField] private SoundConfig[] explosionConfigs;
     [SerializeField] private SoundConfig spikePlaceConfig;
     [SerializeField] private SoundConfig cementPlaceConfig;
     [SerializeField] private SoundConfig sheepConfig;
@@ -101,7 +101,7 @@ public class SoundManager : MonoBehaviour
     public void PlayRandomSlice() => RandomPlaySound(sliceConfigs);
     public void PlayMissileLaunch() => PlaySound(missileLaunchConfig);
     public void PlayFighterJetExplosion() => PlaySound(fighterJetExplosion);
-    public void PlayGenericExplosion() => PlaySound(explosionConfig);
+    public void PlayGenericExplosion() => RandomPlaySound(explosionConfigs);
     public void PlaySpikePlacement() => PlaySound(spikePlaceConfig);
     public void PlayCementPour() => PlaySound(cementPlaceConfig);
     public void PlaySheepNoise() => PlaySound(sheepConfig);
