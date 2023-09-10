@@ -7,28 +7,24 @@ public class LevelSelect : MonoBehaviour
     // Build LevelSelect Scene by Instantiating Level Buttons
 
     [Header("References")]
-    [SerializeField] private Transform btnGrid;
-    [SerializeField] private GameObject lvlBtnPrefab;
+    [SerializeField] private Transform scrollingContainer;
+    [SerializeField] private GameObject lvlCardPrefab;
 
     private void Start()
     {
-        CreateButtons();
+        CreateLevelCards();
     }
 
-    private void CreateButtons()
+    private void CreateLevelCards()
     {
-        if (WorldSelect.selectedWorld == null || WorldSelect.selectedWorld.worldLevels == null)
-            return;
-
+        if (WorldSelect.selectedWorld == null) return;
         foreach (LevelInfoSO level in WorldSelect.selectedWorld.worldLevels)
         {
-            LevelButton newBtn = Instantiate(
-                lvlBtnPrefab,
-                btnGrid
-            ).GetComponent<LevelButton>();
-
-            newBtn.correspondingLevel = level;
-            newBtn.SetUI();
+            LevelCard newLevelCard = Instantiate(
+                lvlCardPrefab,
+                scrollingContainer
+            ).GetComponent<LevelCard>();
+            newLevelCard.correspondingLevel = level;
         }
     }
 }
