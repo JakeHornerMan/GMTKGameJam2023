@@ -28,6 +28,13 @@ public class LevelCard : MonoBehaviour
 
     [HideInInspector] public LevelInfoSO correspondingLevel;
 
+    private SceneFader sceneFader;
+
+    private void Awake()
+    {
+        sceneFader = FindObjectOfType<SceneFader>();
+    }
+
     public void SetUI()
     {
         lvlNumText.text = correspondingLevel.levelNum;
@@ -60,5 +67,11 @@ public class LevelCard : MonoBehaviour
             ).GetComponent<LvlIcon>();
             newIcon.SetImage(chicken.chickenSpriteImage);
         }
+    }
+
+    // Function Run by Play Button
+    public void LoadLevel()
+    {
+        sceneFader.FadeTo(correspondingLevel.gameLevelToLoad);
     }
 }
