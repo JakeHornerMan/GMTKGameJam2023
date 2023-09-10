@@ -218,6 +218,8 @@ GameObject:
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
   - component: {fileID: -5117147452543026932}
+  - component: {fileID: 5124420335599565337}
+  - component: {fileID: -6886285918930976547}
   m_Layer: 7
   m_Name: Chicken
   m_TagString: Chicken
@@ -280,9 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenName: Chicken
-  chickenDescription: The standard chicken.
-  chickenSpriteImage: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -321,3 +320,35 @@ MonoBehaviour:
   pointsReward: 100
   health: 0
   flashMaterial: {fileID: 0}
+--- !u!114 &5124420335599565337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Chicken
+  objectImage: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
+  objectDiscription: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+    commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+    dis parturient montes, nascetur ridiculus mus. Donec qu
+--- !u!114 &-6886285918930976547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 

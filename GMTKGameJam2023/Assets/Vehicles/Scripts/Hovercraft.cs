@@ -8,6 +8,6 @@ public class Hovercraft : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewHovercraft();
+        soundManager?.PlayNewHovercraft();
     }
 }

@@ -8,6 +8,6 @@ public class WreckerVehicle : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewWrecker();
+        soundManager?.PlayNewWrecker();
     }
 }

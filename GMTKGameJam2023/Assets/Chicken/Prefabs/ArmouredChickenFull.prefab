@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
   - component: {fileID: 3394038647060757474}
+  - component: {fileID: 4342662696420494428}
   m_Layer: 7
   m_Name: ArmouredChickenFull
   m_TagString: Chicken
@@ -280,9 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenName: Armoured Chicken
-  chickenDescription: An extra-tough chicken with body armor and a helmet.
-  chickenSpriteImage: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -321,3 +319,23 @@ MonoBehaviour:
   pointsReward: 500
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
+  noArmorHealth: 100
+  stage1ArmorHealth: 200
+  noArmorKey: NoArmour
+  armor1Key: Armour1
+  armor2Key: Armour2
+--- !u!114 &4342662696420494428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 

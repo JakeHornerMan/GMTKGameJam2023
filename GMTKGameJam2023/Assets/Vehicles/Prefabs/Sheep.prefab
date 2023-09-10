@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1651646278425894839}
   - component: {fileID: 4047289718886028338}
   - component: {fileID: 2032628398341768708}
+  - component: {fileID: 7760763802830570230}
   m_Layer: 6
   m_Name: Sheep
   m_TagString: Untagged
@@ -207,6 +208,21 @@ MonoBehaviour:
     m_Bits: 16
   carSpeedRange: {x: 2.5, y: 3.5}
   allowSheepOnWater: 0
+--- !u!114 &7760763802830570230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832129175142265213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0

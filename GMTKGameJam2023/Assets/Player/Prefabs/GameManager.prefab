@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab74df1b8bece54d841c3c7667914fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chickenContainer_Name: ChickenContainer
   spawnSpots:
   - position: {x: -14.75, y: 5, z: 0}
   - position: {x: -14.75, y: 4.75, z: 0}
@@ -582,14 +583,16 @@ MonoBehaviour:
   fighterJetExplosion:
     clip: {fileID: 8300000, guid: 8a3498ba97008074bb7c5bdd2c2e5b3d, type: 3}
     volume: 1
-  explosionConfig:
-    clip: {fileID: 8300000, guid: 03de090bc18368d41a18c07bac87d636, type: 3}
-    volume: 1
+  explosionConfigs:
+  - clip: {fileID: 8300000, guid: 16990aec917c82e4599823c45353c9a5, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 0f86c9e8fc1e33641b18e7db5b640ebe, type: 3}
+    volume: 0.5
   spikePlaceConfig:
-    clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
+    clip: {fileID: 8300000, guid: a9b43db45b6a3b448902b7282076dd04, type: 3}
     volume: 1
   cementPlaceConfig:
-    clip: {fileID: 8300000, guid: f73a6bdf25c8d2343b16da555e17e0cc, type: 3}
+    clip: {fileID: 8300000, guid: 7019f208eb3cde4498a49fd7986f8729, type: 3}
     volume: 1
   sheepConfig:
     clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
@@ -604,7 +607,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
     volume: 1
   missedChicken:
-    clip: {fileID: 8300000, guid: 50d6d23344ed0be40b64917c29ac81aa, type: 3}
+    clip: {fileID: 8300000, guid: a1be8c2a4c68c5c48bf4e3968ea899c9, type: 3}
     volume: 1
   tokenCollect:
   - clip: {fileID: 8300000, guid: d8fa14f4d7acd5b43b615446a6fddae5, type: 3}
@@ -626,7 +629,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
     volume: 0
   turboChicken:
-    clip: {fileID: 8300000, guid: df0348b19917d294780985cde2c673a7, type: 3}
+    clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
     volume: 1
   turboChickenDeath:
     clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
@@ -645,6 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566ddf724a3a13a40b2691b3d27a7195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForWorldSelect: 0
   selectDefaultOnPlace: 1
   carSelectContainer: {fileID: 2168607213686167400}
   spawnedVehiclesContainer: {fileID: 6172053120600888936}

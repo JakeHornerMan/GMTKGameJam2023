@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: -2808484990652700158}
+  - component: {fileID: 8763800307734122933}
   m_Layer: 6
   m_Name: Bus
   m_TagString: Untagged
@@ -252,6 +253,21 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+--- !u!114 &8763800307734122933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0

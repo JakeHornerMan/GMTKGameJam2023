@@ -6,22 +6,16 @@ public class WreckingBall : MonoBehaviour
 {
     [Header("References")]
     private Rigidbody2D rb;
-    private LineRenderer lineRenderer;
-    [SerializeField] public Car car;
-    [SerializeField] public WreckerCart wreckerCart;
+    [SerializeField] private Car car;
+    [SerializeField] private WreckerCart wreckerCart;
     protected GameManager gameManager;
     public GameObject hook;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        lineRenderer = GetComponent<LineRenderer>();
+        // lineRenderer = GetComponent<LineRenderer>();
         gameManager = FindObjectOfType<GameManager>();
-    }
-
-    private void Update()
-    {
-        RenderRope();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,11 +66,5 @@ public class WreckingBall : MonoBehaviour
             car.SpinOutCar();
             Debug.Log("car is spinning?");
         }
-    }
-
-    private void RenderRope()
-    {
-        Vector3[] positions = { this.transform.position, hook.transform.position };
-        lineRenderer.SetPositions(positions);
     }
 }

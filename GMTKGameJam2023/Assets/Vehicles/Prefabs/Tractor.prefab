@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 512348543385223842}
+  - component: {fileID: -7307176575067560190}
   m_Layer: 6
   m_Name: Tractor
   m_TagString: Untagged
@@ -580,6 +581,21 @@ MonoBehaviour:
   - {fileID: 7522770766801737879}
   - {fileID: 6435553332296362934}
   sheepSpawnChance: 60
+--- !u!114 &-7307176575067560190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1 &6191628964686860359
 GameObject:
   m_ObjectHideFlags: 0

@@ -373,7 +373,6 @@ GameObject:
   - component: {fileID: 2130979266548914666}
   - component: {fileID: 8038245904987677462}
   - component: {fileID: 9022450305103181319}
-  - component: {fileID: 4635666400959951925}
   m_Layer: 0
   m_Name: RoadLane
   m_TagString: Road
@@ -509,30 +508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottomHighlight: {fileID: 5407350742392318600}
---- !u!114 &4635666400959951925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249777430176998236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a61bbbefafd97d45b3efcc83228f69b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnSpots:
-  - {fileID: 8612228716230639519}
-  - {fileID: 8163607215852721565}
-  - {fileID: 8962392959582093770}
-  - {fileID: 2343180213642620082}
-  - {fileID: 4815459522361446727}
-  - {fileID: 1743577104477567655}
-  - {fileID: 2487795886054710779}
-  tokenPrefabs:
-  - {fileID: 9212655407886111783, guid: f492ea83ade8b054c87db9aacf995d3d, type: 3}
-  minSpawnTime: 2
-  maxSpawnTime: 10
 --- !u!1 &8637622475186126120
 GameObject:
   m_ObjectHideFlags: 0

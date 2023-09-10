@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 8661396914627768119}
   - component: {fileID: 869649516716330867}
   - component: {fileID: 4949350468780275965}
+  - component: {fileID: -8162719301356310970}
   m_Layer: 7
   m_Name: Golden Chicken
   m_TagString: Chicken
@@ -180,10 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenName: Golden Chicken
-  chickenDescription: This lucky chicken provides you with extra score to the one
-    fortunate enough to kill it.
-  chickenSpriteImage: {fileID: 1112088024, guid: 9d5e95a62f0220a47aeaac6b67c87dfa, type: 3}
   hopController: {fileID: 8851517354825887726}
   chickenSprite: {fileID: 1978656475471651969}
   chickenCollider: {fileID: 3415184185659452524}
@@ -222,6 +219,21 @@ MonoBehaviour:
   pointsReward: 100
   health: 0
   flashMaterial: {fileID: 0}
+--- !u!114 &-8162719301356310970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013693792624936376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1 &8851517354825887726
 GameObject:
   m_ObjectHideFlags: 0
