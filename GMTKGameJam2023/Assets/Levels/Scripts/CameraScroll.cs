@@ -1,35 +1,44 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
-    [Header("Camera Control")]
+    [Header("Camera Keyboard Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
 
     [Header("Keybindings")]
+    [SerializeField] private KeyCode upKey = KeyCode.UpArrow;
+    [SerializeField] private KeyCode downKey = KeyCode.DownArrow;
     [SerializeField] private KeyCode rightKey = KeyCode.RightArrow;
     [SerializeField] private KeyCode leftKey = KeyCode.LeftArrow;
 
-    private Transform mainCameraTransform;
+    private Camera cam;
+    private Transform camTransform;
+
+    private Vector3 dragOrigin;
 
     private void Awake()
     {
-        mainCameraTransform = Camera.main.transform;
+        cam = Camera.main;
+        camTransform = cam.transform;
     }
 
     private void Update()
     {
-        HandleKeyboardScroll();
+        PanCamera();
     }
 
-    private void HandleKeyboardScroll()
+    private void PanCamera()
     {
-        Vector3 camPos = mainCameraTransform.position;
-        if (Input.GetKey(rightKey))
-            camPos.x += cameraScrollSpeed;
-        else if (Input.GetKey(leftKey))
-            camPos.x -= cameraScrollSpeed;
-        mainCameraTransform.position = camPos;
+        // Mouse position when drag starts (1st click)
+        if (Input.GetMouseButtonDown(0))
+            dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        // If held down, calculate distance from drag origin to endpoint & Move camera
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
+            camTransform.position += difference;
+        }
     }
 }
