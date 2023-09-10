@@ -7,7 +7,7 @@ public class ChickenMovement : MonoBehaviour
     [Header("Info")]
     [SerializeField] private string chickenName = "Chicken";
     [SerializeField][TextArea(10, 2)] private string chickenDescription = "";
-    [SerializeField] private Sprite chickenSpriteImage;
+    [SerializeField] public Sprite chickenSpriteImage;
 
     [Header("References")]
     [SerializeField] private GameObject hopController;

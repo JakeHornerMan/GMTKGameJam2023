@@ -15,7 +15,7 @@ public class Tractor : Car
 
         SpawnSheep();
 
-        soundManager.PlayNewTractor();
+        soundManager?.PlayNewTractor();
     }
 
     private void SpawnSheep()

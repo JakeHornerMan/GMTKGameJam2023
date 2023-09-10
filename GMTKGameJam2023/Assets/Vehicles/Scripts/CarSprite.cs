@@ -10,14 +10,12 @@ public class CarSprite : MonoBehaviour
         {
             StartCoroutine(Wait());
         }
-        
     }
 
     private IEnumerator Wait()
     {
         yield return new WaitForSecondsRealtime(0.2f);
 
-        gameObject.transform.parent.gameObject.GetComponent<Car>().CarGoesOffscreen();
+        gameObject.transform.parent.gameObject.GetComponent<Car>()?.CarGoesOffscreen();
     }
-
 }

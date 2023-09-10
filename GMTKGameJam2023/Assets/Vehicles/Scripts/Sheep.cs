@@ -18,7 +18,7 @@ public class Sheep : Car
 
     private void Start()
     {
-        soundManager.PlaySheepNoise();
+        soundManager?.PlaySheepNoise();
     }
 
     private void Update()
