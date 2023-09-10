@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
+    [Header("Camera Zoom Control")]
+    [SerializeField] private float zoomSpeed = 5f;
+    [SerializeField] private float minZoom = 5f;
+    [SerializeField] private float maxZoom = 20f;
+
     [Header("Camera Keyboard Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
 
@@ -31,21 +36,30 @@ public class CameraScroll : MonoBehaviour
     private void Update()
     {
         PanCamera();
+        ZoomCamera();
     }
 
     private void PanCamera()
     {
         Vector3 moveDirection = Vector3.zero;
 
-        // Check for key inputs
+        // Check for key inputs (Arrow Keys)
         if (Input.GetKey(upKey) || Input.GetKey(upKeyAlt))
+        {
             moveDirection += Vector3.up;
+        }
         if (Input.GetKey(downKey) || Input.GetKey(downKeyAlt))
+        {
             moveDirection += Vector3.down;
+        }
         if (Input.GetKey(rightKey) || Input.GetKey(rightKeyAlt))
+        {
             moveDirection += Vector3.right;
+        }
         if (Input.GetKey(leftKey) || Input.GetKey(leftKeyAlt))
+        {
             moveDirection += Vector3.left;
+        }
 
         // Normalize the direction vector to ensure consistent speed
         moveDirection.Normalize();
@@ -55,11 +69,21 @@ public class CameraScroll : MonoBehaviour
 
         // Mouse controls
         if (Input.GetMouseButtonDown(0))
+        {
             dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+        }
         if (Input.GetMouseButton(0))
         {
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
             camTransform.position += difference;
         }
+    }
+
+    private void ZoomCamera()
+    {
+        float scrollDelta = Input.GetAxis("Mouse ScrollWheel");
+        float newZoom = cam.orthographicSize - scrollDelta * zoomSpeed * Time.deltaTime;
+        newZoom = Mathf.Clamp(newZoom, minZoom, maxZoom);
+        cam.orthographicSize = newZoom;
     }
 }
