@@ -64,9 +64,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade485acce34490499d69afbfd7d7d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraScrollSpeed: 0.02
+  cameraScrollSpeed: 15
+  upKey: 273
+  downKey: 274
   rightKey: 275
   leftKey: 276
+  upKeyAlt: 119
+  downKeyAlt: 115
+  rightKeyAlt: 100
+  leftKeyAlt: 97
 --- !u!114 &8488456055838587130
 MonoBehaviour:
   m_ObjectHideFlags: 0
