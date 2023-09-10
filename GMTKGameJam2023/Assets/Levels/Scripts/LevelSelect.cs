@@ -25,6 +25,7 @@ public class LevelSelect : MonoBehaviour
                 scrollingContainer
             ).GetComponent<LevelCard>();
             newLevelCard.correspondingLevel = level;
+            newLevelCard.SetUI();
         }
     }
 }

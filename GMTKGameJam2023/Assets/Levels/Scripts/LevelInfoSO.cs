@@ -14,7 +14,7 @@ public class LevelInfoSO : ScriptableObject
     [SerializeField] public Car[] carsInLevel;
 
     [Header("Chicken Types")]
-    [SerializeField] private ChickenMovement[] chickensInLevel;
+    [SerializeField] public ChickenMovement[] chickensInLevel;
 
     [Header("Waves Info")]
     [SerializeField] public float gameDurationSeconds = 100;
