@@ -5064,6 +5064,7 @@ GameObject:
   - component: {fileID: 315510484514270918}
   - component: {fileID: 8089028048643985026}
   - component: {fileID: 5483124617823043416}
+  - component: {fileID: 4898292506211451574}
   m_Layer: 7
   m_Name: CashChicken
   m_TagString: Chicken
@@ -5127,9 +5128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenName: Cash Chicken
-  chickenDescription: This millionaire chicken drops a bag of tokens when its killed.
-  chickenSpriteImage: {fileID: -248887144, guid: 1829c4feb42f13b4bb9c5f6562000af7, type: 3}
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
@@ -5171,3 +5169,18 @@ MonoBehaviour:
   dropTheBag: 1
   tokenAmount: 5
   tokenBag: {fileID: 9212655407886111783, guid: 7d64507227b83fa4bb112c85d69c415b, type: 3}
+--- !u!114 &4898292506211451574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7467406142021207113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 

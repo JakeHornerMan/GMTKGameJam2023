@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 2089861779733227409}
   - component: {fileID: 322576651139750340}
   - component: {fileID: -540173590814842813}
+  - component: {fileID: 3039123858054664968}
   m_Layer: 6
   m_Name: Wrecker
   m_TagString: Untagged
@@ -866,6 +867,21 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+--- !u!114 &3039123858054664968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421891079327587070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1 &4524734424282421569
 GameObject:
   m_ObjectHideFlags: 0

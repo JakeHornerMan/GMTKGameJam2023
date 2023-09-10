@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 7127396023849450930}
+  - component: {fileID: 171791225829203903}
   m_Layer: 6
   m_Name: Standard Car
   m_TagString: Untagged
@@ -249,6 +250,26 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+--- !u!114 &171791225829203903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: HatchBack
+  objectImage: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
+  objectDiscription: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+    commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+    dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
+    justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
+    ut, imperdiet a
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0

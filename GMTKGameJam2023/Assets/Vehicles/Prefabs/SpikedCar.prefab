@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 5134109063513698115}
   - component: {fileID: 4904860076618496}
   - component: {fileID: -620051609290920513}
+  - component: {fileID: 4252443855736787157}
   m_Layer: 6
   m_Name: SpikedCar
   m_TagString: Untagged
@@ -413,6 +414,21 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+--- !u!114 &4252443855736787157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312711107102628959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: 
+  objectImage: {fileID: 0}
+  objectDiscription: 
 --- !u!1 &8092239484575799273
 GameObject:
   m_ObjectHideFlags: 0
