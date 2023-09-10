@@ -20,7 +20,7 @@ public class CementMixer : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewCementMixer();
+        soundManager?.PlayNewCementMixer();
 
         cementSpawned = 0;
 

@@ -8,6 +8,6 @@ public class CombineHarvestor : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewHarvestor();
+        soundManager?.PlayNewHarvestor();
     }
 }

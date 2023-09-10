@@ -8,6 +8,6 @@ public class SuperCar : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewFastCar();
+        soundManager?.PlayNewFastCar();
     }
 }

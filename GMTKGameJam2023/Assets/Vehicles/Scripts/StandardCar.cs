@@ -8,6 +8,6 @@ public class StandardCar : Car
     {
         SetCarSpeed();
 
-        soundManager.PlayNewStandardCar();
+        soundManager?.PlayNewStandardCar();
     }
 }
