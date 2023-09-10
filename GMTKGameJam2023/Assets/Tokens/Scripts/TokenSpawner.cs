@@ -29,6 +29,11 @@ public class TokenSpawner : MonoBehaviour
 
     private void Start()
     {
+        GetPotentialRoads();
+    }
+
+    public void GetPotentialRoads()
+    {
         foreach (Car car in gameManager.carsInLevel)
         {
             for(int i =0 ; i <= car.placeableLaneTags.Count -1; i++)
