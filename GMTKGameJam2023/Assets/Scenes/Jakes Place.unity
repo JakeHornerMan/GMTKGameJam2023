@@ -470,6 +470,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3946305789352172678, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: objectsForExplanation.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946305789352172678, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: objectsForExplanation.Array.data[0]
+      value: 
+      objectReference: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
+    - target: {fileID: 3946305789352172678, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: objectsForExplanation.Array.data[1]
+      value: 
+      objectReference: {fileID: 6077706268648720092, guid: f1e55ff5a2be053499db551f75633327, type: 3}
     - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -481,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 8836172247398509634, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_Name
       value: GameSetup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836172247398509634, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -559,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 3006315385949949799, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
       propertyPath: m_Name
       value: CurrentCarCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006315385949949799, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293114595577314960, guid: 7be315304e58f6646a2f7e6e075f5780, type: 3}
       propertyPath: m_RootOrder
