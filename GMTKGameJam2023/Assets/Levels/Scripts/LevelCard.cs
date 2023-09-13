@@ -65,7 +65,7 @@ public class LevelCard : MonoBehaviour
                 iconPrefab,
                 chickenInLevelContainer
             ).GetComponent<LvlIcon>();
-            newIcon.SetImage(chicken.chickenSpriteImage);
+            // newIcon.SetImage(chicken.chickenSpriteImage);
         }
     }
 
