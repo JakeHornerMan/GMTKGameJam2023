@@ -140,7 +140,7 @@ public class SoundManager : MonoBehaviour
         audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
     }
 
-    private void RandomPlaySound(params SoundConfig[] soundConfigs)
+    public void RandomPlaySound(params SoundConfig[] soundConfigs)
     {
         // if (!Settings.sfxAllowed) return;
         int willPlaySound = Random.Range(0, 1);
