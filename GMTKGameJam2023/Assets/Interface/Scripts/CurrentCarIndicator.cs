@@ -37,8 +37,8 @@ public class CurrentCarIndicator : MonoBehaviour
 
     public void SetUI(Car currentActiveCar, int playerCash, int carWalletCount)
     {
-        carSprite.sprite = currentActiveCar.carSprite;
-        carName.text = currentActiveCar.carName;
+        carSprite.sprite = currentActiveCar.GetComponent<ObjectInfo>().objectSprite;
+        carName.text = currentActiveCar.GetComponent<ObjectInfo>().objectName;
         carCost.text = $"{currentActiveCar.carPrice} {tokenLabel}";
         totalTokens.text = $"{playerCash} {totalTokenLabel}";
         carCost.color = playerCash >= currentActiveCar.carPrice ? positiveColor : negativeColor;

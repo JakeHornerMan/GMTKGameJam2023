@@ -50,22 +50,22 @@ public class LevelCard : MonoBehaviour
             _ => mediumColor,
         };
 
-        foreach (Car car in correspondingLevel.carsInLevel)
+        foreach (ObjectInfo car in correspondingLevel.carsInLevel)
         {
             LvlIcon newIcon = Instantiate(
                 iconPrefab,
                 carsInLevelContainer
             ).GetComponent<LvlIcon>();
-            newIcon.SetImage(car.carIcon);
+            newIcon.SetImage(car.objectIcon);
         }
 
-        foreach (ChickenMovement chicken in correspondingLevel.chickensInLevel)
+        foreach (ObjectInfo chicken in correspondingLevel.chickensInLevel)
         {
             LvlIcon newIcon = Instantiate(
                 iconPrefab,
                 chickenInLevelContainer
             ).GetComponent<LvlIcon>();
-            // newIcon.SetImage(chicken.chickenSpriteImage);
+            newIcon.SetImage(chicken.objectIcon);
         }
     }
 

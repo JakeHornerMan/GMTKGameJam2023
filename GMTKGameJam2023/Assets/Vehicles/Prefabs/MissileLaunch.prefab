@@ -5218,14 +5218,17 @@ MonoBehaviour:
   comboText: {fileID: 5885361816208039466}
   carSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
   carIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
-  carName: Missile Launch
+  carName: 
   carDescription: 
+  carType: 0
+  carHealth: 100
   carPrice: 0
   ignoreTokens: 1
   isSlicingCar: 0
   canIBeBombed: 0
   canSpinOut: 0
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -5280,9 +5283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Missile Launch
+  objectSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
+  objectIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
+  objectDescription: 
 --- !u!1 &7618215126840845903
 GameObject:
   m_ObjectHideFlags: 0

@@ -226,10 +226,10 @@ MonoBehaviour:
   comboText: {fileID: 439319545751973381}
   carSprite: {fileID: 217634829, guid: ee66701781582fc4c8692469fcc25dd2, type: 3}
   carIcon: {fileID: 21300000, guid: 23d561243c582c54392c545a448183f7, type: 3}
-  carName: Cement Mixer
+  carName: 
+  carDescription: 
   carType: 1
   carHealth: 125
-  carDescription: 
   carPrice: 0
   ignoreTokens: 0
   isSlicingCar: 0
@@ -272,9 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Cement Mixer
+  objectSprite: {fileID: 58938384, guid: ee66701781582fc4c8692469fcc25dd2, type: 3}
+  objectIcon: {fileID: 21300000, guid: 23d561243c582c54392c545a448183f7, type: 3}
+  objectDescription: 
 --- !u!1 &8233138244604092194
 GameObject:
   m_ObjectHideFlags: 0

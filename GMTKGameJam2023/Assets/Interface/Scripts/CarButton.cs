@@ -40,7 +40,7 @@ public class CarButton : MonoBehaviour
     private void Start()
     {
         tokenPriceText.text = correspondingCar.carPrice.ToString("0");
-        correspCarIcon.sprite = correspondingCar.carIcon;
+        correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
 
         SetPriceColor();
     }

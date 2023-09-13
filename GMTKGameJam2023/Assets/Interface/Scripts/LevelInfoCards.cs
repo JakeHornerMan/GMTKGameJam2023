@@ -19,23 +19,27 @@ public class LevelInfoCards : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        if(objectsForExplanation.Count > 0){
+        if (objectsForExplanation.Count > 0)
+        {
             StopGame();
             CreateInfoBoxes();
         }
-        else{
+        else
+        {
             StartGame();
         }
     }
 
-    private void CreateInfoBoxes(){
-        foreach(GameObject gameMechanic in objectsForExplanation){
+    private void CreateInfoBoxes()
+    {
+        foreach (GameObject gameMechanic in objectsForExplanation)
+        {
             GameObject createdInfoBox = Instantiate(infoBox, container.transform);
             PopulateInfoBox(createdInfoBox, gameMechanic);
         }
@@ -43,69 +47,80 @@ public class LevelInfoCards : MonoBehaviour
         MoveInfoBoxRight2Mid(informationBoxes[0]);
     }
 
-    private void PopulateInfoBox(GameObject infoBox, GameObject gameMechanic){
+    private void PopulateInfoBox(GameObject infoBox, GameObject gameMechanic)
+    {
         ObjectInfo info = gameMechanic.GetComponent<ObjectInfo>();
 
         GameObject populateItem = infoBox.transform.Find("InfoTitle").gameObject;
         populateItem.GetComponent<TextMeshProUGUI>().text = info.objectName;
 
         populateItem = infoBox.transform.Find("Image").gameObject;
-        populateItem.GetComponent<Image>().sprite = info.objectImage;
+        populateItem.GetComponent<Image>().sprite = info.objectIcon;
 
         populateItem = infoBox.transform.Find("Information").gameObject;
-        populateItem.GetComponent<TextMeshProUGUI>().text = info.objectDiscription;
+        populateItem.GetComponent<TextMeshProUGUI>().text = info.objectDescription;
 
         informationBoxes.Add(infoBox);
     }
 
-    public void CloseInfoCards(){
+    public void CloseInfoCards()
+    {
         gameUI.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
-    public void StopGame(){
+    public void StopGame()
+    {
         // gameManager.pauseGameplay = true;
         gameUI.SetActive(false);
     }
 
-    public void StartGame(){
+    public void StartGame()
+    {
         CloseInfoCards();
         // gameManager.pauseGameplay = false;
         // gameManager.SetStart();
     }
 
-    public void MoveInfoBox(bool isRight){
-        if(isRight){
-            if(informationBoxes.Count <= currentBox+1) return;
+    public void MoveInfoBox(bool isRight)
+    {
+        if (isRight)
+        {
+            if (informationBoxes.Count <= currentBox + 1) return;
 
             MoveInfoBoxMid2Left(informationBoxes[currentBox]);
             currentBox++;
             MoveInfoBoxRight2Mid(informationBoxes[currentBox]);
         }
-        else{
-            if(currentBox == 0) return;
+        else
+        {
+            if (currentBox == 0) return;
             MoveInfoBoxMid2Right(informationBoxes[currentBox]);
             currentBox--;
             MoveInfoBoxLeft2Mid(informationBoxes[currentBox]);
         }
     }
 
-    private void MoveInfoBoxRight2Mid(GameObject box){
+    private void MoveInfoBoxRight2Mid(GameObject box)
+    {
         Animator anim = box.GetComponent<Animator>();
         anim.Play("Right2Mid");
     }
 
-    private void MoveInfoBoxMid2Right(GameObject box){
+    private void MoveInfoBoxMid2Right(GameObject box)
+    {
         Animator anim = box.GetComponent<Animator>();
         anim.Play("Mid2Right");
     }
 
-    private void MoveInfoBoxLeft2Mid(GameObject box){
+    private void MoveInfoBoxLeft2Mid(GameObject box)
+    {
         Animator anim = box.GetComponent<Animator>();
         anim.Play("Left2Mid");
     }
 
-    private void MoveInfoBoxMid2Left(GameObject box){
+    private void MoveInfoBoxMid2Left(GameObject box)
+    {
         Animator anim = box.GetComponent<Animator>();
         anim.Play("Mid2Left");
     }

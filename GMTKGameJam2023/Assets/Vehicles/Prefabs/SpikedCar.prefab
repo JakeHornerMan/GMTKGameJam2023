@@ -389,16 +389,17 @@ MonoBehaviour:
   comboText: {fileID: 6118719679060092571}
   carSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
   carIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
-  carName: Roadkill
+  carName: 
+  carDescription: 
   carType: 0
   carHealth: 100
-  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 1
   canIBeBombed: 1
   canSpinOut: 0
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -428,9 +429,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Roadkill
+  objectSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
+  objectIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
+  objectDescription: 
 --- !u!1 &8092239484575799273
 GameObject:
   m_ObjectHideFlags: 0

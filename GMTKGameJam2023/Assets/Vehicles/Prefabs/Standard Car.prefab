@@ -226,15 +226,16 @@ MonoBehaviour:
   carSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
   carIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
   carName: Hatchback
+  carDescription: 
   carType: 0
   carHealth: 100
-  carDescription: 
   carPrice: 0
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
   canSpinOut: 1
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -265,13 +266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: HatchBack
-  objectImage: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
-  objectDiscription: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-    commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-    dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-    justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus
-    ut, imperdiet a
+  objectSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  objectIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
+  objectDescription: 
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0

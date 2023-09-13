@@ -535,16 +535,17 @@ MonoBehaviour:
   comboText: {fileID: 5412796862197277110}
   carSprite: {fileID: 21300000, guid: 7a1afee718f8c014c8d5eb3fc1aa3b16, type: 3}
   carIcon: {fileID: 21300000, guid: c9f8e2fe32c93ec4983f0f9b19810b62, type: 3}
-  carName: Trusty Tractor
+  carName: 
+  carDescription: 
   carType: 1
   carHealth: 100
-  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
   canSpinOut: 0
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -593,9 +594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Trusty Tractor
+  objectSprite: {fileID: 21300000, guid: 7a1afee718f8c014c8d5eb3fc1aa3b16, type: 3}
+  objectIcon: {fileID: 21300000, guid: c9f8e2fe32c93ec4983f0f9b19810b62, type: 3}
+  objectDescription: 
 --- !u!1 &6191628964686860359
 GameObject:
   m_ObjectHideFlags: 0
