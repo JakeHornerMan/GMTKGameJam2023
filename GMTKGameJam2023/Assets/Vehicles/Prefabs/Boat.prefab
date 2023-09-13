@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 1782800658000638442}
   - component: {fileID: 5055765165702280351}
+  - component: {fileID: 1782800658000638442}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Untagged
@@ -207,6 +207,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.7}
   m_EdgeRadius: 0
+--- !u!114 &5055765165702280351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Speedboat
+  objectSprite: {fileID: 21300000, guid: c44b769f6196e7d48a4d8323350962a6, type: 3}
+  objectIcon: {fileID: 21300000, guid: d81f00afb6926064e9a638a7a3b916f6, type: 3}
+  objectDescription: 
 --- !u!114 &1782800658000638442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,10 +238,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 5412796862197277110}
-  carSprite: {fileID: 21300000, guid: c44b769f6196e7d48a4d8323350962a6, type: 3}
-  carIcon: {fileID: 21300000, guid: d81f00afb6926064e9a638a7a3b916f6, type: 3}
-  carName: 
-  carDescription: 
   carType: 0
   carHealth: 100
   carPrice: 2
@@ -252,22 +264,6 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
---- !u!114 &5055765165702280351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Speedboat
-  objectSprite: {fileID: 21300000, guid: c44b769f6196e7d48a4d8323350962a6, type: 3}
-  objectIcon: {fileID: 21300000, guid: d81f00afb6926064e9a638a7a3b916f6, type: 3}
-  objectDescription: 
 --- !u!1001 &2648597551218832750
 PrefabInstance:
   m_ObjectHideFlags: 0

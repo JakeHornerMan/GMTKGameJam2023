@@ -61,18 +61,21 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private string tokenPopUpMsg = "Token";
     [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
+    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.15f;
     [SerializeField] private float camShakeMagnitude = 0.05f;
 
+    [Header("Sound")]
+    [SerializeField] private SoundConfig[] spawnSound;
+
     private int carKillCount = 0;
     protected int totalPoints = 0;
 
-    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
-
     protected GameManager gameManager;
     private Rigidbody2D rb;
+
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
 
@@ -87,6 +90,8 @@ public abstract class Car : MonoBehaviour
     private void Start()
     {
         carKillCount = 0;
+
+        soundManager?.RandomPlaySound(spawnSound);
     }
 
     private void Update()

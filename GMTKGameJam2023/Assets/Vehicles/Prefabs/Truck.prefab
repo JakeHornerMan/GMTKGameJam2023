@@ -237,8 +237,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6915514405043408541}
   - component: {fileID: 7636075785283568491}
-  - component: {fileID: 1735388934760480964}
   - component: {fileID: -9106852921338876144}
+  - component: {fileID: 1735388934760480964}
   m_Layer: 6
   m_Name: Truck
   m_TagString: Untagged
@@ -295,6 +295,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-9106852921338876144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728978607223943287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Tactical Truck
+  objectSprite: {fileID: 21300000, guid: 5da1fa202daf6af4eaa41a6bd62b8de8, type: 3}
+  objectIcon: {fileID: 21300000, guid: 49d9e891c8ed2dc4dac4e9bcc5484dd1, type: 3}
+  objectDescription: 
 --- !u!114 &1735388934760480964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,10 +326,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 6335103675781088507}
-  carSprite: {fileID: 21300000, guid: 5da1fa202daf6af4eaa41a6bd62b8de8, type: 3}
-  carIcon: {fileID: 21300000, guid: 49d9e891c8ed2dc4dac4e9bcc5484dd1, type: 3}
-  carName: 
-  carDescription: 
   carType: 1
   carHealth: 150
   carPrice: 6
@@ -335,29 +347,16 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 1.2
+  carHitStopEffectMultiplier: 0.25
   camShakeDuration: 0.15
   camShakeMagnitude: 0.15
-  carHitStopEffectMultiplier: 0.25
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 667c5d3a2656c6c418e563075d9c3277, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   truckShakeDuration: 3
   truckShakeMagnitude: 0.18
---- !u!114 &-9106852921338876144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728978607223943287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Tactical Truck
-  objectSprite: {fileID: 21300000, guid: 5da1fa202daf6af4eaa41a6bd62b8de8, type: 3}
-  objectIcon: {fileID: 21300000, guid: 49d9e891c8ed2dc4dac4e9bcc5484dd1, type: 3}
-  objectDescription: 
 --- !u!1001 &611936938623978944
 PrefabInstance:
   m_ObjectHideFlags: 0

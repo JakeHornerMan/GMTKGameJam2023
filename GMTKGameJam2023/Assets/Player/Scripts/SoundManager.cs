@@ -17,10 +17,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] deathConfigs;
 
     [Header("Car Engine Clips")]
-    [SerializeField] private SoundConfig standardCarConfig;
-    [SerializeField] private SoundConfig fastCarConfig;
-    [SerializeField] private SoundConfig spikeCarConfig;
-    [SerializeField] private SoundConfig truckConfig;
     [SerializeField] private SoundConfig pickupTruckConfig;
     [SerializeField] private SoundConfig[] fighterJetConfig;
     [SerializeField] private SoundConfig[] policeCarConfig;
@@ -79,12 +75,6 @@ public class SoundManager : MonoBehaviour
         audioSrc.Play();
     }
 
-    // =============================
-    // Sounds Playing on Car Spawn
-    public void PlayNewStandardCar() => PlaySound(standardCarConfig);
-    public void PlayNewFastCar() => PlaySound(fastCarConfig);
-    public void PlayNewSpikeCar() => PlaySound(spikeCarConfig);
-    public void PlayNewTruck() => PlaySound(truckConfig);
     public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
     public void PlayNewFighterJet() => RandomPlaySound(fighterJetConfig);
     public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
