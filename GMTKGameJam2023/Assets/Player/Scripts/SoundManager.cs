@@ -49,6 +49,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
     [SerializeField] private SoundConfig[] tokenCollect;
+    [SerializeField] private SoundConfig[] purchases;
+    [SerializeField] private SoundConfig cantPurchase;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
@@ -112,6 +114,8 @@ public class SoundManager : MonoBehaviour
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
+    public void PlayPurchase() => RandomPlaySound(purchases);
+    public void PlayCantPurchase() => PlaySound(cantPurchase);
     public void PlayTokenCollect() => RandomPlaySound(tokenCollect);
 
     // =============================

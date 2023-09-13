@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public abstract class Car : MonoBehaviour
 {
@@ -12,10 +13,18 @@ public abstract class Car : MonoBehaviour
     [Tooltip("Synbol used before combo count, e.g. {x}4")]
     [SerializeField] private TextMeshProUGUI comboText;
 
+    public enum CarType
+    {
+        Light,
+        Heavy
+    }
+
     [Header("Car Info")]
     [SerializeField] public Sprite carSprite;
     [SerializeField] public Sprite carIcon;
     [SerializeField] public string carName;
+    [SerializeField] public CarType carType;  // Enum for car type
+    [SerializeField] public float carHealth = 100;     // Float for health
     [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public int carPrice = 2;
     [SerializeField] public bool ignoreTokens = false;
@@ -23,6 +32,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool canIBeBombed = true;
     [SerializeField] public bool canSpinOut = false;
     [SerializeField] public bool isSpinning = false;
+    [SerializeField] private bool carInHitStop = false;
     private float degreesPerSecond = 540f;
 
     private bool carInAction = true;
@@ -122,11 +132,15 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
+        
+
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
+
+        
 
 
         if (collision.gameObject.CompareTag(deathboxTag))
@@ -140,11 +154,53 @@ public abstract class Car : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
 
+        // Check if Hit Car
+        Car otherCar = other.gameObject.GetComponent<Car>();
+
+        if (otherCar != null)
+            HandleVehicleCollision(otherCar);
+
         // Check if Hit Sheep
         Sheep sheep = other.gameObject.GetComponent<Sheep>();
 
         if (sheep != null)
             HandleSheepCollision(sheep);
+    }
+
+    private void HandleVehicleCollision(Car otherCar)
+    {
+        // Perform the check on only one of the cars (the one with a lower y-coordinate)
+        if (this.transform.position.y < otherCar.transform.position.y)
+        {
+            // If Heavy > Light, Destroy Light
+            if (this.carType == CarType.Heavy && otherCar.carType == CarType.Light)
+            {
+                otherCar.LaunchCar();
+                this.carHealth -= otherCar.carHealth;
+            }
+            else if (otherCar.carType == CarType.Heavy && this.carType == CarType.Light)
+            {
+                LaunchCar();
+                otherCar.carHealth -= this.carHealth;
+            }
+            // Else if car 1 health > car 2 health, destroy car 2 and subtract car 2 health from car 1
+            else if (this.carHealth > otherCar.carHealth)
+            {
+                otherCar.LaunchCar();
+                this.carHealth -= otherCar.carHealth;
+                
+            }
+            else if (otherCar.carHealth > this.carHealth)
+            {
+                LaunchCar();
+                otherCar.carHealth -= this.carHealth;
+            }
+
+            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+            StartCoroutine(CarHitStop(0.15f));
+            otherCar.StartCoroutine(CarHitStop(0.15f));
+
+        }
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -195,7 +251,7 @@ public abstract class Car : MonoBehaviour
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
-        LaunchCar();
+        
 
         // Destroy Self if Bomb Chicken
         BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
@@ -261,8 +317,13 @@ public abstract class Car : MonoBehaviour
 
     private IEnumerator CarHitStop(float hitStopLength)
     {
-        if (rb != null && carInAction == true)
+        if (rb != null && carInAction == true && carInHitStop == false)
         {
+
+            carInHitStop = true;
+
+            Vector3 currentVelocity = rb.velocity;
+
             rb.velocity = Vector3.zero;
 
             yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
@@ -272,18 +333,31 @@ public abstract class Car : MonoBehaviour
                 yield break;
             }
 
-            rb.velocity = transform.up * carSpeed;
+            rb.velocity = currentVelocity;
+
+            carInHitStop = false;
         }
     }
 
-    private void LaunchCar()
+    public void LaunchCar()
     {
 
         carInAction = false;
 
         // Generate random x and y components between -10 and 10
-        float randomX = UnityEngine.Random.Range(-10f, 10f);
-        float randomY = UnityEngine.Random.Range(-10f, 10f);
+        float randomX = UnityEngine.Random.Range(-1f, 1f);
+        float randomY = UnityEngine.Random.Range(-1f, 1f);
+
+        // Round to -0.5 or 0.5 if the number is between -0.5 and 0.5
+        if (randomX > -0.5f && randomX < 0.5f)
+        {
+            randomX = (randomX > 0) ? 0.5f : -0.5f;
+        }
+
+        if (randomY > -0.5f && randomY < 0.5f)
+        {
+            randomY = (randomY > 0) ? 0.5f : -0.5f;
+        }
 
         // Create a Vector2 with the random components
         Vector2 randomVector = new Vector2(randomX, randomY);
@@ -292,10 +366,11 @@ public abstract class Car : MonoBehaviour
         Vector2 normalizedVector = randomVector.normalized;
 
         GetComponent<Collider2D>().enabled = false;
+        comboText.enabled = false;
 
-        rb.velocity = normalizedVector * 50;
+        rb.velocity = normalizedVector * 25;
 
-        StartCoroutine(LaunchCarCoroutine(new Vector3(25, 25, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
+        StartCoroutine(LaunchCarCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
     }
 
     private IEnumerator LaunchCarCoroutine(Vector3 targetScale, Vector3 targetPos)
@@ -304,20 +379,19 @@ public abstract class Car : MonoBehaviour
         Vector3 initialPos = gameObject.transform.position;
         float t = 0;
 
-        float launchSpeed = 1.0f;
+        float launchSpeed = 1f / 1.5f;
+
+        canSpinOut = true;
+        SpinOutCar();
 
         while (t < 1)
         {
             t += Time.deltaTime * launchSpeed;
 
-            
-
             // Linearly interpolate vehicle scale
             gameObject.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-            canSpinOut = true;
-            SpinOutCar();
-
+            
             yield return null;
         }
     }
