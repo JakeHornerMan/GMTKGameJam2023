@@ -17,8 +17,6 @@ public class SpikeStrip : MonoBehaviour
     [SerializeField] private float spikeHealth;
     private float spikeCurrentHealth;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -67,16 +65,7 @@ public class SpikeStrip : MonoBehaviour
 
     private void HandleCarCollision(Car car)
     {
-        // Impact Sound
-        // soundManager.PlayChickenHit();
-
-        // Camera Shake
-
-
-        
-        
-
-        if (car.canSpinOut == true && car.isSpinning == false && car.carName != "Police Car")
+        if (car.canSpinOut == true && car.isSpinning == false && car.GetComponent<ObjectInfo>().objectName != "Police Car")
         {
             StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
             TakeSpikeDamage(5f);
@@ -86,9 +75,6 @@ public class SpikeStrip : MonoBehaviour
 
     private void HandleChickenCollision(ChickenHealth chickenHealth)
     {
-        // Impact Sound
-        // soundManager.PlayChickenHit();
-
         // Camera Shake
         StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
 

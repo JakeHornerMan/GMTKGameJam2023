@@ -20,10 +20,6 @@ public abstract class Car : MonoBehaviour
     }
 
     [Header("Car Info")]
-    [SerializeField] public Sprite carSprite;
-    [SerializeField] public Sprite carIcon;
-    [SerializeField] public string carName;
-    [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public CarType carType;  // Enum for car type
     [SerializeField] public float carHealth = 100;     // Float for health
     [SerializeField] public int carPrice = 2;
