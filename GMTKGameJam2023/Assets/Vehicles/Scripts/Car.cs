@@ -92,6 +92,9 @@ public abstract class Car : MonoBehaviour
         carKillCount = 0;
 
         soundManager?.RandomPlaySound(spawnSound);
+
+        // Shake Camera
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
     }
 
     private void Update()

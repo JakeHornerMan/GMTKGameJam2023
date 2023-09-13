@@ -21,10 +21,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] policeCarConfig;
     [SerializeField] private SoundConfig hovercraftConfig;
     [SerializeField] private SoundConfig cementMixerConfig;
-    [SerializeField] private SoundConfig bulldozerConfig;
-    [SerializeField] private SoundConfig busConfig;
     [SerializeField] private SoundConfig tractorConfig;
-    [SerializeField] private SoundConfig boatConfig;
     [SerializeField] private SoundConfig fireTruckConfig;
     [SerializeField] private SoundConfig combineHarvestorConfig;
     [SerializeField] private SoundConfig wreckerConfig;
@@ -78,10 +75,7 @@ public class SoundManager : MonoBehaviour
     public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
     public void PlayNewHovercraft() => PlaySound(hovercraftConfig);
     public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
-    public void PlayNewBulldozer() => PlaySound(bulldozerConfig);
-    public void PlayNewBus() => PlaySound(busConfig);
     public void PlayNewTractor() => PlaySound(tractorConfig);
-    public void PlayNewBoat() => PlaySound(boatConfig);
     public void PlayNewFireTruck() => PlaySound(fireTruckConfig);
     public void PlayNewHarvestor() => PlaySound(combineHarvestorConfig);
     public void PlayNewWrecker() => PlaySound(wreckerConfig);
