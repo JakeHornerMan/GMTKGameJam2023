@@ -224,16 +224,17 @@ MonoBehaviour:
   comboText: {fileID: 5412796862197277110}
   carSprite: {fileID: 21300000, guid: c44b769f6196e7d48a4d8323350962a6, type: 3}
   carIcon: {fileID: 21300000, guid: d81f00afb6926064e9a638a7a3b916f6, type: 3}
-  carName: Speedboat
+  carName: 
+  carDescription: 
   carType: 0
   carHealth: 100
-  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
   canSpinOut: 1
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Water
@@ -263,9 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Speedboat
+  objectSprite: {fileID: 0}
+  objectIcon: {fileID: 0}
+  objectDescription: 
 --- !u!1001 &2648597551218832750
 PrefabInstance:
   m_ObjectHideFlags: 0
