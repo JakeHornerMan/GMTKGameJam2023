@@ -19,20 +19,18 @@ public class LevelInfoCards : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
-
-        if(objectsForExplanation.Count > 0){
-            StopGame();
-        }
-        else{
-            StartGame();
-        }
+        
     }
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         if(objectsForExplanation.Count > 0){
+            StopGame();
             CreateInfoBoxes();
+        }
+        else{
+            StartGame();
         }
     }
 
