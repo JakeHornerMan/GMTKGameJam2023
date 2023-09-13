@@ -8,7 +8,7 @@ using System;
 public class CarButton : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private TextMeshProUGUI tokenPriceText;
+    [SerializeField] public TextMeshProUGUI tokenPriceText;
     [SerializeField] private Image dollarIconImg;
     [SerializeField] private Image correspCarIcon;
 

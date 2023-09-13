@@ -38,6 +38,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
+    private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
 
@@ -49,6 +50,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
         currentCarIndicator = FindObjectOfType<CurrentCarIndicator>();
@@ -143,7 +145,7 @@ public class VehicleSpawner : MonoBehaviour
     private void PlaceSelectedCar()
     {
         // Check Money, Check Car Wallet Budget
-        if (IsTooExpensive() || NotEnoughCarWallet())
+        if (NotEnoughCarWallet())
             return;
 
         // Raycast toward Click
@@ -195,7 +197,8 @@ public class VehicleSpawner : MonoBehaviour
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
-        }
+            soundManager.PlayPurchase();
+        }   
 
         if (selectDefaultOnPlace)
             SelectCar(carButtons[0]);
@@ -207,11 +210,6 @@ public class VehicleSpawner : MonoBehaviour
         disableVehicleSpawn = false;
     }
 
-    public bool IsTooExpensive()
-    {
-        return currentActiveCar.carPrice > gameManager.tokens;
-    }
-
     public bool NotEnoughCarWallet()
     {
         return carWallet.carCount <= 0;
@@ -219,7 +217,12 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SelectCar(CarButton carBtn)
     {
-        currentActiveCar = carBtn.correspondingCar;
+        if(carBtn.correspondingCar.carPrice <= gameManager.tokens){
+            currentActiveCar = carBtn.correspondingCar;
+        }
+        else{
+            soundManager.PlayCantPurchase();
+        } 
     }
 
     private void UpdateCarCursor()

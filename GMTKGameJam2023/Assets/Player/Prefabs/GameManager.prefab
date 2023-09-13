@@ -185,7 +185,7 @@ Transform:
   - {fileID: 1956138797627160308}
   - {fileID: 3718478140365259465}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -300,6 +300,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 1
     standardChickenAmounts: 30
     chickenIntesity: 5
+    coinAmount: 0
     specialChickens:
     - timeToSpawn: 2
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -321,6 +322,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 2
     standardChickenAmounts: 20
     chickenIntesity: 3
+    coinAmount: 0
     specialChickens:
     - timeToSpawn: 10
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -334,6 +336,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 3
     standardChickenAmounts: 50
     chickenIntesity: 1
+    coinAmount: 0
     specialChickens:
     - timeToSpawn: 10
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -437,6 +440,7 @@ MonoBehaviour:
     wavePrompt: 
     standardChickenAmounts: 0
     chickenIntesity: 0
+    coinAmount: 0
     specialChickens: []
   specialChickens: []
   waveChickenAmount: 0
@@ -613,6 +617,16 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: d8fa14f4d7acd5b43b615446a6fddae5, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: 0fdb498d20da89d42900889ee843ec50, type: 3}
+    volume: 1
+  purchases:
+  - clip: {fileID: 8300000, guid: 28ff028590102c84c94a3e13bd5a2a5e, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: c519c081aafcd434d91971007573caf1, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 08f5a8eb1814cb7408a1c733c52a1755, type: 3}
+    volume: 0.5
+  cantPurchase:
+    clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
     volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
