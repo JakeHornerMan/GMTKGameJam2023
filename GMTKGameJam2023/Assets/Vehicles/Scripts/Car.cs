@@ -23,9 +23,9 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public Sprite carSprite;
     [SerializeField] public Sprite carIcon;
     [SerializeField] public string carName;
+    [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public CarType carType;  // Enum for car type
     [SerializeField] public float carHealth = 100;     // Float for health
-    [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public int carPrice = 2;
     [SerializeField] public bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
@@ -132,7 +132,7 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
-        
+
 
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
@@ -140,7 +140,7 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        
+
 
 
         if (collision.gameObject.CompareTag(deathboxTag))
@@ -188,7 +188,7 @@ public abstract class Car : MonoBehaviour
             {
                 otherCar.LaunchCar();
                 this.carHealth -= otherCar.carHealth;
-                
+
             }
             else if (otherCar.carHealth > this.carHealth)
             {
@@ -251,7 +251,7 @@ public abstract class Car : MonoBehaviour
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
-        
+
 
         // Destroy Self if Bomb Chicken
         BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
@@ -391,7 +391,7 @@ public abstract class Car : MonoBehaviour
             // Linearly interpolate vehicle scale
             gameObject.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-            
+
             yield return null;
         }
     }
