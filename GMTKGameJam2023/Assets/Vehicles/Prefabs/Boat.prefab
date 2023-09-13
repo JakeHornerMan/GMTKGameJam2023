@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 5055765165702280351}
-  - component: {fileID: 1782800658000638442}
+  - component: {fileID: -2607371565145683835}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Untagged
@@ -223,7 +223,7 @@ MonoBehaviour:
   objectSprite: {fileID: 21300000, guid: c44b769f6196e7d48a4d8323350962a6, type: 3}
   objectIcon: {fileID: 21300000, guid: d81f00afb6926064e9a638a7a3b916f6, type: 3}
   objectDescription: 
---- !u!114 &1782800658000638442
+--- !u!114 &-2607371565145683835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,12 +232,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378ff01714463f641af806f846c7e14e, type: 3}
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 5412796862197277110}
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   carType: 0
   carHealth: 100
   carPrice: 2
@@ -259,9 +259,12 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1001 &2648597551218832750
@@ -338,17 +341,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
   m_PrefabInstance: {fileID: 2648597551218832750}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5412796862197277110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 2648597551218832750}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7671220531658102183
 PrefabInstance:
   m_ObjectHideFlags: 0

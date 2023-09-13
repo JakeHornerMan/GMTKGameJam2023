@@ -24,15 +24,11 @@ public class BombingJet : Car
     {
         SetCarSpeed();
 
-        soundManager?.PlayNewFighterJet();
-
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(jetShakeDuration, jetShakeMagnitude));
 
         StartCoroutine(WaitForBombStart());
     }
-
-
 
     IEnumerator WaitForBombStart()
     {
@@ -65,25 +61,16 @@ public class BombingJet : Car
                 GameObject currentBomb = Instantiate(bombPrefab, bombPosition, Quaternion.identity);
 
                 currentBomb.GetComponent<Bomb>().AssignJetParent(gameObject.GetComponent<BombingJet>());
-
-
             }
 
             yield return new WaitForSeconds(delayBetweenBombs);
-
-
-
         }
-
     }
-
 
     public override void CarGoesOffscreen()
     {
 
     }
-
-
 
     public void AddBombScore(int points)
     {

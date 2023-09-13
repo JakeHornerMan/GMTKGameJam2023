@@ -18,7 +18,6 @@ public class SoundManager : MonoBehaviour
 
     [Header("Car Engine Clips")]
     [SerializeField] private SoundConfig pickupTruckConfig;
-    [SerializeField] private SoundConfig[] fighterJetConfig;
     [SerializeField] private SoundConfig[] policeCarConfig;
     [SerializeField] private SoundConfig hovercraftConfig;
     [SerializeField] private SoundConfig cementMixerConfig;
@@ -76,7 +75,6 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
-    public void PlayNewFighterJet() => RandomPlaySound(fighterJetConfig);
     public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
     public void PlayNewHovercraft() => PlaySound(hovercraftConfig);
     public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
