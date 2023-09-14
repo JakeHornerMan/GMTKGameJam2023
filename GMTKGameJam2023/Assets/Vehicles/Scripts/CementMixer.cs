@@ -20,8 +20,6 @@ public class CementMixer : Car
     {
         SetCarSpeed();
 
-        soundManager?.PlayNewCementMixer();
-
         cementSpawned = 0;
 
         InvokeRepeating(nameof(InstantiateCement), initalCementDelay, cementSpawnInterval);

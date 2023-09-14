@@ -19,11 +19,7 @@ public class SoundManager : MonoBehaviour
     [Header("Car Engine Clips")]
     [SerializeField] private SoundConfig pickupTruckConfig;
     [SerializeField] private SoundConfig[] policeCarConfig;
-    [SerializeField] private SoundConfig hovercraftConfig;
-    [SerializeField] private SoundConfig cementMixerConfig;
     [SerializeField] private SoundConfig tractorConfig;
-    [SerializeField] private SoundConfig fireTruckConfig;
-    [SerializeField] private SoundConfig combineHarvestorConfig;
     [SerializeField] private SoundConfig wreckerConfig;
 
     [Header("Player Attack Clips")]
@@ -73,11 +69,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
     public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
-    public void PlayNewHovercraft() => PlaySound(hovercraftConfig);
-    public void PlayNewCementMixer() => PlaySound(cementMixerConfig);
     public void PlayNewTractor() => PlaySound(tractorConfig);
-    public void PlayNewFireTruck() => PlaySound(fireTruckConfig);
-    public void PlayNewHarvestor() => PlaySound(combineHarvestorConfig);
     public void PlayNewWrecker() => PlaySound(wreckerConfig);
 
     // =============================

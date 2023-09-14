@@ -346,7 +346,7 @@ MonoBehaviour:
   - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
-  - {fileID: 1735388934760480964, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
+  - {fileID: 0}
   rankingCriteria:
   - minKills: 500
     rankingString: Master Chicken Assasin
@@ -522,25 +522,8 @@ MonoBehaviour:
     volume: 0.6
   - clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
     volume: 0.6
-  standardCarConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 0.8
-  fastCarConfig:
-    clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
-    volume: 0.5
-  spikeCarConfig:
-    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-    volume: 0.8
-  truckConfig:
-    clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
-    volume: 1
   pickupTruckConfig:
     clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-    volume: 1
-  fighterJetConfig:
-  - clip: {fileID: 8300000, guid: e18f82c3e6a958545be1acd504f7fdd1, type: 3}
-    volume: 1
-  - clip: {fileID: 8300000, guid: e188c742249368940bac28ad6dec2066, type: 3}
     volume: 1
   policeCarConfig:
   - clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
@@ -552,19 +535,7 @@ MonoBehaviour:
   hovercraftConfig:
     clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
-  cementMixerConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  bulldozerConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  busConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
   tractorConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  boatConfig:
     clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
   fireTruckConfig:
