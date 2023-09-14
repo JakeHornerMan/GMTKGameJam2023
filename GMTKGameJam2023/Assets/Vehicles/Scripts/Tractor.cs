@@ -12,10 +12,7 @@ public class Tractor : Car
     private void Start()
     {
         SetCarSpeed();
-
         SpawnSheep();
-
-        soundManager?.PlayNewTractor();
     }
 
     private void SpawnSheep()
