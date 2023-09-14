@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LevelInfoCards : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI iterationText;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private List<GameObject> objectsForExplanation;
     [SerializeField] private List<GameObject> informationBoxes;
@@ -45,6 +46,7 @@ public class LevelInfoCards : MonoBehaviour
         }
         // Debug.Log(informationBoxes[0].transform.Find("InfoTitle").gameObject.GetComponent<TextMeshProUGUI>().text);
         MoveInfoBoxRight2Mid(informationBoxes[0]);
+        iterationText.text = (currentBox+1 + "-" + informationBoxes.Count).ToString();
     }
 
     private void PopulateInfoBox(GameObject infoBox, GameObject gameMechanic)
@@ -91,6 +93,7 @@ public class LevelInfoCards : MonoBehaviour
             MoveInfoBoxMid2Left(informationBoxes[currentBox]);
             currentBox++;
             MoveInfoBoxRight2Mid(informationBoxes[currentBox]);
+            iterationText.text = (currentBox+1 + "-" + informationBoxes.Count).ToString();
         }
         else
         {
@@ -98,6 +101,7 @@ public class LevelInfoCards : MonoBehaviour
             MoveInfoBoxMid2Right(informationBoxes[currentBox]);
             currentBox--;
             MoveInfoBoxLeft2Mid(informationBoxes[currentBox]);
+            iterationText.text = (currentBox+1 + "-" + informationBoxes.Count).ToString();
         }
     }
 
