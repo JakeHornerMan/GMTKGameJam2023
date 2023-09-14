@@ -9,7 +9,7 @@ public class MissileLaunch : Car
 
     public void Explode()
     {
-        Destroy(missileSprtie.gameObject);
+        Destroy(missileSprtie);
         GetComponent<Animator>().SetTrigger("Explode");
     }
 }

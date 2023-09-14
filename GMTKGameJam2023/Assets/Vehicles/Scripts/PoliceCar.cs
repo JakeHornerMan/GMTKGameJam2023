@@ -24,8 +24,6 @@ public class PoliceCar : Car
 
         numberOfSpikesDeployed = 1f;
 
-        soundManager?.PlayNewPoliceCar();
-
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(policeShakeDuration, policeShakeMagnitude));
 

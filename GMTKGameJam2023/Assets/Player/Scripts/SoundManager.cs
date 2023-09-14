@@ -17,8 +17,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] deathConfigs;
 
     [Header("Car Engine Clips")]
-    [SerializeField] private SoundConfig pickupTruckConfig;
-    [SerializeField] private SoundConfig[] policeCarConfig;
     [SerializeField] private SoundConfig tractorConfig;
     [SerializeField] private SoundConfig wreckerConfig;
 
@@ -67,8 +65,6 @@ public class SoundManager : MonoBehaviour
         audioSrc.Play();
     }
 
-    public void PlayNewPickupTruck() => PlaySound(pickupTruckConfig);
-    public void PlayNewPoliceCar() => RandomPlaySound(policeCarConfig);
     public void PlayNewTractor() => PlaySound(tractorConfig);
     public void PlayNewWrecker() => PlaySound(wreckerConfig);
 
