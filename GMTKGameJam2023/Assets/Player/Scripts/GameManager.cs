@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Developer Settings")]
     [SerializeField] public bool isGameOver = false;
+    [SerializeField] public bool pauseGameplay = false;
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
     [SerializeField] private int cheatTokenAmount = 500;
@@ -66,6 +67,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    //This is the new start method it is called when Level infoCards are closed
+    public void SetStart(){
         missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
@@ -135,7 +141,8 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameOver)
         {
-            SetTime();
+            if(!pauseGameplay)
+                SetTime();
         }
     }
 

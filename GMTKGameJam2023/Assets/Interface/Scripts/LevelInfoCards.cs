@@ -71,15 +71,15 @@ public class LevelInfoCards : MonoBehaviour
 
     public void StopGame()
     {
-        // gameManager.pauseGameplay = true;
+        gameManager.pauseGameplay = true;
         gameUI.SetActive(false);
     }
 
     public void StartGame()
     {
         CloseInfoCards();
-        // gameManager.pauseGameplay = false;
-        // gameManager.SetStart();
+        gameManager.pauseGameplay = false;
+        gameManager.SetStart();
     }
 
     public void MoveInfoBox(bool isRight)
