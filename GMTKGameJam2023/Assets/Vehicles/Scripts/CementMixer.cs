@@ -16,8 +16,10 @@ public class CementMixer : Car
 
     private int cementSpawned = 0;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
+
         SetCarSpeed();
 
         cementSpawned = 0;

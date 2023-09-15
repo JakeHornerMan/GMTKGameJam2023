@@ -59,9 +59,6 @@ public class VehicleSpawner : MonoBehaviour
     private void Start()
     {
         CreateButtons();
-
-        if (carButtons.Count >= 1)
-            SelectCar(carButtons[0]);
     }
 
     private void Update()
@@ -93,6 +90,11 @@ public class VehicleSpawner : MonoBehaviour
             carButtons.Add(btn);
             btn.correspondingCar = car;
         }
+
+        if (carButtons.Count >= 1)
+            currentActiveCar = carButtons[0].correspondingCar;
+
+            //SelectCar(carButtons[0]);
     }
 
     private void MouseInputs()

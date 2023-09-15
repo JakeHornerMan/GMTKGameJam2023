@@ -20,8 +20,10 @@ public class BombingJet : Car
 
     private float numberOfBombsProcessed = 0;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
+
         SetCarSpeed();
 
         // Shake Camera
