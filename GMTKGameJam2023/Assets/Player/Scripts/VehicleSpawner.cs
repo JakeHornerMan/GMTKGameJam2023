@@ -93,8 +93,6 @@ public class VehicleSpawner : MonoBehaviour
 
         if (carButtons.Count >= 1)
             currentActiveCar = carButtons[0].correspondingCar;
-
-            //SelectCar(carButtons[0]);
     }
 
     private void MouseInputs()

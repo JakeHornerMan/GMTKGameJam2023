@@ -87,11 +87,9 @@ public class ChickenMovement : MonoBehaviour
             IEnumerator coroutine = WaitAndMove(moveTime);
             StartCoroutine(coroutine);
         }
+        // The chicken is on cement, so wait for the cement to disappear and then restart movement
         else
-        {
-            // The chicken is on cement, so wait for the cement to disappear and then restart movement
             StartCoroutine(WaitForDryCement());
-        }
     }
 
     private IEnumerator WaitForDryCement()
@@ -100,7 +98,6 @@ public class ChickenMovement : MonoBehaviour
         {
             yield return null; // Wait until the chicken is no longer on the cement
         }
-
 
         IEnumerator coroutine = WaitAndMove(moveTime);
         StartCoroutine(coroutine);
