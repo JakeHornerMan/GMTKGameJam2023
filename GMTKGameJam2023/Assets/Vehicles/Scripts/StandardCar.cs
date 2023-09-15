@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class StandardCar : Car
 {
-    void Start()
+    public override void Start()
     {
+        base.Start();
         SetCarSpeed();
     }
 }

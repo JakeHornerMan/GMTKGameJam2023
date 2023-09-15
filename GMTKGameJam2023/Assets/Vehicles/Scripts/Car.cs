@@ -87,11 +87,11 @@ public abstract class Car : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    public virtual void Start()
     {
         carKillCount = 0;
 
-        soundManager?.RandomPlaySound(spawnSound);
+        soundManager.RandomPlaySound(spawnSound);
 
         // Shake Camera
         StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
