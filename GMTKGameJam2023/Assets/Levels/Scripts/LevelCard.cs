@@ -34,11 +34,11 @@ public class LevelCard : MonoBehaviour
 
     [HideInInspector] public LevelInfoSO correspondingLevel;
 
-    private SceneFader sceneFader;
+    private LevelPage levelPage;
 
     private void Awake()
     {
-        sceneFader = FindObjectOfType<SceneFader>();
+        levelPage = FindObjectOfType<LevelPage>(true);
     }
 
     public void SetUI()
@@ -78,7 +78,7 @@ public class LevelCard : MonoBehaviour
                 ).GetComponent<IconOverflow>();
 
                 // Give the overflow button all the extra icons not displayed
-                for (int i = maxRowIcons-1; i < objects.Length; i++)
+                for (int i = maxRowIcons - 1; i < objects.Length; i++)
                     overflowIcon.overflowObjects.Add(objects[i]);
 
                 break;
@@ -97,8 +97,9 @@ public class LevelCard : MonoBehaviour
     }
 
     // Function Run by Play Button
-    public void LoadLevel()
+    public void OpenLevelPage()
     {
-        sceneFader.FadeTo(correspondingLevel.gameLevelToLoad);
+        levelPage.selecedLevel = correspondingLevel;
+        levelPage.SetUI();
     }
 }
