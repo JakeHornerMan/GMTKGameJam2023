@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94d627e93b6889498e510d158fb7a4a, type: 3}
+  m_Name: TestLevel
+  m_EditorClassIdentifier: 
+  levelArt: {fileID: 21300000, guid: fc04fc7322ef07e45a1a3fef97cfd31b, type: 3}
+  levelNum: 1
+  levelName: Dev Playground
+  levelDifficulty: 1
+  carsInLevel:
+  - {fileID: 8763800307734122933, guid: 265b1a745600a424b93304b7e85a9c8a, type: 3}
+  - {fileID: -837215587683861363, guid: 352dc83d38570494db1d1fb8daeee559, type: 3}
+  - {fileID: -2564686500297669742, guid: a4a014d736bec854fa4a93c2fbfdd503, type: 3}
+  - {fileID: 3162742580270076152, guid: 2c3e7f3a4e0d6884596b2b8488f19436, type: 3}
+  - {fileID: 171791225829203903, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  - {fileID: -7307176575067560190, guid: 0bd4fea591d7e8a4c8eb2f8f23236a13, type: 3}
+  - {fileID: -9016126106948845741, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
+  chickensInLevel:
+  - {fileID: 4342662696420494428, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+  - {fileID: -5554051585864383555, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+  - {fileID: 9038809129756289598, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+  - {fileID: 4898292506211451574, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+  - {fileID: -8162719301356310970, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+  gameDurationSeconds: 100
+  numWaves: 5
+  gameLevelToLoad: DevPlayground

@@ -161,6 +161,7 @@ public class VehicleSpawner : MonoBehaviour
         // Return if Car Cannot be Placed on Clicked Lane
         if (isForWorldSelect)
         {
+            if (hit.collider.GetComponent<WorldSelectLaneCar>() == null) return;
             currentActiveCar = hit.collider.GetComponent<WorldSelectLaneCar>().worldSelectCar;
         }
         else if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
