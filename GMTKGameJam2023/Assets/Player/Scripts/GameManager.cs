@@ -226,7 +226,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void NewWavePopup(string speedUpText)
     {
         soundManager?.PlayGameSpeed();
