@@ -16,11 +16,6 @@ public class Sheep : Car
     [Header("Settings")]
     [SerializeField] private bool allowSheepOnWater = false;
 
-    private void Start()
-    {
-        soundManager?.PlaySheepNoise();
-    }
-
     private void Update()
     {
         carSpeed = Random.Range(carSpeedRange.x, carSpeedRange.y);

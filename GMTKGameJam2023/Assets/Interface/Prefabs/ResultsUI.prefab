@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Traffic Obeyer
+  m_text: Master Chicken Assasin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1aa1ce42a4acebe40a18f8523d0f66ec, type: 2}
   m_sharedMaterial: {fileID: -4936473353579388813, guid: 1aa1ce42a4acebe40a18f8523d0f66ec, type: 2}
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -495,6 +495,9 @@ MonoBehaviour:
   missedChickensText: {fileID: 1080802127657310812}
   finalScoreText: {fileID: 7700932330449918385}
   missedChickensLabel: Missed Chickens
+  failureRanking: You Failed
+  levelSuccessClip: {fileID: 8300000, guid: ed9b15dd645a12f4683e6deabb9d8be6, type: 3}
+  levelFailureClip: {fileID: 8300000, guid: 3e70c3a3007179c45ac5fe39bd755ebf, type: 3}
 --- !u!95 &8718149757920820678
 Animator:
   serializedVersion: 5

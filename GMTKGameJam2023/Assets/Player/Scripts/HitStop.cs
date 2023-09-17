@@ -28,6 +28,4 @@ public class HitStop : MonoBehaviour
 
         Time.timeScale = currentTimeScale;
     }
-
-
 }

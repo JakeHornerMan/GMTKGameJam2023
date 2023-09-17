@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6581415338971503867}
   - component: {fileID: 1651646278425894839}
   - component: {fileID: 4047289718886028338}
-  - component: {fileID: 2032628398341768708}
   - component: {fileID: 7760763802830570230}
+  - component: {fileID: 2032628398341768708}
   m_Layer: 6
   m_Name: Sheep
   m_TagString: Untagged
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.84, y: 2.59}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -161,6 +161,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.84, y: 2.59}
   m_EdgeRadius: 0
+--- !u!114 &7760763802830570230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832129175142265213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Sheep
+  objectSprite: {fileID: 0}
+  objectIcon: {fileID: 0}
+  objectDescription: 
 --- !u!114 &2032628398341768708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,12 +192,8 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 45141866181475777}
-  carSprite: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
-  carIcon: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
-  carName: Sheep
   carType: 0
   carHealth: 100
-  carDescription: 
   carPrice: 0
   ignoreTokens: 1
   isSlicingCar: 0
@@ -189,22 +201,23 @@ MonoBehaviour:
   canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
-  carInAction: 1
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
   carSpeed: 0
   damage: 120
   comboMultiplier: 0.2
-  ExplosionSprite: {fileID: 0}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.05
   camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
+    volume: 0.2
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   sheepCollider: {fileID: 4047289718886028338}
@@ -213,21 +226,6 @@ MonoBehaviour:
     m_Bits: 16
   carSpeedRange: {x: 2.5, y: 3.5}
   allowSheepOnWater: 0
---- !u!114 &7760763802830570230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5832129175142265213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0

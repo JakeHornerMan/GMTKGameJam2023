@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: -2808484990652700158}
   - component: {fileID: 8763800307734122933}
+  - component: {fileID: 5124152277064866297}
   m_Layer: 6
   m_Name: Bus
   m_TagString: Untagged
@@ -208,7 +208,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 3.6}
   m_EdgeRadius: 0
---- !u!114 &-2808484990652700158
+--- !u!114 &8763800307734122933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,24 +217,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2651a16a0fa0e754fa57536db7d1ae3c, type: 3}
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Touring Bus
+  objectSprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
+  objectIcon: {fileID: 21300000, guid: 6a58921643d1cca418d19b07b0c2a093, type: 3}
+  objectDescription: 
+--- !u!114 &5124152277064866297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 7803520122789380558}
-  carSprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
-  carIcon: {fileID: 21300000, guid: 6a58921643d1cca418d19b07b0c2a093, type: 3}
-  carName: Touring Bus
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   carType: 1
   carHealth: 100
-  carDescription: 
   carPrice: 2
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
   canSpinOut: 1
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -248,26 +261,14 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
---- !u!114 &8763800307734122933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,17 +431,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
   m_PrefabInstance: {fileID: 257839141154805014}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7803520122789380558 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 257839141154805014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &716989790231140716
 PrefabInstance:
   m_ObjectHideFlags: 0

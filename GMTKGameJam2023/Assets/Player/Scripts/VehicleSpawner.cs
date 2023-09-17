@@ -59,9 +59,6 @@ public class VehicleSpawner : MonoBehaviour
     private void Start()
     {
         CreateButtons();
-
-        if (carButtons.Count >= 1)
-            SelectCar(carButtons[0]);
     }
 
     private void Update()
@@ -93,6 +90,9 @@ public class VehicleSpawner : MonoBehaviour
             carButtons.Add(btn);
             btn.correspondingCar = car;
         }
+
+        if (carButtons.Count >= 1)
+            currentActiveCar = carButtons[0].correspondingCar;
     }
 
     private void MouseInputs()
@@ -161,6 +161,7 @@ public class VehicleSpawner : MonoBehaviour
         // Return if Car Cannot be Placed on Clicked Lane
         if (isForWorldSelect)
         {
+            if (hit.collider.GetComponent<WorldSelectLaneCar>() == null) return;
             currentActiveCar = hit.collider.GetComponent<WorldSelectLaneCar>().worldSelectCar;
         }
         else if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))

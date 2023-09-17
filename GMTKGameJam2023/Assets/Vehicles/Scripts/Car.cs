@@ -20,12 +20,8 @@ public abstract class Car : MonoBehaviour
     }
 
     [Header("Car Info")]
-    [SerializeField] public Sprite carSprite;
-    [SerializeField] public Sprite carIcon;
-    [SerializeField] public string carName;
     [SerializeField] public CarType carType;  // Enum for car type
     [SerializeField] public float carHealth = 100;     // Float for health
-    [SerializeField][TextArea(10, 2)] public string carDescription;
     [SerializeField] public int carPrice = 2;
     [SerializeField] public bool ignoreTokens = false;
     [SerializeField] private bool isSlicingCar = false;
@@ -66,18 +62,21 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private string tokenPopUpMsg = "Token";
     [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
+    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.15f;
     [SerializeField] private float camShakeMagnitude = 0.05f;
 
+    [Header("Sound")]
+    [SerializeField] private SoundConfig[] spawnSound;
+
     private int carKillCount = 0;
     protected int totalPoints = 0;
 
-    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
-
     protected GameManager gameManager;
     private Rigidbody2D rb;
+
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
 
@@ -89,9 +88,14 @@ public abstract class Car : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    public virtual void Start()
     {
         carKillCount = 0;
+
+        soundManager?.RandomPlaySound(spawnSound);
+
+        // Shake Camera
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
     }
 
     private void Update()
@@ -133,7 +137,7 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
-        
+
 
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
@@ -141,7 +145,7 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        
+
 
 
         if (collision.gameObject.CompareTag(deathboxTag))
@@ -189,7 +193,7 @@ public abstract class Car : MonoBehaviour
             {
                 otherCar.LaunchCar();
                 this.carHealth -= otherCar.carHealth;
-                
+
             }
             else if (otherCar.carHealth > this.carHealth)
             {
@@ -252,7 +256,7 @@ public abstract class Car : MonoBehaviour
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
-        
+
 
         // Destroy Self if Bomb Chicken
         BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
@@ -400,7 +404,7 @@ public abstract class Car : MonoBehaviour
             // Linearly interpolate vehicle scale
             gameObject.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
 
-            
+
             yield return null;
         }
     }

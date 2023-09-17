@@ -11,10 +11,10 @@ public class LevelInfoSO : ScriptableObject
     [SerializeField] public Difficulty levelDifficulty = Difficulty.Easy;
 
     [Header("Cars Info")]
-    [SerializeField] public Car[] carsInLevel;
+    [SerializeField] public ObjectInfo[] carsInLevel;
 
     [Header("Chicken Types")]
-    [SerializeField] public ChickenMovement[] chickensInLevel;
+    [SerializeField] public ObjectInfo[] chickensInLevel;
 
     [Header("Waves Info")]
     [SerializeField] public float gameDurationSeconds = 100;

@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 4942511851107995587}
   - component: {fileID: -6574306423568156230}
+  - component: {fileID: 9007625855804940646}
   m_Layer: 6
   m_Name: Bulldozer
   m_TagString: Untagged
@@ -207,52 +207,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.7, y: 7}
   m_EdgeRadius: 0
---- !u!114 &4942511851107995587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb004c786ca95c2419deb38ec4d3ae1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 2279337249874783549}
-  carSprite: {fileID: 21300000, guid: b4b4c186ad03b1b4dacfa39eab47df56, type: 3}
-  carIcon: {fileID: 21300000, guid: a83c6a89130b3a6479e50ddfb2f7b205, type: 3}
-  carName: Bulldozer
-  carType: 1
-  carHealth: 100
-  carDescription: 
-  carPrice: 0
-  ignoreTokens: 0
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  placeableAnywhere: 0
-  carSpeed: 3
-  damage: 200
-  comboMultiplier: 0.2
-  ExplosionSprite: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 1.2
-  camShakeDuration: 0.15
-  camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
 --- !u!114 &-6574306423568156230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +219,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Bulldozer
+  objectSprite: {fileID: 21300000, guid: b4b4c186ad03b1b4dacfa39eab47df56, type: 3}
+  objectIcon: {fileID: 21300000, guid: a83c6a89130b3a6479e50ddfb2f7b205, type: 3}
+  objectDescription: 
+--- !u!114 &9007625855804940646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  carType: 1
+  carHealth: 100
+  carPrice: 0
+  ignoreTokens: 0
+  isSlicingCar: 0
+  canIBeBombed: 1
+  canSpinOut: 0
+  isSpinning: 0
+  carInHitStop: 0
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
+  placeableAnywhere: 0
+  carSpeed: 3
+  damage: 200
+  comboMultiplier: 0.2
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 1.2
+  carHitStopEffectMultiplier: 1
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
+    volume: 1
+  cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1001 &8106055223725406693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -393,17 +392,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
---- !u!114 &2279337249874783549 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 8106055223725406693}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &6526355901721601888 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}

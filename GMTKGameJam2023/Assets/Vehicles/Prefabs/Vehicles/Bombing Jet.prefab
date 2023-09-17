@@ -109,8 +109,8 @@ GameObject:
   - component: {fileID: 6709933049373621542}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 367647572244851810}
   - component: {fileID: -1303614592782447356}
+  - component: {fileID: 367647572244851810}
   m_Layer: 6
   m_Name: Bombing Jet
   m_TagString: Untagged
@@ -261,6 +261,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.875}
   m_EdgeRadius: 0
+--- !u!114 &-1303614592782447356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Bombing Jet
+  objectSprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
+  objectIcon: {fileID: 21300000, guid: 219d7c0a273407342b9560b8e3696ab7, type: 3}
+  objectDescription: 
 --- !u!114 &367647572244851810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,16 +292,15 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 6200661215531097819}
-  carSprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
-  carIcon: {fileID: 21300000, guid: 219d7c0a273407342b9560b8e3696ab7, type: 3}
-  carName: Bombing Jet
-  carDescription: 
+  carType: 0
+  carHealth: 100
   carPrice: 8
   ignoreTokens: 1
   isSlicingCar: 0
   canIBeBombed: 1
   canSpinOut: 0
   isSpinning: 0
+  carInHitStop: 0
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -302,9 +317,14 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 1.2
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.1
   camShakeMagnitude: 0.075
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: e18f82c3e6a958545be1acd504f7fdd1, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: e188c742249368940bac28ad6dec2066, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   jetShakeDuration: 1.5
@@ -315,21 +335,6 @@ MonoBehaviour:
   numberOfBombs: 4
   laneLength: 10
   delayBetweenBombs: 0.25
---- !u!114 &-1303614592782447356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
 --- !u!1001 &14922919857018166
 PrefabInstance:
   m_ObjectHideFlags: 0

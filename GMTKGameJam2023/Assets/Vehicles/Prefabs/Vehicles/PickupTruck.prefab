@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 9117086086339291756}
   - component: {fileID: 3162742580270076152}
+  - component: {fileID: -7020285032245229493}
   m_Layer: 6
   m_Name: PickupTruck
   m_TagString: Untagged
@@ -207,51 +207,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.875}
   m_EdgeRadius: 0
---- !u!114 &9117086086339291756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5878f903f0f008d4da03ac53120445a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 3346303804255758243}
-  carSprite: {fileID: 21300000, guid: 48fe14e9417353440b2c3c4e1a23b84d, type: 3}
-  carIcon: {fileID: 21300000, guid: e6f36a3ae6b995a43bc2c37273354dd3, type: 3}
-  carName: The Pickup
-  carType: 0
-  carHealth: 100
-  carDescription: 
-  carPrice: 0
-  ignoreTokens: 0
-  isSlicingCar: 0
-  canIBeBombed: 1
-  canSpinOut: 1
-  isSpinning: 0
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  - Grass
-  placeableAnywhere: 0
-  carSpeed: 4
-  damage: 250
-  comboMultiplier: 0.2
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 0.7
-  camShakeDuration: 0.15
-  camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
 --- !u!114 &3162742580270076152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,9 +219,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: The Pickup
+  objectSprite: {fileID: 21300000, guid: 48fe14e9417353440b2c3c4e1a23b84d, type: 3}
+  objectIcon: {fileID: 21300000, guid: e6f36a3ae6b995a43bc2c37273354dd3, type: 3}
+  objectDescription: 
+--- !u!114 &-7020285032245229493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  carType: 0
+  carHealth: 115
+  carPrice: 0
+  ignoreTokens: 0
+  isSlicingCar: 0
+  canIBeBombed: 1
+  canSpinOut: 1
+  isSpinning: 0
+  carInHitStop: 0
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
+  placeableAnywhere: 0
+  carSpeed: 4
+  damage: 250
+  comboMultiplier: 0.2
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 0bcd259a9fa88ea468f5c6599875a637, type: 3}
+    volume: 1
+  cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,17 +409,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
---- !u!114 &3346303804255758243 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 4733246878831080315}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7729275025509461502 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}

@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4dcf9e5b57afe49bae9ef60290d36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: -540173590814842813}
+  car: {fileID: 0}
   wreckerCart: {fileID: 1761417369981310633}
   hook: {fileID: 8686834062049952884}
 --- !u!1 &2378030161226896361
@@ -724,8 +724,8 @@ GameObject:
   - component: {fileID: 7156337578992727056}
   - component: {fileID: 2089861779733227409}
   - component: {fileID: 322576651139750340}
-  - component: {fileID: -540173590814842813}
   - component: {fileID: 3039123858054664968}
+  - component: {fileID: -1135978355812094493}
   m_Layer: 6
   m_Name: Wrecker
   m_TagString: Untagged
@@ -825,50 +825,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.100642, y: 1.5319808}
   m_EdgeRadius: 0
---- !u!114 &-540173590814842813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4421891079327587070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2ef2ac0072db1489b1aa364486bce0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 1465436027404781649}
-  carSprite: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
-  carIcon: {fileID: 21300000, guid: c835af7cd292b2e4b9c10e56774fe770, type: 3}
-  carName: Wrecker
-  carType: 1
-  carHealth: 100
-  carDescription: 
-  carPrice: 2
-  ignoreTokens: 0
-  isSlicingCar: 0
-  canIBeBombed: 1
-  canSpinOut: 1
-  isSpinning: 0
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  placeableAnywhere: 0
-  carSpeed: 3
-  damage: 120
-  comboMultiplier: 0.2
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 0.7
-  camShakeDuration: 0.15
-  camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
 --- !u!114 &3039123858054664968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,9 +837,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: 
-  objectImage: {fileID: 0}
-  objectDiscription: 
+  objectName: Wrecker
+  objectSprite: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
+  objectIcon: {fileID: 21300000, guid: c835af7cd292b2e4b9c10e56774fe770, type: 3}
+  objectDescription: 
+--- !u!114 &-1135978355812094493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421891079327587070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  carType: 1
+  carHealth: 100
+  carPrice: 2
+  ignoreTokens: 0
+  isSlicingCar: 0
+  canIBeBombed: 1
+  canSpinOut: 1
+  isSpinning: 0
+  carInHitStop: 0
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
+  placeableAnywhere: 0
+  carSpeed: 3
+  damage: 200
+  comboMultiplier: 0.2
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
+    volume: 1
+  cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1 &4524734424282421569
 GameObject:
   m_ObjectHideFlags: 0
@@ -11518,17 +11519,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
---- !u!114 &1465436027404781649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 8901906914850741385}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5865328795983823372 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}

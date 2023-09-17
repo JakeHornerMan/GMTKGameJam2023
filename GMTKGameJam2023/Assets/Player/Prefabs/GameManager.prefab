@@ -185,7 +185,7 @@ Transform:
   - {fileID: 1956138797627160308}
   - {fileID: 3718478140365259465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -300,7 +300,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 1
     standardChickenAmounts: 30
     chickenIntesity: 5
-    coinAmount: 0
+    coinAmount: 30
     specialChickens:
     - timeToSpawn: 2
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -322,7 +322,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 2
     standardChickenAmounts: 20
     chickenIntesity: 3
-    coinAmount: 0
+    coinAmount: 50
     specialChickens:
     - timeToSpawn: 10
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -336,7 +336,7 @@ MonoBehaviour:
     wavePrompt: Lets Go 3
     standardChickenAmounts: 50
     chickenIntesity: 1
-    coinAmount: 0
+    coinAmount: 60
     specialChickens:
     - timeToSpawn: 10
       chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
@@ -344,23 +344,23 @@ MonoBehaviour:
       bottomSpawn: 0
   carsInLevel:
   - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
-  - {fileID: -952324110816968911, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
-  - {fileID: -620051609290920513, guid: d88b644156c3a224697efd3585e1337a, type: 3}
-  - {fileID: 1735388934760480964, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
+  - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
+  - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
+  - {fileID: 4056007719366264636, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
   rankingCriteria:
-  - minKills: 500
+  - minScore: 1900000
     rankingString: Master Chicken Assasin
-  - minKills: 250
+  - minScore: 1700000
     rankingString: Sadist
-  - minKills: 150
+  - minScore: 1500000
     rankingString: KFC Employee
-  - minKills: 100
+  - minScore: 1000000
     rankingString: Vehicularly Sus
-  - minKills: 50
+  - minScore: 500000
     rankingString: Accidents Happen
-  - minKills: 30
+  - minScore: 100000
     rankingString: Traffic Obeyer
-  - minKills: 0
+  - minScore: 0
     rankingString: Animal Lover
   failureRanking: You Failed
   isGameOver: 0
@@ -522,60 +522,6 @@ MonoBehaviour:
     volume: 0.6
   - clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
     volume: 0.6
-  standardCarConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 0.8
-  fastCarConfig:
-    clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
-    volume: 0.5
-  spikeCarConfig:
-    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-    volume: 0.8
-  truckConfig:
-    clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
-    volume: 1
-  pickupTruckConfig:
-    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-    volume: 1
-  fighterJetConfig:
-  - clip: {fileID: 8300000, guid: e18f82c3e6a958545be1acd504f7fdd1, type: 3}
-    volume: 1
-  - clip: {fileID: 8300000, guid: e188c742249368940bac28ad6dec2066, type: 3}
-    volume: 1
-  policeCarConfig:
-  - clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
-    volume: 1
-  - clip: {fileID: 8300000, guid: 7a58d3ff0f3232b40b0a80d53d0842c4, type: 3}
-    volume: 1
-  - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
-    volume: 1
-  hovercraftConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  cementMixerConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  bulldozerConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  busConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  tractorConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  boatConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  fireTruckConfig:
-    clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
-    volume: 1
-  combineHarvestorConfig:
-    clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
-  wreckerConfig:
-    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
-    volume: 1
   sliceConfigs:
   - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
     volume: 0.5
@@ -596,10 +542,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a9b43db45b6a3b448902b7282076dd04, type: 3}
     volume: 1
   cementPlaceConfig:
-    clip: {fileID: 8300000, guid: 7019f208eb3cde4498a49fd7986f8729, type: 3}
-    volume: 1
-  sheepConfig:
-    clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
+    clip: {fileID: 8300000, guid: a9b43db45b6a3b448902b7282076dd04, type: 3}
     volume: 1
   sheepDeathConfig:
     clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
@@ -627,6 +570,12 @@ MonoBehaviour:
     volume: 0.5
   cantPurchase:
     clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
+    volume: 1
+  levelSuccess:
+    clip: {fileID: 8300000, guid: ed9b15dd645a12f4683e6deabb9d8be6, type: 3}
+    volume: 1
+  levelFailed:
+    clip: {fileID: 8300000, guid: 3e70c3a3007179c45ac5fe39bd755ebf, type: 3}
     volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
