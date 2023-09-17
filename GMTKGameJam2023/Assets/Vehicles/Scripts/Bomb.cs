@@ -45,14 +45,20 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator BombScoreManager()
     {
+        if (jetParent != null)
+        {
+            yield return new WaitForSeconds(bombLifetime);
 
-        yield return new WaitForSeconds(bombLifetime);
+            gameObject.SetActive(false);
 
-        gameObject.SetActive(false);
+            jetParent.AddBombScore(totalPoints);
 
-        jetParent.AddBombScore(totalPoints);
-
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            yield return null;
+        }    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

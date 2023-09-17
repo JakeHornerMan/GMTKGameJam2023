@@ -35,7 +35,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool carInHitStop = false;
     private float degreesPerSecond = 540f;
 
-    private bool carInAction = true;
+    public bool carInAction = true; //is car in play (not being launched)?
 
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
@@ -51,6 +51,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private int damage = 120;
     [SerializeField] private float comboMultiplier = 0.2f;
     private float defaultComboMultiplier = 1f;
+    [SerializeField] private GameObject ExplosionSprite;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
@@ -197,8 +198,8 @@ public abstract class Car : MonoBehaviour
             }
 
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
-            StartCoroutine(CarHitStop(0.15f));
-            otherCar.StartCoroutine(CarHitStop(0.15f));
+            StartCoroutine(CarHitStop(0.6f));
+            otherCar.StartCoroutine(CarHitStop(0.6f));
 
         }
     }
@@ -369,6 +370,14 @@ public abstract class Car : MonoBehaviour
         comboText.enabled = false;
 
         rb.velocity = normalizedVector * 25;
+
+        if (carType == CarType.Heavy || carType == CarType.Light)
+        {
+            GameObject currentBomb = Instantiate(ExplosionSprite, transform.position, Quaternion.identity);
+
+            Destroy(currentBomb, 0.85f);
+
+        }
 
         StartCoroutine(LaunchCarCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
     }
