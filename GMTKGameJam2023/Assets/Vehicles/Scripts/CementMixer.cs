@@ -16,11 +16,11 @@ public class CementMixer : Car
 
     private int cementSpawned = 0;
 
-    private void Start()
+    public override void Start()
     {
-        SetCarSpeed();
+        base.Start();
 
-        soundManager?.PlayNewCementMixer();
+        SetCarSpeed();
 
         cementSpawned = 0;
 

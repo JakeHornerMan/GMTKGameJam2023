@@ -273,8 +273,8 @@ GameObject:
   - component: {fileID: 8160550235197104821}
   - component: {fileID: 5134109063513698115}
   - component: {fileID: 4904860076618496}
-  - component: {fileID: -620051609290920513}
   - component: {fileID: 4252443855736787157}
+  - component: {fileID: 1351260878151097129}
   m_Layer: 6
   m_Name: SpikedCar
   m_TagString: Untagged
@@ -372,7 +372,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.875}
   m_EdgeRadius: 0
---- !u!114 &-620051609290920513
+--- !u!114 &4252443855736787157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,23 +381,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 6312711107102628959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc4bf4e4b774864790a4437403dfe13, type: 3}
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Roadkill
+  objectSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
+  objectIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
+  objectDescription: 
+--- !u!114 &1351260878151097129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312711107102628959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 6118719679060092571}
-  carSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
-  carIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
-  carName: 
-  carDescription: 
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   carType: 0
   carHealth: 100
   carPrice: 2
   ignoreTokens: 0
-  isSlicingCar: 1
+  isSlicingCar: 0
   canIBeBombed: 1
-  canSpinOut: 0
+  canSpinOut: 1
   isSpinning: 0
   carInHitStop: 0
   deathboxTag: Death Box
@@ -417,22 +429,9 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
---- !u!114 &4252443855736787157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312711107102628959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Roadkill
-  objectSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
-  objectIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
-  objectDescription: 
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
+    volume: 1
 --- !u!1 &8092239484575799273
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,17 +746,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
   m_PrefabInstance: {fileID: 4266496820870492739}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6118719679060092571 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 4266496820870492739}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5030322943822332095
 PrefabInstance:
   m_ObjectHideFlags: 0

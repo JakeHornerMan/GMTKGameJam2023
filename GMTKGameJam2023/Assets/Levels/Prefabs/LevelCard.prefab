@@ -777,10 +777,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconPrefab: {fileID: 4732712273045822324, guid: de6a4b2506f711e428b2fe359b9edde4, type: 3}
+  overflowCountPrefab: {fileID: 2656177923888533744, guid: 15b7d74739dd1794bb201d358f7a7461, type: 3}
+  maxRowIcons: 4
   timeUnit: s
   easyColor: {r: 0.2683339, g: 0.8490566, b: 0.5825606, a: 1}
   mediumColor: {r: 1, g: 0.7756912, b: 0.3537736, a: 1}
   hardColor: {r: 0.8117647, g: 0.37711194, b: 0.31764707, a: 1}
+  levelArt: {fileID: 5497270848074514940}
   lvlNumText: {fileID: 8877893320481082883}
   lvlDurationText: {fileID: 6623794196459082110}
   lvlNameText: {fileID: 1392145242170467056}
@@ -1048,7 +1051,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7816943651448840712}
         m_TargetAssemblyTypeName: LevelCard, Assembly-CSharp
-        m_MethodName: LoadLevel
+        m_MethodName: OpenLevelPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

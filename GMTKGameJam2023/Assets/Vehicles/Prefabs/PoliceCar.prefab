@@ -163,8 +163,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: -4110808594857532012}
   - component: {fileID: 6306976607047612749}
+  - component: {fileID: -4110808594857532012}
   m_Layer: 6
   m_Name: PoliceCar
   m_TagString: Untagged
@@ -262,6 +262,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1.875}
   m_EdgeRadius: 0
+--- !u!114 &6306976607047612749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Police Car
+  objectSprite: {fileID: -218839352, guid: b41f9bb12029b7e469d5fef77ad08e0d, type: 3}
+  objectIcon: {fileID: 21300000, guid: f126d11f7820eb14c903395f2ba47321, type: 3}
+  objectDescription: 
 --- !u!114 &-4110808594857532012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,10 +293,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 4437990080976346240}
-  carSprite: {fileID: 149015047, guid: b41f9bb12029b7e469d5fef77ad08e0d, type: 3}
-  carIcon: {fileID: 21300000, guid: f126d11f7820eb14c903395f2ba47321, type: 3}
-  carName: 
-  carDescription: 
   carType: 0
   carHealth: 100
   carPrice: 2
@@ -303,9 +315,16 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.1
   camShakeMagnitude: 0.1
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 26b2850c49977bd43935ccd39ccce804, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 7a58d3ff0f3232b40b0a80d53d0842c4, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   policeShakeDuration: 1
@@ -315,22 +334,6 @@ MonoBehaviour:
   spikePrefab: {fileID: 5724720806292706950, guid: 24dfbeb66139a3945aaaf0a66977cf12, type: 3}
   numberOfSpikes: 3
   laneLength: 10
---- !u!114 &6306976607047612749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Police Car
-  objectSprite: {fileID: -218839352, guid: b41f9bb12029b7e469d5fef77ad08e0d, type: 3}
-  objectIcon: {fileID: 21300000, guid: f126d11f7820eb14c903395f2ba47321, type: 3}
-  objectDescription: 
 --- !u!1001 &3646665737528523694
 PrefabInstance:
   m_ObjectHideFlags: 0

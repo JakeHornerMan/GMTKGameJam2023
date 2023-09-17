@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6581415338971503867}
   - component: {fileID: 1651646278425894839}
   - component: {fileID: 4047289718886028338}
-  - component: {fileID: 2032628398341768708}
   - component: {fileID: 7760763802830570230}
+  - component: {fileID: 2032628398341768708}
   m_Layer: 6
   m_Name: Sheep
   m_TagString: Untagged
@@ -161,6 +161,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.84, y: 2.59}
   m_EdgeRadius: 0
+--- !u!114 &7760763802830570230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832129175142265213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Sheep
+  objectSprite: {fileID: 0}
+  objectIcon: {fileID: 0}
+  objectDescription: 
 --- !u!114 &2032628398341768708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +192,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 45141866181475777}
-  carSprite: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
-  carIcon: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
-  carName: 
-  carDescription: 
   carType: 0
   carHealth: 100
   carPrice: 0
@@ -200,9 +212,12 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.05
   camShakeMagnitude: 0.05
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
+    volume: 0.2
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   sheepCollider: {fileID: 4047289718886028338}
@@ -211,22 +226,6 @@ MonoBehaviour:
     m_Bits: 16
   carSpeedRange: {x: 2.5, y: 3.5}
   allowSheepOnWater: 0
---- !u!114 &7760763802830570230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5832129175142265213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Sheep
-  objectSprite: {fileID: 0}
-  objectIcon: {fileID: 0}
-  objectDescription: 
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0

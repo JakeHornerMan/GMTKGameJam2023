@@ -5093,9 +5093,9 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 6709933049373621542}
   - component: {fileID: 4936820497001477568}
-  - component: {fileID: -1257477323556779182}
   - component: {fileID: 4589522377124084721}
   - component: {fileID: 462188118989263174}
+  - component: {fileID: -1257477323556779182}
   m_Layer: 6
   m_Name: MissileLaunch
   m_TagString: Untagged
@@ -5201,55 +5201,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &-1257477323556779182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3d72618ee4d864e8ba6b060551b289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 5885361816208039466}
-  carSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
-  carIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
-  carName: 
-  carDescription: 
-  carType: 0
-  carHealth: 100
-  carPrice: 0
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  - Pavement
-  - Grass
-  - Bus Lane
-  placeableAnywhere: 1
-  carSpeed: 0
-  damage: 120
-  comboMultiplier: 0.2
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 0.7
-  camShakeDuration: 0.4
-  camShakeMagnitude: 0.1
-  carHitStopEffectMultiplier: 1
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
-  missileSprtie: {fileID: 2270964467784247881}
 --- !u!95 &4589522377124084721
 Animator:
   serializedVersion: 5
@@ -5287,6 +5238,54 @@ MonoBehaviour:
   objectSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
   objectIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
   objectDescription: 
+--- !u!114 &-1257477323556779182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3d72618ee4d864e8ba6b060551b289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 5885361816208039466}
+  carType: 0
+  carHealth: 100
+  carPrice: 0
+  ignoreTokens: 1
+  isSlicingCar: 0
+  canIBeBombed: 0
+  canSpinOut: 0
+  isSpinning: 0
+  carInHitStop: 0
+  deathboxTag: Death Box
+  placeableLaneTags:
+  - Road
+  - Pavement
+  - Grass
+  - Bus Lane
+  placeableAnywhere: 1
+  carSpeed: 0
+  damage: 120
+  comboMultiplier: 0.2
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
+  camShakeDuration: 0.4
+  camShakeMagnitude: 0.1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: b2e76d78bad382846aa63840186e34d3, type: 3}
+    volume: 1
+  cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
+  missileSprtie: {fileID: 2270964467784247881}
 --- !u!1 &7618215126840845903
 GameObject:
   m_ObjectHideFlags: 0

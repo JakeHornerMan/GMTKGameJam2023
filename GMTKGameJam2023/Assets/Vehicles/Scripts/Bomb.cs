@@ -29,7 +29,6 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-
         //jetParent = transform.parent.GetComponent<BombingJet>();
 
         gameManager = FindObjectOfType<GameManager>();

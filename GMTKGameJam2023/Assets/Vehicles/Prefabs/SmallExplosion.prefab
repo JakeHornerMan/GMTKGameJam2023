@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -6823465047001592822}
   - component: {fileID: 4327572464095262486}
   - component: {fileID: 7807847845923346728}
-  - component: {fileID: 7506448221559744903}
   - component: {fileID: -1139170933025108011}
+  - component: {fileID: 7506448221559744903}
   m_Layer: 6
   m_Name: SmallExplosion
   m_TagString: Untagged
@@ -172,6 +172,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1139170933025108011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3112727753274190021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Small Explosion
+  objectSprite: {fileID: 0}
+  objectIcon: {fileID: 0}
+  objectDescription: 
 --- !u!114 &7506448221559744903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,10 +203,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 0}
-  carSprite: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
-  carIcon: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
-  carName: 
-  carDescription: 
   carType: 0
   carHealth: 100
   carPrice: 2
@@ -211,24 +223,9 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.1
   camShakeMagnitude: 0.1
-  carHitStopEffectMultiplier: 1
+  spawnSound: []
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
---- !u!114 &-1139170933025108011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112727753274190021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Small Explosion
-  objectSprite: {fileID: 0}
-  objectIcon: {fileID: 0}
-  objectDescription: 

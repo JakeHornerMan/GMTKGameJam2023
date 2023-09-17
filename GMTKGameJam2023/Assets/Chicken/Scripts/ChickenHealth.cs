@@ -45,13 +45,9 @@ public class ChickenHealth : MonoBehaviour
         health -= dmg;
 
         if (health <= 0)
-        {
             HandleDeath();
-        }
         else
-        {
             HandleHit();
-        }
     }
 
     protected virtual void HandleDeath()
@@ -82,8 +78,9 @@ public class ChickenHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.gameObject.CompareTag(hoseWaterTag))
+        if (other.CompareTag(hoseWaterTag))
         {
+            if (!damagedByHose) return;
             return;
         }
     }

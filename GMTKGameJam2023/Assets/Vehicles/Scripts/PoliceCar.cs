@@ -18,18 +18,12 @@ public class PoliceCar : Car
     private float numberOfSpikesDeployed = 1f;
     [SerializeField] private float laneLength = 17f;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         SetCarSpeed();
-
         numberOfSpikesDeployed = 1f;
-
-        soundManager?.PlayNewPoliceCar();
-
-        // Shake Camera
         StartCoroutine(cameraShaker.Shake(policeShakeDuration, policeShakeMagnitude));
-
-        // StartCoroutine(WaitForBombStart());
     }
 
     private void Update()

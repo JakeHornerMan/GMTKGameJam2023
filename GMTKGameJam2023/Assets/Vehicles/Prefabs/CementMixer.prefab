@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 8251440986272331830}
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
-  - component: {fileID: 6250562015194746558}
   - component: {fileID: -837215587683861363}
+  - component: {fileID: 6250562015194746558}
   m_Layer: 6
   m_Name: CementMixer
   m_TagString: Untagged
@@ -209,6 +209,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &-837215587683861363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077706268648720092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Cement Mixer
+  objectSprite: {fileID: 58938384, guid: ee66701781582fc4c8692469fcc25dd2, type: 3}
+  objectIcon: {fileID: 21300000, guid: 23d561243c582c54392c545a448183f7, type: 3}
+  objectDescription: 
 --- !u!114 &6250562015194746558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,10 +240,6 @@ MonoBehaviour:
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 439319545751973381}
-  carSprite: {fileID: 217634829, guid: ee66701781582fc4c8692469fcc25dd2, type: 3}
-  carIcon: {fileID: 21300000, guid: 23d561243c582c54392c545a448183f7, type: 3}
-  carName: 
-  carDescription: 
   carType: 1
   carHealth: 125
   carPrice: 0
@@ -249,9 +261,14 @@ MonoBehaviour:
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
   camShakeDuration: 0.1
   camShakeMagnitude: 0.1
-  carHitStopEffectMultiplier: 1
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 98d3b07ac69fd2b448072ae55bac79ce, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: c744622939b9e1940bcb80c6d02c12cc, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   cementPrefab: {fileID: 3519391268483037607, guid: 4b7a09ab34bb7af4f94cfa4814c29f37, type: 3}
@@ -260,22 +277,6 @@ MonoBehaviour:
   initalCementDelay: 2
   cementSpawnInterval: 0.3
   cementLifetime: 15
---- !u!114 &-837215587683861363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6077706268648720092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Cement Mixer
-  objectSprite: {fileID: 58938384, guid: ee66701781582fc4c8692469fcc25dd2, type: 3}
-  objectIcon: {fileID: 21300000, guid: 23d561243c582c54392c545a448183f7, type: 3}
-  objectDescription: 
 --- !u!1 &8233138244604092194
 GameObject:
   m_ObjectHideFlags: 0
