@@ -231,9 +231,6 @@ public abstract class Car : MonoBehaviour
         if (isSlicingCar)
             soundManager.PlayRandomSlice();
 
-        // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
-
         // Check if Chicken Will Die
         if (chickenHealth.health - damage <= 0)
         {
@@ -256,6 +253,9 @@ public abstract class Car : MonoBehaviour
             // Destroy the car as well
             Destroy(gameObject);
         }
+
+        // Canera Shake
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
     }
 
     protected virtual void HandleSheepCollision(Sheep sheep)
