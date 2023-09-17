@@ -54,5 +54,11 @@ public class LevelPage : MonoBehaviour
     public void ClosePage()
     {
         gameObject.SetActive(false);
+
+        // Clear out UI
+        foreach (Transform obj in levelCarsContainer.transform)
+            Destroy(obj.gameObject);
+        foreach (Transform obj in levelChickenContainer.transform)
+            Destroy(obj.gameObject);
     }
 }
