@@ -248,6 +248,7 @@ MonoBehaviour:
   canSpinOut: 1
   isSpinning: 0
   carInHitStop: 0
+  carInAction: 1
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -256,6 +257,7 @@ MonoBehaviour:
   carSpeed: 4.5
   damage: 200
   comboMultiplier: 0.5
+  DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
