@@ -47,7 +47,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private int damage = 120;
     [SerializeField] private float comboMultiplier = 0.2f;
     private float defaultComboMultiplier = 1f;
-    [SerializeField] private GameObject ExplosionSprite;
+    [SerializeField] private GameObject DeathExplosion;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
@@ -377,7 +377,7 @@ public abstract class Car : MonoBehaviour
 
         if (carType == CarType.Heavy || carType == CarType.Light)
         {
-            GameObject currentBomb = Instantiate(ExplosionSprite, transform.position, Quaternion.identity);
+            GameObject currentBomb = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
 
             Destroy(currentBomb, 0.85f);
 
