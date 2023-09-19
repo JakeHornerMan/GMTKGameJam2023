@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 640435456}
   - component: {fileID: 640435458}
   - component: {fileID: 640435459}
+  - component: {fileID: 640435460}
   m_Layer: 0
   m_Name: EndLevelManager
   m_TagString: Untagged
@@ -459,6 +460,7 @@ MonoBehaviour:
   rankingCriteria: []
   failureRanking: You Failed
   isGameOver: 1
+  pauseGameplay: 0
   startTime: 0
   devMode: 0
   cheatTokenAmount: 500
@@ -570,6 +572,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &640435460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640435455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7e75bb254a6974d994cfd4b54d726b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tokenPrefab: {fileID: 9212655407886111783, guid: f492ea83ade8b054c87db9aacf995d3d, type: 3}
+  tokenPrefabs: []
+  allLanes: []
 --- !u!224 &1343231708 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 698452841549207173, guid: 2ff3ab9fed3d00e4e905d5d418b9bbe9, type: 3}

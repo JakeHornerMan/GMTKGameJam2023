@@ -10,6 +10,7 @@ public class ResultsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI missedChickensText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    private GameManager gameManager;
 
     [Header("Settings")]
     [SerializeField] private string missedChickensLabel = " Missed Chickens";
@@ -28,10 +29,12 @@ public class ResultsUI : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
         audioSrc = FindObjectOfType<AudioSource>();
         pause = FindObjectOfType<Pause>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         SetUI();
         LevelEndAudio();
     }
@@ -61,5 +64,21 @@ public class ResultsUI : MonoBehaviour
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString("000");
+        SetChickenWave();
+    }
+
+    public void SetChickenWave()
+    {
+        ChickenWave chickenWave = new ChickenWave();
+        chickenWave.roundTime = 5f;
+        chickenWave.standardChickenAmounts = Points.killCount;
+        chickenWave.chickenIntesity = 5;
+        chickenWave.coinAmount = Points.totalTokens;
+
+        // SpecialChicken specialChicken = new SpecialChicken();
+        chickenWave.specialChickens = null;
+
+        gameManager.waves.Add(chickenWave);
+        gameManager.SetStart();
     }
 }

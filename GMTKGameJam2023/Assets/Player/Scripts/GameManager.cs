@@ -262,6 +262,7 @@ public class GameManager : MonoBehaviour
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
+        Points.totalTokens = totalTokens;
         sceneFader.FadeToResults();
     }
 }

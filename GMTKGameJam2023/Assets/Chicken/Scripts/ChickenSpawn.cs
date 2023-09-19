@@ -11,7 +11,7 @@ public class ChickenSpawn : MonoBehaviour
     [SerializeField] public SpawningPoint[] spawnSpots;
 
     [Header("Chicken Types")]
-    [SerializeField] public GameObject ChickenPrefab;
+    [SerializeField] public GameObject chickenPrefab;
 
     private SoundManager soundManager;
     private GameObject chickenContainer;
@@ -30,7 +30,7 @@ public class ChickenSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!waveEnded)
+        if (!waveEnded || specialChickens != null)
         {
             WaveTime();
         }
@@ -40,7 +40,12 @@ public class ChickenSpawn : MonoBehaviour
     {
         currentWave = wave;
         specialChickens = wave.specialChickens;
-        specialChickens.Sort((obj1, obj2) => obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
+        
+        if (specialChickens != null)
+        {
+            specialChickens.Sort((obj1, obj2) => obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
+        }
+        
         waveEnded = false;
         time = 0f;
 
@@ -99,8 +104,8 @@ public class ChickenSpawn : MonoBehaviour
         {
             float timeBetweenSpawns = currentWave.roundTime / currentWave.standardChickenAmounts;
             SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length - 1)];
-            SpawnAChicken(ChickenPrefab, point);
 
+            SpawnAChicken(chickenPrefab, point);
             waveChickenAmount--;
 
             IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
