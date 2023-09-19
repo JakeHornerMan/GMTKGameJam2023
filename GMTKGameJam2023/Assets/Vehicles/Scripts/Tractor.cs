@@ -9,13 +9,11 @@ public class Tractor : Car
     [SerializeField] private Transform[] sheepSpawnSpots;
     [SerializeField][Range(0, 100)] private int sheepSpawnChance = 40;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         SetCarSpeed();
-
         SpawnSheep();
-
-        soundManager?.PlayNewTractor();
     }
 
     private void SpawnSheep()

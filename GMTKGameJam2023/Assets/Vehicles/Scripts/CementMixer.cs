@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CementMixer : Car
@@ -16,11 +17,11 @@ public class CementMixer : Car
 
     private int cementSpawned = 0;
 
-    private void Start()
+    public override void Start()
     {
-        SetCarSpeed();
+        base.Start();
 
-        soundManager?.PlayNewCementMixer();
+        SetCarSpeed();
 
         cementSpawned = 0;
 
@@ -29,22 +30,26 @@ public class CementMixer : Car
 
     private void InstantiateCement()
     {
-        if (cementSpawned >= numCementToSpawn)
+        if (carInAction == true)
         {
-            CancelInvoke(nameof(InstantiateCement));
-            return;
+            if (cementSpawned >= numCementToSpawn)
+            {
+                CancelInvoke(nameof(InstantiateCement));
+                return;
+            }
+
+            GameObject newCement = Instantiate(
+                cementPrefab,
+                cementSpawnPos.position,
+                Quaternion.identity
+            );
+
+            soundManager.PlayCementPour();
+
+            Destroy(newCement, cementLifetime);
+
+            cementSpawned++;
         }
-
-        GameObject newCement = Instantiate(
-            cementPrefab,
-            cementSpawnPos.position,
-            Quaternion.identity
-        );
-
-        soundManager.PlayCementPour();
-
-        Destroy(newCement, cementLifetime);
-
-        cementSpawned++;
+        
     }
 }

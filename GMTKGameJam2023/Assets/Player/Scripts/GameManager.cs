@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("Chicken Waves")]
     [SerializeField] public List<ChickenWave> waves;
 
@@ -233,12 +232,12 @@ public class GameManager : MonoBehaviour
     private void UpdateRankings()
     {
         // Sort the ranking criteria array in descending order by minKills
-        Array.Sort(rankingCriteria, (a, b) => b.minKills.CompareTo(a.minKills));
+        Array.Sort(rankingCriteria, (a, b) => b.minScore.CompareTo(a.minScore));
 
         // Update Rankings
         foreach (var requirement in rankingCriteria)
         {
-            if (killCount > requirement.minKills)
+            if (playerScore > requirement.minScore)
             {
                 currentRanking = requirement.rankingString;
                 break;
@@ -250,7 +249,6 @@ public class GameManager : MonoBehaviour
             currentRanking = failureRanking;
         }
     }
-
 
     private void NewWavePopup(string speedUpText)
     {
@@ -293,6 +291,6 @@ public class SpecialChicken
 [System.Serializable]
 public class RankingRequirement
 {
-    public int minKills = 0;
+    public int minScore = 0;
     public string rankingString = "Poultry Terrorizer";
 }

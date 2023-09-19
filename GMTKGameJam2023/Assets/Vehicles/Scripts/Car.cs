@@ -31,7 +31,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool carInHitStop = false;
     private float degreesPerSecond = 540f;
 
-    private bool carInAction = true;
+    public bool carInAction = true; //is car in play (not being launched)?
 
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
@@ -47,6 +47,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private int damage = 120;
     [SerializeField] private float comboMultiplier = 0.2f;
     private float defaultComboMultiplier = 1f;
+    [SerializeField] private GameObject DeathExplosion;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
@@ -61,18 +62,21 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private string tokenPopUpMsg = "Token";
     [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
+    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.15f;
     [SerializeField] private float camShakeMagnitude = 0.05f;
 
+    [Header("Sound")]
+    [SerializeField] private SoundConfig[] spawnSound;
+
     private int carKillCount = 0;
     protected int totalPoints = 0;
 
-    [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
-
     protected GameManager gameManager;
     private Rigidbody2D rb;
+
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
 
@@ -84,9 +88,14 @@ public abstract class Car : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    public virtual void Start()
     {
         carKillCount = 0;
+
+        soundManager?.RandomPlaySound(spawnSound);
+
+        // Shake Camera
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
     }
 
     private void Update()
@@ -193,8 +202,8 @@ public abstract class Car : MonoBehaviour
             }
 
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
-            StartCoroutine(CarHitStop(0.15f));
-            otherCar.StartCoroutine(CarHitStop(0.15f));
+            StartCoroutine(CarHitStop(0.6f));
+            otherCar.StartCoroutine(CarHitStop(0.6f));
 
         }
     }
@@ -365,6 +374,14 @@ public abstract class Car : MonoBehaviour
         comboText.enabled = false;
 
         rb.velocity = normalizedVector * 25;
+
+        if (carType == CarType.Heavy || carType == CarType.Light)
+        {
+            GameObject currentBomb = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
+
+            Destroy(currentBomb, 0.85f);
+
+        }
 
         StartCoroutine(LaunchCarCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
     }
