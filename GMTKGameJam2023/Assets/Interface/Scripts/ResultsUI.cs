@@ -71,11 +71,9 @@ public class ResultsUI : MonoBehaviour
     {
         ChickenWave chickenWave = new ChickenWave();
         chickenWave.roundTime = 5f;
-        chickenWave.standardChickenAmounts = Points.killCount;
+        chickenWave.standardChickenAmounts = Points.safelyCrossedChickens;
         chickenWave.chickenIntesity = 5;
         chickenWave.coinAmount = Points.totalTokens;
-
-        // SpecialChicken specialChicken = new SpecialChicken();
         chickenWave.specialChickens = null;
 
         gameManager.waves.Add(chickenWave);

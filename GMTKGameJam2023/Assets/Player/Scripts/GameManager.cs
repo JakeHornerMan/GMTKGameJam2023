@@ -126,7 +126,9 @@ public class GameManager : MonoBehaviour
         NewWavePopup(currentWave.wavePrompt);
 
         chickenSpawn.SetNewWave(currentWave);
-        tokenSpawner.SetNewWave(currentWave);
+
+        if(tokenSpawner != null)
+            tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
         StartCoroutine(coroutine);
@@ -136,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber < waves.Count)
+        if (waveNumber <= waves.Count)
             SettingWaveInChickenSpawn();
     }
 

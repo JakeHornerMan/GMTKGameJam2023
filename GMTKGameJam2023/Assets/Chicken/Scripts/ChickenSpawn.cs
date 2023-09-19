@@ -18,7 +18,7 @@ public class ChickenSpawn : MonoBehaviour
 
     [HideInInspector] public ChickenWave currentWave;
     [HideInInspector] public List<SpecialChicken> specialChickens;
-    [HideInInspector] public int waveChickenAmount;
+    public int waveChickenAmount;
     [HideInInspector] public float time = 0f;
     [HideInInspector] public bool waveEnded = false;
 
@@ -30,7 +30,7 @@ public class ChickenSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!waveEnded || specialChickens != null)
+        if (!waveEnded)
         {
             WaveTime();
         }
@@ -38,16 +38,17 @@ public class ChickenSpawn : MonoBehaviour
 
     public void SetNewWave(ChickenWave wave)
     {
+        Debug.Log("New Wave");
         currentWave = wave;
-        specialChickens = wave.specialChickens;
-        
-        if (specialChickens != null)
-        {
+
+        if(wave.specialChickens != null){
+            specialChickens = wave.specialChickens;
             specialChickens.Sort((obj1, obj2) => obj1.timeToSpawn.CompareTo(obj2.timeToSpawn));
         }
         
         waveEnded = false;
         time = 0f;
+        waveChickenAmount = wave.standardChickenAmounts;
 
         if (currentWave.standardChickenAmounts > 0)
             StandardChickenWave();
@@ -56,6 +57,10 @@ public class ChickenSpawn : MonoBehaviour
     private void WaveTime()
     {
         time += Time.deltaTime;
+        if (time > currentWave.roundTime)
+        {
+            waveEnded = true;
+        }
         if (time < currentWave.roundTime)
         {
             if (specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn)
@@ -63,10 +68,6 @@ public class ChickenSpawn : MonoBehaviour
                 SpawnAChicken(specialChickens[0].chicken, SelectSpawn());
                 specialChickens.RemoveAt(0);
             }
-        }
-        if (time > currentWave.roundTime)
-        {
-            waveEnded = true;
         }
     }
 
@@ -105,18 +106,18 @@ public class ChickenSpawn : MonoBehaviour
             float timeBetweenSpawns = currentWave.roundTime / currentWave.standardChickenAmounts;
             SpawningPoint point = spawnSpots[Random.Range(0, spawnSpots.Length - 1)];
 
-            SpawnAChicken(chickenPrefab, point);
-            waveChickenAmount--;
-
             IEnumerator coroutine = WaitAndSpawnChicken(timeBetweenSpawns);
             StartCoroutine(coroutine);
+
+            SpawnAChicken(chickenPrefab, point);
+            waveChickenAmount--;
         }
     }
 
     private IEnumerator WaitAndSpawnChicken(float time)
     {
         yield return new WaitForSeconds(time);
-        if (waveChickenAmount <= 0)
+        if (waveChickenAmount > 0)
             StandardChickenWave();
     }
 
