@@ -584,6 +584,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8798662825009773225, guid: 1c745b90f75203a44ac5e04a7834b4a3, type: 3}
+      propertyPath: isGameOver
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798662825009773225, guid: 1c745b90f75203a44ac5e04a7834b4a3, type: 3}
+      propertyPath: pauseGameplay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
