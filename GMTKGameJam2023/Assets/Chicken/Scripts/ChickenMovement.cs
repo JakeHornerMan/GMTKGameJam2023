@@ -9,6 +9,9 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private GameObject chickenSprite;
     [SerializeField] public Collider2D chickenCollider;
 
+    [Header("Effects")]
+    [SerializeField] private GameObject splashParticles;
+
     [Header("Movement Values")]
     [SerializeField] public int chickenIntesity = 0;
     [SerializeField] private float minMoveTime = 0.5f;
@@ -19,7 +22,9 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] public bool ignoreCement = false;
     [HideInInspector] public bool isStuck = false;
     [HideInInspector] public LayerMask cementLayer;
+    [HideInInspector] public LayerMask waterLayer;
     [HideInInspector] private string cementLayerName = "Cement";
+    [HideInInspector] private string waterLayerName = "Water";
 
     [Header("Animation")]
     [SerializeField] private string animatorHopBool = "Hop";
@@ -46,8 +51,10 @@ public class ChickenMovement : MonoBehaviour
             anim = hopController.GetComponent<Animator>();
         }
 
-        int layerIndex = LayerMask.NameToLayer(cementLayerName);
-        cementLayer = 1 << layerIndex; //Convert layer index to layer mask, to avoid setting in inspector
+        int cementLayerIndex = LayerMask.NameToLayer(cementLayerName);
+        int waterLayerIndex = LayerMask.NameToLayer(waterLayerName);
+        cementLayer = 1 << cementLayerIndex; //Convert layer index to layer mask, to avoid setting in inspector
+        waterLayer = 1 << waterLayerIndex;
     }
 
     private void Start()
@@ -80,8 +87,7 @@ public class ChickenMovement : MonoBehaviour
                 break;
         }
 
-
-        //Rewrite code to use a general "stuck" check, instead of checking for cement specifically
+        // Rewrite code to use a general "stuck" check, instead of checking for cement specifically
         if (!chickenCollider.IsTouchingLayers(cementLayer) || ignoreCement)
         {
             IEnumerator coroutine = WaitAndMove(moveTime);
@@ -136,6 +142,15 @@ public class ChickenMovement : MonoBehaviour
         transform.position = new Vector3(targetPoint.x, targetPoint.y, transform.position.z);
 
         hopController.transform.localPosition = Vector3.zero;
+
+        if (chickenCollider.IsTouchingLayers(waterLayer))
+        {
+            Instantiate(
+                splashParticles,
+                transform.position + splashParticles.transform.localPosition,
+                splashParticles.transform.rotation
+            );
+        }
     }
 
     private IEnumerator AnimateChicken()
