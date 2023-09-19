@@ -75,6 +75,7 @@ public class LevelInfoCards : MonoBehaviour
     {
         gameManager.pauseGameplay = true;
         gameUI.SetActive(false);
+        // Time.timeScale = Time.unscaledDeltaTime;
     }
 
     public void StartGame()
@@ -82,6 +83,7 @@ public class LevelInfoCards : MonoBehaviour
         CloseInfoCards();
         gameManager.pauseGameplay = false;
         gameManager.SetStart();
+        // Time.timeScale = 1f;
     }
 
     public void MoveInfoBox(bool isRight)
