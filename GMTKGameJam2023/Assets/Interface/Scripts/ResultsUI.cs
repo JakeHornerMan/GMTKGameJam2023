@@ -56,7 +56,7 @@ public class ResultsUI : MonoBehaviour
 
     public void Restart()
     {
-        sceneFader.ReloadScene();
+        sceneFader.RestartLevel();
     }
 
     public void SetUI()

@@ -6,8 +6,8 @@ using System.Collections;
 public class SceneFader : MonoBehaviour
 {
     [Header("Scene Loading")]
-    [SerializeField] public string levelSceneName;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
+    [SerializeField]private string levelSceneName;
     [SerializeField] private string worldSelectSceneName = "WorldSelect";
     [SerializeField] private string levelSelectSceneName = "LevelSelect";
     [SerializeField] private string tutorialSceneName = "Tutorial";
@@ -34,7 +34,8 @@ public class SceneFader : MonoBehaviour
     }
 
     // Scene Loading Functions
-    public void ReloadScene() => FadeTo(levelSceneName);
+    public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
+    public void RestartLevel() => FadeTo(levelSceneName);
     public void FadeToMainMenu() => FadeTo(mainMenuSceneName);
     public void FadeToWorlds() => FadeTo(worldSelectSceneName);
     public void FadeToLevelSelect() => FadeTo(levelSelectSceneName);

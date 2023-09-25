@@ -38,7 +38,6 @@ public class ChickenSpawn : MonoBehaviour
 
     public void SetNewWave(ChickenWave wave)
     {
-        Debug.Log("New Wave");
         currentWave = wave;
 
         if(wave.specialChickens != null){
