@@ -6,6 +6,7 @@ using System.Collections;
 public class SceneFader : MonoBehaviour
 {
     [Header("Scene Loading")]
+    [SerializeField] public string levelSceneName;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string worldSelectSceneName = "WorldSelect";
     [SerializeField] private string levelSelectSceneName = "LevelSelect";
@@ -23,6 +24,7 @@ public class SceneFader : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FadeIn());
+        levelSceneName = NameFromIndex(Points.sceneIndex);
     }
 
     public void FadeTo(string targetScene)
@@ -32,7 +34,7 @@ public class SceneFader : MonoBehaviour
     }
 
     // Scene Loading Functions
-    public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
+    public void ReloadScene() => FadeTo(levelSceneName);
     public void FadeToMainMenu() => FadeTo(mainMenuSceneName);
     public void FadeToWorlds() => FadeTo(worldSelectSceneName);
     public void FadeToLevelSelect() => FadeTo(levelSelectSceneName);
@@ -68,5 +70,14 @@ public class SceneFader : MonoBehaviour
 
         // Load Target Scene
         SceneManager.LoadScene(targetScene);
+    }
+
+    private string NameFromIndex(int BuildIndex)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(BuildIndex);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
     }
 }

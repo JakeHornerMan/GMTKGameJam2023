@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber <= waves.Count)
+        if (waveNumber != waves.Count)
             SettingWaveInChickenSpawn();
     }
 
@@ -265,6 +266,7 @@ public class GameManager : MonoBehaviour
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
         Points.totalTokens = totalTokens;
+        Points.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneFader.FadeToResults();
     }
 }
