@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5832129175142265213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5013618483087767452}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ace9b1f401a7f3647936c5451a7fdaf0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.84, y: 2.59}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Sheep
-  objectSprite: {fileID: 0}
-  objectIcon: {fileID: 0}
+  objectSprite: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
+  objectIcon: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
   objectDescription: 
 --- !u!114 &2032628398341768708
 MonoBehaviour:
@@ -201,12 +201,14 @@ MonoBehaviour:
   canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
+  carInAction: 1
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
   carSpeed: 0
   damage: 120
   comboMultiplier: 0.2
+  DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
@@ -221,6 +223,8 @@ MonoBehaviour:
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   sheepCollider: {fileID: 4047289718886028338}
+  deathParticles: {fileID: 4173655568478535620, guid: f4a4dc629de6e5d4abb35a1b76213248, type: 3}
+  woolParticleDestroyDelay: 2
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
