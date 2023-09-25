@@ -284,6 +284,7 @@ MonoBehaviour:
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
+  splashParticles: {fileID: 6085739347515352222, guid: 0ac7d6339c598f44984130e93eb6b00e, type: 3}
   chickenIntesity: 0
   minMoveTime: 1
   maxMoveTime: 3
@@ -293,6 +294,9 @@ MonoBehaviour:
   cementLayer:
     serializedVersion: 2
     m_Bits: 64
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 0
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.03
@@ -334,4 +338,20 @@ MonoBehaviour:
   objectName: Chicken
   objectSprite: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
   objectIcon: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
-  objectDescription: 
+  objectDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+    mollitia,
+
+    molestiae quas vel sint commodi repudiandae consequuntur voluptatum
+    laborum
+
+    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga
+    praesentium
+
+    optio, eaque rerum! Provident similique accusantium nemo autem.
+    Veritatis
+
+    obcaecati tenetur iure eius earum ut molestias architecto voluptate
+    aliquam
+
+    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat,
+    odit'

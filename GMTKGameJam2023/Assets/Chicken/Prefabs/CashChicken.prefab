@@ -5131,6 +5131,7 @@ MonoBehaviour:
   hopController: {fileID: 469911086233366047}
   chickenSprite: {fileID: 7432632716323759472}
   chickenCollider: {fileID: 5996180526844374429}
+  splashParticles: {fileID: 6085739347515352222, guid: 0ac7d6339c598f44984130e93eb6b00e, type: 3}
   chickenIntesity: 0
   minMoveTime: 0.75
   maxMoveTime: 2
@@ -5140,6 +5141,9 @@ MonoBehaviour:
   cementLayer:
     serializedVersion: 2
     m_Bits: 64
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 0
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.06

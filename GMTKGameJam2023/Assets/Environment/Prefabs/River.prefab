@@ -201,8 +201,9 @@ GameObject:
   - component: {fileID: 477890122295091617}
   - component: {fileID: 74722354487794175}
   - component: {fileID: 8292855072235135747}
-  - component: {fileID: 7038452698073691666}
+  - component: {fileID: 7184434155112739915}
   - component: {fileID: 1656407066903896881}
+  - component: {fileID: 7038452698073691666}
   m_Layer: 4
   m_Name: River
   m_TagString: Water
@@ -295,7 +296,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -323,21 +324,53 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 13.35}
+  m_Size: {x: 2.4, y: 13.35}
   m_EdgeRadius: 0
---- !u!114 &7038452698073691666
-MonoBehaviour:
+--- !u!61 &7184434155112739915
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7991264885057282889}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7ab6ab1d4b9f142aaee07d99eac9ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomHighlight: {fileID: 6309948892400413341}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -10}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 17.1875}
+    newSize: {x: 2.5, y: 17.1875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 6}
+  m_EdgeRadius: 0
 --- !u!61 &1656407066903896881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -370,7 +403,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -10}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -381,8 +414,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 6}
+  m_Size: {x: 1, y: 17}
   m_EdgeRadius: 0
+--- !u!114 &7038452698073691666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991264885057282889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7ab6ab1d4b9f142aaee07d99eac9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottomHighlight: {fileID: 6309948892400413341}
 --- !u!1 &8423620670908804458
 GameObject:
   m_ObjectHideFlags: 0
