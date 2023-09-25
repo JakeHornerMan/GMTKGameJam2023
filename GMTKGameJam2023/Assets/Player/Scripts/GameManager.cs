@@ -81,9 +81,6 @@ public class GameManager : MonoBehaviour
 
         // if (waves.Count != 0)
         //     SettingWaveInChickenSpawn();
-
-        // if (isGameOver)
-        //     MissedChickensWave();
     }
 
     //This is the new start method it is called when Level infoCards are closed
@@ -103,9 +100,6 @@ public class GameManager : MonoBehaviour
 
         if (waves.Count != 0)
             SettingWaveInChickenSpawn();
-
-        if (isGameOver)
-            MissedChickensWave();    
     }
 
     private void SetGameTime()
@@ -141,19 +135,6 @@ public class GameManager : MonoBehaviour
         waveNumber++;
         if (waveNumber != waves.Count)
             SettingWaveInChickenSpawn();
-    }
-
-    private void MissedChickensWave()
-    {
-        ChickenWave endWave = new()
-        {
-            roundTime = 10f,
-            standardChickenAmounts = Points.safelyCrossedChickens,
-            wavePrompt = "",
-            specialChickens = new List<SpecialChicken>()
-        };
-        waves.Add(endWave);
-        SettingWaveInChickenSpawn();
     }
 
     private void FixedUpdate()
