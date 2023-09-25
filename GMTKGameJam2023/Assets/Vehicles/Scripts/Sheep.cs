@@ -7,6 +7,10 @@ public class Sheep : Car
     [Header("References")]
     [SerializeField] private Collider2D sheepCollider;
 
+    [Header("Effects")]
+    [SerializeField] private GameObject deathParticles;
+    [SerializeField] private float woolParticleDestroyDelay = 2f;
+
     [Header("Layers")]
     [SerializeField] private LayerMask waterLayer;
 
@@ -38,7 +42,14 @@ public class Sheep : Car
     {
         soundManager.PlaySheepDeath();
 
-        // TODO Death particles
+        // Death particles
+        GameObject woolParticles = Instantiate(
+            deathParticles,
+            transform.position,
+            Quaternion.identity
+        );
+        // Mark Particles for Destruction
+        Destroy(woolParticles, woolParticleDestroyDelay);
 
         // Destroy after hitting chicken
         Destroy(gameObject);

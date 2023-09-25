@@ -26,7 +26,12 @@ public class WreckingBall : MonoBehaviour
             return;
         }
 
-        // Debug.Log(collision.gameObject.name);
+        // Check if Hit Sheep
+        Sheep sheep = collision.gameObject.GetComponent<Sheep>();
+        if (sheep != null)
+        {
+            sheep.HandleDeath();
+        }
 
         // Check if Hit Chicken
         ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
@@ -56,10 +61,9 @@ public class WreckingBall : MonoBehaviour
 
     private void HandleCarCollision(Car car)
     {
-        // Impact Sound
+        // TODO Impact Sound
 
-        // Camera Shake
-
+        // TODO Camera Shake
 
         if (car.canSpinOut == true && car.isSpinning == false)
         {

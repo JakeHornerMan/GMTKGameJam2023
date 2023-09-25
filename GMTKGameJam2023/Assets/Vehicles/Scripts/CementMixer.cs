@@ -41,7 +41,7 @@ public class CementMixer : Car
             GameObject newCement = Instantiate(
                 cementPrefab,
                 cementSpawnPos.position,
-                Quaternion.identity
+                Quaternion.Euler(0, 0, Random.Range(0, 360))
             );
 
             soundManager.PlayCementPour();
