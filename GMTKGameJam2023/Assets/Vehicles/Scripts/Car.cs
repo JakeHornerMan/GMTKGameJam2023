@@ -200,10 +200,15 @@ public abstract class Car : MonoBehaviour
                 LaunchCar();
                 otherCar.carHealth -= this.carHealth;
             }
+            else if (this.carHealth == otherCar.carHealth)
+            {
+                otherCar.LaunchCar();
+                this.carHealth -= otherCar.carHealth;
+            }
 
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
-            StartCoroutine(CarHitStop(0.6f));
-            otherCar.StartCoroutine(CarHitStop(0.6f));
+            StartCoroutine(CarHitStop(0.1f));
+            otherCar.StartCoroutine(CarHitStop(0.1f));
 
         }
     }
