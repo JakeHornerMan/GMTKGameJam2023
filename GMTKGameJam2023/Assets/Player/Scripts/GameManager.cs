@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -80,9 +81,6 @@ public class GameManager : MonoBehaviour
 
         // if (waves.Count != 0)
         //     SettingWaveInChickenSpawn();
-
-        // if (isGameOver)
-        //     MissedChickensWave();
     }
 
     //This is the new start method it is called when Level infoCards are closed
@@ -102,9 +100,6 @@ public class GameManager : MonoBehaviour
 
         if (waves.Count != 0)
             SettingWaveInChickenSpawn();
-
-        if (isGameOver)
-            MissedChickensWave();    
     }
 
     private void SetGameTime()
@@ -126,7 +121,9 @@ public class GameManager : MonoBehaviour
         NewWavePopup(currentWave.wavePrompt);
 
         chickenSpawn.SetNewWave(currentWave);
-        tokenSpawner.SetNewWave(currentWave);
+
+        if(tokenSpawner != null)
+            tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
         StartCoroutine(coroutine);
@@ -136,21 +133,8 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber < waves.Count)
+        if (waveNumber != waves.Count)
             SettingWaveInChickenSpawn();
-    }
-
-    private void MissedChickensWave()
-    {
-        ChickenWave endWave = new()
-        {
-            roundTime = 10f,
-            standardChickenAmounts = Points.safelyCrossedChickens,
-            wavePrompt = "",
-            specialChickens = new List<SpecialChicken>()
-        };
-        waves.Add(endWave);
-        SettingWaveInChickenSpawn();
     }
 
     private void FixedUpdate()
@@ -262,6 +246,8 @@ public class GameManager : MonoBehaviour
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
+        Points.totalTokens = totalTokens;
+        Points.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneFader.FadeToResults();
     }
 }
