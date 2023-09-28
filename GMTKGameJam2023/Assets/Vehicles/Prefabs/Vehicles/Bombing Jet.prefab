@@ -276,7 +276,8 @@ MonoBehaviour:
   objectName: Bombing Jet
   objectSprite: {fileID: 21300000, guid: 7d8b7ef038865ad4f93e251845b99cb1, type: 3}
   objectIcon: {fileID: 21300000, guid: 219d7c0a273407342b9560b8e3696ab7, type: 3}
-  objectDescription: 
+  objectDescription: Executes a swift bombing run covering three lanes, dropping
+    many lethal missiles.
 --- !u!114 &367647572244851810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +302,7 @@ MonoBehaviour:
   canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
+  carInAction: 1
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -312,6 +314,7 @@ MonoBehaviour:
   carSpeed: 20
   damage: 120
   comboMultiplier: 0.2
+  DeathExplosion: {fileID: 0}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
   scorePopUpMsg: 
