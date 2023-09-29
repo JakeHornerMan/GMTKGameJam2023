@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMenuMove : MonoBehaviour
 {
     public Vector3 targetPos = new Vector3(0, 0, -10);
-    private float speed = 4f;
+    public float speed = 5f;
 
     // Update is called once per frame
     void Update()

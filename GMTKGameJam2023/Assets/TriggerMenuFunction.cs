@@ -7,11 +7,14 @@ public class TriggerMenuFunction : MonoBehaviour
     [SerializeField] public string option;
     private CameraMenuMove mainCamera;
     private CameraShaker cameraShaker;
+    private MainMenu mainMenu;
+    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject settings;
 
     private Vector3 startPos = new Vector3(0, -0, -10);
     private Vector3 gamesPos = new Vector3(0, 20, -10);
-    private Vector3 settingsPos = new Vector3(10, 0, -10);
-    private Vector3 creditsPos = new Vector3(10, 0, -10);
+    private Vector3 settingsPos = new Vector3(-30, 0, -10);
+    private Vector3 creditsPos = new Vector3(30, 0, -10);
 
 
     // private float speed = 3f;
@@ -20,6 +23,7 @@ public class TriggerMenuFunction : MonoBehaviour
     {
         mainCamera = FindObjectOfType<CameraMenuMove>();
         cameraShaker = FindObjectOfType<CameraShaker>();
+        mainMenu = FindObjectOfType<MainMenu>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,24 +46,38 @@ public class TriggerMenuFunction : MonoBehaviour
         case "GoToCredits":
             GoToCredits();
             break;
+        case "GoToWorldSelect":
+            GoToWorldSelect();
+            break;
         default:
             break;
         }  
     }
 
     public void GoToGameSelect(){
+        mainCamera.speed = 5f;
         mainCamera.targetPos = gamesPos;
     }
 
     public void GoToSettings(){
+        mainCamera.speed = 12f;
         mainCamera.targetPos = settingsPos;
     }
 
     public void GoToCredits(){
+        mainCamera.speed = 12f;
         mainCamera.targetPos = creditsPos;
+        credits.active = true;
     }
 
     public void GoToStart(){
         mainCamera.targetPos = startPos;
+        credits.active = false;
+    }
+
+    public void GoToWorldSelect(){
+        mainCamera.speed = 5f;
+        mainCamera.targetPos = gamesPos;
+        mainMenu.EnterWorldSelect();
     }
 }
