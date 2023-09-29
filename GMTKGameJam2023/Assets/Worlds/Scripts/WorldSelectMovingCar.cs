@@ -22,7 +22,8 @@ public class WorldSelectMovingCar : MonoBehaviour
 
     private void Start()
     {
-        // Start the looping coroutine
+        rb.velocity = transform.up * moveSpeed;
+
         StartCoroutine(LoopMovement());
     }
 
@@ -30,7 +31,6 @@ public class WorldSelectMovingCar : MonoBehaviour
     {
         while (true)
         {
-            rb.velocity = transform.up * moveSpeed;
             yield return new WaitForSeconds(loopDelaySeconds);
 
             // Reset the car's position when it reaches the top
