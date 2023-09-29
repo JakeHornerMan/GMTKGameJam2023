@@ -8,7 +8,12 @@ public class TriggerMenuFunction : MonoBehaviour
     private CameraMenuMove mainCamera;
     private CameraShaker cameraShaker;
 
-    // private Vector3 targetPos = new Vector3(0, -10, 0);
+    private Vector3 startPos = new Vector3(0, -0, -10);
+    private Vector3 gamesPos = new Vector3(0, 20, -10);
+    private Vector3 settingsPos = new Vector3(10, 0, -10);
+    private Vector3 creditsPos = new Vector3(10, 0, -10);
+
+
     // private float speed = 3f;
 
     private void Start()
@@ -32,10 +37,10 @@ public class TriggerMenuFunction : MonoBehaviour
             GoToStart();
             break;
         case "GoToSettings":
-            // code block
+            GoToSettings();
             break;
         case "GoToCredits":
-            // code block
+            GoToCredits();
             break;
         default:
             break;
@@ -43,18 +48,18 @@ public class TriggerMenuFunction : MonoBehaviour
     }
 
     public void GoToGameSelect(){
-        mainCamera.targetPos = new Vector3(0, 20, -10);
+        mainCamera.targetPos = gamesPos;
     }
 
     public void GoToSettings(){
-
+        mainCamera.targetPos = settingsPos;
     }
 
     public void GoToCredits(){
-
+        mainCamera.targetPos = creditsPos;
     }
 
     public void GoToStart(){
-        mainCamera.targetPos = new Vector3(0, 0, -10);
+        mainCamera.targetPos = startPos;
     }
 }
