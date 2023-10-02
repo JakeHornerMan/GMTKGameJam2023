@@ -8391,25 +8391,6 @@ MonoBehaviour:
   timeUntilRefill: 0
   amountPerRefill: 1
   carCount: 0
---- !u!114 &3445374327606749420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7731273056010915474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ade485acce34490499d69afbfd7d7d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minX: -0.35
-  maxX: 45
-  cameraScrollSpeed: 15
-  rightKey: 275
-  leftKey: 276
-  rightKeyAlt: 100
-  leftKeyAlt: 97
 --- !u!224 &3456447852706033258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8575,7 +8556,7 @@ MonoBehaviour:
   devMode: 0
   cheatTokenAmount: 500
   startLives: 10
-  lostChicenScore: 0
+  lostChickenScore: 1000
   safelyCrossedChickens: 0
   missedChickenLives: 0
   killCount: 0
@@ -8929,7 +8910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921978767722711516}
   - component: {fileID: 3749823015621503471}
-  - component: {fileID: 3445374327606749420}
+  - component: {fileID: 7731273056010915475}
   - component: {fileID: 3936138345293415632}
   - component: {fileID: 2703009996921478430}
   - component: {fileID: 5178201841004163200}
@@ -8940,6 +8921,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7731273056010915475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731273056010915474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fe09c88a7044c4a87b08b997703fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minX: -0.35
+  maxX: 100
+  cameraScrollSpeed: 1
+  rightKey: 275
+  leftKey: 276
+  rightKeyAlt: 100
+  leftKeyAlt: 97
 --- !u!1001 &7796880407816302560
 PrefabInstance:
   m_ObjectHideFlags: 0
