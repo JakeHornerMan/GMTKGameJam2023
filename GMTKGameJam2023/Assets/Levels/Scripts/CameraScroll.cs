@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
+    [Header("Scrolling Restrictions")]
+    [SerializeField] private float minX = -0.35f;
+    [SerializeField] private float maxX = 100f;
+
     [Header("Camera Keyboard Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
 
@@ -38,7 +42,15 @@ public class CameraScroll : MonoBehaviour
         if (Input.GetKey(leftKey) || Input.GetKey(leftKeyAlt))
             moveDirection += Vector3.left;
         moveDirection.Normalize();
-        camTransform.position += moveDirection * cameraScrollSpeed * Time.deltaTime;
+
+        // Calculate the new camera position
+        Vector3 newPosition = camTransform.position + moveDirection * cameraScrollSpeed * Time.deltaTime;
+
+        // Clamp the x position to stay within the specified range
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+
+        // Update the camera's position
+        camTransform.position = newPosition;
 
         // Mouse controls
         if (Input.GetMouseButtonDown(0))
@@ -49,7 +61,16 @@ public class CameraScroll : MonoBehaviour
         {
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
             difference = new Vector3(difference.x, 0, 0);
-            camTransform.position += difference;
+
+            // Calculate the new camera position when dragging
+            newPosition = camTransform.position + difference;
+
+            // Clamp the x position to stay within the specified range
+            newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+
+            // Update the camera's position
+            camTransform.position = newPosition;
         }
     }
+
 }
