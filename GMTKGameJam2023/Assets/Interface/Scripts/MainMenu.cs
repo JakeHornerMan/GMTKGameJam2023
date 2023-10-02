@@ -9,9 +9,11 @@ public class MainMenu : MonoBehaviour
 
     private AudioSource musicAudioSource;
     private SceneFader sceneFader;
+    private TriggerMenuFunction triggerMenuFunction;
 
     private void Awake()
     {
+        triggerMenuFunction = FindObjectOfType<TriggerMenuFunction>();
         sceneFader = FindObjectOfType<SceneFader>();
     }
 
@@ -31,4 +33,8 @@ public class MainMenu : MonoBehaviour
     public void EnterSettings() => sceneFader.FadeToSettings();
 
     public void QuitGame() => Application.Quit();
+
+    public void BackToMenu(){
+        triggerMenuFunction.GoToStart();
+    }
 }
