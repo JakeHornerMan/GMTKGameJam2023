@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
+
     [Header("Scrolling Restrictions")]
     [SerializeField] private float minX = -0.35f;
     [SerializeField] private float maxX = 100f;
-
     [Header("Camera Keyboard Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
 
@@ -72,5 +72,4 @@ public class CameraScroll : MonoBehaviour
             camTransform.position = newPosition;
         }
     }
-
 }
