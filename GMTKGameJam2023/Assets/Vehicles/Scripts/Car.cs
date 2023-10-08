@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
 
 public abstract class Car : MonoBehaviour
 {
@@ -100,19 +99,15 @@ public abstract class Car : MonoBehaviour
 
     private void Update()
     {
-        // xKillCount Combo Text
-
         if (isSpinning)
         {
             carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
         }
 
-        // should be moved to function
         if (comboText != null)
         {
             comboText.text = $"{comboSymbol}{carKillCount}";
         }
-
     }
 
     protected virtual void SetCarSpeed()
@@ -142,20 +137,10 @@ public abstract class Car : MonoBehaviour
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
-
-        /*
-        if (collision.gameObject.CompareTag(deathboxTag))
-        {
-            if (totalPoints > 0)
-                gameManager.AddPlayerScore(totalPoints);
-            Destroy(gameObject);
-        }
-        */
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-
         // Check if Hit Car
         Car otherCar = other.gameObject.GetComponent<Car>();
 
@@ -197,7 +182,7 @@ public abstract class Car : MonoBehaviour
                 LaunchCar();
                 otherCar.carHealth -= this.carHealth;
             }
-            else if (this.carHealth == otherCar.carHealth)
+            else if (this.carHealth == otherCar.carHealth &&!(this.GetType() == typeof(Sheep)))
             {
                 otherCar.LaunchCar();
                 this.carHealth -= otherCar.carHealth;
@@ -247,15 +232,10 @@ public abstract class Car : MonoBehaviour
         {
             KillChicken(chickenHealth);
         }
-
-        //chickenHealth.gameObject.GetComponent<ChickenMovement>().PlayChickenHitstop();
-
         StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
-
-
 
         // Destroy Self if Bomb Chicken
         BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
@@ -326,7 +306,6 @@ public abstract class Car : MonoBehaviour
     {
         if (rb != null && carInAction == true && carInHitStop == false)
         {
-
             carInHitStop = true;
 
             Vector3 currentVelocity = rb.velocity;
