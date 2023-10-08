@@ -191,7 +191,6 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
             StartCoroutine(CarHitStop(0.1f));
             otherCar.StartCoroutine(CarHitStop(0.1f));
-
         }
     }
 
@@ -327,7 +326,6 @@ public abstract class Car : MonoBehaviour
 
     public void LaunchCar()
     {
-
         carInAction = false;
 
         // Generate random x and y components between -10 and 10
@@ -361,7 +359,6 @@ public abstract class Car : MonoBehaviour
             GameObject currentBomb = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
 
             Destroy(currentBomb, 0.85f);
-
         }
 
         StartCoroutine(LaunchCarCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
@@ -384,7 +381,6 @@ public abstract class Car : MonoBehaviour
 
             // Linearly interpolate vehicle scale
             gameObject.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
-
 
             yield return null;
         }
