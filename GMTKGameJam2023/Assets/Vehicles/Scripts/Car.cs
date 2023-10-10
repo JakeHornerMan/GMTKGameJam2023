@@ -94,7 +94,8 @@ public abstract class Car : MonoBehaviour
         soundManager?.RandomPlaySound(spawnSound);
 
         // Shake Camera
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        if (cameraShaker.isActiveAndEnabled)
+            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
     }
 
     private void Update()
@@ -182,7 +183,8 @@ public abstract class Car : MonoBehaviour
                 LaunchCar();
                 otherCar.carHealth -= this.carHealth;
             }
-            else if (this.carHealth == otherCar.carHealth &&!(this.GetType() == typeof(Sheep)))
+            // TODO - Remove Sheep Later
+            else if (this.carHealth == otherCar.carHealth && !(this.GetType() == typeof(Sheep)))
             {
                 otherCar.LaunchCar();
                 this.carHealth -= otherCar.carHealth;
