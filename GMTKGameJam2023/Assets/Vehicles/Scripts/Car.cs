@@ -137,23 +137,20 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
-
-
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-
-
-
+        /*
         if (collision.gameObject.CompareTag(deathboxTag))
         {
-            //if (totalPoints > 0)
-            //    gameManager.AddPlayerScore(totalPoints);
-            //Destroy(gameObject);
+            if (totalPoints > 0)
+                gameManager.AddPlayerScore(totalPoints);
+            Destroy(gameObject);
         }
+        */
     }
 
     private void OnCollisionEnter2D(Collision2D other)

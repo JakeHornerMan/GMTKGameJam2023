@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
-    [SerializeField] public int lostChicenScore = 1000;
+    [SerializeField] public int lostChickenScore = 1000;
 
     // Player Stats
     [HideInInspector] public int safelyCrossedChickens = 0;
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
     {
         safelyCrossedChickens++;
         missedChickenLives--;
-        RemovePlayerScore(lostChicenScore * safelyCrossedChickens);
+        RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
     }
