@@ -185,7 +185,7 @@ Transform:
   - {fileID: 1956138797627160308}
   - {fileID: 3718478140365259465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -369,7 +369,7 @@ MonoBehaviour:
   devMode: 0
   cheatTokenAmount: 500
   startLives: 10
-  lostChicenScore: 1000
+  lostChickenScore: 1000
   safelyCrossedChickens: 0
   missedChickenLives: 0
   killCount: 0
@@ -540,10 +540,10 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 0f86c9e8fc1e33641b18e7db5b640ebe, type: 3}
     volume: 0.5
   spikePlaceConfig:
-    clip: {fileID: 8300000, guid: a9b43db45b6a3b448902b7282076dd04, type: 3}
+    clip: {fileID: 8300000, guid: 4413faafb250f95498d400725b9b625e, type: 3}
     volume: 1
   cementPlaceConfig:
-    clip: {fileID: 8300000, guid: a9b43db45b6a3b448902b7282076dd04, type: 3}
+    clip: {fileID: 8300000, guid: 4413faafb250f95498d400725b9b625e, type: 3}
     volume: 1
   sheepDeathConfig:
     clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
@@ -564,11 +564,11 @@ MonoBehaviour:
     volume: 1
   purchases:
   - clip: {fileID: 8300000, guid: 28ff028590102c84c94a3e13bd5a2a5e, type: 3}
-    volume: 0.5
+    volume: 0.2
   - clip: {fileID: 8300000, guid: c519c081aafcd434d91971007573caf1, type: 3}
-    volume: 0.5
+    volume: 0.2
   - clip: {fileID: 8300000, guid: 08f5a8eb1814cb7408a1c733c52a1755, type: 3}
-    volume: 0.5
+    volume: 0.2
   cantPurchase:
     clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
     volume: 1

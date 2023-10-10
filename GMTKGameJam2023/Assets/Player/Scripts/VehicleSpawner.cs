@@ -218,10 +218,12 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SelectCar(CarButton carBtn)
     {
-        if(carBtn.correspondingCar.carPrice <= gameManager.tokens){
+        if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
+        {
             currentActiveCar = carBtn.correspondingCar;
         }
-        else{
+        else
+        {
             soundManager.PlayCantPurchase();
         } 
     }
