@@ -18,6 +18,11 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private float maxMoveTime = 3.5f;
     [SerializeField] private float laneDistance = 2f;
 
+    [Header("Per-Level Logic")]
+    [HideInInspector] public float maxYHeight = 5f; //THESE DO NOT WORK ATM, WILL BE ADDRESSED IN THE FUTURE BUT IGNORE THIS FOR NOW PLZ TY
+    [HideInInspector] public float minYHeight = -5f; //SAME HERE
+
+
     [Header("Detection Info")]
     [SerializeField] public bool ignoreCement = false;
     [HideInInspector] public bool isStuck = false;
@@ -198,43 +203,79 @@ public class ChickenMovement : MonoBehaviour
 
         directionVector = new Vector2(0, 0);
 
-        while (directionApproved == false)
+        while (!directionApproved)
         {
-            int randomNumber = Random.Range(0, 50);
+            int randomNumber = Random.Range(0, 100);
 
-            if (randomNumber == 49)
+            switch (randomNumber)
             {
-                directionVector = new Vector2(-1, 0);
-                directionApproved = true;
+                case int n when (n < 2):
+                    directionVector = new Vector2(-1, 0);
+                    break;
+                case int n when (n < 10):
+                    directionVector = new Vector2(0, 0);
+                    break;
+                case int n when (n < 20):
+                    directionVector = new Vector2(0, 1);
+                    break;
+                case int n when (n < 30):
+                    directionVector = new Vector2(0, -1);
+                    break;
+                default:
+                    directionVector = new Vector2(1, 0);
+                    break;
             }
-            else if (randomNumber > 45)
-            {
-                directionVector = new Vector2(0, 0);
-                directionApproved = true;
-            }
-            else if (randomNumber > 40)
-            {
-                directionVector = new Vector2(0, 1);
 
-                if (transform.position.y + (1 * laneDistance) < 5)
-                {
-                    directionApproved = true;
-                }
-            }
-            else if (randomNumber > 35)
+            // Check boundaries.
+            if ((directionVector.y == 1 && transform.position.y + (1 * laneDistance) < maxYHeight) ||
+                (directionVector.y == -1 && transform.position.y + (-1 * laneDistance) > minYHeight) ||
+                 directionVector.y == 0)
             {
-                directionVector = new Vector2(0, -1);
 
-                if (transform.position.y + (-1 * laneDistance) > -5)
-                {
-                    directionApproved = true;
-                }
-            }
-            else
-            {
-                directionVector = new Vector2(1, 0);
                 directionApproved = true;
+
+                //// Check if space is occupied (example with OverlapCircle)
+                //if (Physics2D.OverlapCircle(transform.position + new Vector3(directionVector.x, directionVector.y, 0), 0.1f) == null)
+                //{
+                    //directionApproved = true;
+                //}
             }
+
+            //int randomNumber = Random.Range(0, 50);
+
+            //if (randomNumber == 49)
+            //{
+            //    directionVector = new Vector2(-1, 0);
+            //    directionApproved = true;
+            //}
+            //else if (randomNumber > 45)
+            //{
+            //    directionVector = new Vector2(0, 0);
+            //    directionApproved = true;
+            //}
+            //else if (randomNumber > 40)
+            //{
+            //    directionVector = new Vector2(0, 1);
+
+            //    if (transform.position.y + (1 * laneDistance) < maxYHeight)
+            //    {
+            //        directionApproved = true;
+            //    }
+            //}
+            //else if (randomNumber > 35)
+            //{
+            //    directionVector = new Vector2(0, -1);
+
+            //    if (transform.position.y + (-1 * laneDistance) > minYHeight)
+            //    {
+            //        directionApproved = true;
+            //    }
+            //}
+            //else
+            //{
+            //    directionVector = new Vector2(1, 0);
+            //    directionApproved = true;
+            //}
         }
 
         return directionVector;
