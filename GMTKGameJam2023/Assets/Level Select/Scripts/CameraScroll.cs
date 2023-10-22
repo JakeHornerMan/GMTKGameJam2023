@@ -7,6 +7,7 @@ public class CameraScroll : MonoBehaviour
     [Header("Scrolling Restrictions")]
     [SerializeField] private float minX = -0.35f;
     [SerializeField] private float maxX = 100f;
+
     [Header("Camera Keyboard Control")]
     [SerializeField] private float cameraScrollSpeed = 1f;
 
@@ -20,6 +21,7 @@ public class CameraScroll : MonoBehaviour
 
     private Camera cam;
     private Transform camTransform;
+
     private Vector3 dragOrigin;
 
     private void Awake()
@@ -29,7 +31,7 @@ public class CameraScroll : MonoBehaviour
     }
 
     private void Update()
-    {
+    {     
         PanCamera();
     }
 
