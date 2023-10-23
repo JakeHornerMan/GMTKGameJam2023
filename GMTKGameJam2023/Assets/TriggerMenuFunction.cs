@@ -67,12 +67,12 @@ public class TriggerMenuFunction : MonoBehaviour
     public void GoToCredits(){
         mainCamera.speed = 12f;
         mainCamera.targetPos = creditsPos;
-        credits.active = true;
+        credits.SetActive(true);
     }
 
     public void GoToStart(){
         mainCamera.targetPos = startPos;
-        credits.active = false;
+        credits.SetActive(false);
     }
 
     public void GoToWorldSelect(){

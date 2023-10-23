@@ -12870,6 +12870,7 @@ GameObject:
   - component: {fileID: 867498768053685155}
   - component: {fileID: 3006507548816327502}
   - component: {fileID: 6606148992238852075}
+  - component: {fileID: 6606148992238852076}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -13112,6 +13113,39 @@ MonoBehaviour:
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
+--- !u!114 &6606148992238852076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5598241199773382802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves: []
+  carsInLevel: []
+  rankingCriteria: []
+  failureRanking: You Failed
+  isGameOver: 0
+  pauseGameplay: 1
+  startTime: 3.7429347e+16
+  devMode: 0
+  cheatTokenAmount: 500
+  startLives: 10
+  lostChickenScore: 1000
+  safelyCrossedChickens: 0
+  missedChickenLives: 0
+  killCount: 0
+  playerScore: 0
+  tokens: 0
+  totalTokens: 0
+  currentRanking: Animal Lover
+  time: 120
+  endSound: 0
+  waveNumber: 0
 --- !u!222 &6696663453059528879
 CanvasRenderer:
   m_ObjectHideFlags: 0
