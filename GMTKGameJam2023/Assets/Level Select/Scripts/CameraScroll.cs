@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
+
     [Header("Scrolling Restrictions")]
     [SerializeField] private float minX = -0.35f;
     [SerializeField] private float maxX = 100f;
@@ -49,7 +50,7 @@ public class CameraScroll : MonoBehaviour
 
         // Clamp the x position to stay within the specified range
         newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-        
+
         // Update the camera's position
         camTransform.position = newPosition;
 
