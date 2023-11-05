@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7047006944141456267}
   - component: {fileID: 6342461626320196489}
+  - component: {fileID: 9172709342853198985}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -55,7 +56,10 @@ MonoBehaviour:
   - position: {x: -10, y: -2, z: 0}
   - position: {x: -10, y: -3, z: 0}
   - position: {x: -10, y: -4, z: 0}
-  ChickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
+  startingX: -14.75
+  maxYHeight: 5
+  minYHeight: -5
+  chickenPrefab: {fileID: 0}
   currentWave:
     roundTime: 0
     wavePrompt: 
@@ -67,3 +71,58 @@ MonoBehaviour:
   waveChickenAmount: 0
   time: 0
   waveEnded: 0
+--- !u!114 &9172709342853198985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767949691689103476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicObjectName: Music
+  deathConfigs: []
+  sliceConfigs: []
+  missileLaunchConfig:
+    clip: {fileID: 0}
+    volume: 1
+  fighterJetExplosion:
+    clip: {fileID: 0}
+    volume: 1
+  explosionConfigs: []
+  spikePlaceConfig:
+    clip: {fileID: 0}
+    volume: 1
+  cementPlaceConfig:
+    clip: {fileID: 0}
+    volume: 1
+  sheepDeathConfig:
+    clip: {fileID: 0}
+    volume: 1
+  gameSpeedConfig:
+    clip: {fileID: 0}
+    volume: 1
+  lastSecondsConfig:
+    clip: {fileID: 0}
+    volume: 1
+  missedChicken:
+    clip: {fileID: 0}
+    volume: 1
+  tokenCollect: []
+  purchases: []
+  cantPurchase:
+    clip: {fileID: 0}
+    volume: 1
+  chickenConfigs: []
+  cashChickenSound: []
+  turboChicken:
+    clip: {fileID: 0}
+    volume: 1
+  turboChickenDeath:
+    clip: {fileID: 0}
+    volume: 1
+  endMusic: {fileID: 0}
+  gameMusic: {fileID: 0}
