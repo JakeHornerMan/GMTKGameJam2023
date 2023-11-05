@@ -17,6 +17,9 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private GameObject carButtonPrefab;
 
+    [Header("Lanes in Level")]
+    [SerializeField] private List<RoadHighlight> allPlaceableLanes;
+
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
 
@@ -48,6 +51,7 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Awake()
     {
+        // Find References
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
@@ -58,27 +62,29 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
+        // UI Buttons to Pick Car from Wallet
         CreateButtons();
     }
 
     private void Update()
     {
+        // Check for Game Settings
         if (gameManager.isGameOver) return;
         if (disableVehicleSpawn) return;
 
+        // Check Input Type
         if (SystemInfo.deviceType == DeviceType.Desktop)
             MouseInputs();
-
         if (SystemInfo.deviceType == DeviceType.Handheld)
             TouchInputs();
 
-        //Timer that decreases to prevent players from spamming cars down a single lane (but still allow multiple lane spawning)
+        // Timer that decreases to prevent players from spamming cars down a single lane
+        // Still allow multiple lane spawning
         if (currentTimeUntilNextSpawn > 0)
-        {
             DecreaseSpawnTimer();
-        }
     }
 
+    // Create Car Selection Buttons in UI on Runtime
     private void CreateButtons()
     {
         foreach (Car car in gameManager.carsInLevel)
@@ -91,10 +97,12 @@ public class VehicleSpawner : MonoBehaviour
             btn.correspondingCar = car;
         }
 
+        // Select First Car Initially
         if (carButtons.Count >= 1)
             currentActiveCar = carButtons[0].correspondingCar;
     }
 
+    // Handle Mouse Inputs
     private void MouseInputs()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
@@ -116,13 +124,13 @@ public class VehicleSpawner : MonoBehaviour
         UpdateCarCursor();
     }
 
+    // Handle finger movements based on TouchPhase
     private void TouchInputs()
     {
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
-            // Handle finger movements based on TouchPhase
             switch (touch.phase)
             {
                 case TouchPhase.Began:
@@ -137,11 +145,21 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void UpdateMousePos()
+    // When Button is Clicked, Select the Corresponding Car
+    public void SelectCar(CarButton carBtn)
     {
-        inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
+        {
+            currentActiveCar = carBtn.correspondingCar;
+            ShinePlaceableLanes();
+        }
+        else
+        {
+            soundManager.PlayCantPurchase();
+        }
     }
 
+    // Handle Car Placement
     private void PlaceSelectedCar()
     {
         // Check Money, Check Car Wallet Budget
@@ -205,29 +223,24 @@ public class VehicleSpawner : MonoBehaviour
             SelectCar(carButtons[0]);
     }
 
+    // Wait and Enable Car Spawn After Time
     private IEnumerator WaitAndEnableSpawn(float time)
     {
         yield return new WaitForSeconds(time);
         disableVehicleSpawn = false;
     }
 
-    public bool NotEnoughCarWallet()
+    // Check if Hovering Over UI Element
+    private bool IsMouseOverUIElement()
     {
-        return carWallet.carCount <= 0;
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("UI"));
+        if (hit.collider != null && hit.collider.GetComponent<GraphicRaycaster>() != null)
+            return true;
+        return false;
     }
 
-    public void SelectCar(CarButton carBtn)
-    {
-        if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
-        {
-            currentActiveCar = carBtn.correspondingCar;
-        }
-        else
-        {
-            soundManager.PlayCantPurchase();
-        } 
-    }
-
+    // Follows Mouse with Sprite
     private void UpdateCarCursor()
     {
         if (currentCarIndicator != null)
@@ -238,17 +251,45 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private bool IsMouseOverUIElement()
+    // Check if Player has > 0 Cars in Wallet to Place
+    public bool NotEnoughCarWallet()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("UI"));
-        if (hit.collider != null && hit.collider.GetComponent<GraphicRaycaster>() != null)
-            return true;
-        return false;
+        return carWallet.carCount <= 0;
     }
 
+    // Set Value for Input Mouse Position
+    private void UpdateMousePos()
+    {
+        inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    // Decrease Timer for Placing Cars
     private void DecreaseSpawnTimer()
     {
         currentTimeUntilNextSpawn -= Time.deltaTime;
+    }
+
+    // Handle Road Shines
+    private void ShinePlaceableLanes()
+    {
+        Debug.Log("At least the function is runnign");
+
+        for (int  i = 0;  i < 10;  i++)
+        {
+            Debug.Log("TEST");
+        }
+
+        for (int i = 0; i < allPlaceableLanes.Count; i++)
+        {
+            Debug.Log("HERe");
+            RoadHighlight lane = allPlaceableLanes[i];
+            Debug.Log(lane.gameObject.tag);
+            if (currentActiveCar.placeableLaneTags.Contains(lane.gameObject.tag))
+            {
+                lane.SetShine(true);
+            }
+            else
+                lane.SetShine(false);
+        }
     }
 }
