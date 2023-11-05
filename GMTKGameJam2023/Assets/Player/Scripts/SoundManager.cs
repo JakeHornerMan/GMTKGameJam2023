@@ -11,7 +11,7 @@ public class SoundConfig
 public class SoundManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private string musicObjectName = "Music";
+    [SerializeField] private string musicObjectName = "Intro_Game_Menu_Theme";
 
     [Header("Clicken Death Clips")]
     [SerializeField] private SoundConfig[] deathConfigs;

@@ -221,13 +221,6 @@ public abstract class Car : MonoBehaviour
 
     public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
     {
-        // Impact Sound
-        soundManager.PlayChickenHit();
-
-        // Slice Sound
-        if (isSlicingCar)
-            soundManager.PlayRandomSlice();
-
         // Check if Chicken Will Die
         if (chickenHealth.health - damage <= 0)
         {
@@ -248,6 +241,13 @@ public abstract class Car : MonoBehaviour
 
         // Canera Shake
         StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+
+        // Impact Sound
+        soundManager.PlayChickenHit();
+
+         // Slice Sound
+        if (isSlicingCar)
+            soundManager.PlayRandomSlice();
     }
 
     protected virtual void HandleSheepCollision(Sheep sheep)

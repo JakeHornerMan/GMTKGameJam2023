@@ -15,11 +15,15 @@ public class MenuCarSpawn : MonoBehaviour
     private Vector3 inputPos;
     private CameraShaker cameraShaker;
     public bool canPlace = true;
+    public bool carPlaced = false;
+    public GameObject pointer;
 
     void Start()
     {
         mainCamera = Camera.main;
         cameraShaker = FindObjectOfType<CameraShaker>();
+        pointer.SetActive(false);
+        StartCoroutine(PlayPointer());
     }
 
     void Update()
@@ -111,6 +115,10 @@ public class MenuCarSpawn : MonoBehaviour
             Quaternion.identity
         );
 
+        carPlaced = true;
+        if(pointer.activeSelf)
+            pointer.GetComponent<Animator>().Play("ClickDisappear");
+
         StartCoroutine(CannotPlace());
 
 
@@ -124,6 +132,13 @@ public class MenuCarSpawn : MonoBehaviour
         canPlace= false;
         yield return new WaitForSeconds(3f);
         canPlace= true;
+    }
+
+    public IEnumerator PlayPointer()
+    {
+        yield return new WaitForSeconds(5f);
+        if(!carPlaced)
+            pointer.SetActive(true);
     }
 
     // private bool IsMouseOverUIElement()
