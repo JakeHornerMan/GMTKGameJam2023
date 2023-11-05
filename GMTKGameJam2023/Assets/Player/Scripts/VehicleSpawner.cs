@@ -272,13 +272,6 @@ public class VehicleSpawner : MonoBehaviour
     // Handle Road Shines
     private void ShinePlaceableLanes()
     {
-        Debug.Log("At least the function is runnign");
-
-        for (int  i = 0;  i < 10;  i++)
-        {
-            Debug.Log("TEST");
-        }
-
         for (int i = 0; i < allPlaceableLanes.Count; i++)
         {
             Debug.Log("HERe");
