@@ -10,6 +10,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject pointsText;
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI carWalletCountText;
+    [SerializeField] private Image carWalletIcon;
     [SerializeField] private Image carWalletRadialUI;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
@@ -55,7 +56,8 @@ public class InterfaceManager : MonoBehaviour
         tokensText.text = gameManager.tokens.ToString("000");
         timeText.text = gameManager.time.ToString("0");
         missedChickenCountText.text = gameManager.missedChickenLives.ToString("000");
-        currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
+        // currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
+        carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
     }
