@@ -12,6 +12,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI carWalletCountText;
     [SerializeField] private Image carWalletIcon;
     [SerializeField] private Image carWalletRadialUI;
+    [SerializeField] private GameObject[] carWalletNodes;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
@@ -77,6 +78,23 @@ public class InterfaceManager : MonoBehaviour
 
     private void UpdateCarWalletUI(float timeRemaining, float maxCooldownTime)
     {
+        // switch(carWallet.carCount){
+        //     case 0:
+                for (int i = 0; i < carWalletNodes.Length; i++){
+                    if(i < carWallet.carCount){
+                        carWalletNodes[i].SetActive(true);
+                    }
+                    else{
+                        carWalletNodes[i].SetActive(false);
+                    }
+                }
+        //     break;
+        //     default:
+        //         for (int i = 0; i < carWallet.carCount; i++){
+        //             carWalletNodes[i].SetActive(true);
+        //         }
+        //     break;
+        // }
         carWalletCountText.text = carWallet.carCount.ToString("00");
         carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
