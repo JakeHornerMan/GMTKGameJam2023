@@ -13,6 +13,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image carWalletIcon;
     [SerializeField] private Image carWalletRadialUI;
     [SerializeField] private GameObject[] carWalletNodes;
+    [SerializeField] private GameObject[] carWalletNodeContainers;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
@@ -51,6 +52,18 @@ public class InterfaceManager : MonoBehaviour
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < carWalletNodeContainers.Length; i++){
+            if(i < carWallet.walletLimit){
+                carWalletNodeContainers[i].SetActive(true);
+            }
+            else{
+                carWalletNodeContainers[i].SetActive(false);
+            }
+        }
+    }
+
     private void Update()
     {
         killsText.text = gameManager.killCount.ToString("000");
@@ -78,23 +91,15 @@ public class InterfaceManager : MonoBehaviour
 
     private void UpdateCarWalletUI(float timeRemaining, float maxCooldownTime)
     {
-        // switch(carWallet.carCount){
-        //     case 0:
-                for (int i = 0; i < carWalletNodes.Length; i++){
-                    if(i < carWallet.carCount){
-                        carWalletNodes[i].SetActive(true);
-                    }
-                    else{
-                        carWalletNodes[i].SetActive(false);
-                    }
-                }
-        //     break;
-        //     default:
-        //         for (int i = 0; i < carWallet.carCount; i++){
-        //             carWalletNodes[i].SetActive(true);
-        //         }
-        //     break;
-        // }
+        for (int i = 0; i < carWalletNodes.Length; i++){
+            if(i < carWallet.carCount){
+                carWalletNodes[i].SetActive(true);
+            }
+            else{
+                carWalletNodes[i].SetActive(false);
+            }
+        }
+        
         carWalletCountText.text = carWallet.carCount.ToString("00");
         carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
