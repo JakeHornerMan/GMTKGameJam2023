@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         missedChickenLives--;
         RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
-        StartCoroutine(cameraShaker.Shake(0.25f, -0.5f));
+        CameraShaker.instance.Shake(0.25f, -0.5f);
     }
 
     public void AddPlayerScore(int addAmount)

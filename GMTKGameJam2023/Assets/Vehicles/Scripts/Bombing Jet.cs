@@ -27,7 +27,7 @@ public class BombingJet : Car
         SetCarSpeed();
 
         // Shake Camera
-        StartCoroutine(cameraShaker.Shake(jetShakeDuration, jetShakeMagnitude));
+        CameraShaker.instance.Shake(jetShakeDuration, jetShakeMagnitude);
 
         StartCoroutine(WaitForBombStart());
     }

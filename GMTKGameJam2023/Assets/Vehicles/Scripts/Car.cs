@@ -95,7 +95,7 @@ public abstract class Car : MonoBehaviour
 
         // Shake Camera
         if (cameraShaker.isActiveAndEnabled)
-            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
     }
 
     private void Update()
@@ -190,7 +190,7 @@ public abstract class Car : MonoBehaviour
                 this.carHealth -= otherCar.carHealth;
             }
 
-            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
             StartCoroutine(CarHitStop(0.1f));
             otherCar.StartCoroutine(CarHitStop(0.1f));
         }
@@ -247,7 +247,7 @@ public abstract class Car : MonoBehaviour
         }
 
         // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
     }
 
     protected virtual void HandleSheepCollision(Sheep sheep)

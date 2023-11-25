@@ -226,20 +226,22 @@ public class ChickenMovement : MonoBehaviour
                     break;
             }
 
-            // Check boundaries.
-            if ((directionVector.y == 1 && transform.position.y + (1 * laneDistance) < maxYHeight) ||
-                (directionVector.y == -1 && transform.position.y + (-1 * laneDistance) > minYHeight) ||
-                 directionVector.y == 0)
-            {
+            directionApproved = CheckDirection();
 
-                directionApproved = true;
+            //// Check boundaries.
+            //if ((directionVector.y == 1 && transform.position.y + (1 * laneDistance) < maxYHeight) ||
+            //    (directionVector.y == -1 && transform.position.y + (-1 * laneDistance) > minYHeight) ||
+            //     directionVector.y == 0)
+            //{
 
-                //// Check if space is occupied (example with OverlapCircle)
-                //if (Physics2D.OverlapCircle(transform.position + new Vector3(directionVector.x, directionVector.y, 0), 0.1f) == null)
-                //{
-                    //directionApproved = true;
-                //}
-            }
+            //    directionApproved = true;
+
+            //    //// Check if space is occupied (example with OverlapCircle)
+            //    //if (Physics2D.OverlapCircle(transform.position + new Vector3(directionVector.x, directionVector.y, 0), 0.1f) == null)
+            //    //{
+            //        //directionApproved = true;
+            //    //}
+            //}
 
             //int randomNumber = Random.Range(0, 50);
 
@@ -279,6 +281,41 @@ public class ChickenMovement : MonoBehaviour
         }
 
         return directionVector;
+    }
+
+    private bool CheckDirection()
+    {
+        bool isDirectionGood = true;
+
+        // Check boundaries.
+        if (!((directionVector.y == 1 && transform.position.y + (1 * laneDistance) < maxYHeight) ||
+            (directionVector.y == -1 && transform.position.y + (-1 * laneDistance) > minYHeight) ||
+             directionVector.y == 0))
+        {
+
+            isDirectionGood = false;
+        
+        }
+        else
+        {
+            // Check if space is occupied (example with OverlapCircleAll)
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(directionVector.x, directionVector.y, 0), 0.1f);
+
+            foreach (Collider2D collider in hitColliders)
+            {
+                if (collider.gameObject.GetComponent<EnvironmentalObstacle>() != null)
+                {
+                    if (collider.gameObject.GetComponent<EnvironmentalObstacle>().isCollidable)
+                    {
+                        isDirectionGood = false;
+                        break;  // Exit the loop as we've found a collider with the "Collidable" script
+                    }
+                    
+                }
+            }
+        }
+
+        return isDirectionGood;
     }
 
 

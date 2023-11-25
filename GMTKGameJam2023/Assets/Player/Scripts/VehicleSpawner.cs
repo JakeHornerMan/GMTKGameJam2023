@@ -166,7 +166,7 @@ public class VehicleSpawner : MonoBehaviour
         }
         else if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
         {
-            StartCoroutine(cameraShaker.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y));
+            CameraShaker.instance.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y);
             return;
         }
 
