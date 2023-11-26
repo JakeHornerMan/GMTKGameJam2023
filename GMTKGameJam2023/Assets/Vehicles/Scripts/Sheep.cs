@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sheep : Car
+public class Sheep : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Collider2D sheepCollider;
+
+    [Header("Tags")]
+    [SerializeField] private string deathboxTag = "Death Box";
 
     [Header("Effects")]
     [SerializeField] private GameObject deathParticles;
@@ -17,13 +20,35 @@ public class Sheep : Car
     [Header("Movement")]
     [SerializeField] private Vector2 carSpeedRange = new(1, 5);
 
+    [Header("Damage")]
+    [SerializeField] private int damage = 120;
+
     [Header("Settings")]
     [SerializeField] private bool allowSheepOnWater = false;
+
+    [Header("Camera Shake Values")]
+    [SerializeField] private float camShakeDuration = 0.15f;
+    [SerializeField] private float camShakeMagnitude = 0.05f;
+
+    private Rigidbody2D rb;
+    private CameraShaker cameraShaker;
+    private SoundManager soundManager;
+
+    private float carSpeed = 0;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        soundManager = FindObjectOfType<SoundManager>();
+        cameraShaker = FindObjectOfType<CameraShaker>();
+    }
 
     private void Update()
     {
         carSpeed = Random.Range(carSpeedRange.x, carSpeedRange.y);
-        SetCarSpeed();
+
+        if (rb != null)
+            rb.velocity = transform.up * carSpeed;
 
         if (!allowSheepOnWater && sheepCollider.IsTouchingLayers(waterLayer))
         {
@@ -31,9 +56,30 @@ public class Sheep : Car
         }
     }
 
-    public override void HandleChickenCollision(ChickenHealth chickenHealth)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        base.HandleChickenCollision(chickenHealth);
+        // Check if Hit Deathbox
+        if (collision.gameObject.CompareTag(deathboxTag))
+            HandleDeath();
+
+        // Check if Hit Chicken
+        ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
+        if (chickenHealth == null && collision.transform.parent != null)
+            chickenHealth = collision.transform.parent.GetComponent<ChickenHealth>();
+
+        if (chickenHealth) HandleChickenCollision(chickenHealth);
+    }
+
+    private void HandleChickenCollision(ChickenHealth chickenHealth)
+    {
+        // Impact Sound
+        soundManager.PlayChickenHit();
+
+        // Damage Poultry
+        chickenHealth.TakeDamage(damage);
+
+        // Canera Shake
+        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
 
         HandleDeath();
     }
@@ -48,15 +94,11 @@ public class Sheep : Car
             transform.position,
             Quaternion.identity
         );
+
         // Mark Particles for Destruction
         Destroy(woolParticles, woolParticleDestroyDelay);
 
         // Destroy after hitting chicken
         Destroy(gameObject);
-    }
-
-    protected override void HandleSheepCollision(Sheep sheep)
-    {
-        // Do Nothing - Other cars deal with this
     }
 }
