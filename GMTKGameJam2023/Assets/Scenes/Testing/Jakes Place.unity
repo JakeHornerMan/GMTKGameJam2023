@@ -364,11 +364,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].standardChickenAmounts
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[1].standardChickenAmounts
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 612220346354247985, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1677909470908117969, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_RootOrder
@@ -414,6 +418,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2198669991127416746, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696109425919898431, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660233581306377320, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3946305789352172678, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: objectsForExplanation.Array.size
       value: 2
@@ -438,9 +454,13 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6808025329698905490, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7282536499142927125, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: walletLimit
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7282536499142927125, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: startWalletCount
@@ -456,6 +476,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8823391685847368037, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
