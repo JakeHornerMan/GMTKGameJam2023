@@ -11,6 +11,11 @@ public class CameraShaker : MonoBehaviour
 
     public static CameraShaker instance;
 
+    // keep a copy of the executing script
+    private IEnumerator coroutine;
+
+    private bool isCameraShaking = false;
+
 
     private void Start()
     {
@@ -53,7 +58,21 @@ public class CameraShaker : MonoBehaviour
 
     public void Shake(float time, float intensity)
     {
-        StartCoroutine(ShakeCamera(time, intensity));
+        if (isCameraShaking)
+        {
+            if (cinemachineBasicMultiChannelPerlin.m_AmplitudeGain < intensity)
+            {
+                StopCoroutine(coroutine);
+                coroutine = ShakeCamera(time, intensity);
+                StartCoroutine(coroutine);
+            }
+        }
+        else
+        {
+            coroutine = ShakeCamera(time, intensity);
+            StartCoroutine(coroutine);
+        }
+        
     }
 
     public void ShakeDefault()
@@ -61,8 +80,9 @@ public class CameraShaker : MonoBehaviour
         StartCoroutine(ShakeCamera(1, 5));
     }
 
-    public IEnumerator ShakeCamera(float time, float intensity)
+    private IEnumerator ShakeCamera(float time, float intensity)
     {
+        isCameraShaking = true;
 
         float startingIntensity = intensity;
         float shakeTimerTotal = time;
@@ -76,6 +96,8 @@ public class CameraShaker : MonoBehaviour
             cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, (1 - shakeTimer / shakeTimerTotal));
             yield return null;
         }
+
+        isCameraShaking = false;
     }
 
     

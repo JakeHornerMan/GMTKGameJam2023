@@ -28,9 +28,9 @@ public class PixelPerfectCameraCustom : MonoBehaviour
         //referenceResolutionHeight = 1080f;
 
         // Calculate the ratio
-        float resolutionRatio = Screen.currentResolution.height / referenceResolutionHeight;
+        float resolutionRatio = 2160f / referenceResolutionHeight;
 
-        mainCamera.orthographicSize = ((Screen.currentResolution.height / resolutionRatio) / (CameraScale * PPU)) * 0.5f;
+        mainCamera.orthographicSize = ((2160f / resolutionRatio) / (CameraScale * PPU)) * 0.5f;
     }
 
     

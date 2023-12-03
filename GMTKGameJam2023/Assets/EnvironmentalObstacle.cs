@@ -78,7 +78,7 @@ public class EnvironmentalObstacle : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
 
         HitStop.instance.StartHitStop(0.05f);
-        CameraShaker.instance.ShakeCamera(0.1f, 0.5f);
+        CameraShaker.instance.Shake(0.5f, 1.0f);
 
         if (rb != null)
         {

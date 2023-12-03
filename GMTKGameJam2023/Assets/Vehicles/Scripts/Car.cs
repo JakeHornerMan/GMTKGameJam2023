@@ -65,7 +65,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.15f;
-    [SerializeField] private float camShakeMagnitude = 0.05f;
+    [SerializeField] private float camShakeMagnitude = 0.25f;
 
     [Header("Sound")]
     [SerializeField] private SoundConfig[] spawnSound;
