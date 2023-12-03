@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
-    [SerializeField] public List<SpecialChicken> chickenPot;
+    [SerializeField] private SpecialChicken[] SpecialChickens;
+    [SerializeField] private List<SpecialChicken> chickenPot;
     [SerializeField] public ChickenWave[] bonusWaves;
     private GameManager gameManager;
 
@@ -31,11 +32,10 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
         newChickenWave.wavePrompt = "Lets Go!";
         newChickenWave.standardChickenAmounts = standardChickenAmount();
-        // newChickenWave.standardChickenAmounts = (int)(GameProgressionValues.standardChickenAmountForLevel);
         newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
         newChickenWave.chickenIntesity = chickenIntesitySet();
         newChickenWave.coinAmount = RoundCoinSet();
-        newChickenWave.specialChickens = null;
+        newChickenWave.specialChickens = SpecialChickenListSet();
         gameManager.waves.Add(newChickenWave);
     }
 
@@ -58,13 +58,33 @@ public class GameFlowManager : MonoBehaviour
         return (int)amount;
     }
 
-    private void SpecialChickenListSet(ChickenWave newChickenWave){
-        //need to add special chicken progression here
+    private List<SpecialChicken> SpecialChickenListSet(){
+        List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
+        for (int i = 1; i <= GameProgressionValues.RoundNumber; i++){
+            int getChickenAt = Random.Range(0, chickenPot.Count -1);
+            SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
+            Debug.Log(specialChicken.chicken.name);
+
+            if(GameProgressionValues.RoundNumber < GameProgressionValues.standardRoundTime){
+                specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
+            }
+            else{
+                if(i < GameProgressionValues.standardRoundTime)
+                    specialChicken.timeToSpawn = (float)i; 
+                if(i > GameProgressionValues.standardRoundTime)
+                    specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
+            }
+            specialChickensList.Add(specialChicken);
+        }
+
+        return specialChickensList;
     } 
 
     private int RoundCoinSet(){
-        //need to make this smarter
-        return 15;
+        if(GameProgressionValues.RoundNumber > 15){
+            return 30;
+        }
+        return 15 + (GameProgressionValues.RoundNumber);
     }
 
     private int chickenIntesitySet(){
@@ -128,6 +148,24 @@ public class SpecialChicken
     public GameObject chicken;
     public bool topSpawn;
     public bool bottomSpawn;
+
+    public SpecialChicken() { }
+    public SpecialChicken(SpecialChicken specialChicken) {
+        timeToSpawn = specialChicken.timeToSpawn;
+        chicken = specialChicken.chicken;
+        topSpawn = specialChicken.topSpawn;
+        bottomSpawn = specialChicken.bottomSpawn;
+    }
+
+    public SpecialChicken DeepClone(){
+        SpecialChicken specialChicken = new SpecialChicken();
+        specialChicken.timeToSpawn = timeToSpawn;
+        specialChicken.chicken = chicken;
+        specialChicken.topSpawn = topSpawn;
+        specialChicken.bottomSpawn = bottomSpawn;
+
+        return specialChicken;
+    }
 
 }
 
