@@ -154,6 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4723004208174625701}
   - component: {fileID: 6648390661545215355}
+  - component: {fileID: 6551387853640321434}
   - component: {fileID: 7716956080788538566}
   - component: {fileID: 7543842703582401103}
   - component: {fileID: 304815692333560699}
@@ -283,6 +284,118 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6551387853640321434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160284341332244042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8093d9f530c8c944183cb3681d71a5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chickenPot: []
+  bonusWaves:
+  - roundTime: 20
+    wavePrompt: Energy  Surge!
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    coinAmount: 50
+    specialChickens: []
+  - roundTime: 20
+    wavePrompt: Grab some Cash!
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    coinAmount: 0
+    specialChickens:
+    - timeToSpawn: 0
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 2
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 4
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 6
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 8
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 10
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 12
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 14
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 16
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 18
+      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+  - roundTime: 20
+    wavePrompt: Its getting Explosive
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    coinAmount: 0
+    specialChickens:
+    - timeToSpawn: 0
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 2
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 4
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 6
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 8
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 10
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 12
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 14
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 16
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 18
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      topSpawn: 0
+      bottomSpawn: 0
 --- !u!114 &7716956080788538566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,53 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - roundTime: 30
-    wavePrompt: Lets Go 1
-    standardChickenAmounts: 30
-    chickenIntesity: 5
-    coinAmount: 30
-    specialChickens:
-    - timeToSpawn: 2
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 1
-      bottomSpawn: 1
-    - timeToSpawn: 4
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 1
-      bottomSpawn: 0
-    - timeToSpawn: 6
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 0
-      bottomSpawn: 1
-    - timeToSpawn: 10
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 0
-      bottomSpawn: 0
-  - roundTime: 30
-    wavePrompt: Lets Go 2
-    standardChickenAmounts: 20
-    chickenIntesity: 3
-    coinAmount: 50
-    specialChickens:
-    - timeToSpawn: 10
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 1
-      bottomSpawn: 1
-    - timeToSpawn: 20
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 1
-      bottomSpawn: 1
-  - roundTime: 30
-    wavePrompt: Lets Go 3
-    standardChickenAmounts: 50
-    chickenIntesity: 1
-    coinAmount: 60
-    specialChickens:
-    - timeToSpawn: 10
-      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
-      topSpawn: 0
-      bottomSpawn: 0
+  waves: []
   carsInLevel:
   - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}

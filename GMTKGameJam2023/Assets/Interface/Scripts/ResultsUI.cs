@@ -78,6 +78,6 @@ public class ResultsUI : MonoBehaviour
         chickenWave.specialChickens = null;
 
         gameManager.waves.Add(chickenWave);
-        gameManager.SetStart();
+        // gameManager.SetStart();
     }
 }
