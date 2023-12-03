@@ -14,8 +14,9 @@ public class GameFlowManager : MonoBehaviour
     }
     public void newRound(){
         // RoundProgression();
+        int randomSpecialWave = Random.Range(1,2);
         for(int i =0; i < 4; i++){
-            if(i == 1){
+            if(i == randomSpecialWave){
                 SpecialWave();
             }
             else{
@@ -32,7 +33,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.standardChickenAmounts = standardChickenAmount();
         // newChickenWave.standardChickenAmounts = (int)(GameProgressionValues.standardChickenAmountForLevel);
         newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
-        newChickenWave.chickenIntesity = Random.Range(1,5);
+        newChickenWave.chickenIntesity = chickenIntesitySet();
         newChickenWave.coinAmount = RoundCoinSet();
         newChickenWave.specialChickens = null;
         gameManager.waves.Add(newChickenWave);
@@ -64,6 +65,26 @@ public class GameFlowManager : MonoBehaviour
     private int RoundCoinSet(){
         //need to make this smarter
         return 15;
+    }
+
+    private int chickenIntesitySet(){
+        int intensity = 1;
+        if(GameProgressionValues.RoundNumber <= 8){
+            intensity = Random.Range(1,3);
+        }
+        if(GameProgressionValues.RoundNumber <= 16){
+            intensity = Random.Range(2,4);
+        }
+        if(GameProgressionValues.RoundNumber <= 24){
+            intensity = Random.Range(3,5);
+        }
+        if(GameProgressionValues.RoundNumber <= 32){
+            intensity = Random.Range(4,5);
+        }
+        if(GameProgressionValues.RoundNumber > 32){
+            intensity = 5;
+        }
+        return intensity;
     }
 
     private void SpecialWave(){
