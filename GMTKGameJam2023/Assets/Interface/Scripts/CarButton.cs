@@ -9,6 +9,7 @@ public class CarButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public TextMeshProUGUI tokenPriceText;
+    [SerializeField] public TextMeshProUGUI carWeightText;
     [SerializeField] private Image dollarIconImg;
     [SerializeField] private Image correspCarIcon;
 
@@ -25,7 +26,7 @@ public class CarButton : MonoBehaviour
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>(); 
     }
 
     private void OnEnable()
@@ -40,6 +41,7 @@ public class CarButton : MonoBehaviour
     private void Start()
     {
         tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+        carWeightText.text = correspondingCar.carHealth.ToString("0");
         correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
 
         SetPriceColor();

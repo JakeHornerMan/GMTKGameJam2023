@@ -189,47 +189,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d935c45f8a89b4888a92f6f3a04810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 45141866181475777}
-  carType: 0
-  carHealth: 100
-  carPrice: 0
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 1
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  carInAction: 1
-  deathboxTag: Death Box
-  placeableLaneTags: []
-  placeableAnywhere: 0
-  carSpeed: 0
-  damage: 120
-  comboMultiplier: 0.2
-  DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  popupDestroyDelay: 0.7
-  carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.05
-  camShakeMagnitude: 0.05
-  spawnSound:
-  - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
-    volume: 0.2
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
   sheepCollider: {fileID: 4047289718886028338}
   deathParticles: {fileID: 4173655568478535620, guid: f4a4dc629de6e5d4abb35a1b76213248, type: 3}
   woolParticleDestroyDelay: 2
   waterLayer:
     serializedVersion: 2
     m_Bits: 16
-  carSpeedRange: {x: 2.5, y: 3.5}
+  carSpeedRange: {x: 1, y: 5}
+  damage: 120
   allowSheepOnWater: 0
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -351,17 +321,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
---- !u!114 &45141866181475777 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 8034363633045514521}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5013618483087767452 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
