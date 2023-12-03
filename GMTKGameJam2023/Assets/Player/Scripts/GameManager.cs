@@ -285,32 +285,3 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeToResults();
     }
 }
-
-[System.Serializable]
-public class ChickenWave
-{
-    public ChickenWave() { }
-    public float roundTime;
-    public string wavePrompt;
-    public int standardChickenAmounts;
-    public int chickenIntesity = 0;
-    public int coinAmount  = 0;
-    public List<SpecialChicken> specialChickens;
-}
-
-[System.Serializable]
-public class SpecialChicken
-{
-    public float timeToSpawn;
-    public GameObject chicken;
-    public bool topSpawn;
-    public bool bottomSpawn;
-
-}
-
-[System.Serializable]
-public class RankingRequirement
-{
-    public int minScore = 0;
-    public string rankingString = "Poultry Terrorizer";
-}

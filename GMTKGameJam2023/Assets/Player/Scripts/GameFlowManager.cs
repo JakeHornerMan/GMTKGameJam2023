@@ -68,6 +68,51 @@ public class GameFlowManager : MonoBehaviour
 
     private void SpecialWave(){
         int getWave = Random.Range(0,bonusWaves.Length);
-        gameManager.waves.Add(bonusWaves[getWave]);
+        ChickenWave copyWave = bonusWaves[getWave].DeepClone();
+        gameManager.waves.Add(copyWave);
     }
+}
+
+[System.Serializable]
+public class ChickenWave
+{
+    public float roundTime;
+    public string wavePrompt;
+    public int standardChickenAmounts;
+    public int chickenIntesity = 0;
+    public int coinAmount  = 0;
+    public List<SpecialChicken> specialChickens;
+    public ChickenWave() { }
+    public ChickenWave(ChickenWave chickenWave) {
+        roundTime = chickenWave.roundTime;
+        wavePrompt = chickenWave.wavePrompt;
+        standardChickenAmounts = chickenWave.standardChickenAmounts;
+        chickenIntesity = chickenWave.chickenIntesity;
+        coinAmount = chickenWave.coinAmount;
+        specialChickens = new List<SpecialChicken>();
+    }
+    public ChickenWave DeepClone(){
+        ChickenWave chickenWave = new ChickenWave();
+        chickenWave = (ChickenWave)this.MemberwiseClone();
+        chickenWave.specialChickens = new List<SpecialChicken>(specialChickens);
+
+        return chickenWave;
+    }
+}
+
+[System.Serializable]
+public class SpecialChicken
+{
+    public float timeToSpawn;
+    public GameObject chicken;
+    public bool topSpawn;
+    public bool bottomSpawn;
+
+}
+
+[System.Serializable]
+public class RankingRequirement
+{
+    public int minScore = 0;
+    public string rankingString = "Poultry Terrorizer";
 }
