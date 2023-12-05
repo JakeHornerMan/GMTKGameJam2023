@@ -93,7 +93,7 @@ public class VehicleSpawner : MonoBehaviour
         }
 
         if (carButtons.Count >= 1)
-            currentActiveCar = carButtons[0].correspondingCar;
+            currentActiveCar = standardCar;
     }
 
     private void MouseInputs()
@@ -210,7 +210,7 @@ public class VehicleSpawner : MonoBehaviour
         }   
 
         if (selectDefaultOnPlace)
-            SelectCar(carButtons[0].correspondingCar);
+            SelectCar(standardCar);
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)

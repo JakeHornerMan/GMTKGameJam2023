@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     // Other Values
     [HideInInspector] public bool endSound = false;
     [HideInInspector] public int waveNumber = 0;
+    [HideInInspector] public bool roundOver = false;
+    [SerializeField] public GameObject chickenContainer;
 
     private SoundManager soundManager;
     private GameFlowManager gameFlowManager;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameFlowManager = FindObjectOfType<GameFlowManager>();
+        chickenContainer = GameObject.Find("ChickenContainer");
     }
 
     private void Start()
@@ -150,9 +153,9 @@ public class GameManager : MonoBehaviour
         if (waveNumber < waves.Count){
             SettingWaveInChickenSpawn();
         }    
-        else{
-            RoundSet();
-        }
+        // else{
+        //     RoundSet();
+        // }
     }
 
     private void FixedUpdate()
@@ -165,12 +168,20 @@ public class GameManager : MonoBehaviour
         if(missedChickenLives <= 0){
             HandleGameOver();
         }
+        if(roundOver){
+            if(chickenContainer.transform.childCount <= 0){
+                roundOver = false;
+                RoundSet();
+            }
+        }
     }
 
     private void SetTime()
     {
         if (time > 0)
             time -= Time.deltaTime;
+        else
+            roundOver = true;
 
         // if (time <= 0 && waveNumber > 0)
         // {
