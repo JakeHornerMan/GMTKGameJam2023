@@ -55,6 +55,6 @@ public class CarButton : MonoBehaviour
 
     public void SelectCorrespondingCar()
     {
-        vehicleSpawner.SelectCar(this);
+        vehicleSpawner.SelectCar(this.correspondingCar);
     }
 }

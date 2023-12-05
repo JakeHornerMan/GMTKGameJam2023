@@ -16,6 +16,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform carSelectContainer;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private GameObject carButtonPrefab;
+    [SerializeField] private Car standardCar;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -100,17 +101,20 @@ public class VehicleSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(placeMouseBtn))
             PlaceSelectedCar();
 
-        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space) && carButtons.Count >= 1)
-            SelectCar(carButtons[0]);
+        if(Input.GetKeyDown(KeyCode.Space) && standardCar != null)
+            SelectCar(standardCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) && carButtons.Count >= 1)
+            SelectCar(carButtons[0].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W) && carButtons.Count >= 2)
-            SelectCar(carButtons[1]);
+            SelectCar(carButtons[1].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E) && carButtons.Count >= 3)
-            SelectCar(carButtons[2]);
+            SelectCar(carButtons[2].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R) && carButtons.Count >= 4)
-            SelectCar(carButtons[3]);
+            SelectCar(carButtons[3].correspondingCar);
 
         UpdateMousePos();
         UpdateCarCursor();
@@ -140,6 +144,10 @@ public class VehicleSpawner : MonoBehaviour
     private void UpdateMousePos()
     {
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    public void setStandardCar(){
+        SelectCar(standardCar);
     }
 
     private void PlaceSelectedCar()
@@ -202,7 +210,7 @@ public class VehicleSpawner : MonoBehaviour
         }   
 
         if (selectDefaultOnPlace)
-            SelectCar(carButtons[0]);
+            SelectCar(carButtons[0].correspondingCar);
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -216,11 +224,11 @@ public class VehicleSpawner : MonoBehaviour
         return carWallet.carCount <= 0;
     }
 
-    public void SelectCar(CarButton carBtn)
+    public void SelectCar(Car car)
     {
-        if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
+        if (car.carPrice <= gameManager.tokens)
         {
-            currentActiveCar = carBtn.correspondingCar;
+            currentActiveCar = car;
         }
         else
         {
