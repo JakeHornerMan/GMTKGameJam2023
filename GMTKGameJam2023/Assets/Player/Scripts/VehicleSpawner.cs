@@ -32,6 +32,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
     [HideInInspector] public Car currentActiveCar;
+    [HideInInspector] public Car ultimateAbility;
 
     private float currentTimeUntilNextSpawn;
 
@@ -39,6 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
+    private Ultimate ultimate;
     private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
@@ -51,6 +53,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
+        ultimate = FindObjectOfType<Ultimate>();
         soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
@@ -148,6 +151,13 @@ public class VehicleSpawner : MonoBehaviour
 
     public void setStandardCar(){
         SelectCar(standardCar);
+    }
+
+    public void SetUltimate()
+    {
+        if(ultimate.isReady){
+            SelectCar(ultimate.correspondingUltimate);
+        }
     }
 
     private void PlaceSelectedCar()

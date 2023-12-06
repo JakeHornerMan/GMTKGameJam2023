@@ -21,6 +21,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
     [SerializeField] private GameObject canvas;
 
+    [HideInInspector] private GameObject ultimateButton;
+
     [Header("Animation")]
     [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
 
@@ -46,6 +48,7 @@ public class InterfaceManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
+        ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
@@ -54,6 +57,15 @@ public class InterfaceManager : MonoBehaviour
 
     private void Start()
     {
+        if(ultimateButton != null){
+            if(gameManager.ultimateInLevel == null){
+                ultimateButton.SetActive(false);
+            }
+            else{
+                ultimateButton.SetActive(true);
+            }
+        }
+
         for (int i = 0; i < carWalletNodeContainers.Length; i++){
             if(i < carWallet.walletLimit){
                 carWalletNodeContainers[i].SetActive(true);

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Cars in Level")]
     [SerializeField] public Car[] carsInLevel;
+    [SerializeField] public Car ultimateInLevel;
 
     [Header("Ranking Criteria, order highest to lowest")]
     [SerializeField] private RankingRequirement[] rankingCriteria;
@@ -72,6 +73,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(ultimateInLevel == null){
+            
+        }
         missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
