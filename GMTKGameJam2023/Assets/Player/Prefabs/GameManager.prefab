@@ -555,6 +555,7 @@ MonoBehaviour:
   carWalletCountText: {fileID: 8144291567973061954}
   carWalletIcon: {fileID: 8426202767138733122}
   carWalletRadialUI: {fileID: 3420721294669365155}
+  ultimateRadialUI: {fileID: 5339635319658689625}
   carWalletNodes:
   - {fileID: 5727953508784074969}
   - {fileID: 2303563531158082622}
@@ -930,6 +931,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6932175551287751633, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -1064,6 +1069,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5339635319658689625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 384755415615043627, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5357528392954252462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 366230535986299100, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}

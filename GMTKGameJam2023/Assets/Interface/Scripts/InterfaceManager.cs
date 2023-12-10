@@ -12,6 +12,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI carWalletCountText;
     [SerializeField] private Image carWalletIcon;
     [SerializeField] private Image carWalletRadialUI;
+    [SerializeField] private Image ultimateRadialUI;
     [SerializeField] private GameObject[] carWalletNodes;
     [SerializeField] private GameObject[] carWalletNodeContainers;
     [SerializeField] private TextMeshProUGUI tokensText;
@@ -37,6 +38,7 @@ public class InterfaceManager : MonoBehaviour
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
+    private Ultimate ultimate;
     private Animator speedUptextAnimator;
 
     [Header("UI Popups")]
@@ -51,6 +53,7 @@ public class InterfaceManager : MonoBehaviour
         ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
+        ultimate = FindObjectOfType<Ultimate>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
@@ -86,6 +89,7 @@ public class InterfaceManager : MonoBehaviour
         carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
+        UpdateUltimateRadial(ultimate.timeUntilRefill, ultimate.refillDelaySeconds);
     }
 
     private void FixedUpdate()
@@ -114,6 +118,11 @@ public class InterfaceManager : MonoBehaviour
         
         carWalletCountText.text = carWallet.carCount.ToString("00");
         carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
+    }
+
+    private void UpdateUltimateRadial(float timeRemaining, float maxCooldownTime)
+    {
+        ultimateRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
 
     public void ShowSpeedUpText(string text = "Speed Up")

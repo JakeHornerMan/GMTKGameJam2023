@@ -219,6 +219,9 @@ public class VehicleSpawner : MonoBehaviour
             soundManager.PlayPurchase();
         }   
 
+        if(currentActiveCar.isUltimate)
+            ultimate.isReady = false;
+
         if (selectDefaultOnPlace)
             SelectCar(standardCar);
     }
