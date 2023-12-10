@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8093d9f530c8c944183cb3681d71a5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpecialChickens: []
   chickenPot: []
   bonusWaves:
   - roundTime: 20
@@ -414,6 +415,7 @@ MonoBehaviour:
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
   - {fileID: 4056007719366264636, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
+  ultimateInLevel: {fileID: 0}
   rankingCriteria:
   - minScore: 1900000
     rankingString: Master Chicken Assasin
@@ -447,6 +449,8 @@ MonoBehaviour:
   time: 120
   endSound: 0
   waveNumber: 0
+  roundOver: 0
+  chickenContainer: {fileID: 0}
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,6 +555,7 @@ MonoBehaviour:
   carWalletCountText: {fileID: 8144291567973061954}
   carWalletIcon: {fileID: 8426202767138733122}
   carWalletRadialUI: {fileID: 3420721294669365155}
+  ultimateRadialUI: {fileID: 5339635319658689625}
   carWalletNodes:
   - {fileID: 5727953508784074969}
   - {fileID: 2303563531158082622}
@@ -704,12 +709,14 @@ MonoBehaviour:
   carSelectContainer: {fileID: 2168607213686167400}
   spawnedVehiclesContainer: {fileID: 6172053120600888936}
   carButtonPrefab: {fileID: 509220006034615292, guid: 4644ada4dd28f7443be2cf719cce66da, type: 3}
+  standardCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   placeMouseBtn: 0
   spawnOffset: {x: 0, y: -10}
   timeUntilNextSpawn: 0
   disableVehicleSpawn: 0
   invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
+  ultimateAbility: {fileID: 0}
   carButtons: []
 --- !u!114 &695978991538291139
 MonoBehaviour:
@@ -808,6 +815,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4723004208174625701}
     m_Modifications:
+    - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4517704102987042158}
+    - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setStandardCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VehicleSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204623891215500174, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4517704102987042158}
+    - target: {fileID: 1204623891215500174, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetUltimate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204623891215500174, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VehicleSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -895,6 +930,10 @@ PrefabInstance:
     - target: {fileID: 6082470648501500550, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932175551287751633, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name
@@ -1030,6 +1069,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5339635319658689625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 384755415615043627, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5357528392954252462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 366230535986299100, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
