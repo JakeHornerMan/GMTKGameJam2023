@@ -40,7 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
-    private Ultimate ultimate;
+    private UltimateManager ultimate;
     private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
@@ -53,7 +53,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
-        ultimate = FindObjectOfType<Ultimate>();
+        ultimate = FindObjectOfType<UltimateManager>();
         soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class Ultimate : MonoBehaviour
+public class UltimateManager : MonoBehaviour
 {
     [Header("Values")]
     [SerializeField] public Car correspondingUltimate;

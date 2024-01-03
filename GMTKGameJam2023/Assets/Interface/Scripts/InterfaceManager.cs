@@ -38,7 +38,7 @@ public class InterfaceManager : MonoBehaviour
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
-    private Ultimate ultimate;
+    private UltimateManager ultimate;
     private Animator speedUptextAnimator;
 
     [Header("UI Popups")]
@@ -53,7 +53,7 @@ public class InterfaceManager : MonoBehaviour
         ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
-        ultimate = FindObjectOfType<Ultimate>();
+        ultimate = FindObjectOfType<UltimateManager>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
