@@ -8,13 +8,13 @@ using System;
 public class UltimateManager : MonoBehaviour
 {
     [Header("Values")]
-    [SerializeField] public Car correspondingUltimate;
+    [SerializeField] public Ultimate correspondingUltimate;
     [SerializeField] public Image correspUltimateIcon;
 
     [Header("Ultimate Info")]
     [SerializeField] public float refillDelaySeconds;
     [HideInInspector] public float timeUntilRefill = 0f;
-    [HideInInspector] public bool isReady;
+    [HideInInspector] public bool isReady = true;
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
@@ -29,19 +29,19 @@ public class UltimateManager : MonoBehaviour
 
     private void Start()
     {
-        if(gameManager.ultimateInLevel.isUltimate){
+        if(gameManager.ultimateInLevel){
             correspondingUltimate = gameManager.ultimateInLevel;
             correspUltimateIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
             refillDelaySeconds = correspondingUltimate.ultimateResetTime;
-        }   
+        }
     }
 
     private void Update()
     {
-        if (!isReady)
-        {
-            StartCoroutine(RefillUltimate());
-        }
+        // if (!isReady)
+        // {
+        //     StartCoroutine(RefillUltimate());
+        // }
     }
 
     private IEnumerator RefillUltimate()

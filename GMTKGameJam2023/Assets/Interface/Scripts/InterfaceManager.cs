@@ -86,7 +86,12 @@ public class InterfaceManager : MonoBehaviour
         timeText.text = gameManager.time.ToString("0");
         missedChickenCountText.text = gameManager.missedChickenLives.ToString("000");
         // currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
-        carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+        if(vehicleSpawner.currentUltimateAbility){
+            carWalletIcon.sprite = vehicleSpawner.currentUltimateAbility.GetComponent<ObjectInfo>().objectIcon;
+        }
+        else{
+            carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+        }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
         UpdateUltimateRadial(ultimate.timeUntilRefill, ultimate.refillDelaySeconds);

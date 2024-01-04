@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Cars in Level")]
     [SerializeField] public Car[] carsInLevel;
-    [SerializeField] public Car ultimateInLevel;
+    [SerializeField] public Ultimate ultimateInLevel;
 
     [Header("Ranking Criteria, order highest to lowest")]
     [SerializeField] private RankingRequirement[] rankingCriteria;

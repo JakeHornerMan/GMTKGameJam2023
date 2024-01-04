@@ -8,6 +8,8 @@ public class Ultimate : MonoBehaviour
 {
     [Header("Ultimate Info")]
     [SerializeField] private bool canIBeBombed = true;
+    [SerializeField] public float ultimateResetTime;
+    [SerializeField] public bool placeableAnywhere = true;
 
     [Header("References")]
     [SerializeField] private GameObject scorePopUp;
@@ -57,16 +59,6 @@ public class Ultimate : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void HandleTokenCollision(TokenController token)

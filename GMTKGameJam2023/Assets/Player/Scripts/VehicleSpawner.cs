@@ -31,8 +31,8 @@ public class VehicleSpawner : MonoBehaviour
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
-    [HideInInspector] public Car currentActiveCar;
-    [HideInInspector] public Car ultimateAbility;
+    public Car currentActiveCar;
+    public Ultimate currentUltimateAbility;
 
     private float currentTimeUntilNextSpawn;
 
@@ -40,7 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
-    private UltimateManager ultimate;
+    private UltimateManager ultimateManager;
     private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
@@ -53,7 +53,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
-        ultimate = FindObjectOfType<UltimateManager>();
+        ultimateManager = FindObjectOfType<UltimateManager>();
         soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
@@ -101,8 +101,14 @@ public class VehicleSpawner : MonoBehaviour
 
     private void MouseInputs()
     {
-        if (Input.GetMouseButtonDown(placeMouseBtn))
-            PlaceSelectedCar();
+        if (Input.GetMouseButtonDown(placeMouseBtn)){
+            if(currentUltimateAbility){
+                PlaceSelectedUltimate();
+            }
+            else{
+                PlaceSelectedCar();
+            }
+        }   
 
         if(Input.GetKeyDown(KeyCode.Space) && standardCar != null)
             SelectCar(standardCar);
@@ -134,7 +140,12 @@ public class VehicleSpawner : MonoBehaviour
             {
                 case TouchPhase.Began:
                     inputPos = mainCamera.ScreenToWorldPoint(touch.position);
-                    PlaceSelectedCar();
+                    if(currentUltimateAbility){
+                        PlaceSelectedUltimate();
+                    }
+                    else{
+                        PlaceSelectedCar();
+                    }
                     break;
                 case TouchPhase.Moved:
                     break;
@@ -151,13 +162,6 @@ public class VehicleSpawner : MonoBehaviour
 
     public void setStandardCar(){
         SelectCar(standardCar);
-    }
-
-    public void SetUltimate()
-    {
-        if(ultimate.isReady){
-            SelectCar(ultimate.correspondingUltimate);
-        }
     }
 
     private void PlaceSelectedCar()
@@ -217,13 +221,55 @@ public class VehicleSpawner : MonoBehaviour
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
             soundManager.PlayPurchase();
-        }   
-
-        if(currentActiveCar.isUltimate)
-            ultimate.isReady = false;
+        }
 
         if (selectDefaultOnPlace)
             SelectCar(standardCar);
+    }
+
+    private void PlaceSelectedUltimate()
+    {
+        // Raycast toward Click
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
+
+        // Return if Clicked Nothing
+        if (hit.collider == null)
+            return;
+
+        if (IsMouseOverUIElement())
+            return;
+
+        // Spawn Car at Road at Position
+        Vector3 spawnPos;
+        if (currentUltimateAbility.placeableAnywhere)
+            spawnPos = new Vector3(inputPos.x, inputPos.y, 1);
+        else
+            spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
+
+        // To prevent car spamming on the same lane
+        if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
+            return;
+
+        Instantiate(
+            currentUltimateAbility.gameObject,
+            spawnPos,
+            Quaternion.identity,
+            spawnedVehiclesContainer
+        );
+
+        lastLaneSpawned = hit.collider;
+        currentTimeUntilNextSpawn = timeUntilNextSpawn;
+
+        // Reduce Car Wallet Count
+        carWallet.carCount--;
+        
+        ultimateManager.isReady = false;
+
+        if (selectDefaultOnPlace){
+            SelectCar(standardCar);
+            SelectUltimate(null);
+        }
+            
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -247,6 +293,20 @@ public class VehicleSpawner : MonoBehaviour
         {
             soundManager.PlayCantPurchase();
         } 
+    }
+
+    public void SetUltimate()
+    {
+        // if(ultimateManager.isReady){
+            SelectUltimate(ultimateManager.correspondingUltimate);
+        // }
+        Debug.Log(currentUltimateAbility.gameObject.name);
+    }
+
+    public void SelectUltimate(Ultimate ultimate)
+    {
+        currentUltimateAbility = ultimate;
+        Debug.Log(currentUltimateAbility.gameObject.name);
     }
 
     private void UpdateCarCursor()
