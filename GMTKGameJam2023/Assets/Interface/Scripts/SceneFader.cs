@@ -24,7 +24,7 @@ public class SceneFader : MonoBehaviour
     private void Start()
     {
         StartCoroutine(FadeIn());
-        levelSceneName = NameFromIndex(Points.sceneIndex);
+        levelSceneName = NameFromIndex(GameProgressionValues.sceneIndex);
     }
 
     public void FadeTo(string targetScene)

@@ -82,7 +82,7 @@ public class LevelInfoCards : MonoBehaviour
     {
         CloseInfoCards();
         gameManager.pauseGameplay = false;
-        gameManager.SetStart();
+        // gameManager.SetStart();
         // Time.timeScale = 1f;
     }
 
