@@ -79,7 +79,7 @@ public class Sheep : MonoBehaviour
         chickenHealth.TakeDamage(damage);
 
         // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         HandleDeath();
     }

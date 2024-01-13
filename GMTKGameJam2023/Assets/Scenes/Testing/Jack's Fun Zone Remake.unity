@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 8
+    OrthographicSize: 8.4375
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1952,7 +1952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1521434478853987279, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 1521434478853987279, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -2017,6 +2017,10 @@ PrefabInstance:
     - target: {fileID: 3608625872063348443, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_Lens.FieldOfView
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608625872063348443, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5254610109684327395, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_Name

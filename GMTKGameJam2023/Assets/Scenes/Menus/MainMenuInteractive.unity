@@ -2916,6 +2916,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3288899785623735598, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288899785623735598, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_RefResolutionX
       value: 960
       objectReference: {fileID: 0}
@@ -2977,7 +2981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309349241571979129, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9010518711735855608, guid: 9b5b04d4c08ffbc4496a98b4ff33acf4, type: 3}
       propertyPath: m_Enabled
@@ -4564,9 +4568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdb643a1271e24382dfeac1aba4931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: GoToWorldSelect
-  credits: {fileID: 2114713622}
-  settings: {fileID: 0}
 --- !u!61 &1070588541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6978,9 +6979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdb643a1271e24382dfeac1aba4931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: GoToSettings
-  credits: {fileID: 2114713622}
-  settings: {fileID: 0}
 --- !u!61 &1372807066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10075,9 +10073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdb643a1271e24382dfeac1aba4931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: GoToWorldSelect
-  credits: {fileID: 2114713622}
-  settings: {fileID: 0}
 --- !u!61 &1865967293
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10546,9 +10541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdb643a1271e24382dfeac1aba4931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: GoToCredits
-  credits: {fileID: 2114713622}
-  settings: {fileID: 0}
 --- !u!61 &1931100056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13308,9 +13300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdb643a1271e24382dfeac1aba4931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option: GoToGameSelect
-  credits: {fileID: 2114713622}
-  settings: {fileID: 0}
 --- !u!212 &7938966735894064778
 SpriteRenderer:
   m_ObjectHideFlags: 0
