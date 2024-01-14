@@ -148,10 +148,10 @@ public class VehicleSpawner : MonoBehaviour
     // When Button is Clicked, Select the Corresponding Car
     public void SelectCar(CarButton carBtn)
     {
+        ShinePlaceableLanes();
         if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
         {
             currentActiveCar = carBtn.correspondingCar;
-            ShinePlaceableLanes();
         }
         else
         {
@@ -274,9 +274,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         for (int i = 0; i < allPlaceableLanes.Count; i++)
         {
-            Debug.Log("HERe");
             RoadHighlight lane = allPlaceableLanes[i];
-            Debug.Log(lane.gameObject.tag);
             if (currentActiveCar.placeableLaneTags.Contains(lane.gameObject.tag))
             {
                 lane.SetShine(true);
