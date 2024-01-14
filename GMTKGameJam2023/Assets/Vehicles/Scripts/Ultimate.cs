@@ -10,6 +10,7 @@ public class Ultimate : MonoBehaviour
     [SerializeField] private bool canIBeBombed = true;
     [SerializeField] public float ultimateResetTime;
     [SerializeField] public bool placeableAnywhere = true;
+    [SerializeField] public bool ignoreTokens = true;
 
     [Header("References")]
     [SerializeField] private GameObject scorePopUp;
@@ -59,6 +60,29 @@ public class Ultimate : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (gameManager.isGameOver)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
+        // Check if Hit Chicken
+        ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
+        if (chickenHealth == null && collision.transform.parent != null)
+            chickenHealth = collision.transform.parent.GetComponent<ChickenHealth>();
+
+        // Check if Hit Token
+        TokenController token = collision.gameObject.GetComponent<TokenController>();
+
+        if (chickenHealth != null)
+            HandleChickenCollision(chickenHealth);
+
+        if (token != null & !ignoreTokens)
+            HandleTokenCollision(token);
     }
 
     private void HandleTokenCollision(TokenController token)
