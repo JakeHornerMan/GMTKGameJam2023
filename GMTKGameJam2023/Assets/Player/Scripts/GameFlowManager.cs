@@ -63,7 +63,7 @@ public class GameFlowManager : MonoBehaviour
         for (int i = 1; i <= GameProgressionValues.RoundNumber; i++){
             int getChickenAt = Random.Range(0, chickenPot.Count -1);
             SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
-            Debug.Log(specialChicken.chicken.name);
+            // Debug.Log(specialChicken.chicken.name);
 
             if(GameProgressionValues.RoundNumber < GameProgressionValues.standardRoundTime){
                 specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);

@@ -44,6 +44,22 @@ public class CarWallet : MonoBehaviour
         walletEnabled = false;
     }
 
+    // private IEnumerator RefillUltimate()
+    // {
+    //     // infinite loop, be careful with these!
+    //     while (walletEnabled && carCount < walletLimit)
+    //     {
+    //         // wait for the refill delay
+    //         yield return new WaitForSeconds(refillDelaySeconds);
+    //         carCount += amountPerRefill;
+    //         carCount = Mathf.Clamp(carCount, 0, walletLimit);
+    //         // reset timeUntilRefill
+    //         timeUntilRefill = refillDelaySeconds;
+    //     }
+
+    //     walletEnabled = false;
+    // }
+
     private void Update()
     {
         // Reduce timeUntilRefill by the time passed since last frame
