@@ -6,6 +6,10 @@ public class RoadHighlight : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject bottomHighlight;
+    [SerializeField] private GameObject shineObject;
+    
+    [Header("Settings")]
+    [SerializeField] private bool allowShine = true;
 
     private VehicleSpawner vehicleSpawner;
 
@@ -15,6 +19,11 @@ public class RoadHighlight : MonoBehaviour
     {
         mainCamera = Camera.main;
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
+    }
+
+    private void Start()
+    {
+        SetShine(false);
     }
 
     private void Update()
@@ -40,5 +49,13 @@ public class RoadHighlight : MonoBehaviour
         bool touchingRoad = hit.collider.gameObject == gameObject;
 
         bottomHighlight.SetActive(touchingRoad);
+    }
+
+    public void SetShine(bool on)
+    {
+        if (allowShine && on)
+            shineObject.SetActive(on);
+        else
+            shineObject.SetActive(false);
     }
 }
