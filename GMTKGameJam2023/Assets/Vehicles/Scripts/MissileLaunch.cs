@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissileLaunch : Car
+public class MissileLaunch : Ultimate
 {
     [Header("Animation")]
     [SerializeField] private GameObject missileSprtie;

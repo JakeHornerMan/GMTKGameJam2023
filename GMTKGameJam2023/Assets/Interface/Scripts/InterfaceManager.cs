@@ -12,6 +12,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI carWalletCountText;
     [SerializeField] private Image carWalletIcon;
     [SerializeField] private Image carWalletRadialUI;
+    [SerializeField] private Image ultimateRadialUI;
     [SerializeField] private GameObject[] carWalletNodes;
     [SerializeField] private GameObject[] carWalletNodeContainers;
     [SerializeField] private TextMeshProUGUI tokensText;
@@ -20,6 +21,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI speedUpText;
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
     [SerializeField] private GameObject canvas;
+
+    [HideInInspector] private GameObject ultimateButton;
 
     [Header("Animation")]
     [SerializeField] private string speedUpTextFadeOutTrigger = "FadeOut";
@@ -35,6 +38,7 @@ public class InterfaceManager : MonoBehaviour
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
+    private UltimateManager ultimate;
     private Animator speedUptextAnimator;
 
     [Header("UI Popups")]
@@ -46,14 +50,25 @@ public class InterfaceManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
+        ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
+        ultimate = FindObjectOfType<UltimateManager>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
 
     private void Start()
     {
+        if(ultimateButton != null){
+            if(gameManager.ultimateInLevel == null){
+                ultimateButton.SetActive(false);
+            }
+            else{
+                ultimateButton.SetActive(true);
+            }
+        }
+
         for (int i = 0; i < carWalletNodeContainers.Length; i++){
             if(i < carWallet.walletLimit){
                 carWalletNodeContainers[i].SetActive(true);
@@ -71,9 +86,15 @@ public class InterfaceManager : MonoBehaviour
         timeText.text = gameManager.time.ToString("0");
         missedChickenCountText.text = gameManager.missedChickenLives.ToString("000");
         // currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
-        carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+        if(vehicleSpawner.currentUltimateAbility){
+            carWalletIcon.sprite = vehicleSpawner.currentUltimateAbility.GetComponent<ObjectInfo>().objectIcon;
+        }
+        else{
+            carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+        }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
+        UpdateUltimateRadial(ultimate.timeUntilRefill, ultimate.refillDelaySeconds);
     }
 
     private void FixedUpdate()
@@ -102,6 +123,11 @@ public class InterfaceManager : MonoBehaviour
         
         carWalletCountText.text = carWallet.carCount.ToString("00");
         carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
+    }
+
+    private void UpdateUltimateRadial(float timeRemaining, float maxCooldownTime)
+    {
+        ultimateRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
 
     public void ShowSpeedUpText(string text = "Speed Up")

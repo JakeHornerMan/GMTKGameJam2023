@@ -29,8 +29,11 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public bool isSpinning = false;
     [SerializeField] private bool carInHitStop = false;
     private float degreesPerSecond = 540f;
-
     public bool carInAction = true; //is car in play (not being launched)?
+    
+    [Header("Ultimate Info")]
+    [SerializeField] public bool isUltimate = false;
+    [SerializeField] public float ultimateResetTime;
 
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";

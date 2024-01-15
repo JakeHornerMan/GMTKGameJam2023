@@ -16,6 +16,7 @@ public class VehicleSpawner : MonoBehaviour
     [SerializeField] private Transform carSelectContainer;
     [SerializeField] private Transform spawnedVehiclesContainer;
     [SerializeField] private GameObject carButtonPrefab;
+    [SerializeField] private Car standardCar;
 
     [Header("Input")]
     [SerializeField] private int placeMouseBtn = 0;
@@ -30,7 +31,8 @@ public class VehicleSpawner : MonoBehaviour
     [Header("[Magnitude, DurationSeconds] of Camera Shake for Invalid Car Placement")]
     [SerializeField] private Vector2 invalidPlacementCamShake = new(0.15f, 0.2f);
 
-    [HideInInspector] public Car currentActiveCar;
+    public Car currentActiveCar;
+    public Ultimate currentUltimateAbility;
 
     private float currentTimeUntilNextSpawn;
 
@@ -38,6 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
+    private UltimateManager ultimateManager;
     private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
@@ -50,6 +53,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
+        ultimateManager = FindObjectOfType<UltimateManager>();
         soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
@@ -92,25 +96,34 @@ public class VehicleSpawner : MonoBehaviour
         }
 
         if (carButtons.Count >= 1)
-            currentActiveCar = carButtons[0].correspondingCar;
+            currentActiveCar = standardCar;
     }
 
     private void MouseInputs()
     {
-        if (Input.GetMouseButtonDown(placeMouseBtn))
-            PlaceSelectedCar();
+        if (Input.GetMouseButtonDown(placeMouseBtn)){
+            if(currentUltimateAbility){
+                PlaceSelectedUltimate();
+            }
+            else{
+                PlaceSelectedCar();
+            }
+        }   
 
-        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Space) && carButtons.Count >= 1)
-            SelectCar(carButtons[0]);
+        if(Input.GetKeyDown(KeyCode.Space) && standardCar != null)
+            SelectCar(standardCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) && carButtons.Count >= 1)
+            SelectCar(carButtons[0].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W) && carButtons.Count >= 2)
-            SelectCar(carButtons[1]);
+            SelectCar(carButtons[1].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E) && carButtons.Count >= 3)
-            SelectCar(carButtons[2]);
+            SelectCar(carButtons[2].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R) && carButtons.Count >= 4)
-            SelectCar(carButtons[3]);
+            SelectCar(carButtons[3].correspondingCar);
 
         UpdateMousePos();
         UpdateCarCursor();
@@ -127,7 +140,12 @@ public class VehicleSpawner : MonoBehaviour
             {
                 case TouchPhase.Began:
                     inputPos = mainCamera.ScreenToWorldPoint(touch.position);
-                    PlaceSelectedCar();
+                    if(currentUltimateAbility){
+                        PlaceSelectedUltimate();
+                    }
+                    else{
+                        PlaceSelectedCar();
+                    }
                     break;
                 case TouchPhase.Moved:
                     break;
@@ -140,6 +158,10 @@ public class VehicleSpawner : MonoBehaviour
     private void UpdateMousePos()
     {
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    public void setStandardCar(){
+        SelectCar(standardCar);
     }
 
     private void PlaceSelectedCar()
@@ -199,10 +221,55 @@ public class VehicleSpawner : MonoBehaviour
         {
             gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
             soundManager.PlayPurchase();
-        }   
+        }
 
         if (selectDefaultOnPlace)
-            SelectCar(carButtons[0]);
+            SelectCar(standardCar);
+    }
+
+    private void PlaceSelectedUltimate()
+    {
+        // Raycast toward Click
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
+
+        // Return if Clicked Nothing
+        if (hit.collider == null)
+            return;
+
+        if (IsMouseOverUIElement())
+            return;
+
+        // Spawn Car at Road at Position
+        Vector3 spawnPos;
+        if (currentUltimateAbility.placeableAnywhere)
+            spawnPos = new Vector3(inputPos.x, inputPos.y, 1);
+        else
+            spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
+
+        // To prevent car spamming on the same lane
+        if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
+            return;
+
+        Instantiate(
+            currentUltimateAbility.gameObject,
+            spawnPos,
+            Quaternion.identity,
+            spawnedVehiclesContainer
+        );
+
+        lastLaneSpawned = hit.collider;
+        currentTimeUntilNextSpawn = timeUntilNextSpawn;
+
+        // Reduce Car Wallet Count
+        carWallet.carCount--;
+        
+        ultimateManager.isReady = false;
+
+        if (selectDefaultOnPlace){
+            SelectCar(standardCar);
+            SelectUltimate(null);
+        }
+            
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -216,16 +283,30 @@ public class VehicleSpawner : MonoBehaviour
         return carWallet.carCount <= 0;
     }
 
-    public void SelectCar(CarButton carBtn)
+    public void SelectCar(Car car)
     {
-        if (carBtn.correspondingCar.carPrice <= gameManager.tokens)
+        if (car.carPrice <= gameManager.tokens)
         {
-            currentActiveCar = carBtn.correspondingCar;
+            currentActiveCar = car;
         }
         else
         {
             soundManager.PlayCantPurchase();
         } 
+    }
+
+    public void SetUltimate()
+    {
+        // if(ultimateManager.isReady){
+            SelectUltimate(ultimateManager.correspondingUltimate);
+        // }
+        Debug.Log(currentUltimateAbility.gameObject.name);
+    }
+
+    public void SelectUltimate(Ultimate ultimate)
+    {
+        currentUltimateAbility = ultimate;
+        Debug.Log(currentUltimateAbility.gameObject.name);
     }
 
     private void UpdateCarCursor()
