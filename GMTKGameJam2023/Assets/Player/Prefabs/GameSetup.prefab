@@ -178,6 +178,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 114f79eb13a964f469885e3cb2981b71, type: 3}
+--- !u!1 &962603968133171748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1658309186088553790, guid: 114f79eb13a964f469885e3cb2981b71, type: 3}
+  m_PrefabInstance: {fileID: 1898447968036898586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6794934040901692786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4905775537479314024, guid: 114f79eb13a964f469885e3cb2981b71, type: 3}
@@ -599,6 +604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: chickenContainer
+      value: 
+      objectReference: {fileID: 962603968133171748}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: waves.Array.size
       value: 0
