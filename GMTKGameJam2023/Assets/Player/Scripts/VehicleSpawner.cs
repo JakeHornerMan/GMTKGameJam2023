@@ -306,7 +306,7 @@ public class VehicleSpawner : MonoBehaviour
     public void SelectUltimate(Ultimate ultimate)
     {
         currentUltimateAbility = ultimate;
-        Debug.Log(currentUltimateAbility.gameObject.name);
+        // Debug.Log(currentUltimateAbility.gameObject.name);
     }
 
     private void UpdateCarCursor()

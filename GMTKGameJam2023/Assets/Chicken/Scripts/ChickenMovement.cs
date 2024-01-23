@@ -39,7 +39,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private float animationFinishTime = 0.5f;
 
     private float moveTime;
-    private bool stopMovement = false;
+    [HideInInspector] public bool stopMovement = false;
 
     [SerializeField] private float hitStopLength = 0.0f;
 
@@ -169,7 +169,7 @@ public class ChickenMovement : MonoBehaviour
     {
         if(isFreeze){
             spriteRenderer.color = freezeColor;
-            // chickenSprite.GetComponent<Animator>().enabled = false;
+            chickenSprite.GetComponent<Animator>().enabled = false;
         }
         stopMovement = true;
 
