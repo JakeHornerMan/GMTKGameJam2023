@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -212,12 +212,16 @@ MonoBehaviour:
   canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
+  carInAction: 1
+  isUltimate: 0
+  ultimateResetTime: 0
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
   carSpeed: 0
   damage: 120
   comboMultiplier: 0.2
+  DeathExplosion: {fileID: 0}
   tokenCollectParticles: {fileID: 0}
   particleDestroyDelay: 2
   scorePopUpMsg: 

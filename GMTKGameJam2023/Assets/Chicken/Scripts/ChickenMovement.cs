@@ -8,6 +8,9 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private GameObject hopController;
     [SerializeField] private GameObject chickenSprite;
     [SerializeField] public Collider2D chickenCollider;
+    private Rigidbody2D rb;
+    private Animator anim;
+    [HideInInspector] private SpriteRenderer spriteRenderer;
 
     [Header("Effects")]
     [SerializeField] private GameObject splashParticles;
@@ -15,7 +18,7 @@ public class ChickenMovement : MonoBehaviour
     [Header("Movement Values")]
     [SerializeField] public int chickenIntesity = 0;
     [SerializeField] private float minMoveTime = 0.5f;
-    [SerializeField] private float maxMoveTime = 3.5f;
+    [SerializeField] public float maxMoveTime = 3.5f;
     [SerializeField] private float laneDistance = 2f;
 
     [Header("Per-Level Logic")]
@@ -36,6 +39,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private float animationFinishTime = 0.5f;
 
     private float moveTime;
+    [HideInInspector] public bool stopMovement = false;
 
     [SerializeField] private float hitStopLength = 0.0f;
 
@@ -43,13 +47,15 @@ public class ChickenMovement : MonoBehaviour
     private Vector2 directionVector;
     private Vector2 desiredDirection;
 
-    private Rigidbody2D rb;
-    private Animator anim;
+    [SerializeField] private Color freezeColor;
+    [HideInInspector] private Color originalColor = Color.white;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = hopController.GetComponent<Animator>();
+        spriteRenderer = chickenSprite.GetComponent<SpriteRenderer>();
 
         if (hopController != null)
         {
@@ -117,7 +123,8 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator WaitAndMove(float moveTime)
     {
-        BeginChickenMovement();
+        if(!stopMovement)
+            BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);
 
@@ -156,6 +163,23 @@ public class ChickenMovement : MonoBehaviour
                 splashParticles.transform.rotation
             );
         }
+    }
+
+    public IEnumerator StopTheMovement(float stopTime, bool isFreeze)
+    {
+        if(isFreeze){
+            spriteRenderer.color = freezeColor;
+            chickenSprite.GetComponent<Animator>().enabled = false;
+        }
+        stopMovement = true;
+
+        yield return new WaitForSeconds(stopTime);
+
+        if(isFreeze){
+            spriteRenderer.color = originalColor;
+            chickenSprite.GetComponent<Animator>().enabled = true;
+        }
+        stopMovement = false;
     }
 
     private IEnumerator AnimateChicken()

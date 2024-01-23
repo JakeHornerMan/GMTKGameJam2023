@@ -302,6 +302,7 @@ MonoBehaviour:
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.03
+  freezeColor: {r: 0, g: 0.7647059, b: 1, a: 1}
 --- !u!114 &-5117147452543026932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
+  chickenMovement: {fileID: 8089028048643985026}
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
