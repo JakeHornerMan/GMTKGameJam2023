@@ -300,7 +300,6 @@ public class VehicleSpawner : MonoBehaviour
         // if(ultimateManager.isReady){
             SelectUltimate(ultimateManager.correspondingUltimate);
         // }
-        Debug.Log(currentUltimateAbility.gameObject.name);
     }
 
     public void SelectUltimate(Ultimate ultimate)

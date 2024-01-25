@@ -39,7 +39,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private float animationFinishTime = 0.5f;
 
     private float moveTime;
-    [HideInInspector] public bool stopMovement = false;
+    [SerializeField] public bool stopMovement = false;
 
     [SerializeField] private float hitStopLength = 0.0f;
 
