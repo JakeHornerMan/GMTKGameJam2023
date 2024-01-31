@@ -26,12 +26,6 @@ public class TurboChickenMovement : ChickenMovement
 
     private void Update()
     {
-        // 
-
-        // if (!isStuck || ignoreCement)
-        // {
-        //     transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
-        // }
         if(!stopMovement)
             TurboMovement();
     }
