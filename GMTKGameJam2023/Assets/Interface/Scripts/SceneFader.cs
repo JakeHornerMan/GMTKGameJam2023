@@ -29,8 +29,6 @@ public class SceneFader : MonoBehaviour
 
     private void Start()
     {
-        
-
         if (screenWipeObject != null)
         {
             ScreenWipeIn();

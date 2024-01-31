@@ -15,6 +15,8 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private GameObject rosterCarPrefab;
 
+    [SerializeField] private SceneFader sceneFader;
+
     public static BuyScreenManager instance;
 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -30,6 +32,8 @@ public class BuyScreenManager : MonoBehaviour
         {
             instance = this;
         }
+
+        sceneFader.gameObject.SetActive(true);
 
         currentAmount = startingAmount;
 
@@ -66,19 +70,22 @@ public class BuyScreenManager : MonoBehaviour
         // Now, rosterCars contains all CarButton components from the children of RosterHolder
     }
 
-    public void AddToScrapyard(Car car)
+    public void AddToScrapyard(GameObject car)
     {
         if (car != null)
         {
 
             GameObject carSlot = FindScrapyardSlot();
 
-            GameObject carRoster = rosterCarPrefab;
-            carRoster.GetComponent<CarButton>().correspondingCar = car;
-
             if (carSlot != null)
             {
-                Instantiate(carRoster, carSlot.transform);
+                car.transform.parent = carSlot.transform;
+                car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                car.GetComponent<DragDrop>().canBePlaced = true;
+
+
+                //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
+                //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
             }
         }
     }
@@ -96,6 +103,14 @@ public class BuyScreenManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+
+    public void AddHealthAmount(int value)
+    {
+        currentAmount = currentAmount + value;
+
+        UpdateMoneyText();
     }
 
     public void AddAmount(int value)
@@ -120,5 +135,14 @@ public class BuyScreenManager : MonoBehaviour
     private void UpdateMoneyText()
     {
         moneyText.text = "Money: " + currentAmount.ToString();
+    }
+
+    public void ToNextLevel()
+    {
+        CarStorage.Cars = CreateRosterList();
+
+        sceneFader.ScreenWipeOut();
+
+        //Load next scene
     }
 }
