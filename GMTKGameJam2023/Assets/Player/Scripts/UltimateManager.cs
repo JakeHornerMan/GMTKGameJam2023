@@ -14,7 +14,7 @@ public class UltimateManager : MonoBehaviour
     [Header("Ultimate Info")]
     [SerializeField] public float refillDelaySeconds;
     [HideInInspector] public float timeUntilRefill = 0f;
-    [HideInInspector] public bool isReady = true;
+    [HideInInspector] public bool ultimateEnabled = true;
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
@@ -32,27 +32,32 @@ public class UltimateManager : MonoBehaviour
         if(gameManager.ultimateInLevel){
             correspondingUltimate = gameManager.ultimateInLevel;
             correspUltimateIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
-            refillDelaySeconds = correspondingUltimate.ultimateResetTime;
+            timeUntilRefill = correspondingUltimate.ultimateResetTime;
         }
     }
 
     private void Update()
     {
-        // if (!isReady)
-        // {
-        //     StartCoroutine(RefillUltimate());
-        // }
+        if (!ultimateEnabled)
+        {
+            StartCoroutine(RefillUltimate());
+            timeUntilRefill -= Time.deltaTime;
+            Debug.LogWarning(timeUntilRefill);
+        }
+
     }
 
     private IEnumerator RefillUltimate()
     {
-        while (!isReady)
+        // infinite loop, be careful with these!
+        while (ultimateEnabled == false)
         {
+            // wait for the refill delay
+            refillDelaySeconds = correspondingUltimate.ultimateResetTime;
             yield return new WaitForSeconds(refillDelaySeconds);
-            timeUntilRefill = refillDelaySeconds;
-            Debug.Log("Refillultimate: " + timeUntilRefill);
+            // reset timeUntilRefill
+            timeUntilRefill = correspondingUltimate.ultimateResetTime;
+            ultimateEnabled = true;
         }
-
-        isReady = true;
     }
 }

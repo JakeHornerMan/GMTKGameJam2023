@@ -90,7 +90,7 @@ public class ChickenHealth : MonoBehaviour
     {
         IEnumerator coroutine = chickenMovement.StopTheMovement(freezeLength, true);
         StartCoroutine(coroutine);
-        Debug.Log("Freezing this chciken: "+ this.gameObject.name 
-            +". For seconds: "+ freezeLength);
+        // Debug.Log("Freezing this chciken: "+ this.gameObject.name 
+        //     +". For seconds: "+ freezeLength);
     }
 }
