@@ -9,7 +9,8 @@ public class ChickenHealth : MonoBehaviour
     [SerializeField] protected float featherParticlesZPos = -5;
     [SerializeField] private GameObject chickenSprite;
     [SerializeField] private GameObject hopController;
-    [SerializeField] private ChickenMovement chickenMovement;
+    // [SerializeField] private ChickenMovement chickenMovement;
+    // [SerializeField] private TurboChickenMovement chickenMovement;
     [HideInInspector] protected Animator anim;
 
     [Header("Settings")]
@@ -88,7 +89,14 @@ public class ChickenHealth : MonoBehaviour
 
     public void FreezeChicken(float freezeLength)
     {
-        IEnumerator coroutine = chickenMovement.StopTheMovement(freezeLength, true);
+        IEnumerator coroutine;
+        if(this.gameObject.name.Contains("Turbo")){
+            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().StopTheMovement(freezeLength, true);
+        }
+        else{
+            coroutine = this.gameObject.GetComponent<ChickenMovement>().StopTheMovement(freezeLength, true);
+        }
+        // IEnumerator coroutine = chickenMovement.StopTheMovement(freezeLength, true);
         StartCoroutine(coroutine);
         // Debug.Log("Freezing this chciken: "+ this.gameObject.name 
         //     +". For seconds: "+ freezeLength);
