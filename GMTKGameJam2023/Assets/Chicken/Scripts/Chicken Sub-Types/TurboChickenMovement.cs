@@ -26,6 +26,11 @@ public class TurboChickenMovement : ChickenMovement
 
     private void Update()
     {
+        if(!stopMovement)
+            TurboMovement();
+    }
+    
+    public void TurboMovement(){
         isStuck = chickenCollider.IsTouchingLayers(cementLayer);
 
         if (!isStuck || ignoreCement)
