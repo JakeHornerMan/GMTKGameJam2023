@@ -67,7 +67,7 @@ public class SpikeStrip : MonoBehaviour
     {
         if (car.canSpinOut == true && car.isSpinning == false && car.GetComponent<ObjectInfo>().objectName != "Police Car")
         {
-            StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
             TakeSpikeDamage(5f);
             car.SpinOutCar();
         }
@@ -76,7 +76,7 @@ public class SpikeStrip : MonoBehaviour
     private void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         // Camera Shake
-        StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Check if Chicken Will DIe
         if (chickenHealth.health - damage <= 0)

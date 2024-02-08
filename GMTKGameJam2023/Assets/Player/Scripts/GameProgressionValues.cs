@@ -9,5 +9,6 @@ public static class GameProgressionValues
     public static float standardRoundTime = 30f;
     public static int standardChickenAmountForStart = 30;
     public static float standardChickenAmountMultiplier = 1.1f;
+    public static int chickenLives = 3;
 
 }
