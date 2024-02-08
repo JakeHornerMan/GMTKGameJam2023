@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1912642439
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 218766053, guid: 9d5e95a62f0220a47aeaac6b67c87dfa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -189,6 +189,8 @@ MonoBehaviour:
   minMoveTime: 0.75
   maxMoveTime: 0.8
   laneDistance: 1.25
+  maxYHeight: 5
+  minYHeight: -5
   ignoreCement: 0
   isStuck: 0
   cementLayer:
@@ -200,6 +202,7 @@ MonoBehaviour:
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.15
+  freezeColor: {r: 0, g: 0.7647059, b: 1, a: 1}
 --- !u!114 &4949350468780275965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +219,7 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 1978656475471651969}
   hopController: {fileID: 8851517354825887726}
+  chickenMovement: {fileID: 869649516716330867}
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100

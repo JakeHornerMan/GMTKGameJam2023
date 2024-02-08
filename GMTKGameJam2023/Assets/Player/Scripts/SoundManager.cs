@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable]
 public class SoundConfig
@@ -37,7 +38,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] chickenConfigs;
     [SerializeField] private SoundConfig[] cashChickenSound;
     [SerializeField] private SoundConfig turboChicken;
+    [SerializeField] private SoundConfig wagonChicken;
     [SerializeField] private SoundConfig turboChickenDeath;
+    [SerializeField] private SoundConfig wagonChickenDeath;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -85,7 +88,9 @@ public class SoundManager : MonoBehaviour
     public void PlayChickenHit() => RandomPlaySound(deathConfigs);
     public void PlayCashChicken() => RandomPlaySound(cashChickenSound);
     public void PlayTurboChicken() => PlaySound(turboChicken);
+    public void PlayWagonChicken() => PlaySound(wagonChicken);
     public void PlayTurboChickenDeath() => PlaySound(turboChickenDeath);
+    public void PlayWagonChickenDeath() => PlaySound(wagonChickenDeath);
 
     // =============================
     // Other Functions
@@ -98,6 +103,7 @@ public class SoundManager : MonoBehaviour
     private void PlaySound(SoundConfig soundConfig)
     {
         // if (!Settings.sfxAllowed) return;
+        if (soundConfig == null) return;
         audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
     }
 

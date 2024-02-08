@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0f234002db522ec47939d0f898307c7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4f78894e139bffe4a84feb17364aad2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -355,7 +355,7 @@ MonoBehaviour:
   - Grass
   - Water
   placeableAnywhere: 0
-  carSpeed: 8
+  carSpeed: 3.5
   damage: 120
   comboMultiplier: 0.2
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
@@ -476,7 +476,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dd2f2fbee918b804eaa285cf15fba2c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

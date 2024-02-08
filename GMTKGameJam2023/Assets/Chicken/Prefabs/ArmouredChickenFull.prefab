@@ -172,7 +172,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1912642439
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -289,6 +289,8 @@ MonoBehaviour:
   minMoveTime: 1
   maxMoveTime: 3
   laneDistance: 1.25
+  maxYHeight: 5
+  minYHeight: -5
   ignoreCement: 0
   isStuck: 0
   cementLayer:
@@ -300,6 +302,7 @@ MonoBehaviour:
   animatorHopBool: Hop
   animationFinishTime: 0.5
   hitStopLength: 0.03
+  freezeColor: {r: 0, g: 0.7647059, b: 1, a: 1}
 --- !u!114 &3394038647060757474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +319,7 @@ MonoBehaviour:
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
+  chickenMovement: {fileID: 8089028048643985026}
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 300
@@ -343,4 +347,4 @@ MonoBehaviour:
   objectName: Armoured Chicken
   objectSprite: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
   objectIcon: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
-  objectDescription: A chicken with full body armor. Takes 2 hits to eliminate.
+  objectDescription: A chicken with full body armor. Takes 3 hits to eliminate.

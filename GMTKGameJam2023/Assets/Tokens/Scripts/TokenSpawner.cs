@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TokenSpawner : MonoBehaviour
 {
+     [Header("References")]
+    [SerializeField] private string tokenContainer_Name = "TokenContainer";
     private GameManager gameManager;
     [SerializeField] public GameObject tokenPrefab;
     [SerializeField] private GameObject[] tokenPrefabs;
+    private GameObject tokenContainer;
 
     private GameObject[] roadLanes;
     private GameObject[] grassLanes;
@@ -25,6 +28,7 @@ public class TokenSpawner : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        tokenContainer = GameObject.Find(tokenContainer_Name);
     }
 
     private void Start()
@@ -125,6 +129,6 @@ public class TokenSpawner : MonoBehaviour
         float randomFloat = Random.Range(-4f, 4f);
         pos.y += randomFloat;
         if (gameManager.isGameOver) return;
-        Instantiate(token, pos, Quaternion.identity);
+        Instantiate(token, pos, Quaternion.identity, tokenContainer.transform);
     }
 }

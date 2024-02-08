@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Cars in Level")]
     [SerializeField] public Car[] carsInLevel;
+    [SerializeField] public Ultimate ultimateInLevel;
 
     [Header("Ranking Criteria, order highest to lowest")]
     [SerializeField] private RankingRequirement[] rankingCriteria;
@@ -42,8 +43,11 @@ public class GameManager : MonoBehaviour
     // Other Values
     [HideInInspector] public bool endSound = false;
     [HideInInspector] public int waveNumber = 0;
+    [HideInInspector] public bool roundOver = false;
+    [SerializeField] public GameObject chickenContainer;
 
     private SoundManager soundManager;
+    private GameFlowManager gameFlowManager;
     private Pause pause;
     private ChickenSpawn chickenSpawn;
     private TokenSpawner tokenSpawner;
@@ -63,29 +67,15 @@ public class GameManager : MonoBehaviour
         interfaceManager = GetComponent<InterfaceManager>();
         sceneFader = FindObjectOfType<SceneFader>();
         cameraShaker = FindObjectOfType<CameraShaker>();
+        gameFlowManager = FindObjectOfType<GameFlowManager>();
+        chickenContainer = GameObject.Find("ChickenContainer");
     }
 
     private void Start()
     {
-        // missedChickenLives = startLives;
-        // safelyCrossedChickens = 0;
-        // killCount = 0;
-        // playerScore = 0;
-        // totalTokens = 0;
-
-        // if (devMode)
-        //     tokens = cheatTokenAmount;
-
-        // SetGameTime();
-        // time = startTime;
-
-        // if (waves.Count != 0)
-        //     SettingWaveInChickenSpawn();
-    }
-
-    //This is the new start method it is called when Level infoCards are closed
-    public void SetStart()
-    {
+        if(ultimateInLevel == null){
+            
+        }
         missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
@@ -94,13 +84,44 @@ public class GameManager : MonoBehaviour
 
         if (devMode)
             tokens = cheatTokenAmount;
+        if (waves.Count != 0){
+            SetGameTime();
+            time = startTime;
+            waveNumber = 0;
+            SettingWaveInChickenSpawn();
+        } 
+        else{
+            RoundSet();
+        }  
+    }
 
+    private void RoundSet(){
+        waves.Clear();
+        gameFlowManager.newRound();
         SetGameTime();
         time = startTime;
-
-        if (waves.Count != 0)
-            SettingWaveInChickenSpawn();
+        waveNumber = 0;
+        SettingWaveInChickenSpawn();
     }
+
+    //This is the new start method it is called when Level infoCards are closed
+    // public void SetStart()
+    // {
+    //     missedChickenLives = startLives;
+    //     safelyCrossedChickens = 0;
+    //     killCount = 0;
+    //     playerScore = 0;
+    //     totalTokens = 0;
+
+    //     if (devMode)
+    //         tokens = cheatTokenAmount;
+
+    //     SetGameTime();
+    //     time = startTime;
+
+    //     if (waves.Count != 0)
+    //         SettingWaveInChickenSpawn();
+    // }
 
     private void SetGameTime()
     {
@@ -133,8 +154,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber != waves.Count)
+        if (waveNumber < waves.Count){
             SettingWaveInChickenSpawn();
+        }    
+        // else{
+        //     RoundSet();
+        // }
     }
 
     private void FixedUpdate()
@@ -144,27 +169,39 @@ public class GameManager : MonoBehaviour
             if(!pauseGameplay)
                 SetTime();
         }
+        if(missedChickenLives <= 0){
+            HandleGameOver();
+        }
+        if(roundOver){
+            if(chickenContainer.transform.childCount <= 0){
+                roundOver = false;
+                RoundSet();
+            }
+        }
     }
 
     private void SetTime()
     {
         if (time > 0)
             time -= Time.deltaTime;
+        else
+            roundOver = true;
 
-        if (time <= 0 || missedChickenLives <= 0)
-        {
-            isGameOver = true;
-            UpdateRankings();
-            HandleResults();
-        }
-        if (time <= 18f)
-        {
-            if (soundManager != null)
-            {
-                soundManager.PlayLastSeconds();
-                endSound = true;
-            }
-        }
+        // if (time <= 0 && waveNumber > 0)
+        // {
+        //     // isGameOver = true;
+        //     // UpdateRankings();
+        //     // HandleResults();
+        //     RoundSet();
+        // }
+        // if (time <= 18f)
+        // {
+        //     if (soundManager != null)
+        //     {
+        //         soundManager.PlayLastSeconds();
+        //         endSound = true;
+        //     }
+        // }
     }
 
     public void SafelyCrossedChicken()
@@ -213,6 +250,18 @@ public class GameManager : MonoBehaviour
         OnTokensUpdated();
     }
 
+    private void HandleGameOver(){
+        isGameOver = true;
+        UpdateRankings();
+        HandleResults();
+        ResetGameProgressionValues();
+    }
+
+    private void ResetGameProgressionValues()
+    {
+
+    }
+
     private void UpdateRankings()
     {
         // Sort the ranking criteria array in descending order by minKills
@@ -247,36 +296,7 @@ public class GameManager : MonoBehaviour
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
         Points.totalTokens = totalTokens;
-        Points.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
         sceneFader.FadeToResults();
     }
-}
-
-[System.Serializable]
-public class ChickenWave
-{
-    public ChickenWave() { }
-    public float roundTime;
-    public string wavePrompt;
-    public int standardChickenAmounts;
-    public int chickenIntesity = 0;
-    public int coinAmount  = 0;
-    public List<SpecialChicken> specialChickens;
-}
-
-[System.Serializable]
-public class SpecialChicken
-{
-    public float timeToSpawn;
-    public GameObject chicken;
-    public bool topSpawn;
-    public bool bottomSpawn;
-
-}
-
-[System.Serializable]
-public class RankingRequirement
-{
-    public int minScore = 0;
-    public string rankingString = "Poultry Terrorizer";
 }

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.38989684, b: 0.35294116, a: 0}
@@ -4880,7 +4880,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4984,7 +4984,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5095,9 +5095,9 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 4589522377124084721}
   - component: {fileID: 462188118989263174}
-  - component: {fileID: -1257477323556779182}
+  - component: {fileID: 1310809078911237094}
   m_Layer: 6
-  m_Name: MissileLaunch
+  m_Name: FreezeMissile
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5112,7 +5112,7 @@ Transform:
   m_GameObject: {fileID: 6077706268648720092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1666519670683654902}
@@ -5161,14 +5161,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6875, y: 0.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -5238,7 +5238,7 @@ MonoBehaviour:
   objectSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
   objectIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
   objectDescription: 
---- !u!114 &-1257477323556779182
+--- !u!114 &1310809078911237094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5247,45 +5247,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3d72618ee4d864e8ba6b060551b289, type: 3}
+  m_Script: {fileID: 11500000, guid: 21ccbf7528c28be4d923cb5b367ada7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 5885361816208039466}
-  carType: 0
-  carHealth: 100
-  carPrice: 0
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  - Pavement
-  - Grass
-  - Bus Lane
+  canIBeBombed: 1
+  ultimateResetTime: 0
   placeableAnywhere: 1
-  carSpeed: 0
+  ignoreTokens: 1
+  scorePopUp: {fileID: 0}
+  comboSymbol: x
+  comboText: {fileID: 0}
   damage: 120
   comboMultiplier: 0.2
-  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  DeathExplosion: {fileID: 0}
+  tokenCollectParticles: {fileID: 0}
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.4
-  camShakeMagnitude: 0.1
-  spawnSound:
-  - clip: {fileID: 8300000, guid: b2e76d78bad382846aa63840186e34d3, type: 3}
-    volume: 1
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
+  spawnSound: []
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   missileSprtie: {fileID: 2270964467784247881}
+  freezeLength: 10
 --- !u!1 &7618215126840845903
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,7 +5345,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
