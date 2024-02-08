@@ -85,14 +85,32 @@ public class VehicleSpawner : MonoBehaviour
 
     private void CreateButtons()
     {
-        foreach (Car car in gameManager.carsInLevel)
+        //If DevMode is true, use the CarsInLevel slots. Else: Pull from CarStorage and 
+        if ((gameManager.devMode == true) || (gameManager.devMode == false && (CarStorage.Cars.Count > 0)))
         {
-            CarButton btn = Instantiate(
-                carButtonPrefab,
-                carSelectContainer
-            ).GetComponent<CarButton>();
-            carButtons.Add(btn);
-            btn.correspondingCar = car;
+            foreach (Car car in gameManager.carsInLevel)
+            {
+                CarButton btn = Instantiate(
+                    carButtonPrefab,
+                    carSelectContainer
+                ).GetComponent<CarButton>();
+                carButtons.Add(btn);
+                btn.correspondingCar = car;
+            }
+
+            
+        }
+        else if (gameManager.devMode == false )
+        {
+            foreach (Car car in CarStorage.Cars)
+            {
+                CarButton btn = Instantiate(
+                    carButtonPrefab,
+                    carSelectContainer
+                ).GetComponent<CarButton>();
+                carButtons.Add(btn);
+                btn.correspondingCar = car;
+            }
         }
 
         if (carButtons.Count >= 1)
@@ -188,7 +206,7 @@ public class VehicleSpawner : MonoBehaviour
         }
         else if (!currentActiveCar.placeableLaneTags.Contains(hit.collider.gameObject.tag))
         {
-            StartCoroutine(cameraShaker.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y));
+            CameraShaker.instance.Shake(invalidPlacementCamShake.x, invalidPlacementCamShake.y);
             return;
         }
 

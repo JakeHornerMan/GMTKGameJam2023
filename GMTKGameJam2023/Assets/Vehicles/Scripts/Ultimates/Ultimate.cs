@@ -131,7 +131,7 @@ public class Ultimate : MonoBehaviour
         }
 
         // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Impact Sound
         soundManager.PlayChickenHit();

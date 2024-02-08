@@ -85,7 +85,7 @@ public class Bomb : MonoBehaviour
 
 
         // Camera Shake
-        StartCoroutine(CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Check if Chicken Will DIe
         if (chickenHealth.health - damage <= 0)
