@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuyScreenManager : MonoBehaviour
 {
 
 
+    [Header("Upgrade Prices")]
+    [SerializeField] private int lifePrice;
 
 
     [SerializeField] private GameObject RosterHolder;
@@ -18,6 +21,12 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private SceneFader sceneFader;
 
     public static BuyScreenManager instance;
+
+    //Health Properties
+    [SerializeField] private Slider healthSlider;
+    private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    [SerializeField] private TextMeshProUGUI healthNumber;
+
 
     [SerializeField] private TextMeshProUGUI moneyText;
     public int startingAmount;
@@ -39,7 +48,9 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateMoneyText();
 
-        
+        UpdateHealthBar();
+
+
     }
 
     public List<Car> CreateRosterList()
@@ -106,22 +117,36 @@ public class BuyScreenManager : MonoBehaviour
     }
 
 
-    public void AddHealthAmount(int value)
+    public void AddLives(int value)
     {
+        if (CheckMoneyAmount(lifePrice))
+        {
+            if (GameProgressionValues.chickenLives < 8)
+            {
+                GameProgressionValues.chickenLives = GameProgressionValues.chickenLives + value;
+
+                RemoveMoney(lifePrice);
+            }
+        }
+
+        UpdateHealthBar();
+    }
+    private void UpdateHealthBar()
+    {
+        healthNumber.text = GameProgressionValues.chickenLives.ToString();
+
+        healthSlider.value = healthSliderValues[GameProgressionValues.chickenLives];
+    }
+
+    public void AddMoney(int value)
+    {
+
         currentAmount = currentAmount + value;
 
         UpdateMoneyText();
     }
 
-    public void AddAmount(int value)
-    {
-
-        currentAmount = currentAmount + value;
-
-        UpdateMoneyText();
-    }
-
-    public void RemoveAmount(int value)
+    public void RemoveMoney(int value)
     {
         if (currentAmount > 0)
         {
@@ -135,6 +160,16 @@ public class BuyScreenManager : MonoBehaviour
     private void UpdateMoneyText()
     {
         moneyText.text = "Money: " + currentAmount.ToString();
+    }
+
+    private bool CheckMoneyAmount(int value)
+    {
+        if (value <= currentAmount)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void ToNextLevel()
