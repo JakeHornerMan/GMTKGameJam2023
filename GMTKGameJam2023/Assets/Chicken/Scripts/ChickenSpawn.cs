@@ -172,9 +172,12 @@ public class ChickenSpawn : MonoBehaviour
     private void SpawnAChicken(GameObject chicken, SpawningPoint point)
     {
         chicken = Instantiate(chicken, point.position, Quaternion.identity, chickenContainer.transform);
-        chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
-        chicken.GetComponent<ChickenMovement>().minYHeight = minYHeight;
-        chicken.GetComponent<ChickenMovement>().maxYHeight = maxYHeight;
+        if(chicken.GetComponent<ChickenMovement>() != null){
+            chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
+            chicken.GetComponent<ChickenMovement>().minYHeight = minYHeight;
+            chicken.GetComponent<ChickenMovement>().maxYHeight = maxYHeight;
+        }
+        
         if (soundManager != null)
             soundManager.PlayRandomChicken();
     }
