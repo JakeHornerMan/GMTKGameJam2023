@@ -281,7 +281,7 @@ public class VehicleSpawner : MonoBehaviour
         // Reduce Car Wallet Count
         carWallet.carCount--;
         
-        ultimateManager.isReady = false;
+        ultimateManager.ultimateEnabled = false;
 
         if (selectDefaultOnPlace){
             SelectCar(standardCar);
@@ -315,10 +315,9 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SetUltimate()
     {
-        // if(ultimateManager.isReady){
+        if(ultimateManager.ultimateEnabled){
             SelectUltimate(ultimateManager.correspondingUltimate);
-        // }
-        Debug.Log(currentUltimateAbility.gameObject.name);
+        }
     }
 
     public void SelectUltimate(Ultimate ultimate)

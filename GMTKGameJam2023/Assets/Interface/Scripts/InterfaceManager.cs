@@ -38,7 +38,7 @@ public class InterfaceManager : MonoBehaviour
     private GameManager gameManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
-    private UltimateManager ultimate;
+    private UltimateManager ultimateManager;
     private Animator speedUptextAnimator;
 
     [Header("UI Popups")]
@@ -53,7 +53,7 @@ public class InterfaceManager : MonoBehaviour
         ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
-        ultimate = FindObjectOfType<UltimateManager>();
+        ultimateManager = FindObjectOfType<UltimateManager>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
         pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
     }
@@ -94,7 +94,7 @@ public class InterfaceManager : MonoBehaviour
         }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
-        UpdateUltimateRadial(ultimate.timeUntilRefill, ultimate.refillDelaySeconds);
+        UpdateUltimateRadial(ultimateManager.timeUntilRefill, ultimateManager.correspondingUltimate.ultimateResetTime);
     }
 
     private void FixedUpdate()
@@ -127,7 +127,12 @@ public class InterfaceManager : MonoBehaviour
 
     private void UpdateUltimateRadial(float timeRemaining, float maxCooldownTime)
     {
-        ultimateRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
+        if(ultimateManager.ultimateEnabled){
+            ultimateRadialUI.fillAmount = 1;
+        }
+        else{
+            ultimateRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
+        }
     }
 
     public void ShowSpeedUpText(string text = "Speed Up")
