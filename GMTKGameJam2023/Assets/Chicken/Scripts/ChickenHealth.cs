@@ -9,8 +9,6 @@ public class ChickenHealth : MonoBehaviour
     [SerializeField] protected float featherParticlesZPos = -5;
     [SerializeField] private GameObject chickenSprite;
     [SerializeField] private GameObject hopController;
-    // [SerializeField] private ChickenMovement chickenMovement;
-    // [SerializeField] private TurboChickenMovement chickenMovement;
     [HideInInspector] protected Animator anim;
 
     [Header("Settings")]
