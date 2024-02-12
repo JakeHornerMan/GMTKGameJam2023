@@ -231,6 +231,12 @@ public abstract class Car : MonoBehaviour
         }
         StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
 
+        //PsychicHen hit
+        if(chickenHealth.gameObject.name.Contains("PsychicHen")){
+            chickenHealth.gameObject.GetComponent<PsychicHen>().SpawnPortal(this.gameObject);
+        }
+        // Debug.Log(chickenHealth.gameObject.name);
+
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
 
