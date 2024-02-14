@@ -24,7 +24,7 @@ public class CameraShaker : MonoBehaviour
             instance = this;
         }
 
-        cinemachineBasicMultiChannelPerlin = _cameraVCAM.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        // cinemachineBasicMultiChannelPerlin = _cameraVCAM.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
 

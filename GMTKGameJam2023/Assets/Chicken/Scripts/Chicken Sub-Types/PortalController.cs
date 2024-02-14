@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
-    [SerializeField] private float removeTime = 5f;
+    [SerializeField] private float removeTime = 3f;
     public GameObject capturedVehicle;
     private float portalDisappearAnimLength = 1f;
     private float spawnAfterTime = 1f;
     private Animator anim;
+    private SoundManager soundManager;
     void Start()
     {
         anim = GetComponent<Animator>();
+        soundManager = FindObjectOfType<SoundManager>();
         // Debug.Log("Captured: " + capturedVehicle.name);
         StartCoroutine(WaitAndDie(removeTime));
 
@@ -35,6 +37,7 @@ public class PortalController : MonoBehaviour
 
         Vector3 spawnPos = new(transform.position.x, transform.position.y, 0);
         GameObject spawnedVehicle = Instantiate(capturedVehicle, spawnPos, Quaternion.identity);
+        soundManager.PlayExitPortal();
         spawnedVehicle.SetActive(true);
     }
 }
