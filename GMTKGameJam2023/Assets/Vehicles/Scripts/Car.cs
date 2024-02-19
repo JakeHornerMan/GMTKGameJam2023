@@ -292,6 +292,13 @@ public abstract class Car : MonoBehaviour
         Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
 
+
+    public void FreezeCar()
+    {
+
+    }
+
+
     public void SpinOutCar()
     {
         if (canSpinOut == true && isSpinning == false)
