@@ -70,7 +70,7 @@ public class Ultimate : MonoBehaviour
             return;
         }
 
-        Debug.Log(collision.gameObject.name);
+        // Debug.Log(collision.gameObject.name);
 
         // Check if Hit Chicken
         ChickenHealth chickenHealth = collision.gameObject.GetComponent<ChickenHealth>();
@@ -131,7 +131,7 @@ public class Ultimate : MonoBehaviour
         }
 
         // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Impact Sound
         soundManager.PlayChickenHit();

@@ -23,7 +23,7 @@ public class PoliceCar : Car
         base.Start();
         SetCarSpeed();
         numberOfSpikesDeployed = 1f;
-        StartCoroutine(cameraShaker.Shake(policeShakeDuration, policeShakeMagnitude));
+        CameraShaker.instance.Shake(policeShakeDuration, policeShakeMagnitude);
     }
 
     private void Update()

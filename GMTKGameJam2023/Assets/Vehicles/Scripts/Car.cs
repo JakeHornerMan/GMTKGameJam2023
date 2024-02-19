@@ -68,7 +68,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Camera Shake Values")]
     [SerializeField] private float camShakeDuration = 0.15f;
-    [SerializeField] private float camShakeMagnitude = 0.05f;
+    [SerializeField] private float camShakeMagnitude = 0.25f;
 
     [Header("Sound")]
     [SerializeField] private SoundConfig[] spawnSound;
@@ -98,7 +98,7 @@ public abstract class Car : MonoBehaviour
 
         // Shake Camera
         if (cameraShaker.isActiveAndEnabled)
-            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
     }
 
     private void Update()
@@ -193,7 +193,7 @@ public abstract class Car : MonoBehaviour
                 this.carHealth -= otherCar.carHealth;
             }
 
-            StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
             StartCoroutine(CarHitStop(0.1f));
             otherCar.StartCoroutine(CarHitStop(0.1f));
         }
@@ -243,7 +243,7 @@ public abstract class Car : MonoBehaviour
         }
 
         // Canera Shake
-        StartCoroutine(cameraShaker.Shake(camShakeDuration, camShakeMagnitude));
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
 
         // Impact Sound
         soundManager.PlayChickenHit();
