@@ -295,7 +295,25 @@ public abstract class Car : MonoBehaviour
 
     public void FreezeCar()
     {
+        if (rb != null && carInAction == true)
+        {
+            carInHitStop = true;
 
+            Vector3 currentVelocity = rb.velocity;
+
+            rb.velocity = Vector3.zero;
+
+            yield return new WaitForSecondsRealtime(hitStopLength * carHitStopEffectMultiplier);
+
+            if (carInAction == false)
+            {
+                yield break;
+            }
+
+            rb.velocity = currentVelocity;
+
+            carInHitStop = false;
+        }
     }
 
 
