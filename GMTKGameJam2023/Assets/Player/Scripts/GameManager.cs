@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     private Pause pause;
     private ChickenSpawn chickenSpawn;
     private TokenSpawner tokenSpawner;
-    private SceneFader sceneFader;
+    public SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
 
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        SetPlayerValuesInLevel();
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
@@ -73,10 +74,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(ultimateInLevel == null){
-            
-        }
-        missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
@@ -95,6 +92,19 @@ public class GameManager : MonoBehaviour
         }  
     }
 
+    private void SetPlayerValuesInLevel(){
+        if(!devMode){
+            if(PlayerValues.Cars.Count > 0)
+                carsInLevel = PlayerValues.Cars.ToArray();
+            Debug.Log("Cars: " + carsInLevel);
+            missedChickenLives = PlayerValues.missedChickenLives;
+            Debug.Log("Lives: " + missedChickenLives);
+        }
+        else if (!devMode && PlayerValues.Cars.Count <= 0) {
+            missedChickenLives = startLives;
+        }
+    }
+
     private void RoundSet(){
         waves.Clear();
         gameFlowManager.newRound();
@@ -103,25 +113,6 @@ public class GameManager : MonoBehaviour
         waveNumber = 0;
         SettingWaveInChickenSpawn();
     }
-
-    //This is the new start method it is called when Level infoCards are closed
-    // public void SetStart()
-    // {
-    //     missedChickenLives = startLives;
-    //     safelyCrossedChickens = 0;
-    //     killCount = 0;
-    //     playerScore = 0;
-    //     totalTokens = 0;
-
-    //     if (devMode)
-    //         tokens = cheatTokenAmount;
-
-    //     SetGameTime();
-    //     time = startTime;
-
-    //     if (waves.Count != 0)
-    //         SettingWaveInChickenSpawn();
-    // }
 
     private void SetGameTime()
     {

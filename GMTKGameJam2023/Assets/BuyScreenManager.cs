@@ -121,9 +121,9 @@ public class BuyScreenManager : MonoBehaviour
     {
         if (CheckMoneyAmount(lifePrice))
         {
-            if (GameProgressionValues.chickenLives < 8)
+            if (PlayerValues.missedChickenLives < 8)
             {
-                GameProgressionValues.chickenLives = GameProgressionValues.chickenLives + value;
+                PlayerValues.missedChickenLives = PlayerValues.missedChickenLives + value;
 
                 RemoveMoney(lifePrice);
             }
@@ -133,9 +133,9 @@ public class BuyScreenManager : MonoBehaviour
     }
     private void UpdateHealthBar()
     {
-        healthNumber.text = GameProgressionValues.chickenLives.ToString();
+        healthNumber.text = PlayerValues.missedChickenLives.ToString();
 
-        healthSlider.value = healthSliderValues[GameProgressionValues.chickenLives];
+        healthSlider.value = healthSliderValues[PlayerValues.missedChickenLives];
     }
 
     public void AddMoney(int value)
@@ -174,10 +174,13 @@ public class BuyScreenManager : MonoBehaviour
 
     public void ToNextLevel()
     {
-        CarStorage.Cars = CreateRosterList();
-
-        sceneFader.ScreenWipeOut();
-
+        setPlayerValues();
         //Load next scene
+        sceneFader.ScreenWipeOut("Jakes Place");
+    }
+
+    public void setPlayerValues()
+    {
+        PlayerValues.Cars = CreateRosterList();
     }
 }
