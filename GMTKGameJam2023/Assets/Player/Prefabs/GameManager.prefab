@@ -687,8 +687,20 @@ MonoBehaviour:
   turboChicken:
     clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
     volume: 1
+  wagonChicken:
+    clip: {fileID: 0}
+    volume: 1
   turboChickenDeath:
     clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
+    volume: 1
+  wagonChickenDeath:
+    clip: {fileID: 0}
+    volume: 1
+  enterPortal:
+    clip: {fileID: 8300000, guid: ef9d97d430df64943820f7f2550b238d, type: 3}
+    volume: 1
+  exitPortal:
+    clip: {fileID: 8300000, guid: dd29e44dbe229ec47b2526577fa4440d, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
@@ -716,7 +728,7 @@ MonoBehaviour:
   disableVehicleSpawn: 0
   invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
-  ultimateAbility: {fileID: 0}
+  currentUltimateAbility: {fileID: 0}
   carButtons: []
 --- !u!114 &695978991538291139
 MonoBehaviour:
