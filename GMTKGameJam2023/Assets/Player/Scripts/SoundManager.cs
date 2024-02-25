@@ -41,6 +41,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig wagonChicken;
     [SerializeField] private SoundConfig turboChickenDeath;
     [SerializeField] private SoundConfig wagonChickenDeath;
+    [SerializeField] private SoundConfig enterPortal;
+    [SerializeField] private SoundConfig exitPortal;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -91,6 +93,8 @@ public class SoundManager : MonoBehaviour
     public void PlayWagonChicken() => PlaySound(wagonChicken);
     public void PlayTurboChickenDeath() => PlaySound(turboChickenDeath);
     public void PlayWagonChickenDeath() => PlaySound(wagonChickenDeath);
+    public void PlayEnterPortal() => PlaySound(enterPortal);
+    public void PlayExitPortal() => PlaySound(exitPortal);
 
     // =============================
     // Other Functions

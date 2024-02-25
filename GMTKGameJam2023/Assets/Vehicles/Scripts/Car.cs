@@ -31,9 +31,9 @@ public abstract class Car : MonoBehaviour
     private float degreesPerSecond = 540f;
     public bool carInAction = true; //is car in play (not being launched)?
     
-    [Header("Ultimate Info")]
-    [SerializeField] public bool isUltimate = false;
-    [SerializeField] public float ultimateResetTime;
+    // [Header("Ultimate Info")]
+    // [SerializeField] public bool isUltimate = false;
+    // [SerializeField] public float ultimateResetTime;
 
     [Header("Tags")]
     [SerializeField] private string deathboxTag = "Death Box";
@@ -230,6 +230,12 @@ public abstract class Car : MonoBehaviour
             KillChicken(chickenHealth);
         }
         StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+
+        //PsychicHen hit
+        if(chickenHealth.gameObject.name.Contains("PsychicHen")){
+            chickenHealth.gameObject.GetComponent<PsychicHen>().SpawnPortal(this.gameObject);
+        }
+        // Debug.Log(chickenHealth.gameObject.name);
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
