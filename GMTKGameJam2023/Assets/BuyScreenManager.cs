@@ -176,7 +176,7 @@ public class BuyScreenManager : MonoBehaviour
     {
         setPlayerValues();
         //Load next scene
-        sceneFader.ScreenWipeOut("Jakes Place");
+        sceneFader.ScreenWipeOut("Level01");
     }
 
     public void setPlayerValues()

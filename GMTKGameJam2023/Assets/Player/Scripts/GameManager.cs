@@ -94,11 +94,11 @@ public class GameManager : MonoBehaviour
 
     private void SetPlayerValuesInLevel(){
         if(!devMode){
-            if(PlayerValues.Cars.Count > 0)
+            if(PlayerValues.Cars != null)
                 carsInLevel = PlayerValues.Cars.ToArray();
-            Debug.Log("Cars: " + carsInLevel);
+            // Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
-            Debug.Log("Lives: " + missedChickenLives);
+            // Debug.Log("Lives: " + missedChickenLives);
         }
         else if (!devMode && PlayerValues.Cars.Count <= 0) {
             missedChickenLives = startLives;
@@ -107,7 +107,8 @@ public class GameManager : MonoBehaviour
 
     private void RoundSet(){
         waves.Clear();
-        gameFlowManager.newRound();
+        if(gameFlowManager)
+            gameFlowManager.newRound();
         SetGameTime();
         time = startTime;
         waveNumber = 0;
@@ -165,8 +166,8 @@ public class GameManager : MonoBehaviour
         }
         if(roundOver){
             if(chickenContainer.transform.childCount <= 0){
-                roundOver = false;
-                RoundSet();
+                isGameOver = true;
+                StartCoroutine(WaitAndBuyScreen(3f));
             }
         }
     }
@@ -177,22 +178,13 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         else
             roundOver = true;
+    }
 
-        // if (time <= 0 && waveNumber > 0)
-        // {
-        //     // isGameOver = true;
-        //     // UpdateRankings();
-        //     // HandleResults();
-        //     RoundSet();
-        // }
-        // if (time <= 18f)
-        // {
-        //     if (soundManager != null)
-        //     {
-        //         soundManager.PlayLastSeconds();
-        //         endSound = true;
-        //     }
-        // }
+    private IEnumerator WaitAndBuyScreen(float time)
+    {
+        sceneFader.Fade();
+        yield return new WaitForSeconds(time);
+        sceneFader.ScreenWipeOut("BuyScreen");
     }
 
     public void SafelyCrossedChicken()
@@ -206,7 +198,8 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerScore(int addAmount)
     {
-        interfaceManager.ScoreUI(addAmount, true);
+        if(interfaceManager)
+            interfaceManager.ScoreUI(addAmount, true);
         playerScore += addAmount;
     }
 
