@@ -47,6 +47,11 @@ public class SceneFader : MonoBehaviour
         StartCoroutine(FadeOut(targetScene));
     }
 
+    public void Fade()
+    {
+        StartCoroutine(FadeOut());
+    }
+
     // Scene Loading Functions
     public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
     public void RestartLevel() => FadeTo(levelSceneName);
@@ -71,6 +76,19 @@ public class SceneFader : MonoBehaviour
         }
     }
 
+    private IEnumerator FadeOut()
+    {
+        // Fade Out Using Reversed Animation Curve
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime;
+            float a = fadeAnimationCurve.Evaluate(t);
+            fadeImage.color = new Color(0, 0, 0, a);
+            yield return 0;
+        }
+    }
+
     private IEnumerator FadeOut(string targetScene)
     {
         // Fade Out Using Reversed Animation Curve
@@ -84,6 +102,10 @@ public class SceneFader : MonoBehaviour
         }
 
         // Load Target Scene
+        SceneManager.LoadScene(targetScene);
+    }
+
+    private void LoadScene(string targetScene){
         SceneManager.LoadScene(targetScene);
     }
 
@@ -101,9 +123,10 @@ public class SceneFader : MonoBehaviour
         StartCoroutine(MoveInScreenWiper());
     }
 
-    public void ScreenWipeOut()
+    public void ScreenWipeOut(string targetScene)
     {
         StartCoroutine(MoveOutScreenWiper());
+        LoadScene(targetScene);
     }
 
     IEnumerator MoveInScreenWiper()

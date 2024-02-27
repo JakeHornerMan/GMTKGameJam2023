@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     private Pause pause;
     private ChickenSpawn chickenSpawn;
     private TokenSpawner tokenSpawner;
-    private SceneFader sceneFader;
+    public SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
 
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        SetPlayerValuesInLevel();
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
@@ -73,10 +74,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(ultimateInLevel == null){
-            
-        }
-        missedChickenLives = startLives;
         safelyCrossedChickens = 0;
         killCount = 0;
         playerScore = 0;
@@ -95,33 +92,28 @@ public class GameManager : MonoBehaviour
         }  
     }
 
+    private void SetPlayerValuesInLevel(){
+        if(!devMode){
+            if(PlayerValues.Cars != null)
+                carsInLevel = PlayerValues.Cars.ToArray();
+            // Debug.Log("Cars: " + carsInLevel);
+            missedChickenLives = PlayerValues.missedChickenLives;
+            // Debug.Log("Lives: " + missedChickenLives);
+        }
+        else if (!devMode && PlayerValues.Cars.Count <= 0) {
+            missedChickenLives = startLives;
+        }
+    }
+
     private void RoundSet(){
         waves.Clear();
-        gameFlowManager.newRound();
+        if(gameFlowManager)
+            gameFlowManager.newRound();
         SetGameTime();
         time = startTime;
         waveNumber = 0;
         SettingWaveInChickenSpawn();
     }
-
-    //This is the new start method it is called when Level infoCards are closed
-    // public void SetStart()
-    // {
-    //     missedChickenLives = startLives;
-    //     safelyCrossedChickens = 0;
-    //     killCount = 0;
-    //     playerScore = 0;
-    //     totalTokens = 0;
-
-    //     if (devMode)
-    //         tokens = cheatTokenAmount;
-
-    //     SetGameTime();
-    //     time = startTime;
-
-    //     if (waves.Count != 0)
-    //         SettingWaveInChickenSpawn();
-    // }
 
     private void SetGameTime()
     {
@@ -174,8 +166,8 @@ public class GameManager : MonoBehaviour
         }
         if(roundOver){
             if(chickenContainer.transform.childCount <= 0){
-                roundOver = false;
-                RoundSet();
+                isGameOver = true;
+                StartCoroutine(WaitAndBuyScreen(3f));
             }
         }
     }
@@ -186,22 +178,13 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         else
             roundOver = true;
+    }
 
-        // if (time <= 0 && waveNumber > 0)
-        // {
-        //     // isGameOver = true;
-        //     // UpdateRankings();
-        //     // HandleResults();
-        //     RoundSet();
-        // }
-        // if (time <= 18f)
-        // {
-        //     if (soundManager != null)
-        //     {
-        //         soundManager.PlayLastSeconds();
-        //         endSound = true;
-        //     }
-        // }
+    private IEnumerator WaitAndBuyScreen(float time)
+    {
+        sceneFader.Fade();
+        yield return new WaitForSeconds(time);
+        sceneFader.ScreenWipeOut("BuyScreen");
     }
 
     public void SafelyCrossedChicken()
@@ -215,7 +198,8 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerScore(int addAmount)
     {
-        interfaceManager.ScoreUI(addAmount, true);
+        if(interfaceManager)
+            interfaceManager.ScoreUI(addAmount, true);
         playerScore += addAmount;
     }
 

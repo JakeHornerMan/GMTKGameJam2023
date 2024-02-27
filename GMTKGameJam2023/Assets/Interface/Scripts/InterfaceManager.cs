@@ -161,14 +161,16 @@ public class InterfaceManager : MonoBehaviour
             GameObject score = Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
             score.GetComponent<RectTransform>().localPosition = new Vector3(125f, 350f, 0);
             score.GetComponent<TextMeshProUGUI>().text = "+" + points.ToString();
-            scoreMoverPositive = points / 50;
+            if(scoreMoverPositive < points / 50)
+                scoreMoverPositive = points / 50;
         }
         else
         {
             GameObject score = Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
             score.GetComponent<RectTransform>().localPosition = new Vector3(-125f, 350f, 0);
             score.GetComponent<TextMeshProUGUI>().text = "-" + points.ToString();
-            scoreMoverNegative = points / 50;
+            if(scoreMoverNegative < points / 50)
+                scoreMoverNegative = points / 50;
         }
 
     }
