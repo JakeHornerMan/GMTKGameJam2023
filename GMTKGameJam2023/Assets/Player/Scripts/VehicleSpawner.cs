@@ -44,6 +44,7 @@ public class VehicleSpawner : MonoBehaviour
     private SoundManager soundManager;
     private CarWallet carWallet;
     private CameraShaker cameraShaker;
+    private TokenSpawner tokenSpawner;
 
     private Vector3 inputPos;
 
@@ -58,6 +59,7 @@ public class VehicleSpawner : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         carWallet = GetComponent<CarWallet>();
         currentCarIndicator = FindObjectOfType<CurrentCarIndicator>();
+        tokenSpawner = FindObjectOfType<TokenSpawner>();
     }
 
     private void Start()
@@ -306,6 +308,15 @@ public class VehicleSpawner : MonoBehaviour
         if (car.carPrice <= gameManager.tokens)
         {
             currentActiveCar = car;
+            
+            foreach (GameObject lane in tokenSpawner.allLanes)
+            {
+                RoadHighlight laneHighlight = lane.GetComponent<RoadHighlight>();
+                if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
+                {
+                    laneHighlight.SetShine(true);
+                }
+            }
         }
         else
         {
