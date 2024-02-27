@@ -30,26 +30,41 @@ public class TriggerMenuFunction : MonoBehaviour
     {
         if (!other.gameObject.GetComponent<Car>()) return;
 
+        // Debug.Log("This was hit");
         other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         switch(option) 
         {
         case "GoToGameSelect":
+            Debug.Log(option);
             GoToGameSelect();
             break;
         case "GoToStart":
+            Debug.Log(option);
             GoToStart();
             break;
         case "GoToSettings":
+            Debug.Log(option);
             GoToSettings();
             break;
         case "GoToCredits":
+            Debug.Log(option);
             GoToCredits();
             break;
-        case "GoToWorldSelect":
-            GoToWorldSelect();
+        case "PlayGame":
+            Debug.Log(option);
+            GoToGame();
+            break;
+        case "Bestiary":
+            Debug.Log(option);
+            GoToBeastiary();
+            break;
+        case "Tutorial":
+            Debug.Log(option);
+            GoToTutorial();
             break;
         default:
+            Debug.Log("There is nothing set");
             break;
         }  
     }
@@ -75,9 +90,21 @@ public class TriggerMenuFunction : MonoBehaviour
         credits.SetActive(false);
     }
 
-    public void GoToWorldSelect(){
+    public void GoToGame(){
         mainCamera.speed = 5f;
         mainCamera.targetPos = gamesPos;
-        mainMenu.EnterWorldSelect();
+        mainMenu.EnterGame();
+    }
+
+    public void GoToBeastiary(){
+        // mainCamera.speed = 5f;
+        // mainCamera.targetPos = gamesPos;
+        // mainMenu.EnterWorldSelect();
+    }
+
+    public void GoToTutorial(){
+        // mainCamera.speed = 5f;
+        // mainCamera.targetPos = gamesPos;
+        // mainMenu.EnterWorldSelect();
     }
 }

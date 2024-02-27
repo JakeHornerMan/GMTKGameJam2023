@@ -13,6 +13,7 @@ public class GameFlowManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
     }
+
     public void newRound(){
         // RoundProgression();
         int randomSpecialWave = Random.Range(1,2);
@@ -21,18 +22,22 @@ public class GameFlowManager : MonoBehaviour
                 SpecialWave();
             }
             else{
-                StandardChickenWaveCreate();
+                StandardChickenWaveCreate(i);
             }
         }
         GameProgressionValues.RoundNumber ++;
     }
 
-    private void StandardChickenWaveCreate(){
+    private void StandardChickenWaveCreate(int roundNumber){
         ChickenWave newChickenWave = new ChickenWave();
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
-        newChickenWave.wavePrompt = "Lets Go!";
         newChickenWave.standardChickenAmounts = standardChickenAmount();
-        newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
+        if(roundNumber == 0){
+            newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
+        }
+        else {
+            newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
+        }
         newChickenWave.chickenIntesity = chickenIntesitySet();
         newChickenWave.coinAmount = RoundCoinSet();
         newChickenWave.specialChickens = SpecialChickenListSet();
