@@ -22,6 +22,7 @@ public class PsychicHen : ChickenHealth
         //         alllanes.Add(t.gameObject);
         //     }
         // }
+        
     }
 
     public void SpawnPortal(GameObject hitcar)
