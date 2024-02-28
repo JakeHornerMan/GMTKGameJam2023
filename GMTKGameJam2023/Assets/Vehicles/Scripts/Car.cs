@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading;
 
 public abstract class Car : MonoBehaviour
 {
@@ -93,6 +93,8 @@ public abstract class Car : MonoBehaviour
     public virtual void Start()
     {
         carKillCount = 0;
+
+        carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
 
         soundManager?.RandomPlaySound(spawnSound);
 
@@ -229,13 +231,20 @@ public abstract class Car : MonoBehaviour
         {
             KillChicken(chickenHealth);
         }
-        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
 
         //PsychicHen hit
         if(chickenHealth.gameObject.name.Contains("PsychicHen")){
             chickenHealth.gameObject.GetComponent<PsychicHen>().SpawnPortal(this.gameObject);
         }
+
+        if (chickenHealth.gameObject.TryGetComponent<IceChicken>(out IceChicken iceChick))
+        {
+            StartCoroutine(FreezeCar(iceChick.freezeLength, iceChick.freezeColour));
+        }
+
         // Debug.Log(chickenHealth.gameObject.name);
+
+        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
@@ -298,6 +307,70 @@ public abstract class Car : MonoBehaviour
         Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
 
+
+    public IEnumerator FreezeCar(float freezeLength, Color freezeColour)
+    {
+        if (rb != null && carInAction == true)
+        {
+
+            float freezeTimer = 0.75f;
+
+            //Do everything that needs to be done to make the car "frozen"
+
+            //If rb.velocity is 0, set current velocity to starting velocity
+            Vector3 currentVelocity = rb.velocity;
+
+            if (currentVelocity.magnitude == 0)
+            {
+                currentVelocity = new Vector3(0, carSpeed, 0);
+                yield break;
+            }
+
+            rb.velocity = Vector3.zero;
+
+            //Give car blue tint
+
+            carSpriteObject.GetComponent<SpriteRenderer>().color = freezeColour;
+
+
+            yield return new WaitForSecondsRealtime(freezeLength - (freezeLength - freezeTimer));
+
+
+            Vector2 currentSpritePos = new Vector2(carSpriteObject.transform.position.x, carSpriteObject.transform.position.y);
+
+            while (freezeTimer > 0)
+            {
+
+                carSpriteObject.transform.position = currentSpritePos;
+
+                Vector2 freezeDirection = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f));
+
+                freezeDirection = (freezeDirection.normalized / 10);
+
+                carSpriteObject.transform.position = currentSpritePos + freezeDirection;
+
+                freezeTimer -= Time.deltaTime;
+
+                yield return new WaitForSecondsRealtime(Time.deltaTime);
+
+            }
+
+            carSpriteObject.transform.position = currentSpritePos;
+
+            carSpriteObject.GetComponent<SpriteRenderer>().color = Color.white;
+
+            if (carInAction == false)
+            {
+                yield break;
+            }
+
+            rb.velocity = currentVelocity;
+
+            
+        }
+    }
+
+
     public void SpinOutCar()
     {
         if (canSpinOut == true && isSpinning == false)
@@ -306,7 +379,7 @@ public abstract class Car : MonoBehaviour
 
             carCollider.size = new Vector2(1.8f, carCollider.size.y);
 
-            carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
+            
 
             isSpinning = true;
         }

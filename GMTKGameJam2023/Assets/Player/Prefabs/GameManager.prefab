@@ -451,6 +451,7 @@ MonoBehaviour:
   waveNumber: 0
   roundOver: 0
   chickenContainer: {fileID: 0}
+  sceneFader: {fileID: 0}
 --- !u!114 &7543842703582401103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,8 +743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9790799240cd4494e932a0e5ca89cf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walletLimit: 5
-  startWalletCount: 5
+  walletLimit: 10
+  startWalletCount: 10
   refillDelaySeconds: 2
   timeUntilRefill: 0
   amountPerRefill: 1

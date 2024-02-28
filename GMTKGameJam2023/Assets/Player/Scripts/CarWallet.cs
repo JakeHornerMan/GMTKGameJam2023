@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarWallet : MonoBehaviour
 {
     [Header("Wallet Values")]
-    [SerializeField] public int walletLimit = 15;
+    [SerializeField] public int walletLimit = 10;
     [SerializeField] private int startWalletCount = 10;
 
     private bool walletEnabled = true;
@@ -17,9 +17,22 @@ public class CarWallet : MonoBehaviour
 
     [HideInInspector] public int carCount = 0;
 
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void Start()
     {
-        carCount = startWalletCount;
+        if(!gameManager.devMode){
+            walletLimit =PlayerValues.carWalletNodes;
+            carCount = 0;
+        }
+        else{
+            carCount = startWalletCount;
+        }
         timeUntilRefill = refillDelaySeconds;
 
         walletEnabled = true;

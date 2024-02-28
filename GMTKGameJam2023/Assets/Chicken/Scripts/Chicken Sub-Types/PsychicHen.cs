@@ -15,13 +15,14 @@ public class PsychicHen : ChickenHealth
         soundManager = FindObjectOfType<SoundManager>();
         lanes = GameObject.Find("Lanes");
         List<GameObject> alllanes = new List<GameObject>();
-        foreach (Transform t in lanes.transform.GetComponentsInChildren(typeof(GameObject), true))
-        {
-            if (t.gameObject.layer == 9)
-            {
-                alllanes.Add(t.gameObject);
-            }
-        }
+        // foreach (Transform t in lanes.transform.GetComponentsInChildren(typeof(GameObject), true))
+        // {
+        //     if (t.gameObject.layer == 9)
+        //     {
+        //         alllanes.Add(t.gameObject);
+        //     }
+        // }
+        
     }
 
     public void SpawnPortal(GameObject hitcar)

@@ -87,32 +87,15 @@ public class VehicleSpawner : MonoBehaviour
 
     private void CreateButtons()
     {
-        //If DevMode is true, use the CarsInLevel slots. Else: Pull from CarStorage and 
-        if ((gameManager.devMode == true) || (gameManager.devMode == false && (CarStorage.Cars.Count > 0)))
+       
+        foreach (Car car in gameManager.carsInLevel)
         {
-            foreach (Car car in gameManager.carsInLevel)
-            {
-                CarButton btn = Instantiate(
-                    carButtonPrefab,
-                    carSelectContainer
-                ).GetComponent<CarButton>();
-                carButtons.Add(btn);
-                btn.correspondingCar = car;
-            }
-
-            
-        }
-        else if (gameManager.devMode == false )
-        {
-            foreach (Car car in CarStorage.Cars)
-            {
-                CarButton btn = Instantiate(
-                    carButtonPrefab,
-                    carSelectContainer
-                ).GetComponent<CarButton>();
-                carButtons.Add(btn);
-                btn.correspondingCar = car;
-            }
+            CarButton btn = Instantiate(
+                carButtonPrefab,
+                carSelectContainer
+            ).GetComponent<CarButton>();
+            carButtons.Add(btn);
+            btn.correspondingCar = car;
         }
 
         if (carButtons.Count >= 1)
