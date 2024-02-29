@@ -42,8 +42,11 @@ public class TokenSpawner : MonoBehaviour
         {
             for(int i =0 ; i <= car.placeableLaneTags.Count -1; i++)
             {
-                if(!car.ignoreTokens)
+                if(!car.ignoreTokens){
                     uniqueLanes.Add(car.placeableLaneTags[i]);
+                    // Debug.Log(car.placeableLaneTags[i]);
+                }
+                    
             }
         }
 
