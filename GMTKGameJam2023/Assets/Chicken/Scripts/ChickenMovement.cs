@@ -11,6 +11,7 @@ public class ChickenMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     [HideInInspector] private SpriteRenderer spriteRenderer;
+    private GameManager gameManager;
 
     [Header("Effects")]
     [SerializeField] private GameObject splashParticles;
@@ -56,6 +57,7 @@ public class ChickenMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = hopController.GetComponent<Animator>();
         spriteRenderer = chickenSprite.GetComponent<SpriteRenderer>();
+        gameManager = FindObjectOfType<GameManager>();
 
         if (hopController != null)
         {
@@ -123,7 +125,7 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator WaitAndMove(float moveTime)
     {
-        if(!stopMovement)
+        if(!stopMovement || !gameManager.isGameOver)
             BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);

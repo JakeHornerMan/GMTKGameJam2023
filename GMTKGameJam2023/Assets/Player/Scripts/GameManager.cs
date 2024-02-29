@@ -165,10 +165,11 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
         if(roundOver){
-            if(chickenContainer.transform.childCount <= 0){
-                isGameOver = true;
+            // if(chickenContainer.transform.childCount <= 0){
+                // isGameOver = true;
+                // pauseGameplay = true;
                 StartCoroutine(WaitAndBuyScreen(3f));
-            }
+            // }
         }
     }
 
