@@ -8,4 +8,5 @@ public static class PlayerValues
     public static int missedChickenLives = 3;
     public static int carWalletNodes = 3;
     public static int playerMoney = 100;
+    
 }
