@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
+    [SerializeField] private float emptyWaveTime = 15f;
     [SerializeField] private SpecialChicken[] SpecialChickens;
     [SerializeField] private List<SpecialChicken> chickenPot;
     [SerializeField] public ChickenWave[] bonusWaves;
@@ -16,10 +17,13 @@ public class GameFlowManager : MonoBehaviour
 
     public void newRound(){
         // RoundProgression();
-        int randomSpecialWave = Random.Range(1,2);
-        for(int i =0; i < 4; i++){
+        int randomSpecialWave = Random.Range(2,3);
+        for(int i =1; i <= 4; i++){
             if(i == randomSpecialWave){
                 SpecialWave();
+            }
+            if(i == 4){
+                EmptyWave();
             }
             else{
                 StandardChickenWaveCreate(i);
@@ -32,7 +36,8 @@ public class GameFlowManager : MonoBehaviour
         ChickenWave newChickenWave = new ChickenWave();
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
         newChickenWave.standardChickenAmounts = standardChickenAmount();
-        if(roundNumber == 0){
+
+        if(roundNumber == 1){
             newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
         }
         else {
@@ -116,6 +121,17 @@ public class GameFlowManager : MonoBehaviour
         int getWave = Random.Range(0,bonusWaves.Length);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
         gameManager.waves.Add(copyWave);
+    }
+
+    private void EmptyWave(){
+        ChickenWave newChickenWave = new ChickenWave();
+        newChickenWave.roundTime = emptyWaveTime;
+        newChickenWave.standardChickenAmounts = 0;
+        newChickenWave.wavePrompt = "Times Nearly Up!";
+        newChickenWave.chickenIntesity = 0;
+        newChickenWave.coinAmount = 0;
+        newChickenWave.specialChickens = null;
+        gameManager.waves.Add(newChickenWave);
     }
 }
 

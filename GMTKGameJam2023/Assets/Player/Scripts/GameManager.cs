@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<ChickenWave> waves;
 
     [Header("Cars in Level")]
-    [SerializeField] public Car[] carsInLevel;
+    [SerializeField] public List<Car> carsInLevel;
+    // [SerializeField] public Car[] carsInLevel;
+    
+    [SerializeField] public List<Car> defaultCars;
     [SerializeField] public Ultimate ultimateInLevel;
 
     [Header("Ranking Criteria, order highest to lowest")]
@@ -94,9 +97,13 @@ public class GameManager : MonoBehaviour
 
     private void SetPlayerValuesInLevel(){
         if(!devMode){
-            if(PlayerValues.Cars != null)
-                carsInLevel = PlayerValues.Cars.ToArray();
-            // Debug.Log("Cars: " + carsInLevel);
+            if(PlayerValues.Cars != null){
+                carsInLevel = PlayerValues.Cars;
+            }
+            else{
+                carsInLevel = defaultCars;
+            }
+            Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
             // Debug.Log("Lives: " + missedChickenLives);
         }
@@ -153,8 +160,8 @@ public class GameManager : MonoBehaviour
         //     RoundSet();
         // }
     }
-
-    private void FixedUpdate()
+    
+    private void FixedUpdate()// !!!HERE WE CONTROL NEXT LEVEL AND GAMEOVER!!!
     {
         if (!isGameOver)
         {
@@ -165,11 +172,13 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
         if(roundOver){
-            if(chickenContainer.transform.childCount <= 0){
-                isGameOver = true;
-                StartCoroutine(WaitAndBuyScreen(3f));
-            }
+            SetPlayerValues();
+            StartCoroutine(WaitAndBuyScreen(2f));
         }
+    }
+
+    private void SetPlayerValues(){
+        PlayerValues.Cars = carsInLevel;
     }
 
     private void SetTime()

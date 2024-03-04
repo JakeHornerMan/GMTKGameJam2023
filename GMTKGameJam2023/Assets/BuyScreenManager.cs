@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class BuyScreenManager : MonoBehaviour
 {
+    [Header("Developer Settings")]
+    [SerializeField] public bool devMode = false;
+    [SerializeField] public List<Car> playerCars;
+    [SerializeField] public List<Car> defaultCars;
 
     [Header("Car Appearance Order")]
     [SerializeField] private Car[] cars;
@@ -44,13 +48,13 @@ public class BuyScreenManager : MonoBehaviour
 
     private void Awake()
     {
+        SetPlayerValuesInBuyScreen();
         PopulateCarShop();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        CreateRosterList();
+        // CreateRosterList();
 
         if (instance == null)
         {
@@ -66,6 +70,46 @@ public class BuyScreenManager : MonoBehaviour
         UpdateHealthBar();
 
 
+    }
+
+    private void SetPlayerValuesInBuyScreen(){
+        if(!devMode){
+            if(PlayerValues.Cars != null){
+                playerCars = PlayerValues.Cars;
+                Debug.Log("Cars: " + playerCars[0]);
+            }
+            else{
+                playerCars = defaultCars;
+            }
+            PopulateRoster();   
+        }
+        else{
+            //we can add some devMode settings
+        }
+    }
+
+    public void PopulateRoster()
+    {
+        // Iterate over each child of the RosterHolder
+        for (int i = 0; i < RosterHolder.transform.childCount; i++)
+        {
+            Transform child = RosterHolder.transform.GetChild(i);
+            CarButton carButton = child.GetComponentInChildren<CarButton>();
+
+            // First check if the CarButton component exists
+            if (carButton != null)
+            {
+                // set Corresponding Car
+                if(i < playerCars.Count){
+                    carButton.correspondingCar = playerCars[i];
+                    Debug.Log("We have set the carbutton to" + carButton.correspondingCar);
+                }
+                else{
+                    carButton.correspondingCar = null;
+                }
+                
+            }
+        }
     }
 
     public List<Car> CreateRosterList()

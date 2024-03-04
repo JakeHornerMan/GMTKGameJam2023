@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8093d9f530c8c944183cb3681d71a5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyWaveTime: 15
   SpecialChickens: []
   chickenPot:
   - timeToSpawn: 0
@@ -323,13 +324,13 @@ MonoBehaviour:
     topSpawn: 0
     bottomSpawn: 0
   bonusWaves:
-  - roundTime: 20
+  - roundTime: 15
     wavePrompt: Energy  Surge!
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 50
     specialChickens: []
-  - roundTime: 20
+  - roundTime: 15
     wavePrompt: Grab some Cash!
     standardChickenAmounts: 0
     chickenIntesity: 0
@@ -367,15 +368,11 @@ MonoBehaviour:
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 16
+    - timeToSpawn: 15
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       topSpawn: 0
-      bottomSpawn: 0
-    - timeToSpawn: 18
-      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-      topSpawn: 0
-      bottomSpawn: 0
-  - roundTime: 20
+      bottomSpawn: 1
+  - roundTime: 15
     wavePrompt: Its getting Explosive
     standardChickenAmounts: 0
     chickenIntesity: 0
@@ -413,11 +410,7 @@ MonoBehaviour:
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 16
-      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
-      topSpawn: 0
-      bottomSpawn: 0
-    - timeToSpawn: 18
+    - timeToSpawn: 15
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
       topSpawn: 0
       bottomSpawn: 0
@@ -439,6 +432,9 @@ MonoBehaviour:
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
   - {fileID: 4056007719366264636, guid: 19c30ac65a14b18418b7772f4fbec876, type: 3}
+  defaultCars:
+  - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
+  - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
   ultimateInLevel: {fileID: 0}
   rankingCriteria:
   - minScore: 1900000

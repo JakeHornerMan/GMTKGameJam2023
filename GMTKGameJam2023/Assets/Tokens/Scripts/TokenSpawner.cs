@@ -20,8 +20,6 @@ public class TokenSpawner : MonoBehaviour
     [HideInInspector] private ChickenWave currentWave;
     [HideInInspector] private int tokenAmountInWave;
     [HideInInspector] private bool waveEnded;
-    public HashSet<string> uniqueLanes = new HashSet<string>();
-
 
     public List<GameObject> allLanes;
 
@@ -42,34 +40,35 @@ public class TokenSpawner : MonoBehaviour
         {
             for(int i =0 ; i <= car.placeableLaneTags.Count -1; i++)
             {
-                if(!car.ignoreTokens)
-                    uniqueLanes.Add(car.placeableLaneTags[i]);
-            }
-        }
+                if(!car.ignoreTokens){
 
-        if(uniqueLanes.Contains("Road")){
-            roadLanes = GameObject.FindGameObjectsWithTag("Road");
-            AddToAllLanes(roadLanes);
-        }
-            
-        if(uniqueLanes.Contains("Grass")){
-            grassLanes = GameObject.FindGameObjectsWithTag("Grass");
-            AddToAllLanes(grassLanes);
-        }
-            
-        if(uniqueLanes.Contains("Bus Lane")){
-            busLanes = GameObject.FindGameObjectsWithTag("Bus Lane");
-            AddToAllLanes(busLanes);
-        }
-            
-        if(uniqueLanes.Contains("Water")){
-            waterLanes = GameObject.FindGameObjectsWithTag("Water");
-            AddToAllLanes(waterLanes);
-        }
-            
-        if(uniqueLanes.Contains("Pavement")){
-            pavementLanes = GameObject.FindGameObjectsWithTag("Pavement");
-            AddToAllLanes(pavementLanes);
+                    if(car.placeableLaneTags[i].Contains("Road")){
+                        roadLanes = GameObject.FindGameObjectsWithTag("Road");
+                        AddToAllLanes(roadLanes);
+                    }
+                        
+                    if(car.placeableLaneTags[i].Contains("Grass")){
+                        grassLanes = GameObject.FindGameObjectsWithTag("Grass");
+                        AddToAllLanes(grassLanes);
+                    }
+                        
+                    if(car.placeableLaneTags[i].Contains("Bus Lane")){
+                        busLanes = GameObject.FindGameObjectsWithTag("Bus Lane");
+                        AddToAllLanes(busLanes);
+                    }
+                        
+                    if(car.placeableLaneTags[i].Contains("Water")){
+                        waterLanes = GameObject.FindGameObjectsWithTag("Water");
+                        AddToAllLanes(waterLanes);
+                    }
+                        
+                    if(car.placeableLaneTags[i].Contains("Pavement")){
+                        pavementLanes = GameObject.FindGameObjectsWithTag("Pavement");
+                        AddToAllLanes(pavementLanes);
+                    }
+                }
+                    
+            }
         }
     }
 
@@ -116,9 +115,7 @@ public class TokenSpawner : MonoBehaviour
 
     public Transform choseLane()
     {
-        int randomInt = Random.Range(0, allLanes.Count);
-
-
+        int randomInt = Random.Range(0, allLanes.Count-1);
         //Causing an index error, fix this
         return allLanes[randomInt].transform;
     }
