@@ -48,13 +48,8 @@ public class BuyScreenManager : MonoBehaviour
 
     private void Awake()
     {
-        PopulateCarShop();
-    }
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
         SetPlayerValuesInBuyScreen();
+        PopulateCarShop();
     }
 
     void Start()
