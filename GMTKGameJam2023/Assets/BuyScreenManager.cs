@@ -90,26 +90,20 @@ public class BuyScreenManager : MonoBehaviour
 
     public void PopulateRoster()
     {
-        // Iterate over each child of the RosterHolder
-        for (int i = 0; i < RosterHolder.transform.childCount; i++)
+
+        for (int i = 0; i < playerCars.Count; i++)
         {
             Transform child = RosterHolder.transform.GetChild(i);
-            CarButton carButton = child.GetComponentInChildren<CarButton>();
+            
+            Instantiate(rosterCarPrefab, child.transform);
 
-            // First check if the CarButton component exists
-            if (carButton != null)
-            {
-                // set Corresponding Car
-                if(i < playerCars.Count){
-                    carButton.correspondingCar = playerCars[i];
-                    Debug.Log("We have set the carbutton to" + carButton.correspondingCar);
-                }
-                else{
-                    carButton.correspondingCar = null;
-                }
-                
-            }
+            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+
+            buyScreenCar.correspondingCar = playerCars[i];
+            Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
         }
+
+
     }
 
     public List<Car> CreateRosterList()
