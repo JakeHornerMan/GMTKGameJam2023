@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,17 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] public List<Car> playerCars;
     [SerializeField] public List<Car> defaultCars;
 
+    [Header("Car Appearance Order")]
+    [SerializeField] private Car[] cars;
 
-    [Header("Upgrade Prices")]
+    [Header("Menu Prices")]
     [SerializeField] private int lifePrice;
+    [SerializeField] private int rerollPrice;
 
 
     [SerializeField] private GameObject RosterHolder;
+
+    [SerializeField] private GameObject carShop;
 
     [SerializeField] private GameObject scrapyard;
 
@@ -32,9 +38,18 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthNumber;
 
 
+
+
+
     [SerializeField] private TextMeshProUGUI moneyText;
     public int startingAmount;
     private int currentAmount;
+
+
+    private void Awake()
+    {
+        PopulateCarShop();
+    }
 
     // Start is called before the first frame update
     private void Awake()
@@ -112,15 +127,15 @@ public class BuyScreenManager : MonoBehaviour
         for (int i = 0; i < RosterHolder.transform.childCount; i++)
         {
             Transform child = RosterHolder.transform.GetChild(i);
-            CarButton carButton = child.GetComponentInChildren<CarButton>();
+            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
 
             // First check if the CarButton component exists
-            if (carButton != null)
+            if (buyScreenCar != null)
             {
                 // Then check if the correspondingCar is not null
-                if (carButton.correspondingCar != null)
+                if (buyScreenCar.correspondingCar != null)
                 {
-                    rosterCars.Add(carButton.correspondingCar);
+                    rosterCars.Add(buyScreenCar.correspondingCar);
                 }
             }
         }
@@ -128,6 +143,73 @@ public class BuyScreenManager : MonoBehaviour
         return rosterCars;
 
         // Now, rosterCars contains all CarButton components from the children of RosterHolder
+    }
+
+
+    public void PopulateCarShop()
+    {
+        List<int> carsPulled = new List<int>();
+
+        for (int i = 0; i < carShop.transform.childCount; i++)
+        {
+
+            int randomNumber = 0;
+
+            bool newCar = false;
+
+            while (!newCar)
+            {
+                randomNumber = Random.Range(0, cars.Length);
+                bool isUnique = true;
+
+                for (int j = 0; j < carsPulled.Count; j++)
+                {
+                    if (randomNumber == carsPulled[j])
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
+
+                if (isUnique)
+                {
+                    newCar = true;
+                    carsPulled.Add(randomNumber);
+                }
+            }
+
+
+            if (carShop.transform.GetChild(i).transform.childCount == 0)
+            {
+                Instantiate(rosterCarPrefab, carShop.transform.GetChild(i).transform);
+            }
+
+            BuyScreenCar carSlot = carShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenCar>();
+
+            Car car = cars[randomNumber];
+
+            carSlot.correspondingCar = car;
+
+            carSlot.UpdateSprite();
+
+            carSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
+
+        }
+    }
+
+    public void RerollShop()
+    {
+        if (CheckMoneyAmount(rerollPrice))
+        {
+            RemoveMoney(rerollPrice);
+
+            //Do a shake animation
+
+            
+
+            PopulateCarShop();
+        }
+        
     }
 
     public void AddToScrapyard(GameObject car)

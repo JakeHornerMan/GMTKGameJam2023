@@ -36,6 +36,7 @@ public class GameFlowManager : MonoBehaviour
         ChickenWave newChickenWave = new ChickenWave();
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
         newChickenWave.standardChickenAmounts = standardChickenAmount();
+
         if(roundNumber == 1){
             newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
         }

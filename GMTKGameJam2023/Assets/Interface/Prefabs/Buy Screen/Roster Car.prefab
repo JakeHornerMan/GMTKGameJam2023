@@ -645,12 +645,12 @@ GameObject:
   - component: {fileID: 6484336041068501168}
   - component: {fileID: 1413317033475552373}
   - component: {fileID: 154576272244573640}
-  - component: {fileID: 6518326040012723400}
-  - component: {fileID: 6088630353164480486}
+  - component: {fileID: 4632546531005552140}
   - component: {fileID: 1383707863940280671}
   - component: {fileID: 8811144331270922236}
   - component: {fileID: 7034659429228473029}
   - component: {fileID: 247319519474105652}
+  - component: {fileID: 5386714386388248379}
   m_Layer: 5
   m_Name: Roster Car
   m_TagString: Untagged
@@ -674,7 +674,7 @@ RectTransform:
   - {fileID: 20259857143465517}
   - {fileID: 8249026778998338195}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6518326040012723400
+--- !u!114 &4632546531005552140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -728,72 +728,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5941939536339446406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 154576272244573640}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6088630353164480486}
-        m_TargetAssemblyTypeName: CarButton, Assembly-CSharp
-        m_MethodName: SelectCorrespondingCar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6088630353164480486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941939536339446406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 356b6252bb900a042bfde796c7e1cd84, type: 3}
+  m_Script: {fileID: 11500000, guid: be674e4f062f0124e95c63b2bb5ad81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tokenPriceText: {fileID: 6358385059808023717}
-  carWeightText: {fileID: 5315527030254018689}
-  dollarIconImg: {fileID: 1553093058474708537}
   correspCarIcon: {fileID: 3501538611543599487}
   correspondingCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
-  positiveColor: {r: 0.8356621, g: 0.8396226, b: 0.8366832, a: 0.83137256}
-  negativeColor: {r: 0.8679245, g: 0.36436453, b: 0.36436453, a: 0.83137256}
 --- !u!223 &1383707863940280671
 Canvas:
   m_ObjectHideFlags: 0
@@ -863,6 +803,27 @@ MonoBehaviour:
   startingParent: {fileID: 0}
   canBePlaced: 0
   itemPrice: 0
+--- !u!95 &5386714386388248379
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5941939536339446406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77639e94c7c1435418639acd0b523a1b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6624348980902873156
 GameObject:
   m_ObjectHideFlags: 0

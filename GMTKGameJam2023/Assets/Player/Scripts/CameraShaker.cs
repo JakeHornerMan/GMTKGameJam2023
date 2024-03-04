@@ -24,7 +24,7 @@ public class CameraShaker : MonoBehaviour
             instance = this;
         }
 
-        // cinemachineBasicMultiChannelPerlin = _cameraVCAM.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        cinemachineBasicMultiChannelPerlin = _cameraVCAM.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
 
@@ -58,21 +58,21 @@ public class CameraShaker : MonoBehaviour
 
     public void Shake(float time, float intensity)
     {
-        // if (isCameraShaking)
-        // {
-        //     if (cinemachineBasicMultiChannelPerlin.m_AmplitudeGain < intensity)
-        //     {
-        //         StopCoroutine(coroutine);
-        //         coroutine = ShakeCamera(time, intensity);
-        //         StartCoroutine(coroutine);
-        //     }
-        // }
-        // else
-        // {
-        //     coroutine = ShakeCamera(time, intensity);
-        //     StartCoroutine(coroutine);
-        // }
-        
+        if (isCameraShaking)
+        {
+            if (cinemachineBasicMultiChannelPerlin.m_AmplitudeGain < intensity)
+            {
+                StopCoroutine(coroutine);
+                coroutine = ShakeCamera(time, intensity);
+                StartCoroutine(coroutine);
+            }
+        }
+        else
+        {
+            coroutine = ShakeCamera(time, intensity);
+            StartCoroutine(coroutine);
+        }
+
     }
 
     public void ShakeDefault()
