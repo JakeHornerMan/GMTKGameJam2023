@@ -8,21 +8,16 @@ public class PsychicHen : ChickenHealth
     [HideInInspector] private GameObject capturedVehicle;
     private SoundManager soundManager;
     private GameObject lanes;
-    public List<GameObject> alllanes;
+    private GameObject[] roadLanes;
+    private GameObject[] grassLanes;
+    private GameObject[] busLanes;
+    private GameObject[] waterLanes;
+    private GameObject[] pavementLanes;
+    public List<GameObject> allLanes;
 
     private void Start()
     {
         soundManager = FindObjectOfType<SoundManager>();
-        lanes = GameObject.Find("Lanes");
-        List<GameObject> alllanes = new List<GameObject>();
-        // foreach (Transform t in lanes.transform.GetComponentsInChildren(typeof(GameObject), true))
-        // {
-        //     if (t.gameObject.layer == 9)
-        //     {
-        //         alllanes.Add(t.gameObject);
-        //     }
-        // }
-        
     }
 
     public void SpawnPortal(GameObject hitcar)
@@ -36,43 +31,42 @@ public class PsychicHen : ChickenHealth
 
     private GameObject GetRandomRoad(List<string> placeableLaneTags)
     {
-        // IMPLEMENTATION
-        // List<GameObject> lanes = new List<GameObject>();
-        // do{
-        //     int randomLaneType = Random.Range(0, placeableLaneTags.Count -1);
-        //     GameObject[] placableRoads = GameObject.FindGameObjectsWithTag(placeableLaneTags[randomLaneType]);
-        //     lanes.AddRange(placableRoads);
-        //     if(lanes.Count == 0){
-        //         placeableLaneTags.RemoveAt(randomLaneType);
-        //     }
-        // }while(lanes.Count != 0);
-        
-        // int randomRoad = Random.Range(0, lanes.Count -1);
-        // return lanes[randomRoad];
+        if(placeableLaneTags.Contains("Road")){
+            roadLanes = GameObject.FindGameObjectsWithTag("Road");
+            AddToAllLanes(roadLanes);
+        }
+            
+        if(placeableLaneTags.Contains("Grass")){
+            grassLanes = GameObject.FindGameObjectsWithTag("Grass");
+            AddToAllLanes(grassLanes);
+        }
+            
+        if(placeableLaneTags.Contains("Bus Lane")){
+            busLanes = GameObject.FindGameObjectsWithTag("Bus Lane");
+            AddToAllLanes(busLanes);
+        }
+            
+        if(placeableLaneTags.Contains("Water")){
+            waterLanes = GameObject.FindGameObjectsWithTag("Water");
+            AddToAllLanes(waterLanes);
+        }
+            
+        if(placeableLaneTags.Contains("Pavement")){
+            pavementLanes = GameObject.FindGameObjectsWithTag("Pavement");
+            AddToAllLanes(pavementLanes);
+        }
 
-        // IMPLEMENTATION
-        // List<GameObject> lanes = new List<GameObject>();
-        // foreach(string lane in placeableLaneTags){
-        //     if(GameObject.FindGameObjectsWithTag(lane).Length != 0){
-        //         GameObject[] placableRoads = GameObject.FindGameObjectsWithTag(lane);
-        //         lanes.AddRange(placableRoads);
-        //     }
-        // }
-        // int randomRoad = Random.Range(0, lanes.Count -1);
-        // return lanes[randomRoad];
-
-        GameObject[] allRoads = GameObject.FindGameObjectsWithTag("Road");
-        int randomRoad = Random.Range(0, allRoads.Length-1);
-        return allRoads[randomRoad];
+        int randomRoad = Random.Range(0, allLanes.Count-1);
+        return allLanes[randomRoad];
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     // Check if Hit Car
-    //     if (collision.gameObject.GetComponent<Car>()){
-    //         capturedVehicle = collision.gameObject;
-    //         Debug.Log("We hit a car");
-    //         spawnPortal.GetComponent<PortalController>().capturedVehicle = capturedVehicle;
-    //     }
-    // }
+    private void AddToAllLanes(GameObject[] laneArray)
+    {
+        if(laneArray.Length > 0){
+            foreach (GameObject value in laneArray)
+            {
+                allLanes.Add(value);
+            }
+        }
+    }
 }
