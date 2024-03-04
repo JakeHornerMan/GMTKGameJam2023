@@ -297,7 +297,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpecialChickens: []
-  chickenPot: []
+  chickenPot:
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+    topSpawn: 0
+    bottomSpawn: 0
   bonusWaves:
   - roundTime: 20
     wavePrompt: Energy  Surge!
