@@ -115,9 +115,7 @@ public class TokenSpawner : MonoBehaviour
 
     public Transform choseLane()
     {
-        int randomInt = Random.Range(0, allLanes.Count);
-
-
+        int randomInt = Random.Range(0, allLanes.Count-1);
         //Causing an index error, fix this
         return allLanes[randomInt].transform;
     }
