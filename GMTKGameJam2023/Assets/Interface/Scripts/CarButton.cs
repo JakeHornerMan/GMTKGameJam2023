@@ -40,21 +40,26 @@ public class CarButton : MonoBehaviour
     }
     private void Start()
     {
-        tokenPriceText.text = correspondingCar.carPrice.ToString("0");
-        carWeightText.text = correspondingCar.carHealth.ToString("0");
-        correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
+        if(correspondingCar){
+            tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+            carWeightText.text = correspondingCar.carHealth.ToString("0");
+            correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
 
-        SetPriceColor();
+            SetPriceColor();
+        }
     }
 
     private void SetPriceColor()
     {
-        bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
-        tokenPriceText.color = dollarIconImg.color = enoughMoney ? positiveColor : negativeColor;
+        if(gameManager){
+            bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
+            tokenPriceText.color = dollarIconImg.color = enoughMoney ? positiveColor : negativeColor;
+        }
     }
 
     public void SelectCorrespondingCar()
     {
-        vehicleSpawner.SelectCar(this.correspondingCar);
+        if(gameManager)
+            vehicleSpawner.SelectCar(this.correspondingCar);
     }
 }

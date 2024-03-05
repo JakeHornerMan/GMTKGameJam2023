@@ -39,7 +39,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
 
                     //take away any money
 
-                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<CarButton>().correspondingCar.carPrice);
+                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carPrice);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
                 if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == BuyScreenCarSlot.SlotType.CarShop)
                 {
                     //take away any money
-                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<CarButton>().correspondingCar.carPrice);
+                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carPrice);
                 }
 
 

@@ -27,8 +27,8 @@ public class CarWallet : MonoBehaviour
     private void Start()
     {
         if(!gameManager.devMode){
-            walletLimit =PlayerValues.carWalletNodes;
-            carCount = 0;
+            walletLimit = PlayerValues.carWalletNodes;
+            carCount = PlayerValues.carWalletNodes;
         }
         else{
             carCount = startWalletCount;
