@@ -227,7 +227,7 @@ public class VehicleSpawner : MonoBehaviour
         }
 
         if (selectDefaultOnPlace)
-            SelectCar(standardCar);
+            SelectCar(standardCar, false);
     }
 
     private void PlaceSelectedUltimate()
@@ -268,11 +268,10 @@ public class VehicleSpawner : MonoBehaviour
         
         ultimateManager.ultimateEnabled = false;
 
-        if (selectDefaultOnPlace){
-            SelectCar(standardCar);
+        if (selectDefaultOnPlace) {
+            SelectCar(standardCar, false);
             SelectUltimate(null);
         }
-            
     }
 
     private IEnumerator WaitAndEnableSpawn(float time)
@@ -286,18 +285,22 @@ public class VehicleSpawner : MonoBehaviour
         return carWallet.carCount <= 0;
     }
 
-    public void SelectCar(Car car)
+    public void SelectCar(Car car, bool shineLane = true)
     {
         if (car.carPrice <= gameManager.tokens)
         {
             currentActiveCar = car;
             
-            foreach (GameObject lane in tokenSpawner.allLanes)
+            if (shineLane)
             {
-                RoadHighlight laneHighlight = lane.GetComponent<RoadHighlight>();
-                if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
+                foreach (GameObject lane in tokenSpawner.allLanes)
                 {
-                    laneHighlight.SetShine(true);
+                    RoadHighlight laneHighlight = lane.GetComponent<RoadHighlight>();
+                    laneHighlight.DisableShineObject();
+                    if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
+                    {
+                        laneHighlight.ShineLane();
+                    }
                 }
             }
         }

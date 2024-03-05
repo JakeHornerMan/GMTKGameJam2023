@@ -23,7 +23,7 @@ public class RoadHighlight : MonoBehaviour
 
     private void Start()
     {
-        SetShine(false);
+        DisableShineObject();
     }
 
     private void Update()
@@ -51,11 +51,14 @@ public class RoadHighlight : MonoBehaviour
         bottomHighlight.SetActive(touchingRoad);
     }
 
-    public void SetShine(bool on)
+    public void ShineLane()
     {
-        if (allowShine && on)
-            shineObject.SetActive(on);
-        else
-            shineObject.SetActive(false);
+        shineObject.SetActive(true);
+        Invoke(nameof(DisableShineObject), 0.8f);
+    }
+
+    public void DisableShineObject()
+    {
+        shineObject.SetActive(false);
     }
 }
