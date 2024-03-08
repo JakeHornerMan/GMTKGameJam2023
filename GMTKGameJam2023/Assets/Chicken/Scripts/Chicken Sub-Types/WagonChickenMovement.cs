@@ -10,8 +10,8 @@ public class WagonChickenMovement : ChickenMovement
 
     [Header("Wheelbarrow Chicken Values")]
     [SerializeField] private float speed = 1f;
-    [SerializeField] private float dropInterval = 1f;
     [SerializeField] private float substanceDurationSeconds = 20f;
+    private List<GameObject> affectedRoads;
 
     private SoundManager soundManager;
 
@@ -22,7 +22,7 @@ public class WagonChickenMovement : ChickenMovement
 
     private void Start()
     {
-
+        affectedRoads = new List<GameObject>();
     }
 
     protected override void StartMovement()
@@ -43,6 +43,9 @@ public class WagonChickenMovement : ChickenMovement
         {
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
+
+        // See current road the chicken is on
+        
     }
 
     private void DropSubstance()
