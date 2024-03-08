@@ -22,8 +22,7 @@ public class WagonChickenMovement : ChickenMovement
 
     private void Start()
     {
-        // TODO Drop at Road Position (check remainder)
-        InvokeRepeating(nameof(DropSubstance), dropInterval, dropInterval);
+
     }
 
     protected override void StartMovement()
@@ -38,8 +37,8 @@ public class WagonChickenMovement : ChickenMovement
 
     private void Update()
     {
+        // Move horizontally unless Stuck
         isStuck = chickenCollider.IsTouchingLayers(cementLayer);
-
         if (!isStuck || ignoreCement)
         {
             transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
@@ -58,7 +57,6 @@ public class WagonChickenMovement : ChickenMovement
 
     private void OnDestroy()
     {
-        CancelInvoke(nameof(DropSubstance));
         soundManager.PlayWagonChickenDeath();
     }
 }
