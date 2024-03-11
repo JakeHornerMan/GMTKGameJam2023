@@ -5,8 +5,9 @@ using UnityEngine;
 public class TokenController : MonoBehaviour
 {
     [Header("Token Type Values")]
-    [SerializeField] private bool tokenBag = false;
+    [SerializeField] public bool cashBag = false;
     [SerializeField] public int tokenValue = 1;
+    [SerializeField] public int cashValue = 5;
 
     [Header("Sway Values")]
     [SerializeField] private bool isSwaying = true;
@@ -49,7 +50,7 @@ public class TokenController : MonoBehaviour
     {
         StartCoroutine(WaitAndDie(removeTime));
 
-        if (tokenBag)
+        if (cashBag)
         {
             this.GetComponent<BoxCollider2D>().enabled = false;
             FindClosestRoad();
@@ -68,7 +69,7 @@ public class TokenController : MonoBehaviour
             Swaying();
         }
 
-        if (closestRoad != null && tokenBag)
+        if (closestRoad != null && cashBag)
         {
             if (this.transform.position != target)
             {

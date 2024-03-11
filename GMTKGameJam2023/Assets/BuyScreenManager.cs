@@ -44,14 +44,8 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumber;
-
-
-
-
-
+    
     [SerializeField] private TextMeshProUGUI moneyText;
-
-
 
     private void Awake()
     {
@@ -70,7 +64,7 @@ public class BuyScreenManager : MonoBehaviour
 
         sceneFader.gameObject.SetActive(true);
 
-        currentAmount = startingAmount;
+        currentAmount = startingAmount + PlayerValues.playerCash;
 
         UpdateMoneyText();
 
@@ -321,7 +315,7 @@ public class BuyScreenManager : MonoBehaviour
 
     private void UpdateMoneyText()
     {
-        moneyText.text = "Money: " + currentAmount.ToString();
+        moneyText.text = "Cash: " + currentAmount.ToString();
     }
 
     private bool CheckMoneyAmount(int value)
@@ -344,5 +338,6 @@ public class BuyScreenManager : MonoBehaviour
     public void setPlayerValues()
     {
         PlayerValues.Cars = CreateRosterList();
+        PlayerValues.playerCash = 0;
     }
 }
