@@ -433,8 +433,10 @@ public abstract class Car : MonoBehaviour
         // Normalize the Vector2
         Vector2 normalizedVector = randomVector.normalized;
 
-        GetComponent<Collider2D>().enabled = false;
-        comboText.enabled = false;
+        if (GetComponent<Collider2D>())
+            GetComponent<Collider2D>().enabled = false;
+        if (comboText != null)
+            comboText.enabled = false;
 
         rb.velocity = normalizedVector * 25;
 
