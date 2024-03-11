@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3112727753274190021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,16 +77,16 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -633477931
   m_SortingLayer: 7
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1935885601, guid: 00a36bbac18a1ce47abfb370c2862ec9, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -911566480, guid: 0777a6added586647b56b41237cf0514, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &-6823465047001592822
@@ -150,7 +150,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.5
 --- !u!95 &7807847845923346728
 Animator:
   serializedVersion: 5
@@ -213,8 +213,6 @@ MonoBehaviour:
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
-  isUltimate: 0
-  ultimateResetTime: 0
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
