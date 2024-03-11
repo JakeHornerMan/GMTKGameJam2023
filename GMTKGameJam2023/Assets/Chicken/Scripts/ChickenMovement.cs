@@ -51,6 +51,9 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private Color freezeColor;
     [HideInInspector] private Color originalColor = Color.white;
 
+    [Header("Effects")]
+    [SerializeField] private GameObject spinningStars;
+
 
     private void Awake()
     {
@@ -125,7 +128,7 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator WaitAndMove(float moveTime)
     {
-        if(!stopMovement || !gameManager.isGameOver)
+        if(!stopMovement && !gameManager.isGameOver)
             BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);
@@ -167,7 +170,7 @@ public class ChickenMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator StopTheMovement(float stopTime, bool isFreeze)
+    public IEnumerator FreezeChicken(float stopTime, bool isFreeze)
     {
         if(isFreeze){
             spriteRenderer.color = freezeColor;
@@ -179,6 +182,32 @@ public class ChickenMovement : MonoBehaviour
 
         if(isFreeze){
             spriteRenderer.color = originalColor;
+            chickenSprite.GetComponent<Animator>().enabled = true;
+        }
+        stopMovement = false;
+    }
+
+    public IEnumerator FlashChicken(float stopTime, bool isFlash)
+    {
+        if (isFlash)
+        {
+            if (spinningStars != null)
+            {
+                spinningStars.SetActive(true);
+            }
+            chickenSprite.GetComponent<Animator>().enabled = false;
+        }
+        stopMovement = true;
+
+        yield return new WaitForSeconds(stopTime);
+
+        if (isFlash)
+        {
+            if (spinningStars != null)
+            {
+                spinningStars.SetActive(false);
+            }
+            
             chickenSprite.GetComponent<Animator>().enabled = true;
         }
         stopMovement = false;

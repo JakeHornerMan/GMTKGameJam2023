@@ -89,14 +89,28 @@ public class ChickenHealth : MonoBehaviour
     {
         IEnumerator coroutine;
         if(this.gameObject.name.Contains("Turbo")){
-            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().StopTheMovement(freezeLength, true);
+            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().FreezeChicken(freezeLength, true);
         }
         else{
-            coroutine = this.gameObject.GetComponent<ChickenMovement>().StopTheMovement(freezeLength, true);
+            coroutine = this.gameObject.GetComponent<ChickenMovement>().FreezeChicken(freezeLength, true);
         }
         // IEnumerator coroutine = chickenMovement.StopTheMovement(freezeLength, true);
         StartCoroutine(coroutine);
         // Debug.Log("Freezing this chciken: "+ this.gameObject.name 
         //     +". For seconds: "+ freezeLength);
+    }
+
+    public void FlashChicken(float stunLength)
+    {
+        IEnumerator coroutine;
+        if (this.gameObject.name.Contains("Turbo"))
+        {
+            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().FlashChicken(stunLength, true);
+        }
+        else
+        {
+            coroutine = this.gameObject.GetComponent<ChickenMovement>().FlashChicken(stunLength, true);
+        }
+        StartCoroutine(coroutine);
     }
 }
