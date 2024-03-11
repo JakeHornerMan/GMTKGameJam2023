@@ -10,8 +10,11 @@ public class FreezeMissile : Ultimate
 
     public void Explode()
     {
-        Destroy(missileSprtie);
+        // Destroy(missileSprtie);
         GetComponent<Animator>().SetTrigger("Explode");
+        soundManager.PlayFreeze();
+        soundManager.PlayUnfrost(freezeLength);
+        Destroy(missileSprtie);
     }
 
     public override void HandleChickenCollision(ChickenHealth chickenHealth)

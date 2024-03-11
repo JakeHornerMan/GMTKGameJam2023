@@ -42,7 +42,7 @@ public class BuyScreenManager : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI moneyText;
-    public int startingAmount;
+    public int startingAmount = 50;
     private int currentAmount;
 
 
@@ -63,7 +63,7 @@ public class BuyScreenManager : MonoBehaviour
 
         sceneFader.gameObject.SetActive(true);
 
-        currentAmount = startingAmount;
+        currentAmount = startingAmount + PlayerValues.playerCash;
 
         UpdateMoneyText();
 
@@ -285,7 +285,7 @@ public class BuyScreenManager : MonoBehaviour
 
     private void UpdateMoneyText()
     {
-        moneyText.text = "Money: " + currentAmount.ToString();
+        moneyText.text = "Cash: " + currentAmount.ToString();
     }
 
     private bool CheckMoneyAmount(int value)
@@ -308,5 +308,6 @@ public class BuyScreenManager : MonoBehaviour
     public void setPlayerValues()
     {
         PlayerValues.Cars = CreateRosterList();
+        PlayerValues.playerCash = 0;
     }
 }

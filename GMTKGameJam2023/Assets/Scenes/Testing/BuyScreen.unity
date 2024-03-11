@@ -13563,6 +13563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277170c7387dd214080a53d09ed8e67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  devMode: 0
+  playerCars: []
+  defaultCars: []
   cars:
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   - {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
@@ -13584,7 +13587,7 @@ MonoBehaviour:
   healthSlider: {fileID: 545816273}
   healthNumber: {fileID: 1547728422}
   moneyText: {fileID: 279128145}
-  startingAmount: 25
+  startingAmount: 50
 --- !u!1 &1638416962
 GameObject:
   m_ObjectHideFlags: 0

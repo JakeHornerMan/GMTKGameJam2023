@@ -1,5 +1,8 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 [System.Serializable]
@@ -33,6 +36,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig[] tokenCollect;
     [SerializeField] private SoundConfig[] purchases;
     [SerializeField] private SoundConfig cantPurchase;
+    [SerializeField] private SoundConfig freezeConfig;
+    [SerializeField] private SoundConfig unfrostConfig;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
@@ -83,6 +88,8 @@ public class SoundManager : MonoBehaviour
     public void PlayPurchase() => RandomPlaySound(purchases);
     public void PlayCantPurchase() => PlaySound(cantPurchase);
     public void PlayTokenCollect() => RandomPlaySound(tokenCollect);
+    public void PlayFreeze() => PlaySound(freezeConfig);
+    public void PlayUnfrost(float time) => PlaySound(time, unfrostConfig);
 
     // =============================
     // Chicken SFX
@@ -123,6 +130,17 @@ public class SoundManager : MonoBehaviour
                 PlaySound(soundConfigs[randomIndex]);
             }
         }
+    }
+
+    public void PlaySound(float time, SoundConfig soundConfig)
+    {
+        StartCoroutine(DelaySound(time, soundConfig));
+    }
+
+    public IEnumerator DelaySound(float time, SoundConfig soundConfig)
+    {
+        yield return new WaitForSeconds(time);
+        PlaySound(soundConfig);
     }
 }
 
