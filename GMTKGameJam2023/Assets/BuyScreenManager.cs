@@ -16,13 +16,21 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private Car[] cars;
 
     [Header("Menu Prices")]
+    public int startingAmount;
+    private int currentAmount;
+
     [SerializeField] private int lifePrice;
     [SerializeField] private int rerollPrice;
 
+    [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
+    private int remainingRerolls; // Tracks remaining rerolls
 
+    [Header("Other")]
     [SerializeField] private GameObject RosterHolder;
 
     [SerializeField] private GameObject carShop;
+
+    [SerializeField] private GameObject rerollButton;
 
     [SerializeField] private GameObject scrapyard;
 
@@ -42,8 +50,7 @@ public class BuyScreenManager : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI moneyText;
-    public int startingAmount;
-    private int currentAmount;
+
 
 
     private void Awake()
@@ -68,6 +75,9 @@ public class BuyScreenManager : MonoBehaviour
         UpdateMoneyText();
 
         UpdateHealthBar();
+
+        remainingRerolls = maxRerolls; // Initialize remaining rerolls
+        UpdateRerollCounter(); // Update visual counter
 
 
     }
@@ -106,6 +116,16 @@ public class BuyScreenManager : MonoBehaviour
 
     }
 
+    public void UpdatePlayerCarsList()
+    {
+        if (playerCars != null)
+        {
+            playerCars.Clear();
+        }
+
+        playerCars = CreateRosterList();
+    }
+
     public List<Car> CreateRosterList()
     {
         // Get a list/array from all children of "RosterHolder" that have the CarButton component, and return it
@@ -137,10 +157,12 @@ public class BuyScreenManager : MonoBehaviour
 
     public void PopulateCarShop()
     {
-        List<int> carsPulled = new List<int>();
+        List<Car> carsPulled = new List<Car>();
 
         for (int i = 0; i < carShop.transform.childCount; i++)
         {
+
+            Car car = cars[0];
 
             int randomNumber = 0;
 
@@ -149,11 +171,22 @@ public class BuyScreenManager : MonoBehaviour
             while (!newCar)
             {
                 randomNumber = Random.Range(0, cars.Length);
+                car = cars[randomNumber];
+
                 bool isUnique = true;
 
                 for (int j = 0; j < carsPulled.Count; j++)
                 {
-                    if (randomNumber == carsPulled[j])
+                    if (car == carsPulled[j])
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
+
+                for (int j = 0; j < playerCars.Count; j++)
+                {
+                    if (car == playerCars[j])
                     {
                         isUnique = false;
                         break;
@@ -163,7 +196,7 @@ public class BuyScreenManager : MonoBehaviour
                 if (isUnique)
                 {
                     newCar = true;
-                    carsPulled.Add(randomNumber);
+                    carsPulled.Add(car);
                 }
             }
 
@@ -174,8 +207,6 @@ public class BuyScreenManager : MonoBehaviour
             }
 
             BuyScreenCar carSlot = carShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenCar>();
-
-            Car car = cars[randomNumber];
 
             carSlot.correspondingCar = car;
 
@@ -188,17 +219,28 @@ public class BuyScreenManager : MonoBehaviour
 
     public void RerollShop()
     {
-        if (CheckMoneyAmount(rerollPrice))
+        if (CheckMoneyAmount(rerollPrice) && remainingRerolls > 0)
         {
             RemoveMoney(rerollPrice);
-
-            //Do a shake animation
-
-            
-
+            remainingRerolls--;
+            UpdateRerollCounter(); // Update visual counter
+            UpdatePlayerCarsList();
             PopulateCarShop();
         }
-        
+    }
+
+    void UpdateRerollCounter()
+    {
+        if (remainingRerolls > 0)
+        {
+            rerollButton.GetComponent<RerollButton>().SetDiceFace(remainingRerolls);
+        }
+        else
+        {
+            rerollButton.GetComponent<RerollButton>().DisableDice();
+        }
+
+
     }
 
     public void AddToScrapyard(GameObject car)
