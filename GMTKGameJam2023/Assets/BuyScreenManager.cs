@@ -46,8 +46,6 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthNumber;
     
     [SerializeField] private TextMeshProUGUI moneyText;
-    public int startingAmount = 50;
-    private int currentAmount;
 
     private void Awake()
     {
@@ -120,46 +118,6 @@ public class BuyScreenManager : MonoBehaviour
         }
 
         playerCars = CreateRosterList();
-    }
-
-    private void SetPlayerValuesInBuyScreen(){
-        if(!devMode){
-            if(PlayerValues.Cars != null){
-                playerCars = PlayerValues.Cars;
-                Debug.Log("Cars: " + playerCars[0]);
-            }
-            else{
-                playerCars = defaultCars;
-            }
-            PopulateRoster();   
-        }
-        else{
-            //we can add some devMode settings
-        }
-    }
-
-    public void PopulateRoster()
-    {
-        // Iterate over each child of the RosterHolder
-        for (int i = 0; i < RosterHolder.transform.childCount; i++)
-        {
-            Transform child = RosterHolder.transform.GetChild(i);
-            CarButton carButton = child.GetComponentInChildren<CarButton>();
-
-            // First check if the CarButton component exists
-            if (carButton != null)
-            {
-                // set Corresponding Car
-                if(i < playerCars.Count){
-                    carButton.correspondingCar = playerCars[i];
-                    Debug.Log("We have set the carbutton to" + carButton.correspondingCar);
-                }
-                else{
-                    carButton.correspondingCar = null;
-                }
-                
-            }
-        }
     }
 
     public List<Car> CreateRosterList()
