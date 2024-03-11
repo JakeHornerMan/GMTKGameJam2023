@@ -31,6 +31,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
+    [SerializeField] private SoundConfig timesUpConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
     [SerializeField] private SoundConfig[] tokenCollect;
@@ -83,6 +84,7 @@ public class SoundManager : MonoBehaviour
     // =============================
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
+    public void PlayTimesUp() => PlaySound(timesUpConfig);
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
     public void PlayPurchase() => RandomPlaySound(purchases);
