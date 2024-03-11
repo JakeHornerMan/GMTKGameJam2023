@@ -1,5 +1,8 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 [System.Serializable]
@@ -28,11 +31,14 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
+    [SerializeField] private SoundConfig timesUpConfig;
     [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
     [SerializeField] private SoundConfig[] tokenCollect;
     [SerializeField] private SoundConfig[] purchases;
     [SerializeField] private SoundConfig cantPurchase;
+    [SerializeField] private SoundConfig freezeConfig;
+    [SerializeField] private SoundConfig unfrostConfig;
 
     [Header("Chicken Noise Clips")]
     [SerializeField] private SoundConfig[] chickenConfigs;
@@ -78,11 +84,14 @@ public class SoundManager : MonoBehaviour
     // =============================
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
+    public void PlayTimesUp() => PlaySound(timesUpConfig);
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
     public void PlayPurchase() => RandomPlaySound(purchases);
     public void PlayCantPurchase() => PlaySound(cantPurchase);
     public void PlayTokenCollect() => RandomPlaySound(tokenCollect);
+    public void PlayFreeze() => PlaySound(freezeConfig);
+    public void PlayUnfrost(float time) => PlaySound(time, unfrostConfig);
 
     // =============================
     // Chicken SFX
@@ -123,6 +132,17 @@ public class SoundManager : MonoBehaviour
                 PlaySound(soundConfigs[randomIndex]);
             }
         }
+    }
+
+    public void PlaySound(float time, SoundConfig soundConfig)
+    {
+        StartCoroutine(DelaySound(time, soundConfig));
+    }
+
+    public IEnumerator DelaySound(float time, SoundConfig soundConfig)
+    {
+        yield return new WaitForSeconds(time);
+        PlaySound(soundConfig);
     }
 }
 

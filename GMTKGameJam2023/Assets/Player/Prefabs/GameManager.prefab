@@ -691,6 +691,12 @@ MonoBehaviour:
   cantPurchase:
     clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
     volume: 1
+  freezeConfig:
+    clip: {fileID: 8300000, guid: 5105f4273e6110042bc392186b17cdb0, type: 3}
+    volume: 1
+  unfrostConfig:
+    clip: {fileID: 8300000, guid: 858ea0798ba2818458f5716084ba631b, type: 3}
+    volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
     volume: 0.5
@@ -848,6 +854,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4723004208174625701}
     m_Modifications:
+    - target: {fileID: 333815872996223863, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 333815872996223863, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

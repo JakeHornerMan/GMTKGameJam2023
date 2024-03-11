@@ -63,6 +63,8 @@ public abstract class Car : MonoBehaviour
     [Tooltip("Text after getting points, e.g. 100 {Poitns}")]
     [SerializeField] private string tokenPopUpMsg = "Token";
     [Tooltip("Text after getting tokens, e.g. 1 {Token}")]
+    [SerializeField] private string cashPopUpMsg = "Cash";
+    [Tooltip("Text after getting tokens, e.g. 1 {Cash}")]
     [SerializeField] private float popupDestroyDelay = 0.7f;
     [SerializeField] private float carHitStopEffectMultiplier = 1.0f;
 
@@ -203,6 +205,16 @@ public abstract class Car : MonoBehaviour
 
     private void HandleTokenCollision(TokenController token)
     {
+        if(token.cashBag){
+            HandleCashTokenCollision(token);
+        }
+        else{
+            HandleEnergyTokenCollision(token);
+        }
+
+    }
+
+    public void HandleEnergyTokenCollision(TokenController token){
         // Token Particles
         GameObject newTokenParticles = Instantiate(
                         tokenCollectParticles.gameObject,
@@ -220,8 +232,28 @@ public abstract class Car : MonoBehaviour
         // Collect Tokens
         token.TokenCollected();
 
-        gameManager.UpdateTokens(1);
+        gameManager.UpdateTokens(token.tokenValue);
+    }
 
+    public void HandleCashTokenCollision(TokenController token){
+        // Token Particles
+        GameObject newTokenParticles = Instantiate(
+                        tokenCollectParticles.gameObject,
+                        token.transform.position,
+                        Quaternion.identity
+                    );
+        Destroy(newTokenParticles, particleDestroyDelay);
+
+        // +1 Token Popup
+        ShowPopup(
+            token.transform.position,
+            $"{token.cashValue} {cashPopUpMsg}"
+        );
+
+        // Collect Tokens
+        token.TokenCollected();
+        
+        PlayerValues.playerCash += 5;
     }
 
     public virtual void HandleChickenCollision(ChickenHealth chickenHealth)
@@ -433,8 +465,10 @@ public abstract class Car : MonoBehaviour
         // Normalize the Vector2
         Vector2 normalizedVector = randomVector.normalized;
 
-        GetComponent<Collider2D>().enabled = false;
-        comboText.enabled = false;
+        if (GetComponent<Collider2D>())
+            GetComponent<Collider2D>().enabled = false;
+        if (comboText != null)
+            comboText.enabled = false;
 
         rb.velocity = normalizedVector * 25;
 
