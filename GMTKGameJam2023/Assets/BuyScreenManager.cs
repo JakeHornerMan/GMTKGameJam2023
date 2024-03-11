@@ -16,13 +16,21 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private Car[] cars;
 
     [Header("Menu Prices")]
+    public int startingAmount;
+    private int currentAmount;
+
     [SerializeField] private int lifePrice;
     [SerializeField] private int rerollPrice;
 
+    [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
+    private int remainingRerolls; // Tracks remaining rerolls
 
+    [Header("Other")]
     [SerializeField] private GameObject RosterHolder;
 
     [SerializeField] private GameObject carShop;
+
+    [SerializeField] private GameObject rerollButton;
 
     [SerializeField] private GameObject scrapyard;
 
@@ -36,15 +44,10 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumber;
-
-
-
-
-
+    
     [SerializeField] private TextMeshProUGUI moneyText;
     public int startingAmount = 50;
     private int currentAmount;
-
 
     private void Awake()
     {
@@ -69,7 +72,54 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateHealthBar();
 
+        remainingRerolls = maxRerolls; // Initialize remaining rerolls
+        UpdateRerollCounter(); // Update visual counter
 
+
+    }
+
+    private void SetPlayerValuesInBuyScreen(){
+        if(!devMode){
+            if(PlayerValues.Cars != null){
+                playerCars = PlayerValues.Cars;
+                Debug.Log("Cars: " + playerCars[0]);
+            }
+            else{
+                playerCars = defaultCars;
+            }
+            PopulateRoster();   
+        }
+        else{
+            //we can add some devMode settings
+        }
+    }
+
+    public void PopulateRoster()
+    {
+
+        for (int i = 0; i < playerCars.Count; i++)
+        {
+            Transform child = RosterHolder.transform.GetChild(i);
+            
+            Instantiate(rosterCarPrefab, child.transform);
+
+            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+
+            buyScreenCar.correspondingCar = playerCars[i];
+            Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
+        }
+
+
+    }
+
+    public void UpdatePlayerCarsList()
+    {
+        if (playerCars != null)
+        {
+            playerCars.Clear();
+        }
+
+        playerCars = CreateRosterList();
     }
 
     private void SetPlayerValuesInBuyScreen(){
@@ -143,10 +193,12 @@ public class BuyScreenManager : MonoBehaviour
 
     public void PopulateCarShop()
     {
-        List<int> carsPulled = new List<int>();
+        List<Car> carsPulled = new List<Car>();
 
         for (int i = 0; i < carShop.transform.childCount; i++)
         {
+
+            Car car = cars[0];
 
             int randomNumber = 0;
 
@@ -155,11 +207,22 @@ public class BuyScreenManager : MonoBehaviour
             while (!newCar)
             {
                 randomNumber = Random.Range(0, cars.Length);
+                car = cars[randomNumber];
+
                 bool isUnique = true;
 
                 for (int j = 0; j < carsPulled.Count; j++)
                 {
-                    if (randomNumber == carsPulled[j])
+                    if (car == carsPulled[j])
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
+
+                for (int j = 0; j < playerCars.Count; j++)
+                {
+                    if (car == playerCars[j])
                     {
                         isUnique = false;
                         break;
@@ -169,7 +232,7 @@ public class BuyScreenManager : MonoBehaviour
                 if (isUnique)
                 {
                     newCar = true;
-                    carsPulled.Add(randomNumber);
+                    carsPulled.Add(car);
                 }
             }
 
@@ -180,8 +243,6 @@ public class BuyScreenManager : MonoBehaviour
             }
 
             BuyScreenCar carSlot = carShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenCar>();
-
-            Car car = cars[randomNumber];
 
             carSlot.correspondingCar = car;
 
@@ -194,17 +255,28 @@ public class BuyScreenManager : MonoBehaviour
 
     public void RerollShop()
     {
-        if (CheckMoneyAmount(rerollPrice))
+        if (CheckMoneyAmount(rerollPrice) && remainingRerolls > 0)
         {
             RemoveMoney(rerollPrice);
-
-            //Do a shake animation
-
-            
-
+            remainingRerolls--;
+            UpdateRerollCounter(); // Update visual counter
+            UpdatePlayerCarsList();
             PopulateCarShop();
         }
-        
+    }
+
+    void UpdateRerollCounter()
+    {
+        if (remainingRerolls > 0)
+        {
+            rerollButton.GetComponent<RerollButton>().SetDiceFace(remainingRerolls);
+        }
+        else
+        {
+            rerollButton.GetComponent<RerollButton>().DisableDice();
+        }
+
+
     }
 
     public void AddToScrapyard(GameObject car)

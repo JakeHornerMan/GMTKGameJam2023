@@ -90,7 +90,11 @@ public class InterfaceManager : MonoBehaviour
             carWalletIcon.sprite = vehicleSpawner.currentUltimateAbility.GetComponent<ObjectInfo>().objectIcon;
         }
         else{
-            carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+            if (vehicleSpawner.currentActiveCar != null)
+            {
+                carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
+            }
+            
         }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
