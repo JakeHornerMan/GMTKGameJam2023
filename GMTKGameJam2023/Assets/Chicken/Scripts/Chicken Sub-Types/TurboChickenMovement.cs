@@ -58,7 +58,7 @@ public class TurboChickenMovement: MonoBehaviour
         soundManager.PlayTurboChickenDeath();
     }
 
-    public IEnumerator StopTheMovement(float stopTime, bool isFreeze)
+    public IEnumerator FreezeChicken(float stopTime, bool isFreeze)
     {
         if(isFreeze){
             spriteRenderer.color = freezeColor;
@@ -70,6 +70,23 @@ public class TurboChickenMovement: MonoBehaviour
 
         if(isFreeze){
             spriteRenderer.color = originalColor;
+            chickenSprite.GetComponent<Animator>().enabled = true;
+        }
+        stopMovement = false;
+    }
+
+    public IEnumerator FlashChicken(float stopTime, bool isFlash)
+    {
+        if (isFlash)
+        {
+            chickenSprite.GetComponent<Animator>().enabled = false;
+        }
+        stopMovement = true;
+
+        yield return new WaitForSeconds(stopTime);
+
+        if (isFlash)
+        {
             chickenSprite.GetComponent<Animator>().enabled = true;
         }
         stopMovement = false;
