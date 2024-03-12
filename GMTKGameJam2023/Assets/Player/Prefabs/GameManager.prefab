@@ -670,6 +670,9 @@ MonoBehaviour:
   gameSpeedConfig:
     clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
     volume: 0.3
+  timesUpConfig:
+    clip: {fileID: 0}
+    volume: 1
   lastSecondsConfig:
     clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
     volume: 1
@@ -713,7 +716,7 @@ MonoBehaviour:
     volume: 0
   turboChicken:
     clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
-    volume: 1
+    volume: 0.7
   wagonChicken:
     clip: {fileID: 0}
     volume: 1

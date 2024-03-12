@@ -124,6 +124,14 @@ public abstract class Car : MonoBehaviour
             rb.velocity = transform.up * carSpeed;
     }
 
+    private void SlowCarSpeed()
+    {
+        Debug.Log("Car is Slowed");
+        float slowSpeed = carSpeed/2;
+        if (rb != null)
+            rb.velocity = transform.up * slowSpeed;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameManager.isGameOver)
@@ -145,6 +153,9 @@ public abstract class Car : MonoBehaviour
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
+        
+        if(collision.gameObject.name.Contains("SlowSubstance"))
+            SlowCarSpeed();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -160,6 +171,8 @@ public abstract class Car : MonoBehaviour
 
         if (sheep != null)
             HandleSheepCollision(sheep);
+
+        
     }
 
     private void HandleVehicleCollision(Car otherCar)
