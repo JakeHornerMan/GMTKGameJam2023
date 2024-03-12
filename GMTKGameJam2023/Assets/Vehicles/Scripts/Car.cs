@@ -274,9 +274,13 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(FreezeCar(iceChick.freezeLength, iceChick.freezeColour));
         }
 
-        // Debug.Log(chickenHealth.gameObject.name);
-
-        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+        // Hit Stop, TurboChicken has different movement script;
+        if(chickenHealth.gameObject.name.Contains("Turbo")){
+            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<TurboChickenMovement>().GetChickenHitstop()));
+        }
+        else{
+            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+        }
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
