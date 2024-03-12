@@ -5,8 +5,12 @@ using UnityEngine;
 public class WagonChickenMovement : ChickenMovement
 {
     [Header("Wheelbarrow Chicken References")]
+    [SerializeField] private GameObject chickenSprite;
     [SerializeField] private GameObject slowSubstancePrefab;
     [SerializeField] private Transform dropPoint;
+    [SerializeField] private Color freezeColor;
+    [HideInInspector] private Color originalColor = Color.white;
+    [HideInInspector] private SpriteRenderer spriteRenderer;
 
     [Header("Wheelbarrow Chicken Values")]
     [SerializeField] private float speed = 1f;
@@ -79,5 +83,22 @@ public class WagonChickenMovement : ChickenMovement
     private void OnDestroy()
     {
         soundManager.PlayWagonChickenDeath();
+    }
+
+    public IEnumerator FreezeChicken(float stopTime, bool isFreeze)
+    {
+        if(isFreeze){
+            spriteRenderer.color = freezeColor;
+            chickenSprite.GetComponent<Animator>().enabled = false;
+        }
+        stopMovement = true;
+
+        yield return new WaitForSeconds(stopTime);
+
+        if(isFreeze){
+            spriteRenderer.color = originalColor;
+            chickenSprite.GetComponent<Animator>().enabled = true;
+        }
+        stopMovement = false;
     }
 }

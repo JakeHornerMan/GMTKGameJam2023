@@ -289,7 +289,7 @@ public abstract class Car : MonoBehaviour
 
         // Hit Stop, TurboChicken has different movement script;
         if(chickenHealth.gameObject.name.Contains("Turbo")){
-            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<TurboChickenMovement>().GetChickenHitstop()));
+            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
         }
         else{
             StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
