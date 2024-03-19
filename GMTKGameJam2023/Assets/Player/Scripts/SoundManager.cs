@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
+    [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
     [SerializeField] private SoundConfig[] tokenCollect;
     [SerializeField] private SoundConfig[] purchases;
@@ -42,9 +43,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig wagonChickenDeath;
     [SerializeField] private SoundConfig enterPortal;
     [SerializeField] private SoundConfig exitPortal;
-
-    [Header("Wave Sounds")]
-    [SerializeField] private SoundConfig lastSecondsConfig;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -80,6 +78,7 @@ public class SoundManager : MonoBehaviour
     // =============================
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
+    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
     public void PlayPurchase() => RandomPlaySound(purchases);
     public void PlayCantPurchase() => PlaySound(cantPurchase);
@@ -96,11 +95,6 @@ public class SoundManager : MonoBehaviour
     public void PlayWagonChickenDeath() => PlaySound(wagonChickenDeath);
     public void PlayEnterPortal() => PlaySound(enterPortal);
     public void PlayExitPortal() => PlaySound(exitPortal);
-
-    // =============================
-    // Player Attack Sounds
-    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
-
 
     // =============================
     // Other Functions
@@ -129,10 +123,6 @@ public class SoundManager : MonoBehaviour
                 PlaySound(soundConfigs[randomIndex]);
             }
         }
-    }
-
-    public void PlayWaveSound(string input){
-
     }
 }
 
