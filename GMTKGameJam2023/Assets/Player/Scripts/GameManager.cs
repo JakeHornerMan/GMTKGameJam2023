@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour
             missedChickenLives = PlayerValues.missedChickenLives;
             // Debug.Log("Lives: " + missedChickenLives);
         }
-        else if (!devMode && PlayerValues.Cars.Count <= 0) {
-            missedChickenLives = startLives;
+        else {
+            missedChickenLives =10;
         }
     }
 

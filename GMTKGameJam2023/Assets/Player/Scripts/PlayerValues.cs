@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PlayerValues
 {
     public static List<Car> Cars { get; set; }
-    public static int missedChickenLives = 3;
+    public static int missedChickenLives = 10;
     public static int carWalletNodes = 3;
     public static int playerCash = 50;
 }

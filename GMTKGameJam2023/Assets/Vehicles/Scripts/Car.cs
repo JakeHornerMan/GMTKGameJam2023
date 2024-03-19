@@ -148,6 +148,9 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
+        // Check if Hit Token
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
 
@@ -156,6 +159,9 @@ public abstract class Car : MonoBehaviour
         
         if(collision.gameObject.name.Contains("SlowSubstance"))
             SlowCarSpeed();
+
+        if(wall != null)
+            HandleWallCollision(wall);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -171,7 +177,6 @@ public abstract class Car : MonoBehaviour
 
         if (sheep != null)
             HandleSheepCollision(sheep);
-
         
     }
 
@@ -214,6 +219,25 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(CarHitStop(0.1f));
             otherCar.StartCoroutine(CarHitStop(0.1f));
         }
+    }
+
+    private void HandleWallCollision(WallController wall)
+    {
+        //Destroy Heavy destroys wall
+        if (this.carType == CarType.Heavy)
+        {
+            this.carHealth -= .100f;
+            wall.WallHit();
+        }
+
+        //Destroy Light
+        if (this.carType == CarType.Light){ 
+            LaunchCar();
+            wall.WallHit();
+        }
+
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
+        StartCoroutine(CarHitStop(0.1f));
     }
 
     private void HandleTokenCollision(TokenController token)
