@@ -50,6 +50,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig enterPortal;
     [SerializeField] private SoundConfig exitPortal;
 
+    [Header("Wave Sounds")]
+    [SerializeField] private SoundConfig lastSecondsConfig;
+
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
     [SerializeField] private AudioClip gameMusic;
@@ -106,6 +109,11 @@ public class SoundManager : MonoBehaviour
     public void PlayExitPortal() => PlaySound(exitPortal);
 
     // =============================
+    // Player Attack Sounds
+    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
+
+
+    // =============================
     // Other Functions
     public void PlayEndMusic()
     {
@@ -143,6 +151,10 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         PlaySound(soundConfig);
+    }
+
+    public void PlayWaveSound(string input){
+
     }
 }
 
