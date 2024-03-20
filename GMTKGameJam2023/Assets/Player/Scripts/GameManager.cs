@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
     [SerializeField] private int cheatTokenAmount = 500;
+    [SerializeField] private int cheatLives = 10;
 
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
             // Debug.Log("Lives: " + missedChickenLives);
         }
         else {
-            missedChickenLives =10;
+            missedChickenLives = cheatLives;
         }
     }
 

@@ -75,6 +75,11 @@ public class Bomb : MonoBehaviour
 
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
+
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+
+        if(wall != null)
+            HandleWallCollision(wall);
     }
 
     private void HandleChickenCollision(ChickenHealth chickenHealth)
@@ -123,6 +128,12 @@ public class Bomb : MonoBehaviour
             chickenHealth.transform.position,
             $"{chickenHealth.pointsReward * currentComboMultiplier}"
         );
+    }
+
+    private void HandleWallCollision(WallController wall)
+    {
+        wall.WallHit();
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
     }
 
     private void ShowPopup(Vector3 position, string msg)

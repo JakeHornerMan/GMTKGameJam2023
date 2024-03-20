@@ -148,7 +148,7 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
-        // Check if Hit Token
+        // Check if Hit Wall
         WallController wall = collision.gameObject.GetComponent<WallController>();
 
         if (chickenHealth != null)
@@ -224,14 +224,16 @@ public abstract class Car : MonoBehaviour
     private void HandleWallCollision(WallController wall)
     {
         //Destroy Heavy destroys wall
-        if (this.carType == CarType.Heavy)
+        if (carType == CarType.Heavy)
         {
-            this.carHealth -= .100f;
+            carHealth -= wall.damage;
             wall.WallHit();
+            if(carHealth <= 0)
+                LaunchCar();
         }
 
         //Destroy Light
-        if (this.carType == CarType.Light){ 
+        if (carType == CarType.Light){ 
             LaunchCar();
             wall.WallHit();
         }
@@ -506,8 +508,14 @@ public abstract class Car : MonoBehaviour
         // Normalize the Vector2
         Vector2 normalizedVector = randomVector.normalized;
 
-        if (GetComponent<Collider2D>())
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+
+        if (collider != null){
             GetComponent<Collider2D>().enabled = false;
+        }else{
+            gameObject.transform.Find("Truck Hitbox Visual").GetComponent<Collider2D>().enabled = false;
+        }
+
         if (comboText != null)
             comboText.enabled = false;
 

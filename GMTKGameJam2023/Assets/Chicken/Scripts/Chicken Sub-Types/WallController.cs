@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
+    public float damage = 50f;
     private Animator anim;
     private SoundManager soundManager;
     private float wallDisappearAnimLength = 1f;
