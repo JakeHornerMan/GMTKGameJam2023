@@ -78,6 +78,7 @@ public class Bomb : MonoBehaviour
 
         WallController wall = collision.gameObject.GetComponent<WallController>();
 
+        // TODO: Fox explosion breaking walls
         if(wall != null)
             HandleWallCollision(wall);
     }
