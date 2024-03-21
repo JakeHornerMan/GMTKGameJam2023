@@ -17,7 +17,7 @@ public class GameFlowManager : MonoBehaviour
 
     public void newRound(){
         // RoundProgression();
-        int randomSpecialWave = Random.Range(2,3);
+        int randomSpecialWave = Random.Range(2,2);
         for(int i =1; i <= 3; i++){
             if(i == randomSpecialWave){
                 SpecialWave();
