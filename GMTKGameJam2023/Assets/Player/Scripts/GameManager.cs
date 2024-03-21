@@ -85,12 +85,12 @@ public class GameManager : MonoBehaviour
 
         if (devMode)
             tokens = cheatTokenAmount;
-        if (waves.Count != 0){
+        if (waves.Count != 0 && devMode){
             SetGameTime();
             time = startTime;
             waveNumber = 0;
             SettingWaveInChickenSpawn();
-        } 
+        }
         else{
             RoundSet();
         }  
@@ -103,6 +103,12 @@ public class GameManager : MonoBehaviour
             }
             else{
                 carsInLevel = defaultCars;
+            }
+            if(PlayerValues.ultimate != null){
+                ultimateInLevel = PlayerValues.ultimate;
+            }
+            else{
+                ultimateInLevel = null;
             }
             Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
@@ -140,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
+        soundManager.PlayWaveSound(currentWave.waveSound);
 
         chickenSpawn.SetNewWave(currentWave);
 
@@ -174,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
         if(roundOver){
             SetPlayerValues();
-            StartCoroutine(WaitAndBuyScreen(2f));
+            StartCoroutine(WaitAndBuyScreen(1f));
         }
     }
 

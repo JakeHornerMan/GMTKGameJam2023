@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
-    [SerializeField] private float emptyWaveTime = 15f;
+    [SerializeField] private float emptyWaveTime = 10f;
     [SerializeField] private SpecialChicken[] SpecialChickens;
     [SerializeField] private List<SpecialChicken> chickenPot;
     [SerializeField] public ChickenWave[] bonusWaves;
@@ -18,11 +18,11 @@ public class GameFlowManager : MonoBehaviour
     public void newRound(){
         // RoundProgression();
         int randomSpecialWave = Random.Range(2,3);
-        for(int i =1; i <= 4; i++){
+        for(int i =1; i <= 3; i++){
             if(i == randomSpecialWave){
                 SpecialWave();
             }
-            if(i == 4){
+            if(i == 3){
                 EmptyWave();
             }
             else{
@@ -32,16 +32,17 @@ public class GameFlowManager : MonoBehaviour
         GameProgressionValues.RoundNumber ++;
     }
 
-    private void StandardChickenWaveCreate(int roundNumber){
+    private void StandardChickenWaveCreate(int waveNumber){
         ChickenWave newChickenWave = new ChickenWave();
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
         newChickenWave.standardChickenAmounts = standardChickenAmount();
 
-        if(roundNumber == 1){
+        if(waveNumber == 1){
             newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
         }
         else {
             newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
+            //TODO: insert funny prompts funtiality
         }
         newChickenWave.chickenIntesity = chickenIntesitySet();
         newChickenWave.coinAmount = RoundCoinSet();
@@ -128,6 +129,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.roundTime = emptyWaveTime;
         newChickenWave.standardChickenAmounts = 0;
         newChickenWave.wavePrompt = "Times Nearly Up!";
+        newChickenWave.waveSound = "LastSeconds";
         newChickenWave.chickenIntesity = 0;
         newChickenWave.coinAmount = 0;
         newChickenWave.specialChickens = null;
@@ -140,6 +142,7 @@ public class ChickenWave
 {
     public float roundTime;
     public string wavePrompt;
+    public string waveSound;
     public int standardChickenAmounts;
     public int chickenIntesity = 0;
     public int coinAmount  = 0;

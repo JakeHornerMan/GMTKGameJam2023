@@ -154,7 +154,15 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayWaveSound(string input){
-
+        switch (input)
+        {
+            case "LastSeconds":
+                PlayLastSeconds();
+                break;
+            default:
+                Debug.Log("Input not recognised for wave sound.");
+                break;
+        }
     }
 }
 
