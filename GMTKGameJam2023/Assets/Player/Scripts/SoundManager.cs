@@ -32,7 +32,6 @@ public class SoundManager : MonoBehaviour
     [Header("Game Info Clips")]
     [SerializeField] private SoundConfig gameSpeedConfig;
     [SerializeField] private SoundConfig timesUpConfig;
-    [SerializeField] private SoundConfig lastSecondsConfig;
     [SerializeField] private SoundConfig missedChicken;
     [SerializeField] private SoundConfig[] tokenCollect;
     [SerializeField] private SoundConfig[] purchases;
@@ -49,6 +48,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundConfig wagonChickenDeath;
     [SerializeField] private SoundConfig enterPortal;
     [SerializeField] private SoundConfig exitPortal;
+
+    [Header("Wave Sounds")]
+    [SerializeField] private SoundConfig lastSecondsConfig;
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
@@ -106,6 +108,11 @@ public class SoundManager : MonoBehaviour
     public void PlayExitPortal() => PlaySound(exitPortal);
 
     // =============================
+    // Player Attack Sounds
+    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
+
+
+    // =============================
     // Other Functions
     public void PlayEndMusic()
     {
@@ -143,6 +150,18 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         PlaySound(soundConfig);
+    }
+
+    public void PlayWaveSound(string input){
+        switch (input)
+        {
+            case "LastSeconds":
+                PlayLastSeconds();
+                break;
+            default:
+                Debug.Log("Input not recognised for wave sound.");
+                break;
+        }
     }
 }
 
