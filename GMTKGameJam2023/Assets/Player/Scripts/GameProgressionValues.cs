@@ -10,4 +10,10 @@ public static class GameProgressionValues
     public static int standardChickenAmountForStart = 20; //default : 20f
     public static float standardChickenAmountMultiplier = 1.1f; //default : 1.1f
 
+    public static void SetDefaultValues(){
+        RoundNumber = 1;
+        standardRoundTime = 30f;
+        standardChickenAmountForStart = 20;
+        standardChickenAmountMultiplier = 1.1f;
+    }
 }

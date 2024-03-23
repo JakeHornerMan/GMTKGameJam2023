@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
     {
         sceneFader.Fade();
         yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreen");
+        sceneFader.ScreenWipeOut("BuyScreenFinal");
     }
 
     public void SafelyCrossedChicken()
