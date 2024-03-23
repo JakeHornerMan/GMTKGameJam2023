@@ -326,12 +326,14 @@ MonoBehaviour:
   bonusWaves:
   - roundTime: 15
     wavePrompt: Energy  Surge!
+    waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 50
     specialChickens: []
   - roundTime: 15
     wavePrompt: Grab some Cash!
+    waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 0
@@ -374,6 +376,7 @@ MonoBehaviour:
       bottomSpawn: 1
   - roundTime: 15
     wavePrompt: Its getting Explosive
+    waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 0
@@ -457,6 +460,7 @@ MonoBehaviour:
   startTime: 180
   devMode: 0
   cheatTokenAmount: 500
+  cheatLives: 10
   startLives: 10
   lostChickenScore: 1000
   safelyCrossedChickens: 0
@@ -534,6 +538,7 @@ MonoBehaviour:
   currentWave:
     roundTime: 0
     wavePrompt: 
+    waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 0
@@ -670,8 +675,8 @@ MonoBehaviour:
   gameSpeedConfig:
     clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
     volume: 0.3
-  lastSecondsConfig:
-    clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
+  timesUpConfig:
+    clip: {fileID: 0}
     volume: 1
   missedChicken:
     clip: {fileID: 8300000, guid: a1be8c2a4c68c5c48bf4e3968ea899c9, type: 3}
@@ -695,7 +700,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5105f4273e6110042bc392186b17cdb0, type: 3}
     volume: 1
   unfrostConfig:
-    clip: {fileID: 8300000, guid: 858ea0798ba2818458f5716084ba631b, type: 3}
+    clip: {fileID: 8300000, guid: 37eb9506537256b43947e523772cc72c, type: 3}
     volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
@@ -713,7 +718,7 @@ MonoBehaviour:
     volume: 0
   turboChicken:
     clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
-    volume: 1
+    volume: 0.7
   wagonChicken:
     clip: {fileID: 0}
     volume: 1
@@ -728,6 +733,9 @@ MonoBehaviour:
     volume: 1
   exitPortal:
     clip: {fileID: 8300000, guid: dd29e44dbe229ec47b2526577fa4440d, type: 3}
+    volume: 1
+  lastSecondsConfig:
+    clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}

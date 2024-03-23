@@ -11,6 +11,10 @@ public class WreckingBall : MonoBehaviour
     protected GameManager gameManager;
     public GameObject hook;
 
+    [Header("Camera Shake Values")]
+    [SerializeField] private float camShakeDuration = 0.15f;
+    [SerializeField] private float camShakeMagnitude = 0.25f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,6 +61,12 @@ public class WreckingBall : MonoBehaviour
             Debug.Log("We hit a car: " + collision.gameObject.name);
             HandleCarCollision(hitCar);
         }
+
+        // Check if Hit Token
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+
+        if(wall != null)
+            HandleWallCollision(wall);
     }
 
     private void HandleCarCollision(Car car)
@@ -70,5 +80,13 @@ public class WreckingBall : MonoBehaviour
             car.SpinOutCar();
             Debug.Log("car is spinning?");
         }
+    }
+
+    private void HandleWallCollision(WallController wall)
+    {
+        wall.WallHit();
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
+        
+        StartCoroutine(wreckerCart.HandleHitStop(0.01f));    
     }
 }

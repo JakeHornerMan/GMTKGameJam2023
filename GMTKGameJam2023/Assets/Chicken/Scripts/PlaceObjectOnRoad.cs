@@ -15,6 +15,10 @@ public class PlaceObjectOnRoad : MonoBehaviour
     [Header("Drop Settings")]
     [SerializeField] private bool markPlacedObjectForDestruction = false;
     [SerializeField] private float objectLifetime = 10f;
+    [Header("Probablity for drop (leave at 1 for constant)")]
+    [SerializeField] private int probability = 1;
+    // [Header("Will only drop on lanes based on Equiped Vehicles")]
+    // [SerializeField] private bool dropOnVehicleLanes = false;
 
     private List<RoadHighlight> affectedRoads;
 
@@ -49,13 +53,16 @@ public class PlaceObjectOnRoad : MonoBehaviour
 
     private void InstantiateObject(Vector2 dropPos)
     {
-        GameObject newlyPlacedObject = Instantiate(
-            objectToPlace,
-            // dropPoint.position,
-            dropPos,
-            transform.rotation
-        );
-        if (markPlacedObjectForDestruction)
-            Destroy(newlyPlacedObject, objectLifetime);
+        int randomNumber = Random.Range(1, probability);
+        if(randomNumber == 1){
+            GameObject newlyPlacedObject = Instantiate(
+                objectToPlace,
+                // dropPoint.position,
+                dropPos,
+                transform.rotation
+            );
+            if (markPlacedObjectForDestruction)
+                Destroy(newlyPlacedObject, objectLifetime);
+        }
     }
 }

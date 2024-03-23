@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3994847835291863469}
   - component: {fileID: 5492813674675785332}
-  - component: {fileID: 1573932811415413278}
+  - component: {fileID: 2648682156635998086}
   m_Layer: 0
   m_Name: SlowSubstance
   m_TagString: Untagged
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &1573932811415413278
-CapsuleCollider2D:
+--- !u!61 &2648682156635998086
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,6 +117,16 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0078376, y: 0.04702658}
-  m_Size: {x: 1.8275687, y: 1.0594577}
-  m_Direction: 1
+  m_Offset: {x: -0.0028185844, y: 0.028185785}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7801514, y: 1.0304092}
+  m_EdgeRadius: 0

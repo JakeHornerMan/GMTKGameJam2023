@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float startTime = 180f;
     [SerializeField] public bool devMode = false;
     [SerializeField] private int cheatTokenAmount = 500;
+    [SerializeField] private int cheatLives = 10;
 
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
@@ -84,12 +85,12 @@ public class GameManager : MonoBehaviour
 
         if (devMode)
             tokens = cheatTokenAmount;
-        if (waves.Count != 0){
+        if (waves.Count != 0 && devMode){
             SetGameTime();
             time = startTime;
             waveNumber = 0;
             SettingWaveInChickenSpawn();
-        } 
+        }
         else{
             RoundSet();
         }  
@@ -103,12 +104,18 @@ public class GameManager : MonoBehaviour
             else{
                 carsInLevel = defaultCars;
             }
+            if(PlayerValues.ultimate != null){
+                ultimateInLevel = PlayerValues.ultimate;
+            }
+            else{
+                ultimateInLevel = null;
+            }
             Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
             // Debug.Log("Lives: " + missedChickenLives);
         }
-        else if (!devMode && PlayerValues.Cars.Count <= 0) {
-            missedChickenLives = startLives;
+        else {
+            missedChickenLives = cheatLives;
         }
     }
 
@@ -139,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
+        soundManager.PlayWaveSound(currentWave.waveSound);
 
         chickenSpawn.SetNewWave(currentWave);
 
@@ -173,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
         if(roundOver){
             SetPlayerValues();
-            StartCoroutine(WaitAndBuyScreen(2f));
+            StartCoroutine(WaitAndBuyScreen(1f));
         }
     }
 
@@ -193,7 +201,7 @@ public class GameManager : MonoBehaviour
     {
         sceneFader.Fade();
         yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreen");
+        sceneFader.ScreenWipeOut("BuyScreenFinal");
     }
 
     public void SafelyCrossedChicken()

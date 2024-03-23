@@ -124,6 +124,14 @@ public abstract class Car : MonoBehaviour
             rb.velocity = transform.up * carSpeed;
     }
 
+    private void SlowCarSpeed()
+    {
+        Debug.Log("Car is Slowed");
+        float slowSpeed = carSpeed/2;
+        if (rb != null)
+            rb.velocity = transform.up * slowSpeed;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameManager.isGameOver)
@@ -140,11 +148,20 @@ public abstract class Car : MonoBehaviour
         // Check if Hit Token
         TokenController token = collision.gameObject.GetComponent<TokenController>();
 
+        // Check if Hit Wall
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+
         if (chickenHealth != null)
             HandleChickenCollision(chickenHealth);
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
+        
+        if(collision.gameObject.name.Contains("SlowSubstance"))
+            SlowCarSpeed();
+
+        if(wall != null)
+            HandleWallCollision(wall);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -160,6 +177,7 @@ public abstract class Car : MonoBehaviour
 
         if (sheep != null)
             HandleSheepCollision(sheep);
+        
     }
 
     private void HandleVehicleCollision(Car otherCar)
@@ -201,6 +219,27 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(CarHitStop(0.1f));
             otherCar.StartCoroutine(CarHitStop(0.1f));
         }
+    }
+
+    private void HandleWallCollision(WallController wall)
+    {
+        //Destroy Heavy destroys wall
+        if (carType == CarType.Heavy)
+        {
+            carHealth -= wall.damage;
+            wall.WallHit();
+            if(carHealth <= 0)
+                LaunchCar();
+        }
+
+        //Destroy Light
+        if (carType == CarType.Light){ 
+            LaunchCar();
+            wall.WallHit();
+        }
+
+        CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
+        StartCoroutine(CarHitStop(0.1f));
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -274,9 +313,13 @@ public abstract class Car : MonoBehaviour
             StartCoroutine(FreezeCar(iceChick.freezeLength, iceChick.freezeColour));
         }
 
-        // Debug.Log(chickenHealth.gameObject.name);
-
-        StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+        // Hit Stop, TurboChicken has different movement script;
+        if(chickenHealth.gameObject.name.Contains("Turbo")){
+            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
+        }
+        else{
+            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+        }
 
         // Damage Poultry
         chickenHealth.TakeDamage(damage);
@@ -465,8 +508,14 @@ public abstract class Car : MonoBehaviour
         // Normalize the Vector2
         Vector2 normalizedVector = randomVector.normalized;
 
-        if (GetComponent<Collider2D>())
+        Collider2D collider = gameObject.GetComponent<Collider2D>();
+
+        if (collider != null){
             GetComponent<Collider2D>().enabled = false;
+        }else{
+            gameObject.transform.Find("Truck Hitbox Visual").GetComponent<Collider2D>().enabled = false;
+        }
+
         if (comboText != null)
             comboText.enabled = false;
 
