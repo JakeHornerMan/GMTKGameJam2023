@@ -35,6 +35,7 @@ public class ResultsUI : MonoBehaviour
 
     private void Start()
     {
+        SetStaticValuesToDefault();
         gameManager = FindObjectOfType<GameManager>();
         SetUI();
         LevelEndAudio();
@@ -51,12 +52,14 @@ public class ResultsUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        sceneFader.FadeToMainMenu();
+        // sceneFader.FadeToMainMenu();
+        sceneFader.ScreenWipeOut("MainMenuInteractive");
     }
 
     public void Restart()
     {
-        sceneFader.RestartLevel();
+        // sceneFader.RestartLevel();
+        sceneFader.ScreenWipeOut("Level01");
     }
 
     public void SetUI()
@@ -79,5 +82,9 @@ public class ResultsUI : MonoBehaviour
 
         gameManager.waves.Add(chickenWave);
         // gameManager.SetStart();
+    }
+
+    private void SetStaticValuesToDefault(){
+        GameProgressionValues.SetDefaultValues();
     }
 }
