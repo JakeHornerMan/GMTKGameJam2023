@@ -87,7 +87,6 @@ public class SoundManager : MonoBehaviour
     // Game Info Sounds
     public void PlayGameSpeed() => PlaySound(gameSpeedConfig);
     public void PlayTimesUp() => PlaySound(timesUpConfig);
-    public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
     public void PlayMissedChicken() => PlaySound(missedChicken);
     public void PlayPurchase() => RandomPlaySound(purchases);
     public void PlayCantPurchase() => PlaySound(cantPurchase);
@@ -108,7 +107,7 @@ public class SoundManager : MonoBehaviour
     public void PlayExitPortal() => PlaySound(exitPortal);
 
     // =============================
-    // Player Attack Sounds
+    // Wave Sounds
     public void PlayLastSeconds() => PlaySound(lastSecondsConfig);
 
 
