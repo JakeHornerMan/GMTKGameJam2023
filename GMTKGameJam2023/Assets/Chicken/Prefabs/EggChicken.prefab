@@ -283,8 +283,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPlace: {fileID: 2619222660318283966, guid: 9f438c21e6be64d4cb050c1ee629dcaa, type: 3}
-  markPlacedObjectForDestruction: 0
+  markPlacedObjectForDestruction: 1
   objectLifetime: 10
+  probability: 1
 --- !u!114 &8089028048643985026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   stopMovement: 0
   hitStopLength: 0.03
   freezeColor: {r: 0, g: 0.76477885, b: 1, a: 1}
+  spinningStars: {fileID: 0}
 --- !u!114 &-5117147452543026932
 MonoBehaviour:
   m_ObjectHideFlags: 0

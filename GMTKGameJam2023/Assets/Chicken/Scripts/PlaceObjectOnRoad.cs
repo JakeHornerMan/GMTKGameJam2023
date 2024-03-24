@@ -15,7 +15,7 @@ public class PlaceObjectOnRoad : MonoBehaviour
     [Header("Drop Settings")]
     [SerializeField] private bool markPlacedObjectForDestruction = false;
     [SerializeField] private float objectLifetime = 10f;
-    [Header("Probablity for drop (leave at 1 for constant)")]
+    [Tooltip("Probablity for drop (leave at 1 for constant)")]
     [SerializeField] private int probability = 1;
     // [Header("Will only drop on lanes based on Equiped Vehicles")]
     // [SerializeField] private bool dropOnVehicleLanes = false;
