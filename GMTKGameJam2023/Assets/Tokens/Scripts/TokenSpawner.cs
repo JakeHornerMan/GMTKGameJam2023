@@ -25,13 +25,14 @@ public class TokenSpawner : MonoBehaviour
 
     private void Awake()
     {
+        // GetPotentialRoads();
         gameManager = FindObjectOfType<GameManager>();
         tokenContainer = GameObject.Find(tokenContainer_Name);
     }
 
     private void Start()
     {
-        GetPotentialRoads();
+        
     }
 
     public void GetPotentialRoads()
@@ -115,9 +116,9 @@ public class TokenSpawner : MonoBehaviour
 
     public Transform choseLane()
     {
-        int randomInt = Random.Range(0, allLanes.Count-1);
+        // int randomInt = Random.Range(0, allLanes.Count);
         //Causing an index error, fix this
-        return allLanes[randomInt].transform;
+        return allLanes[Random.Range(0, allLanes.Count)].transform;
     }
 
     private void SpawnToken(GameObject token, Transform point)

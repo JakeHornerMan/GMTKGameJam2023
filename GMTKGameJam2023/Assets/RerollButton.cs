@@ -27,7 +27,7 @@ public class RerollButton : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid dice number");
+            // Debug.LogError("Invalid dice number");
         }
     }
 

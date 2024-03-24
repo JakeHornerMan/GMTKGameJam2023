@@ -17,12 +17,12 @@ public class GameFlowManager : MonoBehaviour
 
     public void newRound(){
         // RoundProgression();
-        int randomSpecialWave = Random.Range(2,2);
-        for(int i =1; i <= 3; i++){
-            if(i == randomSpecialWave){
-                SpecialWave();
-            }
-            if(i == 3){
+        // int randomSpecialWave = Random.Range(2,2);
+        for(int i =1; i <= 4; i++){
+            // if(i == 2){
+            //     SpecialWave();
+            // }
+            if(i == 4){
                 EmptyWave();
             }
             else{
@@ -48,6 +48,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.coinAmount = RoundCoinSet();
         newChickenWave.specialChickens = SpecialChickenListSet();
         gameManager.waves.Add(newChickenWave);
+        Debug.Log(newChickenWave.wavePrompt);
     }
 
     private int standardChickenAmount(){
@@ -122,6 +123,7 @@ public class GameFlowManager : MonoBehaviour
         int getWave = Random.Range(0,bonusWaves.Length);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
         gameManager.waves.Add(copyWave);
+        Debug.Log(copyWave.wavePrompt);
     }
 
     private void EmptyWave(){
@@ -134,6 +136,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.coinAmount = 0;
         newChickenWave.specialChickens = null;
         gameManager.waves.Add(newChickenWave);
+        Debug.Log(newChickenWave.wavePrompt);
     }
 }
 

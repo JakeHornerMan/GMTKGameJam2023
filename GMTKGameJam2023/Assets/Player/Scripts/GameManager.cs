@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             else{
                 ultimateInLevel = null;
             }
-            Debug.Log("Cars: " + carsInLevel);
+            // Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
             // Debug.Log("Lives: " + missedChickenLives);
         }
@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
         chickenSpawn.SetNewWave(currentWave);
 
         if(tokenSpawner != null)
+            tokenSpawner.GetPotentialRoads();
             tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);

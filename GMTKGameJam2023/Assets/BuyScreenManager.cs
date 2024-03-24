@@ -80,7 +80,7 @@ public class BuyScreenManager : MonoBehaviour
         if(!devMode){
             if(PlayerValues.Cars != null){
                 playerCars = PlayerValues.Cars;
-                Debug.Log("Cars: " + playerCars[0]);
+                // Debug.Log("Cars: " + playerCars[0]);
             }
             else{
                 playerCars = defaultCars;
