@@ -324,14 +324,14 @@ MonoBehaviour:
     topSpawn: 0
     bottomSpawn: 0
   bonusWaves:
-  - roundTime: 15
+  - roundTime: 20
     wavePrompt: Energy  Surge!
     waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 50
     specialChickens: []
-  - roundTime: 15
+  - roundTime: 20
     wavePrompt: Grab some Cash!
     waveSound: 
     standardChickenAmounts: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       topSpawn: 0
       bottomSpawn: 1
-  - roundTime: 15
+  - roundTime: 20
     wavePrompt: Its getting Explosive
     waveSound: 
     standardChickenAmounts: 0
@@ -993,6 +993,10 @@ PrefabInstance:
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528590789526900445, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

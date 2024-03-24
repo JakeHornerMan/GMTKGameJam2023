@@ -26,4 +26,9 @@ public class PauseUI : MonoBehaviour
         pause.UnpauseGame();
         sceneFader.ReloadScene();
     }
+
+    public void QuitGame()
+    {
+       Application.Quit();
+    }
 }

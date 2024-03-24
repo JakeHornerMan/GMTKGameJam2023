@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             else{
                 ultimateInLevel = null;
             }
-            Debug.Log("Cars: " + carsInLevel);
+            // Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
             // Debug.Log("Lives: " + missedChickenLives);
         }
