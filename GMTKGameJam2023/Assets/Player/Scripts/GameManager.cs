@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour
         chickenSpawn.SetNewWave(currentWave);
 
         if(tokenSpawner != null)
-            tokenSpawner.GetPotentialRoads();
             tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);

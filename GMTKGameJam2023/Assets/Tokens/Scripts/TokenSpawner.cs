@@ -25,7 +25,6 @@ public class TokenSpawner : MonoBehaviour
 
     private void Awake()
     {
-        // GetPotentialRoads();
         gameManager = FindObjectOfType<GameManager>();
         tokenContainer = GameObject.Find(tokenContainer_Name);
     }
@@ -85,6 +84,9 @@ public class TokenSpawner : MonoBehaviour
 
     public void SetNewWave(ChickenWave wave)
     {
+        if(allLanes.Count == 0){
+            GetPotentialRoads();
+        }
         currentWave = wave;
         tokenAmountInWave = wave.coinAmount;
         waveEnded = false;

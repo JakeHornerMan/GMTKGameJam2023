@@ -19,10 +19,10 @@ public class GameFlowManager : MonoBehaviour
         // RoundProgression();
         // int randomSpecialWave = Random.Range(2,2);
         for(int i =1; i <= 4; i++){
-            // if(i == 2){
-            //     SpecialWave();
-            // }
-            if(i == 4){
+            if(i == 2){
+                SpecialWave();
+            }
+            else if(i == 4){
                 EmptyWave();
             }
             else{
