@@ -158,7 +158,7 @@ public class SoundManager : MonoBehaviour
                 PlayLastSeconds();
                 break;
             default:
-                Debug.Log("Input not recognised for wave sound.");
+                // Debug.Log("Input not recognised for wave sound.");
                 break;
         }
     }

@@ -4932,6 +4932,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!20 &566155639 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8898609827912181589, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+  m_PrefabInstance: {fileID: 7057377506974264624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583249690
 GameObject:
   m_ObjectHideFlags: 0
@@ -7691,17 +7696,19 @@ MonoBehaviour:
   - {fileID: 330613492512159617, guid: a4a014d736bec854fa4a93c2fbfdd503, type: 3}
   - {fileID: -2703630887149224533, guid: 20609935811afb446a3642e4e5d284e1, type: 3}
   - {fileID: -1135978355812094493, guid: b675eb70873a395499c435759179ffc4, type: 3}
+  startingAmount: 25
   lifePrice: 5
   rerollPrice: 5
+  maxRerolls: 0
   RosterHolder: {fileID: 58088147}
   carShop: {fileID: 1296188340}
+  rerollButton: {fileID: 0}
   scrapyard: {fileID: 1146759605}
   rosterCarPrefab: {fileID: 5941939536339446406, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
   sceneFader: {fileID: 1275104003}
   healthSlider: {fileID: 2134044652}
   healthNumber: {fileID: 1166142785}
   moneyText: {fileID: 1039460113}
-  startingAmount: 25
 --- !u!114 &995936693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7751,8 +7758,8 @@ Canvas:
   m_GameObject: {fileID: 995936691}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 566155639}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -7762,7 +7769,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 855098693
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &995936696

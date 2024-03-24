@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        musicAudioSource.mute = !Settings.musicAllowed;
+        // musicAudioSource.mute = !Settings.musicAllowed;
     }
 
     public void EnterWorldSelect() => sceneFader.FadeToWorlds();
