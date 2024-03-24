@@ -72,8 +72,8 @@ public class GameFlowManager : MonoBehaviour
 
     private List<SpecialChicken> SpecialChickenListSet(){
         List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
-        for (int i = 1; i <= GameProgressionValues.RoundNumber; i++){
-            int getChickenAt = Random.Range(0, chickenPot.Count -1);
+        for (int i = 1; i <= GameProgressionValues.RoundNumber*2; i++){
+            int getChickenAt = Random.Range(0, chickenPot.Count);
             SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
             // Debug.Log(specialChicken.chicken.name);
 
@@ -122,6 +122,12 @@ public class GameFlowManager : MonoBehaviour
     private void SpecialWave(){
         int getWave = Random.Range(0,bonusWaves.Length);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
+        if(GameProgressionValues.RoundNumber >= 10){
+            copyWave.coinAmount = GameProgressionValues.RoundNumber;
+        }
+        else{
+            copyWave.coinAmount = 10;
+        }
         gameManager.waves.Add(copyWave);
         Debug.Log(copyWave.wavePrompt);
     }
