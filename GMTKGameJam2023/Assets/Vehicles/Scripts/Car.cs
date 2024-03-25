@@ -126,7 +126,7 @@ public abstract class Car : MonoBehaviour
 
     private void SlowCarSpeed()
     {
-        Debug.Log("Car is Slowed");
+        // Debug.Log("Car is Slowed");
         float slowSpeed = carSpeed/2;
         if (rb != null)
             rb.velocity = transform.up * slowSpeed;
@@ -134,6 +134,8 @@ public abstract class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Debug.Log("Triggering Hit with: "+ collision.gameObject.name);
+
         if (gameManager.isGameOver)
         {
             rb.velocity = Vector2.zero;
@@ -314,7 +316,8 @@ public abstract class Car : MonoBehaviour
         }
 
         // Hit Stop, TurboChicken has different movement script;
-        if(chickenHealth.gameObject.name.Contains("Turbo")){
+        // if(chickenHealth.gameObject.name.Contains("Turbo")){
+        if(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>()){
             StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
         }
         else{
