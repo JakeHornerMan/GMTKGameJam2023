@@ -131,6 +131,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476826717872332187, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242788369331870412, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137756914646878101, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429211989596590350, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6082470648501500550, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -218,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9047292486068417334, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -397,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afba055f38e75644aac9165f6d025a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraVCAM: {fileID: 0}
 --- !u!1 &1532908888 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3864732136250003267, guid: 96572bf00d63dab45ae4feff90055e2d, type: 3}
@@ -443,6 +472,18 @@ PrefabInstance:
     - target: {fileID: 2160284341332244042, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168607213686167400, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168607213686167400, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657678947236052804, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4723004208174625701, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_RootOrder
@@ -508,9 +549,25 @@ PrefabInstance:
       propertyPath: carWalletCountText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5319551969083576809, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805953219366590142, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261863364799450087, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7716956080788538566, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: resultsUI
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231286943397748092, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
