@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     {
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
+        Debug.Log("Standard Chickens in this round: " + currentWave.standardChickenAmounts);
         soundManager.PlayWaveSound(currentWave.waveSound);
 
         chickenSpawn.SetNewWave(currentWave);
