@@ -283,9 +283,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPlace: {fileID: 2619222660318283966, guid: 9f438c21e6be64d4cb050c1ee629dcaa, type: 3}
+  objectToPlace2: {fileID: 2619222660318283966, guid: 609b30f560ee69949ad3e04eb342d8ae, type: 3}
   markPlacedObjectForDestruction: 1
   objectLifetime: 10
-  probability: 1
+  probabilityOfSpawn: 2
+  probabilityOfSecondObject: 10
 --- !u!114 &8089028048643985026
 MonoBehaviour:
   m_ObjectHideFlags: 0
