@@ -14,14 +14,14 @@ public class MapGeneration : MonoBehaviour
     public int pavementCount = 0;
 
     public List<GameObject> lanes;
+
+    private GameObject laneContainer;
     
     private void Awake()
     {
-        // GenerateRoad();
-    }
-
-    private void Start(){
+        laneContainer = GameObject.Find("Lanes");
         PopulateLanesArray();
+        GenerateRoad();
     }
 
     public void PopulateLanesArray(){
@@ -36,16 +36,33 @@ public class MapGeneration : MonoBehaviour
             laneSelected = laneTypes[randomNumber];
             lanes.Add(laneSelected);
         }
-
         LaneCount();
 
-        if(roadCount < 3){
+        if(roadCount < 4){
             do{
-                int randomNumber = Random.Range(0, 10);
+                int randomNumber;
+                bool isRoad = true;
+                do{
+                    randomNumber = Random.Range(1, 10);
+                    if(lanes[randomNumber].name != "RoadLane"){
+                        isRoad = false;
+                    }
+                }
+                while(isRoad);
                 lanes[randomNumber] = laneTypes[0];
                 roadCount++;
             }
-            while(roadCount != 3);
+            while(roadCount != 4);
+            LaneCount();
+        }
+
+        if(busCount >= 2){
+            for(int i = 0; i < lanes.Count; i++){
+                if(lanes[i].name == "BusLane"){
+                    lanes[i] = laneTypes[3];
+                    return;
+                }
+            } 
             LaneCount();
         }
     }
@@ -92,62 +109,59 @@ public class MapGeneration : MonoBehaviour
 
     
 
-    // void GenerateRoad()
-    // {
-    //     for (int i = 0; i <= 10; i++)
-    //     {
-    //         GameObject road = roads[Random.Range(1, roads.Length)];
-    //         Vector3 pos;
-    //         switch (i)
-    //         {
-    //             case 0:
-    //                 road = roads[2];
-    //                 pos = new Vector3(-13f, 0, 0);
-    //                 break;
-    //             case 1:
-    //                 pos = new Vector3(-10.5f, 0, 0);
-    //                 break;
-    //             case 2:
-    //                 pos = new Vector3(-8f, 0, 0);
-    //                 break;
-    //             case 3:
-    //                 pos = new Vector3(-5.5f, 0, 0);
-    //                 break;
-    //             case 4:
-    //                 pos = new Vector3(-3f, 0, 0);
-    //                 break;
-    //             case 5:
-    //                 pos = new Vector3(-0.5f, 0, 0);
-    //                 break;
-    //             case 6:
-    //                 pos = new Vector3(2f, 0, 0);
-    //                 break;
-    //             case 7:
-    //                 pos = new Vector3(4.5f, 0, 0);
-    //                 break;
-    //             case 8:
-    //                 pos = new Vector3(7f, 0, 0);
-    //                 break;
-    //             case 9:
-    //                 pos = new Vector3(9.5f, 0, 0);
-    //                 break;
-    //             case 10:
-    //                 pos = new Vector3(12f, 0, 0);
-    //                 break;
-    //             // case 11:
-    //             //      pos = new Vector3(14.5f,0,0);
-    //             // break;
-    //             // case 12:
-    //             //      pos = new Vector3(17f,0,0);
-    //             // break;
-    //             default:
-    //                 pos = new Vector3(0, 0, 0);
-    //                 break;
-    //         }
-    //         Instantiate(road, pos, Quaternion.identity);
-    //     }
-    // }
+    private void GenerateRoad()
+    {
+        float instantiatePosX = -13f;
+        for (int i = 0; i < lanes.Count; i++)
+        {
+            Vector3 pos = new Vector3(instantiatePosX, 0, 0);
+            Instantiate(lanes[i], pos, Quaternion.identity, laneContainer.transform);
+            instantiatePosX = instantiatePosX + 2.5f;
+        }
+    }
 }
+
+// GameObject road = roads[Random.Range(1, roads.Length)];
+//             Vector3 pos;
+//             switch (i)
+//             {
+//                 case 0:
+//                     pos = new Vector3(-13f, 0, 0);
+//                     break;
+//                 case 1:
+//                     pos = new Vector3(-10.5f, 0, 0);
+//                     break;
+//                 case 2:
+//                     pos = new Vector3(-8f, 0, 0);
+//                     break;
+//                 case 3:
+//                     pos = new Vector3(-5.5f, 0, 0);
+//                     break;
+//                 case 4:
+//                     pos = new Vector3(-3f, 0, 0);
+//                     break;
+//                 case 5:
+//                     pos = new Vector3(-0.5f, 0, 0);
+//                     break;
+//                 case 6:
+//                     pos = new Vector3(2f, 0, 0);
+//                     break;
+//                 case 7:
+//                     pos = new Vector3(4.5f, 0, 0);
+//                     break;
+//                 case 8:
+//                     pos = new Vector3(7f, 0, 0);
+//                     break;
+//                 case 9:
+//                     pos = new Vector3(9.5f, 0, 0);
+//                     break;
+//                 case 10:
+//                     pos = new Vector3(12f, 0, 0);
+//                     break;
+//                 default:
+//                     Debug.Log("Issue with Instantiation!");
+//                     break;
+//             }
 
 [System.Serializable]
 public class RoadRow
