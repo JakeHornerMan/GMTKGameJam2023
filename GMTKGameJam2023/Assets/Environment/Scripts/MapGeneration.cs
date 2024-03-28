@@ -60,7 +60,23 @@ public class MapGeneration : MonoBehaviour
             for(int i = 0; i < lanes.Count; i++){
                 if(lanes[i].name == "BusLane"){
                     lanes[i] = laneTypes[3];
-                    return;
+                    busCount--;
+                }
+                if(busCount == 1){
+                    break;
+                }
+            } 
+            LaneCount();
+        }
+
+        if(pavementCount >= 3){
+            for(int i = 0; i < lanes.Count; i++){
+                if(lanes[i].name == "PavementLane"){
+                    lanes[i] = laneTypes[2];
+                    pavementCount--;
+                }
+                if(pavementCount == 2){
+                    break;
                 }
             } 
             LaneCount();
@@ -111,7 +127,7 @@ public class MapGeneration : MonoBehaviour
 
     private void GenerateRoad()
     {
-        float instantiatePosX = -13f;
+        float instantiatePosX = -13.4f;
         for (int i = 0; i < lanes.Count; i++)
         {
             Vector3 pos = new Vector3(instantiatePosX, 0, 0);

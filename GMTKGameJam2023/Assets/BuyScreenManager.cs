@@ -332,7 +332,7 @@ public class BuyScreenManager : MonoBehaviour
     {
         setPlayerValues();
         //Load next scene
-        sceneFader.ScreenWipeOut("Level01");
+        sceneFader.ScreenWipeOut("ProceduralGeneration");
     }
 
     public void setPlayerValues()

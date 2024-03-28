@@ -354,6 +354,7 @@ MonoBehaviour:
     difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
+  potCandidates: []
   bonusWaves:
   - roundTime: 20
     wavePrompt: Energy  Surge!
@@ -1144,6 +1145,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VehicleSpawner, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1288900549136657886, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453192030534037847, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648510653683416220, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796556928456823343, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023673550761761448, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457612872305424058, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720306227409457988, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378729048533598900, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1235,6 +1268,14 @@ PrefabInstance:
     - target: {fileID: 6932175551287751633, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_FillAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139124962396439854, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666220110977899457, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name

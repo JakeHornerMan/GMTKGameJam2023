@@ -200,6 +200,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+--- !u!1 &491474749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6207481932054021418, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+  m_PrefabInstance: {fileID: 4031766030395596951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &491474751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491474749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf18953b1c7965449a87e3cf78ae1ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneTypes:
+  - {fileID: 8249777430176998236, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+  - {fileID: 485518899938049808, guid: 9f245c2d88d04c7489b69154a14cedf1, type: 3}
+  - {fileID: 412543907778505779, guid: c627289e1144d9141b86fecaef2e39ff, type: 3}
+  - {fileID: 7991264885057282889, guid: 2a7d3def716aff74ba3a2d152098206c, type: 3}
+  - {fileID: 7991264885057282889, guid: 0e0be535c58bf874587ef7a0b32f8d48, type: 3}
+  - {fileID: 7991264885057282889, guid: 290236cc89473724f8134fa98ff0abf5, type: 3}
+  - {fileID: 4996905425380085931, guid: a7c133c2acc6f3f46b862a6cb708991d, type: 3}
+  roadCount: 0
+  busCount: 0
+  dirtCount: 0
+  grassCount: 0
+  riverCount: 0
+  pavementCount: 0
+  lanes: []
 --- !u!20 &749949957 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8898609827912181589, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
@@ -1106,7 +1138,10 @@ PrefabInstance:
     - {fileID: 4726262816441163511, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
     - {fileID: 5637955872921891935, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6207481932054021418, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 491474751}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
 --- !u!1001 &6108627401256980950
 PrefabInstance:
