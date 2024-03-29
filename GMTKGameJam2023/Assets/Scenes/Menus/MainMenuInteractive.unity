@@ -4537,6 +4537,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 583988685}
   m_SourcePrefab: {fileID: 100100000, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+--- !u!20 &696674456 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8898609827912181589, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+  m_PrefabInstance: {fileID: 696674455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705951101
 GameObject:
   m_ObjectHideFlags: 0
@@ -15050,6 +15055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1159033782301889882, guid: e5edd408162fb9445baa9176f6486717, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -499.99997
+      objectReference: {fileID: 0}
     - target: {fileID: 2281079834669545897, guid: e5edd408162fb9445baa9176f6486717, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -15145,6 +15154,14 @@ PrefabInstance:
     - target: {fileID: 2281079834669545897, guid: e5edd408162fb9445baa9176f6486717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3780830687906497960, guid: e5edd408162fb9445baa9176f6486717, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 696674456}
+    - target: {fileID: 3780830687906497960, guid: e5edd408162fb9445baa9176f6486717, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 855098693
       objectReference: {fileID: 0}
     - target: {fileID: 4387628408231119144, guid: e5edd408162fb9445baa9176f6486717, type: 3}
       propertyPath: m_Name
@@ -16658,8 +16675,8 @@ Canvas:
   m_GameObject: {fileID: 6169087537517400563}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 696674456}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -16669,7 +16686,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 855098693
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &6606148992238852075
@@ -16718,8 +16735,8 @@ MonoBehaviour:
   gameSpeedConfig:
     clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
     volume: 0.3
-  lastSecondsConfig:
-    clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
+  timesUpConfig:
+    clip: {fileID: 0}
     volume: 1
   missedChicken:
     clip: {fileID: 8300000, guid: a1be8c2a4c68c5c48bf4e3968ea899c9, type: 3}
@@ -16738,6 +16755,12 @@ MonoBehaviour:
     volume: 0.2
   cantPurchase:
     clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
+    volume: 1
+  freezeConfig:
+    clip: {fileID: 0}
+    volume: 1
+  unfrostConfig:
+    clip: {fileID: 0}
     volume: 1
   chickenConfigs:
   - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
@@ -16771,6 +16794,9 @@ MonoBehaviour:
   exitPortal:
     clip: {fileID: 0}
     volume: 1
+  lastSecondsConfig:
+    clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
+    volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   gameMusic: {fileID: 8300000, guid: dcf52a47d28314a4782aae902f145d41, type: 3}
 --- !u!114 &6606148992238852076
@@ -16787,6 +16813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves: []
   carsInLevel: []
+  defaultCars: []
   ultimateInLevel: {fileID: 0}
   rankingCriteria: []
   failureRanking: You Failed
@@ -16795,6 +16822,7 @@ MonoBehaviour:
   startTime: 3.7429347e+16
   devMode: 0
   cheatTokenAmount: 500
+  cheatLives: 10
   startLives: 10
   lostChickenScore: 1000
   safelyCrossedChickens: 0

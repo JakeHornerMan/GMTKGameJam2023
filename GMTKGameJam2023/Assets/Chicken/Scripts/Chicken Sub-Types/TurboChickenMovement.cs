@@ -18,6 +18,7 @@ public class TurboChickenMovement: MonoBehaviour
     [SerializeField] public bool stopMovement = false;
     [SerializeField] public bool ignoreCement = false;
     [HideInInspector] public bool isStuck = false;
+    [SerializeField] private float hitStopLength = 0.0f;
 
     private SoundManager soundManager;
 
@@ -90,5 +91,10 @@ public class TurboChickenMovement: MonoBehaviour
             chickenSprite.GetComponent<Animator>().enabled = true;
         }
         stopMovement = false;
+    }
+
+    public float GetChickenHitstop()
+    {
+        return hitStopLength;
     }
 }

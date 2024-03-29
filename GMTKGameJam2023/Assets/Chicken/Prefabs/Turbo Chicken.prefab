@@ -354,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 315510484514270918}
-  - component: {fileID: -6163354570426845532}
+  - component: {fileID: 2468026117488556941}
   - component: {fileID: -5117147452543026932}
   - component: {fileID: 9038809129756289598}
   m_Layer: 7
@@ -408,7 +408,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6163354570426845532
+--- !u!114 &2468026117488556941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7467406142021207113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eba7392919cbb94bb312bad5ef69fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c1ba6d22943822448eb69bbbdef256c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chickenSprite: {fileID: 7432632716323759472}
@@ -430,6 +430,12 @@ MonoBehaviour:
   stopMovement: 0
   ignoreCement: 0
   isStuck: 0
+  hitStopLength: 0.3
+  isTurboChicken: 0
+  isWagonChicken: 0
+  substanceDurationSeconds: 20
+  slowSubstancePrefab: {fileID: 0}
+  dropPoint: {fileID: 0}
 --- !u!114 &-5117147452543026932
 MonoBehaviour:
   m_ObjectHideFlags: 0

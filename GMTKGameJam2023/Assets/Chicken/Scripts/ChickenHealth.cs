@@ -88,9 +88,12 @@ public class ChickenHealth : MonoBehaviour
     public void FreezeChicken(float freezeLength)
     {
         IEnumerator coroutine;
-        if(this.gameObject.name.Contains("Turbo")){
-            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().FreezeChicken(freezeLength, true);
+        if(this.gameObject.name.Contains("Turbo") || this.gameObject.name.Contains("WheelBarrow")){
+            coroutine = this.gameObject.GetComponent<AlternativeChickenMovement>().FreezeChicken(freezeLength, true);
         }
+        // else if (this.gameObject.name.Contains("WheelBarrow")){
+        //     coroutine = this.gameObject.GetComponent<WagonChickenMovement>().FreezeChicken(freezeLength, true);
+        // }
         else{
             coroutine = this.gameObject.GetComponent<ChickenMovement>().FreezeChicken(freezeLength, true);
         }
@@ -105,7 +108,7 @@ public class ChickenHealth : MonoBehaviour
         IEnumerator coroutine;
         if (this.gameObject.name.Contains("Turbo"))
         {
-            coroutine = this.gameObject.GetComponent<TurboChickenMovement>().FlashChicken(stunLength, true);
+            coroutine = this.gameObject.GetComponent<AlternativeChickenMovement>().FlashChicken(stunLength, true);
         }
         else
         {

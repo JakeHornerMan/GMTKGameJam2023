@@ -476,10 +476,14 @@ MonoBehaviour:
   - position: {x: -9, y: 0, z: 0}
   - position: {x: -9, y: -1, z: 0}
   - position: {x: -9, y: -2, z: 0}
+  startingX: -14.75
+  maxYHeight: 5
+  minYHeight: -5
   chickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
   currentWave:
     roundTime: 0
     wavePrompt: 
+    waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
     coinAmount: 0
@@ -517,6 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves: []
   carsInLevel: []
+  defaultCars: []
+  ultimateInLevel: {fileID: 0}
   rankingCriteria: []
   failureRanking: You Failed
   isGameOver: 1
@@ -524,8 +530,9 @@ MonoBehaviour:
   startTime: 180
   devMode: 0
   cheatTokenAmount: 500
+  cheatLives: 10
   startLives: 10
-  lostChicenScore: 1000
+  lostChickenScore: 1000
   safelyCrossedChickens: 0
   missedChickenLives: 0
   killCount: 0
@@ -536,6 +543,9 @@ MonoBehaviour:
   time: 120
   endSound: 0
   waveNumber: 0
+  roundOver: 0
+  chickenContainer: {fileID: 0}
+  sceneFader: {fileID: 0}
 --- !u!82 &640435459
 AudioSource:
   m_ObjectHideFlags: 0
@@ -845,8 +855,8 @@ Canvas:
   m_GameObject: {fileID: 1809550738}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 722341}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -856,7 +866,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 855098693
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1809550742
