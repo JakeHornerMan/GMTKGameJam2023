@@ -6,7 +6,7 @@ public class CarSprite : MonoBehaviour
 {
     private void OnBecameInvisible()
     {
-        if (gameObject.transform.position.y > 0)
+        if ((gameObject.transform.position.y > 0) || (gameObject.transform.parent.gameObject.GetComponent<Car>()?.carInAction == false))
         {
             StartCoroutine(Wait());
         }

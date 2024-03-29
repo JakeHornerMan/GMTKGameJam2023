@@ -254,7 +254,7 @@ MonoBehaviour:
   - Grass
   - Dirt
   placeableAnywhere: 0
-  carSpeed: 4
+  carSpeed: 5
   damage: 250
   comboMultiplier: 0.2
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
@@ -262,6 +262,7 @@ MonoBehaviour:
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
+  cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
   camShakeDuration: 0.8

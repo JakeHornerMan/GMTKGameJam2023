@@ -20,6 +20,7 @@ public class BuyScreenManager : MonoBehaviour
     private int currentAmount;
 
     [SerializeField] private int lifePrice;
+    [SerializeField] private int walletPrice;
     [SerializeField] private int rerollPrice;
 
     [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
@@ -43,8 +44,13 @@ public class BuyScreenManager : MonoBehaviour
     //Health Properties
     [SerializeField] private Slider healthSlider;
     private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
-    [SerializeField] private TextMeshProUGUI healthNumber;
-    
+    [SerializeField] private TextMeshProUGUI healthNumberText;
+
+    //Wallet Properties
+    [SerializeField] private Slider walletSlider;
+    private static float[] walletSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    [SerializeField] private TextMeshProUGUI walletNumberText;
+
     [SerializeField] private TextMeshProUGUI moneyText;
 
 
@@ -289,12 +295,37 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateHealthBar();
     }
+
+    public void AddWallet(int value)
+    {
+        if (CheckMoneyAmount(walletPrice))
+        {
+            if (PlayerValues.carWalletNodes < 8)
+            {
+                PlayerValues.carWalletNodes = PlayerValues.carWalletNodes + value;
+
+                RemoveMoney(walletPrice);
+            }
+        }
+
+        UpdateWalletBar();
+    }
+
     private void UpdateHealthBar()
     {
-        healthNumber.text = PlayerValues.missedChickenLives.ToString();
+        healthNumberText.text = PlayerValues.missedChickenLives.ToString();
 
         healthSlider.value = healthSliderValues[PlayerValues.missedChickenLives];
     }
+
+    private void UpdateWalletBar()
+    {
+        walletNumberText.text = PlayerValues.carWalletNodes.ToString();
+
+        walletSlider.value = walletSliderValues[PlayerValues.carWalletNodes];
+    }
+
+
 
     public void AddMoney(int value)
     {

@@ -44,6 +44,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
+    [SerializeField] protected int launchSpeed = 30;
 
     [Header("Damage")]
     [SerializeField] private int damage = 120;
@@ -203,7 +204,7 @@ public abstract class Car : MonoBehaviour
         }
     }
 
-    private void HandleTokenCollision(TokenController token)
+    protected void HandleTokenCollision(TokenController token)
     {
         if(token.cashBag){
             HandleCashTokenCollision(token);
@@ -470,7 +471,7 @@ public abstract class Car : MonoBehaviour
         if (comboText != null)
             comboText.enabled = false;
 
-        rb.velocity = normalizedVector * 25;
+        rb.velocity = normalizedVector * launchSpeed;
 
         if (carType == CarType.Heavy || carType == CarType.Light)
         {
