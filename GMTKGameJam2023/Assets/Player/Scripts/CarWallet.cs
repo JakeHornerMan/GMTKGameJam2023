@@ -22,10 +22,6 @@ public class CarWallet : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-    }
-
-    private void Start()
-    {
         if(!gameManager.devMode){
             walletLimit = PlayerValues.carWalletNodes;
             carCount = PlayerValues.carWalletNodes;
@@ -33,6 +29,17 @@ public class CarWallet : MonoBehaviour
         else{
             carCount = startWalletCount;
         }
+    }
+
+    private void Start()
+    {
+        // if(!gameManager.devMode){
+        //     walletLimit = PlayerValues.carWalletNodes;
+        //     carCount = PlayerValues.carWalletNodes;
+        // }
+        // else{
+        //     carCount = startWalletCount;
+        // }
         timeUntilRefill = refillDelaySeconds;
 
         walletEnabled = true;
