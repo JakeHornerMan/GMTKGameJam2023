@@ -78,10 +78,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        safelyCrossedChickens = 0;
-        killCount = 0;
-        playerScore = 0;
-        totalTokens = 0;
+        SetPointsInLevel();
 
         if (devMode)
             tokens = cheatTokenAmount;
@@ -117,6 +114,14 @@ public class GameManager : MonoBehaviour
         else {
             missedChickenLives = cheatLives;
         }
+    }
+
+    private SetPointsInLevel(){
+        safelyCrossedChickens = Points.safelyCrossedChickens;
+        killCount = Points.killCount;
+        totalTokens = Points.totalTokens;
+        playerScore =  Points.playerScore;
+        interfaceManager.scoreForText = playerScore;
     }
 
     private void RoundSet(){
@@ -201,7 +206,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaitAndBuyScreen(float time)
     {
         sceneFader.Fade();
-        Points.playerScore += playerScore;
+        Points.playerScore = playerScore;
+        Debug.Log("playerScore: " + Points.playerScore);
         yield return new WaitForSeconds(time);
         sceneFader.ScreenWipeOut("BuyScreen");
     }
@@ -217,9 +223,9 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerScore(int addAmount)
     {
+        playerScore += addAmount;
         if(interfaceManager)
             interfaceManager.ScoreUI(addAmount, true);
-        playerScore += addAmount;
     }
 
     public void RemovePlayerScore(int removeAmount)
@@ -297,8 +303,7 @@ public class GameManager : MonoBehaviour
         Points.currentRanking = currentRanking;
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
-        Points.playerScore += playerScore;
-        Debug.Log("Score: " + playerScore);
+        Points.playerScore = playerScore;
         Debug.Log("playerScore: " + Points.playerScore);
         Points.totalTokens = totalTokens;
         GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
