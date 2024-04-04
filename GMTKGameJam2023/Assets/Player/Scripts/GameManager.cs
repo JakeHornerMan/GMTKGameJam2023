@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SetPointsInLevel();
+        SetPointsValuesInLevel();
         if (devMode)
             tokens = cheatTokenAmount;
         if (waves.Count != 0 && devMode){
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SetPointsInLevel(){
+    private void SetPointsValuesInLevel(){
         safelyCrossedChickens = Points.safelyCrossedChickens;
         killCount = Points.killCount;
         totalTokens = Points.totalTokens;
@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
         interfaceManager.scoreForText = playerScore;
     }
 
+    // Settings For the Levels Round
     private void RoundSet(){
         waves.Clear();
         if(gameFlowManager)
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
         SettingWaveInChickenSpawn();
     }
 
+    //set level round time
     private void SetGameTime()
     {
         float gameTime = 0f;
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Starts a new chicken wave
     private void SettingWaveInChickenSpawn()
     {
         ChickenWave currentWave = waves[waveNumber];
@@ -161,6 +164,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
+    private void NewWavePopup(string speedUpText)
+    {
+        soundManager?.PlayGameSpeed();
+        interfaceManager?.ShowSpeedUpText(speedUpText);
+    }
+
+    // Waits until current wave is over and starts the next one
     private IEnumerator WaitAndNextWave(float time)
     {
         yield return new WaitForSeconds(time);
@@ -170,7 +180,8 @@ public class GameManager : MonoBehaviour
         }    
     }
     
-    private void FixedUpdate()// !!!HERE WE CONTROL NEXT LEVEL AND GAMEOVER!!!
+    // HERE WE CONTROL NEXT LEVEL AND GAMEOVER
+    private void FixedUpdate()
     {
         if (!isGameOver)
         {
@@ -181,10 +192,11 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
         if(roundOver){
-            StartCoroutine(WaitAndBuyScreen(1f));
+            StartCoroutine(WaitAndBuyScreen(3f));
         }
     }
 
+    //Increments time value for UI
     private void SetTime()
     {
         if (time > 0)
@@ -193,6 +205,7 @@ public class GameManager : MonoBehaviour
             roundOver = true;
     }
 
+    //Health loss for player when chicken safely crosses
     public void SafelyCrossedChicken()
     {
         safelyCrossedChickens++;
@@ -240,12 +253,6 @@ public class GameManager : MonoBehaviour
         OnTokensUpdated();
     }
 
-    private void NewWavePopup(string speedUpText)
-    {
-        soundManager?.PlayGameSpeed();
-        interfaceManager?.ShowSpeedUpText(speedUpText);
-    }
-
     private IEnumerator WaitAndBuyScreen(float time)
     {
         sceneFader.Fade();
@@ -264,14 +271,7 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeToResults();
     }
 
-    // private void HandleResults()
-    // {
-    //     // Points.currentRanking = currentRanking;
-    //     SetPointsValues();
-    //     GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-    //     sceneFader.FadeToResults();
-    // }
-
+    //Updates Static scripts
     private void SetPlayerValues(){
         PlayerValues.Cars = carsInLevel;
     }
