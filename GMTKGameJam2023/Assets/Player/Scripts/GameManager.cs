@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int playerScore = 0;
     [HideInInspector] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
-    [HideInInspector] public string currentRanking = "Animal Lover";
 
     // Current Time
     [HideInInspector] public float time = 120f;
@@ -79,7 +78,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetPointsInLevel();
-
         if (devMode)
             tokens = cheatTokenAmount;
         if (waves.Count != 0 && devMode){
@@ -116,7 +114,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private SetPointsInLevel(){
+    private void SetPointsInLevel(){
         safelyCrossedChickens = Points.safelyCrossedChickens;
         killCount = Points.killCount;
         totalTokens = Points.totalTokens;
@@ -170,9 +168,6 @@ public class GameManager : MonoBehaviour
         if (waveNumber < waves.Count){
             SettingWaveInChickenSpawn();
         }    
-        // else{
-        //     RoundSet();
-        // }
     }
     
     private void FixedUpdate()// !!!HERE WE CONTROL NEXT LEVEL AND GAMEOVER!!!
@@ -186,13 +181,8 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
         if(roundOver){
-            SetPlayerValues();
             StartCoroutine(WaitAndBuyScreen(1f));
         }
-    }
-
-    private void SetPlayerValues(){
-        PlayerValues.Cars = carsInLevel;
     }
 
     private void SetTime()
@@ -201,15 +191,6 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
         else
             roundOver = true;
-    }
-
-    private IEnumerator WaitAndBuyScreen(float time)
-    {
-        sceneFader.Fade();
-        Points.playerScore = playerScore;
-        Debug.Log("playerScore: " + Points.playerScore);
-        yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreen");
     }
 
     public void SafelyCrossedChicken()
@@ -259,54 +240,47 @@ public class GameManager : MonoBehaviour
         OnTokensUpdated();
     }
 
-    private void HandleGameOver(){
-        isGameOver = true;
-        UpdateRankings();
-        HandleResults();
-        ResetGameProgressionValues();
-    }
-
-    private void ResetGameProgressionValues()
-    {
-
-    }
-
-    private void UpdateRankings()
-    {
-        // Sort the ranking criteria array in descending order by minKills
-        Array.Sort(rankingCriteria, (a, b) => b.minScore.CompareTo(a.minScore));
-
-        // Update Rankings
-        foreach (var requirement in rankingCriteria)
-        {
-            if (playerScore > requirement.minScore)
-            {
-                currentRanking = requirement.rankingString;
-                break;
-            }
-        }
-
-        if (missedChickenLives <= 0)
-        {
-            currentRanking = failureRanking;
-        }
-    }
-
     private void NewWavePopup(string speedUpText)
     {
         soundManager?.PlayGameSpeed();
         interfaceManager?.ShowSpeedUpText(speedUpText);
     }
 
-    private void HandleResults()
+    private IEnumerator WaitAndBuyScreen(float time)
     {
-        Points.currentRanking = currentRanking;
+        sceneFader.Fade();
+        SetPlayerValues();
+        SetPointsValues();
+        Points.playerScore = playerScore;
+        Debug.Log("playerScore: " + Points.playerScore);
+        yield return new WaitForSeconds(time);
+        sceneFader.ScreenWipeOut("BuyScreen");
+    }
+
+    private void HandleGameOver(){
+        isGameOver = true;
+        SetPointsValues();
+        GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        sceneFader.FadeToResults();
+    }
+
+    // private void HandleResults()
+    // {
+    //     // Points.currentRanking = currentRanking;
+    //     SetPointsValues();
+    //     GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+    //     sceneFader.FadeToResults();
+    // }
+
+    private void SetPlayerValues(){
+        PlayerValues.Cars = carsInLevel;
+    }
+
+    private void SetPointsValues(){
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
-        Debug.Log("playerScore: " + Points.playerScore);
         Points.totalTokens = totalTokens;
-        GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        sceneFader.FadeToResults();
+        Debug.Log("playerScore: " + Points.playerScore);
     }
 }
