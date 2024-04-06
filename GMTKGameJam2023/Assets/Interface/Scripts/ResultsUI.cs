@@ -67,7 +67,7 @@ public class ResultsUI : MonoBehaviour
         rankingText.text = Points.currentRanking;
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
-        finalScoreText.text = Points.playerScore.ToString("000");
+        finalScoreText.text = Points.playerScore.ToString();
         SetChickenWave();
     }
 

@@ -7574,6 +7574,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6484336041068501168, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
   m_PrefabInstance: {fileID: 310820664}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &912124341 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8898609827912181589, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+  m_PrefabInstance: {fileID: 7057377506974264624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &912156073
 GameObject:
   m_ObjectHideFlags: 0
@@ -13309,8 +13314,8 @@ Canvas:
   m_GameObject: {fileID: 1624824148}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 912124341}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -13320,7 +13325,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 855098693
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1624824152

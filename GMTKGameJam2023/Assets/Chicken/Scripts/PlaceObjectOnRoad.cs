@@ -11,12 +11,15 @@ public class PlaceObjectOnRoad : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject objectToPlace;
+    [SerializeField] private GameObject objectToPlace2;
 
     [Header("Drop Settings")]
     [SerializeField] private bool markPlacedObjectForDestruction = false;
     [SerializeField] private float objectLifetime = 10f;
-    [Tooltip("Probablity for drop (leave at 1 for constant)")]
-    [SerializeField] private int probability = 1;
+    [Tooltip("Probablity for drop 1/inputAmount (leave at 1 for constant)")]
+    [SerializeField] private int probabilityOfSpawn = 1;
+    [Tooltip("Probablity for drop 1/inputAmount (default 50% == 2)")]
+    [SerializeField] private int probabilityOfSecondObject = 2;
     // [Header("Will only drop on lanes based on Equiped Vehicles")]
     // [SerializeField] private bool dropOnVehicleLanes = false;
 
@@ -44,19 +47,32 @@ public class PlaceObjectOnRoad : MonoBehaviour
             && !affectedRoads.Contains(road) // Not already placed upon
         )
         {
+            GameObject gameObject;
+            if(objectToPlace2 != null){
+                int randomNumber = Random.Range(1, probabilityOfSecondObject);
+                if(randomNumber == 1){
+                    gameObject = objectToPlace2;
+                }
+                else{
+                    gameObject = objectToPlace;
+                }
+            }
+            else{
+                gameObject = objectToPlace;
+            }
             // Drop horizontally centered on road
-            InstantiateObject(new Vector2(road.transform.position.x, transform.position.y));
+            InstantiateObject(new Vector2(road.transform.position.x, transform.position.y), gameObject);
             // Add to exclusion list
             affectedRoads.Add(road);
         }
     }
 
-    private void InstantiateObject(Vector2 dropPos)
+    private void InstantiateObject(Vector2 dropPos, GameObject gameObject)
     {
-        int randomNumber = Random.Range(1, probability);
+        int randomNumber = Random.Range(1, probabilityOfSpawn);
         if(randomNumber == 1){
             GameObject newlyPlacedObject = Instantiate(
-                objectToPlace,
+                gameObject,
                 // dropPoint.position,
                 dropPos,
                 transform.rotation
