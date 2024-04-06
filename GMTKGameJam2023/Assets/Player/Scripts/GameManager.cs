@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public SceneFader sceneFader;
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
+    private HealthCorn healthCorn;
 
     [HideInInspector] public delegate void EventType();
     [HideInInspector] public static event EventType OnTokensUpdated;
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
         sceneFader = FindObjectOfType<SceneFader>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameFlowManager = FindObjectOfType<GameFlowManager>();
+        healthCorn = GetComponent<HealthCorn>();
+
         chickenContainer = GameObject.Find("ChickenContainer");
     }
 
@@ -210,6 +213,7 @@ public class GameManager : MonoBehaviour
     {
         safelyCrossedChickens++;
         missedChickenLives--;
+        healthCorn.DeadCorn(missedChickenLives);
         RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         CameraShaker.instance.Shake(0.25f, -0.5f);

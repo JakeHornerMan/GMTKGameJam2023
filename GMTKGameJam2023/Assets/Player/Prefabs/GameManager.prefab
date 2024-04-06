@@ -1043,8 +1043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1e8717a9fbf924f954c08a27715adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cornPrefab: {fileID: 6904646765677971207}
-  cornContainer: {fileID: 8578238793636220914, guid: b900304ec909dd6488f869566cea0e9a, type: 3}
+  cornPrefab: {fileID: 1374805645056420982, guid: d5b9476f245a4f443a09cedec8e3d1dc, type: 3}
+  cornContainer: {fileID: 1555401575622896150}
   cornHealthList: []
 --- !u!1001 &1098728652930476223
 PrefabInstance:
@@ -1187,6 +1187,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4720306227409457988, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4892047371228387671, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5378729048533598900, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -1341,6 +1345,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4635958537501337154, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1555401575622896150 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6546327814882403940, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1838654265459237576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6253504661235609274, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -1469,11 +1478,6 @@ GameObject:
 --- !u!1 &6822890983376445868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1288900549136657886, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-  m_PrefabInstance: {fileID: 5714187266826882162}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6904646765677971207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1197645986576452469, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7124129047202810438 stripped
