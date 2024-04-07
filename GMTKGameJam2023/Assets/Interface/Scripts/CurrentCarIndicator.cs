@@ -29,6 +29,13 @@ public class CurrentCarIndicator : MonoBehaviour
     [SerializeField] private Color positiveColor;
     [SerializeField] private Color negativeColor;
 
+    private CarWallet carWallet;
+
+    private void Awake()
+    {
+        carWallet = FindObjectOfType<CarWallet>();
+    }
+
     private void Start()
     {
         if (!followCursor)
@@ -43,5 +50,6 @@ public class CurrentCarIndicator : MonoBehaviour
         totalTokens.text = $"{playerCash} {totalTokenLabel}";
         carCost.color = playerCash >= currentActiveCar.carPrice ? positiveColor : negativeColor;
         carWalletCountText.text = carWalletCount.ToString();
+        walletRefillTimer.fillAmount = 1 - (carWallet.timeUntilRefill / carWallet.refillDelaySeconds);
     }
 }
