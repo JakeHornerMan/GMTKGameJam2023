@@ -69,7 +69,7 @@ public class SpikeStrip : MonoBehaviour
         {
             CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
             TakeSpikeDamage(5f);
-            car.SpinOutCar();
+            car.SpinOutCar(false);
         }
     }
 

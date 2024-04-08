@@ -312,7 +312,7 @@ SpriteRenderer:
   m_SortingLayerID: 1912642439
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1341973423, guid: 825e5a279decac14cb90b87dbfaf66c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09bb284d1bc23444892b0733feb48cf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -331,7 +331,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7432632716323759472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7cd8c0dda2d2bbb41be17362d9ffee77, type: 2}
   m_CullingMode: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: -5117147452543026932}
   - component: {fileID: 9038809129756289598}
   m_Layer: 7
-  m_Name: Turbo Chicken
+  m_Name: Rocket Chicken
   m_TagString: Chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ Transform:
   - {fileID: 8614834387938461589}
   - {fileID: 3208561405020373256}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &315510484514270918
 Rigidbody2D:
@@ -433,6 +433,7 @@ MonoBehaviour:
   hitStopLength: 0.3
   isTurboChicken: 0
   isWagonChicken: 0
+  canMoveVertical: 1
   substanceDurationSeconds: 20
   slowSubstancePrefab: {fileID: 0}
   dropPoint: {fileID: 0}
@@ -471,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Turbo Chicken
-  objectSprite: {fileID: -1341973423, guid: 825e5a279decac14cb90b87dbfaf66c3, type: 3}
-  objectIcon: {fileID: -1341973423, guid: 825e5a279decac14cb90b87dbfaf66c3, type: 3}
+  objectName: Rocket Chicken
+  objectSprite: {fileID: 21300000, guid: 09bb284d1bc23444892b0733feb48cf1, type: 3}
+  objectIcon: {fileID: 21300000, guid: 09bb284d1bc23444892b0733feb48cf1, type: 3}
   objectDescription: 'What could go wrong giving a chicken a turbocharged V8? This
     chicken speeds across the level. '

@@ -336,6 +336,8 @@ MonoBehaviour:
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
+  carTeleporting: 0
+  carShopPrice: 12
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -348,6 +350,7 @@ MonoBehaviour:
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
+  cashPopUpMsg: Cash
   popupDestroyDelay: 1.2
   carHitStopEffectMultiplier: 0.25
   camShakeDuration: 3

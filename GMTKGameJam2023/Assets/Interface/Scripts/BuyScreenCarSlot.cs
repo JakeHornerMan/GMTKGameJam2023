@@ -23,23 +23,22 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
 
             if (transform.childCount > 0)
             {
-                if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == BuyScreenCarSlot.SlotType.CarShop)
+                if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == SlotType.CarShop) // If the car came from the shop
                 {
-                    //add pre-existing (pointerEnter) car to scrapyard
+                    if (BuyScreenManager.instance.CheckMoneyAmount(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice)) // If the player has enough money to buy the car
+                    {
+                        // Add pre-existing (pointerEnter) car to scrapyard
+                        GameObject oldCar = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
+                        BuyScreenManager.instance.AddToScrapyard(oldCar);
 
-                    GameObject oldCar = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
+                        // Add pointerDrag's car as the child of this item slot
+                        eventData.pointerDrag.gameObject.transform.parent = transform;
+                        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                        eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
 
-                    BuyScreenManager.instance.AddToScrapyard(oldCar);
-
-                    //add pointerDrag's car as the child of this item slot
-
-                    eventData.pointerDrag.gameObject.transform.parent = transform;
-                    eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                    eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
-
-                    //take away any money
-
-                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carPrice);
+                        // Take away any money
+                        BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                    }
                 }
                 else
                 {
@@ -58,17 +57,28 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
             {
                 if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == BuyScreenCarSlot.SlotType.CarShop)
                 {
-                    //take away any money
-                    BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carPrice);
+                    if (BuyScreenManager.instance.CheckMoneyAmount(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice)) //if the player has enough money to buy the car)
+                    {
+
+                        eventData.pointerDrag.gameObject.transform.parent = transform;
+                        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                        eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+
+                        //take away any money
+                        BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                    }
+                    else
+                    {
+                        eventData.pointerDrag.gameObject.transform.parent = eventData.pointerDrag.GetComponent<DragDrop>().startingParent;
+                        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                        eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+                    }
+                    
                 }
 
 
             }
-
-            //TRY AND MAKE THIS CODE USED BY ALL IF STATEMENTS
-            eventData.pointerDrag.gameObject.transform.parent = transform;
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+            
 
 
 

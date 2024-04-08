@@ -200,7 +200,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitAndBuyScreen(float time)
     {
-        sceneFader.Fade();
         Points.playerScore += playerScore;
         yield return new WaitForSeconds(time);
         sceneFader.ScreenWipeOut("BuyScreen");
@@ -302,6 +301,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("playerScore: " + Points.playerScore);
         Points.totalTokens = totalTokens;
         GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        sceneFader.FadeToResults();
+        StartCoroutine(sceneFader.WipeToScene("Results"));
     }
 }
