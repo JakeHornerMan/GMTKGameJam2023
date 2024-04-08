@@ -21,7 +21,7 @@ public class CementMixer : Car
     {
         base.Start();
 
-        SetCarSpeed(carSpeed);
+        SetCarSpeed();
 
         cementSpawned = 0;
 

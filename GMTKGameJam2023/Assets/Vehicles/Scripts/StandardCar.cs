@@ -7,6 +7,6 @@ public class StandardCar : Car
     public override void Start()
     {
         base.Start();
-        SetCarSpeed(carSpeed);
+        SetCarSpeed();
     }
 }

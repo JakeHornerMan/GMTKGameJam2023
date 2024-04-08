@@ -21,7 +21,7 @@ public class PoliceCar : Car
     public override void Start()
     {
         base.Start();
-        SetCarSpeed(carSpeed);
+        SetCarSpeed();
         numberOfSpikesDeployed = 1f;
         CameraShaker.instance.Shake(policeShakeDuration, policeShakeMagnitude);
     }

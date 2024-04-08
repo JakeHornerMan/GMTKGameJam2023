@@ -8,7 +8,6 @@ public static class PlayerValues
     public static Ultimate ultimate;
     public static int missedChickenLives = 3;
     public static int carWalletNodes = 3;
-    public static int startingEnergy = 0;
     public static int playerCash = 50;
 
     public static void SetDefaultValues(){

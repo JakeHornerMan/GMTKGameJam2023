@@ -42,6 +42,12 @@ public class WreckingBall : MonoBehaviour
         if (chickenHealth == null && collision.transform.parent != null)
             chickenHealth = collision.transform.parent.GetComponent<ChickenHealth>();
 
+        BombChickenHealth bombChickenHealth = collision.gameObject.GetComponent<BombChickenHealth>();
+        if (bombChickenHealth != null)
+        {
+            Debug.Log("Hit Bomb chicken");
+        }
+
         if (chickenHealth != null)
         {
             car.HandleChickenCollision(chickenHealth);
@@ -77,7 +83,7 @@ public class WreckingBall : MonoBehaviour
 
         if (car.canSpinOut == true && car.isSpinning == false)
         {
-            car.SpinOutCar(false);
+            car.SpinOutCar();
             Debug.Log("car is spinning?");
         }
     }
