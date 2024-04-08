@@ -301,48 +301,60 @@ MonoBehaviour:
   chickenPot:
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
+    difficultyRank: 2
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+    difficultyRank: 2
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+    difficultyRank: 1
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+    difficultyRank: 3
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
+  potCandidates: []
   bonusWaves:
   - roundTime: 20
     wavePrompt: Energy  Surge!
@@ -360,38 +372,47 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 2
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 6
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 10
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 14
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 15
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 1
   - roundTime: 20
@@ -403,26 +424,32 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 2
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 6
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 10
       chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -434,22 +461,27 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 16
       chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -461,22 +493,27 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 16
       chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -488,22 +525,27 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 16
       chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -515,30 +557,37 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 3
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 6
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 9
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 15
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 18
       chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -550,30 +599,37 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 3
       chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 6
       chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 9
       chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 15
       chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 18
       chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
@@ -585,22 +641,27 @@ MonoBehaviour:
     specialChickens:
     - timeToSpawn: 0
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 4
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 8
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 12
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 16
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
 --- !u!114 &7716956080788538566
@@ -1084,6 +1145,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: VehicleSpawner, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1288900549136657886, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453192030534037847, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648510653683416220, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796556928456823343, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023673550761761448, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457612872305424058, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720306227409457988, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378729048533598900, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5860502315191753498, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -1176,13 +1269,21 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7139124962396439854, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666220110977899457, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_Name
       value: GameCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8528590789526900445, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
