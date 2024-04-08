@@ -8,7 +8,11 @@ public class CarSprite : MonoBehaviour
     {
         if ((gameObject.transform.position.y > 0) || (gameObject.transform.parent.gameObject.GetComponent<Car>()?.carInAction == false))
         {
-            StartCoroutine(Wait());
+            if (gameObject.transform.parent.gameObject.GetComponent<Car>()?.carTeleporting == false)
+            {
+                StartCoroutine(Wait());
+            }
+            
         }
     }
 

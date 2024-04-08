@@ -199,9 +199,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WaitAndBuyScreen(float time)
     {
-        sceneFader.Fade();
+        //sceneFader.Fade();
         yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreenFinal");
+        sceneFader.ScreenWipeOut("BuyScreen");
     }
 
     public void SafelyCrossedChicken()
@@ -298,6 +298,6 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         Points.totalTokens = totalTokens;
         GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        sceneFader.FadeToResults();
+        StartCoroutine(sceneFader.WipeToScene("Results"));
     }
 }

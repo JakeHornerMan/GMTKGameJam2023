@@ -29,14 +29,9 @@ public class SceneFader : MonoBehaviour
 
     private void Start()
     {
-        if (screenWipeObject != null)
-        {
-            ScreenWipeIn();
-        }
-        else
-        {
-            StartCoroutine(FadeIn());
-        }
+        screenWipeObject.SetActive(true);
+
+        ScreenWipeIn();
         
         levelSceneName = NameFromIndex(GameProgressionValues.sceneIndex);
     }
@@ -62,6 +57,8 @@ public class SceneFader : MonoBehaviour
     public void FadeToCredits() => FadeTo(creditsSceneName);
     public void FadeToSettings() => FadeTo(settingsSceneName);
     public void FadeToResults() => FadeTo(resultsSceneName);
+
+    
 
     private IEnumerator FadeIn()
     {
@@ -118,6 +115,13 @@ public class SceneFader : MonoBehaviour
         return name.Substring(0, dot);
     }
 
+    public IEnumerator WipeToScene(string targetScene)
+    {
+        StartCoroutine(MoveOutScreenWiper());
+        yield return new WaitForSecondsRealtime(5);
+        LoadScene(targetScene);
+    }
+
     public void ScreenWipeIn()
     {
         StartCoroutine(MoveInScreenWiper());
@@ -125,8 +129,7 @@ public class SceneFader : MonoBehaviour
 
     public void ScreenWipeOut(string targetScene)
     {
-        StartCoroutine(MoveOutScreenWiper());
-        LoadScene(targetScene);
+        StartCoroutine(WipeToScene(targetScene));
     }
 
     IEnumerator MoveInScreenWiper()
@@ -179,7 +182,7 @@ public class SceneFader : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / screenWipeDuration;
-            float newX = Mathf.Lerp(offScreenXcoord, 0f, wipeAnimationCurve.Evaluate(t));
+            float newX = Mathf.Lerp(-offScreenXcoord, 0f, wipeAnimationCurve.Evaluate(t));
             screenWipeObject.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(newX, 0f, 0f);
             yield return null;
         }

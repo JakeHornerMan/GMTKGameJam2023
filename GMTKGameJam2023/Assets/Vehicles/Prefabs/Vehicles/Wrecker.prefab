@@ -4864,7 +4864,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4972,7 +4972,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f1a3e8f159ed493499ff9d292c6b7963, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5062,6 +5062,8 @@ MonoBehaviour:
   car: {fileID: -1135978355812094493}
   wreckerCart: {fileID: 1761417369981310633}
   hook: {fileID: 8686834062049952884}
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.25
 --- !u!96 &3131608479176348969
 TrailRenderer:
   serializedVersion: 3
@@ -5102,7 +5104,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Time: 0.1
   m_PreviewTimeScale: 1
@@ -5248,7 +5250,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ae30222b266711e42bcd0e3d201cb31f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5476,6 +5478,8 @@ MonoBehaviour:
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
+  carTeleporting: 0
+  carShopPrice: 15
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -5488,6 +5492,7 @@ MonoBehaviour:
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
+  cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
   camShakeDuration: 0.15
@@ -10295,7 +10300,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10399,7 +10404,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ce47d167dc153744c8c9b0bf74e1b6ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15222,7 +15227,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -15326,7 +15331,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.15294118, g: 0.15294118, b: 0.21176472, a: 1}
@@ -15410,7 +15415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 78240989
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f572ea65e7e9ed348a06fc02992f74ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

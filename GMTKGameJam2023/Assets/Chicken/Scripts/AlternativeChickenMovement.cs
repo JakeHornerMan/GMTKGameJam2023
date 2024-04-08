@@ -22,6 +22,12 @@ public class AlternativeChickenMovement : MonoBehaviour
     [HideInInspector] public bool isTurboChicken = false;
     [HideInInspector] public bool isWagonChicken = false;
 
+    [Header("Vertical Info")]
+    [SerializeField] private bool canMoveVertical = false;
+    [HideInInspector] private int verticalDirection = 1;
+    [SerializeField] private static float maxVerticalHeight = 7.5f;
+    [SerializeField] private static float minVerticalHeight = -7.5f;
+
     [Header("Wheelbarrow Chicken Values")]
     [SerializeField] private float substanceDurationSeconds = 20f;
     private List<RoadHighlight> affectedRoads;
@@ -48,6 +54,20 @@ public class AlternativeChickenMovement : MonoBehaviour
             soundManager.PlayWagonChicken();
             affectedRoads = new List<RoadHighlight>();
         }
+
+        if (canMoveVertical)
+        {
+            float random = Random.Range(0, 2);
+
+            if (random == 0)
+            {
+                verticalDirection = 1;
+            }
+            else
+            {
+                verticalDirection = -1;
+            }
+        }
     }
 
     // protected override Vector2 ChooseNextDirection()
@@ -69,7 +89,17 @@ public class AlternativeChickenMovement : MonoBehaviour
 
         if (!isStuck || ignoreCement)
         {
-            transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+            if (canMoveVertical)
+            {
+                transform.position += new Vector3((speed * 0.7f) * Time.deltaTime, (speed * 0.7f) * Time.deltaTime * verticalDirection, 0);
+
+                CheckVertical();
+            }
+            else
+            {
+                transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
+            }
+            
         }
     }
 
@@ -149,5 +179,18 @@ public class AlternativeChickenMovement : MonoBehaviour
             transform.rotation
         );
         Destroy(substance, substanceDurationSeconds);
+    }
+
+    private void CheckVertical()
+    {
+        if (transform.position.y > maxVerticalHeight || transform.position.y < minVerticalHeight)
+        {
+            FlipVertical();
+        }
+    }
+
+    private void FlipVertical()
+    {
+        verticalDirection *= -1;
     }
 }

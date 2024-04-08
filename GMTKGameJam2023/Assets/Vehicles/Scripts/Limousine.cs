@@ -13,7 +13,7 @@ public class Limousine : Car
     public override void Start()
     {
         base.Start();
-        SetCarSpeed();
+        SetCarSpeed(carSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

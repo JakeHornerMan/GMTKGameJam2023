@@ -21,6 +21,7 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private int lifePrice;
     [SerializeField] private int walletPrice;
+    [SerializeField] private int energyPrice;
     [SerializeField] private int rerollPrice;
 
     [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
@@ -51,6 +52,13 @@ public class BuyScreenManager : MonoBehaviour
     private static float[] walletSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI walletNumberText;
 
+    //Energy Properties
+    [SerializeField] private Slider energySlider;
+    private int energyIncrement;
+    [SerializeField] private int energyMultiplier = 5;
+    private static float[] energySliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    [SerializeField] private TextMeshProUGUI energyNumberText;
+
     [SerializeField] private TextMeshProUGUI moneyText;
 
 
@@ -76,7 +84,11 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateMoneyText();
 
+        CalculateIncrements();
+
         UpdateHealthBar();
+        UpdateWalletBar();
+        UpdateEnergyBar();
 
         remainingRerolls = maxRerolls; // Initialize remaining rerolls
         UpdateRerollCounter(); // Update visual counter
@@ -311,6 +323,23 @@ public class BuyScreenManager : MonoBehaviour
         UpdateWalletBar();
     }
 
+    public void AddEnergy(int value)
+    {
+        if (CheckMoneyAmount(energyPrice))
+        {
+            if (PlayerValues.startingEnergy < 40)
+            {
+                energyIncrement = energyIncrement + value;
+
+                PlayerValues.startingEnergy = energyIncrement * energyMultiplier;
+
+                RemoveMoney(energyPrice);
+            }
+        }
+
+        UpdateEnergyBar();
+    }
+
     private void UpdateHealthBar()
     {
         healthNumberText.text = PlayerValues.missedChickenLives.ToString();
@@ -325,7 +354,17 @@ public class BuyScreenManager : MonoBehaviour
         walletSlider.value = walletSliderValues[PlayerValues.carWalletNodes];
     }
 
+    private void UpdateEnergyBar()
+    {
+        energyNumberText.text = PlayerValues.startingEnergy.ToString();
 
+        energySlider.value = energySliderValues[energyIncrement];
+    }
+
+    private void CalculateIncrements()
+    {
+        energyIncrement = PlayerValues.startingEnergy / energyMultiplier;
+    }
 
     public void AddMoney(int value)
     {
@@ -351,7 +390,7 @@ public class BuyScreenManager : MonoBehaviour
         moneyText.text = "Cash: " + currentAmount.ToString();
     }
 
-    private bool CheckMoneyAmount(int value)
+    public bool CheckMoneyAmount(int value)
     {
         if (value <= currentAmount)
         {

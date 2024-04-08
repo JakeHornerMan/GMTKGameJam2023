@@ -24,7 +24,7 @@ public class BombingJet : Car
     {
         base.Start();
 
-        SetCarSpeed();
+        SetCarSpeed(carSpeed);
 
         // Shake Camera
         CameraShaker.instance.Shake(jetShakeDuration, jetShakeMagnitude);
