@@ -7,7 +7,6 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] private float emptyWaveTime = 10f;
     [SerializeField] private SpecialChicken[] SpecialChickens;
     [SerializeField] private List<SpecialChicken> chickenPot;
-     [SerializeField] private List<SpecialChicken> potCandidates;
     [SerializeField] public ChickenWave[] bonusWaves;
     private GameManager gameManager;
 
@@ -17,8 +16,8 @@ public class GameFlowManager : MonoBehaviour
     }
 
     public void newRound(){
-        SetSpecialChickenCandidates();
-
+        // RoundProgression();
+        // int randomSpecialWave = Random.Range(2,2);
         for(int i =1; i <= 4; i++){
             if(i == 2){
                 SpecialWave();
@@ -49,7 +48,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.coinAmount = RoundCoinSet();
         newChickenWave.specialChickens = SpecialChickenListSet();
         gameManager.waves.Add(newChickenWave);
-        // Debug.Log(newChickenWave.wavePrompt);
+        Debug.Log(newChickenWave.wavePrompt);
     }
 
     private int standardChickenAmount(){
@@ -71,57 +70,24 @@ public class GameFlowManager : MonoBehaviour
         return (int)amount;
     }
 
-    private void SetSpecialChickenCandidates()
-    {
-         //find amount of point for the round
-        int chickenPoints = GameProgressionValues.RoundNumber*2;
-        //new list to store potential chickens theat we can use
-        foreach (SpecialChicken chic in chickenPot){
-            if(chic.difficultyRank <= chickenPoints){
-                potCandidates.Add(chic.DeepClone());
-            }
-        }
-    }
-
     private List<SpecialChicken> SpecialChickenListSet(){
         List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
-        // for (int i = 1; i <= GameProgressionValues.RoundNumber*2; i++){
-        //     int getChickenAt = Random.Range(0, chickenPot.Count);
-        //     SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
-        //     // Debug.Log(specialChicken.chicken.name);
+        for (int i = 1; i <= GameProgressionValues.RoundNumber*2; i++){
+            int getChickenAt = Random.Range(0, chickenPot.Count);
+            SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
+            // Debug.Log(specialChicken.chicken.name);
 
-        //     if(GameProgressionValues.RoundNumber < GameProgressionValues.standardRoundTime){
-        //         specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
-        //     }
-        //     else{
-        //         if(i < GameProgressionValues.standardRoundTime)
-        //             specialChicken.timeToSpawn = (float)i; 
-        //         if(i > GameProgressionValues.standardRoundTime)
-        //             specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
-        //     }
-        //     specialChickensList.Add(specialChicken);
-        // }
-
-        //find amount of point for the wave
-        int chickenPoints = GameProgressionValues.RoundNumber*2;
-        //new list to store potential chickens theat we can use
-        // List<SpecialChicken> potCandidates = new List<SpecialChicken>();
-        // foreach (SpecialChicken chic in chickenPot){
-        //     if(chic.difficultyRank <= chickenPoints)
-        //         potCandidates.Add(chic);
-        // }
-
-        //find random chickens in candidates for our wave
-        do{
-            int getChickenAt = Random.Range(0, potCandidates.Count);
-            SpecialChicken specialChicken = potCandidates[getChickenAt].DeepClone();
-            if(specialChicken.difficultyRank <= chickenPoints){
+            if(GameProgressionValues.RoundNumber < GameProgressionValues.standardRoundTime){
                 specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
-                chickenPoints = chickenPoints - specialChicken.difficultyRank;
-                specialChickensList.Add(specialChicken);
             }
+            else{
+                if(i < GameProgressionValues.standardRoundTime)
+                    specialChicken.timeToSpawn = (float)i; 
+                if(i > GameProgressionValues.standardRoundTime)
+                    specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
+            }
+            specialChickensList.Add(specialChicken);
         }
-        while(chickenPoints > 0);
 
         return specialChickensList;
     } 
@@ -156,7 +122,12 @@ public class GameFlowManager : MonoBehaviour
     private void SpecialWave(){
         int getWave = Random.Range(0,bonusWaves.Length);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
-        copyWave.coinAmount = RoundCoinSet();
+        if(GameProgressionValues.RoundNumber >= 10){
+            copyWave.coinAmount = GameProgressionValues.RoundNumber;
+        }
+        else{
+            copyWave.coinAmount = 10;
+        }
         gameManager.waves.Add(copyWave);
         Debug.Log(copyWave.wavePrompt);
     }
@@ -208,7 +179,6 @@ public class SpecialChicken
 {
     public float timeToSpawn;
     public GameObject chicken;
-    public int difficultyRank;
     public bool topSpawn;
     public bool bottomSpawn;
 
@@ -218,7 +188,6 @@ public class SpecialChicken
         chicken = specialChicken.chicken;
         topSpawn = specialChicken.topSpawn;
         bottomSpawn = specialChicken.bottomSpawn;
-        difficultyRank = specialChicken.difficultyRank;
     }
 
     public SpecialChicken DeepClone(){
@@ -227,7 +196,6 @@ public class SpecialChicken
         specialChicken.chicken = chicken;
         specialChicken.topSpawn = topSpawn;
         specialChicken.bottomSpawn = bottomSpawn;
-        specialChicken.difficultyRank = difficultyRank;
 
         return specialChicken;
     }
