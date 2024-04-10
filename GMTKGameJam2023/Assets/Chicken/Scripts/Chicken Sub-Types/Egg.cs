@@ -9,6 +9,7 @@ public class Egg : MonoBehaviour
     [SerializeField] private GameObject featherParticles;
     // Destroy feather particle gameobject after delay for cleaner hierarchy
     [SerializeField] private float featherParticleLifetime = 2f;  
+    [SerializeField] private float objectLifetime = 6f;
 
     // Run by animation event
     public void Hatch()
@@ -16,6 +17,7 @@ public class Egg : MonoBehaviour
         GameObject newFeather = Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
         Destroy(newFeather, featherParticleLifetime);
         Instantiate(chickenPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject, objectLifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
