@@ -85,7 +85,7 @@ public class GameFlowManager : MonoBehaviour
             standardChickenAmount = GameProgressionValues.standardChickenAmountForStart;
             for(int i = 2; i <= GameProgressionValues.RoundNumber; i++){
                 int multiplier = (int)Mathf.Floor((float)i/5f);
-                Debug.Log("multi: " + multiplier);
+                // Debug.Log("multi: " + multiplier);
                 standardChickenAmount += 10 + (5 * multiplier);
             }
         } 
@@ -178,7 +178,7 @@ public class GameFlowManager : MonoBehaviour
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
         copyWave.coinAmount = RoundCoinSet();
         gameManager.waves.Add(copyWave);
-        Debug.Log(copyWave.wavePrompt);
+        // Debug.Log(copyWave.wavePrompt);
     }
 
     private void EmptyWave(){
@@ -191,7 +191,7 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.coinAmount = 0;
         newChickenWave.specialChickens = null;
         gameManager.waves.Add(newChickenWave);
-        Debug.Log(newChickenWave.wavePrompt);
+        // Debug.Log(newChickenWave.wavePrompt);
     }
 }
 

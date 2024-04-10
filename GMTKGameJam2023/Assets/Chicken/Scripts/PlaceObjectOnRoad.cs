@@ -75,7 +75,7 @@ public class PlaceObjectOnRoad : MonoBehaviour
                 gameObject,
                 // dropPoint.position,
                 dropPos,
-                transform.rotation
+                Quaternion.identity
             );
             if (markPlacedObjectForDestruction)
                 Destroy(newlyPlacedObject, objectLifetime);

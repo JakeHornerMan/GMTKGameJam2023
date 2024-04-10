@@ -119,10 +119,11 @@ public class BuyScreenManager : MonoBehaviour
         {
             Transform child = RosterHolder.transform.GetChild(i);
             
-            Instantiate(rosterCarPrefab, child.transform);
+            GameObject newBuyCar = Instantiate(rosterCarPrefab, child.transform);
 
+            newBuyCar.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
             BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
-
+            
             buyScreenCar.correspondingCar = playerCars[i];
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
         }
@@ -402,6 +403,7 @@ public class BuyScreenManager : MonoBehaviour
 
     public void ToNextLevel()
     {
+        
         setPlayerValues();
         //Load next scene
         sceneFader.ScreenWipeOut("ProceduralGeneration");
