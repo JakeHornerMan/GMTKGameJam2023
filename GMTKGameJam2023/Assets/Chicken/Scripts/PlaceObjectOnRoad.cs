@@ -72,12 +72,9 @@ public class PlaceObjectOnRoad : MonoBehaviour
         if(randomNumber == 1){
             GameObject newlyPlacedObject = Instantiate(
                 gameObject,
-                // dropPoint.position,
                 dropPos,
                 Quaternion.identity
             );
-            // if (markPlacedObjectForDestruction)
-            //     Destroy(newlyPlacedObject, objectLifetime);
         }
     }
 }

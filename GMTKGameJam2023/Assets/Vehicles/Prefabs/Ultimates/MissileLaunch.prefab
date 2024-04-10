@@ -5250,29 +5250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3d72618ee4d864e8ba6b060551b289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canIBeBombed: 0
+  ultimateResetTime: 30
+  placeableAnywhere: 1
+  ignoreTokens: 1
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 5885361816208039466}
-  carType: 0
-  carHealth: 100
-  carPrice: 0
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  carInAction: 1
-  isUltimate: 1
-  ultimateResetTime: 10
-  deathboxTag: Death Box
-  placeableLaneTags:
-  - Road
-  - Pavement
-  - Grass
-  - Bus Lane
-  placeableAnywhere: 1
-  carSpeed: 0
   damage: 120
   comboMultiplier: 0.2
   DeathExplosion: {fileID: 0}
