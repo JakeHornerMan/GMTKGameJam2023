@@ -21,7 +21,7 @@ public class BuyScreenCar : MonoBehaviour
 
     public void UpdateSprite()
     {
-        tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+        tokenPriceText.text = correspondingCar.carShopPrice.ToString("0");
         correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
     }
 }

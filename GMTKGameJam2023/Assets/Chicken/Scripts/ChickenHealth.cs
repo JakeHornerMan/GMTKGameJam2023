@@ -106,13 +106,14 @@ public class ChickenHealth : MonoBehaviour
     public void FlashChicken(float stunLength)
     {
         IEnumerator coroutine;
-        if (this.gameObject.name.Contains("Turbo"))
+
+        if (gameObject.TryGetComponent<AlternativeChickenMovement>(out AlternativeChickenMovement alternativeChickenMovement))
         {
-            coroutine = this.gameObject.GetComponent<AlternativeChickenMovement>().FlashChicken(stunLength, true);
+            coroutine = alternativeChickenMovement.FlashChicken(stunLength, true);
         }
         else
         {
-            coroutine = this.gameObject.GetComponent<ChickenMovement>().FlashChicken(stunLength, true);
+            coroutine = gameObject.GetComponent<ChickenMovement>().FlashChicken(stunLength, true);
         }
         StartCoroutine(coroutine);
     }
