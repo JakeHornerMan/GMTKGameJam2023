@@ -83,7 +83,7 @@ public class WreckingBall : MonoBehaviour
 
         if (car.canSpinOut == true && car.isSpinning == false)
         {
-            car.SpinOutCar();
+            car.SpinOutCar(false);
             Debug.Log("car is spinning?");
         }
     }

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public static class Points
 {
-    public static string currentRanking = "Blah";
-    public static int killCount = 100;
-    public static int safelyCrossedChickens = 10;
+    public static int killCount = 0;
+    public static int safelyCrossedChickens = 0;
     public static int playerScore = 0;
-    public static int totalTokens = 100;
+    public static int totalTokens = 0;
+
+    public static void SetDefaultValues(){
+        killCount = 0;
+        safelyCrossedChickens =0;
+        playerScore = 0;
+        totalTokens = 0;
+    }
 
 }

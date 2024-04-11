@@ -12,7 +12,7 @@ public class Tractor : Car
     public override void Start()
     {
         base.Start();
-        SetCarSpeed();
+        SetCarSpeed(carSpeed);
         SpawnSheep();
     }
 

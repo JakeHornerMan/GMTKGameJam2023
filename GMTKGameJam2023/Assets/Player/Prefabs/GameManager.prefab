@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 857913865922615603}
   - component: {fileID: 4517704102987042158}
   - component: {fileID: 695978991538291139}
+  - component: {fileID: 5380470818014211033}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -716,7 +717,6 @@ MonoBehaviour:
   playerScore: 0
   tokens: 0
   totalTokens: 0
-  currentRanking: Animal Lover
   time: 120
   endSound: 0
   waveNumber: 0
@@ -860,6 +860,7 @@ MonoBehaviour:
   speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
   speedUpTextDeactivationDelay: 2
+  scoreForText: 0
   positivePoints: {fileID: 7312448788404570237, guid: a8e0b7dbcceb3ba49960b10afa13cdf5, type: 3}
   negativePoints: {fileID: 2036366478192065954, guid: 012179248d163534d9ae3669a54aa4c2, type: 3}
   positiveTokens: {fileID: 0}
@@ -1030,6 +1031,21 @@ MonoBehaviour:
   timeUntilRefill: 0
   amountPerRefill: 1
   carCount: 0
+--- !u!114 &5380470818014211033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160284341332244042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1e8717a9fbf924f954c08a27715adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cornPrefab: {fileID: 1374805645056420982, guid: d5b9476f245a4f443a09cedec8e3d1dc, type: 3}
+  cornContainer: {fileID: 1555401575622896150}
+  cornHealthList: []
 --- !u!1001 &1098728652930476223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1177,6 +1193,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4892047371228387671, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5378729048533598900, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1273,6 +1293,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6951364660126669941, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7139124962396439854, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1323,6 +1347,11 @@ GameObject:
 --- !u!1 &1088433710810933808 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4635958537501337154, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1555401575622896150 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6546327814882403940, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1838654265459237576 stripped

@@ -7,9 +7,11 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] private float emptyWaveTime = 10f;
     [SerializeField] private SpecialChicken[] SpecialChickens;
     [SerializeField] private List<SpecialChicken> chickenPot;
-     [SerializeField] private List<SpecialChicken> potCandidates;
+    [SerializeField] private List<SpecialChicken> potCandidates;
     [SerializeField] public ChickenWave[] bonusWaves;
     private GameManager gameManager;
+
+    private int standardChickenAmount = 0;
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class GameFlowManager : MonoBehaviour
     }
 
     public void newRound(){
+        setStandardAmount();
         SetSpecialChickenCandidates();
 
         for(int i =1; i <= 4; i++){
@@ -36,7 +39,7 @@ public class GameFlowManager : MonoBehaviour
     private void StandardChickenWaveCreate(int waveNumber){
         ChickenWave newChickenWave = new ChickenWave();
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
-        newChickenWave.standardChickenAmounts = standardChickenAmount();
+        newChickenWave.standardChickenAmounts = standardChickenAmount;
 
         if(waveNumber == 1){
             newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
@@ -52,23 +55,40 @@ public class GameFlowManager : MonoBehaviour
         // Debug.Log(newChickenWave.wavePrompt);
     }
 
-    private int standardChickenAmount(){
-        // GameProgressionValues.standardChickenAmountForLevel = GameProgressionValues.standardChickenAmountForLevel * GameProgressionValues.standardChickenAmountMultiplier;
-        float amount = GameProgressionValues.standardChickenAmountForStart;
-        if(GameProgressionValues.RoundNumber <= 30){
-            for(int i = 0; i < GameProgressionValues.RoundNumber; i ++)
-            {
-                amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
-            }
+    // Old System
+    // private int standardChickenAmount(){
+        
+    //     float amount = GameProgressionValues.standardChickenAmountForStart;
+    //     if(GameProgressionValues.RoundNumber <= 30){
+    //         for(int i = 0; i < GameProgressionValues.RoundNumber; i ++)
+    //         {
+    //             amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
+    //         }
+    //     }
+    //     else{
+    //         int rando = Random.Range(15,30);
+    //         for(int i = 0; i < rando; i ++)
+    //         {
+    //             amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
+    //         }
+    //     }
+    //     return (int)amount;
+
+    //     new System
+    // }
+
+    private void setStandardAmount(){
+        if(GameProgressionValues.RoundNumber > 25){
+            standardChickenAmount  = Random.Range(330, 600);
         }
         else{
-            int rando = Random.Range(15,30);
-            for(int i = 0; i < rando; i ++)
-            {
-                amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
+            standardChickenAmount = GameProgressionValues.standardChickenAmountForStart;
+            for(int i = 2; i <= GameProgressionValues.RoundNumber; i++){
+                int multiplier = (int)Mathf.Floor((float)i/5f);
+                Debug.Log("multi: " + multiplier);
+                standardChickenAmount += 10 + (5 * multiplier);
             }
-        }
-        return (int)amount;
+        } 
     }
 
     private void SetSpecialChickenCandidates()

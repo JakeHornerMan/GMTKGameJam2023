@@ -39,5 +39,6 @@ public class PortalController : MonoBehaviour
         GameObject spawnedVehicle = Instantiate(capturedVehicle, spawnPos, Quaternion.identity);
         soundManager.PlayExitPortal();
         spawnedVehicle.SetActive(true);
+        spawnedVehicle.GetComponent<Car>().carTeleporting = false;
     }
 }

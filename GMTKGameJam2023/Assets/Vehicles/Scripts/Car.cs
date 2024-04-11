@@ -30,7 +30,12 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private bool carInHitStop = false;
     private float degreesPerSecond = 540f;
     public bool carInAction = true; //is car in play (not being launched)?
-    
+    public bool carTeleporting = false;
+
+
+    [Header("Buy Info")]
+    [SerializeField] public int carShopPrice;
+
     // [Header("Ultimate Info")]
     // [SerializeField] public bool isUltimate = false;
     // [SerializeField] public float ultimateResetTime;
@@ -44,6 +49,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Speed")]
     [SerializeField] protected float carSpeed = 5f;
+    private float currentSpeed;
 
     [Header("Damage")]
     [SerializeField] private int damage = 120;
@@ -81,6 +87,8 @@ public abstract class Car : MonoBehaviour
     protected GameManager gameManager;
     private Rigidbody2D rb;
 
+    private Coroutine freezeCoroutine;
+
     [HideInInspector] public CameraShaker cameraShaker;
     [HideInInspector] public SoundManager soundManager;
 
@@ -109,7 +117,15 @@ public abstract class Car : MonoBehaviour
     {
         if (isSpinning)
         {
-            carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
+            if (carType == CarType.Light)
+            {
+                carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
+            }
+            else
+            {
+                carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond/2) * Time.deltaTime);
+            }
+            
         }
 
         if (comboText != null)
@@ -118,10 +134,11 @@ public abstract class Car : MonoBehaviour
         }
     }
 
-    protected virtual void SetCarSpeed()
+    protected virtual void SetCarSpeed(float speed)
     {
         if (rb != null)
-            rb.velocity = transform.up * carSpeed;
+            rb.velocity = transform.up * speed;
+            currentSpeed = speed;
     }
 
     private void SlowCarSpeed()
@@ -130,6 +147,7 @@ public abstract class Car : MonoBehaviour
         float slowSpeed = carSpeed/2;
         if (rb != null)
             rb.velocity = transform.up * slowSpeed;
+        currentSpeed = slowSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -166,6 +184,12 @@ public abstract class Car : MonoBehaviour
             HandleWallCollision(wall);
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Contains("SlowSubstance"))
+            SetCarSpeed(carSpeed);
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         // Check if Hit Car
@@ -187,6 +211,11 @@ public abstract class Car : MonoBehaviour
         // Perform the check on only one of the cars (the one with a lower y-coordinate)
         if (this.transform.position.y < otherCar.transform.position.y)
         {
+
+            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
+            StartCoroutine(CarHitStop(0.1f));
+            otherCar.StartCoroutine(CarHitStop(0.1f));
+
             // If Heavy > Light, Destroy Light
             if (this.carType == CarType.Heavy && otherCar.carType == CarType.Light)
             {
@@ -217,9 +246,7 @@ public abstract class Car : MonoBehaviour
                 this.carHealth -= otherCar.carHealth;
             }
 
-            CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
-            StartCoroutine(CarHitStop(0.1f));
-            otherCar.StartCoroutine(CarHitStop(0.1f));
+            
         }
     }
 
@@ -244,7 +271,7 @@ public abstract class Car : MonoBehaviour
         StartCoroutine(CarHitStop(0.1f));
     }
 
-    private void HandleTokenCollision(TokenController token)
+    protected void HandleTokenCollision(TokenController token)
     {
         if(token.cashBag){
             HandleCashTokenCollision(token);
@@ -307,12 +334,13 @@ public abstract class Car : MonoBehaviour
 
         //PsychicHen hit
         if(chickenHealth.gameObject.name.Contains("PsychicHen")){
+            carTeleporting = true;
             chickenHealth.gameObject.GetComponent<PsychicHen>().SpawnPortal(this.gameObject);
         }
 
         if (chickenHealth.gameObject.TryGetComponent<IceChicken>(out IceChicken iceChick))
         {
-            StartCoroutine(FreezeCar(iceChick.freezeLength, iceChick.freezeColour));
+            freezeCoroutine = StartCoroutine(FreezeCar(iceChick.freezeLength, iceChick.freezeColour));
         }
 
         // Hit Stop, TurboChicken has different movement script;
@@ -404,7 +432,7 @@ public abstract class Car : MonoBehaviour
                 yield break;
             }
 
-            rb.velocity = Vector3.zero;
+            SetCarSpeed(0);
 
             //Give car blue tint
 
@@ -442,22 +470,22 @@ public abstract class Car : MonoBehaviour
                 yield break;
             }
 
-            rb.velocity = currentVelocity;
+            SetCarSpeed(currentVelocity.y);
 
-            
+
         }
     }
 
 
-    public void SpinOutCar()
+    public void SpinOutCar(bool launching)
     {
         if (canSpinOut == true && isSpinning == false)
         {
-            BoxCollider2D carCollider = GetComponent<BoxCollider2D>();
-
-            carCollider.size = new Vector2(1.8f, carCollider.size.y);
-
-            
+            if (!launching)
+            {
+                BoxCollider2D carCollider = GetComponent<BoxCollider2D>();
+                carCollider.size = new Vector2(1.8f, carCollider.size.y);
+            }            
 
             isSpinning = true;
         }
@@ -469,7 +497,8 @@ public abstract class Car : MonoBehaviour
         {
             carInHitStop = true;
 
-            Vector3 currentVelocity = rb.velocity;
+            // Store the original speed before entering the hit stop
+            float originalSpeed = rb.velocity.y;
 
             rb.velocity = Vector3.zero;
 
@@ -480,7 +509,8 @@ public abstract class Car : MonoBehaviour
                 yield break;
             }
 
-            rb.velocity = currentVelocity;
+            // Restore the original speed after the hit stop
+            rb.velocity = transform.up * currentSpeed;
 
             carInHitStop = false;
         }
@@ -516,13 +546,13 @@ public abstract class Car : MonoBehaviour
         if (collider != null){
             GetComponent<Collider2D>().enabled = false;
         }else{
-            gameObject.transform.Find("Truck Hitbox Visual").GetComponent<Collider2D>().enabled = false;
+            GetComponentInChildren<Collider2D>().enabled = false;
         }
 
         if (comboText != null)
             comboText.enabled = false;
 
-        rb.velocity = normalizedVector * 25;
+        rb.velocity = normalizedVector * 20;
 
         if (carType == CarType.Heavy || carType == CarType.Light)
         {
@@ -531,7 +561,24 @@ public abstract class Car : MonoBehaviour
             Destroy(currentBomb, 0.85f);
         }
 
-        StartCoroutine(LaunchCarCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
+        if (freezeCoroutine != null)
+        {
+            StopCoroutine(freezeCoroutine);
+        }
+
+        float carLaunchScale;
+
+        if (carType == CarType.Light)
+        {
+            carLaunchScale = 12;
+        }
+        else
+        {
+            carLaunchScale = 6;
+        }
+
+        StartCoroutine(LaunchCarCoroutine(new Vector3(carLaunchScale, carLaunchScale, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
+
     }
 
     private IEnumerator LaunchCarCoroutine(Vector3 targetScale, Vector3 targetPos)
@@ -540,12 +587,12 @@ public abstract class Car : MonoBehaviour
         Vector3 initialPos = gameObject.transform.position;
         float t = 0;
 
-        float launchSpeed = 1f / 1.5f;
+        float launchSpeed = 0.5f;
 
         canSpinOut = true;
-        SpinOutCar();
+        SpinOutCar(true);
 
-        while (t < 1)
+        while (t < 1.5)
         {
             t += Time.deltaTime * launchSpeed;
 
