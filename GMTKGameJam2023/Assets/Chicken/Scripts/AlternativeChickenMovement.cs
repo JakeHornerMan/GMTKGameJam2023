@@ -25,8 +25,8 @@ public class AlternativeChickenMovement : MonoBehaviour
     [Header("Vertical Info")]
     [SerializeField] private bool canMoveVertical = false;
     [HideInInspector] private int verticalDirection = 1;
-    [SerializeField] private static float maxVerticalHeight = 7.5f;
-    [SerializeField] private static float minVerticalHeight = -7.5f;
+    [SerializeField] private static float maxVerticalHeight = 6f;
+    [SerializeField] private static float minVerticalHeight = -6f;
 
     [Header("Wheelbarrow Chicken Values")]
     [SerializeField] private float substanceDurationSeconds = 20f;
