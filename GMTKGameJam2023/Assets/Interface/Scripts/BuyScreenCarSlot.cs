@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
+public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
 
     public enum SlotType
@@ -27,17 +27,21 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
                 {
                     if (BuyScreenManager.instance.CheckMoneyAmount(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice)) // If the player has enough money to buy the car
                     {
-                        // Add pre-existing (pointerEnter) car to scrapyard
-                        GameObject oldCar = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
-                        BuyScreenManager.instance.AddToScrapyard(oldCar);
+                        if (slotType == SlotType.Roster)
+                        {
+                            // Add pre-existing (pointerEnter) car to scrapyard
+                            GameObject oldCar = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
+                            BuyScreenManager.instance.AddToScrapyard(oldCar);
 
-                        // Add pointerDrag's car as the child of this item slot
-                        eventData.pointerDrag.gameObject.transform.parent = transform;
-                        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                        eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+                            // Add pointerDrag's car as the child of this item slot
+                            eventData.pointerDrag.gameObject.transform.parent = transform;
+                            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                            eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
 
-                        // Take away any money
-                        BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                            // Take away any money
+                            BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                        }
+                        
                     }
                 }
                 else
@@ -60,12 +64,16 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
                     if (BuyScreenManager.instance.CheckMoneyAmount(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice)) //if the player has enough money to buy the car)
                     {
 
-                        eventData.pointerDrag.gameObject.transform.parent = transform;
-                        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                        eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+                        if (slotType == SlotType.Roster)
+                        {
+                            eventData.pointerDrag.gameObject.transform.parent = transform;
+                            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                            eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
 
-                        //take away any money
-                        BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                            //take away any money
+                            BuyScreenManager.instance.RemoveMoney(eventData.pointerDrag.GetComponent<BuyScreenCar>().correspondingCar.carShopPrice);
+                        }
+                        
                     }
                     else
                     {
@@ -90,5 +98,28 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = false;
         }
 
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //When the player clicks on the item slot, the info box will be filled out with the corresponding information
+
+        if (eventData.pointerClick != null)
+        {
+            GameObject shopItem = eventData.pointerDrag.gameObject;
+
+            if (shopItem != null)
+            {
+                if (shopItem.TryGetComponent<BuyScreenCar>(out BuyScreenCar car))
+                {
+                    BuyScreenInfoBox.instance.FillInfoBoxCar(car);
+                }
+                else if (shopItem.TryGetComponent<BuyScreenUltimate>(out BuyScreenUltimate ultimate))
+                {
+                    BuyScreenInfoBox.instance.FillInfoBoxUltimate(ultimate);
+                }
+                
+            }
+        }
     }
 }

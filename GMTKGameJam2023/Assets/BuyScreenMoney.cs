@@ -12,7 +12,7 @@ public class BuyScreenMoney : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<TextMeshProUGUI>().text = "Money: " + startingAmount.ToString();
+        GetComponent<TextMeshProUGUI>().text = "Cash: " + startingAmount.ToString();
 
         currentAmount = startingAmount;
     }
