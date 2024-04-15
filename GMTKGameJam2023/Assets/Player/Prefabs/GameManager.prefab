@@ -187,7 +187,7 @@ Transform:
   - {fileID: 1956138797627160308}
   - {fileID: 3718478140365259465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -1125,14 +1125,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4723004208174625701}
     m_Modifications:
-    - target: {fileID: 333815872996223863, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 333815872996223863, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1287,6 +1279,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6082470648501500550, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546327814882403940, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6932175551287751633, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
