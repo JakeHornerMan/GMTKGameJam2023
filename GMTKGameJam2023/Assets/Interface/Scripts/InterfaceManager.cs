@@ -31,7 +31,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private float speedUpTextDuration = 1.3f;
     [SerializeField] private float speedUpTextDeactivationDelay = 2;
 
-    private int scoreForText;
+    public int scoreForText;
     private int scoreMoverPositive;
     private int scoreMoverNegative;
 

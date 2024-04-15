@@ -43,16 +43,11 @@ public class ResultsUI : MonoBehaviour
 
     private void LevelEndAudio()
     {
-        // TODO Check settings if Audio is enabled, and use that
-        if (Points.currentRanking == failureRanking)
-            audioSrc.PlayOneShot(levelFailureClip);
-        else
-            audioSrc.PlayOneShot(levelSuccessClip);
+        audioSrc.PlayOneShot(levelSuccessClip);
     }
 
     public void ReturnToMenu()
     {
-        // sceneFader.FadeToMainMenu();
         sceneFader.ScreenWipeOut("MainMenuInteractive");
     }
 
@@ -64,7 +59,8 @@ public class ResultsUI : MonoBehaviour
 
     public void SetUI()
     {
-        rankingText.text = Points.currentRanking;
+        // TODO: RankingRequirement based off points
+        rankingText.text = "Meh";
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString();
