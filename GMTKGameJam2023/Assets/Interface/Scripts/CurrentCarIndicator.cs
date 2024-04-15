@@ -18,6 +18,9 @@ public class CurrentCarIndicator : MonoBehaviour
     [SerializeField] private Image walletRefillTimer;
     [SerializeField] private TextMeshProUGUI carWalletCountText;
 
+    [Tooltip("Newly added one-line token display, {cost}/{have}")]
+    [SerializeField] private TextMeshProUGUI combinedTokenDisplay;
+
     [Header("UI Display")]
     [SerializeField] private string tokenLabel = "Token";
     [Tooltip("Text to show after token cost, e.g. 2 {Token}")]
@@ -28,6 +31,13 @@ public class CurrentCarIndicator : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color positiveColor;
     [SerializeField] private Color negativeColor;
+
+    private CarWallet carWallet;
+
+    private void Awake()
+    {
+        carWallet = FindObjectOfType<CarWallet>();
+    }
 
     private void Start()
     {
@@ -43,5 +53,8 @@ public class CurrentCarIndicator : MonoBehaviour
         totalTokens.text = $"{playerCash} {totalTokenLabel}";
         carCost.color = playerCash >= currentActiveCar.carPrice ? positiveColor : negativeColor;
         carWalletCountText.text = carWalletCount.ToString();
+        walletRefillTimer.fillAmount = 1 - (carWallet.timeUntilRefill / carWallet.refillDelaySeconds);
+        // New single-line token display
+        combinedTokenDisplay.text = $"{currentActiveCar.carPrice}/{playerCash}";
     }
 }
