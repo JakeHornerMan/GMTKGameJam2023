@@ -93,7 +93,7 @@ public class CameraShaker : MonoBehaviour
         while (shakeTimer > 0)
         {
             shakeTimer -= Time.deltaTime;
-            cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, (1 - shakeTimer / shakeTimerTotal));
+            cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, (1 - (shakeTimer / shakeTimerTotal)));
             yield return null;
         }
 
