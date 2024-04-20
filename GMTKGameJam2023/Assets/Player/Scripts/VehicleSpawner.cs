@@ -169,6 +169,9 @@ public class VehicleSpawner : MonoBehaviour
 
     private void PlaceSelectedCar()
     {
+
+
+
         // Check Money, Check Car Wallet Budget
         if (NotEnoughCarWallet())
             return;

@@ -12,8 +12,11 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] public List<Car> playerCars;
     [SerializeField] public List<Car> defaultCars;
 
+    [SerializeField] public Ultimate playerUltimate;
+
     [Header("Car Appearance Order")]
     [SerializeField] private Car[] cars;
+    [SerializeField] private Ultimate[] ultimates;
 
     [Header("Menu Prices")]
     public int startingAmount;
@@ -31,12 +34,14 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private GameObject RosterHolder;
 
     [SerializeField] private GameObject carShop;
+    [SerializeField] private GameObject ultimateShop;
 
     [SerializeField] private GameObject rerollButton;
 
     [SerializeField] private GameObject scrapyard;
 
     [SerializeField] private GameObject rosterCarPrefab;
+    [SerializeField] private GameObject rosterUltimatePrefab;
 
     [SerializeField] private SceneFader sceneFader;
 
@@ -44,19 +49,19 @@ public class BuyScreenManager : MonoBehaviour
 
     //Health Properties
     [SerializeField] private Slider healthSlider;
-    private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumberText;
 
     //Wallet Properties
     [SerializeField] private Slider walletSlider;
-    private static float[] walletSliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] walletSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI walletNumberText;
 
     //Energy Properties
     [SerializeField] private Slider energySlider;
     private int energyIncrement;
     [SerializeField] private int energyMultiplier = 5;
-    private static float[] energySliderValues = new float[] { 0, 0.15f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] energySliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI energyNumberText;
 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -66,7 +71,7 @@ public class BuyScreenManager : MonoBehaviour
     private void Awake()
     {
         SetPlayerValuesInBuyScreen();
-        PopulateCarShop();
+        PopulateShops();
     }
 
     void Start()
@@ -170,6 +175,12 @@ public class BuyScreenManager : MonoBehaviour
     }
 
 
+    void PopulateShops()
+    {
+        PopulateCarShop();
+        PopulateUltimateShop();
+    }
+
     public void PopulateCarShop()
     {
         List<Car> carsPulled = new List<Car>();
@@ -228,6 +239,66 @@ public class BuyScreenManager : MonoBehaviour
             carSlot.UpdateSprite();
 
             carSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
+
+        }
+    }
+
+
+    public void PopulateUltimateShop()
+    {
+        List<Ultimate> ultimatesPulled = new List<Ultimate>();
+
+        for (int i = 0; i < ultimateShop.transform.childCount; i++)
+        {
+
+            Ultimate ultimate = ultimates[0];
+
+            int randomNumber = 0;
+
+            bool newUltimate = false;
+
+            while (!newUltimate)
+            {
+                randomNumber = Random.Range(0, ultimates.Length);
+                ultimate = ultimates[randomNumber];
+
+                bool isUnique = true;
+
+                //for (int j = 0; j < ultimatesPulled.Count; j++)
+                //{
+                //    if (ultimate == ultimatesPulled[j])
+                //    {
+                //        isUnique = false;
+                //        break;
+                //    }
+                //}
+
+                if (ultimate == playerUltimate)
+                {
+                    isUnique = false;
+                    break;
+                }
+
+                if (isUnique)
+                {
+                    newUltimate = true;
+                    ultimatesPulled.Add(ultimate);
+                }
+            }
+
+
+            if (ultimateShop.transform.GetChild(i).transform.childCount == 0)
+            {
+                Instantiate(rosterCarPrefab, ultimateShop.transform.GetChild(i).transform);
+            }
+
+            BuyScreenUltimate ultimateSlot = ultimateShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenUltimate>();
+
+            ultimateSlot.correspondingUltimate = ultimate;
+
+            ultimateSlot.UpdateSprite();
+
+            ultimateSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
 
         }
     }
