@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
             }
             // Debug.Log("Cars: " + carsInLevel);
             missedChickenLives = PlayerValues.missedChickenLives;
+            tokens = PlayerValues.startingEnergy;
+
             // Debug.Log("Lives: " + missedChickenLives);
         }
         else {
@@ -278,6 +280,7 @@ public class GameManager : MonoBehaviour
     //Updates Static scripts
     private void SetPlayerValues(){
         PlayerValues.Cars = carsInLevel;
+        PlayerValues.startingEnergy =0;
     }
 
     private void SetPointsValues(){

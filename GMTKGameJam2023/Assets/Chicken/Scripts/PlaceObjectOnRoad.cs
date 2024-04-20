@@ -15,7 +15,6 @@ public class PlaceObjectOnRoad : MonoBehaviour
 
     [Header("Drop Settings")]
     [SerializeField] private bool markPlacedObjectForDestruction = false;
-    [SerializeField] private float objectLifetime = 10f;
     [Tooltip("Probablity for drop 1/inputAmount (leave at 1 for constant)")]
     [SerializeField] private int probabilityOfSpawn = 1;
     [Tooltip("Probablity for drop 1/inputAmount (default 50% == 2)")]
@@ -73,12 +72,9 @@ public class PlaceObjectOnRoad : MonoBehaviour
         if(randomNumber == 1){
             GameObject newlyPlacedObject = Instantiate(
                 gameObject,
-                // dropPoint.position,
                 dropPos,
-                transform.rotation
+                Quaternion.identity
             );
-            if (markPlacedObjectForDestruction)
-                Destroy(newlyPlacedObject, objectLifetime);
         }
     }
 }

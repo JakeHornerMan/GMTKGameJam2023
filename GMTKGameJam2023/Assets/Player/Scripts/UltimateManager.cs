@@ -14,7 +14,7 @@ public class UltimateManager : MonoBehaviour
     [Header("Ultimate Info")]
     [SerializeField] public float refillDelaySeconds;
     [HideInInspector] public float timeUntilRefill = 0f;
-    [HideInInspector] public bool ultimateEnabled = true;
+    [HideInInspector] public bool ultimateEnabled = false;
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;

@@ -98,7 +98,7 @@ public class InterfaceManager : MonoBehaviour
         }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
-        //UpdateUltimateRadial(ultimateManager.timeUntilRefill, ultimateManager.correspondingUltimate.ultimateResetTime);
+        UpdateUltimateRadial(ultimateManager.timeUntilRefill, ultimateManager.correspondingUltimate.ultimateResetTime);
     }
 
     private void FixedUpdate()
