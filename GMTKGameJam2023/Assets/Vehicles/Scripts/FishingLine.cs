@@ -51,7 +51,7 @@ public class FishingLine : MonoBehaviour
                 // }
             }
         }
-        return bestTarget;
+        return bestTarget.GetComponent<ChickenMovement>().chickenSprite;
     }
 
     private void CastLineToChicken(){

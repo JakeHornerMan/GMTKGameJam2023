@@ -6,7 +6,7 @@ public class ChickenMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject hopController;
-    [SerializeField] private GameObject chickenSprite;
+    [SerializeField] public GameObject chickenSprite;
     [SerializeField] public Collider2D chickenCollider;
     private Rigidbody2D rb;
     private Animator anim;
