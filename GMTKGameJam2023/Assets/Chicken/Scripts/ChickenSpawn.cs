@@ -6,6 +6,7 @@ public class ChickenSpawn : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private string chickenContainer_Name = "ChickenContainer";
+    [SerializeField] private string specialChickenContainer_Name = "SpecialChickenContainer";
 
     [Header("Spawning Values")]
     [SerializeField] public SpawningPoint[] spawnSpots;
@@ -20,6 +21,7 @@ public class ChickenSpawn : MonoBehaviour
 
     private SoundManager soundManager;
     private GameObject chickenContainer;
+    private GameObject specialChickenContainer;
 
     [HideInInspector] public ChickenWave currentWave;
     [HideInInspector] public List<SpecialChicken> specialChickens;
@@ -31,6 +33,7 @@ public class ChickenSpawn : MonoBehaviour
     {
         soundManager = FindObjectOfType<SoundManager>();
         chickenContainer = GameObject.Find(chickenContainer_Name);
+        specialChickenContainer = GameObject.Find(specialChickenContainer_Name);
     }
 
     private void FixedUpdate()
@@ -69,7 +72,7 @@ public class ChickenSpawn : MonoBehaviour
         {
             if (specialChickens.Count > 0 && time >= specialChickens[0].timeToSpawn)
             {
-                SpawnAChicken(specialChickens[0].chicken, SelectSpawn());
+                SpawnAChicken(specialChickens[0].chicken, SelectSpawn(), true);
                 specialChickens.RemoveAt(0);
             }
         }
@@ -156,7 +159,7 @@ public class ChickenSpawn : MonoBehaviour
             spawnPoint.position = spawn;
 
             // Assuming SpawnAChicken accepts a Vector3 for the spawn position
-            SpawnAChicken(chickenPrefab, spawnPoint);
+            SpawnAChicken(chickenPrefab, spawnPoint, false);
 
             waveChickenAmount--;
         }
@@ -169,9 +172,14 @@ public class ChickenSpawn : MonoBehaviour
             StandardChickenWave();
     }
 
-    private void SpawnAChicken(GameObject chicken, SpawningPoint point)
+    private void SpawnAChicken(GameObject chicken, SpawningPoint point, bool isSpecial)
     {
-        chicken = Instantiate(chicken, point.position, Quaternion.identity, chickenContainer.transform);
+        if(isSpecial){
+            chicken = Instantiate(chicken, point.position, Quaternion.identity, specialChickenContainer.transform);
+        }
+        else{
+            chicken = Instantiate(chicken, point.position, Quaternion.identity, chickenContainer.transform);
+        }
         if(chicken.GetComponent<ChickenMovement>() != null){
             chicken.GetComponent<ChickenMovement>().chickenIntesity = currentWave.chickenIntesity;
             chicken.GetComponent<ChickenMovement>().minYHeight = minYHeight;
