@@ -285,7 +285,6 @@ MonoBehaviour:
   objectToPlace: {fileID: 2619222660318283966, guid: 9f438c21e6be64d4cb050c1ee629dcaa, type: 3}
   objectToPlace2: {fileID: 2619222660318283966, guid: 609b30f560ee69949ad3e04eb342d8ae, type: 3}
   markPlacedObjectForDestruction: 1
-  objectLifetime: 10
   probabilityOfSpawn: 2
   probabilityOfSecondObject: 10
 --- !u!114 &8089028048643985026
@@ -343,10 +342,10 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
-  invinsibleForTime: 1
   pointsReward: 100
   health: 0
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
+  hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
 --- !u!114 &5124420335599565337
 MonoBehaviour:
   m_ObjectHideFlags: 0

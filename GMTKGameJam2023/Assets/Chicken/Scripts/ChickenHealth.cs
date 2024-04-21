@@ -19,7 +19,7 @@ public class ChickenHealth : MonoBehaviour
 
     [Header("Chicken Health Values")]
     [SerializeField] private int startHealth = 100;
-    [SerializeField] private float invinsibleForTime = 1f;
+    private float invinsibleForTime = 0.2f;
 
     [Header("Scoring")]
     [SerializeField] public int pointsReward = 100;
@@ -31,6 +31,8 @@ public class ChickenHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     [HideInInspector] protected bool isInvinsible;
+    [HideInInspector] private Color originalColor = Color.white;
+    [SerializeField] private Color hurtColor;
 
     private void Awake()
     {
@@ -43,11 +45,24 @@ public class ChickenHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         health -= dmg;
-
+        Debug.Log("Damage :" +dmg + ", Health: " + health);
         if (health <= 0)
             HandleDeath();
         else
             HandleHit();
+    }
+
+    public IEnumerator ChipDamage(int damage){
+        TakeDamage(damage);
+        
+        if(health > 0){
+            yield return new WaitForSeconds(1f);
+            RedoChipDamage(damage);
+        }
+    }
+
+    private void RedoChipDamage(int damage){
+        StartCoroutine(ChipDamage(damage));
     }
 
     protected virtual void HandleDeath()
@@ -69,9 +84,9 @@ public class ChickenHealth : MonoBehaviour
     public IEnumerator StartInvinsibleTime()
     {
         hopController.GetComponent<BoxCollider2D>().enabled = false;
-        spriteRenderer.material = flashMaterial;
+        spriteRenderer.color = hurtColor;
         yield return new WaitForSeconds(invinsibleForTime);
-        spriteRenderer.material = originalMaterial;
+        spriteRenderer.color = originalColor;
         hopController.GetComponent<BoxCollider2D>().enabled = true;
         isInvinsible = false;
     }

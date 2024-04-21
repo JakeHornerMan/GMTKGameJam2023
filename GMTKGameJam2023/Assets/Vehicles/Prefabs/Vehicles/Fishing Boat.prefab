@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialChicken: {fileID: 0}
+  chickenSprite: {fileID: 0}
+  damage: 40
 --- !u!120 &7374250779628513986
 LineRenderer:
   serializedVersion: 2
@@ -67,7 +69,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
+  - {fileID: 2100000, guid: 63b4751f7a6ad11429b64018461413cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,8 +139,8 @@ LineRenderer:
       m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
+    numCornerVertices: 5
+    numCapVertices: 5
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
