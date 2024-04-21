@@ -48,7 +48,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] public bool placeableAnywhere = false;
 
     [Header("Speed")]
-    [SerializeField] protected float carSpeed = 5f;
+    [SerializeField] public float carSpeed = 5f;
     private float currentSpeed;
 
     [Header("Damage")]
@@ -134,7 +134,7 @@ public abstract class Car : MonoBehaviour
         }
     }
 
-    protected virtual void SetCarSpeed(float speed)
+    public virtual void SetCarSpeed(float speed)
     {
         if (rb != null)
             rb.velocity = transform.up * speed;

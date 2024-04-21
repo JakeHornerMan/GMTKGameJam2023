@@ -45,7 +45,7 @@ public class ChickenHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         health -= dmg;
-        Debug.Log("Damage :" +dmg + ", Health: " + health);
+        // Debug.Log("Damage :" +dmg + ", Health: " + health);
         if (health <= 0)
             HandleDeath();
         else
