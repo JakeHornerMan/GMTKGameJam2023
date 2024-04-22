@@ -42,7 +42,9 @@ public class ObjectBlueprint : MonoBehaviour
     [SerializeField] private LaneLabel laneLabelPrefab;
 
     [Header("Testing Values")]
-    public Car debugCar;
+    [SerializeField] private Car debugCar;
+    [SerializeField] private Ultimate debugUltimate;
+    [SerializeField] private ChickenMovement debugChicken;
 
     private void Start()
     {
@@ -50,6 +52,10 @@ public class ObjectBlueprint : MonoBehaviour
 
         if (debugCar != null )
             DisplayInfo(debugCar);
+        else if (debugChicken != null)
+            DisplayInfo(debugChicken);
+        else if (debugUltimate != null)
+            DisplayInfo(debugUltimate);
     }
 
     /// <summary>
@@ -124,5 +130,37 @@ public class ObjectBlueprint : MonoBehaviour
         return vehicle;
     }
 
+    /// <summary>
+    /// Override of Display Info for chicken information, 
+    /// only shows objectInfo currently.
+    /// </summary>
+    /// <param name="chickenMovement">The Chicken whose information to display.</param>
+    /// <returns>Sends back chicken object passed in.</returns>
     public ChickenMovement DisplayInfo(ChickenMovement chickenMovement)
+    { 
+        ClearUI();
+
+        ShowObjectInfo(chickenMovement.GetComponent<ObjectInfo>());
+
+        return chickenMovement;
+    }
+
+    /// <summary>
+    /// Override of Display Info for ultimate ability information, 
+    /// Shows objectInfo and shop unlock price currently.
+    /// </summary>
+    /// <param name="ultimate">The Ultimate ability whose information to display.</param>
+    /// <returns>Sends back ultimate object passed in.</returns>
+    public Ultimate DisplayInfo(Ultimate ultimate)
+    {
+        ClearUI();
+
+        ShowObjectInfo(ultimate.GetComponent<ObjectInfo>());
+
+        // Enable and set shop unlock cost view
+        shopUnlockCostText.text = ultimate.ultimateShopPrice.ToString("00");
+        shopUnlockCostText.transform.parent.gameObject.SetActive(true);
+
+        return ultimate;
+    }
 }
