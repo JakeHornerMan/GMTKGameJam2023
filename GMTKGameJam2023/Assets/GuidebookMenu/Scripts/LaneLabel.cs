@@ -36,7 +36,7 @@ public class LaneLabel : MonoBehaviour
     /// Shows lane tag name and corresponding lane sprite.
     /// </summary>
     /// <param name="laneTag">Tag of the lane to display in label.</param>
-    /// <returns>Sends back the tag of the lane</returns>
+    /// <returns>Sends back the tag of the lane.</returns>
     public string SetLabelLane(string laneTag)
     {
         laneNameText.text = laneTag;

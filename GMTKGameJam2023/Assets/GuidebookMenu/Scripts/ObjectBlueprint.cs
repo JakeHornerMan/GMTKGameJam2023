@@ -79,7 +79,7 @@ public class ObjectBlueprint : MonoBehaviour
 
     /// <summary>
     /// General function for all three: cars, ultimates, and chicken.
-    /// Just sets name, image, and description, which all 3 have in ObjectInfo
+    /// Just sets name, image, and description, which all 3 have in ObjectInfo.
     /// </summary>
     private void ShowObjectInfo(ObjectInfo obj)
     {
@@ -88,7 +88,13 @@ public class ObjectBlueprint : MonoBehaviour
         objectImage.sprite = obj.objectSprite;
     }
 
-    public void DisplayInfo(Car vehicle)
+    /// <summary>
+    /// Displays info for all types of cars. Includes basic ObjectInfo but also
+    /// token cost and shop unlock price and placeable lane labels.
+    /// </summary>
+    /// <param name="vehicle">Vehicle for which to display the information.</param>
+    /// <returns>Sends back the vehicle passed in.</returns>
+    public Car DisplayInfo(Car vehicle)
     {
         ClearUI();
 
@@ -114,5 +120,9 @@ public class ObjectBlueprint : MonoBehaviour
             ).GetComponent<LaneLabel>();
             newLabel.SetLabelLane(placeableLaneTag);
         }
+
+        return vehicle;
     }
+
+    public ChickenMovement DisplayInfo(ChickenMovement chickenMovement)
 }
