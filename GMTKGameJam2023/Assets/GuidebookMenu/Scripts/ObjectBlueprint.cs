@@ -31,6 +31,7 @@ public class ObjectBlueprint : MonoBehaviour
     [SerializeField] private TextMeshProUGUI objectNameText;
     [SerializeField] private Image objectImage;
     [SerializeField] private TextMeshProUGUI objectDescriptionText;
+    [SerializeField] private TextMeshProUGUI objectTypeText;
 
     [Tooltip("Only Vehicles: Cost of tokens to place")]
     [SerializeField] private TextMeshProUGUI tokenCostText;
@@ -68,6 +69,7 @@ public class ObjectBlueprint : MonoBehaviour
         objectNameText.text = string.Empty;
         objectDescriptionText.text = string.Empty;
         objectImage.sprite = null;
+        objectTypeText.text = string.Empty;
 
         // Hide token text and its parent display box
         tokenCostText.text = string.Empty;
@@ -81,6 +83,8 @@ public class ObjectBlueprint : MonoBehaviour
         for (var i = laneLabelGridContainer.transform.childCount - 1; i >= 0; i--)
             Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
         laneLabelGridContainer.gameObject.SetActive(false);
+
+        gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -89,6 +93,7 @@ public class ObjectBlueprint : MonoBehaviour
     /// </summary>
     private void ShowObjectInfo(ObjectInfo obj)
     {
+        gameObject.SetActive(true);
         objectNameText.text = obj.objectName;
         objectDescriptionText.text = obj.objectDescription;
         objectImage.sprite = obj.objectSprite;
@@ -103,6 +108,8 @@ public class ObjectBlueprint : MonoBehaviour
     public Car DisplayInfo(Car vehicle)
     {
         ClearUI();
+        objectTypeText.text = "Vehicle";
+        gameObject.SetActive(true);
 
         if (vehicle.GetComponent<ObjectInfo>() != null)
             ShowObjectInfo(vehicle.GetComponent<ObjectInfo>());
@@ -139,6 +146,8 @@ public class ObjectBlueprint : MonoBehaviour
     public ChickenMovement DisplayInfo(ChickenMovement chickenMovement)
     { 
         ClearUI();
+        objectTypeText.text = "Chicken";
+        gameObject.SetActive(true);
 
         ShowObjectInfo(chickenMovement.GetComponent<ObjectInfo>());
 
@@ -154,6 +163,8 @@ public class ObjectBlueprint : MonoBehaviour
     public Ultimate DisplayInfo(Ultimate ultimate)
     {
         ClearUI();
+        objectTypeText.text = "Ultimate";
+        gameObject.SetActive(true);
 
         ShowObjectInfo(ultimate.GetComponent<ObjectInfo>());
 
