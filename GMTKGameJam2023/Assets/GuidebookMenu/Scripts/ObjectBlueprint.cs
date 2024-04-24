@@ -51,12 +51,14 @@ public class ObjectBlueprint : MonoBehaviour
     {
         ClearUI();
 
-        if (debugCar != null )
+        if (debugCar != null)
             DisplayInfo(debugCar);
         else if (debugChicken != null)
             DisplayInfo(debugChicken);
         else if (debugUltimate != null)
             DisplayInfo(debugUltimate);
+
+        gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -173,5 +175,12 @@ public class ObjectBlueprint : MonoBehaviour
         shopUnlockCostText.transform.parent.gameObject.SetActive(true);
 
         return ultimate;
+    }
+
+    // Handle Click on Close Button from UI
+    public void HandleClose()
+    {
+        ClearUI();
+        gameObject.SetActive(false);
     }
 }
