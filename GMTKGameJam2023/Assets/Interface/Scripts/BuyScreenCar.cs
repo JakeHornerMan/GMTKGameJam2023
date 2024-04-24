@@ -11,6 +11,7 @@ public class BuyScreenCar : MonoBehaviour
     [SerializeField] public TextMeshProUGUI tokenPriceText;
     [SerializeField] private Image correspCarIcon;
 
+
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
 
@@ -24,4 +25,5 @@ public class BuyScreenCar : MonoBehaviour
         tokenPriceText.text = correspondingCar.carShopPrice.ToString("0");
         correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
     }
+
 }

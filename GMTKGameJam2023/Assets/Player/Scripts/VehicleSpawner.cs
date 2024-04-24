@@ -266,8 +266,8 @@ public class VehicleSpawner : MonoBehaviour
         lastLaneSpawned = hit.collider;
         currentTimeUntilNextSpawn = timeUntilNextSpawn;
 
-        // Reduce Car Wallet Count
-        carWallet.carCount--;
+        // // Reduce Car Wallet Count
+        // carWallet.carCount--;
         
         ultimateManager.ultimateEnabled = false;
 
