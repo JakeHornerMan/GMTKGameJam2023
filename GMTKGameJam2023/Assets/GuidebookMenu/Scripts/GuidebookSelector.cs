@@ -20,7 +20,7 @@ public class GuidebookSelector : MonoBehaviour
     [SerializeField] private Ultimate[] ultimatesToShow;
 
     // Store current displayed type if needed
-    private enum ViewType { Cars, Ultimates, Vehicles }
+    private enum ViewType { Cars, Ultimates, Chicken }
     private ViewType currentViewType;
 
     private void Start()
@@ -48,6 +48,20 @@ public class GuidebookSelector : MonoBehaviour
                 buttonsContainer
             ).GetComponent<GuidebookButton>();
             btn.Creation(car);
+        }
+    }
+
+    public void ShowChickenButtons()
+    {
+        currentViewType = ViewType.Chicken;
+        ClearGrid();
+        foreach (ChickenMovement chicken in chickensToShow)
+        {
+            GuidebookButton btn = Instantiate(
+                guideSelectButtonPrefab,
+                buttonsContainer
+            ).GetComponent<GuidebookButton>();
+            btn.Creation(chicken);
         }
     }
 }
