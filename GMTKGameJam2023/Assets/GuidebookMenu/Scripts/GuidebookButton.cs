@@ -50,7 +50,6 @@ public class GuidebookButton : MonoBehaviour
     public void HandleClick()
     {
         ObjectBlueprint blueprint = FindObjectOfType<ObjectBlueprint>(true);
-        Debug.Log(blueprint + "THIS IS HERE");
         if (objectType == ObjectType.Cars)
             blueprint.DisplayInfo(assignedCar);
         if (objectType == ObjectType.Ultimates)
