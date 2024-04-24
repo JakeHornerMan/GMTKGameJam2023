@@ -189,6 +189,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c475fda4e7590a94caf58453af3c669a, type: 3}
+--- !u!1001 &10683267
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6077706268648720092, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_Name
+      value: Delivery Van
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251440986272331830, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
 --- !u!1001 &118692447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -382,6 +443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Chicken (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -504,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -564,6 +633,10 @@ PrefabInstance:
     - target: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
       propertyPath: m_Name
       value: Rocket Chicken (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -743,6 +816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ice Chicken (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -803,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
       propertyPath: m_Name
       value: BrickLayerChicken
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -867,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -986,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1048,6 +1129,10 @@ PrefabInstance:
     - target: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
       propertyPath: m_Name
       value: Ice Chicken (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1497,6 +1582,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731842054829148352, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8823391685847368037, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}

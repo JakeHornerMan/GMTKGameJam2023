@@ -17,7 +17,7 @@ public class CameraShaker : MonoBehaviour
     private bool isCameraShaking = false;
 
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {

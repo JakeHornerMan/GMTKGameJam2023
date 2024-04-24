@@ -118,7 +118,7 @@ public class SceneFader : MonoBehaviour
     public IEnumerator WipeToScene(string targetScene)
     {
         StartCoroutine(MoveOutScreenWiper());
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(3);
         LoadScene(targetScene);
     }
 

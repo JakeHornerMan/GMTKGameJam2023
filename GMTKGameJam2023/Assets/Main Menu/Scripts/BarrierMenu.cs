@@ -16,6 +16,13 @@ public class BarrierMenu : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
+    private void OnEnable()
+    {
+        gameObject.GetComponent<Collider2D>().enabled = true;
+
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+    }
+
     // Update is called once per frame
     public void BarrierHit()
     {
@@ -29,6 +36,7 @@ public class BarrierMenu : MonoBehaviour
 
         yield return new WaitForSeconds(wallDisappearAnimLength);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }

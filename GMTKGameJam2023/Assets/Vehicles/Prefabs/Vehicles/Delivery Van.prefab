@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8edf4d8e4f1a8974985867936ed98059, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: 171791225829203903}
-  - component: {fileID: 687537559923561082}
+  - component: {fileID: 4384981886227108248}
   m_Layer: 6
-  m_Name: Menu Car
+  m_Name: Delivery Van
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: HatchBack
-  objectSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  objectName: DeliveryVan
+  objectSprite: {fileID: 21300000, guid: 8edf4d8e4f1a8974985867936ed98059, type: 3}
   objectIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
   objectDescription: 'Get you where you wanna go, if you know what I mean
 
@@ -241,7 +241,7 @@ MonoBehaviour:
 
     Now shut up and drive,
     drive, drive (drive)'
---- !u!114 &687537559923561082
+--- !u!114 &4384981886227108248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,28 +250,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc94dccff365d34798f3d1e5885db61, type: 3}
+  m_Script: {fileID: 11500000, guid: a8f68da523c810341bbb1fad19b8f975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carHealth: 100
-  canSpinOut: 1
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  comboSymbol: x
+  comboText: {fileID: 5885361816208039466}
+  carType: 0
+  carHealth: 125
+  carPrice: 3
+  ignoreTokens: 0
+  isSlicingCar: 0
+  canIBeBombed: 1
+  canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
+  carTeleporting: 0
+  carShopPrice: 0
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
-  carSpeed: 7
+  carSpeed: 3.5
   damage: 120
+  comboMultiplier: 0.2
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
+  tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  cashPopUpMsg: Cash
+  popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
   camShakeDuration: 0.5
   camShakeMagnitude: 1
-  spawnSound:
-  - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
+  spawnSound: []
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+  obstaclePrefab: {fileID: 2485021673343220693, guid: f06b893e49ce4da47b06639da146310d, type: 3}
+  dropInterval: 0.75
+  closestRoad: {fileID: 0}
+  timeToReachTarget: 1
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,10 +545,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -636,3 +651,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
   m_PrefabInstance: {fileID: 4499845903405435634}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5885361816208039466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+  m_PrefabInstance: {fileID: 4499845903405435634}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

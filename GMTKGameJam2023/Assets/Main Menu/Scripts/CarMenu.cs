@@ -58,6 +58,8 @@ public class CarMenu : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
+
+        
     }
 
     public virtual void Start()
@@ -66,7 +68,9 @@ public class CarMenu : MonoBehaviour
 
         carSpriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
 
-        soundManager?.RandomPlaySound(spawnSound);
+        StartCoroutine(DisableCarCollisionOnSpawn());
+
+        //soundManager?.RandomPlaySound(spawnSound);
 
         // Shake Camera
         if (cameraShaker.isActiveAndEnabled)
@@ -235,6 +239,15 @@ public class CarMenu : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator DisableCarCollisionOnSpawn()
+    {
+        GetComponent<Collider2D>().enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        GetComponent<Collider2D>().enabled = true;
     }
 
     public virtual void CarGoesOffscreen()

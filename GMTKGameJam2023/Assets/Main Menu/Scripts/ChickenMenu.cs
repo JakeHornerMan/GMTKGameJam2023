@@ -36,7 +36,17 @@ public class ChickenMenu : MonoBehaviour
     {
         Vector3 particlePos = new(transform.position.x, transform.position.y, featherParticlesZPos);
         Instantiate(featherParticles, particlePos, Quaternion.identity);
-        Destroy(gameObject);
+
+
+        gameObject.SetActive(false);
+
+        //Destroy(gameObject);
+    }
+
+    public void RespawnChicken()
+    {
+        health = startHealth;
+        gameObject.SetActive(true);
     }
 
     public void PlayChickenHitstop()

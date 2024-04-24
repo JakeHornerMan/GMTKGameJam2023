@@ -13,11 +13,33 @@ MonoBehaviour:
   m_Name: State-Driven Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: Starting Camera
+  - m_From: Start Camera
     m_To: Play Camera
     m_Blend:
       m_Style: 1
       m_Time: 3.5
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: Start Camera
+    m_To: Settings Camera
+    m_Blend:
+      m_Style: 1
+      m_Time: 1.5
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: Play Camera
+    m_To: Enter Game Camera
+    m_Blend:
+      m_Style: 1
+      m_Time: 5
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

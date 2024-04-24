@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MenuInteraction : MonoBehaviour
 {
+    public static MenuInteraction instance;
+
     [Header("Input")]
     [SerializeField] private GameObject activeCar;
     [SerializeField] private int placeMouseBtn = 0;
@@ -19,10 +21,21 @@ public class MenuInteraction : MonoBehaviour
     public GameObject pointer;
     [SerializeField] private LayerMask roadLayer;
 
+    [Header("Sound")]
+    [HideInInspector] public SoundManager soundManager;
+    [SerializeField] private SoundConfig[] spawnSound;
+
     void Start()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         mainCamera = Camera.main;
         cameraShaker = FindObjectOfType<CameraShaker>();
+        soundManager = FindObjectOfType<SoundManager>();
         pointer.SetActive(false);
         StartCoroutine(PlayPointer());
     }
@@ -40,8 +53,20 @@ public class MenuInteraction : MonoBehaviour
     private void MouseInputs()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn))
-            if(canPlace){
-                PlaceSelectedCar();
+            if (canPlace)
+            {
+                MenuRoad road = CheckForRoad();
+
+                if (road != null)
+                {
+                    carPlaced = true;
+                    if (pointer.activeSelf)
+                        pointer.GetComponent<Animator>().Play("ClickDisappear");
+
+                    StartCoroutine(RoadSelected());
+
+                    TriggerMenuCinemachine.instance.LaneSelect(road);
+                }
             }
 
         UpdateMousePos();
@@ -59,7 +84,18 @@ public class MenuInteraction : MonoBehaviour
                 case TouchPhase.Began:
                     inputPos = mainCamera.ScreenToWorldPoint(touch.position);
                     if(canPlace){
-                        PlaceSelectedCar();
+                        MenuRoad road = CheckForRoad();
+
+                        if (road != null)
+                        {
+                            carPlaced = true;
+                            if (pointer.activeSelf)
+                                pointer.GetComponent<Animator>().Play("ClickDisappear");
+
+                            StartCoroutine(RoadSelected());
+
+                            TriggerMenuCinemachine.instance.LaneSelect(road);
+                        }
                     }
                     break;
                 case TouchPhase.Moved:
@@ -75,7 +111,21 @@ public class MenuInteraction : MonoBehaviour
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    private void PlaceSelectedCar()
+    private MenuRoad CheckForRoad()
+    {
+        // Raycast toward Click
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero, 1000f, roadLayer);
+
+        // Return if Clicked Nothing
+        if (hit.collider == null)
+            return null;
+        else
+        {
+            return hit.collider.gameObject.GetComponent<MenuRoad>();
+        }
+    }
+
+    public void PlaceSelectedCar(MenuRoad road)
     {
         // Raycast toward Click
         RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero, 1000f, roadLayer);
@@ -99,7 +149,7 @@ public class MenuInteraction : MonoBehaviour
         // if (activeCar.placeableAnywhere)
             // spawnPos = new Vector3(inputPos.x, inputPos.y, 1);
         // else
-            spawnPos = hit.collider.transform.position + (Vector3)spawnOffset;
+            spawnPos = road.transform.position + (Vector3)spawnOffset;
 
         // To prevent car spamming on the same lane
         // if (hit.collider == lastLaneSpawned && currentTimeUntilNextSpawn > 0)
@@ -115,19 +165,41 @@ public class MenuInteraction : MonoBehaviour
         if(pointer.activeSelf)
             pointer.GetComponent<Animator>().Play("ClickDisappear");
 
-        StartCoroutine(CannotPlace());
+        StartCoroutine(RoadSelected());
 
+        
 
         // lastLaneSpawned = hit.collider;
         // currentTimeUntilNextSpawn = timeUntilNextSpawn;
 
     }
 
-    public IEnumerator CannotPlace()
+    public IEnumerator RoadSelected()
     {
         canPlace= false;
+
+        //Stop all lanes from flashing
+        foreach (MenuRoad road in FindObjectsOfType<MenuRoad>())
+        {
+            road.DeactivateHighlight();
+
+            road.ActivateChicken();
+
+        }
+
+        soundManager?.RandomPlaySound(spawnSound);
+
+
         yield return new WaitForSeconds(3f);
         canPlace= true;
+
+
+        //Probably isn't optimal but it works
+        foreach (MenuRoad road in FindObjectsOfType<MenuRoad>())
+        {
+            road.ActivateHighlight();
+        }
+
     }
 
     public IEnumerator PlayPointer()
