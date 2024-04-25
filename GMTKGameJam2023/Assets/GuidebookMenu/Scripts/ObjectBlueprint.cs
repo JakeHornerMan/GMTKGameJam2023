@@ -45,7 +45,7 @@ public class ObjectBlueprint : MonoBehaviour
     [Header("Testing Values")]
     [SerializeField] private Car debugCar;
     [SerializeField] private Ultimate debugUltimate;
-    [SerializeField] private ChickenMovement debugChicken;
+    [SerializeField] private ObjectInfo debugChicken;
 
     private void Start()
     {
@@ -145,13 +145,13 @@ public class ObjectBlueprint : MonoBehaviour
     /// </summary>
     /// <param name="chickenMovement">The Chicken whose information to display.</param>
     /// <returns>Sends back chicken object passed in.</returns>
-    public ChickenMovement DisplayInfo(ChickenMovement chickenMovement)
+    public ObjectInfo DisplayInfo(ObjectInfo chickenMovement)
     { 
         ClearUI();
         objectTypeText.text = "Chicken";
         gameObject.SetActive(true);
 
-        ShowObjectInfo(chickenMovement.GetComponent<ObjectInfo>());
+        ShowObjectInfo(chickenMovement);
 
         return chickenMovement;
     }

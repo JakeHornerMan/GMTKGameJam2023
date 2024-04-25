@@ -16,8 +16,8 @@ public class GuidebookSelector : MonoBehaviour
 
     [Header("Items to Display")]
     [SerializeField] private Car[] carsToShow;
-    [SerializeField] private ChickenMovement[] chickensToShow;
     [SerializeField] private Ultimate[] ultimatesToShow;
+    [SerializeField] private ObjectInfo[] chickenToShow;
 
     // Store current displayed type if needed
     private enum ViewType { Cars, Ultimates, Chicken }
@@ -55,13 +55,27 @@ public class GuidebookSelector : MonoBehaviour
     {
         currentViewType = ViewType.Chicken;
         ClearGrid();
-        foreach (ChickenMovement chicken in chickensToShow)
+        foreach (ObjectInfo chicken in chickenToShow)
         {
             GuidebookButton btn = Instantiate(
                 guideSelectButtonPrefab,
                 buttonsContainer
             ).GetComponent<GuidebookButton>();
             btn.Creation(chicken);
+        }
+    }
+
+    public void ShowUltimateButtons()
+    {
+        currentViewType = ViewType.Ultimates;
+        ClearGrid();
+        foreach (Ultimate ultimate in ultimatesToShow)
+        {
+            GuidebookButton btn = Instantiate(
+                guideSelectButtonPrefab,
+                buttonsContainer
+            ).GetComponent<GuidebookButton>();
+            btn.Creation(ultimate);
         }
     }
 }
