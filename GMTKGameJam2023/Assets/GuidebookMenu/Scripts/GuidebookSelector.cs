@@ -20,8 +20,8 @@ public class GuidebookSelector : MonoBehaviour
     [SerializeField] private ObjectInfo[] chickenToShow;
 
     // Store current displayed type if needed
-    private enum ViewType { Cars, Ultimates, Chicken }
-    private ViewType currentViewType;
+    public enum ViewType { Cars, Ultimates, Chicken }
+    public ViewType currentViewType;
 
     private void Start()
     {

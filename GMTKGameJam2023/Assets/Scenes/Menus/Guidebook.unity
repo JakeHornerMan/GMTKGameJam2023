@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 129919274}
   - component: {fileID: 129919273}
   - component: {fileID: 129919272}
+  - component: {fileID: 129919275}
   m_Layer: 5
   m_Name: ChickenTab
   m_TagString: Untagged
@@ -290,7 +291,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 129919273}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 129919275}
+        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &129919273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +342,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129919270}
   m_CullTransparentMesh: 1
+--- !u!114 &129919275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129919270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 2
+  inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
 --- !u!1 &166630559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1469,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 350, y: 200}
+  m_CellSize: {x: 345, y: 200}
   m_Spacing: {x: 15, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 4
@@ -2473,6 +2501,7 @@ MonoBehaviour:
   - {fileID: 9038809129756289598, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
   - {fileID: 9038809129756289598, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
   - {fileID: 9038809129756289598, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+  currentViewType: 0
 --- !u!1001 &1808773121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2546,6 +2575,7 @@ GameObject:
   - component: {fileID: 1886954298}
   - component: {fileID: 1886954297}
   - component: {fileID: 1886954296}
+  - component: {fileID: 1886954300}
   m_Layer: 5
   m_Name: UltimateTab
   m_TagString: Untagged
@@ -2617,7 +2647,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1886954297}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1886954300}
+        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1886954297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,6 +2698,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886954294}
   m_CullTransparentMesh: 1
+--- !u!114 &1886954300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886954294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 1
+  inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
 --- !u!1 &1933743388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,6 +3021,7 @@ GameObject:
   - component: {fileID: 2050895267}
   - component: {fileID: 2050895266}
   - component: {fileID: 2050895265}
+  - component: {fileID: 2050895269}
   m_Layer: 5
   m_Name: CarTab
   m_TagString: Untagged
@@ -3035,7 +3093,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2050895266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2050895269}
+        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2050895266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3074,6 +3144,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050895263}
   m_CullTransparentMesh: 1
+--- !u!114 &2050895269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050895263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 0
+  inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
 --- !u!1 &2130818056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,14 +3350,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1164378872668443953}
     m_Modifications:
-    - target: {fileID: 113846028965391124, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 519406394334241637, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3734128611872171293, guid: d9e3a583fa523374797791755d001ee4, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3283,10 +3360,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3734128611872171293, guid: d9e3a583fa523374797791755d001ee4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3734128611872171293, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3734128611872171293, guid: d9e3a583fa523374797791755d001ee4, type: 3}
@@ -3301,29 +3374,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5583218678324113531, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6593321850947948976, guid: d9e3a583fa523374797791755d001ee4, type: 3}
       propertyPath: m_Name
       value: General Object Blueprint
-      objectReference: {fileID: 0}
-    - target: {fileID: 6593321850947948976, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7373679334458100315, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7637776535901448576, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7776127928803091706, guid: d9e3a583fa523374797791755d001ee4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
