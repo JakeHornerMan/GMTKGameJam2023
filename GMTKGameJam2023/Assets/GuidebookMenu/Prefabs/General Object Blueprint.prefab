@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 529122217130650729}
   - component: {fileID: 322304411915467742}
   - component: {fileID: 8246797589661463884}
+  - component: {fileID: 4098113140330888260}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -346,6 +347,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4098113140330888260
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277300580374288247}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2760515163451362184
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +370,7 @@ GameObject:
   - component: {fileID: 7373679334458100315}
   - component: {fileID: 1100562440582215265}
   - component: {fileID: 5100226569455958983}
+  - component: {fileID: 5022794937892378003}
   m_Layer: 5
   m_Name: Car Name
   m_TagString: Untagged
@@ -481,6 +495,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &5022794937892378003
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760515163451362184}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2880225166558970127
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +654,7 @@ GameObject:
   - component: {fileID: 7323799587589082016}
   - component: {fileID: 1689941215653947498}
   - component: {fileID: 8415706275606240237}
+  - component: {fileID: 7976783656761613963}
   m_Layer: 5
   m_Name: Placeable Lanes
   m_TagString: Untagged
@@ -717,6 +744,18 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 2
   m_ConstraintCount: 2
+--- !u!225 &7976783656761613963
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369902552539435497}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3488734012429401117
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +767,7 @@ GameObject:
   - component: {fileID: 7637776535901448576}
   - component: {fileID: 6717525901292640788}
   - component: {fileID: 939023378518944155}
+  - component: {fileID: 2213658638772173371}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -854,6 +894,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &2213658638772173371
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488734012429401117}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3724579240772781138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1295,7 @@ GameObject:
   - component: {fileID: 5583218678324113531}
   - component: {fileID: 7275319981090790985}
   - component: {fileID: 1124901104540187922}
+  - component: {fileID: 5783518002593603949}
   m_Layer: 5
   m_Name: ShopCost
   m_TagString: Untagged
@@ -1310,6 +1363,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5783518002593603949
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596348097277811789}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5168711640184202717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,6 +1386,7 @@ GameObject:
   - component: {fileID: 519406394334241637}
   - component: {fileID: 5169951912140227025}
   - component: {fileID: 8245040775010751745}
+  - component: {fileID: 9023099995276897437}
   m_Layer: 5
   m_Name: TokenCost
   m_TagString: Untagged
@@ -1388,6 +1454,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &9023099995276897437
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5168711640184202717}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5432798858602005848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1553,7 @@ GameObject:
   - component: {fileID: 113846028965391124}
   - component: {fileID: 5050332463497480268}
   - component: {fileID: 459573915879538009}
+  - component: {fileID: 2990791066186893065}
   m_Layer: 5
   m_Name: ObjectType
   m_TagString: Untagged
@@ -1541,6 +1620,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &2990791066186893065
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550421312964883186}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6060220474547102149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1863,7 @@ GameObject:
   - component: {fileID: 7836235591276308633}
   - component: {fileID: 7150659156464039329}
   - component: {fileID: 7058412590150934685}
+  - component: {fileID: 1075457256741655421}
   m_Layer: 5
   m_Name: CloseBtn
   m_TagString: Untagged
@@ -1894,3 +1986,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &1075457256741655421
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8521955133006091800}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
