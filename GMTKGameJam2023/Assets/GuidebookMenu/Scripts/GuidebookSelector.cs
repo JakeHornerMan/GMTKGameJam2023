@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,19 +15,44 @@ public class GuidebookSelector : MonoBehaviour
     [SerializeField] private Transform buttonsContainer;
     [SerializeField] private GameObject guideSelectButtonPrefab;
 
+    [Header("Navigation Buttons")]
+    [SerializeField] private GameObject nextBtn;
+    [SerializeField] private GameObject prevBtn;
+
     [Header("Items to Display")]
-    [SerializeField] private Car[] carsToShow;
-    [SerializeField] private Ultimate[] ultimatesToShow;
-    [SerializeField] private ObjectInfo[] chickenToShow;
+    [SerializeField] private List<Car> carsToShow;
+    [SerializeField] private List<Ultimate> ultimatesToShow;
+    [SerializeField] private List<ObjectInfo> chickenToShow;
 
     // Store current displayed type if needed
     public enum ViewType { Cars, Ultimates, Chicken }
     public ViewType currentViewType;
 
+    private ObjectBlueprint objectBlueprint;
+
+    private void Awake()
+    {
+        objectBlueprint = FindObjectOfType<ObjectBlueprint>();
+    }
+
     private void Start()
     {
         // Show Cars by Default
         ShowCarButtons();
+    }
+
+    private void Update()
+    {
+        if (objectBlueprint.gameObject.activeInHierarchy)
+        {
+            nextBtn.SetActive(true);
+            prevBtn.SetActive(true);
+        }
+        else
+        {
+            nextBtn.SetActive(false);
+            prevBtn.SetActive(false);
+        }
     }
 
     // Clear all buttons in grid layout container
@@ -76,6 +102,91 @@ public class GuidebookSelector : MonoBehaviour
                 buttonsContainer
             ).GetComponent<GuidebookButton>();
             btn.Creation(ultimate);
+        }
+    }
+
+    // Handle Next and Previous Button
+    public void ShowNextItem()
+    {
+        if (currentViewType == ViewType.Cars)
+        {
+            Car currentCar = objectBlueprint.currentlyDisplayedObject.GetComponent<Car>();
+            int currentIndex = carsToShow.IndexOf(currentCar);
+            int nextIndex = currentIndex + 1;
+
+            // Next index does not exist, go back to first
+            if (nextIndex == carsToShow.Count) nextIndex = 0;
+
+            objectBlueprint.DisplayInfo(carsToShow[nextIndex]);
+        }
+
+        if (currentViewType == ViewType.Ultimates)
+        {
+            Ultimate currentUltimate = objectBlueprint.currentlyDisplayedObject.GetComponent<Ultimate>();
+            int currentIndex = ultimatesToShow.IndexOf(currentUltimate);
+            int nextIndex = currentIndex + 1;
+
+            // Next index does not exist, go back to first
+            if (nextIndex == ultimatesToShow.Count) nextIndex = 0;
+
+            objectBlueprint.DisplayInfo(ultimatesToShow[nextIndex]);
+        }
+
+        if (currentViewType == ViewType.Chicken)
+        {
+            ObjectInfo currentChicken = objectBlueprint.currentlyDisplayedObject;
+            int currentIndex = chickenToShow.IndexOf(currentChicken);
+            int nextIndex = currentIndex + 1;
+
+            // Next index does not exist, go back to first
+            if (nextIndex == chickenToShow.Count) nextIndex = 0;
+
+            objectBlueprint.DisplayInfo(chickenToShow[nextIndex]);
+        }
+    }
+
+    public void ShowPrevItem()
+    {
+        if (currentViewType == ViewType.Cars)
+        {
+            Car currentCar = objectBlueprint.currentlyDisplayedObject.GetComponent<Car>();
+            int currentIndex = carsToShow.IndexOf(currentCar);
+            int prevIndex = currentIndex - 1;
+
+            // Prev index does not exist, go back to first
+            if (prevIndex < 0)
+                objectBlueprint.DisplayInfo(carsToShow[^1]);
+            // Prev Index is valid
+            else
+                objectBlueprint.DisplayInfo(carsToShow[prevIndex]);
+        }
+
+        if (currentViewType == ViewType.Ultimates)
+        {
+            Ultimate currentUltimate = objectBlueprint.currentlyDisplayedObject.GetComponent<Ultimate>();
+            int currentIndex = ultimatesToShow.IndexOf(currentUltimate);
+            int prevIndex = currentIndex - 1;
+
+            // Prev index does not exist, go back to first
+            if (prevIndex < 0)
+                objectBlueprint.DisplayInfo(ultimatesToShow[^1]);
+            // Prev Index is valid
+            else
+                objectBlueprint.DisplayInfo(ultimatesToShow[prevIndex]);
+        }
+
+        if (currentViewType == ViewType.Chicken)
+        {
+            ObjectInfo currentChicken = objectBlueprint.currentlyDisplayedObject;
+            int currentIndex = chickenToShow.IndexOf(currentChicken);
+            int prevIndex = currentIndex - 1;
+
+            // Prev index does not exist, go back to first
+            if (prevIndex < 0)
+                objectBlueprint.DisplayInfo(chickenToShow[^1]);
+            // Prev Index is valid
+            else
+                objectBlueprint.DisplayInfo(chickenToShow[prevIndex]);
         }
     }
 }

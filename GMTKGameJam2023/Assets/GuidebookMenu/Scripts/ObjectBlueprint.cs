@@ -47,6 +47,8 @@ public class ObjectBlueprint : MonoBehaviour
     [SerializeField] private Ultimate debugUltimate;
     [SerializeField] private ObjectInfo debugChicken;
 
+    public ObjectInfo currentlyDisplayedObject;
+
     private void Start()
     {
         ClearUI();
@@ -86,7 +88,9 @@ public class ObjectBlueprint : MonoBehaviour
             Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
         laneLabelGridContainer.gameObject.SetActive(false);
 
-        gameObject.SetActive(false);
+        // Enabling makes animation run every time something new is displayed
+        // i.e. When scrolling using left/right arrows
+        // gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -99,6 +103,7 @@ public class ObjectBlueprint : MonoBehaviour
         objectNameText.text = obj.objectName;
         objectDescriptionText.text = obj.objectDescription;
         objectImage.sprite = obj.objectSprite;
+        currentlyDisplayedObject = obj;
     }
 
     /// <summary>
