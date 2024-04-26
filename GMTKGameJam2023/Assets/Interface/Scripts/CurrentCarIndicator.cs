@@ -30,6 +30,7 @@ public class CurrentCarIndicator : MonoBehaviour
 
     [Header("Colors")]
     [SerializeField] private Color positiveColor;
+    [SerializeField] private Color positiveBlueColor;
     [SerializeField] private Color negativeColor;
 
     private CarWallet carWallet;
@@ -56,11 +57,13 @@ public class CurrentCarIndicator : MonoBehaviour
         walletRefillTimer.fillAmount = 1 - (carWallet.timeUntilRefill / carWallet.refillDelaySeconds);
         // New single-line token display
         combinedTokenDisplay.text = $"{currentActiveCar.carPrice}/{playerCash}";
+        combinedTokenDisplay.color = playerCash >= currentActiveCar.carPrice ? positiveBlueColor : negativeColor;
     }
 
     public void SetUI(Ultimate currentUlt)
     {
         carSprite.sprite = currentUlt.GetComponent<ObjectInfo>().objectSprite;
         carName.text = currentUlt.GetComponent<ObjectInfo>().objectName;
+        combinedTokenDisplay.text = string.Empty;
     }
 }
