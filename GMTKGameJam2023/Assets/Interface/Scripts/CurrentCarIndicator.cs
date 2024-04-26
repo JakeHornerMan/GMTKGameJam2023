@@ -57,4 +57,10 @@ public class CurrentCarIndicator : MonoBehaviour
         // New single-line token display
         combinedTokenDisplay.text = $"{currentActiveCar.carPrice}/{playerCash}";
     }
+
+    public void SetUI(Ultimate currentUlt)
+    {
+        carSprite.sprite = currentUlt.GetComponent<ObjectInfo>().objectSprite;
+        carName.text = currentUlt.GetComponent<ObjectInfo>().objectName;
+    }
 }

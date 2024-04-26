@@ -332,7 +332,11 @@ public class VehicleSpawner : MonoBehaviour
         {
             if (currentCarIndicator.followCursor)
                 currentCarIndicator.transform.position = new Vector3(inputPos.x, inputPos.y, 0);
-            currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
+
+            if (currentUltimateAbility != null)
+                currentCarIndicator.SetUI(currentUltimateAbility);
+            else
+                currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
         }
     }
 
