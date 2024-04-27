@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8614834387938461589}
-  - component: {fileID: 2557463974196538456}
   - component: {fileID: 5996180526844374429}
   m_Layer: 7
   m_Name: Hop Controller
@@ -34,27 +33,6 @@ Transform:
   m_Father: {fileID: 3019719179053846538}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2557463974196538456
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469911086233366047}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a3a0d69aea62cd48a29d6c78a35115a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &5996180526844374429
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,9 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3019719179053846538}
   - component: {fileID: 315510484514270918}
-  - component: {fileID: 8089028048643985026}
-  - component: {fileID: -5117147452543026932}
-  - component: {fileID: 5124420335599565337}
+  - component: {fileID: 3036728650211581952}
   m_Layer: 7
   m_Name: MenuChicken
   m_TagString: Chicken
@@ -240,7 +216,7 @@ Transform:
   m_Children:
   - {fileID: 8614834387938461589}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &315510484514270918
 Rigidbody2D:
@@ -269,7 +245,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8089028048643985026
+--- !u!114 &3036728650211581952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,69 +254,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7467406142021207113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448639bfdbc488d49becbcadbbed3346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hopController: {fileID: 469911086233366047}
-  chickenSprite: {fileID: 7432632716323759472}
-  chickenCollider: {fileID: 5996180526844374429}
-  splashParticles: {fileID: 6085739347515352222, guid: 0ac7d6339c598f44984130e93eb6b00e, type: 3}
-  chickenIntesity: 0
-  minMoveTime: 1
-  maxMoveTime: 3
-  laneDistance: 0
-  maxYHeight: 5
-  minYHeight: -5
-  ignoreCement: 0
-  isStuck: 0
-  cementLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  waterLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  animatorHopBool: Hop
-  animationFinishTime: 0.5
-  stopMovement: 0
-  hitStopLength: 0.03
-  freezeColor: {r: 0, g: 0.7647059, b: 1, a: 1}
-  spinningStars: {fileID: 0}
---- !u!114 &-5117147452543026932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7467406142021207113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9242a8be3d2dada41bc2edcf772cd50b, type: 3}
+  m_Script: {fileID: 11500000, guid: fae9d9019db1f94468440e617b79e539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   featherParticles: {fileID: 2811581772486231686, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   featherParticlesZPos: -5
   chickenSprite: {fileID: 7432632716323759472}
   hopController: {fileID: 469911086233366047}
-  damagedByHose: 1
-  hoseWaterTag: Hose Water
-  startHealth: 100
-  pointsReward: 100
+  startHealth: 1
   health: 0
-  flashMaterial: {fileID: 0}
-  hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
---- !u!114 &5124420335599565337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7467406142021207113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: Chicken
-  objectSprite: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
-  objectIcon: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
-  objectDescription: The standard chicken.
+  hitStopLength: 0.25

@@ -10,16 +10,19 @@ public class EnvironmentalObstacle : MonoBehaviour
     public bool isKnockable = false;
 
     private Rigidbody2D rb;
+    private Collider2D collider;
 
     [SerializeField] private float launchSpeed = 0.66f;
+    [SerializeField] private float launchSize = 5f;
 
     [SerializeField] private bool canSpin = false;
     [SerializeField] private float degreesPerSecond = 540f;
     private bool isSpinning;
 
-    private void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,7 +78,9 @@ public class EnvironmentalObstacle : MonoBehaviour
         // Normalize the Vector2
         Vector2 normalizedVector = randomVector.normalized;
 
-        GetComponent<Collider2D>().enabled = false;
+        collider.enabled = false;
+
+        isKnockable = false;
 
         HitStop.instance.StartHitStop(0.05f);
         CameraShaker.instance.Shake(0.5f, 1.0f);
@@ -83,6 +88,17 @@ public class EnvironmentalObstacle : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = normalizedVector * 25;
+        }
+
+        if (TryGetComponent<Animator>(out Animator animator))
+        {
+            animator.SetTrigger("Knocked");
+
+            if (canSpin == true)
+            {
+                StartSpinning();
+            }
+
         }
         
 
@@ -93,7 +109,7 @@ public class EnvironmentalObstacle : MonoBehaviour
         //    Destroy(currentBomb, 0.85f);
         //}
 
-        StartCoroutine(LaunchObjectCoroutine(new Vector3(15, 15, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
+        StartCoroutine(LaunchObjectCoroutine(new Vector3(launchSize, launchSize, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
     }
 
     private IEnumerator LaunchObjectCoroutine(Vector3 targetScale, Vector3 targetPos)
