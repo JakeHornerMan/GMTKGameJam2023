@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlternativeChickenMovement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject chickenSprite;
+    [SerializeField] public GameObject chickenSprite;
     [SerializeField] public Collider2D chickenCollider;
     [HideInInspector] private SpriteRenderer spriteRenderer;
     [HideInInspector] public LayerMask cementLayer;
