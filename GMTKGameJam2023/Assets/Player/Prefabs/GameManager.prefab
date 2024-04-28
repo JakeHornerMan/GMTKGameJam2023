@@ -187,7 +187,7 @@ Transform:
   - {fileID: 1956138797627160308}
   - {fileID: 3718478140365259465}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &6648390661545215355
 AudioSource:
@@ -352,6 +352,11 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 9bfcff06c7c8c7a40b9f327e6d029fd8, type: 3}
+    difficultyRank: 5
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
     difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
@@ -736,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chickenContainer_Name: ChickenContainer
+  specialChickenContainer_Name: SpecialChickenContainer
   spawnSpots:
   - position: {x: -14.75, y: 5, z: 0}
   - position: {x: -14.75, y: 4.75, z: 0}
