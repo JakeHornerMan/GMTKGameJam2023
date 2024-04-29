@@ -169,9 +169,6 @@ public class VehicleSpawner : MonoBehaviour
 
     private void PlaceSelectedCar()
     {
-
-
-
         // Check Money, Check Car Wallet Budget
         if (NotEnoughCarWallet())
             return;
@@ -293,17 +290,18 @@ public class VehicleSpawner : MonoBehaviour
         if (car.carPrice <= gameManager.tokens)
         {
             currentActiveCar = car;
-            
-            if (shineLane)
+
+            if (!shineLane)
             {
-                foreach (GameObject lane in tokenSpawner.allLanes)
+                return;
+            }
+            foreach (GameObject lane in tokenSpawner.allLanes)
+            {
+                RoadHighlight laneHighlight = lane.GetComponent<RoadHighlight>();
+                laneHighlight.DisableShineObject();
+                if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
                 {
-                    RoadHighlight laneHighlight = lane.GetComponent<RoadHighlight>();
-                    laneHighlight.DisableShineObject();
-                    if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
-                    {
-                        laneHighlight.ShineLane();
-                    }
+                    laneHighlight.ShineLane();
                 }
             }
         }
@@ -332,7 +330,11 @@ public class VehicleSpawner : MonoBehaviour
         {
             if (currentCarIndicator.followCursor)
                 currentCarIndicator.transform.position = new Vector3(inputPos.x, inputPos.y, 0);
-            currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
+
+            if (currentUltimateAbility != null)
+                currentCarIndicator.SetUI(currentUltimateAbility);
+            else
+                currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
         }
     }
 

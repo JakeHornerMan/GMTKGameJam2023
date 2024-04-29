@@ -45,7 +45,9 @@ public class ObjectBlueprint : MonoBehaviour
     [Header("Testing Values")]
     [SerializeField] private Car debugCar;
     [SerializeField] private Ultimate debugUltimate;
-    [SerializeField] private ChickenMovement debugChicken;
+    [SerializeField] private ObjectInfo debugChicken;
+
+    public ObjectInfo currentlyDisplayedObject;
 
     private void Start()
     {
@@ -86,7 +88,9 @@ public class ObjectBlueprint : MonoBehaviour
             Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
         laneLabelGridContainer.gameObject.SetActive(false);
 
-        gameObject.SetActive(false);
+        // Enabling makes animation run every time something new is displayed
+        // i.e. When scrolling using left/right arrows
+        // gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -99,6 +103,7 @@ public class ObjectBlueprint : MonoBehaviour
         objectNameText.text = obj.objectName;
         objectDescriptionText.text = obj.objectDescription;
         objectImage.sprite = obj.objectSprite;
+        currentlyDisplayedObject = obj;
     }
 
     /// <summary>
@@ -145,13 +150,13 @@ public class ObjectBlueprint : MonoBehaviour
     /// </summary>
     /// <param name="chickenMovement">The Chicken whose information to display.</param>
     /// <returns>Sends back chicken object passed in.</returns>
-    public ChickenMovement DisplayInfo(ChickenMovement chickenMovement)
+    public ObjectInfo DisplayInfo(ObjectInfo chickenMovement)
     { 
         ClearUI();
         objectTypeText.text = "Chicken";
         gameObject.SetActive(true);
 
-        ShowObjectInfo(chickenMovement.GetComponent<ObjectInfo>());
+        ShowObjectInfo(chickenMovement);
 
         return chickenMovement;
     }
