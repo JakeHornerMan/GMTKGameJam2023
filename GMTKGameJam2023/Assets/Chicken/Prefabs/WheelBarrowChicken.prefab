@@ -326,6 +326,7 @@ MonoBehaviour:
   hitStopLength: 0.2
   isTurboChicken: 0
   isWagonChicken: 0
+  canMoveVertical: 0
   substanceDurationSeconds: 10
   slowSubstancePrefab: {fileID: 2619222660318283966, guid: f6727785e235c2c448d10c5fc4af52de, type: 3}
   dropPoint: {fileID: 5881281317556445661}
@@ -348,10 +349,10 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
-  invinsibleForTime: 1
   pointsReward: 250
   health: 0
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
+  hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
 --- !u!114 &9038809129756289598
 MonoBehaviour:
   m_ObjectHideFlags: 0

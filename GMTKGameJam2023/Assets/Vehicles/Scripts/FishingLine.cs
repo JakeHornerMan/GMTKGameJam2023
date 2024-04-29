@@ -6,32 +6,51 @@ public class FishingLine : MonoBehaviour
 {
     private GameObject chickenContainer;
     public GameObject specialChicken;
-    private LineRenderer lineRemderer;
+    public GameObject chickenSprite;
+    public GameObject hook;
+    private LineRenderer lineRenderer;
     private List<Transform> points;
+    [SerializeField] private int damage = 20;
+    private bool chipDamageChicken = false;
+
+    private bool isAttached = false;
 
     private void Awake()
     {
-        lineRemderer = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
         chickenContainer = GameObject.Find("SpecialChickenContainer");
+        // hook.SetActive(false);
         FindTarget();
     }
 
     public void FindTarget(){
-        // foreach(Transform child in chickenContainer.transform)
-        // {
-        //     if(child.transform.GetComponentInChildren<SpriteRenderer>().sortingLayerName.Contains("Special")){
-        //         specialChickens.Add(child);
-        //     }
-        // }
-        specialChicken = GetClosestSpecialChicken();
-        if(specialChicken != null){
-            CastLineToChicken();
-        }
+        StartCoroutine(WaitAndFindTargetChicken());
     }
 
-    private void Update(){
-        if(specialChicken != null)
-            CastLineToChicken();
+    private IEnumerator WaitAndFindTargetChicken() {    
+        yield return new WaitForSeconds(1f); 
+        specialChicken = GetClosestSpecialChicken();
+        chickenSprite = specialChicken.GetComponent<ChickenHealth>().chickenSprite;
+        StartCoroutine(AnimateLineOut());
+    }
+
+    private void FixedUpdate() {
+        FishingForChickens();
+    }
+
+    private void FishingForChickens(){
+        if(chickenSprite == null && isAttached){
+            Debug.Log("chickenDied");
+            isAttached = false;
+            StartCoroutine(AnimateLineIn());
+        }
+        if (isAttached){
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, gameObject.transform.position);
+            lineRenderer.SetPosition(1, chickenSprite.transform.position);
+            hook.transform.position = chickenSprite.transform.position;
+        }
+        
     }
 
     private GameObject GetClosestSpecialChicken()
@@ -45,19 +64,73 @@ public class FishingLine : MonoBehaviour
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if(dSqrToTarget < closestDistanceSqr)
             {
-                // if(child.GetComponentInChildren<SpriteRenderer>().sortingLayerName.Contains("Special")){
-                    closestDistanceSqr = dSqrToTarget;
-                    bestTarget = child.gameObject;
-                // }
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = child.gameObject;
             }
         }
-        return bestTarget.GetComponent<ChickenMovement>().chickenSprite;
+        return bestTarget;
     }
 
-    private void CastLineToChicken(){
-        lineRemderer.positionCount = 2;
-        lineRemderer.SetPosition(0, gameObject.transform.position);
-        lineRemderer.SetPosition(1, specialChicken.transform.position);
+    private void ChipDamageChicken(){
+        if(!chipDamageChicken){
+            StartCoroutine(specialChicken.GetComponent<ChickenHealth>().ChipDamage(damage));
+            chipDamageChicken = true;
+        }
+    }
+
+    private IEnumerator AnimateLineOut(){
+        lineRenderer.positionCount = 2;
+        // hook.SetActive(true);
+        lineRenderer.SetPosition(0, gameObject.transform.position);
+        float startTime = Time.time;
+        float animationTime = 0.5f;
+
+        Vector3 startPosition = gameObject.transform.position;
+
+        Vector3 pos = startPosition;
+        while(pos != chickenSprite.transform.position){
+            float t = (Time.time - startTime) / animationTime;
+            pos = Vector3.Lerp(gameObject.transform.position, chickenSprite.transform.position, t);
+            lineRenderer.SetPosition(0, gameObject.transform.position);
+            lineRenderer.SetPosition(1, pos);
+            hook.transform.position = pos;
+            if(pos == chickenSprite.transform.position){
+                isAttached = true;
+                ChipDamageChicken();
+            }
+            yield return null;
+        }
+
+    }
+
+    private IEnumerator AnimateLineIn(){
+        Debug.Log("FishingLine In Fishing line");
+        chipDamageChicken = false;
+        isAttached = false;
+        specialChicken = null;
+        chickenSprite = null;
+
+        lineRenderer.SetPosition(0, gameObject.transform.position);
+        float startTime = Time.time;
+        float animationTime = 0.5f;
+
+        Vector3 startPosition = lineRenderer.GetPosition(1);
+
+        Vector3 pos = startPosition;
+        while(pos != gameObject.transform.position){
+            float t = (Time.time - startTime) / animationTime;
+            pos = Vector3.Lerp(startPosition, gameObject.transform.position, t);
+            lineRenderer.SetPosition(0, gameObject.transform.position);
+            lineRenderer.SetPosition(1, pos);
+            hook.transform.position = pos;
+            if(pos == gameObject.transform.position){
+                Debug.Log("FindingTarget");
+                FindTarget();
+                break;
+            }
+            yield return null;
+        }
+
     }
 
 }
