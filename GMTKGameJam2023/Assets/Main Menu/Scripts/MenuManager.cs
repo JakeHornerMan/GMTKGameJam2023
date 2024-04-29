@@ -51,6 +51,6 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
 
-        sceneFader.ScreenWipeOut("Level01");
+        sceneFader.ScreenWipeOut("ProceduralGeneration");
     }
 }

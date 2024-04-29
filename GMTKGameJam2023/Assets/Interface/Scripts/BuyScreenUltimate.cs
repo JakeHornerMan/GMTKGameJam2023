@@ -21,7 +21,7 @@ public class BuyScreenUltimate : MonoBehaviour
 
     public void UpdateSprite()
     {
-        tokenPriceText.text = correspondingUltimate.ultimateShopPrice.ToString("0");
+        //tokenPriceText.text = correspondingUltimate.ultimateShopPrice.ToString("0");
         correspUltIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
     }
 }

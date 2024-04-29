@@ -148,6 +148,8 @@ public class SceneFader : MonoBehaviour
             yield return null;
         }
 
+        
+
         // Optionally deactivate the screen wiper at the end
         screenWipeObject.gameObject.SetActive(false);
 
@@ -174,7 +176,7 @@ public class SceneFader : MonoBehaviour
 
     IEnumerator MoveOutScreenWiper()
     {
-        screenWipeObject.gameObject.SetActive(true);
+        screenWipeObject.SetActive(true);
         float t = 0f; // Start at the beginning of the animation curve
 
         screenWipeObject.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-offScreenXcoord, 0f, 0f);

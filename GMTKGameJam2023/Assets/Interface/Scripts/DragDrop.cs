@@ -22,12 +22,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        canvas = FindObjectOfType<Canvas>();
+        //canvas = FindObjectOfType<Canvas>();
+
+        
 
         if (GetComponent<CarButton>() != null)
         {
             itemPrice = GetComponent<CarButton>().correspondingCar.carPrice;
         }
+    }
+
+    private void Start()
+    {
+        canvas = BuyScreenManager.canvasInstance;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
