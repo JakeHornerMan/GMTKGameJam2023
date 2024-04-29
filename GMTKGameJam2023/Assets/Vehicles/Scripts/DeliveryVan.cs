@@ -5,7 +5,9 @@ using UnityEngine;
 public class DeliveryVan : Car
 {
 
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] private GameObject[] obstaclePrefabs;
+
+
 
     [SerializeField] private float dropInterval;
 
@@ -27,6 +29,8 @@ public class DeliveryVan : Car
 
     private void DropObstacle()
     {
+        int rand = Random.Range(0, 2);
+        GameObject obstaclePrefab = obstaclePrefabs[rand];
 
         GameObject obstacle = Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
 
