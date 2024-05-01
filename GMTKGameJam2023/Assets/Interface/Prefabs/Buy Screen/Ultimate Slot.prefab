@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1938697724837092746, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_Name
-      value: Ultimate Slot 1 Variant
+      value: Ultimate Slot
       objectReference: {fileID: 0}
     - target: {fileID: 4007968612830984764, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_Pivot.x
@@ -96,13 +96,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8180819362528417104, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: correspCar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180819362528417104, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: correspUlt
+      value: 
+      objectReference: {fileID: 5619426488316678192}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 9202422713718673880, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4007968612830984764, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 7104788872030183981}
+      addedObject: {fileID: 6557768094664716891}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
 --- !u!224 &2969062407952986329 stripped
@@ -211,7 +219,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
---- !u!224 &7104788872030183981 stripped
+--- !u!114 &5619426488316678192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7696579946715384483, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
+  m_PrefabInstance: {fileID: 2824751134534851219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4da4993007eab243af37dfc798607e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &6557768094664716891 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8949311508244179144, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
   m_PrefabInstance: {fileID: 2824751134534851219}
