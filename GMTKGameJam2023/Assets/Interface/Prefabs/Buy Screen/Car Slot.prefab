@@ -55,6 +55,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3162a8c24e72d149a138366aa4b4ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redColor: {r: 0.6901961, g: 0.1882353, b: 0.36078432, a: 1}
+  greenColor: {r: 0, g: 0, b: 0, a: 1}
   slotType: 1
   priceText: {fileID: 8941729405479430977}
 --- !u!222 &768304986675385319
@@ -365,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -58}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3357364689931959991
