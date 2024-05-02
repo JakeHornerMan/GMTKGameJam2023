@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4150131597838438436, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10bdf2c475ef7e24a851fd52a3f1e147, type: 3}
     - target: {fileID: 8180819362528417104, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: correspCar
       value: 
@@ -126,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2969062407952986329}
     m_Modifications:
+    - target: {fileID: 4796657637079120458, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5044003681277243558, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
       propertyPath: m_Name
       value: Roster Ultimate
