@@ -7,6 +7,7 @@ public class TokenSpawner : MonoBehaviour
      [Header("References")]
     [SerializeField] private string tokenContainer_Name = "TokenContainer";
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
     [SerializeField] public GameObject tokenPrefab;
     [SerializeField] private GameObject[] tokenPrefabs;
     private GameObject tokenContainer;
@@ -26,6 +27,7 @@ public class TokenSpawner : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         tokenContainer = GameObject.Find(tokenContainer_Name);
     }
 
@@ -34,9 +36,9 @@ public class TokenSpawner : MonoBehaviour
         
     }
 
-    public void GetPotentialRoads()
+    public void GetPotentialRoads(List<Car> carsInLevel)
     {
-        foreach (Car car in gameManager.carsInLevel)
+        foreach (Car car in carsInLevel)
         {
             for(int i =0 ; i <= car.placeableLaneTags.Count -1; i++)
             {
@@ -85,7 +87,12 @@ public class TokenSpawner : MonoBehaviour
     public void SetNewWave(ChickenWave wave)
     {
         if(allLanes.Count == 0){
-            GetPotentialRoads();
+            if(gameManager!= null){
+                GetPotentialRoads(gameManager.carsInLevel);
+            }
+            if(tutorialManager != null){
+                GetPotentialRoads(tutorialManager.carsInLevel);
+            }
         }
         currentWave = wave;
         tokenAmountInWave = wave.coinAmount;

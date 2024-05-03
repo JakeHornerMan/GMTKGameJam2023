@@ -7,21 +7,28 @@ public class HealthCorn : MonoBehaviour
     [SerializeField] private GameObject cornPrefab;
     [SerializeField] private Transform cornContainer;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
     [HideInInspector] public List<GameObject> cornHealthList;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     void Start()
     {
-        CreateCorn();
+        if(gameManager != null){
+            CreateCorn(gameManager.missedChickenLives);
+        }
+        if(tutorialManager != null){
+            CreateCorn(tutorialManager.missedChickenLives);
+        }
     }
 
-    private void CreateCorn()
+    private void CreateCorn(int missedChickenLives)
     {
-        for (int i = 0; i < gameManager.missedChickenLives; i++)
+        for (int i = 0; i < missedChickenLives; i++)
         {
             // StartCoroutine(WaitTime(1f));
             GameObject corn;
