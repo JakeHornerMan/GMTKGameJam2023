@@ -16,7 +16,7 @@ public class GuidebookButton : MonoBehaviour
     private ObjectType objectType;
 
     private Car assignedCar = null;
-    private ChickenMovement assignedChicken = null;
+    private ObjectInfo assignedChicken = null;
     private Ultimate assignedUltimate = null;
 
     // Creation run by GuidebookSelector.cs when this button is instantiated.
@@ -39,11 +39,11 @@ public class GuidebookButton : MonoBehaviour
     }
 
     // Override for Chicken
-    public void Creation(ChickenMovement assignedChicken)
+    public void Creation(ObjectInfo assignedChicken)
     {
         objectType = ObjectType.Chicken;
         this.assignedChicken = assignedChicken;
-        btnIcon.sprite = assignedChicken.GetComponent<ObjectInfo>().objectIcon;
+        btnIcon.sprite = assignedChicken.objectIcon;
     }
 
     // Function when button is clicked

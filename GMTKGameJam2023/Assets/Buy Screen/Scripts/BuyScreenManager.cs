@@ -46,6 +46,7 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private SceneFader sceneFader;
 
     public static BuyScreenManager instance;
+    public static Canvas canvasInstance;
 
     //Health Properties
     [SerializeField] private Slider healthSlider;
@@ -70,22 +71,30 @@ public class BuyScreenManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        if (canvasInstance == null)
+        {
+            canvasInstance = GetComponent<Canvas>();
+        }
+
+        
+
         SetPlayerValuesInBuyScreen();
         PopulateShops();
+        
     }
 
     void Start()
     {
         // CreateRosterList();
 
-        if (instance == null)
-        {
-            instance = this;
-        }
+        currentAmount = startingAmount + PlayerValues.playerCash;
 
         sceneFader.gameObject.SetActive(true);
-
-        currentAmount = startingAmount + PlayerValues.playerCash;
 
         UpdateMoneyText();
 
@@ -98,6 +107,7 @@ public class BuyScreenManager : MonoBehaviour
         remainingRerolls = maxRerolls; // Initialize remaining rerolls
         UpdateRerollCounter(); // Update visual counter
 
+        UpdateSlotColors();
 
     }
 
@@ -130,6 +140,8 @@ public class BuyScreenManager : MonoBehaviour
             BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
             
             buyScreenCar.correspondingCar = playerCars[i];
+
+            
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
         }
 
@@ -232,11 +244,15 @@ public class BuyScreenManager : MonoBehaviour
                 Instantiate(rosterCarPrefab, carShop.transform.GetChild(i).transform);
             }
 
-            BuyScreenCar carSlot = carShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenCar>();
+            BuyScreenCarSlot carSlot = carShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            carSlot.correspondingCar = car;
+            BuyScreenCar rosterCar = carSlot.transform.GetChild(0).gameObject.GetComponent<BuyScreenCar>();
 
-            carSlot.UpdateSprite();
+            rosterCar.correspondingCar = car;
+
+            rosterCar.UpdateSprite();
+
+            carSlot.UpdatePriceText();
 
             carSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
 
@@ -292,11 +308,15 @@ public class BuyScreenManager : MonoBehaviour
                 Instantiate(rosterCarPrefab, ultimateShop.transform.GetChild(i).transform);
             }
 
-            BuyScreenUltimate ultimateSlot = ultimateShop.transform.GetChild(i).GetChild(0).gameObject.GetComponent<BuyScreenUltimate>();
+            BuyScreenCarSlot ultimateSlot = ultimateShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            ultimateSlot.correspondingUltimate = ultimate;
+            BuyScreenUltimate rosterUltimate = ultimateSlot.transform.GetChild(0).gameObject.GetComponent<BuyScreenUltimate>();
 
-            ultimateSlot.UpdateSprite();
+            rosterUltimate.correspondingUltimate = ultimate;
+
+            rosterUltimate.UpdateSprite();
+
+            ultimateSlot.GetComponent<BuyScreenCarSlot>().UpdatePriceText();
 
             ultimateSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
 
@@ -311,7 +331,8 @@ public class BuyScreenManager : MonoBehaviour
             remainingRerolls--;
             UpdateRerollCounter(); // Update visual counter
             UpdatePlayerCarsList();
-            PopulateCarShop();
+            PopulateShops();
+            UpdateSlotColors();
         }
     }
 
@@ -327,6 +348,24 @@ public class BuyScreenManager : MonoBehaviour
         }
 
 
+    }
+
+
+    void UpdateSlotColors()
+    {
+        for (int i = 0; i < carShop.transform.childCount; i++)
+        {
+            GameObject carSlot = carShop.transform.GetChild(i).gameObject;
+
+            carSlot.GetComponent<BuyScreenCarSlot>().UpdateBGColour();
+        }
+
+        for (int i = 0; i < ultimateShop.transform.childCount; i++)
+        {
+            GameObject ultimateSlot = ultimateShop.transform.GetChild(i).gameObject;
+
+            ultimateSlot.GetComponent<BuyScreenCarSlot>().UpdateBGColour();
+        }
     }
 
     public void AddToScrapyard(GameObject car)
