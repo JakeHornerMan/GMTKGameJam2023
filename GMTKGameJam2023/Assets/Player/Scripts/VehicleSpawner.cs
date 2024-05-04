@@ -300,7 +300,16 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SelectCar(Car car, bool shineLane = true)
     {
-        if (car.carPrice <= gameManager.tokens)
+        if(gameManager != null){
+            SetActiveCar(car, shineLane, gameManager.tokens);
+        }
+        if(tutorialManager != null){
+            SetActiveCar(car, shineLane, tutorialManager.tokens);
+        }
+    }
+
+    public void SetActiveCar(Car car, bool shineLane, int tokens){
+        if (car.carPrice <= tokens)
         {
             currentActiveCar = car;
 
@@ -321,7 +330,7 @@ public class VehicleSpawner : MonoBehaviour
         else
         {
             soundManager.PlayCantPurchase();
-        } 
+        }
     }
 
     public void SetUltimate()

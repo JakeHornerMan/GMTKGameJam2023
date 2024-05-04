@@ -62,9 +62,19 @@ public class TutorialManager : MonoBehaviour
     [HideInInspector] public delegate void EventType();
     [HideInInspector] public static event EventType OnTokensUpdated;
 
+    [Header("Tutorial References")]
+    [SerializeField] private GameObject topContainerUI;
+    [SerializeField] private GameObject tokensUI;
+    [SerializeField] private GameObject carSelectorUI;
+    [SerializeField] private GameObject walletUI;
+    [SerializeField] private GameObject carCursorUI;
+
+    [SerializeField] private GameObject cornContainerUI;
+    private Vector3 originalCornContainerlocation;
+
     private void Awake()
     {
-        // SetPlayerValuesInLevel();
+        SetPlayerValuesInLevel();
         pause = FindObjectOfType<Pause>();
         soundManager = FindObjectOfType<SoundManager>();
         chickenSpawn = GetComponent<ChickenSpawn>();
@@ -92,9 +102,10 @@ public class TutorialManager : MonoBehaviour
         // else{
         //     RoundSet();
         // }  
+        Round1LetChickenCrossIntroCornHealth();
     }
 
-    // private void SetPlayerValuesInLevel(){
+    private void SetPlayerValuesInLevel(){
     //     if(!devMode){
     //         if(PlayerValues.Cars != null){
     //             carsInLevel = PlayerValues.Cars;
@@ -115,9 +126,21 @@ public class TutorialManager : MonoBehaviour
     //         // Debug.Log("Lives: " + missedChickenLives);
     //     }
     //     else {
-    //         missedChickenLives = cheatLives;
+            missedChickenLives = cheatLives;
     //     }
-    // }
+    }
+
+    public void Round1LetChickenCrossIntroCornHealth(){
+        //disable visuals fo elements
+        topContainerUI.transform.localScale = new Vector3(0, 0, 0);
+        tokensUI.transform.localScale = new Vector3(0, 0, 0);
+        carSelectorUI.transform.localScale = new Vector3(0, 0, 0);
+        walletUI.transform.localScale = new Vector3(0, 0, 0);
+        carCursorUI.transform.localScale = new Vector3(0, 0, 0);
+
+        originalCornContainerlocation = cornContainerUI.GetComponent<RectTransform>().anchoredPosition;
+        cornContainerUI.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f, 450f, 0f);
+    }
 
     private void SetPointsValuesInLevel(){
         safelyCrossedChickens = Points.safelyCrossedChickens;
@@ -216,7 +239,8 @@ public class TutorialManager : MonoBehaviour
         safelyCrossedChickens++;
         missedChickenLives--;
         healthCorn.DeadCorn(missedChickenLives);
-        RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
+        if(topContainerUI.transform.localScale != new Vector3(0, 0, 0))
+            RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         CameraShaker.instance.Shake(0.25f, -0.5f);
     }

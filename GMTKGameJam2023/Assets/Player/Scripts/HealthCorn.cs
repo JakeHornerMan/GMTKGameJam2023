@@ -6,8 +6,8 @@ public class HealthCorn : MonoBehaviour
 {
     [SerializeField] private GameObject cornPrefab;
     [SerializeField] private Transform cornContainer;
-    private GameManager gameManager;
-    private TutorialManager tutorialManager;
+    public GameManager gameManager;
+    public TutorialManager tutorialManager;
     [HideInInspector] public List<GameObject> cornHealthList;
 
     private void Awake()
