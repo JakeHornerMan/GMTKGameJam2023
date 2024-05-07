@@ -92,7 +92,7 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void CreateButtons(List<Car> carsInLevel)
+    public void CreateButtons(List<Car> carsInLevel)
     {
        
         foreach (Car car in carsInLevel)
@@ -107,6 +107,12 @@ public class VehicleSpawner : MonoBehaviour
 
         if (carButtons.Count >= 1)
             currentActiveCar = standardCar;
+    }
+
+    public void DestroyButtons() {
+        foreach (Transform child in carSelectContainer.transform) {
+            Destroy(child.gameObject);
+        }
     }
 
     private void MouseInputs()
@@ -235,7 +241,8 @@ public class VehicleSpawner : MonoBehaviour
         // Reduce Player Money
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
         {
-            gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if(gameManager != null) gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if(tutorialManager != null) tutorialManager.UpdateTokens(currentActiveCar.carPrice * -1);
             soundManager.PlayPurchase();
         }
 

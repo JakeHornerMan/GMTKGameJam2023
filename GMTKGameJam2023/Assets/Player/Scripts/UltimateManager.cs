@@ -51,7 +51,7 @@ public class UltimateManager : MonoBehaviour
         {
             StartCoroutine(RefillUltimate());
             timeUntilRefill -= Time.deltaTime;
-            Debug.LogWarning(timeUntilRefill);
+            // Debug.LogWarning(timeUntilRefill);
         }
 
     }

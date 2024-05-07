@@ -48,6 +48,7 @@ public class TutorialManager : MonoBehaviour
     [HideInInspector] public int waveNumber = 0;
     [HideInInspector] public bool roundOver = false;
     [SerializeField] public GameObject chickenContainer;
+    [SerializeField] public GameObject tokenContainer;
 
     private SoundManager soundManager;
     private GameFlowManager gameFlowManager;
@@ -63,11 +64,17 @@ public class TutorialManager : MonoBehaviour
     [HideInInspector] public static event EventType OnTokensUpdated;
 
     [Header("Tutorial References")]
+    public int tutroialRoundCounter = 1;
+    private bool changingRound = true;
+    private VehicleSpawner vehicleSpawner;
+    [SerializeField] private Car bonusCar;
     [SerializeField] private GameObject topContainerUI;
     [SerializeField] private GameObject tokensUI;
     [SerializeField] private GameObject carSelectorUI;
     [SerializeField] private GameObject walletUI;
     [SerializeField] private GameObject carCursorUI;
+    [SerializeField] private GameObject carCursorTokenUI;
+    [SerializeField] private GameObject carCursorWalletUI;
 
     [SerializeField] private GameObject cornContainerUI;
     private Vector3 originalCornContainerlocation;
@@ -84,6 +91,7 @@ public class TutorialManager : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameFlowManager = FindObjectOfType<GameFlowManager>();
         healthCorn = GetComponent<HealthCorn>();
+        vehicleSpawner = GetComponent<VehicleSpawner>();
 
         chickenContainer = GameObject.Find("ChickenContainer");
     }
@@ -97,7 +105,7 @@ public class TutorialManager : MonoBehaviour
         //     SetGameTime();
         //     time = startTime;
         //     waveNumber = 0;
-            SettingWaveInChickenSpawn();
+            // SettingWaveInChickenSpawn();
         // }
         // else{
         //     RoundSet();
@@ -130,6 +138,77 @@ public class TutorialManager : MonoBehaviour
     //     }
     }
 
+    private void FixedUpdate()
+    {   
+        if(chickenContainer.transform.childCount <= 0 && tokenContainer.transform.childCount <= 0 && !changingRound){
+            tutroialRoundCounter++;
+            changingRound = true;
+        }
+        if(changingRound)
+            TutorialRoundChanging();
+
+        // if (!isGameOver)
+        // {
+        //     if(!pauseGameplay)
+        //         // SetTime();
+        // }
+        // if(missedChickenLives <= 0){
+        //     HandleGameOver();
+        // }
+        // if(roundOver){
+        //     StartCoroutine(WaitAndBuyScreen(3f));
+        // }
+    }
+
+    public void TutorialRoundChanging(){
+        switch(tutroialRoundCounter) 
+        {
+            case 1:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round1LetChickenCrossIntroCornHealth();
+            changingRound = false;
+            break;
+        case 2:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round2ChickenWaveAndStandardCar();
+            changingRound = false;
+            break;
+        case 3:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round3ChickenWaveAndCarWallet();
+            changingRound = false;
+            break;
+        case 4:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round4TokenWave();
+            changingRound = false;
+            break;
+        case 5:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round5NewVehicle();
+            changingRound = false;
+            break;
+        case 6:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round6NewVehicleNewRoad();
+            changingRound = false;
+            break;
+        case 7:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round7SpecialChickens();
+            changingRound = false;
+            break;
+        case 8:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            Round8TopContainerShow();
+            changingRound = false;
+            break;
+        default:
+            // code block
+            break;
+        }
+    }
+
     public void Round1LetChickenCrossIntroCornHealth(){
         //disable visuals fo elements
         topContainerUI.transform.localScale = new Vector3(0, 0, 0);
@@ -140,6 +219,63 @@ public class TutorialManager : MonoBehaviour
 
         originalCornContainerlocation = cornContainerUI.GetComponent<RectTransform>().anchoredPosition;
         cornContainerUI.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f, 450f, 0f);
+        vehicleSpawner.disableVehicleSpawn = true;
+    }
+
+    public void Round2ChickenWaveAndStandardCar(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        vehicleSpawner.setStandardCar();
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        carCursorUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        carCursorWalletUI.transform.localScale = new Vector3(0, 0, 0);
+        carCursorTokenUI.transform.localScale = new Vector3(0, 0, 0);
+    }
+
+    public void Round3ChickenWaveAndCarWallet(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        vehicleSpawner.setStandardCar();
+        walletUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        carCursorWalletUI.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void Round4TokenWave(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        vehicleSpawner.setStandardCar();
+        tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        carCursorTokenUI.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void Round5NewVehicle(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        vehicleSpawner.setStandardCar();
+        tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        carSelectorUI.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void Round6NewVehicleNewRoad(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        carsInLevel.Add(bonusCar);
+        vehicleSpawner.DestroyButtons();
+        vehicleSpawner.CreateButtons(carsInLevel);
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+    }
+
+    public void Round7SpecialChickens(){
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+    }
+
+    public void Round8TopContainerShow(){
+        vehicleSpawner.disableVehicleSpawn = false;
+        topContainerUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        cornContainerUI.GetComponent<RectTransform>().anchoredPosition = originalCornContainerlocation;
+    }
+
+    public void Round9IntenseWave(){
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
     }
 
     private void SetPointsValuesInLevel(){
@@ -158,7 +294,7 @@ public class TutorialManager : MonoBehaviour
         SetGameTime();
         time = startTime;
         waveNumber = 0;
-        SettingWaveInChickenSpawn();
+        // SettingWaveInChickenSpawn();
     }
 
     //set level round time
@@ -176,9 +312,9 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Starts a new chicken wave
-    private void SettingWaveInChickenSpawn()
+    private void SettingWaveInChickenSpawn(ChickenWave wave)
     {
-        ChickenWave currentWave = waves[waveNumber];
+        ChickenWave currentWave = wave;
         NewWavePopup(currentWave.wavePrompt);
         Debug.Log("Standard Chickens in this round: " + currentWave.standardChickenAmounts);
         soundManager.PlayWaveSound(currentWave.waveSound);
@@ -204,24 +340,8 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         waveNumber++;
         if (waveNumber < waves.Count){
-            SettingWaveInChickenSpawn();
+            // SettingWaveInChickenSpawn();
         }    
-    }
-    
-    // HERE WE CONTROL NEXT LEVEL AND GAMEOVER
-    private void FixedUpdate()
-    {
-        // if (!isGameOver)
-        // {
-        //     if(!pauseGameplay)
-        //         // SetTime();
-        // }
-        // if(missedChickenLives <= 0){
-        //     HandleGameOver();
-        // }
-        // if(roundOver){
-        //     StartCoroutine(WaitAndBuyScreen(3f));
-        // }
     }
 
     //Increments time value for UI
@@ -280,7 +400,7 @@ public class TutorialManager : MonoBehaviour
             totalTokens = totalTokens + tokenDifference;
         }
 
-        OnTokensUpdated();
+        // OnTokensUpdated();
     }
 
     private IEnumerator WaitAndBuyScreen(float time)

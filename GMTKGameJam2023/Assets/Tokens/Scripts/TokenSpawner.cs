@@ -135,7 +135,7 @@ public class TokenSpawner : MonoBehaviour
         Vector3 pos = point.position;
         float randomFloat = Random.Range(-4f, 4f);
         pos.y += randomFloat;
-        if (gameManager.isGameOver) return;
+        if (gameManager != null && gameManager.isGameOver) return;
         Instantiate(token, pos, Quaternion.identity, tokenContainer.transform);
     }
 }

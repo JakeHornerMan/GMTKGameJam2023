@@ -36,7 +36,7 @@ public class RoadHighlight : MonoBehaviour
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
         
-        if (vehicleSpawner != null)
+        if (vehicleSpawner != null && vehicleSpawner.currentActiveCar != null)
         {
             bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
             if (hit.collider == null || !amIPlaceable)
