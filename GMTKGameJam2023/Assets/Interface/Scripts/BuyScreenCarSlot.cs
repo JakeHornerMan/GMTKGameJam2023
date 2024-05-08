@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
+    [SerializeField] private Color redColor = new (255 / 255f, 123 / 255f, 111 / 255f);
+    [SerializeField] private Color greenColor = new (154 / 255f, 255 / 255f, 124 / 255f);
 
     public enum SlotType
     {
@@ -17,9 +19,6 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
     }
 
     public SlotType slotType;
-
-    private Color redColor = new Color(255/255f, 123/255f, 111/255f);
-    private Color greenColor = new Color(154/255f, 255/255f, 124/255f);
 
     [SerializeField] private TextMeshProUGUI priceText;
 
@@ -195,12 +194,13 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
     {
         if (transform.GetChild(0).TryGetComponent<BuyScreenCar>(out BuyScreenCar car))
         {
-            priceText.text = car.correspondingCar.carShopPrice.ToString("0");
+            priceText.text = "$" + car.correspondingCar.carShopPrice.ToString("0");
         }
         else if (transform.GetChild(0).TryGetComponent<BuyScreenUltimate>(out BuyScreenUltimate ultimate))
         {
-            priceText.text = ultimate.correspondingUltimate.ultimateShopPrice.ToString("0");
+            priceText.text = "$" + ultimate.correspondingUltimate.ultimateShopPrice.ToString("0");
+
         }
-        
+
     }
 }
