@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Drops meteors at random locations on level, while moving horizontally.
 /// </summary>
-public class MeteorUFO : MonoBehaviour
+public class MeteorUFO : Ultimate
 {
     [Header("UFO Movement")]
     [SerializeField] private Vector2 startPos = new(-18, 0);
