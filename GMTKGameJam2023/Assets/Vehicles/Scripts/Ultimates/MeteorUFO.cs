@@ -7,6 +7,7 @@ using UnityEngine;
 public class MeteorUFO : MonoBehaviour
 {
     [Header("UFO Movement")]
+    [SerializeField] private Vector2 startPos = new(-18, 0);
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float xDestroyThreshold = 25f;
 
@@ -25,6 +26,7 @@ public class MeteorUFO : MonoBehaviour
 
     private void Start()
     {
+        transform.position = startPos;
         StartCoroutine(MoveUFO());
     }
 
