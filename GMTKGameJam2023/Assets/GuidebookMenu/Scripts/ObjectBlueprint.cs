@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor;
-using System.Runtime.CompilerServices;
+using System;
 
 /// <summary>
 /// General purpose blueprint-style display, used on prefab.
@@ -97,13 +97,17 @@ public class ObjectBlueprint : MonoBehaviour
     /// General function for all three: cars, ultimates, and chicken.
     /// Just sets name, image, and description, which all 3 have in ObjectInfo.
     /// </summary>
-    private void ShowObjectInfo(ObjectInfo obj)
+    public void ShowObjectInfo(ObjectInfo obj, string customType = "")
     {
         gameObject.SetActive(true);
         objectNameText.text = obj.objectName;
         objectDescriptionText.text = obj.objectDescription;
         objectImage.sprite = obj.objectSprite;
         currentlyDisplayedObject = obj;
+        if (customType != "")
+        {
+            objectTypeText.text = customType;
+        }
     }
 
     /// <summary>
@@ -151,7 +155,7 @@ public class ObjectBlueprint : MonoBehaviour
     /// <param name="chickenMovement">The Chicken whose information to display.</param>
     /// <returns>Sends back chicken object passed in.</returns>
     public ObjectInfo DisplayInfo(ObjectInfo chickenMovement)
-    { 
+    {
         ClearUI();
         objectTypeText.text = "Chicken";
         gameObject.SetActive(true);
