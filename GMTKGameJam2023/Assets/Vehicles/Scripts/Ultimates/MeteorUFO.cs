@@ -1,18 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Drops meteors at random locations on level, while moving horizontally.
+/// </summary>
 public class MeteorUFO : Ultimate
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("UFO Movement")]
+    [SerializeField] private Vector2 startPos = new(-18, 0);
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float xDestroyThreshold = 25f;
+
+    [Header("Random Area Settings")]
+    [SerializeField] private float maxY = 7;
+    [SerializeField] private float minY = -7;
+    [SerializeField] private float maxX = 10;
+    [SerializeField] private float minX = -10;
+
+    [Header("Meteor Options")]
+    [SerializeField] private GameObject meteorPrefab;
+    [SerializeField] private int numMeteors = 10;
+    [SerializeField] private float meteorSpawnDelay = 0.5f;
+
+    private bool meteorShowerStarted = false;
+
+    private void Start()
     {
-        
+        transform.position = startPos;
+        StartCoroutine(MoveUFO());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (transform.position.x > xDestroyThreshold)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator MoveUFO()
+    {
+        Vector3 direction = Vector3.right;
+
+        while (true)
+        {
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            if (!meteorShowerStarted && transform.position.x > -10)
+            {
+                meteorShowerStarted = true;
+                StartCoroutine(SpawnMeteors());
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator SpawnMeteors()
+    {
+        for (int i = 0; i < numMeteors; i++)
+        {
+            Vector2 randomPos = new Vector2(
+                Random.Range(minX, maxX),
+                Random.Range(minY, maxY)
+            );
+            Instantiate(
+                meteorPrefab,
+                randomPos,
+                Quaternion.identity
+            );
+
+            yield return new WaitForSeconds(meteorSpawnDelay);
+        }
     }
 }

@@ -3785,8 +3785,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5255038caa252bd4a878b7fb72a5d748, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 085b739bd7c7da9408a20dda12aa48dc, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5040,13 +5040,10 @@ MonoBehaviour:
   rosterCarPrefab: {fileID: 5941939536339446406, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
   rosterUltimatePrefab: {fileID: 5044003681277243558, guid: e01edfc63aee06f4aa37fcc82441ae7c, type: 3}
   sceneFader: {fileID: 424389757}
-  maxHealthAllowed: 10
   healthSlider: {fileID: 2134044652}
   healthNumberText: {fileID: 1166142785}
-  maxWalletAllowed: 10
   walletSlider: {fileID: 45189347}
   walletNumberText: {fileID: 1463631558}
-  maxEnergyAllowed: 50
   energySlider: {fileID: 1098641727}
   energyMultiplier: 5
   energyNumberText: {fileID: 157270167}
@@ -6110,8 +6107,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5255038caa252bd4a878b7fb72a5d748, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 085b739bd7c7da9408a20dda12aa48dc, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9944,8 +9941,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5255038caa252bd4a878b7fb72a5d748, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 085b739bd7c7da9408a20dda12aa48dc, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12165,7 +12162,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.644
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
