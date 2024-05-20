@@ -19,6 +19,9 @@ public class TriggerMenuCinemachine : MonoBehaviour
     [SerializeField] private GameObject carVeerLeft;
     private Vector3 carVeerLeftOrigin;
 
+    [SerializeField] private GameObject carVeerRight;
+    private Vector3 carVeerRightOrigin;
+
     // private float speed = 3f;
 
     private void Start()
@@ -30,6 +33,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
 
         carVeerLeft.SetActive(false);
+        carVeerRight.SetActive(false);
 
         SetAllSpecialOrigins();
         ResetAllSpecialObjects();
@@ -38,12 +42,16 @@ public class TriggerMenuCinemachine : MonoBehaviour
     private void SetAllSpecialOrigins()
     {
         carVeerLeftOrigin = carVeerLeft.transform.position;
+        carVeerRightOrigin = carVeerRight.transform.position;
     }
 
     private void ResetAllSpecialObjects()
     {
         carVeerLeft.transform.position = carVeerLeftOrigin;
         carVeerLeft.SetActive(false);
+
+        carVeerRight.transform.position = carVeerRightOrigin;
+        carVeerRight.SetActive(false);
     }
 
     //private void OnTriggerEnter2D(Collider2D other)
@@ -152,6 +160,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
     }
 
     public void GoToCredits(){
+        carVeerRight.SetActive(true);
         anim.Play("Credits");
     }
 

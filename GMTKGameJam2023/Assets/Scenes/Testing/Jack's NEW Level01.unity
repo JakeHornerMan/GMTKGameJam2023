@@ -197,18 +197,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4384981886227108248, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
-      propertyPath: obstaclePrefabs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4384981886227108248, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
-      propertyPath: obstaclePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 2485021673343220693, guid: f06b893e49ce4da47b06639da146310d, type: 3}
-    - target: {fileID: 4384981886227108248, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
-      propertyPath: obstaclePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 726624870677613110, guid: 00fe1058be909be4fb3b7d0eebe1cdca, type: 3}
     - target: {fileID: 6077706268648720092, guid: 0cab8a3b53e82c045a456d285f6b4d80, type: 3}
       propertyPath: m_Name
       value: Delivery Van
@@ -972,6 +960,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 962603968133171748, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
   m_PrefabInstance: {fileID: 4031766030395596951}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &999445567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999445565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec3d2cdefd55b240b6594bbbc09f8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!1 &1179376183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +1573,14 @@ PrefabInstance:
       propertyPath: turboChicken.clip
       value: 
       objectReference: {fileID: 8300000, guid: a63fa8978cdbbbe47a97e8190745fcca, type: 3}
+    - target: {fileID: 7448871825172233189, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: turboChicken.volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448871825172233189, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: turboChickenDeath.volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7530937495219997156, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1000
@@ -1628,7 +1637,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2198669991127416746, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       insertIndex: 1
       addedObject: {fileID: 158468309}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 962603968133171748, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 999445567}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
 --- !u!1001 &6108627401256980950
 PrefabInstance:
