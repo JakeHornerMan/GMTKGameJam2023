@@ -8,10 +8,12 @@ public class Deathbox : MonoBehaviour
     [SerializeField] private string chickenTag = "Chicken";
 
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,7 +21,8 @@ public class Deathbox : MonoBehaviour
         if (other.gameObject.CompareTag(chickenTag))
         {
             Destroy(other.transform.parent.gameObject);
-            gameManager.SafelyCrossedChicken();
+            if(gameManager != null) gameManager.SafelyCrossedChicken();
+            if(tutorialManager != null) tutorialManager.SafelyCrossedChicken();
         }
     }
 }

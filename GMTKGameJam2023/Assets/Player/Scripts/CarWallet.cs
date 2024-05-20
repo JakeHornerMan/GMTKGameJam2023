@@ -22,7 +22,7 @@ public class CarWallet : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        if(!gameManager.devMode){
+        if(gameManager != null && !gameManager.devMode){
             walletLimit = PlayerValues.carWalletNodes;
             carCount = PlayerValues.carWalletNodes;
         }
