@@ -48,6 +48,8 @@ public class BuyScreenManager : MonoBehaviour
     public static BuyScreenManager instance;
     public static Canvas canvasInstance;
 
+    // VALUES FOR 10 VALUES: { 0, 0.15f, 0.23f, 0.32f, 0.43f, 0.5f, 0.628f, 0.7f, 0.8f, 0.9f, 1f }
+
     //Health Properties
     [SerializeField] private Slider healthSlider;
     private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it

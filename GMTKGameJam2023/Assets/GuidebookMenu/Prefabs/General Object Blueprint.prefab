@@ -607,7 +607,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: -1.66
@@ -1740,6 +1740,7 @@ MonoBehaviour:
   debugCar: {fileID: 0}
   debugUltimate: {fileID: 0}
   debugChicken: {fileID: 0}
+  currentlyDisplayedObject: {fileID: 0}
 --- !u!95 &264206231129625284
 Animator:
   serializedVersion: 5
