@@ -3818,7 +3818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8776881432231498952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: -11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10966,7 +10966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5876821171212893082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18184,13 +18184,6 @@ MonoBehaviour:
     coinAmount: 15
     specialChickens: []
   - roundTime: 15
-    wavePrompt: wow such variety!
-    waveSound: 
-    standardChickenAmounts: 20
-    chickenIntesity: 4
-    coinAmount: 15
-    specialChickens: []
-  - roundTime: 15
     wavePrompt: They are Evolving!
     waveSound: 
     standardChickenAmounts: 20
@@ -18212,15 +18205,47 @@ MonoBehaviour:
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-  - roundTime: 15
-    wavePrompt: They are Evolving!
+  - roundTime: 30
+    wavePrompt: More UI!
     waveSound: 
-    standardChickenAmounts: 20
+    standardChickenAmounts: 30
+    chickenIntesity: 4
+    coinAmount: 15
+    specialChickens:
+    - timeToSpawn: 3
+      chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 10
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 17
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 22
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+  - roundTime: 30
+    wavePrompt: Try survive
+    waveSound: 
+    standardChickenAmounts: 200
     chickenIntesity: 4
     coinAmount: 15
     specialChickens:
     - timeToSpawn: 0
-      chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+      chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 4
+      chicken: {fileID: 2013693792624936376, guid: 9da92a501ad91ce44a0e6039b77b00d9, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
@@ -18229,12 +18254,42 @@ MonoBehaviour:
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 10
-      chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+    - timeToSpawn: 8
+      chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
     - timeToSpawn: 10
+      chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 12
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 15
+      chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 15
+      chicken: {fileID: 7467406142021207113, guid: 22de6ddf88b5d904cba1d9e847c52281, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 18
+      chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 23
+      chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 25
       chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
       difficultyRank: 0
       topSpawn: 0
@@ -18242,7 +18297,7 @@ MonoBehaviour:
   carsInLevel:
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   defaultCars: []
-  ultimateInLevel: {fileID: 0}
+  ultimateInLevel: {fileID: -1257477323556779182, guid: f24eefc0757a4544fbb487eec041d0f9, type: 3}
   rankingCriteria: []
   failureRanking: You Failed
   isGameOver: 0
@@ -18266,7 +18321,7 @@ MonoBehaviour:
   chickenContainer: {fileID: 4226750169657567923}
   tokenContainer: {fileID: 8622443006109181745}
   sceneFader: {fileID: 8902581076152296837}
-  tutroialRoundCounter: 8
+  tutroialRoundCounter: 7
   bonusCar: {fileID: 512348543385223842, guid: 0bd4fea591d7e8a4c8eb2f8f23236a13, type: 3}
   topContainerUI: {fileID: 6261287699770923668}
   tokensUI: {fileID: 661082850772826103}
