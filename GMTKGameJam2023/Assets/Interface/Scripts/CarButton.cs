@@ -22,11 +22,13 @@ public class CarButton : MonoBehaviour
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
 
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         gameManager = FindObjectOfType<GameManager>(); 
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     private void OnEnable()
@@ -59,7 +61,7 @@ public class CarButton : MonoBehaviour
 
     public void SelectCorrespondingCar()
     {
-        if(gameManager)
+        if(gameManager || tutorialManager)
             vehicleSpawner.SelectCar(this.correspondingCar);
     }
 }

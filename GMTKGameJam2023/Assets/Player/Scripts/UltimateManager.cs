@@ -18,22 +18,31 @@ public class UltimateManager : MonoBehaviour
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
     private InterfaceManager interfaceManager;
 
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         gameManager = FindObjectOfType<GameManager>(); 
+        tutorialManager = FindObjectOfType<TutorialManager>();
         interfaceManager = GetComponent<InterfaceManager>();
     }
 
     private void Start()
     {
-        if(gameManager.ultimateInLevel){
-            correspondingUltimate = gameManager.ultimateInLevel;
-            correspUltimateIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
-            timeUntilRefill = correspondingUltimate.ultimateResetTime;
+        if(gameManager != null && gameManager.ultimateInLevel){
+            SetUltimate(gameManager.ultimateInLevel);
         }
+        if(tutorialManager != null && tutorialManager.ultimateInLevel){
+            SetUltimate(tutorialManager.ultimateInLevel);
+        }
+    }
+    
+    public void SetUltimate(Ultimate ultimateInLevel){
+        correspondingUltimate = ultimateInLevel;
+        correspUltimateIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
+        timeUntilRefill = correspondingUltimate.ultimateResetTime;
     }
 
     private void Update()
@@ -42,7 +51,7 @@ public class UltimateManager : MonoBehaviour
         {
             StartCoroutine(RefillUltimate());
             timeUntilRefill -= Time.deltaTime;
-            Debug.LogWarning(timeUntilRefill);
+            // Debug.LogWarning(timeUntilRefill);
         }
 
     }

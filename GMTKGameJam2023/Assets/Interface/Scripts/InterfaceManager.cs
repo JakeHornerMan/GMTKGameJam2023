@@ -36,6 +36,7 @@ public class InterfaceManager : MonoBehaviour
     private int scoreMoverNegative;
 
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
     private VehicleSpawner vehicleSpawner;
     private CarWallet carWallet;
     private UltimateManager ultimateManager;
@@ -50,18 +51,26 @@ public class InterfaceManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
+        tutorialManager = GetComponent<TutorialManager>();
         ultimateButton = GameObject.Find("UltimateBtn");
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
         carWallet = FindObjectOfType<CarWallet>();
         ultimateManager = FindObjectOfType<UltimateManager>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
-        pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
+        if(gameManager != null){
+            pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
+        }
     }
 
     private void Start()
     {
         if(ultimateButton != null){
-            if(gameManager.ultimateInLevel == null){
+
+            Ultimate ultimateInLevel = null;
+            if(gameManager != null) { ultimateInLevel = gameManager.ultimateInLevel; }
+            if(tutorialManager != null) { ultimateInLevel = tutorialManager.ultimateInLevel; }
+            
+            if(ultimateInLevel == null){
                 ultimateButton.SetActive(false);
             }
             else{
@@ -81,10 +90,19 @@ public class InterfaceManager : MonoBehaviour
 
     private void Update()
     {
-        killsText.text = gameManager.killCount.ToString("000");
-        tokensText.text = gameManager.tokens.ToString("000");
-        timeText.text = gameManager.time.ToString("0");
-        missedChickenCountText.text = gameManager.missedChickenLives.ToString("000");
+        if(gameManager != null){
+            UpdateValues(gameManager.killCount, gameManager.tokens, gameManager.time, gameManager.missedChickenLives);
+        }
+        if(tutorialManager != null){
+            UpdateValues(tutorialManager.killCount, tutorialManager.tokens, tutorialManager.time, tutorialManager.missedChickenLives);
+        }
+    }
+
+    public void UpdateValues(int killCount, int tokens, float time, int missedChickenLives){
+        killsText.text = killCount.ToString("000");
+        tokensText.text = tokens.ToString("000");
+        timeText.text = time.ToString("0");
+        missedChickenCountText.text = missedChickenLives.ToString("000");
         // currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
         if(vehicleSpawner.currentUltimateAbility){
             carWalletIcon.sprite = vehicleSpawner.currentUltimateAbility.GetComponent<ObjectInfo>().objectIcon;
@@ -103,11 +121,20 @@ public class InterfaceManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (scoreForText < gameManager.playerScore)
+        if(gameManager != null){
+            PointIncrementer(gameManager.playerScore);
+        }
+        if(tutorialManager != null){
+            PointIncrementer(tutorialManager.playerScore);
+        }
+    }
+
+    public void PointIncrementer(int playerScore){
+        if (scoreForText < playerScore)
         {
             scoreForText += scoreMoverPositive;
         }
-        else if (scoreForText > gameManager.playerScore)
+        else if (scoreForText > playerScore)
         {
             scoreForText -= scoreMoverNegative;
         }

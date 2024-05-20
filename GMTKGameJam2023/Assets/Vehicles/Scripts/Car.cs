@@ -85,6 +85,7 @@ public abstract class Car : MonoBehaviour
     protected int totalPoints = 0;
 
     protected GameManager gameManager;
+    protected TutorialManager tutorialManager;
     private Rigidbody2D rb;
 
     private Coroutine freezeCoroutine;
@@ -96,6 +97,7 @@ public abstract class Car : MonoBehaviour
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -154,7 +156,13 @@ public abstract class Car : MonoBehaviour
     {
         // Debug.Log("Triggering Hit with: "+ collision.gameObject.name);
 
-        if (gameManager.isGameOver)
+        if (gameManager != null && gameManager.isGameOver)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
+        if (tutorialManager != null && tutorialManager.isGameOver)
         {
             rb.velocity = Vector2.zero;
             return;
@@ -300,7 +308,10 @@ public abstract class Car : MonoBehaviour
         // Collect Tokens
         token.TokenCollected();
 
-        gameManager.UpdateTokens(token.tokenValue);
+        if(gameManager != null)
+            gameManager.UpdateTokens(token.tokenValue);
+        if(tutorialManager != null)
+            tutorialManager.UpdateTokens(token.tokenValue);
     }
 
     public void HandleCashTokenCollision(TokenController token){
@@ -382,7 +393,10 @@ public abstract class Car : MonoBehaviour
     private void KillChicken(ChickenHealth chickenHealth)
     {
         // Increase Kill Count
-        gameManager.killCount++;
+        if(gameManager != null)
+            gameManager.killCount++;
+        if(tutorialManager != null)
+            tutorialManager.killCount++;
 
         // Increase Car-Specific Kill Count
         carKillCount++;
@@ -610,8 +624,11 @@ public abstract class Car : MonoBehaviour
 
     public void DestroySelf()
     {
-        if (totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
+        if (totalPoints > 0){
+            if(gameManager != null) gameManager.AddPlayerScore(totalPoints);
+            if(tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
+        }
+            
         Destroy(gameObject);
     }
 }

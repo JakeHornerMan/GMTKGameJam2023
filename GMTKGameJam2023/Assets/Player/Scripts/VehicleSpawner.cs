@@ -40,6 +40,7 @@ public class VehicleSpawner : MonoBehaviour
     private CurrentCarIndicator currentCarIndicator;
     private Camera mainCamera;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
     private UltimateManager ultimateManager;
     private SoundManager soundManager;
     private CarWallet carWallet;
@@ -54,6 +55,7 @@ public class VehicleSpawner : MonoBehaviour
     {
         mainCamera = Camera.main;
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         ultimateManager = FindObjectOfType<UltimateManager>();
         soundManager = FindObjectOfType<SoundManager>();
         cameraShaker = FindObjectOfType<CameraShaker>();
@@ -64,12 +66,17 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        CreateButtons();
+        if(gameManager != null){
+            CreateButtons(gameManager.carsInLevel);
+        }
+        if(tutorialManager != null){
+            CreateButtons(tutorialManager.carsInLevel);
+        }
     }
 
     private void Update()
     {
-        if (gameManager.isGameOver) return;
+        if (gameManager != null && gameManager.isGameOver) return;
         if (disableVehicleSpawn) return;
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -85,10 +92,10 @@ public class VehicleSpawner : MonoBehaviour
         }
     }
 
-    private void CreateButtons()
+    public void CreateButtons(List<Car> carsInLevel)
     {
        
-        foreach (Car car in gameManager.carsInLevel)
+        foreach (Car car in carsInLevel)
         {
             CarButton btn = Instantiate(
                 carButtonPrefab,
@@ -100,6 +107,12 @@ public class VehicleSpawner : MonoBehaviour
 
         if (carButtons.Count >= 1)
             currentActiveCar = standardCar;
+    }
+
+    public void DestroyButtons() {
+        foreach (Transform child in carSelectContainer.transform) {
+            Destroy(child.gameObject);
+        }
     }
 
     private void MouseInputs()
@@ -129,7 +142,13 @@ public class VehicleSpawner : MonoBehaviour
             SelectCar(carButtons[3].correspondingCar);
 
         UpdateMousePos();
-        UpdateCarCursor();
+        
+        if(gameManager != null){
+            UpdateCarCursor(gameManager.tokens);
+        }
+        if(tutorialManager != null){
+            UpdateCarCursor(tutorialManager.tokens);
+        }
     }
 
     private void TouchInputs()
@@ -222,7 +241,8 @@ public class VehicleSpawner : MonoBehaviour
         // Reduce Player Money
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
         {
-            gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if(gameManager != null) gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if(tutorialManager != null) tutorialManager.UpdateTokens(currentActiveCar.carPrice * -1);
             soundManager.PlayPurchase();
         }
 
@@ -287,7 +307,16 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SelectCar(Car car, bool shineLane = true)
     {
-        if (car.carPrice <= gameManager.tokens)
+        if(gameManager != null){
+            SetActiveCar(car, shineLane, gameManager.tokens);
+        }
+        if(tutorialManager != null){
+            SetActiveCar(car, shineLane, tutorialManager.tokens);
+        }
+    }
+
+    public void SetActiveCar(Car car, bool shineLane, int tokens){
+        if (car.carPrice <= tokens)
         {
             currentActiveCar = car;
 
@@ -308,7 +337,7 @@ public class VehicleSpawner : MonoBehaviour
         else
         {
             soundManager.PlayCantPurchase();
-        } 
+        }
     }
 
     public void SetUltimate()
@@ -324,7 +353,7 @@ public class VehicleSpawner : MonoBehaviour
         // Debug.Log(currentUltimateAbility.gameObject.name);
     }
 
-    private void UpdateCarCursor()
+    private void UpdateCarCursor(int tokens)
     {
         if (currentCarIndicator != null)
         {
@@ -334,7 +363,7 @@ public class VehicleSpawner : MonoBehaviour
             if (currentUltimateAbility != null)
                 currentCarIndicator.SetUI(currentUltimateAbility);
             else
-                currentCarIndicator.SetUI(currentActiveCar, gameManager.tokens, carWallet.carCount);
+                currentCarIndicator.SetUI(currentActiveCar, tokens, carWallet.carCount);
         }
     }
 
