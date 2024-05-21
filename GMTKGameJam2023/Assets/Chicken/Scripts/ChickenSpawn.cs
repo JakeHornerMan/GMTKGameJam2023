@@ -185,9 +185,9 @@ public class ChickenSpawn : MonoBehaviour
             chicken.GetComponent<ChickenMovement>().minYHeight = minYHeight;
             chicken.GetComponent<ChickenMovement>().maxYHeight = maxYHeight;
         }
-        
-        if (soundManager != null)
-            soundManager.PlayRandomChicken();
+
+        //if (soundManager != null)
+        //    soundManager.PlayRandomChicken();
     }
 
 }

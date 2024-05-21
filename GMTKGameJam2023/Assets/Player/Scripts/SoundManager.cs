@@ -14,6 +14,8 @@ public class SoundConfig
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager instance;
+
     [Header("References")]
     [SerializeField] private string musicObjectName = "Intro_Game_Menu_Theme";
 
@@ -61,6 +63,11 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         audioSrc = GetComponent<AudioSource>();
         musicAudio = GameObject.Find(musicObjectName).GetComponent<AudioSource>();
     }
