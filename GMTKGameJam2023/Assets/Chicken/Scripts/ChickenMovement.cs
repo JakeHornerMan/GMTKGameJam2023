@@ -12,6 +12,7 @@ public class ChickenMovement : MonoBehaviour
     private Animator anim;
     [HideInInspector] private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
 
     [Header("Effects")]
     [SerializeField] private GameObject splashParticles;
@@ -61,6 +62,7 @@ public class ChickenMovement : MonoBehaviour
         anim = hopController.GetComponent<Animator>();
         spriteRenderer = chickenSprite.GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
 
         if (hopController != null)
         {
@@ -121,14 +123,14 @@ public class ChickenMovement : MonoBehaviour
             yield return null; // Wait until the chicken is no longer on the cement
         }
 
-        IEnumerator coroutine = WaitAndMove(moveTime);
+        IEnumerator coroutine = WaitAndMove(moveTime, gameManager.isGameOver);
         StartCoroutine(coroutine);
     }
 
 
-    private IEnumerator WaitAndMove(float moveTime)
+    private IEnumerator WaitAndMove(float moveTime, bool isGameOver = false)
     {
-        if(!stopMovement && !gameManager.isGameOver)
+        if(!stopMovement && !isGameOver)
             BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);

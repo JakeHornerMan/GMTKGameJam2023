@@ -13,6 +13,7 @@ public class LevelInfoCards : MonoBehaviour
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject container;
     private GameManager gameManager;
+    private TutorialManager tutorialManager;
 
     // public GameObject infoTitle;
 
@@ -26,6 +27,8 @@ public class LevelInfoCards : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
+
         if (objectsForExplanation.Count > 0)
         {
             StopGame();
@@ -73,7 +76,9 @@ public class LevelInfoCards : MonoBehaviour
 
     public void StopGame()
     {
-        gameManager.pauseGameplay = true;
+        if(gameManager != null) gameManager.pauseGameplay = true;
+        if(tutorialManager != null) tutorialManager.pauseGameplay = true;
+        
         gameUI.SetActive(false);
         // Time.timeScale = Time.unscaledDeltaTime;
     }

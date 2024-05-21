@@ -27,6 +27,11 @@ public class BuyScreenManager : MonoBehaviour
     [SerializeField] private int energyPrice;
     [SerializeField] private int rerollPrice;
 
+    [Header("Max Values")]
+    [SerializeField] private float maxHealthAllowed;
+    [SerializeField] private float maxWalletAllowed;
+    [SerializeField] private float maxEnergyAllowed;
+
     [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
     private int remainingRerolls; // Tracks remaining rerolls
 
@@ -48,23 +53,22 @@ public class BuyScreenManager : MonoBehaviour
     public static BuyScreenManager instance;
     public static Canvas canvasInstance;
 
-    // VALUES FOR 10 VALUES: { 0, 0.15f, 0.23f, 0.32f, 0.43f, 0.5f, 0.628f, 0.7f, 0.8f, 0.9f, 1f }
-
     //Health Properties
     [SerializeField] private Slider healthSlider;
-    private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
+    //private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumberText;
 
     //Wallet Properties
     [SerializeField] private Slider walletSlider;
-    private static float[] walletSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] walletSliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI walletNumberText;
 
     //Energy Properties
     [SerializeField] private Slider energySlider;
     private int energyIncrement;
     [SerializeField] private int energyMultiplier = 5;
-    private static float[] energySliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
+    private static float[] energySliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI energyNumberText;
 
     [SerializeField] private TextMeshProUGUI moneyText;
@@ -410,7 +414,7 @@ public class BuyScreenManager : MonoBehaviour
     {
         if (CheckMoneyAmount(lifePrice))
         {
-            if (PlayerValues.missedChickenLives < 8)
+            if (PlayerValues.missedChickenLives < maxHealthAllowed)
             {
                 PlayerValues.missedChickenLives = PlayerValues.missedChickenLives + value;
 
@@ -425,7 +429,7 @@ public class BuyScreenManager : MonoBehaviour
     {
         if (CheckMoneyAmount(walletPrice))
         {
-            if (PlayerValues.carWalletNodes < 8)
+            if (PlayerValues.carWalletNodes < maxWalletAllowed)
             {
                 PlayerValues.carWalletNodes = PlayerValues.carWalletNodes + value;
 
@@ -440,7 +444,7 @@ public class BuyScreenManager : MonoBehaviour
     {
         if (CheckMoneyAmount(energyPrice))
         {
-            if (PlayerValues.startingEnergy < 40)
+            if (PlayerValues.startingEnergy < maxEnergyAllowed)
             {
                 energyIncrement = energyIncrement + value;
 

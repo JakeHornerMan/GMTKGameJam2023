@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 78240989
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8edf4d8e4f1a8974985867936ed98059, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a554d6e799add44483391cda65e70d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: DeliveryVan
-  objectSprite: {fileID: 21300000, guid: 8edf4d8e4f1a8974985867936ed98059, type: 3}
-  objectIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
+  objectSprite: {fileID: 21300000, guid: 1a554d6e799add44483391cda65e70d8, type: 3}
+  objectIcon: {fileID: 21300000, guid: eb32dadc3475b794dbb2e1ff6c9035f7, type: 3}
   objectDescription: 'Get you where you wanna go, if you know what I mean
 
     Got
@@ -287,7 +287,9 @@ MonoBehaviour:
   spawnSound: []
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
-  obstaclePrefab: {fileID: 2485021673343220693, guid: f06b893e49ce4da47b06639da146310d, type: 3}
+  obstaclePrefabs:
+  - {fileID: 2485021673343220693, guid: f06b893e49ce4da47b06639da146310d, type: 3}
+  - {fileID: 726624870677613110, guid: 00fe1058be909be4fb3b7d0eebe1cdca, type: 3}
   dropInterval: 0.75
   closestRoad: {fileID: 0}
   timeToReachTarget: 1
