@@ -70,23 +70,25 @@ public class ObjectBlueprint : MonoBehaviour
     public void ClearUI()
     {
         // Hide Name, Description, Image
-        objectNameText.text = string.Empty;
-        objectDescriptionText.text = string.Empty;
-        objectImage.sprite = null;
-        objectTypeText.text = string.Empty;
+        if(objectNameText  != null) objectNameText.text = string.Empty;
+        if(objectDescriptionText  != null) objectDescriptionText.text = string.Empty;
+        if(objectImage  != null) objectImage.sprite = null;
+        if(objectTypeText  != null) objectTypeText.text = string.Empty;
 
         // Hide token text and its parent display box
-        tokenCostText.text = string.Empty;
-        tokenCostText.transform.parent.gameObject.SetActive(false);
+        if(tokenCostText  != null) tokenCostText.text = string.Empty;
+        if(tokenCostText  != null) tokenCostText.transform.parent.gameObject.SetActive(false);
 
         // Hide shop text and its parent display box
-        shopUnlockCostText.text = string.Empty;
-        shopUnlockCostText.transform.parent.gameObject.SetActive(false);
+        if(shopUnlockCostText  != null) shopUnlockCostText.text = string.Empty;
+        if(shopUnlockCostText  != null) shopUnlockCostText.transform.parent.gameObject.SetActive(false);
 
         // Clear all road labels and hide road labels container
+        if(laneLabelGridContainer != null) {
         for (var i = laneLabelGridContainer.transform.childCount - 1; i >= 0; i--)
             Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
-        laneLabelGridContainer.gameObject.SetActive(false);
+         laneLabelGridContainer.gameObject.SetActive(false);
+        }
 
         // Enabling makes animation run every time something new is displayed
         // i.e. When scrolling using left/right arrows
@@ -191,5 +193,11 @@ public class ObjectBlueprint : MonoBehaviour
     {
         ClearUI();
         gameObject.SetActive(false);
+    }
+
+    public void DisplayDescription(string description)
+    {
+        gameObject.SetActive(true);
+        objectDescriptionText.text = description;
     }
 }
