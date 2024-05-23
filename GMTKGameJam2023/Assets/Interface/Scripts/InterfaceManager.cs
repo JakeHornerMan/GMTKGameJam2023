@@ -57,32 +57,39 @@ public class InterfaceManager : MonoBehaviour
         carWallet = FindObjectOfType<CarWallet>();
         ultimateManager = FindObjectOfType<UltimateManager>();
         speedUptextAnimator = speedUpText.GetComponent<Animator>();
-        if(gameManager != null){
+        if (gameManager != null)
+        {
             pointsText.GetComponent<TextMeshProUGUI>().text = gameManager.playerScore.ToString("0000");
         }
     }
 
     private void Start()
     {
-        if(ultimateButton != null){
+        if (ultimateButton != null)
+        {
 
             Ultimate ultimateInLevel = null;
-            if(gameManager != null) { ultimateInLevel = gameManager.ultimateInLevel; }
-            if(tutorialManager != null) { ultimateInLevel = tutorialManager.ultimateInLevel; }
-            
-            if(ultimateInLevel == null){
+            if (gameManager != null) { ultimateInLevel = gameManager.ultimateInLevel; }
+            if (tutorialManager != null) { ultimateInLevel = tutorialManager.ultimateInLevel; }
+
+            if (ultimateInLevel == null)
+            {
                 ultimateButton.SetActive(false);
             }
-            else{
+            else
+            {
                 ultimateButton.SetActive(true);
             }
         }
 
-        for (int i = 0; i < carWalletNodeContainers.Length; i++){
-            if(i < carWallet.walletLimit){
+        for (int i = 0; i < carWalletNodeContainers.Length; i++)
+        {
+            if (i < carWallet.walletLimit)
+            {
                 carWalletNodeContainers[i].SetActive(true);
             }
-            else{
+            else
+            {
                 carWalletNodeContainers[i].SetActive(false);
             }
         }
@@ -90,29 +97,34 @@ public class InterfaceManager : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager != null){
+        if (gameManager != null)
+        {
             UpdateValues(gameManager.killCount, gameManager.tokens, gameManager.time, gameManager.missedChickenLives);
         }
-        if(tutorialManager != null){
+        if (tutorialManager != null)
+        {
             UpdateValues(tutorialManager.killCount, tutorialManager.tokens, tutorialManager.time, tutorialManager.missedChickenLives);
         }
     }
 
-    public void UpdateValues(int killCount, int tokens, float time, int missedChickenLives){
+    public void UpdateValues(int killCount, int tokens, float time, int missedChickenLives)
+    {
         killsText.text = killCount.ToString("000");
         tokensText.text = tokens.ToString("000");
         timeText.text = time.ToString("0");
         missedChickenCountText.text = missedChickenLives.ToString("000");
         // currentCarNameText.text = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectName;
-        if(vehicleSpawner.currentUltimateAbility){
+        if (vehicleSpawner.currentUltimateAbility)
+        {
             carWalletIcon.sprite = vehicleSpawner.currentUltimateAbility.GetComponent<ObjectInfo>().objectIcon;
         }
-        else{
+        else
+        {
             if (vehicleSpawner.currentActiveCar != null)
             {
                 carWalletIcon.sprite = vehicleSpawner.currentActiveCar.GetComponent<ObjectInfo>().objectIcon;
             }
-            
+
         }
 
         UpdateCarWalletUI(carWallet.timeUntilRefill, carWallet.refillDelaySeconds);
@@ -121,15 +133,18 @@ public class InterfaceManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(gameManager != null){
+        if (gameManager != null)
+        {
             PointIncrementer(gameManager.playerScore);
         }
-        if(tutorialManager != null){
+        if (tutorialManager != null)
+        {
             PointIncrementer(tutorialManager.playerScore);
         }
     }
 
-    public void PointIncrementer(int playerScore){
+    public void PointIncrementer(int playerScore)
+    {
         if (scoreForText < playerScore)
         {
             scoreForText += scoreMoverPositive;
@@ -143,25 +158,30 @@ public class InterfaceManager : MonoBehaviour
 
     private void UpdateCarWalletUI(float timeRemaining, float maxCooldownTime)
     {
-        for (int i = 0; i < carWalletNodes.Length; i++){
-            if(i < carWallet.carCount){
+        for (int i = 0; i < carWalletNodes.Length; i++)
+        {
+            if (i < carWallet.carCount)
+            {
                 carWalletNodes[i].SetActive(true);
             }
-            else{
+            else
+            {
                 carWalletNodes[i].SetActive(false);
             }
         }
-        
+
         carWalletCountText.text = carWallet.carCount.ToString("00");
         carWalletRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
     }
 
     private void UpdateUltimateRadial(float timeRemaining, float maxCooldownTime)
     {
-        if(ultimateManager.ultimateEnabled){
+        if (ultimateManager.ultimateEnabled)
+        {
             ultimateRadialUI.fillAmount = 1;
         }
-        else{
+        else
+        {
             ultimateRadialUI.fillAmount = 1 - (timeRemaining / maxCooldownTime);
         }
     }
@@ -190,17 +210,17 @@ public class InterfaceManager : MonoBehaviour
         if (ispositive)
         {
             GameObject score = Instantiate(positivePoints, spawnLocation, Quaternion.identity, canvas.transform);
-            score.GetComponent<RectTransform>().localPosition = new Vector3(125f, 350f, 0);
+            score.GetComponent<RectTransform>().localPosition = new Vector3(400f, 350f, 0); // was 125f on x before
             score.GetComponent<TextMeshProUGUI>().text = "+" + points.ToString();
-            if(scoreMoverPositive < points / 50)
+            if (scoreMoverPositive < points / 50)
                 scoreMoverPositive = points / 50;
         }
         else
         {
             GameObject score = Instantiate(negativePoints, spawnLocation, Quaternion.identity, canvas.transform);
-            score.GetComponent<RectTransform>().localPosition = new Vector3(-125f, 350f, 0);
+            score.GetComponent<RectTransform>().localPosition = new Vector3(120f, 350f, 0); // was -125f on x before
             score.GetComponent<TextMeshProUGUI>().text = "-" + points.ToString();
-            if(scoreMoverNegative < points / 50)
+            if (scoreMoverNegative < points / 50)
                 scoreMoverNegative = points / 50;
         }
 
