@@ -258,7 +258,7 @@ MonoBehaviour:
   comboText: {fileID: 5885361816208039466}
   carType: 0
   carHealth: 125
-  carPrice: 3
+  carPrice: 4
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
@@ -267,9 +267,10 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 0
+  carShopPrice: 8
   deathboxTag: Death Box
-  placeableLaneTags: []
+  placeableLaneTags:
+  - Road
   placeableAnywhere: 0
   carSpeed: 3.5
   damage: 120
