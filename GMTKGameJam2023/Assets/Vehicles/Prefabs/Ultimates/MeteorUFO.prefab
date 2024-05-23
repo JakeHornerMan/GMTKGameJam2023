@@ -197,6 +197,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06fb92baef51e6438ea3ea77f00fafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canIBeBombed: 1
+  ultimateResetTime: 0
+  placeableAnywhere: 1
+  ignoreTokens: 1
+  ultimateShopPrice: 50
+  scorePopUp: {fileID: 0}
+  comboSymbol: x
+  comboText: {fileID: 0}
+  damage: 120
+  comboMultiplier: 0.2
+  DeathExplosion: {fileID: 0}
+  tokenCollectParticles: {fileID: 0}
+  particleDestroyDelay: 2
+  scorePopUpMsg: 
+  tokenPopUpMsg: Token
+  popupDestroyDelay: 0.7
+  carHitStopEffectMultiplier: 1
+  camShakeDuration: 0.15
+  camShakeMagnitude: 0.05
+  spawnSound: []
+  cameraShaker: {fileID: 0}
+  soundManager: {fileID: 0}
   startPos: {x: -18, y: 0}
   moveSpeed: 5
   xDestroyThreshold: 25
