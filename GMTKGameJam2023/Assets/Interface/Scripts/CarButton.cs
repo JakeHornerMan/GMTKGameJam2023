@@ -9,9 +9,7 @@ public class CarButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] public TextMeshProUGUI tokenPriceText;
-    [SerializeField] public TextMeshProUGUI carWeightText;
-    [SerializeField] private Image dollarIconImg;
-    [SerializeField] private Image correspCarIcon;
+    [SerializeField] public TextMeshProUGUI carWeightText; [SerializeField] private Image correspCarIcon;
 
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
@@ -27,7 +25,7 @@ public class CarButton : MonoBehaviour
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
-        gameManager = FindObjectOfType<GameManager>(); 
+        gameManager = FindObjectOfType<GameManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
@@ -42,8 +40,9 @@ public class CarButton : MonoBehaviour
     }
     private void Start()
     {
-        if(correspondingCar){
-            tokenPriceText.text = correspondingCar.carPrice.ToString("0");
+        if (correspondingCar)
+        {
+            tokenPriceText.text = "$" + correspondingCar.carPrice.ToString("0");
             carWeightText.text = correspondingCar.carHealth.ToString("0");
             correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
 
@@ -53,15 +52,16 @@ public class CarButton : MonoBehaviour
 
     private void SetPriceColor()
     {
-        if(gameManager){
+        if (gameManager)
+        {
             bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
-            tokenPriceText.color = dollarIconImg.color = enoughMoney ? positiveColor : negativeColor;
+            tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
         }
     }
 
     public void SelectCorrespondingCar()
     {
-        if(gameManager || tutorialManager)
+        if (gameManager || tutorialManager)
             vehicleSpawner.SelectCar(this.correspondingCar);
     }
 }
