@@ -243,7 +243,7 @@ MonoBehaviour:
   comboText: {fileID: 439319545751973381}
   carType: 1
   carHealth: 200
-  carPrice: 0
+  carPrice: 8
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
@@ -252,7 +252,7 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 10
+  carShopPrice: 15
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -282,7 +282,7 @@ MonoBehaviour:
   numCementToSpawn: 10
   initalCementDelay: 2
   cementSpawnInterval: 0.3
-  cementLifetime: 15
+  cementLifetime: 7.5
 --- !u!1 &8233138244604092194
 GameObject:
   m_ObjectHideFlags: 0

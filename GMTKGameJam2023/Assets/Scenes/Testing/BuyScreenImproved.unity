@@ -5684,6 +5684,9 @@ MonoBehaviour:
   walletPrice: 30
   energyPrice: 10
   rerollPrice: 5
+  maxHealthAllowed: 0
+  maxWalletAllowed: 0
+  maxEnergyAllowed: 0
   maxRerolls: 3
   RosterHolder: {fileID: 58088147}
   carShop: {fileID: 1296188340}
@@ -5914,7 +5917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cash: 100'
+  m_text: 'Cash: 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd474fb9b9404844482c100aaabd3b14, type: 2}
   m_sharedMaterial: {fileID: -8531243163931627426, guid: cd474fb9b9404844482c100aaabd3b14, type: 2}
