@@ -5160,7 +5160,8 @@ MonoBehaviour:
   objectName: Fire Truck
   objectSprite: {fileID: -1121594847, guid: 84b714ebf8ca7a049874fae934b019f7, type: 3}
   objectIcon: {fileID: 21300000, guid: 7c6d6e21a613e5148b8c9d7889595f22, type: 3}
-  objectDescription: 'Uses powerful water hose to push chicken backward. '
+  objectDescription: 'Taking its name literally, the "fire" truck uses its powerful
+    fire hose to cook chicken. '
 --- !u!114 &2382566602217672600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5175,7 +5176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 439319545751973381}
+  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   carType: 1
   carHealth: 250
   carPrice: 10
@@ -5561,17 +5562,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
---- !u!114 &439319545751973381 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
-  m_PrefabInstance: {fileID: 7622181485733133021}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &4840056744599577688 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
