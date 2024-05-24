@@ -63,6 +63,7 @@ public class Ultimate : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
+        soundManager?.RandomPlaySound(spawnSound);
     }
 
      private void OnTriggerEnter2D(Collider2D collision)

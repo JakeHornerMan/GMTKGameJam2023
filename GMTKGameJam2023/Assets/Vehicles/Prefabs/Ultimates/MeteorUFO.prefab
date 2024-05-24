@@ -216,7 +216,9 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 1
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
-  spawnSound: []
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 4e44501854e14d544adc529f2da48c86, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   startPos: {x: -18, y: 0}
