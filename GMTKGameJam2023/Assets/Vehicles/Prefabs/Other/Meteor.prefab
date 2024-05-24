@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: -6823465047001592822}
   - component: {fileID: 4327572464095262486}
   - component: {fileID: 7807847845923346728}
-  - component: {fileID: -1139170933025108011}
-  - component: {fileID: 7506448221559744903}
+  - component: {fileID: 434634932579721344}
   m_Layer: 6
   m_Name: Meteor
   m_TagString: Untagged
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3112727753274190021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 757598508086145655}
@@ -174,7 +173,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1139170933025108011
+--- !u!114 &434634932579721344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,59 +182,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3112727753274190021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a7fffb41f093bc4482aee31092c0aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Small Explosion
-  objectSprite: {fileID: 0}
-  objectIcon: {fileID: 0}
-  objectDescription: 
---- !u!114 &7506448221559744903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3112727753274190021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
-  comboSymbol: x
-  comboText: {fileID: 0}
-  carType: 0
-  carHealth: 100
-  carPrice: 2
-  ignoreTokens: 1
-  isSlicingCar: 0
-  canIBeBombed: 0
-  canSpinOut: 0
-  isSpinning: 0
-  carInHitStop: 0
-  carInAction: 1
-  carTeleporting: 0
-  carShopPrice: 0
-  deathboxTag: Death Box
-  placeableLaneTags: []
-  placeableAnywhere: 0
-  carSpeed: 0
-  damage: 120
-  comboMultiplier: 0.2
-  DeathExplosion: {fileID: 0}
-  tokenCollectParticles: {fileID: 0}
-  particleDestroyDelay: 2
-  scorePopUpMsg: 
-  tokenPopUpMsg: Token
-  cashPopUpMsg: Cash
-  popupDestroyDelay: 0.7
-  carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.1
-  camShakeMagnitude: 0.1
-  spawnSound: []
-  cameraShaker: {fileID: 0}
-  soundManager: {fileID: 0}
+  smallExplosionPrefab: {fileID: 3112727753274190021, guid: e34f14ac8da5ccd469a31c6d10c90e17, type: 3}
 --- !u!1 &4745592846738103100
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,8 +302,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 1
+      scalar: 0.5
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5090,7 +5040,7 @@ Transform:
   m_GameObject: {fileID: 7320631781227840894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6467225769535920524}
@@ -5264,8 +5214,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 1
+      scalar: 0.5
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
