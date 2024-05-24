@@ -129,6 +129,11 @@ public abstract class Car : MonoBehaviour
             }
             
         }
+
+        if (comboText != null)
+        {
+            comboText.text = $"{comboSymbol}{carKillCount}";
+        }
     }
 
     public virtual void SetCarSpeed(float speed)
@@ -366,16 +371,7 @@ public abstract class Car : MonoBehaviour
         if (bombChickenHealth != null && canIBeBombed)
         {
             // Destroy the car as well
-            // Destroy(gameObject);
-            //LaunchCar
-            LaunchCar();
-        }
-
-        if (comboText != null)
-        {
-            Debug.Log(comboSymbol+carKillCount);
-            comboText.text = comboSymbol+carKillCount;
-            Debug.Log(comboText.text);
+            Destroy(gameObject);
         }
 
         // Canera Shake

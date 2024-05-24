@@ -10,7 +10,6 @@ public class CarButton : MonoBehaviour
     [Header("References")]
     [SerializeField] public TextMeshProUGUI tokenPriceText;
     [SerializeField] public TextMeshProUGUI carWeightText; [SerializeField] private Image correspCarIcon;
-    [SerializeField] private Image buttonOutline;
 
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
@@ -18,9 +17,6 @@ public class CarButton : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color positiveColor;
     [SerializeField] private Color negativeColor;
-    [SerializeField] private Color positiveColorOutline;
-    [SerializeField] private Color negativeColorOutline;
-    [SerializeField] private Color standardCarColorOutline;
 
     private VehicleSpawner vehicleSpawner;
     private GameManager gameManager;
@@ -60,10 +56,6 @@ public class CarButton : MonoBehaviour
         {
             bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
             tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
-            buttonOutline.color = enoughMoney ? positiveColorOutline: negativeColorOutline;
-            if(correspondingCar.name == "Standard Car"){
-                buttonOutline.color = standardCarColorOutline;
-            }
         }
     }
 
