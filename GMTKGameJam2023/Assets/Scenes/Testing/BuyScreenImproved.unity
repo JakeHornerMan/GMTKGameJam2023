@@ -5684,6 +5684,9 @@ MonoBehaviour:
   walletPrice: 30
   energyPrice: 10
   rerollPrice: 5
+  maxHealthAllowed: 0
+  maxWalletAllowed: 0
+  maxEnergyAllowed: 0
   maxRerolls: 3
   RosterHolder: {fileID: 58088147}
   carShop: {fileID: 1296188340}
@@ -5914,7 +5917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cash: 100'
+  m_text: 'Cash: 50'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd474fb9b9404844482c100aaabd3b14, type: 2}
   m_sharedMaterial: {fileID: -8531243163931627426, guid: cd474fb9b9404844482c100aaabd3b14, type: 2}
@@ -14812,6 +14815,10 @@ PrefabInstance:
     - target: {fileID: 4007968612830984764, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100669326651768849, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6738691707576589895, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_AnchoredPosition.y
