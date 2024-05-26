@@ -477,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[4]
       value: 
-      objectReference: {fileID: -2703630887149224533, guid: 20609935811afb446a3642e4e5d284e1, type: 3}
+      objectReference: {fileID: 6250562015194746558, guid: 352dc83d38570494db1d1fb8daeee559, type: 3}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[5]
       value: 
@@ -1174,6 +1174,14 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 855098693
       objectReference: {fileID: 0}
+    - target: {fileID: 7282536499142927125, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: walletLimit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282536499142927125, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: startWalletCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7708920941435103324, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1184,10 +1192,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259647541547660734, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8731842054829148352, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}

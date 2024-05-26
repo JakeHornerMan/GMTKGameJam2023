@@ -41,8 +41,11 @@ public class CementMixer : Car
             GameObject newCement = Instantiate(
                 cementPrefab,
                 cementSpawnPos.position,
-                Quaternion.Euler(0, 0, Random.Range(0, 360))
+                Quaternion.identity
             );
+
+            // Rotate Cement Sprite
+            newCement.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
             soundManager.PlayCementPour();
 
@@ -50,6 +53,6 @@ public class CementMixer : Car
 
             cementSpawned++;
         }
-        
+
     }
 }

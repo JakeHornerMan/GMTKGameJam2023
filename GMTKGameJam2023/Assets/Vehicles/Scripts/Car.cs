@@ -125,9 +125,14 @@ public abstract class Car : MonoBehaviour
             }
             else
             {
-                carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond/2) * Time.deltaTime);
+                carSpriteObject.transform.Rotate(new Vector3(0, 0, degreesPerSecond / 2) * Time.deltaTime);
             }
-            
+
+        }
+
+        if (comboText != null)
+        {
+            comboText.text = $"{comboSymbol}{carKillCount}";
         }
     }
 
@@ -135,13 +140,13 @@ public abstract class Car : MonoBehaviour
     {
         if (rb != null)
             rb.velocity = transform.up * speed;
-            currentSpeed = speed;
+        currentSpeed = speed;
     }
 
     private void SlowCarSpeed()
     {
         // Debug.Log("Car is Slowed");
-        float slowSpeed = carSpeed/2;
+        float slowSpeed = carSpeed / 2;
         if (rb != null)
             rb.velocity = transform.up * slowSpeed;
         currentSpeed = slowSpeed;
@@ -179,11 +184,11 @@ public abstract class Car : MonoBehaviour
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
-        
-        if(collision.gameObject.name.Contains("SlowSubstance"))
+
+        if (collision.gameObject.name.Contains("SlowSubstance"))
             SlowCarSpeed();
 
-        if(wall != null)
+        if (wall != null)
             HandleWallCollision(wall);
     }
 
@@ -206,7 +211,7 @@ public abstract class Car : MonoBehaviour
 
         if (sheep != null)
             HandleSheepCollision(sheep);
-        
+
     }
 
     private void HandleVehicleCollision(Car otherCar)
@@ -249,7 +254,7 @@ public abstract class Car : MonoBehaviour
                 this.carHealth -= otherCar.carHealth;
             }
 
-            
+
         }
     }
 
@@ -260,12 +265,13 @@ public abstract class Car : MonoBehaviour
         {
             carHealth -= wall.damage;
             wall.WallHit();
-            if(carHealth <= 0)
+            if (carHealth <= 0)
                 LaunchCar();
         }
 
         //Destroy Light
-        if (carType == CarType.Light){ 
+        if (carType == CarType.Light)
+        {
             LaunchCar();
             wall.WallHit();
         }
@@ -276,16 +282,19 @@ public abstract class Car : MonoBehaviour
 
     protected void HandleTokenCollision(TokenController token)
     {
-        if(token.cashBag){
+        if (token.cashBag)
+        {
             HandleCashTokenCollision(token);
         }
-        else{
+        else
+        {
             HandleEnergyTokenCollision(token);
         }
 
     }
 
-    public void HandleEnergyTokenCollision(TokenController token){
+    public void HandleEnergyTokenCollision(TokenController token)
+    {
         // Token Particles
         GameObject newTokenParticles = Instantiate(
                         tokenCollectParticles.gameObject,
@@ -303,13 +312,14 @@ public abstract class Car : MonoBehaviour
         // Collect Tokens
         token.TokenCollected();
 
-        if(gameManager != null)
+        if (gameManager != null)
             gameManager.UpdateTokens(token.tokenValue);
-        if(tutorialManager != null)
+        if (tutorialManager != null)
             tutorialManager.UpdateTokens(token.tokenValue);
     }
 
-    public void HandleCashTokenCollision(TokenController token){
+    public void HandleCashTokenCollision(TokenController token)
+    {
         // Token Particles
         GameObject newTokenParticles = Instantiate(
                         tokenCollectParticles.gameObject,
@@ -326,7 +336,7 @@ public abstract class Car : MonoBehaviour
 
         // Collect Tokens
         token.TokenCollected();
-        
+
         PlayerValues.playerCash += 5;
     }
 
@@ -339,7 +349,8 @@ public abstract class Car : MonoBehaviour
         }
 
         //PsychicHen hit
-        if(chickenHealth.gameObject.name.Contains("PsychicHen")){
+        if (chickenHealth.gameObject.name.Contains("PsychicHen"))
+        {
             carTeleporting = true;
             chickenHealth.gameObject.GetComponent<PsychicHen>().SpawnPortal(this.gameObject);
         }
@@ -351,10 +362,12 @@ public abstract class Car : MonoBehaviour
 
         // Hit Stop, TurboChicken has different movement script;
         // if(chickenHealth.gameObject.name.Contains("Turbo")){
-        if(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>()){
+        if (chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>())
+        {
             StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
         }
-        else{
+        else
+        {
             StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
         }
 
@@ -366,16 +379,7 @@ public abstract class Car : MonoBehaviour
         if (bombChickenHealth != null && canIBeBombed)
         {
             // Destroy the car as well
-            // Destroy(gameObject);
-            //LaunchCar
-            LaunchCar();
-        }
-
-        if (comboText != null)
-        {
-            Debug.Log(comboSymbol+carKillCount);
-            comboText.text = comboSymbol+carKillCount;
-            Debug.Log(comboText.text);
+            Destroy(gameObject);
         }
 
         // Canera Shake
@@ -384,7 +388,7 @@ public abstract class Car : MonoBehaviour
         // Impact Sound
         soundManager.PlayChickenHit();
 
-         // Slice Sound
+        // Slice Sound
         if (isSlicingCar)
             soundManager.PlayRandomSlice();
     }
@@ -397,9 +401,9 @@ public abstract class Car : MonoBehaviour
     private void KillChicken(ChickenHealth chickenHealth)
     {
         // Increase Kill Count
-        if(gameManager != null)
+        if (gameManager != null)
             gameManager.killCount++;
-        if(tutorialManager != null)
+        if (tutorialManager != null)
             tutorialManager.killCount++;
 
         // Increase Car-Specific Kill Count
@@ -503,7 +507,7 @@ public abstract class Car : MonoBehaviour
             {
                 BoxCollider2D carCollider = GetComponent<BoxCollider2D>();
                 carCollider.size = new Vector2(1.8f, carCollider.size.y);
-            }            
+            }
 
             isSpinning = true;
         }
@@ -561,9 +565,12 @@ public abstract class Car : MonoBehaviour
 
         Collider2D collider = gameObject.GetComponent<Collider2D>();
 
-        if (collider != null){
+        if (collider != null)
+        {
             GetComponent<Collider2D>().enabled = false;
-        }else{
+        }
+        else
+        {
             GetComponentInChildren<Collider2D>().enabled = false;
         }
 
@@ -574,6 +581,8 @@ public abstract class Car : MonoBehaviour
 
         if (carType == CarType.Heavy || carType == CarType.Light)
         {
+            if (DeathExplosion == null) return;
+
             GameObject currentBomb = Instantiate(DeathExplosion, transform.position, Quaternion.identity);
 
             Destroy(currentBomb, 0.85f);
@@ -628,11 +637,12 @@ public abstract class Car : MonoBehaviour
 
     public void DestroySelf()
     {
-        if (totalPoints > 0){
-            if(gameManager != null) gameManager.AddPlayerScore(totalPoints);
-            if(tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
+        if (totalPoints > 0)
+        {
+            if (gameManager != null) gameManager.AddPlayerScore(totalPoints);
+            if (tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
         }
-            
+
         Destroy(gameObject);
     }
 }

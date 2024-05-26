@@ -4249,8 +4249,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 40ba138fad8ed84448c2153fe6e0be92, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6a099db64e7b9574eb71ce6f5a7372b1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5380,7 +5380,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $5000
+  m_text: $20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
@@ -5684,9 +5684,9 @@ MonoBehaviour:
   walletPrice: 30
   energyPrice: 10
   rerollPrice: 5
-  maxHealthAllowed: 0
-  maxWalletAllowed: 0
-  maxEnergyAllowed: 0
+  maxHealthAllowed: 10
+  maxWalletAllowed: 10
+  maxEnergyAllowed: 50
   maxRerolls: 3
   RosterHolder: {fileID: 58088147}
   carShop: {fileID: 1296188340}
@@ -5889,7 +5889,6 @@ GameObject:
   - component: {fileID: 1039460116}
   - component: {fileID: 1039460115}
   - component: {fileID: 1039460113}
-  - component: {fileID: 1039460114}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -5986,19 +5985,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1039460114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039460112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d93047c42a5c4648bbf905d4d8a0d70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingAmount: 100
 --- !u!222 &1039460115
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6872,8 +6858,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 40ba138fad8ed84448c2153fe6e0be92, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6a099db64e7b9574eb71ce6f5a7372b1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9754,7 +9740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $5000
+  m_text: $30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
@@ -10919,7 +10905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $5000
+  m_text: $10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: f983887675fe12c4ca17b453ad7df5bb, type: 2}
@@ -11691,8 +11677,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 40ba138fad8ed84448c2153fe6e0be92, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 6a099db64e7b9574eb71ce6f5a7372b1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
