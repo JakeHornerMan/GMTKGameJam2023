@@ -505,6 +505,8 @@ public class BuyScreenManager : MonoBehaviour
     private void UpdateMoneyText()
     {
         moneyText.text = "Cash: " + currentAmount.ToString();
+
+        UpdateSlotColors();
     }
 
     public bool CheckMoneyAmount(int value)
