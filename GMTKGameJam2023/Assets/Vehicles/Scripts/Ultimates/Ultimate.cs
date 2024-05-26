@@ -63,6 +63,7 @@ public class Ultimate : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
+        soundManager?.RandomPlaySound(spawnSound);
     }
 
      private void OnTriggerEnter2D(Collider2D collision)
@@ -88,6 +89,11 @@ public class Ultimate : MonoBehaviour
 
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
+
+        Car car = collision.gameObject.GetComponent<Car>();
+
+        if (collision != null)
+           car.LaunchCar();
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -126,12 +132,12 @@ public class Ultimate : MonoBehaviour
         chickenHealth.TakeDamage(damage);
 
         // Destroy Self if Bomb Chicken
-        BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
-        if (bombChickenHealth != null && canIBeBombed)
-        {
-            // Destroy the car as well
-            Destroy(gameObject);
-        }
+        // BombChickenHealth bombChickenHealth = chickenHealth as BombChickenHealth;
+        // if (bombChickenHealth != null && canIBeBombed)
+        // {
+        //     // Destroy the car as well
+        //     Destroy(gameObject);
+        // }
 
         // Canera Shake
         CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
@@ -155,6 +161,7 @@ public class Ultimate : MonoBehaviour
 
         // Increase Score
         totalPoints += chickenHealth.pointsReward * carKillCount;
+
         // gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
 
         // Change Combo Multiplier
@@ -165,6 +172,13 @@ public class Ultimate : MonoBehaviour
             chickenHealth.transform.position,
             $"{chickenHealth.pointsReward * currentComboMultiplier} {scorePopUpMsg}"
         );
+
+        if (comboText != null)
+        {
+            Debug.Log(comboSymbol+carKillCount);
+            comboText.text = comboSymbol+carKillCount;
+            Debug.Log(comboText.text);
+        }
     }
 
     private void ShowPopup(Vector3 position, string msg)
@@ -179,7 +193,7 @@ public class Ultimate : MonoBehaviour
         Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
 
-    public void DestroySelf()
+    public void OnDestroy()
     {
         if (totalPoints > 0)
             gameManager.AddPlayerScore(totalPoints);
