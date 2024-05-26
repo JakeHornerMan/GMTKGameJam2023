@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class VehicleSpawner : MonoBehaviour
 {
@@ -118,6 +119,11 @@ public class VehicleSpawner : MonoBehaviour
     private void MouseInputs()
     {
         if (Input.GetMouseButtonDown(placeMouseBtn)){
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Clicked on the UI");
+                return;
+            }
             if(currentUltimateAbility){
                 PlaceSelectedUltimate();
             }

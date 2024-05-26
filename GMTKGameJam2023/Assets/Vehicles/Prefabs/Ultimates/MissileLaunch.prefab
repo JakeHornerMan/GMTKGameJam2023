@@ -5237,7 +5237,8 @@ MonoBehaviour:
   objectName: Missile Launch
   objectSprite: {fileID: 21300000, guid: 5c5f34472e1f77e4ba0073cfaa24b81c, type: 3}
   objectIcon: {fileID: 21300000, guid: 400b2b9076bdb1f46b6760f2571b1bd5, type: 3}
-  objectDescription: 
+  objectDescription: Summons a missile air strike at any specified location on the
+    level, taking out all chicken in its blast radius.
 --- !u!114 &-1257477323556779182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5254,6 +5255,7 @@ MonoBehaviour:
   ultimateResetTime: 30
   placeableAnywhere: 1
   ignoreTokens: 1
+  ultimateShopPrice: 0
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 5885361816208039466}
