@@ -35,10 +35,10 @@ public class CrazyTrain : Ultimate
         }
     }
 
-    void OnDestroy()
-    {
-        Debug.Log(transform.gameObject.name);
-    }
+    // void OnDestroy()
+    // {
+    //     // Debug.Log(transform.gameObject.name);
+    // }
 
     public Vector3 CalculateStartPosition(){
         Vector3 inputPos = vehicleSpawner.inputPos;

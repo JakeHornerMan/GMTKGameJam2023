@@ -189,7 +189,7 @@ public class TutorialManager : MonoBehaviour
         carCursorUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(0, 0, 0);
         carCursorTokenUI.transform.localScale = new Vector3(0, 0, 0);
-        OpenInfoBluePrintPauseGame("<b>Oh No!</b> <br>You have let a chicken cross the road, and attack your corn <i>(displayed on top)</i>. <br>You can now send standard car to stop them from eating your crops <br><i>(Please select a road to place them!)</i>");
+        OpenInfoBluePrintPauseGame("<b>Oh No!</b> <br><br>You have let a chicken cross the road, and attack your corn <i>(displayed on top)</i>. <br><br>You can now send standard car to stop them from eating your crops <br><br><i>(Please select a road to place them!)</i>");
     }
 
     public void Round3ChickenWaveAndCarWallet(){
@@ -198,7 +198,7 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         walletUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("You can only place a limited amount of vehicles at one time. <br>This is shown by the cogs on the left side of the screen, or the number and spinner attached to the game cursor. <br>These vehicles are recharged every few seconds to keep you fighting the chicken menace.");
+        OpenInfoBluePrintPauseGame("You can only place a limited amount of vehicles at one time. <br><br>This is shown by the cogs on the left side of the screen, or the number and spinner attached to the game cursor. <br><br>These vehicles are recharged every few seconds to keep you fighting the chicken menace.");
     }
 
     public void Round4TokenWave(){
@@ -207,7 +207,7 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorTokenUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("Energy tokens are a very important resourse to collect! <br>They show up randomly during your playtime and are collected by vehicles. <br>Soon you will be able to able to affort a new set of wheels");
+        OpenInfoBluePrintPauseGame("Energy tokens are a very important resourse to collect! <br><br>They show up randomly during your playtime and are collected by vehicles. <br><br>Soon you will be able to able to afford a new set of wheels");
     }
 
     public void Round5NewVehiclesAndLanes(){
@@ -220,7 +220,7 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carSelectorUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br>You can now select the new bluprint icons <i>(on the bottom of the screen)</i>. Place them on different roads that highlight when selected. <br>You need to have the corrrect amount of energy to purchase a vehicle");
+        OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br><br>You can now select the new bluprint icons <i>(on the bottom of the screen)</i>. Place them on different roads that highlight when selected. <br><br>You need to have the corrrect amount of energy to purchase a vehicle");
     }
 
     // public void Round6NewVehicleNewRoad(){
@@ -233,7 +233,7 @@ public class TutorialManager : MonoBehaviour
 
     public void Round6SpecialChickens(){
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
-        OpenInfoBluePrintPauseGame("The Chickens are Evolving! <br> There is many different special types of chickens with different mechanics to throw a wrench in your plans.");
+        OpenInfoBluePrintPauseGame("The Chickens are Evolving! <br><br> There is many different special types of chickens with different mechanics to throw a wrench in your plans.");
     }
 
     public void Round7TopContainerShow(){
@@ -242,13 +242,13 @@ public class TutorialManager : MonoBehaviour
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         cornContainerUI.GetComponent<RectTransform>().anchoredPosition = originalCornContainerlocation;
         SetRoundTime();
-        OpenInfoBluePrintPauseGame("You have just recieved a Ultimate ability. Select the ability <i>(top center button)</i> and click any where on the screen to place. <br> On the left, you have timer for the round counting down until the next chicken horde. <br>On the right we have your player score, rack this up for bragging rights");
+        OpenInfoBluePrintPauseGame("You have just recieved a Ultimate ability. Select the ability <i>(top center button)</i> and click any where on the screen to place. <br><br> On the left, you have timer for the round counting down until the next chicken horde. <br><br>On the right we have your player score, rack this up for bragging rights");
     }
 
     public void Round8IntenseWave(){
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         SetRoundTime();
-        OpenInfoBluePrintPauseGame("Congratulations! <br>You have completed the tuttorial. <br>Now lets if you can survive this round.");
+        OpenInfoBluePrintPauseGame("Congratulations! <br><br>You have completed the tuttorial. <br><br>Now lets see if you can survive this round.");
     }
 
     public void SetRoundTime(){

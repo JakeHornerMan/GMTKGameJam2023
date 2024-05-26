@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 0
-  ultimateResetTime: 0
+  ultimateResetTime: 40
   placeableAnywhere: 1
   ignoreTokens: 1
   ultimateShopPrice: 0
@@ -495,6 +495,8 @@ MonoBehaviour:
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
   spawnSound:
+  - clip: {fileID: 8300000, guid: 94cedd4d8b72f414c95adf60fb145631, type: 3}
+    volume: 1
   - clip: {fileID: 8300000, guid: 1bdfd8a76df67e941b4f5729bcd55752, type: 3}
     volume: 1
   cameraShaker: {fileID: 0}
@@ -519,7 +521,7 @@ MonoBehaviour:
   objectSprite: {fileID: 21300000, guid: 73a3fd855e39c854a8090a9852441270, type: 3}
   objectIcon: {fileID: 21300000, guid: 73a3fd855e39c854a8090a9852441270, type: 3}
   objectDescription: This Train is off the rails and its comig stright toward those
-    chickens. LargeHigh speed train moves from right to left on the position when
+    chickens. Large high speed train moves from right to left on the position when
     you place it.
 --- !u!61 &554778897067897336
 BoxCollider2D:

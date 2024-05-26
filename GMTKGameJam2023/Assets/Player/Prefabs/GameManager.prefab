@@ -355,11 +355,6 @@ MonoBehaviour:
     difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
-  - timeToSpawn: 0
-    chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
-    difficultyRank: 5
-    topSpawn: 0
-    bottomSpawn: 0
   potCandidates: []
   bonusWaves:
   - roundTime: 20
@@ -639,7 +634,7 @@ MonoBehaviour:
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
-    wavePrompt: Armour Up!
+    wavePrompt: Slime Time!
     waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
@@ -655,18 +650,67 @@ MonoBehaviour:
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 8
+    - timeToSpawn: 9
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 12
+    - timeToSpawn: 15
       chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 16
-      chicken: {fileID: 7467406142021207113, guid: 6e9e044c98fade64cafaa927b9ea3a48, type: 3}
+  - roundTime: 20
+    wavePrompt: Catch me if you can
+    waveSound: 
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    coinAmount: 0
+    specialChickens:
+    - timeToSpawn: 0
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 4
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 9
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 15
+      chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+  - roundTime: 20
+    wavePrompt: Houston, we have a problem!
+    waveSound: 
+    standardChickenAmounts: 0
+    chickenIntesity: 0
+    coinAmount: 0
+    specialChickens:
+    - timeToSpawn: 0
+      chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 4
+      chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 9
+      chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+      difficultyRank: 0
+      topSpawn: 0
+      bottomSpawn: 0
+    - timeToSpawn: 15
+      chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
@@ -1018,6 +1062,7 @@ MonoBehaviour:
   invalidPlacementCamShake: {x: 0.05, y: 0.1}
   currentActiveCar: {fileID: 0}
   currentUltimateAbility: {fileID: 0}
+  inputPos: {x: 0, y: 0, z: 0}
   carButtons: []
 --- !u!114 &695978991538291139
 MonoBehaviour:
@@ -1148,6 +1193,22 @@ PrefabInstance:
     - target: {fileID: 1140144742491147549, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197974142982025598, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197974142982025598, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197974142982025598, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197974142982025598, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204623891215500174, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
