@@ -21,6 +21,7 @@ public class MeteorUFO : Ultimate
     [SerializeField] private GameObject meteorPrefab;
     [SerializeField] private int numMeteors = 10;
     [SerializeField] private float meteorSpawnDelay = 0.5f;
+    [SerializeField] private SoundConfig[] meteorSounds;
 
     private bool meteorShowerStarted = false;
 
@@ -69,6 +70,7 @@ public class MeteorUFO : Ultimate
                 randomPos,
                 Quaternion.identity
             );
+            soundManager?.RandomPlaySound(meteorSounds);
 
             yield return new WaitForSeconds(meteorSpawnDelay);
         }
