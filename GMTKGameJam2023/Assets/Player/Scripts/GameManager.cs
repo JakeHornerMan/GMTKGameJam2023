@@ -267,7 +267,7 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         Debug.Log("playerScore: " + Points.playerScore);
         yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreen");
+        sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
     private void HandleGameOver(){
@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour
     //Updates Static scripts
     private void SetPlayerValues(){
         PlayerValues.Cars = carsInLevel;
+        PlayerValues.ultimate = ultimateInLevel;
         PlayerValues.startingEnergy =0;
     }
 

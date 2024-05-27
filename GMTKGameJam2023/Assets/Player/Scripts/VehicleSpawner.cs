@@ -48,7 +48,7 @@ public class VehicleSpawner : MonoBehaviour
     private CameraShaker cameraShaker;
     private TokenSpawner tokenSpawner;
 
-    private Vector3 inputPos;
+    public Vector3 inputPos;
 
     [HideInInspector] public List<CarButton> carButtons;
 

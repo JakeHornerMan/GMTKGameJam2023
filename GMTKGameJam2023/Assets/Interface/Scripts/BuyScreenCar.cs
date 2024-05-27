@@ -15,6 +15,9 @@ public class BuyScreenCar : MonoBehaviour
     [Header("Car Values")]
     [SerializeField] public Car correspondingCar;
 
+    [Header("Ultimate Values")]
+    [SerializeField] public Ultimate correspondingUltimate;
+
     private void Start()
     {
         UpdateSprite();
@@ -23,7 +26,10 @@ public class BuyScreenCar : MonoBehaviour
     public void UpdateSprite()
     {
         //tokenPriceText.text = correspondingCar.carShopPrice.ToString("0");
-        correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
+        if(correspondingCar != null)
+            correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
+        if(correspondingUltimate != null)
+            correspCarIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
     }
 
 }
