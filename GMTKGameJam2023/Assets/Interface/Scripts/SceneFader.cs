@@ -50,7 +50,7 @@ public class SceneFader : MonoBehaviour
     // Scene Loading Functions
     public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
     public void RestartLevel() => FadeTo(levelSceneName);
-    public void FadeToMainMenu() => FadeTo(mainMenuSceneName);
+    public void FadeToMainMenu() => ScreenWipeOut(mainMenuSceneName);
     public void FadeToWorlds() => FadeTo(worldSelectSceneName);
     public void FadeToLevelSelect() => FadeTo(levelSelectSceneName);
     public void FadeToTutorial() => FadeTo(tutorialSceneName);

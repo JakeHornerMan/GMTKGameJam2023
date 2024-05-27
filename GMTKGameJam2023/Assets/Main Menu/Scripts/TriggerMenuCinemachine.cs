@@ -173,19 +173,22 @@ public class TriggerMenuCinemachine : MonoBehaviour
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Enter Game");
 
-        MenuManager.instance.EnterGame();
+        MenuManager.instance.EnterScene("Level01");
         //mainMenu.EnterGame();
     }
 
     public void GoToCollection(){
-        // mainCamera.speed = 5f;
-        // mainCamera.targetPos = gamesPos;
-        // mainMenu.EnterWorldSelect();
+        MenuInteraction.instance.PlaceSelectedCar(currentRoad);
+        anim.Play("Collection");
+
+        MenuManager.instance.EnterScene("Guidebook");
+
     }
 
     public void GoToTutorial(){
-        // mainCamera.speed = 5f;
-        // mainCamera.targetPos = gamesPos;
-        // mainMenu.EnterWorldSelect();
+        MenuInteraction.instance.PlaceSelectedCar(currentRoad);
+        anim.Play("Tutorial");
+
+        MenuManager.instance.EnterScene("Tutorial");
     }
 }
