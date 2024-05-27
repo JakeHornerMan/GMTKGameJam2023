@@ -168,7 +168,7 @@ public class BuyScreenManager : MonoBehaviour
             buyScreenUltimate.correspondingUltimate = playerUltimate;
 
             
-            Debug.Log("We have set the carbutton to" + buyScreenUltimate.correspondingUltimate);
+            Debug.Log("We have set the ultimateBtn to" + buyScreenUltimate.correspondingUltimate);
         }
 
 

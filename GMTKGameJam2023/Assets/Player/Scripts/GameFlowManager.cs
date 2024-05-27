@@ -147,10 +147,10 @@ public class GameFlowManager : MonoBehaviour
     } 
 
     private int RoundCoinSet(){
-        if(GameProgressionValues.RoundNumber > 15){
-            return 30;
+        if(GameProgressionValues.RoundNumber > 19){
+            return 50;
         }
-        return 15 + (GameProgressionValues.RoundNumber);
+        return 30 + (GameProgressionValues.RoundNumber);
     }
 
     private int chickenIntesitySet(){
@@ -176,7 +176,7 @@ public class GameFlowManager : MonoBehaviour
     private void SpecialWave(){
         int getWave = Random.Range(0,bonusWaves.Length);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
-        copyWave.coinAmount = RoundCoinSet();
+        copyWave.coinAmount = 20;
         gameManager.waves.Add(copyWave);
         // Debug.Log(copyWave.wavePrompt);
     }
