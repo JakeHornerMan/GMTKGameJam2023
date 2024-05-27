@@ -409,23 +409,24 @@ public class BuyScreenManager : MonoBehaviour
         }
     }
 
-    public void AddToScrapyard(GameObject car)
+    public void RemoveFromShop(GameObject car)
     {
         if (car != null)
         {
+            Destroy(car);
 
-            GameObject carSlot = FindScrapyardSlot();
+            //GameObject carSlot = FindScrapyardSlot();
 
-            if (carSlot != null)
-            {
-                car.transform.parent = carSlot.transform;
-                car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                car.GetComponent<DragDrop>().canBePlaced = true;
+            //if (carSlot != null)
+            //{
+            //    car.transform.parent = carSlot.transform;
+            //    car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            //    car.GetComponent<DragDrop>().canBePlaced = true;
 
 
-                //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
-                //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
-            }
+            //    //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
+            //    //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
+            //}
         }
     }
 
