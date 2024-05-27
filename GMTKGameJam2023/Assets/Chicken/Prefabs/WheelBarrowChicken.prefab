@@ -349,7 +349,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
-  pointsReward: 250
+  pointsReward: 30
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
   hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
@@ -368,4 +368,6 @@ MonoBehaviour:
   objectName: Wheelbarrow Chicken
   objectSprite: {fileID: 1893781864, guid: 369d1cc924ee77d4b800895795817a0d, type: 3}
   objectIcon: {fileID: 1893781864, guid: 369d1cc924ee77d4b800895795817a0d, type: 3}
-  objectDescription: Drops goo across the roads, slowing down vehicles.
+  objectDescription: This chicken needs to watch where they're going! The sludge
+    they're leaving behind will slow our vehicles down, so take them out before they
+    become a real problem.

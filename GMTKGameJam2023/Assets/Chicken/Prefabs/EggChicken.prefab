@@ -342,7 +342,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
-  pointsReward: 100
+  pointsReward: 50
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
   hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
@@ -358,9 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Egg chicken
-  objectSprite: {fileID: 991174212, guid: a7ca81663b9bd7741ad063c5c48bd69c, type: 3}
-  objectIcon: {fileID: 991174212, guid: a7ca81663b9bd7741ad063c5c48bd69c, type: 3}
-  objectDescription: This hen lays an egg on every lane it goes through, creating
-    even more chaotic chicken to deal with if the eggs are left to hatch. Destroy
-    them in time to control the problem.
+  objectName: Hen
+  objectSprite: {fileID: -1205038568, guid: a7ca81663b9bd7741ad063c5c48bd69c, type: 3}
+  objectIcon: {fileID: -1205038568, guid: a7ca81663b9bd7741ad063c5c48bd69c, type: 3}
+  objectDescription: 'Little known fact: Chickens, like bees, must protect the queen
+    at all costs. In this case though, it''s because hens lay eggs that produce more
+    chickens.'

@@ -227,7 +227,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 1
-  pointsReward: 250
+  pointsReward: 100
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
   hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
@@ -247,8 +247,8 @@ MonoBehaviour:
   objectName: Bomb Chicken
   objectSprite: {fileID: -1709115884, guid: 5e04e93471dd0d545a1357a34fc67326, type: 3}
   objectIcon: {fileID: -1709115884, guid: 5e04e93471dd0d545a1357a34fc67326, type: 3}
-  objectDescription: Explodes upon impact, eliminating other chickens or vehicles
-    nearby.
+  objectDescription: This one's got a short fuse! Will explode upon impact, eliminating
+    all chickens and vehicles in its vicinity.
 --- !u!1 &4125393991728056117
 GameObject:
   m_ObjectHideFlags: 0

@@ -431,7 +431,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 300
-  pointsReward: 500
+  pointsReward: 50
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
   hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
@@ -455,7 +455,8 @@ MonoBehaviour:
   objectName: Armoured Chicken
   objectSprite: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
   objectIcon: {fileID: 174660870, guid: d60969400aae7204fb44b352b4687884, type: 3}
-  objectDescription: A chicken with full body armor. Takes 3 hits to eliminate.
+  objectDescription: This chicken came prepared! Kitted with full body armor, it'll
+    take 3 hits to knock them down.
 --- !u!1 &8007018778120891761
 GameObject:
   m_ObjectHideFlags: 0

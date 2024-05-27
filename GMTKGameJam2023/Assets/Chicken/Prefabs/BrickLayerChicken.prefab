@@ -481,7 +481,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
-  pointsReward: 100
+  pointsReward: 70
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
   hurtColor: {r: 0.74509805, g: 0.08235294, b: 0.08235294, a: 1}
@@ -497,8 +497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e495c4a7a0c142a4ba3e29256f415a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Brick Layer Chicken
+  objectName: Brick-Layer Chicken
   objectSprite: {fileID: -1827216321, guid: df47b9c435b3f65458fb881d8b8cc749, type: 3}
   objectIcon: {fileID: -1827216321, guid: df47b9c435b3f65458fb881d8b8cc749, type: 3}
-  objectDescription: This builder chicken builds a wall on every lane it goes through,
-    making a dificult roadblock obstacle for vehicles.
+  objectDescription: This chicken's got a job to do! They build walls as defenses
+    to block oncoming vehicles and provide safe transport for their colleagues. Would
+    be a shame for some construction vehicles to ruin their plans...
