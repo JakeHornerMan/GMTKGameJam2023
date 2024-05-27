@@ -49,8 +49,9 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator WipeAndLoadGame()
     {
+        GameProgressionValues.SetDefaultValues();
+        Points.SetDefaultValues();
         yield return new WaitForSeconds(2.5f);
-
-        sceneFader.ScreenWipeOut("ProceduralGeneration");
+        sceneFader.ScreenWipeOut("Level01");
     }
 }
