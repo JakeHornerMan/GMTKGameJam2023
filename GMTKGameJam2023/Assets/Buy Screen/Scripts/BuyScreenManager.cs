@@ -160,7 +160,7 @@ public class BuyScreenManager : MonoBehaviour
         if(playerUltimate != null){
             Transform child = RosterHolder.transform.GetChild(5);
             
-            GameObject newBuyUltimate = Instantiate(rosterCarPrefab, child.transform);
+            GameObject newBuyUltimate = Instantiate(rosterUltimatePrefab, child.transform);
 
             newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
             BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
@@ -168,7 +168,7 @@ public class BuyScreenManager : MonoBehaviour
             buyScreenUltimate.correspondingUltimate = playerUltimate;
 
             
-            Debug.Log("We have set the carbutton to" + buyScreenUltimate.correspondingUltimate);
+            Debug.Log("We have set the ultimateBtn to" + buyScreenUltimate.correspondingUltimate);
         }
 
 
