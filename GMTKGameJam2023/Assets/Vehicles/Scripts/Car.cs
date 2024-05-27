@@ -379,7 +379,8 @@ public abstract class Car : MonoBehaviour
         if (bombChickenHealth != null && canIBeBombed)
         {
             // Destroy the car as well
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            LaunchCar();
         }
 
         // Canera Shake

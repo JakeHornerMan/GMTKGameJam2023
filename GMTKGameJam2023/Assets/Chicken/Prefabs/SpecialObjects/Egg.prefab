@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1573932811415413278}
   - component: {fileID: 1155670070763508800}
   - component: {fileID: 5637549777591561764}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   chickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
   featherParticles: {fileID: 4173655568478535620, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
   featherParticleLifetime: 2
+  objectLifetime: 6
 --- !u!1 &2969481213731395159
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6260172824543366567}
   - component: {fileID: 4890197396791317882}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

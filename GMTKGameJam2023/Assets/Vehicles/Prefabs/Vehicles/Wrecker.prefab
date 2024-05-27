@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 845809845966933664}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8232100632961114078}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 3455631154947636772}
   - component: {fileID: 4206642383323002128}
   - component: {fileID: 3131608479176348969}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: WreckingBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5189,7 +5189,7 @@ GameObject:
   - component: {fileID: 8549879171220742175}
   - component: {fileID: 8263989527632618388}
   - component: {fileID: 1761417369981310633}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: WreckerCart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5337,7 +5337,7 @@ GameObject:
   - component: {fileID: 322576651139750340}
   - component: {fileID: 3039123858054664968}
   - component: {fileID: -1135978355812094493}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Wrecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5467,7 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  comboText: {fileID: 1465436027404781649}
   carType: 1
   carHealth: 300
   carPrice: 10
@@ -5515,7 +5515,7 @@ GameObject:
   - component: {fileID: 8794598898562414325}
   - component: {fileID: 5314365092240106144}
   - component: {fileID: 3221486499642208498}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Spinout Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10345,7 +10345,7 @@ GameObject:
   - component: {fileID: 1802313755273665140}
   - component: {fileID: 366668116445416356}
   - component: {fileID: 5067064184770436789}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10442,7 +10442,7 @@ GameObject:
   - component: {fileID: 2699405958599039116}
   - component: {fileID: 8745397311674263603}
   - component: {fileID: 4070410790919000035}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15271,7 +15271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003566284009992075}
   - component: {fileID: 5498588264066737917}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Hook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15356,7 +15356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4362424126103753919}
   - component: {fileID: 9129585271062811779}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15444,7 +15444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -15532,13 +15532,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+--- !u!114 &1465436027404781649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+  m_PrefabInstance: {fileID: 8901906914850741385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5865328795983823372 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
