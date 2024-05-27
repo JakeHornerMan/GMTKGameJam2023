@@ -213,6 +213,8 @@ MonoBehaviour:
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
+  carTeleporting: 0
+  carShopPrice: 0
   deathboxTag: Death Box
   placeableLaneTags: []
   placeableAnywhere: 0
@@ -224,10 +226,13 @@ MonoBehaviour:
   particleDestroyDelay: 2
   scorePopUpMsg: 
   tokenPopUpMsg: Token
+  cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
   camShakeDuration: 0.1
   camShakeMagnitude: 0.1
-  spawnSound: []
+  spawnSound:
+  - clip: {fileID: 8300000, guid: 0f86c9e8fc1e33641b18e7db5b640ebe, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}

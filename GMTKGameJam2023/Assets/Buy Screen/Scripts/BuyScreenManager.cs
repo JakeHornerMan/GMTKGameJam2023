@@ -160,15 +160,15 @@ public class BuyScreenManager : MonoBehaviour
         if(playerUltimate != null){
             Transform child = RosterHolder.transform.GetChild(5);
             
-            GameObject newBuyUltimate = Instantiate(rosterCarPrefab, child.transform);
+            GameObject newBuyUltimate = Instantiate(rosterUltimatePrefab, child.transform);
 
             newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
-            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+            BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
             
-            buyScreenCar.correspondingUltimate = playerUltimate;
+            buyScreenUltimate.correspondingUltimate = playerUltimate;
 
             
-            Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingUltimate);
+            Debug.Log("We have set the ultimateBtn to" + buyScreenUltimate.correspondingUltimate);
         }
 
 
@@ -215,13 +215,13 @@ public class BuyScreenManager : MonoBehaviour
     public Ultimate GetUltimateSetInBuyScreen(){
         Ultimate ultimate = null;
         Transform child = RosterHolder.transform.GetChild(5);
-        BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
-         if (buyScreenCar != null)
+        BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
+         if (buyScreenUltimate != null)
         {
             // Then check if the correspondingCar is not null
-            if (buyScreenCar.correspondingUltimate != null)
+            if (buyScreenUltimate.correspondingUltimate != null)
             {
-                ultimate = buyScreenCar.correspondingUltimate;
+                ultimate = buyScreenUltimate.correspondingUltimate;
             }
         }
         return ultimate;
@@ -280,14 +280,19 @@ public class BuyScreenManager : MonoBehaviour
             }
 
 
-            if (carShop.transform.GetChild(i).transform.childCount == 0)
+            if (carShop.transform.GetChild(i).GetComponentInChildren<BuyScreenCar>() == null)
             {
                 Instantiate(rosterCarPrefab, carShop.transform.GetChild(i).transform);
             }
 
+            //if (carShop.transform.GetChild(i).transform.childCount == 0)
+            //{
+            //    Instantiate(rosterCarPrefab, carShop.transform.GetChild(i).transform);
+            //}
+
             BuyScreenCarSlot carSlot = carShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            BuyScreenCar rosterCar = carSlot.transform.GetChild(0).gameObject.GetComponent<BuyScreenCar>();
+            BuyScreenCar rosterCar = carSlot.transform.GetComponentInChildren<BuyScreenCar>();
 
             rosterCar.correspondingCar = car;
 
@@ -343,15 +348,14 @@ public class BuyScreenManager : MonoBehaviour
                 }
             }
 
-
-            if (ultimateShop.transform.GetChild(i).transform.childCount == 0)
+            if (ultimateShop.transform.GetChild(i).GetComponentInChildren<BuyScreenUltimate>() == null)
             {
-                Instantiate(rosterCarPrefab, ultimateShop.transform.GetChild(i).transform);
+                Instantiate(rosterUltimatePrefab, ultimateShop.transform.GetChild(i).transform);
             }
 
             BuyScreenCarSlot ultimateSlot = ultimateShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            BuyScreenUltimate rosterUltimate = ultimateSlot.transform.GetChild(0).gameObject.GetComponent<BuyScreenUltimate>();
+            BuyScreenUltimate rosterUltimate = ultimateSlot.transform.GetComponentInChildren<BuyScreenUltimate>();
 
             rosterUltimate.correspondingUltimate = ultimate;
 
@@ -409,23 +413,24 @@ public class BuyScreenManager : MonoBehaviour
         }
     }
 
-    public void AddToScrapyard(GameObject car)
+    public void RemoveFromShop(GameObject car)
     {
         if (car != null)
         {
+            Destroy(car);
 
-            GameObject carSlot = FindScrapyardSlot();
+            //GameObject carSlot = FindScrapyardSlot();
 
-            if (carSlot != null)
-            {
-                car.transform.parent = carSlot.transform;
-                car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                car.GetComponent<DragDrop>().canBePlaced = true;
+            //if (carSlot != null)
+            //{
+            //    car.transform.parent = carSlot.transform;
+            //    car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            //    car.GetComponent<DragDrop>().canBePlaced = true;
 
 
-                //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
-                //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
-            }
+            //    //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
+            //    //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
+            //}
         }
     }
 

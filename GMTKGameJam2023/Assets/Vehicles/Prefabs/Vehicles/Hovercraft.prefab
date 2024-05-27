@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8252793248268278067}
   - component: {fileID: 3004242203575901392}
   - component: {fileID: 4599915817287251352}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: FanCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 275410180260309379}
   - component: {fileID: -2564686500297669742}
   - component: {fileID: 330613492512159617}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Hovercraft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
-  comboText: {fileID: 5885361816208039466, guid: f1e55ff5a2be053499db551f75633327, type: 3}
+  comboText: {fileID: 5056873124761914880}
   carType: 0
   carHealth: 75
   carPrice: 3
@@ -385,7 +385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 7234016211048221761}
   - component: {fileID: 7608788870112864170}
   - component: {fileID: 7391833333371349618}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: HovercraftFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4377522446804942571, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_RootOrder
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -698,6 +698,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
   m_PrefabInstance: {fileID: 3022535686158244568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5056873124761914880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
+  m_PrefabInstance: {fileID: 3022535686158244568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3499259217761216850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -756,7 +767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7826078791388366233, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
