@@ -163,12 +163,12 @@ public class BuyScreenManager : MonoBehaviour
             GameObject newBuyUltimate = Instantiate(rosterCarPrefab, child.transform);
 
             newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
-            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+            BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
             
-            buyScreenCar.correspondingUltimate = playerUltimate;
+            buyScreenUltimate.correspondingUltimate = playerUltimate;
 
             
-            Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingUltimate);
+            Debug.Log("We have set the carbutton to" + buyScreenUltimate.correspondingUltimate);
         }
 
 
@@ -215,13 +215,13 @@ public class BuyScreenManager : MonoBehaviour
     public Ultimate GetUltimateSetInBuyScreen(){
         Ultimate ultimate = null;
         Transform child = RosterHolder.transform.GetChild(5);
-        BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
-         if (buyScreenCar != null)
+        BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
+         if (buyScreenUltimate != null)
         {
             // Then check if the correspondingCar is not null
-            if (buyScreenCar.correspondingUltimate != null)
+            if (buyScreenUltimate.correspondingUltimate != null)
             {
-                ultimate = buyScreenCar.correspondingUltimate;
+                ultimate = buyScreenUltimate.correspondingUltimate;
             }
         }
         return ultimate;
