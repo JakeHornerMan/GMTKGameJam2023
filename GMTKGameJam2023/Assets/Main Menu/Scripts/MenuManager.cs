@@ -42,16 +42,16 @@ public class MenuManager : MonoBehaviour
         backButton.GetComponent<Animator>().Play("HideBackButton");
     }
 
-    public void EnterGame()
+    public void EnterScene(string sceneName)
     {
-        StartCoroutine(WipeAndLoadGame());   
+        StartCoroutine(WipeAndLoadGame(sceneName));   
     }
 
-    private IEnumerator WipeAndLoadGame()
+    private IEnumerator WipeAndLoadGame(string sceneName)
     {
         GameProgressionValues.SetDefaultValues();
         Points.SetDefaultValues();
         yield return new WaitForSeconds(2.5f);
-        sceneFader.ScreenWipeOut("Level01");
+        sceneFader.ScreenWipeOut(sceneName);
     }
 }
