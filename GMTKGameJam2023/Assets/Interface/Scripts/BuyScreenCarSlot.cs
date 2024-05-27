@@ -62,8 +62,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                 }
 
                                 // Add pre-existing (pointerEnter) car to scrapyard
-                                //GameObject oldItem = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
-                                //BuyScreenManager.instance.AddToScrapyard(oldItem);
+                                GameObject oldItem = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
+                                BuyScreenManager.instance.RemoveFromShop(oldItem);
                             }
                         }
 
