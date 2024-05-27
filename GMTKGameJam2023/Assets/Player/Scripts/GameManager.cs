@@ -280,6 +280,7 @@ public class GameManager : MonoBehaviour
     //Updates Static scripts
     private void SetPlayerValues(){
         PlayerValues.Cars = carsInLevel;
+        PlayerValues.ultimate = ultimateInLevel;
         PlayerValues.startingEnergy =0;
     }
 

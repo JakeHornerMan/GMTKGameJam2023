@@ -126,6 +126,12 @@ public class BuyScreenManager : MonoBehaviour
             else{
                 playerCars = defaultCars;
             }
+            if(PlayerValues.ultimate != null){
+                playerUltimate = PlayerValues.ultimate;
+            }
+            else{
+                playerUltimate = null;
+            }
             PopulateRoster();   
         }
         else{
@@ -135,8 +141,8 @@ public class BuyScreenManager : MonoBehaviour
 
     public void PopulateRoster()
     {
-
-        for (int i = 0; i < playerCars.Count; i++)
+        int count = (playerCars.Count > 5) ? 5 : playerCars.Count;
+        for (int i = 0; i < count; i++)
         {
             Transform child = RosterHolder.transform.GetChild(i);
             
@@ -149,6 +155,20 @@ public class BuyScreenManager : MonoBehaviour
 
             
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
+        }
+
+        if(playerUltimate != null){
+            Transform child = RosterHolder.transform.GetChild(5);
+            
+            GameObject newBuyUltimate = Instantiate(rosterCarPrefab, child.transform);
+
+            newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+            BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+            
+            buyScreenCar.correspondingUltimate = playerUltimate;
+
+            
+            Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingUltimate);
         }
 
 
@@ -190,6 +210,21 @@ public class BuyScreenManager : MonoBehaviour
         return rosterCars;
 
         // Now, rosterCars contains all CarButton components from the children of RosterHolder
+    }
+
+    public Ultimate GetUltimateSetInBuyScreen(){
+        Ultimate ultimate = null;
+        Transform child = RosterHolder.transform.GetChild(5);
+        BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
+         if (buyScreenCar != null)
+        {
+            // Then check if the correspondingCar is not null
+            if (buyScreenCar.correspondingUltimate != null)
+            {
+                ultimate = buyScreenCar.correspondingUltimate;
+            }
+        }
+        return ultimate;
     }
 
 
@@ -530,6 +565,8 @@ public class BuyScreenManager : MonoBehaviour
     public void setPlayerValues()
     {
         PlayerValues.Cars = CreateRosterList();
+        PlayerValues.ultimate = GetUltimateSetInBuyScreen();
         PlayerValues.playerCash = 0;
+
     }
 }
