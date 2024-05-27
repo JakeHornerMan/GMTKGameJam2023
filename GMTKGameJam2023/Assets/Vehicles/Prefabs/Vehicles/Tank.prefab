@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2789808977905110130}
   - component: {fileID: 5493433749621188681}
   - component: {fileID: 4252577486893234218}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Car Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 171791225829203903}
   - component: {fileID: 7127396023849450930}
   - component: {fileID: 2179339514910143256}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 239649986962395248}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Exhaust Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 7543870084017012958}
   - component: {fileID: 7246850563965226878}
   - component: {fileID: 2594730632801214637}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Treads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 5825616319130106611}
   - component: {fileID: 3058489737860374873}
   - component: {fileID: 6047383669477230468}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686050055091739651, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4377522446804942571, guid: 28a7cf7b0ebb8d94d87c5d0cf9a50888, type: 3}
       propertyPath: m_RootOrder
@@ -598,6 +598,10 @@ PrefabInstance:
     - target: {fileID: 3154338681830001618, guid: ca80441674ac00646866476e093f9c46, type: 3}
       propertyPath: m_Name
       value: CarDamageParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154338681830001618, guid: ca80441674ac00646866476e093f9c46, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7245267439107205309, guid: ca80441674ac00646866476e093f9c46, type: 3}
       propertyPath: m_RootOrder
@@ -667,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_RootOrder
@@ -737,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738316374971168415, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3092909005244849797, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Pivot.x
@@ -825,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113540777030066316, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8061350294434354392, guid: 4d3abaa28ef2ed047966afe377262f2f, type: 3}
       propertyPath: m_text
