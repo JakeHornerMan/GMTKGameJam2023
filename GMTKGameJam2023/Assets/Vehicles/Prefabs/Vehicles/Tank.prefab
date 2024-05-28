@@ -97,6 +97,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df6d4de0cbb52d4e99301cff9677771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6056711625139337378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6915509708500533821}
+  m_Layer: 2
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6915509708500533821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056711625139337378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.3000002, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5825616319130106611}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6077706268648720092
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,9 +290,8 @@ MonoBehaviour:
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
-  - Grass
   placeableAnywhere: 0
-  carSpeed: 2
+  carSpeed: 1.3
   damage: 120
   comboMultiplier: 0.2
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
@@ -291,6 +321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5405179d43801d7419e8ef10025ea407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannonTransform: {fileID: 5825616319130106611}
+  projectilePrefab: {fileID: 6859496727936781901, guid: c21d42a9717495942b236f692ab5caa3, type: 3}
+  firePoint: {fileID: 6915509708500533821}
+  shootParticlePrefab: {fileID: 6698023658556069559, guid: 16f26ea92a241ae4c81fd3a68aaab563, type: 3}
+  particleDestroyDelay: 2
+  fireCooldown: 3
+  rotationSpeed: 1
+  activationDelay: 3
 --- !u!1 &6623514681445824420
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +487,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.45, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 6915509708500533821}
   m_Father: {fileID: 8251440986272331830}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
