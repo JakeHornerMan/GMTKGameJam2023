@@ -6,7 +6,7 @@ using System.Collections;
 public class SceneFader : MonoBehaviour
 {
     [Header("Scene Loading")]
-    [SerializeField] private string mainMenuSceneName = "MainMenu";
+    [SerializeField] private string mainMenuSceneName = "MainMenuInteractive Jack Ver";
     [SerializeField]private string levelSceneName;
     [SerializeField] private string worldSelectSceneName = "WorldSelect";
     [SerializeField] private string levelSelectSceneName = "LevelSelect";
