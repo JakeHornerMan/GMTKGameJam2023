@@ -68,7 +68,9 @@ public class TutorialManager : MonoBehaviour
     private bool roundTimerStarted = false;
     public int tutroialRoundCounter = 1;
     private bool changingRound = true;
+    private bool tutorialOver = false;
     private VehicleSpawner vehicleSpawner;
+    [SerializeField] private GameObject tokenPrefab; 
     [SerializeField] private Car bonusCar;
     [SerializeField] private GameObject topContainerUI;
     [SerializeField] private GameObject tokensUI;
@@ -96,19 +98,31 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner = GetComponent<VehicleSpawner>();
 
         chickenContainer = GameObject.Find("ChickenContainer");
+
+        // if(tutroialRoundCounter != 1){
+        //     sceneFader.transform.gameObject.SetActive(false);
+        // }
     }
 
     private void SetPlayerValuesInLevel(){
-        missedChickenLives = cheatLives;
+        missedChickenLives = startLives;
     }
 
     private void FixedUpdate()
     {   
+        if(missedChickenLives <= 0){
+            if(tutroialRoundCounter < 8){
+                TutorialFail();
+            }
+            else{
+                if(!tutorialOver) TutorialSuccess(false);
+            }
+        }
         if(!roundTimerStarted && chickenContainer.transform.childCount <= 0 && tokenContainer.transform.childCount <= 0 && !changingRound){
             tutroialRoundCounter++;
             changingRound = true;
         }
-        if(changingRound)
+        if(changingRound && !tutorialOver)
             TutorialRoundChanging();
         if(!roundOver){
             SetTime();
@@ -143,11 +157,6 @@ public class TutorialManager : MonoBehaviour
             Round5NewVehiclesAndLanes();
             changingRound = false;
             break;
-        // case 6:
-        //     Debug.Log("Tutorial Round" + tutroialRoundCounter);
-        //     Round6NewVehicleNewRoad();
-        //     changingRound = false;
-        //     break;
         case 6:
             Debug.Log("Tutorial Round" + tutroialRoundCounter);
             Round6SpecialChickens();
@@ -161,6 +170,11 @@ public class TutorialManager : MonoBehaviour
         case 8:
             Debug.Log("Tutorial Round" + tutroialRoundCounter);
             Round8IntenseWave();
+            changingRound = false;
+            break;
+        case 9:
+            Debug.Log("Tutorial Round" + tutroialRoundCounter);
+            TutorialSuccess(true);
             changingRound = false;
             break;
         default:
@@ -203,6 +217,8 @@ public class TutorialManager : MonoBehaviour
 
     public void Round4TokenWave(){
         vehicleSpawner.disableVehicleSpawn = false;
+        tokenSpawner.SpawnToken(tokenPrefab, tokenContainer.transform);
+        // Instantiate(tokenPrefabs, new Vector3(1f, 1f, 1f),Quaternion.identity, tokenContainer.transform);
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -222,14 +238,6 @@ public class TutorialManager : MonoBehaviour
         carSelectorUI.transform.localScale = new Vector3(1f, 1f, 1f);
         OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br><br>You can now select the new bluprint icons <i>(on the bottom of the screen)</i>. Place them on different roads that highlight when selected. <br><br>You need to have the corrrect amount of energy to purchase a vehicle");
     }
-
-    // public void Round6NewVehicleNewRoad(){
-    //     vehicleSpawner.disableVehicleSpawn = false;
-    //     carsInLevel.Add(bonusCar);
-    //     vehicleSpawner.DestroyButtons();
-    //     vehicleSpawner.CreateButtons(carsInLevel);
-    //     SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
-    // }
 
     public void Round6SpecialChickens(){
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
@@ -251,6 +259,24 @@ public class TutorialManager : MonoBehaviour
         OpenInfoBluePrintPauseGame("Congratulations! <br><br>You have completed the tuttorial. <br><br>Now lets see if you can survive this round.");
     }
 
+    public void TutorialFail(){
+        missedChickenLives = startLives;
+        healthCorn.ResetCorn();
+        OpenInfoBluePrintPauseGame("Clucking hell! <br><br> You let too many chickens cross the road, pay close attension to your lives counter with the corn icons. <br><br>It's ok you were curious why the chickens crossed the road.  <br><br>We have reset your corn (lives) to complete the tutorial!");   
+    }
+
+    public void TutorialSuccess(bool success){
+        tutorialOver = true;
+        string text;
+        if(success){
+            text = "You did it! <br><br>";
+        }
+        else{
+            text = "They got to the other side! <br><br>";
+        }
+        OpenInfoBluePrintPauseGame(text + "You completed the tutorial. <br><br> Now lets see what you are made off.", true);   
+    }
+
     public void SetRoundTime(){
         roundTimerStarted = true;
         time = waves[tutroialRoundCounter-1].roundTime;
@@ -265,21 +291,12 @@ public class TutorialManager : MonoBehaviour
         interfaceManager.scoreForText = playerScore;
     }
 
-    // public void StopStartChickens(bool start){
-    //     foreach(Transform child in chickenContainer.transform)
-    //     {
-    //         if(child.gameObject.GetComponent<ChickenMovement>() != null)
-    //             child.gameObject.GetComponent<ChickenMovement>().stopMovement = start;
-    //         if(child.gameObject.GetComponent<AlternativeChickenMovement>() != null)
-    //             child.gameObject.GetComponent<AlternativeChickenMovement>().stopMovement = start;
-    //     }
-    // }
-
-    public void OpenInfoBluePrintPauseGame(string description)
+    public void OpenInfoBluePrintPauseGame(string description, bool isOver = false)
     {
         pause.PauseGame(false);
         pause.isTutorialText = true;
         bluePrint.DisplayDescription(description);
+        bluePrint.activateContinue(isOver);
     }
 
     public void CloseInfoBluePrintResumeGame()
@@ -287,6 +304,14 @@ public class TutorialManager : MonoBehaviour
         pause.UnpauseGame();
         pause.isTutorialText = false;
         bluePrint.HandleClose();
+    }
+
+    public void ContinueToMainMenu()
+    {
+        tutorialOver = true;
+        pause.UnpauseGame();
+        sceneFader.transform.gameObject.SetActive(true);
+        sceneFader.ScreenWipeOut("MainMenuInteractive Jack Ver");
     }
 
     // Starts a new chicken wave
@@ -382,7 +407,7 @@ public class TutorialManager : MonoBehaviour
             totalTokens = totalTokens + tokenDifference;
         }
 
-        // OnTokensUpdated();
+        OnTokensUpdated();
     }
 
     private IEnumerator WaitAndBuyScreen(float time)

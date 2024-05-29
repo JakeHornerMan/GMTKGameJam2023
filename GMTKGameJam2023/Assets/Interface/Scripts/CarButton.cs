@@ -36,11 +36,13 @@ public class CarButton : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnTokensUpdated += SetPriceColor;
+        TutorialManager.OnTokensUpdated += SetPriceColor;
     }
 
     private void OnDisable()
     {
         GameManager.OnTokensUpdated -= SetPriceColor;
+        TutorialManager.OnTokensUpdated -= SetPriceColor;
     }
     private void Start()
     {
@@ -51,14 +53,23 @@ public class CarButton : MonoBehaviour
             correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
 
             SetPriceColor();
+            SetPriceColor();
         }
     }
 
     private void SetPriceColor()
     {
-        if (gameManager)
-        {
+        if(gameManager){
             bool enoughMoney = gameManager.tokens >= correspondingCar.carPrice;
+            tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
+
+            buttonOutline.color = enoughMoney ? positiveColorOutline: negativeColorOutline;
+            if(correspondingCar.name == "Standard Car"){
+                buttonOutline.color = standardCarColorOutline;
+            }
+        }
+        if(tutorialManager){
+            bool enoughMoney = tutorialManager.tokens >= correspondingCar.carPrice;
             tokenPriceText.color = enoughMoney ? positiveColor : negativeColor;
 
             buttonOutline.color = enoughMoney ? positiveColorOutline: negativeColorOutline;

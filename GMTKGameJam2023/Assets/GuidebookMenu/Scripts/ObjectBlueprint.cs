@@ -33,6 +33,9 @@ public class ObjectBlueprint : MonoBehaviour
     [SerializeField] private TextMeshProUGUI objectDescriptionText;
     [SerializeField] private TextMeshProUGUI objectTypeText;
 
+    [SerializeField] private GameObject closeBtn;
+    [SerializeField] private GameObject continueBtn;
+
     [Tooltip("Only Vehicles: Cost of tokens to place")]
     [SerializeField] private TextMeshProUGUI tokenCostText;
     [Tooltip("Only Vehicles & Ultimate: Cost to put in inventory from shop")]
@@ -199,5 +202,16 @@ public class ObjectBlueprint : MonoBehaviour
     {
         gameObject.SetActive(true);
         objectDescriptionText.text = description;
+    }
+
+    public void activateContinue(bool isContinue = false){
+        if(isContinue){
+            closeBtn.SetActive(false);
+            continueBtn.SetActive(true);
+        }
+        else{
+            closeBtn.SetActive(true);
+            continueBtn.SetActive(false);
+        }
     }
 }
