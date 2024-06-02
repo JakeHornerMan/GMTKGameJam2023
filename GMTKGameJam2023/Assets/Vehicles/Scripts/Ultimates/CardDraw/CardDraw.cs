@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ using UnityEngine.UI;
 /// When one is clicked, it flips over to show its scriptable info on UI,
 /// and tells this script to read its corresponding scriptableObject values and kill chicken accordingly.
 ///
-/// Kills chicken by iterating throguh the list and killing at regular intervals.
+/// Kills chicken by iterating through the list and killing at regular intervals.
 /// For example, 25% kill => kill every 4th chicken, 50% => kill every second chicken
 /// </summary>
 public class CardDraw : Ultimate
@@ -31,13 +32,15 @@ public class CardDraw : Ultimate
     [SerializeField] private GameObject resumeBtn;
     private int chosenKillInterval = 0;
 
-    private Transform chickenContainer;
+    private Transform normalChickenContainer;
+    private Transform specialChickenContainer;
 
     private List<UltimateCardSO> shuffledConfigs;
 
     private void Awake()
     {
-        chickenContainer = GameObject.Find("ChickenContainer").transform;
+        normalChickenContainer = GameObject.Find("ChickenContainer").transform;
+        specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
     }
 
     private void Start()
@@ -126,13 +129,18 @@ public class CardDraw : Ultimate
     private IEnumerator KillChickensWithDelay()
     {
         SoundManager soundManager = FindObjectOfType<SoundManager>();
-        ChickenHealth[] chickens = chickenContainer.GetComponentsInChildren<ChickenHealth>();
-        for (int i = 0; i < chickens.Length; i++)
+
+        // Combine normal and special chickens
+        ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+
+        for (int i = 0; i < allChickens.Length; i++)
         {
             // Use Remainder to kill using interval
             if ((i + 1) % chosenKillInterval == 0)
             {
-                chickens[i].TakeDamage(1000);
+                allChickens[i].TakeDamage(1000);
                 // TODO ADD SCORE TO GAMEMANAGER
                 soundManager.PlayChickenHit();
                 yield return new WaitForSeconds(killDelay);

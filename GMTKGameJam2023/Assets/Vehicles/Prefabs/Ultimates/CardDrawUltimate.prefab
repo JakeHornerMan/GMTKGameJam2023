@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 0
-  ultimateResetTime: 30
+  ultimateResetTime: 2
   placeableAnywhere: 1
   ignoreTokens: 1
   ultimateShopPrice: 50
@@ -598,7 +598,7 @@ MonoBehaviour:
   - {fileID: 3690101387478405783}
   cardConfigs:
   - {fileID: 11400000, guid: f86541b3d26c17a4c9725a2801bb52e4, type: 2}
-  - {fileID: 11400000, guid: 17067e7ba116dcf4e9b9df58a16984a0, type: 2}
+  - {fileID: 11400000, guid: 03bc5f1bb7af6e34283b11c6478aa749, type: 2}
   - {fileID: 11400000, guid: b454e8da005e47d4384235021720dfb5, type: 2}
   ultimateUIs:
   - {fileID: 5444656997244659426}
@@ -608,7 +608,7 @@ MonoBehaviour:
   - {fileID: 8935491026374984781}
   - {fileID: 5864946997629709544}
   - {fileID: 748040523145499901}
-  killDelay: 0.1
+  killDelay: 0.02
   hideUIOnUltimateActivation: 0
   resumeBtn: {fileID: 5864946997629709544}
 --- !u!114 &-6554136348469088519
