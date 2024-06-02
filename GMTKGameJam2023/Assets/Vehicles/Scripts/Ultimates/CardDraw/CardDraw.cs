@@ -140,11 +140,14 @@ public class CardDraw : Ultimate
             // Use Remainder to kill using interval
             if ((i + 1) % chosenKillInterval == 0)
             {
+                if (allChickens[i] == null) continue;
                 allChickens[i].TakeDamage(1000);
                 // TODO ADD SCORE TO GAMEMANAGER
-                soundManager.PlayChickenHit();
                 yield return new WaitForSeconds(killDelay);
             }
+
+            // TODO FIND BETTER WAY TO PLAY SOUND FOR CHICKEN KILL (for every chicken it is too much)
+            // soundManager.PlayChickenHit();
         }
 
         Destroy(gameObject);
