@@ -16,6 +16,7 @@ public class UltimateSelectableCard : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI percentageTitleText;
     [SerializeField] private TextMeshProUGUI descriptionText;
+    [SerializeField] private GameObject selectedLabel;
     [SerializeField] private Image cardSprite; // Front or Back
 
     [Header("Sprites")]
@@ -28,6 +29,7 @@ public class UltimateSelectableCard : MonoBehaviour
     private void Start()
     {
         SetUI();
+        selectedLabel.SetActive(false);
     }
 
     public void HandleClick()
@@ -51,5 +53,10 @@ public class UltimateSelectableCard : MonoBehaviour
     {
         percentageTitleText.gameObject.SetActive(active);
         descriptionText.gameObject.SetActive(active);
+    }
+
+    public void ShowSelectedLabel()
+    {
+        selectedLabel.SetActive(true);
     }
 }
