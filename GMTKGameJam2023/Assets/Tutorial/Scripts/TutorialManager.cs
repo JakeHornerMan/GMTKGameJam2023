@@ -311,7 +311,7 @@ public class TutorialManager : MonoBehaviour
         tutorialOver = true;
         pause.UnpauseGame();
         sceneFader.transform.gameObject.SetActive(true);
-        sceneFader.ScreenWipeOut("MainMenuInteractive Jack Ver");
+        sceneFader.FadeToMainMenu();
     }
 
     // Starts a new chicken wave
