@@ -268,7 +268,7 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         Debug.Log("playerScore: " + Points.playerScore);
         yield return new WaitForSeconds(time);
-        sceneFader.ScreenWipeOut("BuyScreenImproved");
+        sceneFader.FadeToBuyScreen();
     }
 
     private void ToBuyScreen(){
