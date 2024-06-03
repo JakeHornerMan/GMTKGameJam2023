@@ -197,7 +197,8 @@ public class GameManager : MonoBehaviour
             HandleGameOver();
         }
         if(roundOver){
-            StartCoroutine(WaitAndBuyScreen(3f));
+            ToBuyScreen();
+            // StartCoroutine(WaitAndBuyScreen(3f));
         }
     }
 
@@ -267,6 +268,12 @@ public class GameManager : MonoBehaviour
         Points.playerScore = playerScore;
         Debug.Log("playerScore: " + Points.playerScore);
         yield return new WaitForSeconds(time);
+        sceneFader.ScreenWipeOut("BuyScreenImproved");
+    }
+
+    private void ToBuyScreen(){
+        SetPlayerValues();
+        SetPointsValues();
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
