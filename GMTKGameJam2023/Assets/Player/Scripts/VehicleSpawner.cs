@@ -121,7 +121,7 @@ public class VehicleSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(placeMouseBtn)){
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                Debug.Log("Clicked on the UI");
+                // Debug.Log("Clicked on the UI");
                 return;
             }
             if(currentUltimateAbility){
