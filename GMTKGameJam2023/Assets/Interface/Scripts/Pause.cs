@@ -27,14 +27,12 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        if(!isTutorialText){
-            if (Input.GetKeyDown(pauseKey) || Input.GetKeyDown(pauseKeyAlt))
-            {
-                if (isPaused)
-                    UnpauseGame();
-                else
-                    PauseGame();
-            }
+        if ((Input.GetKeyDown(pauseKey) || Input.GetKeyDown(pauseKeyAlt)) && FindObjectOfType<CardDraw>() == null)
+        {
+            if (isPaused)
+                UnpauseGame();
+            else
+                PauseGame();
         }
     }
 
