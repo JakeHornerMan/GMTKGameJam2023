@@ -12,7 +12,7 @@ public class CarSprite : MonoBehaviour
             {
                 StartCoroutine(Wait());
             }
-            
+
         }
     }
 
@@ -21,5 +21,10 @@ public class CarSprite : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
 
         gameObject.transform.parent.gameObject.GetComponent<Car>()?.CarGoesOffscreen();
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
