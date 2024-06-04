@@ -75,9 +75,9 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         musicAudio.Stop();
-        audioSrc.clip = gameMusic;
-        audioSrc.loop = false;
-        audioSrc.Play();
+        //audioSrc.clip = gameMusic;
+        //audioSrc.loop = false;
+        //audioSrc.Play();
     }
 
     // =============================

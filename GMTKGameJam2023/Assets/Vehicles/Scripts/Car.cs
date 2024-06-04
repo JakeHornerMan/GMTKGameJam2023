@@ -263,10 +263,18 @@ public abstract class Car : MonoBehaviour
         //Destroy Heavy destroys wall
         if (carType == CarType.Heavy)
         {
-            carHealth -= wall.damage;
-            wall.WallHit();
-            if (carHealth <= 0)
-                LaunchCar();
+            if (TryGetComponent<Bulldozer>(out var bulldozer))
+            {
+                wall.WallHit();
+            }
+            else
+            {
+                carHealth -= wall.damage;
+                wall.WallHit();
+                if (carHealth <= 0)
+                    LaunchCar();
+            }
+            
         }
 
         //Destroy Light

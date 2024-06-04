@@ -326,14 +326,14 @@ public class BuyScreenManager : MonoBehaviour
 
                 bool isUnique = true;
 
-                //for (int j = 0; j < ultimatesPulled.Count; j++)
-                //{
-                //    if (ultimate == ultimatesPulled[j])
-                //    {
-                //        isUnique = false;
-                //        break;
-                //    }
-                //}
+                for (int j = 0; j < ultimatesPulled.Count; j++)
+                {
+                    if (ultimate == ultimatesPulled[j])
+                    {
+                        isUnique = false;
+                        break;
+                    }
+                }
 
                 if (ultimate == playerUltimate)
                 {
