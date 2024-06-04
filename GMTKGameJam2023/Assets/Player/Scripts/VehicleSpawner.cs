@@ -154,6 +154,12 @@ public class VehicleSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R) && carButtons.Count >= 4)
             SelectCar(carButtons[3].correspondingCar);
 
+        if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.T) && carButtons.Count >= 5)
+            SelectCar(carButtons[4].correspondingCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Y))
+            SelectUltimate(ultimateManager.correspondingUltimate);
+
         UpdateMousePos();
 
         if (gameManager != null)
@@ -352,7 +358,7 @@ public class VehicleSpawner : MonoBehaviour
                 laneHighlight.DisableShineObject();
                 if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
                 {
-                    laneHighlight.ShineLane();
+                    //laneHighlight.ShineLane();
                 }
             }
         }
