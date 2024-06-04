@@ -91,14 +91,23 @@ public class ChickenHealth : MonoBehaviour
         isInvinsible = false;
     }
 
-    private void OnParticleCollision(GameObject other)
+    // void OnParticleTrigger()
+    // {
+    //     Debug.Log("Hit by particles");
+    // }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(hoseWaterTag))
-        {
-            if (!damagedByHose) return;
-            return;
-        }
+        Debug.Log(other.gameObject.name);
+        ParticleSystem ps = other.GetComponent<ParticleSystem>();
+        if(ps != null) Debug.Log("Hit by particles");
+
     }
+
+    // void OnParticleCollision(GameObject other) {
+    //     // Debug.Log ("Particle Collision!");
+    //     Debug.Log(other.gameObject.name);
+    // }
 
     public void FreezeChicken(float freezeLength)
     {

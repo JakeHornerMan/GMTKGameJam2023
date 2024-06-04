@@ -42,7 +42,7 @@ public class TokenSpawn : MonoBehaviour
         StartSpawn();
     }
 
-    private void SpawnToken(Transform point)
+    public void SpawnToken(Transform point)
     {
         if (gameManager.isGameOver) return;
         Instantiate(tokenPrefabs[0], point.position, Quaternion.identity);

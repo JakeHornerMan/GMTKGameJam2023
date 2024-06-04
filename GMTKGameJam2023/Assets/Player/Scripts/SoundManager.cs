@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     [Header("References")]
-    [SerializeField] private string musicObjectName = "Intro_Game_Menu_Theme";
+    [SerializeField] private SoundConfig[] levelMusic;
 
     [Header("Clicken Death Clips")]
     [SerializeField] private SoundConfig[] deathConfigs;
@@ -56,10 +56,10 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
-    [SerializeField] private AudioClip gameMusic;
+    private AudioClip gameMusic;
 
     private AudioSource audioSrc;
-    private AudioSource musicAudio;
+    [SerializeField] private AudioSource musicAudio;
 
     void Awake()
     {
@@ -69,15 +69,20 @@ public class SoundManager : MonoBehaviour
         }
 
         audioSrc = GetComponent<AudioSource>();
-        musicAudio = GameObject.Find(musicObjectName).GetComponent<AudioSource>();
+        
+
     }
 
-    private void Start()
+    void Start()
     {
-        musicAudio.Stop();
-        //audioSrc.clip = gameMusic;
-        //audioSrc.loop = false;
-        //audioSrc.Play();
+        SetGameMusic();
+        musicAudio.PlayOneShot(gameMusic, 1);
+    }
+
+    private void SetGameMusic()
+    {
+        int trackNumber = Random.Range(0, levelMusic.Length);
+        gameMusic = levelMusic[trackNumber].clip;
     }
 
     // =============================

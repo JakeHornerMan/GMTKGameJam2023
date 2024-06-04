@@ -130,7 +130,7 @@ public class TokenSpawner : MonoBehaviour
         return allLanes[Random.Range(0, allLanes.Count)].transform;
     }
 
-    private void SpawnToken(GameObject token, Transform point)
+    public void SpawnToken(GameObject token, Transform point)
     {
         Vector3 pos = point.position;
         float randomFloat = Random.Range(-4f, 4f);

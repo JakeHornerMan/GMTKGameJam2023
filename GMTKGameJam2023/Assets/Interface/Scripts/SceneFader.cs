@@ -14,6 +14,7 @@ public class SceneFader : MonoBehaviour
     [SerializeField] private string creditsSceneName = "Credits";
     [SerializeField] private string settingsSceneName = "Settings";
     [SerializeField] private string resultsSceneName = "Results";
+    [SerializeField] private string buyScreenSceneName = "BuyScreenImproved";
 
     [Header("Fade References")]
     [SerializeField] private Image fadeImage;
@@ -51,6 +52,7 @@ public class SceneFader : MonoBehaviour
     public void ReloadScene() => FadeTo(SceneManager.GetActiveScene().name);
     public void RestartLevel() => FadeTo(levelSceneName);
     public void FadeToMainMenu() => ScreenWipeOut(mainMenuSceneName);
+    public void FadeToBuyScreen() => ScreenWipeOut(buyScreenSceneName);
     public void FadeToWorlds() => FadeTo(worldSelectSceneName);
     public void FadeToLevelSelect() => FadeTo(levelSelectSceneName);
     public void FadeToTutorial() => FadeTo(tutorialSceneName);

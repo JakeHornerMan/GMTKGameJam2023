@@ -26,7 +26,7 @@ public class HealthCorn : MonoBehaviour
         }
     }
 
-    private void CreateCorn(int missedChickenLives)
+    public void CreateCorn(int missedChickenLives)
     {
         for (int i = 0; i < missedChickenLives; i++)
         {
@@ -34,6 +34,13 @@ public class HealthCorn : MonoBehaviour
             GameObject corn;
             corn = Instantiate(cornPrefab, cornContainer) as GameObject;
             cornHealthList.Add(corn);
+        }
+    }
+
+    public void ResetCorn(){
+        foreach(Transform corn in cornContainer)
+        {
+            corn.GetComponent<Animator>().Play("CornIdle");
         }
     }
 

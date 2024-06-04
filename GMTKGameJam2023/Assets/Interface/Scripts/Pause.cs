@@ -18,6 +18,7 @@ public class Pause : MonoBehaviour
     private float startTimeScale = 1;
 
     [HideInInspector] public bool isPaused = false;
+    [HideInInspector] public bool isTutorialText = false;
 
     private void Start()
     {
@@ -37,12 +38,14 @@ public class Pause : MonoBehaviour
 
     public void UnpauseGame()
     {
+        isPaused = false;
         Time.timeScale = startTimeScale;
         pauseUI.SetActive(false);
     }
 
     public void PauseGame(bool showUI = true)
     {
+        isPaused = true;
         Time.timeScale = pauseTimeScale;
         if (showUI)
             pauseUI.SetActive(true);

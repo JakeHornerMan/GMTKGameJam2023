@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 0
-  ultimateResetTime: 30
+  ultimateResetTime: 0
   placeableAnywhere: 1
   ignoreTokens: 1
   ultimateShopPrice: 50
@@ -224,8 +224,8 @@ MonoBehaviour:
   startPos: {x: -18, y: 0}
   moveSpeed: 5
   xDestroyThreshold: 25
-  maxY: 7
-  minY: -7
+  maxY: 5.5
+  minY: -5.5
   maxX: 12
   minX: -12
   meteorPrefab: {fileID: 3112727753274190021, guid: 4b934fc62b37efd4fafea2cbe19f25ad, type: 3}
