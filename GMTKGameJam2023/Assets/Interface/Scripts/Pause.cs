@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(pauseKey) || Input.GetKeyDown(pauseKeyAlt))
+        if ((Input.GetKeyDown(pauseKey) || Input.GetKeyDown(pauseKeyAlt)) && FindObjectOfType<CardDraw>() == null)
         {
             if (isPaused)
                 UnpauseGame();

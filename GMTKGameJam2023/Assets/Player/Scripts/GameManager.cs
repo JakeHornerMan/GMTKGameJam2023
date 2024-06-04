@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Cars in Level")]
     [SerializeField] public List<Car> carsInLevel;
     // [SerializeField] public Car[] carsInLevel;
-    
+
     [SerializeField] public List<Car> defaultCars;
     [SerializeField] public Ultimate ultimateInLevel;
 
@@ -83,29 +83,37 @@ public class GameManager : MonoBehaviour
         SetPointsValuesInLevel();
         if (devMode)
             tokens = cheatTokenAmount;
-        if (waves.Count != 0 && devMode){
+        if (waves.Count != 0 && devMode)
+        {
             SetGameTime();
             time = startTime;
             waveNumber = 0;
             SettingWaveInChickenSpawn();
         }
-        else{
+        else
+        {
             RoundSet();
-        }  
+        }
     }
 
-    private void SetPlayerValuesInLevel(){
-        if(!devMode){
-            if(PlayerValues.Cars != null){
+    private void SetPlayerValuesInLevel()
+    {
+        if (!devMode)
+        {
+            if (PlayerValues.Cars != null)
+            {
                 carsInLevel = PlayerValues.Cars;
             }
-            else{
+            else
+            {
                 carsInLevel = defaultCars;
             }
-            if(PlayerValues.ultimate != null){
+            if (PlayerValues.ultimate != null)
+            {
                 ultimateInLevel = PlayerValues.ultimate;
             }
-            else{
+            else
+            {
                 ultimateInLevel = null;
             }
             // Debug.Log("Cars: " + carsInLevel);
@@ -114,23 +122,26 @@ public class GameManager : MonoBehaviour
 
             // Debug.Log("Lives: " + missedChickenLives);
         }
-        else {
+        else
+        {
             missedChickenLives = cheatLives;
         }
     }
 
-    private void SetPointsValuesInLevel(){
+    private void SetPointsValuesInLevel()
+    {
         safelyCrossedChickens = Points.safelyCrossedChickens;
         killCount = Points.killCount;
         totalTokens = Points.totalTokens;
-        playerScore =  Points.playerScore;
+        playerScore = Points.playerScore;
         interfaceManager.scoreForText = playerScore;
     }
 
     // Settings For the Levels Round
-    private void RoundSet(){
+    private void RoundSet()
+    {
         waves.Clear();
-        if(gameFlowManager)
+        if (gameFlowManager)
             gameFlowManager.newRound();
         SetGameTime();
         time = startTime;
@@ -157,12 +168,12 @@ public class GameManager : MonoBehaviour
     {
         ChickenWave currentWave = waves[waveNumber];
         NewWavePopup(currentWave.wavePrompt);
-        Debug.Log("Standard Chickens in this round: " + currentWave.standardChickenAmounts);
+        // Debug.Log("Standard Chickens in this round: " + currentWave.standardChickenAmounts);
         soundManager.PlayWaveSound(currentWave.waveSound);
 
         chickenSpawn.SetNewWave(currentWave);
 
-        if(tokenSpawner != null)
+        if (tokenSpawner != null)
             tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
@@ -180,23 +191,26 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber < waves.Count){
+        if (waveNumber < waves.Count)
+        {
             SettingWaveInChickenSpawn();
-        }    
+        }
     }
-    
+
     // HERE WE CONTROL NEXT LEVEL AND GAMEOVER
     private void FixedUpdate()
     {
         if (!isGameOver)
         {
-            if(!pauseGameplay)
+            if (!pauseGameplay)
                 SetTime();
         }
-        if(missedChickenLives <= 0){
+        if (missedChickenLives <= 0)
+        {
             HandleGameOver();
         }
-        if(roundOver){
+        if (roundOver)
+        {
             StartCoroutine(WaitAndBuyScreen(3f));
         }
     }
@@ -224,7 +238,7 @@ public class GameManager : MonoBehaviour
     public void AddPlayerScore(int addAmount)
     {
         playerScore += addAmount;
-        if(interfaceManager)
+        if (interfaceManager)
             interfaceManager.ScoreUI(addAmount, true);
     }
 
@@ -270,7 +284,8 @@ public class GameManager : MonoBehaviour
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
-    private void HandleGameOver(){
+    private void HandleGameOver()
+    {
         isGameOver = true;
         SetPointsValues();
         GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -278,13 +293,15 @@ public class GameManager : MonoBehaviour
     }
 
     //Updates Static scripts
-    private void SetPlayerValues(){
+    private void SetPlayerValues()
+    {
         PlayerValues.Cars = carsInLevel;
         PlayerValues.ultimate = ultimateInLevel;
-        PlayerValues.startingEnergy =0;
+        PlayerValues.startingEnergy = 0;
     }
 
-    private void SetPointsValues(){
+    private void SetPointsValues()
+    {
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;

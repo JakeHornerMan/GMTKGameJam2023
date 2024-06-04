@@ -67,10 +67,12 @@ public class VehicleSpawner : MonoBehaviour
 
     private void Start()
     {
-        if(gameManager != null){
+        if (gameManager != null)
+        {
             CreateButtons(gameManager.carsInLevel);
         }
-        if(tutorialManager != null){
+        if (tutorialManager != null)
+        {
             CreateButtons(tutorialManager.carsInLevel);
         }
     }
@@ -95,7 +97,7 @@ public class VehicleSpawner : MonoBehaviour
 
     public void CreateButtons(List<Car> carsInLevel)
     {
-       
+
         foreach (Car car in carsInLevel)
         {
             CarButton btn = Instantiate(
@@ -110,29 +112,34 @@ public class VehicleSpawner : MonoBehaviour
             currentActiveCar = standardCar;
     }
 
-    public void DestroyButtons() {
-        foreach (Transform child in carSelectContainer.transform) {
+    public void DestroyButtons()
+    {
+        foreach (Transform child in carSelectContainer.transform)
+        {
             Destroy(child.gameObject);
         }
     }
 
     private void MouseInputs()
     {
-        if (Input.GetMouseButtonDown(placeMouseBtn)){
+        if (Input.GetMouseButtonDown(placeMouseBtn))
+        {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                Debug.Log("Clicked on the UI");
+                // Debug.Log("Clicked on the UI");
                 return;
             }
-            if(currentUltimateAbility){
+            if (currentUltimateAbility)
+            {
                 PlaceSelectedUltimate();
             }
-            else{
+            else
+            {
                 PlaceSelectedCar();
             }
-        }   
+        }
 
-        if(Input.GetKeyDown(KeyCode.Space) && standardCar != null)
+        if (Input.GetKeyDown(KeyCode.Space) && standardCar != null)
             SelectCar(standardCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) && carButtons.Count >= 1)
@@ -154,11 +161,13 @@ public class VehicleSpawner : MonoBehaviour
             SelectUltimate(ultimateManager.correspondingUltimate);
 
         UpdateMousePos();
-        
-        if(gameManager != null){
+
+        if (gameManager != null)
+        {
             UpdateCarCursor(gameManager.tokens);
         }
-        if(tutorialManager != null){
+        if (tutorialManager != null)
+        {
             UpdateCarCursor(tutorialManager.tokens);
         }
     }
@@ -174,10 +183,12 @@ public class VehicleSpawner : MonoBehaviour
             {
                 case TouchPhase.Began:
                     inputPos = mainCamera.ScreenToWorldPoint(touch.position);
-                    if(currentUltimateAbility){
+                    if (currentUltimateAbility)
+                    {
                         PlaceSelectedUltimate();
                     }
-                    else{
+                    else
+                    {
                         PlaceSelectedCar();
                     }
                     break;
@@ -194,7 +205,8 @@ public class VehicleSpawner : MonoBehaviour
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public void setStandardCar(){
+    public void setStandardCar()
+    {
         SelectCar(standardCar);
     }
 
@@ -253,8 +265,8 @@ public class VehicleSpawner : MonoBehaviour
         // Reduce Player Money
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
         {
-            if(gameManager != null) gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
-            if(tutorialManager != null) tutorialManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if (gameManager != null) gameManager.UpdateTokens(currentActiveCar.carPrice * -1);
+            if (tutorialManager != null) tutorialManager.UpdateTokens(currentActiveCar.carPrice * -1);
             soundManager.PlayPurchase();
         }
 
@@ -297,10 +309,11 @@ public class VehicleSpawner : MonoBehaviour
 
         // // Reduce Car Wallet Count
         // carWallet.carCount--;
-        
+
         ultimateManager.ultimateEnabled = false;
 
-        if (selectDefaultOnPlace) {
+        if (selectDefaultOnPlace)
+        {
             SelectCar(standardCar, false);
             SelectUltimate(null);
         }
@@ -319,15 +332,18 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SelectCar(Car car, bool shineLane = true)
     {
-        if(gameManager != null){
+        if (gameManager != null)
+        {
             SetActiveCar(car, shineLane, gameManager.tokens);
         }
-        if(tutorialManager != null){
+        if (tutorialManager != null)
+        {
             SetActiveCar(car, shineLane, tutorialManager.tokens);
         }
     }
 
-    public void SetActiveCar(Car car, bool shineLane, int tokens){
+    public void SetActiveCar(Car car, bool shineLane, int tokens)
+    {
         if (car.carPrice <= tokens)
         {
             currentActiveCar = car;
@@ -354,7 +370,8 @@ public class VehicleSpawner : MonoBehaviour
 
     public void SetUltimate()
     {
-        if(ultimateManager.ultimateEnabled){
+        if (ultimateManager.ultimateEnabled)
+        {
             SelectUltimate(ultimateManager.correspondingUltimate);
         }
     }

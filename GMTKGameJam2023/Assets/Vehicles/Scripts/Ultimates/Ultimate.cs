@@ -22,7 +22,7 @@ public class Ultimate : MonoBehaviour
     [SerializeField] private TextMeshProUGUI comboText;
     protected GameManager gameManager;
     private Rigidbody2D rb;
-    
+
     [Header("Damage")]
     [SerializeField] private int damage = 120;
     [SerializeField] private float comboMultiplier = 0.2f;
@@ -66,7 +66,7 @@ public class Ultimate : MonoBehaviour
         soundManager?.RandomPlaySound(spawnSound);
     }
 
-     private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameManager.isGameOver)
         {
@@ -93,7 +93,7 @@ public class Ultimate : MonoBehaviour
         Car car = collision.gameObject.GetComponent<Car>();
 
         if (collision != null)
-           car.LaunchCar();
+            car.LaunchCar();
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -175,8 +175,8 @@ public class Ultimate : MonoBehaviour
 
         if (comboText != null)
         {
-            Debug.Log(comboSymbol+carKillCount);
-            comboText.text = comboSymbol+carKillCount;
+            Debug.Log(comboSymbol + carKillCount);
+            comboText.text = comboSymbol + carKillCount;
             Debug.Log(comboText.text);
         }
     }
@@ -197,6 +197,7 @@ public class Ultimate : MonoBehaviour
     {
         if (totalPoints > 0)
             gameManager.AddPlayerScore(totalPoints);
+        StopAllCoroutines();
         Destroy(gameObject);
     }
 }
