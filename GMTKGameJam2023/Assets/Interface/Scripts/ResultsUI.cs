@@ -48,7 +48,7 @@ public class ResultsUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        sceneFader.ScreenWipeOut("MainMenuInteractive");
+        sceneFader.FadeToMainMenu();
     }
 
     public void Restart()

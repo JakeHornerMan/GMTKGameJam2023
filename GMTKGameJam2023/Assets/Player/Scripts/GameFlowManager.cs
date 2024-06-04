@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
-    [SerializeField] private float emptyWaveTime = 10f;
+    [SerializeField] private float emptyWaveTime;
     [SerializeField] private SpecialChicken[] SpecialChickens;
     [SerializeField] private List<SpecialChicken> chickenPot;
     [SerializeField] private List<SpecialChicken> potCandidates;
@@ -183,7 +183,7 @@ public class GameFlowManager : MonoBehaviour
 
     private void EmptyWave(){
         ChickenWave newChickenWave = new ChickenWave();
-        newChickenWave.roundTime = 10f;
+        newChickenWave.roundTime = emptyWaveTime;
         newChickenWave.standardChickenAmounts = 0;
         newChickenWave.wavePrompt = "Times Nearly Up!";
         newChickenWave.waveSound = "LastSeconds";

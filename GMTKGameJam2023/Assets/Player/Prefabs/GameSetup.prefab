@@ -565,6 +565,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1677909470908117969}
     m_Modifications:
+    - target: {fileID: 1547351305763332335, guid: b046b37d44666844d943b05f26945284, type: 3}
+      propertyPath: m_Size.x
+      value: 3.6907883
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547351305763332335, guid: b046b37d44666844d943b05f26945284, type: 3}
+      propertyPath: m_Offset.x
+      value: 16.654606
+      objectReference: {fileID: 0}
     - target: {fileID: 6218484342886744587, guid: b046b37d44666844d943b05f26945284, type: 3}
       propertyPath: m_Name
       value: Deathbox
@@ -661,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2168607213686167400, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 195
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2326053284723510464, guid: 71e6cbf22ade00b46b56ed798814079d, type: 3}
       propertyPath: m_AnchoredPosition.y
