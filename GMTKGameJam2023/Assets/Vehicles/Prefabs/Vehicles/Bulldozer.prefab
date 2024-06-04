@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4936820497001477568}
   - component: {fileID: 275410180260309379}
   - component: {fileID: -6574306423568156230}
-  - component: {fileID: 9007625855804940646}
+  - component: {fileID: -5277356840032745507}
   m_Layer: 2
   m_Name: Bulldozer
   m_TagString: Untagged
@@ -224,7 +224,7 @@ MonoBehaviour:
   objectIcon: {fileID: 21300000, guid: a83c6a89130b3a6479e50ddfb2f7b205, type: 3}
   objectDescription: They call it a bulldozer because this vehicle is making me doze
     off. BORINGGGGGGGGGGG!
---- !u!114 &9007625855804940646
+--- !u!114 &-5277356840032745507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,15 +233,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6077706268648720092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Script: {fileID: 11500000, guid: 834f8f027e66b834284b3d481d184de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
   comboSymbol: x
   comboText: {fileID: 8898072380112118132}
   carType: 1
-  carHealth: 400
-  carPrice: 0
+  carHealth: 500
+  carPrice: 4
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
@@ -250,10 +250,11 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 8
+  carShopPrice: 10
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
+  - Grass
   placeableAnywhere: 0
   carSpeed: 3
   damage: 200
