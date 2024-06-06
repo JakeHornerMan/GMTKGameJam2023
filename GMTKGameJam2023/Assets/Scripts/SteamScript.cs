@@ -5,10 +5,20 @@ using Steamworks;
 
 public class Steam : MonoBehaviour
 {
+    // private SteamLeaderboards steamLeaderboards;
+
+    // void Awake(){
+    //     steamLeaderboards = GetComponent<SteamLeaderboards>();
+    // }
+
+    public int score = 1;
+
     void Start() {
 		if(SteamManager.Initialized) {
 			string name = SteamFriends.GetPersonaName();
 			Debug.Log("Steam Account: " + name);
+
+            SteamLeaderboards.Init();
 		}
 	}
 
@@ -20,17 +30,27 @@ public class Steam : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            score++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            InitializeAndUploadLeaderboard(score);
+        }
+
         if (Input.GetKeyDown(KeyCode.Home))
         {
             SetAchievement();
         }
 
-        if (Input.GetKeyDown(KeyCode.Insert))
+        if (Input.GetKeyDown(KeyCode.PageUp))
         {
             SetStat();
         }
 
-        if (Input.GetKeyDown(KeyCode.Delete))
+        if (Input.GetKeyDown(KeyCode.PageDown))
         {
             GetStat();
         }
@@ -39,6 +59,15 @@ public class Steam : MonoBehaviour
         {
             Debug.Log("Reset All Stats & Achievements!");
             resetAchievements();
+        }
+    }
+
+    public void InitializeAndUploadLeaderboard(int score = 1)
+    {
+        if(SteamManager.Initialized)
+        {
+            // SteamLeaderboards.Init();
+            SteamLeaderboards.UpdateScore(score);
         }
     }
 
