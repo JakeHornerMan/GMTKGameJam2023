@@ -35,6 +35,16 @@ public class Steam : MonoBehaviour
             score++;
         }
 
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            SteamLeaderboards.DownloadScoresTop();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SteamLeaderboards.DownloadScoresAroundUser();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             InitializeAndUploadLeaderboard(score);
