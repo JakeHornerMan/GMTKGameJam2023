@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9072063159094702677}
   - component: {fileID: 4369464107847703595}
+  - component: {fileID: 857756469018871382}
   m_Layer: 0
   m_Name: Music
   m_TagString: Music
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4369464107847703595
 AudioSource:
@@ -42,7 +43,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
@@ -128,3 +129,129 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &857756469018871382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063726391280029344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelMusic:
+  - clip: {fileID: 8300000, guid: 11a15d58de20bcf48b76d6d1dc21f55c, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: d93d2e6ea27f782419f8f7be30d25a3f, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: b7442396bccd1bc4c8ff223985bc3e58, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: c4d6346808636f64f81d62c4d3bba8a5, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 95e77a71bd767e841b090a1b08e7a416, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 92f5f9e571c3a47479e799de9cee5640, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: fd0a5ae6bdb91984c8eba129589eda61, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: ef9e8d071993ef344b664cc1fe7e0f87, type: 3}
+    volume: 0.7
+  deathConfigs:
+  - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
+    volume: 0.6
+  - clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
+    volume: 0.6
+  sliceConfigs:
+  - clip: {fileID: 8300000, guid: e487dd397dcdb174fbd0cb076d6fce32, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: f8b3ed6881a3f6b49a82289d222a916a, type: 3}
+    volume: 0.5
+  missileLaunchConfig:
+    clip: {fileID: 8300000, guid: b2e76d78bad382846aa63840186e34d3, type: 3}
+    volume: 1
+  fighterJetExplosion:
+    clip: {fileID: 8300000, guid: 8a3498ba97008074bb7c5bdd2c2e5b3d, type: 3}
+    volume: 1
+  explosionConfigs:
+  - clip: {fileID: 8300000, guid: 16990aec917c82e4599823c45353c9a5, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 0f86c9e8fc1e33641b18e7db5b640ebe, type: 3}
+    volume: 0.5
+  spikePlaceConfig:
+    clip: {fileID: 8300000, guid: 4413faafb250f95498d400725b9b625e, type: 3}
+    volume: 1
+  cementPlaceConfig:
+    clip: {fileID: 8300000, guid: 4413faafb250f95498d400725b9b625e, type: 3}
+    volume: 1
+  sheepDeathConfig:
+    clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
+    volume: 1
+  gameSpeedConfig:
+    clip: {fileID: 8300000, guid: 8ad8916718e6b764ca9f91aeb3f73b12, type: 3}
+    volume: 0.3
+  timesUpConfig:
+    clip: {fileID: 0}
+    volume: 1
+  missedChicken:
+    clip: {fileID: 8300000, guid: a1be8c2a4c68c5c48bf4e3968ea899c9, type: 3}
+    volume: 1
+  tokenCollect:
+  - clip: {fileID: 8300000, guid: d8fa14f4d7acd5b43b615446a6fddae5, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 0fdb498d20da89d42900889ee843ec50, type: 3}
+    volume: 1
+  purchases:
+  - clip: {fileID: 8300000, guid: 28ff028590102c84c94a3e13bd5a2a5e, type: 3}
+    volume: 0.2
+  - clip: {fileID: 8300000, guid: c519c081aafcd434d91971007573caf1, type: 3}
+    volume: 0.2
+  - clip: {fileID: 8300000, guid: 08f5a8eb1814cb7408a1c733c52a1755, type: 3}
+    volume: 0.2
+  cantPurchase:
+    clip: {fileID: 8300000, guid: eafffcc7481d73d47975b68cb0602adc, type: 3}
+    volume: 1
+  freezeConfig:
+    clip: {fileID: 8300000, guid: 5105f4273e6110042bc392186b17cdb0, type: 3}
+    volume: 1
+  unfrostConfig:
+    clip: {fileID: 8300000, guid: 37eb9506537256b43947e523772cc72c, type: 3}
+    volume: 1
+  chickenConfigs:
+  - clip: {fileID: 8300000, guid: 3620699fd5bc8b047a9507c0d1b57296, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 2892cb98b2df9904cb116a5b711dd688, type: 3}
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 8a589ce884bbb1a4a99c531a8e1def2a, type: 3}
+    volume: 0.5
+  cashChickenSound:
+  - clip: {fileID: 8300000, guid: f73a6bdf25c8d2343b16da555e17e0cc, type: 3}
+    volume: 0
+  - clip: {fileID: 8300000, guid: 8b163f82e2bf4034ea08d4e318b3d308, type: 3}
+    volume: 0
+  - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
+    volume: 0
+  turboChicken:
+    clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
+    volume: 0.7
+  wagonChicken:
+    clip: {fileID: 0}
+    volume: 1
+  turboChickenDeath:
+    clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
+    volume: 1
+  wagonChickenDeath:
+    clip: {fileID: 0}
+    volume: 1
+  enterPortal:
+    clip: {fileID: 8300000, guid: ef9d97d430df64943820f7f2550b238d, type: 3}
+    volume: 1
+  exitPortal:
+    clip: {fileID: 8300000, guid: dd29e44dbe229ec47b2526577fa4440d, type: 3}
+    volume: 1
+  lastSecondsConfig:
+    clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
+    volume: 1
+  endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
+  musicAudio: {fileID: 4369464107847703595}

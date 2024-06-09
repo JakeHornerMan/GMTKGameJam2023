@@ -942,14 +942,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic:
+  - clip: {fileID: 8300000, guid: 11a15d58de20bcf48b76d6d1dc21f55c, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: d93d2e6ea27f782419f8f7be30d25a3f, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: b7442396bccd1bc4c8ff223985bc3e58, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: c4d6346808636f64f81d62c4d3bba8a5, type: 3}
+    volume: 0.7
   - clip: {fileID: 8300000, guid: 95e77a71bd767e841b090a1b08e7a416, type: 3}
-    volume: 1
+    volume: 0.7
   - clip: {fileID: 8300000, guid: 92f5f9e571c3a47479e799de9cee5640, type: 3}
-    volume: 1
+    volume: 0.7
   - clip: {fileID: 8300000, guid: fd0a5ae6bdb91984c8eba129589eda61, type: 3}
-    volume: 1
+    volume: 0.7
   - clip: {fileID: 8300000, guid: ef9e8d071993ef344b664cc1fe7e0f87, type: 3}
-    volume: 1
+    volume: 0.7
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
     volume: 0.6
@@ -1046,7 +1054,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
-  musicAudio: {fileID: 5995303635059143458}
+  musicAudio: {fileID: 0}
 --- !u!114 &4517704102987042158
 MonoBehaviour:
   m_ObjectHideFlags: 0

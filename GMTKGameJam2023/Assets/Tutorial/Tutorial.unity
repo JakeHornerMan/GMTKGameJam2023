@@ -3463,7 +3463,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -16611,7 +16611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicObjectName: Music
+  levelMusic: []
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
     volume: 0.6
@@ -16708,7 +16708,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
-  gameMusic: {fileID: 8300000, guid: 7e741bd7a4527a743b1046cecad582cd, type: 3}
+  musicAudio: {fileID: 0}
 --- !u!212 &5813577584964644938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24950,6 +24950,7 @@ MonoBehaviour:
   creditsSceneName: Credits
   settingsSceneName: Settings
   resultsSceneName: Results
+  buyScreenSceneName: BuyScreenImproved
   fadeImage: {fileID: 8146683703794535646}
   screenWipeObject: {fileID: 4765554057184533441}
   offScreenXcoord: 2700
