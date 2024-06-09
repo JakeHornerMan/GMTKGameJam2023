@@ -73,24 +73,25 @@ public class ObjectBlueprint : MonoBehaviour
     public void ClearUI()
     {
         // Hide Name, Description, Image
-        if(objectNameText  != null) objectNameText.text = string.Empty;
-        if(objectDescriptionText  != null) objectDescriptionText.text = string.Empty;
-        if(objectImage  != null) objectImage.sprite = null;
-        if(objectTypeText  != null) objectTypeText.text = string.Empty;
+        if (objectNameText != null) objectNameText.text = string.Empty;
+        if (objectDescriptionText != null) objectDescriptionText.text = string.Empty;
+        if (objectImage != null) objectImage.sprite = null;
+        if (objectTypeText != null) objectTypeText.text = string.Empty;
 
         // Hide token text and its parent display box
-        if(tokenCostText  != null) tokenCostText.text = string.Empty;
-        if(tokenCostText  != null) tokenCostText.transform.parent.gameObject.SetActive(false);
+        if (tokenCostText != null) tokenCostText.text = string.Empty;
+        if (tokenCostText != null) tokenCostText.transform.parent.gameObject.SetActive(false);
 
         // Hide shop text and its parent display box
-        if(shopUnlockCostText  != null) shopUnlockCostText.text = string.Empty;
-        if(shopUnlockCostText  != null) shopUnlockCostText.transform.parent.gameObject.SetActive(false);
+        if (shopUnlockCostText != null) shopUnlockCostText.text = string.Empty;
+        if (shopUnlockCostText != null) shopUnlockCostText.transform.parent.gameObject.SetActive(false);
 
         // Clear all road labels and hide road labels container
-        if(laneLabelGridContainer != null) {
-        for (var i = laneLabelGridContainer.transform.childCount - 1; i >= 0; i--)
-            Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
-         laneLabelGridContainer.gameObject.SetActive(false);
+        if (laneLabelGridContainer != null)
+        {
+            for (var i = laneLabelGridContainer.transform.childCount - 1; i >= 0; i--)
+                Destroy(laneLabelGridContainer.transform.GetChild(i).gameObject);
+            laneLabelGridContainer.gameObject.SetActive(false);
         }
 
         // Enabling makes animation run every time something new is displayed
@@ -107,7 +108,7 @@ public class ObjectBlueprint : MonoBehaviour
         gameObject.SetActive(true);
         objectNameText.text = obj.objectName;
         objectDescriptionText.text = obj.objectDescription;
-        objectImage.sprite = obj.objectSprite;
+        objectImage.sprite = obj.bluePrintSprite ? obj.bluePrintSprite : obj.objectSprite;
         currentlyDisplayedObject = obj;
         if (customType != "")
         {
@@ -204,12 +205,15 @@ public class ObjectBlueprint : MonoBehaviour
         objectDescriptionText.text = description;
     }
 
-    public void activateContinue(bool isContinue = false){
-        if(isContinue){
+    public void activateContinue(bool isContinue = false)
+    {
+        if (isContinue)
+        {
             closeBtn.SetActive(false);
             continueBtn.SetActive(true);
         }
-        else{
+        else
+        {
             closeBtn.SetActive(true);
             continueBtn.SetActive(false);
         }
