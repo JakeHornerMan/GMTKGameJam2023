@@ -298,7 +298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5852127582579675761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
@@ -609,6 +609,7 @@ MonoBehaviour:
   - {fileID: 5864946997629709544}
   - {fileID: 748040523145499901}
   killDelay: 0.02
+  cardCreationInterval: 0.5
   hideUIOnUltimateActivation: 0
   resumeBtn: {fileID: 5864946997629709544}
 --- !u!114 &-6554136348469088519
@@ -625,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Card Draw Ultimate
   objectSprite: {fileID: 21300000, guid: a098e5bb5d26bd4458bd80b915ec86ce, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: 7387ef4279d13ae44a721d39f5d7b856, type: 3}
   objectDescription: Kills a random amount of chicken based on a randomly drawn card
     of your choosing.
@@ -640,6 +642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ultimate Selectable Card (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7908398656517142679, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -654,19 +660,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -706,7 +712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -762,6 +768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ultimate Selectable Card (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7908398656517142679, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -776,19 +786,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -884,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ultimate Selectable Card
       objectReference: {fileID: 0}
+    - target: {fileID: 7908398656517142679, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -898,19 +912,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -950,7 +964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 7909906201066598680, guid: 293d7f16d50bab84580891a0888384e9, type: 3}
       propertyPath: m_AnchoredPosition.y

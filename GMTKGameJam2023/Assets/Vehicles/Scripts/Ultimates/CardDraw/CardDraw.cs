@@ -25,6 +25,7 @@ public class CardDraw : Ultimate
     [SerializeField] List<UltimateCardSO> cardConfigs; // The Scriptable Objects for Possible Card Values
     [SerializeField] GameObject[] ultimateUIs; // Disabled when resume button clicked
     [SerializeField] private float killDelay = 0.3f; // Delay between each chicken kill
+    [SerializeField] private float cardCreationInterval = 0.5f; // Delay between card creation
     [Space]
     [SerializeField] private bool hideUIOnUltimateActivation = true;
 
@@ -55,14 +56,17 @@ public class CardDraw : Ultimate
         }
         Time.timeScale = 0f;
 
-        // Assign Configs Randomly on cards List and flip all cards to back
+        // Shuffle the card configs and assign them to the cards
         shuffledConfigs = Shuffle(cardConfigs);
-        for (int i = 0; i < cardsList.Count; i++)
+
+        // Set all cards to inactive initially
+        foreach (var card in cardsList)
         {
-            UltimateSelectableCard card = cardsList[i];
-            card.correspondingConfig = shuffledConfigs[i];
-            card.FlipCard(front: false);
+            card.gameObject.SetActive(false);
         }
+
+        // Start coroutine to enable cards one by one with delay
+        StartCoroutine(ActivateCardsWithDelay());
     }
 
     private List<T> Shuffle<T>(List<T> _list)
@@ -76,6 +80,18 @@ public class CardDraw : Ultimate
         }
 
         return _list;
+    }
+
+    private IEnumerator ActivateCardsWithDelay()
+    {
+        for (int i = 0; i < cardsList.Count; i++)
+        {
+            var card = cardsList[i];
+            card.correspondingConfig = shuffledConfigs[i];
+            card.FlipCard(front: false); // Set to back side
+            card.gameObject.SetActive(true); // Enable the card
+            yield return new WaitForSecondsRealtime(cardCreationInterval);
+        }
     }
 
     public void HandleSelectedCard(UltimateSelectableCard cardClicked)
@@ -143,11 +159,8 @@ public class CardDraw : Ultimate
                 if (allChickens[i] == null) continue;
                 allChickens[i].TakeDamage(1000);
                 // TODO ADD SCORE TO GAMEMANAGER
-                yield return new WaitForSeconds(killDelay);
+                yield return new WaitForSecondsRealtime(killDelay);
             }
-
-            // TODO FIND BETTER WAY TO PLAY SOUND FOR CHICKEN KILL (for every chicken it is too much)
-            // soundManager.PlayChickenHit();
         }
 
         Destroy(gameObject);
