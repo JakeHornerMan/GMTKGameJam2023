@@ -101,6 +101,7 @@ public class CardDraw : Ultimate
         // Flip every card to front
         foreach (UltimateSelectableCard card in cardsList)
         {
+            card.GetComponent<Animator>().SetTrigger("Flip");
             card.FlipCard(front: true);
             card.SetUIActivation(true);
             card.GetComponent<Button>().interactable = false;
