@@ -111,10 +111,10 @@ public class SteamLeaderboards : MonoBehaviour
             leaderboardEntries.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName));
         }
 
-        foreach (var entry in leaderboardEntries)
-        {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
-        }
+        // foreach (var entry in leaderboardEntries)
+        // {
+        //     Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        // }
     }
 
     private static Timer timer1; 

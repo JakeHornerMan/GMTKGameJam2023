@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 129919274}
   - component: {fileID: 129919273}
   - component: {fileID: 129919272}
+  - component: {fileID: 129919276}
   - component: {fileID: 129919275}
   m_Layer: 5
   m_Name: ChickenTab
@@ -265,7 +266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129919270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
   m_Name: 
@@ -273,6 +274,18 @@ MonoBehaviour:
   tabType: 2
   inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
   activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
+--- !u!114 &129919276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129919270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd70bbfc6d8d1924b9fedd5cb7df129d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595829860
 GameObject:
   m_ObjectHideFlags: 0
