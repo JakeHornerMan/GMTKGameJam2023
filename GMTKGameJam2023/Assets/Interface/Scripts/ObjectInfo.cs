@@ -6,6 +6,7 @@ public class ObjectInfo : MonoBehaviour
 {
     [SerializeField] public string objectName;
     [SerializeField] public Sprite objectSprite;
+    [SerializeField] public Sprite bluePrintSprite;
     [SerializeField] public Sprite objectIcon;
     [SerializeField][TextArea(10, 2)] public string objectDescription;
 }
