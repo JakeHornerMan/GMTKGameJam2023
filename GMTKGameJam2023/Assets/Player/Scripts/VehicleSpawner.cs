@@ -358,7 +358,7 @@ public class VehicleSpawner : MonoBehaviour
                 laneHighlight.DisableShineObject();
                 if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
                 {
-                    //laneHighlight.ShineLane();
+                    laneHighlight.ShineLane();
                 }
             }
         }

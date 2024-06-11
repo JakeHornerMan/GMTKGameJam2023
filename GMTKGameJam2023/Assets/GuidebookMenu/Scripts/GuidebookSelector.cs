@@ -25,7 +25,7 @@ public class GuidebookSelector : MonoBehaviour
     [SerializeField] private List<ObjectInfo> chickenToShow;
 
     // Store current displayed type if needed
-    public enum ViewType { Cars, Ultimates, Chicken }
+    public enum ViewType { Cars, Ultimates, Chicken, Stats }
     public ViewType currentViewType;
 
     private ObjectBlueprint objectBlueprint;
@@ -43,6 +43,7 @@ public class GuidebookSelector : MonoBehaviour
 
     private void Update()
     {
+        // Scrolling buttons on blueprint view
         if (objectBlueprint.gameObject.activeInHierarchy)
         {
             nextBtn.SetActive(true);
@@ -103,6 +104,14 @@ public class GuidebookSelector : MonoBehaviour
             ).GetComponent<GuidebookButton>();
             btn.Creation(ultimate);
         }
+    }
+
+    public void ShowStatsPage()
+    {
+        currentViewType = ViewType.Stats;
+        ClearGrid();
+
+        // ENABLE UI HERE
     }
 
     // Handle Next and Previous Button
