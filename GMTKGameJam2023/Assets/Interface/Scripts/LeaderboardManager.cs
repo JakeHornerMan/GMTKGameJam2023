@@ -45,7 +45,7 @@ public class LeaderboardManager : MonoBehaviour
         top10LeaderboardEntries = SteamLeaderboards.leaderboardEntries;
         SteamLeaderboards.DownloadScoresForFriends();
         friendsLeaderboardEntries = SteamLeaderboards.leaderboardEntries;
-        ShowLeaderboard();
+        if(leaderboardEntries.Count > 0) ShowLeaderboard();
     }
 
     // // Run from UI by button
@@ -68,7 +68,7 @@ public class LeaderboardManager : MonoBehaviour
         currentViewType = ViewType.Leaderboard;
         foreach (var entry in leaderboardEntries)
         {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+            entry.ToString();
         }
     }
 
@@ -91,7 +91,7 @@ public class LeaderboardManager : MonoBehaviour
         currentViewType = ViewType.Top10;
         foreach (var entry in top10LeaderboardEntries)
         {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+            entry.ToString();
         }
     }
 
@@ -115,7 +115,7 @@ public class LeaderboardManager : MonoBehaviour
         currentViewType = ViewType.Friends;
         foreach (var entry in friendsLeaderboardEntries)
         {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+            entry.ToString();
         }
     }
 }
