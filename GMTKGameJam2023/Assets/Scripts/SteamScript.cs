@@ -13,11 +13,10 @@ public class Steam : MonoBehaviour
 
     public int score = 1;
 
-    void Start() {
+    public void Awake() {
 		if(SteamManager.Initialized) {
 			string name = SteamFriends.GetPersonaName();
 			Debug.Log("Steam Account: " + name);
-
             SteamLeaderboards.Init();
 		}
 	}

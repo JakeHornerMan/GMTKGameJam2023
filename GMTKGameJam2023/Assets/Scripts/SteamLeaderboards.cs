@@ -12,7 +12,7 @@ public class SteamLeaderboards : MonoBehaviour
 
     private static SteamLeaderboard_t currentLeaderboard;
     private static bool initialized = false;
-    private static List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
+    public static List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
 
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();

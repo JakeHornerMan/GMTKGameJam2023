@@ -14,26 +14,38 @@ public class LeaderboardManager : MonoBehaviour
     public ViewType currentViewType;
     [SerializeField] private Transform entriesContainer;
 
-    private List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
-    private List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
-    private List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
+    public List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
+    public List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
+    public List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
+
+    private void Awake() 
+    {
+        if(SteamManager.Initialized) {
+            SteamLeaderboards.Init();
+		}
+    }
 
     private void Start()
     {
         GatherLeaderboardValues();
-        ShowLeaderboard();
     }
 
     // // Clear all buttons in grid layout container
     private void ClearGrid()
     {
         for (var i = entriesContainer.transform.childCount - 1; i >= 0; i--)
-            Destroy(buttonsContainer.transform.GetChild(i).gameObject);
+            Destroy(entriesContainer.transform.GetChild(i).gameObject);
     }
 
     private void GatherLeaderboardValues()
     {
-        
+        SteamLeaderboards.DownloadScoresAroundUser();
+        leaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        SteamLeaderboards.DownloadScoresTop();
+        top10LeaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        SteamLeaderboards.DownloadScoresForFriends();
+        friendsLeaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        ShowLeaderboard();
     }
 
     // // Run from UI by button
@@ -53,6 +65,11 @@ public class LeaderboardManager : MonoBehaviour
     public void ShowLeaderboard()
     {
         Debug.Log("ShowLeaderboard");
+        currentViewType = ViewType.Leaderboard;
+        foreach (var entry in leaderboardEntries)
+        {
+            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        }
     }
 
     // public void ShowChickenButtons()
@@ -71,6 +88,11 @@ public class LeaderboardManager : MonoBehaviour
     public void ShowTop10()
     {
         Debug.Log("ShowTop10");
+        currentViewType = ViewType.Top10;
+        foreach (var entry in top10LeaderboardEntries)
+        {
+            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        }
     }
 
     // public void ShowUltimateButtons()
@@ -90,5 +112,10 @@ public class LeaderboardManager : MonoBehaviour
     public void ShowFriends()
     {
         Debug.Log("ShowFriends");
+        currentViewType = ViewType.Friends;
+        foreach (var entry in friendsLeaderboardEntries)
+        {
+            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        }
     }
 }

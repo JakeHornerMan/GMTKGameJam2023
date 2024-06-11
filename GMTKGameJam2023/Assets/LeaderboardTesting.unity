@@ -136,9 +136,8 @@ GameObject:
   - component: {fileID: 129919273}
   - component: {fileID: 129919272}
   - component: {fileID: 129919276}
-  - component: {fileID: 129919275}
   m_Layer: 5
-  m_Name: ChickenTab
+  m_Name: FriendsTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,8 +208,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 129919275}
-        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+      - m_Target: {fileID: 129919276}
+        m_TargetAssemblyTypeName: LeaderboardTab, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -259,21 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129919270}
   m_CullTransparentMesh: 1
---- !u!114 &129919275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129919270}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tabType: 2
-  inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
-  activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
 --- !u!114 &129919276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd70bbfc6d8d1924b9fedd5cb7df129d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabType: 2
+  inactiveBtnImg: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  activeBtnImg: {fileID: 21300000, guid: 2332a1ddacb1ced46ac61d83f19f875a, type: 3}
 --- !u!1 &595829860
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,9 +571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Chicken
-
-'
+  m_text: Friends
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
@@ -980,7 +965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Vehicles
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
@@ -1191,7 +1176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ultimates
+  m_text: Top 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: 6dc88fbd5e362a34996912195b679804, type: 2}
@@ -1394,7 +1379,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803534477}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 229ed2365aa8aa941abf2eb632de28b4, type: 3}
   m_Name: 
@@ -1455,6 +1440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d96494cb70a7e43a6e8500d59faca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentViewType: 0
+  entriesContainer: {fileID: 853188895}
 --- !u!1001 &1808773121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1528,9 +1515,9 @@ GameObject:
   - component: {fileID: 1886954298}
   - component: {fileID: 1886954297}
   - component: {fileID: 1886954296}
-  - component: {fileID: 1886954300}
+  - component: {fileID: 1886954301}
   m_Layer: 5
-  m_Name: UltimateTab
+  m_Name: Top10Tab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,8 +1588,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886954300}
-        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+      - m_Target: {fileID: 1886954301}
+        m_TargetAssemblyTypeName: LeaderboardTab, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -1651,7 +1638,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886954294}
   m_CullTransparentMesh: 1
---- !u!114 &1886954300
+--- !u!114 &1886954301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1660,7 +1647,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886954294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
+  m_Script: {fileID: 11500000, guid: fd70bbfc6d8d1924b9fedd5cb7df129d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tabType: 1
@@ -1678,9 +1665,9 @@ GameObject:
   - component: {fileID: 2050895267}
   - component: {fileID: 2050895266}
   - component: {fileID: 2050895265}
-  - component: {fileID: 2050895269}
+  - component: {fileID: 2050895270}
   m_Layer: 5
-  m_Name: CarTab
+  m_Name: LeaderboardTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1751,8 +1738,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2050895269}
-        m_TargetAssemblyTypeName: GuidebookTab, Assembly-CSharp
+      - m_Target: {fileID: 2050895270}
+        m_TargetAssemblyTypeName: LeaderboardTab, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -1801,7 +1788,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050895263}
   m_CullTransparentMesh: 1
---- !u!114 &2050895269
+--- !u!114 &2050895270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1810,7 +1797,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2050895263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1c2a6a5059a5c40a9ce563c97d4473, type: 3}
+  m_Script: {fileID: 11500000, guid: fd70bbfc6d8d1924b9fedd5cb7df129d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tabType: 0
