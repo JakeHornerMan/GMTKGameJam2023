@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SteamLeaderboards : MonoBehaviour
 {
-    private const string s_leaderboardName = "TEST_LEADERBOARD";
+    private const string s_leaderboardName = "TEST2_LEADERBOARD";
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
 
@@ -79,6 +79,20 @@ public class SteamLeaderboards : MonoBehaviour
         }
     }
 
+    public static void DownloadScoresForFriends()
+    {
+        if (initialized)
+        {
+            SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestFriends, 0, 0);
+            CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
+            callResult.Set(handle, OnLeaderboardScoresDownloaded);
+        }
+        else
+        {
+            Debug.LogError("Leaderboard not found. Cannot download scores.");
+        }
+    }
+
     private static void OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t result, bool failure)
     {
         if (failure || result.m_cEntryCount == 0)
@@ -87,16 +101,19 @@ public class SteamLeaderboards : MonoBehaviour
             return;
         }
 
+        leaderboardEntries.Clear();
+
         for (int i = 0; i < result.m_cEntryCount; i++)
         {
             LeaderboardEntry_t entry;
             SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, null, 0);
-            leaderboardEntries.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore));
+            string userName = SteamFriends.GetFriendPersonaName(entry.m_steamIDUser);
+            leaderboardEntries.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName));
         }
 
         foreach (var entry in leaderboardEntries)
         {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.User}");
+            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
         }
     }
 
@@ -117,11 +134,13 @@ public class LeaderboardEntry
     public CSteamID User;
     public int GlobalRank;
     public int Score;
+    public string UserName;
 
-    public LeaderboardEntry(CSteamID user, int globalRank, int score)
+    public LeaderboardEntry(CSteamID user, int globalRank, int score, string userName)
     {
         User = user;
         GlobalRank = globalRank;
         Score = score;
+        UserName = userName;
     }
 }
