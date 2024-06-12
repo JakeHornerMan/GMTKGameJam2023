@@ -17,7 +17,7 @@ public class LeaderboardEntryVisual : MonoBehaviour
     {
         rankText.text = leaderboardEntry.GlobalRank.ToString() + ".";
         usernameText.text = leaderboardEntry.UserName.ToString();
-        // scoreText.text = leaderboardEntry.Score.ToString();
+        scoreText.text = leaderboardEntry.Score.ToString();
 
         if(leaderboardEntry.IsPlayer){
             rankText.color = playerColor;
