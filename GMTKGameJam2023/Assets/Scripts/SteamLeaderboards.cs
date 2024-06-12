@@ -14,7 +14,10 @@ public class SteamLeaderboards : MonoBehaviour
     private static bool initialized = false;
     private static string playerName;
     public static List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
-
+    public static List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
+    public static List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
+    public enum LeaderboardType { Leaderboard, Top10, Friends }
+    // public LeaderboardType currentLeaderboardType;
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();
     private static CallResult<LeaderboardScoreUploaded_t> uploadScoreResult = new CallResult<LeaderboardScoreUploaded_t>();
@@ -60,7 +63,10 @@ public class SteamLeaderboards : MonoBehaviour
         if (initialized)
         {
             SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobal, 1, toValue);
-            topScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
+            // topScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
+            CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
+            callResult.Set(handle, (result, failure) => OnLeaderboardScoresDownloaded(result, failure, LeaderboardType.Top10));
+
         }
         else
         {
@@ -73,7 +79,10 @@ public class SteamLeaderboards : MonoBehaviour
         if (initialized)
         {
             SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobalAroundUser, -10, 10);
-            aroundPlayerScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
+            // aroundPlayerScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
+            CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
+            callResult.Set(handle, (result, failure) => OnLeaderboardScoresDownloaded(result, failure, LeaderboardType.Leaderboard));
+
         }
         else
         {
@@ -87,7 +96,9 @@ public class SteamLeaderboards : MonoBehaviour
         {
             SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestFriends, 0, 0);
             CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
-            callResult.Set(handle, OnLeaderboardScoresDownloaded);
+            // callResult.Set(handle, OnLeaderboardScoresDownloaded);
+            callResult.Set(handle, (result, failure) => OnLeaderboardScoresDownloaded(result, failure, LeaderboardType.Friends));
+
         }
         else
         {
@@ -95,7 +106,7 @@ public class SteamLeaderboards : MonoBehaviour
         }
     }
 
-    private static void OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t result, bool failure)
+    private static void OnLeaderboardScoresDownloaded(LeaderboardScoresDownloaded_t result, bool failure, LeaderboardType currentLeaderboardType)
     {
         if (failure || result.m_cEntryCount == 0)
         {
@@ -103,7 +114,13 @@ public class SteamLeaderboards : MonoBehaviour
             return;
         }
 
-        leaderboardEntries.Clear();
+        if(currentLeaderboardType == LeaderboardType.Leaderboard) PopulateListWithLeaderboardEntries(leaderboardEntries, result);
+        if(currentLeaderboardType == LeaderboardType.Top10) PopulateListWithLeaderboardEntries(top10LeaderboardEntries, result);
+        if(currentLeaderboardType == LeaderboardType.Friends) PopulateListWithLeaderboardEntries(friendsLeaderboardEntries, result);
+    }
+
+    public static void PopulateListWithLeaderboardEntries(List<LeaderboardEntry> list, LeaderboardScoresDownloaded_t result){
+        list.Clear();
 
         for (int i = 0; i < result.m_cEntryCount; i++)
         {
@@ -111,13 +128,13 @@ public class SteamLeaderboards : MonoBehaviour
             SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, null, 0);
             string userName = SteamFriends.GetFriendPersonaName(entry.m_steamIDUser);
             bool isPlayer = (userName == playerName) ? true : false;
-            leaderboardEntries.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer));
+            list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer));
         }
 
-        // foreach (var entry in leaderboardEntries)
-        // {
-        //     Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
-        // }
+        foreach (var entry in list)
+        {
+            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        }
     }
 
     private static Timer timer1; 
@@ -149,7 +166,7 @@ public class LeaderboardEntry
         IsPlayer = isPlayer;
     }
 
-    public void ToString(){
+    public void Log(){
         Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}");
     }
 }

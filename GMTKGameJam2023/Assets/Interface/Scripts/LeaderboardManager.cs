@@ -13,6 +13,7 @@ public class LeaderboardManager : MonoBehaviour
     public enum ViewType { Leaderboard, Top10, Friends }
     public ViewType currentViewType;
     [SerializeField] private Transform entriesContainer;
+    [SerializeField] private GameObject leaderboardEntryPrefab;
 
     public List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
     public List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
@@ -31,7 +32,7 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     // // Clear all buttons in grid layout container
-    private void ClearGrid()
+    private void ClearEntries()
     {
         for (var i = entriesContainer.transform.childCount - 1; i >= 0; i--)
             Destroy(entriesContainer.transform.GetChild(i).gameObject);
@@ -42,80 +43,57 @@ public class LeaderboardManager : MonoBehaviour
         SteamLeaderboards.DownloadScoresAroundUser();
         leaderboardEntries = SteamLeaderboards.leaderboardEntries;
         SteamLeaderboards.DownloadScoresTop();
-        top10LeaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        top10LeaderboardEntries = SteamLeaderboards.top10LeaderboardEntries;
         SteamLeaderboards.DownloadScoresForFriends();
-        friendsLeaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        friendsLeaderboardEntries = SteamLeaderboards.friendsLeaderboardEntries;
         if(leaderboardEntries.Count > 0) ShowLeaderboard();
     }
 
-    // // Run from UI by button
-    // public void ShowCarButtons()
-    // {
-    //     currentViewType = ViewType.Cars;
-    //     ClearGrid();
-    //     foreach (Car car in carsToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(car);
-    //     }
-    // }
     public void ShowLeaderboard()
     {
         Debug.Log("ShowLeaderboard");
+        ClearEntries();
         currentViewType = ViewType.Leaderboard;
-        foreach (var entry in leaderboardEntries)
+        foreach (LeaderboardEntry entry in leaderboardEntries)
         {
-            entry.ToString();
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
         }
     }
 
-    // public void ShowChickenButtons()
-    // {
-    //     currentViewType = ViewType.Chicken;
-    //     ClearGrid();
-    //     foreach (ObjectInfo chicken in chickenToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(chicken);
-    //     }
-    // }
     public void ShowTop10()
     {
         Debug.Log("ShowTop10");
+        ClearEntries();
         currentViewType = ViewType.Top10;
         foreach (var entry in top10LeaderboardEntries)
         {
-            entry.ToString();
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
         }
     }
-
-    // public void ShowUltimateButtons()
-    // {
-    //     currentViewType = ViewType.Ultimates;
-    //     ClearGrid();
-    //     foreach (Ultimate ultimate in ultimatesToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(ultimate);
-    //     }
-    // }
 
     public void ShowFriends()
     {
         Debug.Log("ShowFriends");
+        ClearEntries();
         currentViewType = ViewType.Friends;
         foreach (var entry in friendsLeaderboardEntries)
         {
-            entry.ToString();
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
         }
     }
 }
