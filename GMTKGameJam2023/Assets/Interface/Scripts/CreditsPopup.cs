@@ -15,7 +15,8 @@ public class CreditsPopup : MonoBehaviour
     {
         creditsPopupUI.SetActive(true);
         creditsPopupBorder.SetActive(true);
-        GameObject.Find("Pointer").SetActive(false);
+        if (GameObject.Find("Pointer"))
+            GameObject.Find("Pointer").SetActive(false);
     }
 
     public void HideCreditsUI()
