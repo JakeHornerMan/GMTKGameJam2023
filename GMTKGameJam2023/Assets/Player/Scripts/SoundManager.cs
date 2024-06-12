@@ -70,7 +70,7 @@ public class SoundManager : MonoBehaviour
         }
 
         audioSrc = GetComponent<AudioSource>();
-        
+
 
     }
 
@@ -83,29 +83,30 @@ public class SoundManager : MonoBehaviour
     private SoundConfig SetGameMusic()
     {
         string sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log(sceneName);
+        // Debug.Log(sceneName);
 
-        switch(sceneName) 
+        switch (sceneName)
         {
-        case "MainMenu":
-            return levelMusic[0];
-            break;
-        case "Tutorial":
-            return levelMusic[1];
-            break;
-        case "Guidebook":
-            return levelMusic[2];
-            break;
-        case "BuyScreenImproved":
-            return levelMusic[3];
-            break;
-        default:
-            return GetLevelTrack();
-            break;
+            case "MainMenu":
+                return levelMusic[0];
+                break;
+            case "Tutorial":
+                return levelMusic[1];
+                break;
+            case "Guidebook":
+                return levelMusic[2];
+                break;
+            case "BuyScreenImproved":
+                return levelMusic[3];
+                break;
+            default:
+                return GetLevelTrack();
+                break;
         }
     }
 
-    private SoundConfig GetLevelTrack(){
+    private SoundConfig GetLevelTrack()
+    {
         int trackNumber = Random.Range(4, levelMusic.Length);
         return levelMusic[trackNumber];
     }
@@ -188,7 +189,8 @@ public class SoundManager : MonoBehaviour
         PlaySound(soundConfig);
     }
 
-    public void PlayWaveSound(string input){
+    public void PlayWaveSound(string input)
+    {
         switch (input)
         {
             case "LastSeconds":

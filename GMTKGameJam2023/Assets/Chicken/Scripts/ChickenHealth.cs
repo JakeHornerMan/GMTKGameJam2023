@@ -52,16 +52,19 @@ public class ChickenHealth : MonoBehaviour
             HandleHit();
     }
 
-    public IEnumerator ChipDamage(int damage){
+    public IEnumerator ChipDamage(int damage)
+    {
         TakeDamage(damage);
-        
-        if(health > 0){
+
+        if (health > 0)
+        {
             yield return new WaitForSeconds(1f);
             RedoChipDamage(damage);
         }
     }
 
-    private void RedoChipDamage(int damage){
+    private void RedoChipDamage(int damage)
+    {
         StartCoroutine(ChipDamage(damage));
     }
 
@@ -98,9 +101,9 @@ public class ChickenHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        // Debug.Log(other.gameObject.name);
         ParticleSystem ps = other.GetComponent<ParticleSystem>();
-        if(ps != null) Debug.Log("Hit by particles");
+        // if(ps != null) Debug.Log("Hit by particles");
 
     }
 
@@ -112,13 +115,15 @@ public class ChickenHealth : MonoBehaviour
     public void FreezeChicken(float freezeLength)
     {
         IEnumerator coroutine;
-        if(this.gameObject.name.Contains("Turbo") || this.gameObject.name.Contains("WheelBarrow")){
+        if (this.gameObject.name.Contains("Turbo") || this.gameObject.name.Contains("WheelBarrow"))
+        {
             coroutine = this.gameObject.GetComponent<AlternativeChickenMovement>().FreezeChicken(freezeLength, true);
         }
         // else if (this.gameObject.name.Contains("WheelBarrow")){
         //     coroutine = this.gameObject.GetComponent<WagonChickenMovement>().FreezeChicken(freezeLength, true);
         // }
-        else{
+        else
+        {
             coroutine = this.gameObject.GetComponent<ChickenMovement>().FreezeChicken(freezeLength, true);
         }
         // IEnumerator coroutine = chickenMovement.StopTheMovement(freezeLength, true);
