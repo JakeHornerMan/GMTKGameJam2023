@@ -21,4 +21,9 @@ public class ExitButton : MonoBehaviour
         Application.Quit();
         Debug.Log("GAME EXIT");
     }
+
+    public void HideConfirmation()
+    {
+        confirmationDialog.SetActive(false);
+    }
 }
