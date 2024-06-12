@@ -223,8 +223,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.042452812, b: 0.19419363, a: 1}
-      maxColor: {r: 0.8862745, g: 0.477034, b: 0.38039213, a: 1}
+      minColor: {r: 0.9622642, g: 0.6988087, b: 0.45752937, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -288,8 +288,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.1
+      scalar: 0.5
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -446,7 +446,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -499,7 +499,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -552,9 +552,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.43633232
+      minScalar: -0.43633232
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -977,7 +977,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1488,7 +1488,10 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 5dc199fad4819984aaef351795f108f3, type: 3}
+    - sprite: {fileID: 547330608, guid: f0efeafd4b5824b4e8dccf6e9e4f0a42, type: 3}
+    - sprite: {fileID: -499093351, guid: f0efeafd4b5824b4e8dccf6e9e4f0a42, type: 3}
+    - sprite: {fileID: -27138926, guid: f0efeafd4b5824b4e8dccf6e9e4f0a42, type: 3}
+    - sprite: {fileID: -238642770, guid: f0efeafd4b5824b4e8dccf6e9e4f0a42, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4796,9 +4799,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 78240989
-  m_SortingLayer: 5
-  m_SortingOrder: 50
+  m_SortingLayerID: -633477931
+  m_SortingLayer: 7
+  m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5251,6 +5254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Fire Truck
   objectSprite: {fileID: -1121594847, guid: 84b714ebf8ca7a049874fae934b019f7, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: 7c6d6e21a613e5148b8c9d7889595f22, type: 3}
   objectDescription: Someone at the factory missed the memo, because this "Fire"truck
     sprays flames everywhere it goes, dousing everything in its path.
