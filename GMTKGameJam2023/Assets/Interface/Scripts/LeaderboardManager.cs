@@ -10,174 +10,108 @@ using UnityEngine.UI;
 /// </summary>
 public class LeaderboardManager : MonoBehaviour
 {
-    // [Header("Items to Display")]
-    // [SerializeField] private List<Car> carsToShow;
-    // [SerializeField] private List<Ultimate> ultimatesToShow;
-    // [SerializeField] private List<ObjectInfo> chickenToShow;
+    public enum ViewType { Leaderboard, Top10, Friends }
+    public ViewType currentLeaderboardType;
+    [SerializeField] private Transform entriesContainer;
+    [SerializeField] private GameObject leaderboardEntryPrefab;
 
-    // // Store current displayed type if needed
-    // public enum ViewType { Cars, Ultimates, Chicken }
-    // public ViewType currentViewType;
+    public List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
+    public List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
+    public List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
 
-    // private ObjectBlueprint objectBlueprint;
+    private void Awake() 
+    {
+        if(SteamManager.Initialized) {
+            SteamLeaderboards.Init();
+		}
+    }
 
-    // private void Awake()
-    // {
-    //     objectBlueprint = FindObjectOfType<ObjectBlueprint>();
-    // }
+    private void Start()
+    {
+        RefreshLeaderboardValues();
+    }
 
-    // private void Start()
-    // {
-    //     // Show Cars by Default
-    //     ShowCarButtons();
-    // }
+     public void UploadToLeaderboard(int score = 1)
+    {
+        if(SteamManager.Initialized)
+        {
+            SteamLeaderboards.Init();
+            SteamLeaderboards.UpdateScore(score);
+        }
+    }
 
-    // private void Update()
-    // {
-    //     if (objectBlueprint.gameObject.activeInHierarchy)
-    //     {
-    //         nextBtn.SetActive(true);
-    //         prevBtn.SetActive(true);
-    //     }
-    //     else
-    //     {
-    //         nextBtn.SetActive(false);
-    //         prevBtn.SetActive(false);
-    //     }
-    // }
+    public void RefreshLeaderboardValues()
+    {
+        SteamLeaderboards.DownloadScoresAroundUser();
+        SteamLeaderboards.DownloadScoresTop();
+        SteamLeaderboards.DownloadScoresForFriends();
+    }
 
-    // // Clear all buttons in grid layout container
-    // private void ClearGrid()
-    // {
-    //     for (var i = buttonsContainer.transform.childCount - 1; i >= 0; i--)
-    //         Destroy(buttonsContainer.transform.GetChild(i).gameObject);
-    // }
+    public void SetLeaderboardList(){
+        leaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        if(leaderboardEntries.Count > 0) ShowLeaderboard();
+    }
 
-    // // Run from UI by button
-    // public void ShowCarButtons()
-    // {
-    //     currentViewType = ViewType.Cars;
-    //     ClearGrid();
-    //     foreach (Car car in carsToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(car);
-    //     }
-    // }
+    public void SetTop10LeaderboardList(){
+        top10LeaderboardEntries = SteamLeaderboards.top10LeaderboardEntries;
+    }
 
-    // public void ShowChickenButtons()
-    // {
-    //     currentViewType = ViewType.Chicken;
-    //     ClearGrid();
-    //     foreach (ObjectInfo chicken in chickenToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(chicken);
-    //     }
-    // }
+    public void SetFriendsLeaderboardList(){
+        friendsLeaderboardEntries = SteamLeaderboards.friendsLeaderboardEntries;
+    }
 
-    // public void ShowUltimateButtons()
-    // {
-    //     currentViewType = ViewType.Ultimates;
-    //     ClearGrid();
-    //     foreach (Ultimate ultimate in ultimatesToShow)
-    //     {
-    //         GuidebookButton btn = Instantiate(
-    //             guideSelectButtonPrefab,
-    //             buttonsContainer
-    //         ).GetComponent<GuidebookButton>();
-    //         btn.Creation(ultimate);
-    //     }
-    // }
+    // Clear all buttons in grid layout container
+    private void ClearEntries()
+    {
+        for (var i = entriesContainer.transform.childCount - 1; i >= 0; i--)
+            Destroy(entriesContainer.transform.GetChild(i).gameObject);
+    }
 
-    // // Handle Next and Previous Button
-    // public void ShowNextItem()
-    // {
-    //     if (currentViewType == ViewType.Cars)
-    //     {
-    //         Car currentCar = objectBlueprint.currentlyDisplayedObject.GetComponent<Car>();
-    //         int currentIndex = carsToShow.IndexOf(currentCar);
-    //         int nextIndex = currentIndex + 1;
+    public void ShowLeaderboard()
+    {
+        Debug.Log("ShowLeaderboard");
+        ClearEntries();
+        currentLeaderboardType = ViewType.Leaderboard;
+        foreach (LeaderboardEntry entry in leaderboardEntries)
+        {
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
+        }
+    }
 
-    //         // Next index does not exist, go back to first
-    //         if (nextIndex == carsToShow.Count) nextIndex = 0;
+    public void ShowTop10()
+    {
+        Debug.Log("ShowTop10");
+        ClearEntries();
+        currentLeaderboardType = ViewType.Top10;
+        foreach (var entry in top10LeaderboardEntries)
+        {
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
+        }
+    }
 
-    //         objectBlueprint.DisplayInfo(carsToShow[nextIndex]);
-    //     }
-
-    //     if (currentViewType == ViewType.Ultimates)
-    //     {
-    //         Ultimate currentUltimate = objectBlueprint.currentlyDisplayedObject.GetComponent<Ultimate>();
-    //         int currentIndex = ultimatesToShow.IndexOf(currentUltimate);
-    //         int nextIndex = currentIndex + 1;
-
-    //         // Next index does not exist, go back to first
-    //         if (nextIndex == ultimatesToShow.Count) nextIndex = 0;
-
-    //         objectBlueprint.DisplayInfo(ultimatesToShow[nextIndex]);
-    //     }
-
-    //     if (currentViewType == ViewType.Chicken)
-    //     {
-    //         ObjectInfo currentChicken = objectBlueprint.currentlyDisplayedObject;
-    //         int currentIndex = chickenToShow.IndexOf(currentChicken);
-    //         int nextIndex = currentIndex + 1;
-
-    //         // Next index does not exist, go back to first
-    //         if (nextIndex == chickenToShow.Count) nextIndex = 0;
-
-    //         objectBlueprint.DisplayInfo(chickenToShow[nextIndex]);
-    //     }
-    // }
-
-    // public void ShowPrevItem()
-    // {
-    //     if (currentViewType == ViewType.Cars)
-    //     {
-    //         Car currentCar = objectBlueprint.currentlyDisplayedObject.GetComponent<Car>();
-    //         int currentIndex = carsToShow.IndexOf(currentCar);
-    //         int prevIndex = currentIndex - 1;
-
-    //         // Prev index does not exist, go back to first
-    //         if (prevIndex < 0)
-    //             objectBlueprint.DisplayInfo(carsToShow[^1]);
-    //         // Prev Index is valid
-    //         else
-    //             objectBlueprint.DisplayInfo(carsToShow[prevIndex]);
-    //     }
-
-    //     if (currentViewType == ViewType.Ultimates)
-    //     {
-    //         Ultimate currentUltimate = objectBlueprint.currentlyDisplayedObject.GetComponent<Ultimate>();
-    //         int currentIndex = ultimatesToShow.IndexOf(currentUltimate);
-    //         int prevIndex = currentIndex - 1;
-
-    //         // Prev index does not exist, go back to first
-    //         if (prevIndex < 0)
-    //             objectBlueprint.DisplayInfo(ultimatesToShow[^1]);
-    //         // Prev Index is valid
-    //         else
-    //             objectBlueprint.DisplayInfo(ultimatesToShow[prevIndex]);
-    //     }
-
-    //     if (currentViewType == ViewType.Chicken)
-    //     {
-    //         ObjectInfo currentChicken = objectBlueprint.currentlyDisplayedObject;
-    //         int currentIndex = chickenToShow.IndexOf(currentChicken);
-    //         int prevIndex = currentIndex - 1;
-
-    //         // Prev index does not exist, go back to first
-    //         if (prevIndex < 0)
-    //             objectBlueprint.DisplayInfo(chickenToShow[^1]);
-    //         // Prev Index is valid
-    //         else
-    //             objectBlueprint.DisplayInfo(chickenToShow[prevIndex]);
-    //     }
-    // }
+    public void ShowFriends()
+    {
+        Debug.Log("ShowFriends");
+        ClearEntries();
+        currentLeaderboardType = ViewType.Friends;
+        foreach (var entry in friendsLeaderboardEntries)
+        {
+            entry.Log();
+            LeaderboardEntryVisual obj = Instantiate(
+                leaderboardEntryPrefab,
+                entriesContainer
+            ).GetComponent<LeaderboardEntryVisual>();
+            obj.SetValues(entry);
+        }
+    }
 }
