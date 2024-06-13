@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
-    // private AudioClip gameMusic;
+    private AudioClip gameMusic;
 
     private AudioSource audioSrc;
     [SerializeField] private AudioSource musicAudio;
