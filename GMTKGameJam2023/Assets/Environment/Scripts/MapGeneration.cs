@@ -5,6 +5,8 @@ using System.Linq;
 
 public class MapGeneration : MonoBehaviour
 {
+    public static MapGeneration instance;
+
     public List<GameObject> laneTypes;
     public int roadCount = 0;
     public int busCount = 0;
@@ -19,6 +21,11 @@ public class MapGeneration : MonoBehaviour
     
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         laneContainer = GameObject.Find("Lanes");
         PopulateLanesArray();
         GenerateRoad();
