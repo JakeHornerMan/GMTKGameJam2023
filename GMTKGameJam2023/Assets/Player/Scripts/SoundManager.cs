@@ -62,6 +62,10 @@ public class SoundManager : MonoBehaviour
     private AudioSource audioSrc;
     [SerializeField] private AudioSource musicAudio;
 
+    [Header("Settings")]
+    [SerializeField] private bool sfxAllowed = true;
+    [SerializeField] private bool musicAllowed;
+
     void Awake()
     {
         if (instance == null)
@@ -76,8 +80,12 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        SoundConfig gameMusic = SetGameMusic();
-        musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
+        if (musicAllowed)
+        {
+            SetGameMusic();
+            musicAudio.PlayOneShot(gameMusic, 1);
+        }
+        
     }
 
     private SoundConfig SetGameMusic()

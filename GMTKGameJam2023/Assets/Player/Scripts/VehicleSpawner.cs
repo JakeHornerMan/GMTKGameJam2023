@@ -157,7 +157,13 @@ public class VehicleSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.T) && carButtons.Count >= 5)
             SelectCar(carButtons[4].correspondingCar);
 
-        if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Y) && carButtons.Count >= 6)
+            SelectCar(carButtons[5].correspondingCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.U) && carButtons.Count >= 7)
+            SelectCar(carButtons[6].correspondingCar);
+
+        if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.P))
             SelectUltimate(ultimateManager.correspondingUltimate);
 
         UpdateMousePos();
