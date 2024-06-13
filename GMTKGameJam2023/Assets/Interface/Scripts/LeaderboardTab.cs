@@ -4,15 +4,49 @@ using UnityEngine;
 
 public class LeaderboardTab : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Tab Settings")]
+    [SerializeField] private LeaderboardManager.ViewType tabType;
+    [SerializeField] private Sprite inactiveBtnImg;
+    [SerializeField] private Sprite activeBtnImg;
+
+    private UnityEngine.UI.Image btnSprite;
+    private LeaderboardManager leaderboardManager;
+
+    private void Awake()
     {
-        
+        leaderboardManager = FindObjectOfType<LeaderboardManager>();
+        btnSprite = GetComponent<UnityEngine.UI.Image>();
+
+        // Cars tab is active by default
+        if (tabType == LeaderboardManager.ViewType.Leaderboard)
+            btnSprite.sprite = activeBtnImg;
+        else
+            btnSprite.sprite = inactiveBtnImg;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        // If button tab is currently active, set sprite accordingly
+        if (leaderboardManager.currentLeaderboardType == tabType)
+            btnSprite.sprite = activeBtnImg;
+        else
+            btnSprite.sprite = inactiveBtnImg;
+    }
+
+    public void OnClick()
+    {
+        // Run corresponding function based on Type of button
+        switch (tabType)
+        {
+            case LeaderboardManager.ViewType.Leaderboard:
+                leaderboardManager.ShowLeaderboard();
+                break;
+            case LeaderboardManager.ViewType.Top10:
+                leaderboardManager.ShowTop10();
+                break;
+            case LeaderboardManager.ViewType.Friends:
+                leaderboardManager.ShowFriends();
+                break;
+        }
     }
 }
