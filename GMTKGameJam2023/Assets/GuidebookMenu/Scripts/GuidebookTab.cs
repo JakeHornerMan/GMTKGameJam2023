@@ -9,7 +9,7 @@ public class GuidebookTab : MonoBehaviour
     [SerializeField] private Sprite inactiveBtnImg;
     [SerializeField] private Sprite activeBtnImg;
 
-    private UnityEngine.UI.Image btnSprite; 
+    private UnityEngine.UI.Image btnSprite;
     private GuidebookSelector guidebookSelector;
 
     private void Awake()
@@ -46,6 +46,9 @@ public class GuidebookTab : MonoBehaviour
                 break;
             case GuidebookSelector.ViewType.Ultimates:
                 guidebookSelector.ShowUltimateButtons();
+                break;
+            case GuidebookSelector.ViewType.Stats:
+                guidebookSelector.ShowStatsPage();
                 break;
         }
     }

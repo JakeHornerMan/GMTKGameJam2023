@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SoundConfig
@@ -56,7 +57,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
-    private AudioClip gameMusic;
+    // private AudioClip gameMusic;
 
     private AudioSource audioSrc;
     [SerializeField] private AudioSource musicAudio;
@@ -87,10 +88,34 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    private void SetGameMusic()
+    private SoundConfig SetGameMusic()
     {
-        int trackNumber = Random.Range(0, levelMusic.Length);
-        gameMusic = levelMusic[trackNumber].clip;
+        string sceneName = SceneManager.GetActiveScene().name;
+        Debug.Log(sceneName);
+
+        switch(sceneName) 
+        {
+        case "MainMenu":
+            return levelMusic[0];
+            break;
+        case "Tutorial":
+            return levelMusic[1];
+            break;
+        case "Guidebook":
+            return levelMusic[2];
+            break;
+        case "BuyScreenImproved":
+            return levelMusic[3];
+            break;
+        default:
+            return GetLevelTrack();
+            break;
+        }
+    }
+
+    private SoundConfig GetLevelTrack(){
+        int trackNumber = Random.Range(4, levelMusic.Length);
+        return levelMusic[trackNumber];
     }
 
     // =============================
