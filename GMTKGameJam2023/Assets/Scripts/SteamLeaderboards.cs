@@ -17,7 +17,7 @@ public class SteamLeaderboards : MonoBehaviour
     public static List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
     public static List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
     public enum LeaderboardType { Leaderboard, Top10, Friends }
-    // public LeaderboardType currentLeaderboardType;
+    public static LeaderboardManager leaderboardManager;
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();
     private static CallResult<LeaderboardScoreUploaded_t> uploadScoreResult = new CallResult<LeaderboardScoreUploaded_t>();
@@ -29,6 +29,7 @@ public class SteamLeaderboards : MonoBehaviour
         SteamAPICall_t hSteamAPICall = SteamUserStats.FindLeaderboard(s_leaderboardName);
         leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFindResult);
         playerName = SteamFriends.GetPersonaName();
+        leaderboardManager = FindObjectOfType<LeaderboardManager>();
         InitTimer();
     }
 
@@ -114,12 +115,18 @@ public class SteamLeaderboards : MonoBehaviour
             return;
         }
 
-        if(currentLeaderboardType == LeaderboardType.Leaderboard) PopulateListWithLeaderboardEntries(leaderboardEntries, result);
-        if(currentLeaderboardType == LeaderboardType.Top10) PopulateListWithLeaderboardEntries(top10LeaderboardEntries, result);
-        if(currentLeaderboardType == LeaderboardType.Friends) PopulateListWithLeaderboardEntries(friendsLeaderboardEntries, result);
+        if(currentLeaderboardType == LeaderboardType.Leaderboard) {
+            PopulateListWithLeaderboardEntries(leaderboardEntries, result, currentLeaderboardType);
+        }
+        if(currentLeaderboardType == LeaderboardType.Top10) {
+            PopulateListWithLeaderboardEntries(top10LeaderboardEntries, result, currentLeaderboardType);
+        }
+        if(currentLeaderboardType == LeaderboardType.Friends) {
+            PopulateListWithLeaderboardEntries(friendsLeaderboardEntries, result, currentLeaderboardType);
+        }
     }
 
-    public static void PopulateListWithLeaderboardEntries(List<LeaderboardEntry> list, LeaderboardScoresDownloaded_t result){
+    public static void PopulateListWithLeaderboardEntries(List<LeaderboardEntry> list, LeaderboardScoresDownloaded_t result, LeaderboardType currentLeaderboardType){
         list.Clear();
 
         for (int i = 0; i < result.m_cEntryCount; i++)
@@ -134,6 +141,16 @@ public class SteamLeaderboards : MonoBehaviour
         foreach (var entry in list)
         {
             Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        }
+
+        if(currentLeaderboardType == LeaderboardType.Leaderboard) {
+            leaderboardManager.SetLeaderboardList();
+        }
+        if(currentLeaderboardType == LeaderboardType.Top10) {
+            leaderboardManager.SetTop10LeaderboardList();
+        }
+        if(currentLeaderboardType == LeaderboardType.Friends) {
+            leaderboardManager.SetFriendsLeaderboardList();
         }
     }
 

@@ -27,7 +27,7 @@ public class LeaderboardTab : MonoBehaviour
     private void Update()
     {
         // If button tab is currently active, set sprite accordingly
-        if (leaderboardManager.currentViewType == tabType)
+        if (leaderboardManager.currentLeaderboardType == tabType)
             btnSprite.sprite = activeBtnImg;
         else
             btnSprite.sprite = inactiveBtnImg;

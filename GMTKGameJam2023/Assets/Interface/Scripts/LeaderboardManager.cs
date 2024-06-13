@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class LeaderboardManager : MonoBehaviour
 {
     public enum ViewType { Leaderboard, Top10, Friends }
-    public ViewType currentViewType;
+    public ViewType currentLeaderboardType;
     [SerializeField] private Transform entriesContainer;
     [SerializeField] private GameObject leaderboardEntryPrefab;
 
@@ -28,32 +28,50 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Start()
     {
-        GatherLeaderboardValues();
+        RefreshLeaderboardValues();
     }
 
-    // // Clear all buttons in grid layout container
+     public void UploadToLeaderboard(int score = 1)
+    {
+        if(SteamManager.Initialized)
+        {
+            SteamLeaderboards.Init();
+            SteamLeaderboards.UpdateScore(score);
+        }
+    }
+
+    public void RefreshLeaderboardValues()
+    {
+        SteamLeaderboards.DownloadScoresAroundUser();
+        SteamLeaderboards.DownloadScoresTop();
+        SteamLeaderboards.DownloadScoresForFriends();
+    }
+
+    public void SetLeaderboardList(){
+        leaderboardEntries = SteamLeaderboards.leaderboardEntries;
+        if(leaderboardEntries.Count > 0) ShowLeaderboard();
+    }
+
+    public void SetTop10LeaderboardList(){
+        top10LeaderboardEntries = SteamLeaderboards.top10LeaderboardEntries;
+    }
+
+    public void SetFriendsLeaderboardList(){
+        friendsLeaderboardEntries = SteamLeaderboards.friendsLeaderboardEntries;
+    }
+
+    // Clear all buttons in grid layout container
     private void ClearEntries()
     {
         for (var i = entriesContainer.transform.childCount - 1; i >= 0; i--)
             Destroy(entriesContainer.transform.GetChild(i).gameObject);
     }
 
-    private void GatherLeaderboardValues()
-    {
-        SteamLeaderboards.DownloadScoresAroundUser();
-        leaderboardEntries = SteamLeaderboards.leaderboardEntries;
-        SteamLeaderboards.DownloadScoresTop();
-        top10LeaderboardEntries = SteamLeaderboards.top10LeaderboardEntries;
-        SteamLeaderboards.DownloadScoresForFriends();
-        friendsLeaderboardEntries = SteamLeaderboards.friendsLeaderboardEntries;
-        if(leaderboardEntries.Count > 0) ShowLeaderboard();
-    }
-
     public void ShowLeaderboard()
     {
         Debug.Log("ShowLeaderboard");
         ClearEntries();
-        currentViewType = ViewType.Leaderboard;
+        currentLeaderboardType = ViewType.Leaderboard;
         foreach (LeaderboardEntry entry in leaderboardEntries)
         {
             entry.Log();
@@ -69,7 +87,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         Debug.Log("ShowTop10");
         ClearEntries();
-        currentViewType = ViewType.Top10;
+        currentLeaderboardType = ViewType.Top10;
         foreach (var entry in top10LeaderboardEntries)
         {
             entry.Log();
@@ -85,7 +103,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         Debug.Log("ShowFriends");
         ClearEntries();
-        currentViewType = ViewType.Friends;
+        currentLeaderboardType = ViewType.Friends;
         foreach (var entry in friendsLeaderboardEntries)
         {
             entry.Log();
