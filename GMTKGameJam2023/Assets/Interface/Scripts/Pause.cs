@@ -20,6 +20,9 @@ public class Pause : MonoBehaviour
     [HideInInspector] public bool isPaused = false;
     [HideInInspector] public bool isTutorialText = false;
 
+    [SerializeField] private AudioSource musicAudio;
+    [SerializeField] private AudioSource sfxAudio;
+
     private void Start()
     {
         startTimeScale = Time.timeScale;
@@ -40,6 +43,8 @@ public class Pause : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = startTimeScale;
+        musicAudio.UnPause();
+        sfxAudio.UnPause();
         pauseUI.SetActive(false);
     }
 
@@ -47,6 +52,8 @@ public class Pause : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = pauseTimeScale;
+        musicAudio.Pause();
+        sfxAudio.Pause();
         if (showUI)
             pauseUI.SetActive(true);
     }
