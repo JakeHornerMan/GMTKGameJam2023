@@ -53,7 +53,7 @@ public class Steam : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                InitializeAndUploadLeaderboard(score);
+                UploadLeaderboard(score);
             }
 
             if (Input.GetKeyDown(KeyCode.Home))
@@ -79,7 +79,7 @@ public class Steam : MonoBehaviour
         }
     }
 
-    public void InitializeAndUploadLeaderboard(int score = 1)
+    public void UploadLeaderboard(int score = 1)
     {
         if(SteamManager.Initialized)
         {

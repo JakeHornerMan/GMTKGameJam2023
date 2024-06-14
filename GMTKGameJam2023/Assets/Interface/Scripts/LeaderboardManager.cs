@@ -28,15 +28,15 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Start()
     {
-        RefreshLeaderboardValues();
+        // RefreshLeaderboardValues();
     }
 
-     public void UploadToLeaderboard(int score = 1)
+     public void UploadToLeaderboardAndUpdate(int score = 1)
     {
         if(SteamManager.Initialized)
         {
-            SteamLeaderboards.Init();
             SteamLeaderboards.UpdateScore(score);
+            RefreshLeaderboardValues();
         }
     }
 
