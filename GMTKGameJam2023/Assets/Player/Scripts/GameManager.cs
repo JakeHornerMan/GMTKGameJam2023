@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay Settings")]
     [SerializeField] public int startLives = 10;
-    [SerializeField] public int lostChickenScore = 1000;
+    private int lostChickenScore = 250;
 
     // Player Stats
     [HideInInspector] public int safelyCrossedChickens = 0;
@@ -211,13 +211,12 @@ public class GameManager : MonoBehaviour
         }
         if(roundOver){
             ToBuyScreen();
-            // StartCoroutine(WaitAndBuyScreen(3f));
         }
     }
 
     //Increments time value for UI
     private void SetTime()
-    {
+    {   
         if (time > 0)
             time -= Time.deltaTime;
         else
@@ -294,8 +293,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         SetPointsValues();
-        GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        sceneFader.FadeToResults();
+        sceneFader.ScreenWipeOut("Results");
     }
 
     //Updates Static scripts
@@ -304,6 +302,7 @@ public class GameManager : MonoBehaviour
         PlayerValues.Cars = carsInLevel;
         PlayerValues.ultimate = ultimateInLevel;
         PlayerValues.startingEnergy = 0;
+        PlayerValues.missedChickenLives = missedChickenLives;
     }
 
     private void SetPointsValues()

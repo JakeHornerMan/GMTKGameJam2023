@@ -760,7 +760,6 @@ MonoBehaviour:
   cheatTokenAmount: 500
   cheatLives: 10
   startLives: 10
-  lostChickenScore: 1000
   safelyCrossedChickens: 0
   missedChickenLives: 0
   killCount: 0
@@ -958,6 +957,12 @@ MonoBehaviour:
     volume: 0.7
   - clip: {fileID: 8300000, guid: ef9e8d071993ef344b664cc1fe7e0f87, type: 3}
     volume: 0.7
+  - clip: {fileID: 8300000, guid: 4565beed6d7feef47a6dc91b642b2dd7, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 10c2a84f98f9d8a41b3229d8701ec875, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: da6e39e2f5e95e74cb210483853f3718, type: 3}
+    volume: 0.7
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
     volume: 0.6
@@ -1054,7 +1059,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
-  musicAudio: {fileID: 0}
+  musicAudio: {fileID: 5995303635059143458}
+  sfxAllowed: 1
+  musicAllowed: 1
 --- !u!114 &4517704102987042158
 MonoBehaviour:
   m_ObjectHideFlags: 0
