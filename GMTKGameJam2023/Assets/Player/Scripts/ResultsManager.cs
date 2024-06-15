@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class ResultsManager : MonoBehaviour
 {
-    // private SteamScript steamScript;
+    [SerializeField] private Vector3 startPosition;
+    [SerializeField] private Vector3 leaderPosition;
     private LeaderboardManager leaderboardManager;
+    private CameraMenuMove mainCamera;
+    [SerializeField] private GameObject[] chickens;
+    [SerializeField] private GameObject standardChicken;
+    [SerializeField] private float timeBetweenSpawns = 1f;
+    [SerializeField] private ChickenSpawn chickenSpawn;
+    private int chickenAmount = 0;
+
     void Awake()
     {
-        // steamScript = FindObjectOfType<SteamScript>();
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
+        mainCamera = FindObjectOfType<CameraMenuMove>();
+        ResetSpawnChicken();
     }
 
     void Start()
@@ -17,9 +26,27 @@ public class ResultsManager : MonoBehaviour
         leaderboardManager.UploadToLeaderboardAndUpdate(Points.playerScore);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToLeaderboard(){
+        mainCamera.targetPos = leaderPosition;
+    }
+
+    public void GoToStart(){
+        mainCamera.targetPos = startPosition;
+    }    
+
+    public void ResetSpawnChicken(){
+        IEnumerator coroutine = SpawnChickenForResults(timeBetweenSpawns);
+        StartCoroutine(coroutine);
+    }
+
+    IEnumerator SpawnChickenForResults(float timeToSpawn)
     {
-        
+        int chickenNum = 0;
+        if(chickenAmount % 5 ==0) chickenNum = Random.Range(1, 8);
+        chickenSpawn.AlternateSpawnAChicken(chickens[chickenNum]);
+        Debug.Log("Chicken: " + chickens[chickenNum].name);
+        chickenAmount++;
+        yield return new WaitForSeconds(timeToSpawn);
+        ResetSpawnChicken();
     }
 }
