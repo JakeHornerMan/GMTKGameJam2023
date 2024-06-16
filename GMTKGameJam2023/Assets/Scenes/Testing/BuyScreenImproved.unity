@@ -4188,6 +4188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Maximum Lives
   objectSprite: {fileID: 1879070288, guid: 282724992fa70ba4b81fe149a45a6cb7, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: 1233b7638bd7a8a46a633324a6d8a243, type: 3}
   objectDescription: The goal of the game is to protect your corn fields from the
     chicken! More corn upgrades mean more safety and longer rounds.
@@ -5681,7 +5682,7 @@ MonoBehaviour:
   - {fileID: 1737620352152960542, guid: 14d00c44dd3fb114dbea163a212eedf1, type: 3}
   - {fileID: 1310809078911237094, guid: 59c0ff058741cd54e84a2f3275a0c4b4, type: 3}
   - {fileID: 4960325638903188508, guid: 99bea7b9d939ccc41959956de624066a, type: 3}
-  startingAmount: 500
+  startingAmount: 50
   lifePrice: 20
   walletPrice: 30
   energyPrice: 10
@@ -6932,6 +6933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Initial nodes
   objectSprite: {fileID: 21300000, guid: 272f9e0a6038e3c4eb33c44d063cbe80, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: c0000fad6b7714a40817c75d7632c3be, type: 3}
   objectDescription: Starting amount of nods in the car wallet. Helpful at the start
     of the game.
@@ -13188,6 +13190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Wallet Upgrade
   objectSprite: {fileID: 21300000, guid: 4dbb61cfef5dbb044b0973018ffced46, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: c0000fad6b7714a40817c75d7632c3be, type: 3}
   objectDescription: Number of car wallet nodes shown on the left side of the screen.
     The car wallet limits how many cars can be placed at a time with a cooldown.

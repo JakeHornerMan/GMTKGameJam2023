@@ -447,8 +447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640435457}
-  - component: {fileID: 640435456}
-  - component: {fileID: 640435458}
   - component: {fileID: 640435459}
   m_Layer: 0
   m_Name: EndLevelManager
@@ -457,41 +455,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &640435456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640435455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab74df1b8bece54d841c3c7667914fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chickenContainer_Name: ChickenContainer
-  spawnSpots:
-  - position: {x: -9, y: 2, z: 0}
-  - position: {x: -9, y: 1, z: 0}
-  - position: {x: -9, y: 0, z: 0}
-  - position: {x: -9, y: -1, z: 0}
-  - position: {x: -9, y: -2, z: 0}
-  startingX: -14.75
-  maxYHeight: 5
-  minYHeight: -5
-  chickenPrefab: {fileID: 7467406142021207113, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
-  currentWave:
-    roundTime: 0
-    wavePrompt: 
-    waveSound: 
-    standardChickenAmounts: 0
-    chickenIntesity: 0
-    coinAmount: 0
-    specialChickens: []
-  specialChickens: []
-  waveChickenAmount: 0
-  time: 0
-  waveEnded: 0
 --- !u!4 &640435457
 Transform:
   m_ObjectHideFlags: 0
@@ -507,45 +470,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &640435458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640435455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f053b7e16ed404ab38e87fc24bb3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves: []
-  carsInLevel: []
-  defaultCars: []
-  ultimateInLevel: {fileID: 0}
-  rankingCriteria: []
-  failureRanking: You Failed
-  isGameOver: 1
-  pauseGameplay: 1
-  startTime: 180
-  devMode: 0
-  cheatTokenAmount: 500
-  cheatLives: 10
-  startLives: 10
-  lostChickenScore: 1000
-  safelyCrossedChickens: 0
-  missedChickenLives: 0
-  killCount: 0
-  playerScore: 0
-  tokens: 0
-  totalTokens: 0
-  currentRanking: Animal Lover
-  time: 120
-  endSound: 0
-  waveNumber: 0
-  roundOver: 0
-  chickenContainer: {fileID: 0}
-  sceneFader: {fileID: 0}
 --- !u!82 &640435459
 AudioSource:
   m_ObjectHideFlags: 0
