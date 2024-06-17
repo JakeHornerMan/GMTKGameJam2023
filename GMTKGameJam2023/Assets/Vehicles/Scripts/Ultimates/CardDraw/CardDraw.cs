@@ -152,6 +152,7 @@ public class CardDraw : Ultimate
         ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
         ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
 
+        gameManager = FindObjectOfType<GameManager>();
         for (int i = 0; i < allChickens.Length; i++)
         {
             // Use Remainder to kill using interval
@@ -159,7 +160,7 @@ public class CardDraw : Ultimate
             {
                 if (allChickens[i] == null) continue;
                 allChickens[i].TakeDamage(1000);
-                // TODO ADD SCORE TO GAMEMANAGER
+                gameManager.AddPlayerScore(allChickens[i].pointsReward);
                 yield return new WaitForSecondsRealtime(killDelay);
             }
         }
