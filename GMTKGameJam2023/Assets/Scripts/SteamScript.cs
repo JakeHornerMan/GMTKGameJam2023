@@ -5,11 +5,6 @@ using Steamworks;
 
 public class Steam : MonoBehaviour
 {
-    // private SteamLeaderboards steamLeaderboards;
-
-    // void Awake(){
-    //     steamLeaderboards = GetComponent<SteamLeaderboards>();
-    // }
 
     public int score = 1;
     public bool devMode = false;
