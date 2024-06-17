@@ -42,7 +42,8 @@ public class GuidebookSelector : MonoBehaviour
     {
         GetStats();
         // Show Cars by Default
-        ShowCarButtons();
+        // ShowCarButtons();
+        ShowStatsPage();
     }
 
     public void GetStats(){
