@@ -200,6 +200,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
+--- !u!82 &678986962 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4578966254646432244, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+  m_PrefabInstance: {fileID: 4031766030395596951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &749949957 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8898609827912181589, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
@@ -1070,6 +1075,14 @@ PrefabInstance:
     - target: {fileID: 7282536499142927125, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: startWalletCount
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448871825172233189, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: musicAudio
+      value: 
+      objectReference: {fileID: 678986962}
+    - target: {fileID: 7448871825172233189, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: musicAllowed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7708920941435103324, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_IsActive

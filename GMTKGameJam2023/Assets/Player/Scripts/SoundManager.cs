@@ -57,10 +57,14 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
-    // private AudioClip gameMusic;
+    private SoundConfig gameMusic;
 
     private AudioSource audioSrc;
     [SerializeField] private AudioSource musicAudio;
+
+    [Header("Settings")]
+    [SerializeField] private bool sfxAllowed = true;
+    [SerializeField] private bool musicAllowed;
 
     void Awake()
     {
@@ -76,8 +80,12 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        SoundConfig gameMusic = SetGameMusic();
-        musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
+        if (musicAllowed)
+        {
+            gameMusic = SetGameMusic();
+            musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
+        }
+        
     }
 
     private SoundConfig SetGameMusic()

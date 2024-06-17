@@ -99,13 +99,13 @@ public class ChickenHealth : MonoBehaviour
     //     Debug.Log("Hit by particles");
     // }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // Debug.Log(other.gameObject.name);
-        ParticleSystem ps = other.GetComponent<ParticleSystem>();
-        // if(ps != null) Debug.Log("Hit by particles");
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    Debug.Log(other.gameObject.name);
+    //    ParticleSystem ps = other.GetComponent<ParticleSystem>();
+    //    if(ps != null) Debug.Log("Hit by particles");
 
-    }
+    //}
 
     // void OnParticleCollision(GameObject other) {
     //     // Debug.Log ("Particle Collision!");
