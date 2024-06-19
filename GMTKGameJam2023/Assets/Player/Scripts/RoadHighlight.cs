@@ -38,8 +38,9 @@ public class RoadHighlight : MonoBehaviour
 
         if (vehicleSpawner != null && vehicleSpawner.currentActiveCar != null)
         {
-            bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag)
-                                || vehicleSpawner.currentUltimateAbility.placeableAnywhere;
+            bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
+            if (vehicleSpawner.currentUltimateAbility != null && vehicleSpawner.currentUltimateAbility.placeableAnywhere)
+                amIPlaceable = true;
             if (hit.collider == null || !amIPlaceable)
             {
                 bottomHighlight.SetActive(false);
