@@ -13,7 +13,7 @@ public class FreezeMissile : Ultimate
         // Destroy(missileSprtie);
         GetComponent<Animator>().SetTrigger("Explode");
         soundManager.PlayFreeze();
-        if(didHitChicken)
+        if (didHitChicken)
             soundManager.PlayUnfrost(freezeLength);
         Destroy(missileSprtie);
     }
@@ -21,8 +21,13 @@ public class FreezeMissile : Ultimate
     public override void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         didHitChicken = true;
-        Debug.Log("Freezing this chciken: "+ chickenHealth.gameObject.name 
-            +". For seconds: "+ freezeLength);
+        Debug.Log("Freezing this chciken: " + chickenHealth.gameObject.name
+            + ". For seconds: " + freezeLength);
         chickenHealth.FreezeChicken(freezeLength);
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
