@@ -33,7 +33,6 @@ public class GameFlowManager : MonoBehaviour
                 StandardChickenWaveCreate(i);
             }
         }
-        GameProgressionValues.RoundNumber ++;
     }
 
     private void StandardChickenWaveCreate(int waveNumber){

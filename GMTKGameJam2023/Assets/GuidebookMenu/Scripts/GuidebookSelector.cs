@@ -52,6 +52,9 @@ public class GuidebookSelector : MonoBehaviour
         statsToShow.Add(SteamStats.GetTotalCars());
         statsToShow.Add(SteamStats.GetHighestScoreVehicle());
         statsToShow.Add(SteamStats.GetTopRound());
+        statsToShow.Add(SteamStats.GetTopCombo());
+        statsToShow.Add(SteamStats.GetTotalUltimates());
+        statsToShow.Add(SteamStats.GetTotalMissedChickens());
     }
 
     private void Update()

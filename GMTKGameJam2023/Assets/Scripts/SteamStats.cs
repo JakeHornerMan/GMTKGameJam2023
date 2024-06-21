@@ -9,10 +9,13 @@ public class SteamStats : MonoBehaviour
     private const string totalCars_statName = "TOTAL_CARS";
     private const string scoreVehicle_statName = "SCORE_VEHICLE";
     private const string topRound_statName = "TOP_ROUND";
+    private const string topCombo_statName = "TOP_COMBO";
+    private const string totalUlt_statName = "TOTAL_ULT";
+    private const string totalMissedChickens_statName = "MISSED_CHICKENS";
 
     public static StatResultValue GetChickenKills(){
         int score = GetStat(chickenKills_statName);
-        return new StatResultValue("Total chicken killed", score);
+        return new StatResultValue("Total chicken stopped", score);
     }
 
     public static StatResultValue GetTotalCars(){
@@ -22,28 +25,55 @@ public class SteamStats : MonoBehaviour
 
     public static StatResultValue GetHighestScoreVehicle(){
         int score = GetStat(scoreVehicle_statName);
-        return new StatResultValue("Highest round reached", score);
+        return new StatResultValue("Highest score from a vehicle", score);
     }
 
     public static StatResultValue GetTopRound(){
         int score = GetStat(topRound_statName);
-        return new StatResultValue("Highest score from a vehicle", score);
+        return new StatResultValue("Highest round reached", score);
+    }
+
+    public static StatResultValue GetTopCombo(){
+        int score = GetStat(topCombo_statName);
+        return new StatResultValue("Highest vehicle combo", score);
+    }
+
+    public static StatResultValue GetTotalUltimates(){
+        int score = GetStat(totalUlt_statName);
+        return new StatResultValue("Total ultimates placed", score);
+    }
+
+    public static StatResultValue GetTotalMissedChickens(){
+        int score = GetStat(totalMissedChickens_statName);
+        return new StatResultValue("Chickens that crossed the road", score);
     }
 
     public static void SetChickenKills(int score){
-        SetStat(chickenKills_statName, score);
+        SetAddStat(chickenKills_statName, score);
     }
 
     public static void SetTotalCars(int score){
-        SetStat(totalCars_statName, score);
+        SetAddStat(totalCars_statName, score);
     }
 
     public static void SetHighestScoreVehicle(int score){
-        SetStat(scoreVehicle_statName, score);
+        SetBestStat(scoreVehicle_statName, score);
     }
 
     public static void SetTopRound(int score){
-        SetStat(topRound_statName, score);
+        SetBestStat(topRound_statName, score);
+    }
+
+    public static void SetTopCombo(int score){
+        SetBestStat(topCombo_statName, score);
+    }
+
+    public static void SetTotalUltimates(int score){
+        SetAddStat(totalUlt_statName, score);
+    }
+
+    public static void SetTotalMissedChickens(int score){
+        SetAddStat(totalMissedChickens_statName, score);
     }
 
     private static int GetStat(string statName = "TEST_STAT"){
@@ -60,7 +90,7 @@ public class SteamStats : MonoBehaviour
         }
     }
 
-    private static void SetStat(string statName = "TEST_STAT", int score = 0){
+    private static void SetAddStat(string statName = "TEST_STAT", int score = 0){
         if(SteamManager.Initialized)
         {
             Steamworks.SteamUserStats.GetStat(statName, out int count);
@@ -70,6 +100,22 @@ public class SteamStats : MonoBehaviour
             Steamworks.SteamUserStats.SetStat(statName, count);
             Debug.Log(statName + " After Count: " + count);
             SteamUserStats.StoreStats();
+        }
+        else{
+            Debug.Log("Steam Manager not Initialised");
+        }
+    }
+
+    private static void SetBestStat(string statName = "TEST_STAT", int score = 0){
+        if(SteamManager.Initialized)
+        {
+            Steamworks.SteamUserStats.GetStat(statName, out int count);
+            Debug.Log(statName + " Before: " + count);
+            if(count < score){
+                Steamworks.SteamUserStats.SetStat(statName, score);
+                Debug.Log(statName + " After : " + score);
+                SteamUserStats.StoreStats();
+            }
         }
         else{
             Debug.Log("Steam Manager not Initialised");
