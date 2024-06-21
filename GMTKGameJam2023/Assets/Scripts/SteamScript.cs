@@ -5,11 +5,6 @@ using Steamworks;
 
 public class Steam : MonoBehaviour
 {
-    // private SteamLeaderboards steamLeaderboards;
-
-    // void Awake(){
-    //     steamLeaderboards = GetComponent<SteamLeaderboards>();
-    // }
 
     public int score = 1;
     public bool devMode = false;
@@ -31,47 +26,47 @@ public class Steam : MonoBehaviour
         }
 
         if(devMode){
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                score++;
-            }
+            // if (Input.GetKeyDown(KeyCode.LeftShift))
+            // {
+            //     score++;
+            // }
 
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                SteamLeaderboards.DownloadScoresTop();
-            }
+            // if (Input.GetKeyDown(KeyCode.D))
+            // {
+            //     SteamLeaderboards.DownloadScoresTop();
+            // }
 
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                SteamLeaderboards.DownloadScoresAroundUser();
-            }
+            // if (Input.GetKeyDown(KeyCode.F))
+            // {
+            //     SteamLeaderboards.DownloadScoresAroundUser();
+            // }
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                SteamLeaderboards.DownloadScoresForFriends();
-            }
+            // if (Input.GetKeyDown(KeyCode.G))
+            // {
+            //     SteamLeaderboards.DownloadScoresForFriends();
+            // }
+
+            // if (Input.GetKeyDown(KeyCode.Space))
+            // {
+            //     UploadLeaderboard(score);
+            // }
+
+            // if (Input.GetKeyDown(KeyCode.Home))
+            // {
+            //     SetAchievement();
+            // }
+
+            // if (Input.GetKeyDown(KeyCode.PageUp))
+            // {
+            //     SetStat();
+            // }
+
+            // if (Input.GetKeyDown(KeyCode.PageDown))
+            // {
+            //     GetStat();
+            // }
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-                InitializeAndUploadLeaderboard(score);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Home))
-            {
-                SetAchievement();
-            }
-
-            if (Input.GetKeyDown(KeyCode.PageUp))
-            {
-                SetStat();
-            }
-
-            if (Input.GetKeyDown(KeyCode.PageDown))
-            {
-                GetStat();
-            }
-
-            if (Input.GetKeyDown(KeyCode.End))
             {
                 Debug.Log("Reset All Stats & Achievements!");
                 resetAchievements();
@@ -79,7 +74,7 @@ public class Steam : MonoBehaviour
         }
     }
 
-    public void InitializeAndUploadLeaderboard(int score = 1)
+    public void UploadLeaderboard(int score = 1)
     {
         if(SteamManager.Initialized)
         {

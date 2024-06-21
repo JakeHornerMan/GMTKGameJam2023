@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SteamLeaderboards : MonoBehaviour
 {
-    private const string s_leaderboardName = "TEST2_LEADERBOARD";
+    private const string s_leaderboardName = "LEADERBOARD";
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
 
@@ -33,11 +33,30 @@ public class SteamLeaderboards : MonoBehaviour
         InitTimer();
     }
 
+    public static void InitAndFindScores()
+    {
+        SteamAPICall_t hSteamAPICall = SteamUserStats.FindLeaderboard(s_leaderboardName);
+        leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFoundGetScores);
+        playerName = SteamFriends.GetPersonaName();
+        leaderboardManager = FindObjectOfType<LeaderboardManager>();
+        InitTimer();
+    }
+
     static private void OnLeaderboardFindResult(LeaderboardFindResult_t pCallback, bool failure)
     {
         UnityEngine.Debug.Log("STEAM LEADERBOARDS: Found - " + pCallback.m_bLeaderboardFound + " leaderboardID - " + pCallback.m_hSteamLeaderboard.m_SteamLeaderboard);
         currentLeaderboard = pCallback.m_hSteamLeaderboard;
         initialized = true;
+    }
+
+    static private void OnLeaderboardFoundGetScores(LeaderboardFindResult_t pCallback, bool failure)
+    {
+        UnityEngine.Debug.Log("STEAM LEADERBOARDS: Found - " + pCallback.m_bLeaderboardFound + " leaderboardID - " + pCallback.m_hSteamLeaderboard.m_SteamLeaderboard);
+        currentLeaderboard = pCallback.m_hSteamLeaderboard;
+        initialized = true;
+        DownloadScoresAroundUser();
+        DownloadScoresTop();
+        DownloadScoresForFriends();
     }
 
      public static void UpdateScore(int score)

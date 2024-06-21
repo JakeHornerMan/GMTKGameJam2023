@@ -85,7 +85,6 @@ public class SoundManager : MonoBehaviour
             gameMusic = SetGameMusic();
             musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
         }
-        
     }
 
     private SoundConfig SetGameMusic()

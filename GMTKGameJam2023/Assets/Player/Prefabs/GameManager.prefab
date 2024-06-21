@@ -862,6 +862,8 @@ MonoBehaviour:
   pauseTimeScale: 0
   isPaused: 0
   isTutorialText: 0
+  musicAudio: {fileID: 0}
+  sfxAudio: {fileID: 0}
 --- !u!114 &5068059985661225512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1059,6 +1061,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
+  audioSrc: {fileID: 6648390661545215355}
   musicAudio: {fileID: 5995303635059143458}
   sfxAllowed: 1
   musicAllowed: 1

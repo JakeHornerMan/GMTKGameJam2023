@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool endSound = false;
     [HideInInspector] public int waveNumber = 0;
     [HideInInspector] public bool roundOver = false;
+    [HideInInspector] public bool storedValues = true;
     [SerializeField] public GameObject chickenContainer;
 
     private SoundManager soundManager;
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour
     private void SetPointsValuesInLevel()
     {
         safelyCrossedChickens = Points.safelyCrossedChickens;
-        killCount = Points.killCount;
+        // killCount = Points.killCount;
         totalTokens = Points.totalTokens;
         playerScore = Points.playerScore;
         interfaceManager.scoreForText = playerScore;
@@ -212,6 +213,7 @@ public class GameManager : MonoBehaviour
         if(roundOver){
             ToBuyScreen();
         }
+        Debug.Log("Kill count:" + killCount);
     }
 
     //Increments time value for UI
@@ -272,27 +274,35 @@ public class GameManager : MonoBehaviour
         OnTokensUpdated();
     }
 
-    private IEnumerator WaitAndBuyScreen(float time)
-    {
-        sceneFader.Fade();
-        SetPlayerValues();
-        SetPointsValues();
-        Points.playerScore = playerScore;
-        Debug.Log("playerScore: " + Points.playerScore);
-        yield return new WaitForSeconds(time);
-        sceneFader.FadeToBuyScreen();
-    }
+    // private IEnumerator WaitAndBuyScreen(float time)
+    // {
+    //     sceneFader.Fade();
+    //     SetPlayerValues();
+    //     SetPointsValues();
+    //     Points.playerScore = playerScore;
+    //     Debug.Log("playerScore: " + Points.playerScore);
+    //     yield return new WaitForSeconds(time);
+    //     sceneFader.FadeToBuyScreen();
+    // }
 
     private void ToBuyScreen(){
-        SetPlayerValues();
-        SetPointsValues();
+        if(storedValues){
+            storedValues = false;
+            UpdateStats();
+            SetPlayerValues();
+            SetPointsValues();
+        }
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
     private void HandleGameOver()
     {
         isGameOver = true;
-        SetPointsValues();
+        if(storedValues){
+            storedValues = false;
+            UpdateStats();
+            SetPointsValues();
+        }
         sceneFader.ScreenWipeOut("Results");
     }
 
@@ -307,10 +317,14 @@ public class GameManager : MonoBehaviour
 
     private void SetPointsValues()
     {
-        Points.killCount = killCount;
+        Points.killCount += killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;
         Points.totalTokens = totalTokens;
-        Debug.Log("playerScore: " + Points.playerScore);
+        // Debug.Log("playerScore: " + Points.playerScore);
+    }
+
+    private void UpdateStats(){
+        SteamStats.SetChickenKills(killCount);
     }
 }
