@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Road Rage
   objectSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
   objectDescription: An Alien UFO randomly drops clusters of meteors all over the
     streets.
@@ -198,10 +199,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 1
-  ultimateResetTime: 0
+  ultimateResetTime: 40
   placeableAnywhere: 1
   ignoreTokens: 1
-  ultimateShopPrice: 0
+  ultimateShopPrice: 40
   scorePopUp: {fileID: 0}
   comboSymbol: x
   comboText: {fileID: 0}
