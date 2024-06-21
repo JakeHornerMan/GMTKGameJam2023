@@ -12,6 +12,7 @@ public class LeaderboardManager : MonoBehaviour
 {
     public enum ViewType { Leaderboard, Top10, Friends }
     public ViewType currentLeaderboardType;
+    [SerializeField] private bool onStart = false;
     [SerializeField] private Transform entriesContainer;
     [SerializeField] private GameObject leaderboardEntryPrefab;
 
@@ -28,23 +29,25 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Start()
     {
-        RefreshLeaderboardValues();
+        if(onStart)
+            RefreshLeaderboardValues();
     }
 
-     public void UploadToLeaderboard(int score = 1)
+     public void UploadToLeaderboardAndUpdate(int score = 1)
     {
         if(SteamManager.Initialized)
         {
-            SteamLeaderboards.Init();
             SteamLeaderboards.UpdateScore(score);
+            RefreshLeaderboardValues();
         }
     }
 
     public void RefreshLeaderboardValues()
     {
-        SteamLeaderboards.DownloadScoresAroundUser();
-        SteamLeaderboards.DownloadScoresTop();
-        SteamLeaderboards.DownloadScoresForFriends();
+        SteamLeaderboards.InitAndFindScores();
+        // SteamLeaderboards.DownloadScoresAroundUser();
+        // SteamLeaderboards.DownloadScoresTop();
+        // SteamLeaderboards.DownloadScoresForFriends();
     }
 
     public void SetLeaderboardList(){
