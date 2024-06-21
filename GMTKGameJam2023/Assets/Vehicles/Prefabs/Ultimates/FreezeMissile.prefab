@@ -5236,6 +5236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Missile Launch
   objectSprite: {fileID: 21300000, guid: 55ba3241a67a52d46b3b4226b015bdca, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: b0b175262784a00408582afa3641b9ea, type: 3}
   objectDescription: 
 --- !u!114 &1310809078911237094
@@ -5251,10 +5252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 1
-  ultimateResetTime: 35
+  ultimateResetTime: 25
   placeableAnywhere: 1
   ignoreTokens: 1
-  ultimateShopPrice: 50
+  ultimateShopPrice: 40
   scorePopUp: {fileID: 0}
   comboSymbol: x
   comboText: {fileID: 0}
