@@ -8,10 +8,13 @@ using System;
 
 public class StatValue : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI statValue;
+    [SerializeField] private TextMeshProUGUI statNumber;
+    [SerializeField] private TextMeshProUGUI statLabel;
 
     public void SetValues(StatResultValue value)
     {
-        statValue.text = value.Title + " : " + value.Score.ToString();
+        // statValue.text = value.Title + " : " + value.Score.ToString();
+        statNumber.text = value.Score.ToString();
+        statLabel.text = value.Title;
     }
 }
