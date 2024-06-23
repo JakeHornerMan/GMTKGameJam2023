@@ -18,4 +18,8 @@ public static class PlayerValues
         carWalletNodes = 3;
         playerCash = 0;
     }
+
+    public static void ResetCasj(){
+        playerCash = 0;
+    }
 }

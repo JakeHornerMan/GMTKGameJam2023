@@ -27,6 +27,9 @@ using System;
 
 public class ObjectBlueprint : MonoBehaviour
 {
+    [Header("Tutorial Setting")]
+    [SerializeField] public bool isTutorial = false;
+
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI objectNameText;
     [SerializeField] private Image objectImage;
