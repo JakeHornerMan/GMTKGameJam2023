@@ -6,6 +6,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 {
 
     public static TriggerMenuCinemachine instance;
+    public LeaderboardManager leaderboardManager;
 
     public MenuRoad currentRoad;
 
@@ -26,6 +27,8 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     private void Start()
     {
+        leaderboardManager = FindObjectOfType<LeaderboardManager>();
+
         if (instance == null)
         {
             instance = this;
@@ -162,6 +165,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
     public void GoToCredits(){
         carVeerRight.SetActive(true);
         anim.Play("Credits");
+        leaderboardManager.SetLeaderboardList();
     }
 
     public void GoToStart(){

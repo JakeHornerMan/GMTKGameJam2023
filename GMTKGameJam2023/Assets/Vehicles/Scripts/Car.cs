@@ -655,6 +655,7 @@ public abstract class Car : MonoBehaviour
         if (totalPoints > 0)
         {
             if (gameManager != null) gameManager.AddPlayerScore(totalPoints);
+            if (gameManager != null) gameManager.SetHighestCombo(carKillCount);
             if (tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
         }
 

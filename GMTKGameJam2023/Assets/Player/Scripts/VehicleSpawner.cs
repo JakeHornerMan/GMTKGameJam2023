@@ -267,6 +267,7 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Car Wallet Count
         carWallet.carCount--;
+        if(gameManager != null) gameManager.vehicleSpawnCount++;
 
         // Reduce Player Money
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
@@ -317,6 +318,8 @@ public class VehicleSpawner : MonoBehaviour
         // carWallet.carCount--;
 
         ultimateManager.ultimateEnabled = false;
+
+        if(gameManager != null) gameManager.ultimateSpawnCount++;
 
         if (selectDefaultOnPlace)
         {

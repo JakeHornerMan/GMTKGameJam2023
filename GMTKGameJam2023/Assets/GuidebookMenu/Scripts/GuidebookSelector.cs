@@ -13,7 +13,9 @@ public class GuidebookSelector : MonoBehaviour
     [Header("UI References")]
     [Tooltip("The grid-layout container to spawn blueprint icons into.")]
     [SerializeField] private Transform buttonsContainer;
+    [SerializeField] private Transform statsContainer;
     [SerializeField] private GameObject guideSelectButtonPrefab;
+    [SerializeField] private GameObject statTextPrefab;
 
     [Header("Navigation Buttons")]
     [SerializeField] private GameObject nextBtn;
@@ -23,6 +25,7 @@ public class GuidebookSelector : MonoBehaviour
     [SerializeField] private List<Car> carsToShow;
     [SerializeField] private List<Ultimate> ultimatesToShow;
     [SerializeField] private List<ObjectInfo> chickenToShow;
+    [SerializeField] private List<StatResultValue> statsToShow;
 
     // Store current displayed type if needed
     public enum ViewType { Cars, Ultimates, Chicken, Stats }
@@ -37,8 +40,21 @@ public class GuidebookSelector : MonoBehaviour
 
     private void Start()
     {
+        GetStats();
         // Show Cars by Default
-        ShowCarButtons();
+        // ShowCarButtons();
+        ShowStatsPage();
+    }
+
+    public void GetStats(){
+        statsToShow = new List<StatResultValue>();
+        statsToShow.Add(SteamStats.GetChickenKills());
+        statsToShow.Add(SteamStats.GetTotalCars());
+        statsToShow.Add(SteamStats.GetHighestScoreVehicle());
+        statsToShow.Add(SteamStats.GetTopRound());
+        statsToShow.Add(SteamStats.GetTopCombo());
+        statsToShow.Add(SteamStats.GetTotalUltimates());
+        statsToShow.Add(SteamStats.GetTotalMissedChickens());
     }
 
     private void Update()
@@ -61,6 +77,8 @@ public class GuidebookSelector : MonoBehaviour
     {
         for (var i = buttonsContainer.transform.childCount - 1; i >= 0; i--)
             Destroy(buttonsContainer.transform.GetChild(i).gameObject);
+        for (var i = statsContainer.transform.childCount - 1; i >= 0; i--)
+            Destroy(statsContainer.transform.GetChild(i).gameObject);
     }
 
     // Run from UI by button
@@ -111,7 +129,14 @@ public class GuidebookSelector : MonoBehaviour
         currentViewType = ViewType.Stats;
         ClearGrid();
 
-        // ENABLE UI HERE
+        foreach (StatResultValue stat in statsToShow)
+        {
+            StatValue text = Instantiate(
+                statTextPrefab,
+                statsContainer
+            ).GetComponent<StatValue>();
+            text.SetValues(stat);
+        }
     }
 
     // Handle Next and Previous Button

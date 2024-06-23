@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int safelyCrossedChickens = 0;
     [HideInInspector] public int missedChickenLives = 0;
     [HideInInspector] public int killCount = 0;
+    [HideInInspector] public int vehicleSpawnCount = 0;
+    [HideInInspector] public int ultimateSpawnCount = 0;
+    [HideInInspector] public int vehicleHighestScore = 0;
+    [HideInInspector] public int highestCombo = 0;
     [HideInInspector] public int playerScore = 0;
     [HideInInspector] public int tokens = 0;
     [HideInInspector] public int totalTokens = 0;
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] private bool roundOverNotActivated = true;
     [HideInInspector] public int waveNumber = 0;
     [HideInInspector] public bool roundOver = false;
+    [HideInInspector] public bool storedValues = true;
     [SerializeField] public GameObject chickenContainer;
 
     private SoundManager soundManager;
@@ -133,8 +138,8 @@ public class GameManager : MonoBehaviour
 
     private void SetPointsValuesInLevel()
     {
-        safelyCrossedChickens = Points.safelyCrossedChickens;
-        killCount = Points.killCount;
+        // safelyCrossedChickens = Points.safelyCrossedChickens;
+        // killCount = Points.killCount;
         totalTokens = Points.totalTokens;
         playerScore = Points.playerScore;
         interfaceManager.scoreForText = playerScore;
@@ -217,6 +222,7 @@ public class GameManager : MonoBehaviour
             roundOverNotActivated = false;
             StartCoroutine(ToBuyScreen());
         }
+        // Debug.Log("Kill count:" + killCount);
     }
 
     //Increments time value for UI
@@ -241,6 +247,7 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayerScore(int addAmount)
     {
+        if(addAmount > vehicleHighestScore) vehicleHighestScore = addAmount;
         playerScore += addAmount;
         if (interfaceManager)
             interfaceManager.ScoreUI(addAmount, true);
@@ -265,6 +272,11 @@ public class GameManager : MonoBehaviour
         tokens -= removeAmount;
     }
 
+    public void SetHighestCombo(int comboAmount)
+    {
+        if(comboAmount > highestCombo) highestCombo = comboAmount;
+    }
+
     public void UpdateTokens(int tokenDifference)
     {
         tokens = tokens + tokenDifference;
@@ -277,23 +289,28 @@ public class GameManager : MonoBehaviour
         OnTokensUpdated();
     }
 
-    private IEnumerator WaitAndBuyScreen(float time)
-    {
-        sceneFader.Fade();
-        SetPlayerValues();
-        SetPointsValues();
-        Points.playerScore = playerScore;
-        Debug.Log("playerScore: " + Points.playerScore);
-        yield return new WaitForSeconds(time);
-        sceneFader.FadeToBuyScreen();
-    }
+    // private IEnumerator WaitAndBuyScreen(float time)
+    // {
+    //     sceneFader.Fade();
+    //     SetPlayerValues();
+    //     SetPointsValues();
+    //     Points.playerScore = playerScore;
+    //     Debug.Log("playerScore: " + Points.playerScore);
+    //     yield return new WaitForSeconds(time);
+    //     sceneFader.FadeToBuyScreen();
+    // }
 
     private IEnumerator ToBuyScreen(){
         //Stop Spawning Chickens
         chickenSpawn.waveEnded = true;
 
-        SetPlayerValues();
-        SetPointsValues();
+        if(storedValues){
+            storedValues = false;
+            UpdateStats();
+            SetPlayerValues();
+            SetPointsValues();
+            GameProgressionValues.RoundNumber ++;
+        }
 
         //Show "You Survived!" popup
         interfaceManager.survivedPopup();
@@ -302,13 +319,18 @@ public class GameManager : MonoBehaviour
         chickenManager.WipeAllChickens();
 
         yield return new WaitForSeconds(3f);
+
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
     private void HandleGameOver()
     {
         isGameOver = true;
-        SetPointsValues();
+        if(storedValues){
+            storedValues = false;
+            UpdateStats();
+            SetPointsValues();
+        }
         sceneFader.ScreenWipeOut("Results");
     }
 
@@ -323,10 +345,20 @@ public class GameManager : MonoBehaviour
 
     private void SetPointsValues()
     {
-        Points.killCount = killCount;
-        Points.safelyCrossedChickens = safelyCrossedChickens;
+        Points.killCount += killCount;
+        Points.safelyCrossedChickens += safelyCrossedChickens;
         Points.playerScore = playerScore;
         Points.totalTokens = totalTokens;
-        Debug.Log("playerScore: " + Points.playerScore);
+        // Debug.Log("playerScore: " + Points.playerScore);
+    }
+
+    private void UpdateStats(){
+        SteamStats.SetChickenKills(killCount);
+        SteamStats.SetTotalCars(vehicleSpawnCount);
+        SteamStats.SetHighestScoreVehicle(vehicleHighestScore);
+        SteamStats.SetTopRound(GameProgressionValues.RoundNumber);
+        SteamStats.SetTopCombo(highestCombo);
+        SteamStats.SetTotalUltimates(ultimateSpawnCount);
+        SteamStats.SetTotalMissedChickens(safelyCrossedChickens);
     }
 }

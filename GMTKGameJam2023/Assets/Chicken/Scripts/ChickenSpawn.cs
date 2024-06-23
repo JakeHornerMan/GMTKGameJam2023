@@ -104,18 +104,23 @@ public class ChickenSpawn : MonoBehaviour
         //}
 
         float rangeY;
-
-        if (specialChickens[0].topSpawn && specialChickens[0].bottomSpawn)
-        {
-            rangeY = Random.Range(minYHeight, maxYHeight);
-        }
-        else if (specialChickens[0].topSpawn)
-        {
-            rangeY = Random.Range(0, maxYHeight);
-        }
-        else if (specialChickens[0].bottomSpawn)
-        {
-            rangeY = Random.Range(minYHeight, 0);
+        if(specialChickens.Count > 0){
+            if (specialChickens[0].topSpawn && specialChickens[0].bottomSpawn)
+            {
+                rangeY = Random.Range(minYHeight, maxYHeight);
+            }
+            else if (specialChickens[0].topSpawn)
+            {
+                rangeY = Random.Range(0, maxYHeight);
+            }
+            else if (specialChickens[0].bottomSpawn)
+            {
+                rangeY = Random.Range(minYHeight, 0);
+            }
+            else
+            {
+                rangeY = Random.Range(minYHeight, maxYHeight);
+            }
         }
         else
         {
@@ -172,7 +177,7 @@ public class ChickenSpawn : MonoBehaviour
             StandardChickenWave();
     }
 
-    private void SpawnAChicken(GameObject chicken, SpawningPoint point, bool isSpecial)
+    private void SpawnAChicken(GameObject chicken, SpawningPoint point, bool isSpecial = false)
     {
         if(isSpecial){
             chicken = Instantiate(chicken, point.position, Quaternion.identity, specialChickenContainer.transform);
@@ -188,6 +193,9 @@ public class ChickenSpawn : MonoBehaviour
 
         //if (soundManager != null)
         //    soundManager.PlayRandomChicken();
+    }
+    public void AlternateSpawnAChicken(GameObject chicken){
+        SpawnAChicken(chicken, SelectSpawn());
     }
 
 }
