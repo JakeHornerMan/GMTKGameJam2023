@@ -763,6 +763,10 @@ MonoBehaviour:
   safelyCrossedChickens: 0
   missedChickenLives: 0
   killCount: 0
+  vehicleSpawnCount: 0
+  ultimateSpawnCount: 0
+  vehicleHighestScore: 0
+  highestCombo: 0
   playerScore: 0
   tokens: 0
   totalTokens: 0
@@ -770,6 +774,7 @@ MonoBehaviour:
   endSound: 0
   waveNumber: 0
   roundOver: 0
+  storedValues: 1
   chickenContainer: {fileID: 0}
   sceneFader: {fileID: 0}
 --- !u!114 &7543842703582401103
@@ -909,6 +914,7 @@ MonoBehaviour:
   currentCarNameText: {fileID: 736786533477114674}
   speedUpText: {fileID: 3906398578797441894}
   missedChickenCountText: {fileID: 4153025628551972278}
+  youSurvived: {fileID: 9003743512710487022}
   canvas: {fileID: 4430397549852096543}
   speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
@@ -1061,7 +1067,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
-  audioSrc: {fileID: 6648390661545215355}
   musicAudio: {fileID: 5995303635059143458}
   sfxAllowed: 1
   musicAllowed: 1
@@ -1749,5 +1754,10 @@ GameObject:
 --- !u!1 &8963881940308902571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3686974931903450841, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9003743512710487022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3728811227079563164, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}

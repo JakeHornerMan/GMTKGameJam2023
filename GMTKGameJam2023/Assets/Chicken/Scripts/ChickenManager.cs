@@ -1,17 +1,25 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
-public class ChickenAudioManager : MonoBehaviour
+public class ChickenManager : MonoBehaviour
 {
     private float chickenCount;
     private float chickenAudioFrequency = 10f; // Starting interval, adjust as needed
     private Coroutine playChickenSoundsCoroutine;
+
+    private Transform normalChickenContainer;
+    private Transform specialChickenContainer;
+    [SerializeField] private float killDelay = 0.05f; // Delay between each chicken kill
 
     // Reference to the sound manager, make sure to set this in the Inspector
     public SoundManager soundManager;
 
     void Start()
     {
+        normalChickenContainer = GameObject.Find("ChickenContainer").transform;
+        specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
+
         // Start the coroutine to play chicken sounds
         playChickenSoundsCoroutine = StartCoroutine(PlayChickenSounds());
     }
@@ -49,5 +57,27 @@ public class ChickenAudioManager : MonoBehaviour
     {
         // Update the chicken count and audio frequency whenever the children of the transform change
         UpdateChickenCount();
+    }
+
+    public void WipeAllChickens()
+    {
+        StartCoroutine(WipeThemOut());
+    }
+
+    private IEnumerator WipeThemOut()
+    {
+        // Combine normal and special chickens
+        ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+
+        killDelay = 1.5f / allChickens.Length;
+
+        for (int i = 0; i < allChickens.Length; i++)
+        {
+            if (allChickens[i] == null) continue;
+            allChickens[i].TakeDamage(1000);
+            yield return new WaitForSecondsRealtime(killDelay);
+        }
     }
 }
