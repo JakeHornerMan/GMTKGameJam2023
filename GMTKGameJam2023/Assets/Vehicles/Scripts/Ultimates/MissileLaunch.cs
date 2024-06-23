@@ -12,4 +12,9 @@ public class MissileLaunch : Ultimate
         Destroy(missileSprtie);
         GetComponent<Animator>().SetTrigger("Explode");
     }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

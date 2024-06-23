@@ -20,6 +20,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentCarNameText;
     [SerializeField] private TextMeshProUGUI speedUpText;
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
+    [SerializeField] private GameObject youSurvived;
     [SerializeField] private GameObject canvas;
 
     [HideInInspector] private GameObject ultimateButton;
@@ -81,6 +82,8 @@ public class InterfaceManager : MonoBehaviour
                 ultimateButton.SetActive(true);
             }
         }
+
+        youSurvived.SetActive(false);
 
         for (int i = 0; i < carWalletNodeContainers.Length; i++)
         {
@@ -241,5 +244,27 @@ public class InterfaceManager : MonoBehaviour
             token.GetComponent<RectTransform>().localPosition = spawnLocation;
             token.GetComponent<TextMeshProUGUI>().text = "-" + tokenAmount.ToString();
         }
+    }
+
+    public void survivedPopup()
+    {
+
+        youSurvived.SetActive(true);
+        if (youSurvived.transform.GetChild(0).gameObject.activeSelf == false)
+        {
+            StartCoroutine(WaitForConfetti());
+        }
+        
+
+    }
+
+    private IEnumerator WaitForConfetti()
+    {
+        yield return new WaitForSeconds(0.8f);
+        for (int i = 0; i < youSurvived.transform.childCount; i++)
+        {
+            youSurvived.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        
     }
 }
