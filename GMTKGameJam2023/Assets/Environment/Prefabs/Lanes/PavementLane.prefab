@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5925074014233215075}
   - component: {fileID: 3922489080506736087}
+  - component: {fileID: 1893656362294373950}
   m_Layer: 0
   m_Name: PavementEdge
   m_TagString: Untagged
@@ -84,6 +85,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1893656362294373950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2276848232906499151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9de8f2e385f95f4eb71adc5af6f2484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEdge: 0
+  rightEdge: 1
+  raycastOffset: 0.5
+  raycastDistance: 1
 --- !u!1 &6510914271369341336
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719950238596052189}
   - component: {fileID: 8283135184794836287}
+  - component: {fileID: 5200583651858398131}
   m_Layer: 0
   m_Name: PavementEdge (1)
   m_TagString: Untagged
@@ -168,6 +186,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5200583651858398131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510914271369341336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9de8f2e385f95f4eb71adc5af6f2484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEdge: 1
+  rightEdge: 0
+  raycastOffset: 0.5
+  raycastDistance: 1
 --- !u!1001 &3973736037892273143
 PrefabInstance:
   m_ObjectHideFlags: 0

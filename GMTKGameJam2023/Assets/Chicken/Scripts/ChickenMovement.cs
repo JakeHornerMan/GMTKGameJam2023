@@ -113,7 +113,10 @@ public class ChickenMovement : MonoBehaviour
         }
         // The chicken is on cement, so wait for the cement to disappear and then restart movement
         else
+        {
+            spinningStars.SetActive(true);
             StartCoroutine(WaitForDryCement());
+        }
     }
 
     private IEnumerator WaitForDryCement()
@@ -123,6 +126,7 @@ public class ChickenMovement : MonoBehaviour
             yield return null; // Wait until the chicken is no longer on the cement
         }
 
+        spinningStars.SetActive(false);
         IEnumerator coroutine = WaitAndMove(moveTime, gameManager.isGameOver);
         StartCoroutine(coroutine);
     }
@@ -130,7 +134,7 @@ public class ChickenMovement : MonoBehaviour
 
     private IEnumerator WaitAndMove(float moveTime, bool isGameOver = false)
     {
-        if(!stopMovement && !isGameOver)
+        if (!stopMovement && !isGameOver)
             BeginChickenMovement();
 
         yield return new WaitForSeconds(moveTime);
@@ -174,7 +178,8 @@ public class ChickenMovement : MonoBehaviour
 
     public IEnumerator FreezeChicken(float stopTime, bool isFreeze)
     {
-        if(isFreeze){
+        if (isFreeze)
+        {
             spriteRenderer.color = freezeColor;
             chickenSprite.GetComponent<Animator>().enabled = false;
         }
@@ -182,7 +187,8 @@ public class ChickenMovement : MonoBehaviour
 
         yield return new WaitForSeconds(stopTime);
 
-        if(isFreeze){
+        if (isFreeze)
+        {
             spriteRenderer.color = originalColor;
             chickenSprite.GetComponent<Animator>().enabled = true;
         }
@@ -209,7 +215,7 @@ public class ChickenMovement : MonoBehaviour
             {
                 spinningStars.SetActive(false);
             }
-            
+
             chickenSprite.GetComponent<Animator>().enabled = true;
         }
         stopMovement = false;
@@ -351,7 +357,7 @@ public class ChickenMovement : MonoBehaviour
         {
 
             isDirectionGood = false;
-        
+
         }
         else
         {
@@ -367,7 +373,7 @@ public class ChickenMovement : MonoBehaviour
                         isDirectionGood = false;
                         break;  // Exit the loop as we've found a collider with the "Collidable" script
                     }
-                    
+
                 }
             }
         }

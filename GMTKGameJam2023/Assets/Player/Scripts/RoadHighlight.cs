@@ -7,7 +7,7 @@ public class RoadHighlight : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject bottomHighlight;
     [SerializeField] private GameObject shineObject;
-    
+
     [Header("Settings")]
     [SerializeField] private bool allowShine = true;
 
@@ -35,10 +35,12 @@ public class RoadHighlight : MonoBehaviour
     {
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-        
+
         if (vehicleSpawner != null && vehicleSpawner.currentActiveCar != null)
         {
             bool amIPlaceable = vehicleSpawner.currentActiveCar.placeableLaneTags.Contains(gameObject.tag);
+            if (vehicleSpawner.currentUltimateAbility != null && vehicleSpawner.currentUltimateAbility.placeableAnywhere)
+                amIPlaceable = true;
             if (hit.collider == null || !amIPlaceable)
             {
                 bottomHighlight.SetActive(false);

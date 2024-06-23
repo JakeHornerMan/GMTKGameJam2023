@@ -321,6 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Hovercraft
   objectSprite: {fileID: 21300000, guid: fd442f22eea59764a8f908fa81a2ec73, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: f3efe2d2f7c15734ca5a0f502da597c3, type: 3}
   objectDescription: Who needs wheels? The hovercraft can travel on both land and
     water, getting the best of both worlds.
@@ -341,7 +342,7 @@ MonoBehaviour:
   comboText: {fileID: 5056873124761914880}
   carType: 0
   carHealth: 75
-  carPrice: 3
+  carPrice: 5
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
@@ -350,7 +351,7 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 5
+  carShopPrice: 10
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
