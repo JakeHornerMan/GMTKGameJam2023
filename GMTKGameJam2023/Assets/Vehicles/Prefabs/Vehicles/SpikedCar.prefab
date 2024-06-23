@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 5134109063513698115}
   - component: {fileID: 4904860076618496}
   - component: {fileID: 4252443855736787157}
-  - component: {fileID: 1351260878151097129}
+  - component: {fileID: 686004220599660150}
   m_Layer: 2
   m_Name: SpikedCar
   m_TagString: Untagged
@@ -386,10 +386,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Roadkill
   objectSprite: {fileID: 21300000, guid: ace28a4304740e44e952204109ce49cd, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: b95cda474a8a6174d87a8e8c260f5ed4, type: 3}
   objectDescription: A standard car but with spike blades on the rims, for extended
     chicken reach.
---- !u!114 &1351260878151097129
+--- !u!114 &686004220599660150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,7 +399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6312711107102628959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Script: {fileID: 11500000, guid: f47695be165b2ba4a91bd44639fba4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
@@ -438,6 +439,9 @@ MonoBehaviour:
     volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+  spikes:
+  - {fileID: 935908878129717632}
+  - {fileID: 8092239484575799273}
 --- !u!1 &8092239484575799273
 GameObject:
   m_ObjectHideFlags: 0

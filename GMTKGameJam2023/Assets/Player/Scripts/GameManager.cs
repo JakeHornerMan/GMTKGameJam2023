@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     // Other Values
     [HideInInspector] public bool endSound = false;
+    [HideInInspector] private bool roundOverNotActivated = true;
     [HideInInspector] public int waveNumber = 0;
     [HideInInspector] public bool roundOver = false;
     [SerializeField] public GameObject chickenContainer;
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
     private InterfaceManager interfaceManager;
     private CameraShaker cameraShaker;
     private HealthCorn healthCorn;
+    private ChickenManager chickenManager;
 
     [HideInInspector] public delegate void EventType();
     [HideInInspector] public static event EventType OnTokensUpdated;
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameFlowManager = FindObjectOfType<GameFlowManager>();
         healthCorn = GetComponent<HealthCorn>();
+        chickenManager = FindObjectOfType<ChickenManager>();
 
         chickenContainer = GameObject.Find("ChickenContainer");
     }
@@ -209,8 +212,10 @@ public class GameManager : MonoBehaviour
         {
             HandleGameOver();
         }
-        if(roundOver){
-            ToBuyScreen();
+        if((roundOver) && (roundOverNotActivated))
+        {
+            roundOverNotActivated = false;
+            StartCoroutine(ToBuyScreen());
         }
     }
 
@@ -283,9 +288,20 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeToBuyScreen();
     }
 
-    private void ToBuyScreen(){
+    private IEnumerator ToBuyScreen(){
+        //Stop Spawning Chickens
+        chickenSpawn.waveEnded = true;
+
         SetPlayerValues();
         SetPointsValues();
+
+        //Show "You Survived!" popup
+        interfaceManager.survivedPopup();
+
+        yield return new WaitForSeconds(0.8f);
+        chickenManager.WipeAllChickens();
+
+        yield return new WaitForSeconds(3f);
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 

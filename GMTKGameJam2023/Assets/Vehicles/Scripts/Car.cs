@@ -613,6 +613,12 @@ public abstract class Car : MonoBehaviour
             carLaunchScale = 6;
         }
 
+        // Check if this car has a special launch
+        if (this is ISpecialLaunch specialLaunchCar)
+        {
+            specialLaunchCar.PerformSpecialLaunch();
+        }
+
         StartCoroutine(LaunchCarCoroutine(new Vector3(carLaunchScale, carLaunchScale, 1), new Vector3(normalizedVector.x, normalizedVector.y, gameObject.transform.position.z)));
 
     }

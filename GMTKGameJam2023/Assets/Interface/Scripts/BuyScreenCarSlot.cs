@@ -31,7 +31,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
             if (eventData.pointerDrag.TryGetComponent<BuyScreenCar>(out car) || eventData.pointerDrag.TryGetComponent<BuyScreenUltimate>(out ultimate)) //eventData.pointerDrag = The car being held by the mouse
             {
-                if (transform.childCount > 0)
+                //if (transform.childCount > 0)
+                if ((transform.GetComponentInChildren<BuyScreenCar>() != null) || (transform.GetComponentInChildren<BuyScreenUltimate>() != null))
                 {
 
 
@@ -117,13 +118,57 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                         }
 
                     }
+                    else if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == BuyScreenCarSlot.SlotType.Roster)
+                    {
+                        if (slotType == SlotType.Scrapyard)
+                        {
+                            if (ultimate != null)
+                            {
+                                eventData.pointerDrag.gameObject.transform.parent = transform;
+                                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                                eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+
+                                // Add Money
+                                BuyScreenManager.instance.AddMoney(25);
+
+                                //DESTROY THE VEHICLE
+                                Destroy(eventData.pointerDrag.gameObject);
+                            }
+                            else if (car != null)
+                            {
+                                eventData.pointerDrag.gameObject.transform.parent = transform;
+                                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                                eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+
+                                // Add Money
+                                if (car.correspondingCar.carShopPrice < 5)
+                                {
+                                    BuyScreenManager.instance.AddMoney(3);
+                                }
+                                else
+                                {
+                                    BuyScreenManager.instance.AddMoney(5);
+                                }
+
+                                //DESTROY THE VEHICLE
+                                Destroy(eventData.pointerDrag.gameObject);
+                            }
+                        }
+                        else
+                        {
+                            eventData.pointerDrag.gameObject.transform.parent = eventData.pointerDrag.GetComponent<DragDrop>().startingParent;
+                            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                            eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+                        }
+
+                    }
 
 
                 }
             }
             
             
-
+            
 
 
 
@@ -192,15 +237,20 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
     public void UpdatePriceText()
     {
-        if (transform.GetChild(0).TryGetComponent<BuyScreenCar>(out BuyScreenCar car))
+        BuyScreenCar car = transform.GetComponentInChildren<BuyScreenCar>();
+        BuyScreenUltimate ultimate = transform.GetComponentInChildren<BuyScreenUltimate>();
+
+        if (car != null)
         {
             priceText.text = "$" + car.correspondingCar.carShopPrice.ToString("0");
         }
-        else if (transform.GetChild(0).TryGetComponent<BuyScreenUltimate>(out BuyScreenUltimate ultimate))
+        else if (ultimate != null)
         {
             priceText.text = "$" + ultimate.correspondingUltimate.ultimateShopPrice.ToString("0");
-
         }
+
+        UpdateBGColour();
+
 
     }
 }
