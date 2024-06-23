@@ -185,8 +185,8 @@ public abstract class Car : MonoBehaviour
         if (token != null & !ignoreTokens)
             HandleTokenCollision(token);
 
-        if (collision.gameObject.name.Contains("SlowSubstance"))
-            SlowCarSpeed();
+        if (collision.gameObject.name.Contains("SlowSubstance") && !(gameObject.name.Contains("Bulldozer")))
+            HandleSlowSubstanceCollision(collision.gameObject);
 
         if (wall != null)
             HandleWallCollision(wall);
@@ -258,23 +258,16 @@ public abstract class Car : MonoBehaviour
         }
     }
 
-    private void HandleWallCollision(WallController wall)
+    protected virtual void HandleWallCollision(WallController wall)
     {
         //Destroy Heavy destroys wall
         if (carType == CarType.Heavy)
         {
-            if (TryGetComponent<Bulldozer>(out var bulldozer))
-            {
-                wall.WallHit();
-            }
-            else
-            {
-                carHealth -= wall.damage;
-                wall.WallHit();
-                if (carHealth <= 0)
-                    LaunchCar();
-            }
-            
+            carHealth -= wall.damage;
+            wall.WallHit();
+            if (carHealth <= 0)
+                LaunchCar();
+
         }
 
         //Destroy Light
@@ -286,6 +279,11 @@ public abstract class Car : MonoBehaviour
 
         CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
         StartCoroutine(CarHitStop(0.1f));
+    }
+
+    protected virtual void HandleSlowSubstanceCollision(GameObject slowSubstance)
+    {
+        SlowCarSpeed();
     }
 
     protected void HandleTokenCollision(TokenController token)

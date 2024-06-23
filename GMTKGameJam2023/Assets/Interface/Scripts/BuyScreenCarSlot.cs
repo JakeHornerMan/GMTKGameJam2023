@@ -187,19 +187,25 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
         if (eventData.pointerClick != null)
         {
-            GameObject shopItem = eventData.pointerDrag.gameObject;
+            GameObject shopItem = null;
+
+            // Check if pointerDrag is not null before accessing its gameObject
+            if (eventData.pointerDrag != null)
+            {
+                shopItem = eventData.pointerDrag.gameObject;
+            }
 
             if (shopItem != null)
             {
-                if (shopItem.TryGetComponent<BuyScreenCar>(out BuyScreenCar car))
+                // Check if it's a right-click (secondary button)
+                if (eventData.button == PointerEventData.InputButton.Right)
                 {
-                    BuyScreenInfoBox.instance.FillInfoBoxCar(car);
+                    Button button = shopItem.transform.parent.GetComponentInChildren<Button>();
+                    if (button != null)
+                    {
+                        button.onClick.Invoke(); // Invoke the button's onClick event
+                    }
                 }
-                else if (shopItem.TryGetComponent<BuyScreenUltimate>(out BuyScreenUltimate ultimate))
-                {
-                    BuyScreenInfoBox.instance.FillInfoBoxUltimate(ultimate);
-                }
-                
             }
         }
     }
@@ -208,7 +214,10 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
     {
         if (slotType == SlotType.CarShop)
         {
-            if (transform.GetChild(0).TryGetComponent<BuyScreenCar>(out BuyScreenCar car))
+            BuyScreenCar car = transform.GetComponentInChildren<BuyScreenCar>();
+            BuyScreenUltimate ultimate = transform.GetComponentInChildren<BuyScreenUltimate>();
+
+            if (car != null)
             {
                 if (BuyScreenManager.instance.CheckMoneyAmount(car.correspondingCar.carShopPrice)) //if the player has enough money to buy the car)
                 {
@@ -219,7 +228,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                     priceText.color = redColor;
                 }
             }
-            else if (transform.GetChild(0).TryGetComponent<BuyScreenUltimate>(out BuyScreenUltimate ultimate))
+            else if (ultimate != null)
             {
                 if (BuyScreenManager.instance.CheckMoneyAmount(ultimate.correspondingUltimate.ultimateShopPrice)) //if the player has enough money to buy the car)
                 {
