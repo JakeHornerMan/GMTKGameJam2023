@@ -42,11 +42,12 @@ public class GuidebookSelector : MonoBehaviour
     {
         GetStats();
         // Show Cars by Default
-        // ShowCarButtons();
-        ShowStatsPage();
+        ShowCarButtons();
+        // ShowStatsPage();
     }
 
-    public void GetStats(){
+    public void GetStats()
+    {
         statsToShow = new List<StatResultValue>();
         statsToShow.Add(SteamStats.GetChickenKills());
         statsToShow.Add(SteamStats.GetTotalCars());
