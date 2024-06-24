@@ -1051,7 +1051,7 @@ PrefabInstance:
       objectReference: {fileID: 999445565}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.size
@@ -1068,7 +1068,7 @@ PrefabInstance:
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[2]
       value: 
-      objectReference: {fileID: 512348543385223842, guid: 0bd4fea591d7e8a4c8eb2f8f23236a13, type: 3}
+      objectReference: {fileID: 686004220599660150, guid: d88b644156c3a224697efd3585e1337a, type: 3}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[3]
       value: 
@@ -1107,7 +1107,11 @@ PrefabInstance:
       objectReference: {fileID: -1135978355812094493, guid: b675eb70873a395499c435759179ffc4, type: 3}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].roundTime
-      value: 80
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].roundTime
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].coinAmount
@@ -1115,10 +1119,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].wavePrompt
-      value: Armor chicken test
+      value: Cash time
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].coinAmount
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].wavePrompt
+      value: Turbo Time
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].chickenIntesity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].chickenIntesity
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
@@ -1126,17 +1142,41 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].standardChickenAmounts
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].specialChickens.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[0].chicken
       value: 
-      objectReference: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      objectReference: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: waves.Array.data[0].specialChickens.Array.data[1].chicken
       value: 
-      objectReference: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
+      objectReference: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].specialChickens.Array.data[0].chicken
+      value: 
+      objectReference: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[1].specialChickens.Array.data[1].chicken
+      value: 
+      objectReference: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[1].topSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: waves.Array.data[0].specialChickens.Array.data[0].bottomSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1677909470908117969, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_RootOrder
       value: 3
