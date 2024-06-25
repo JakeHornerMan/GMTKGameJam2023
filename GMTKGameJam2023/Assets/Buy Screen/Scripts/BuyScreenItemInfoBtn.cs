@@ -7,7 +7,6 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
     [SerializeField] private BuyScreenCar correspCar;
     [SerializeField] private BuyScreenUltimate correspUlt;
     [SerializeField] private ObjectInfo upgradeBar;
-    [SerializeField] private bool isLanes;
 
     public void ShowInfo()
     {
