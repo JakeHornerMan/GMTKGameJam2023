@@ -30,6 +30,12 @@ public class Sheep : MonoBehaviour
     [SerializeField] private float camShakeDuration = 0.15f;
     [SerializeField] private float camShakeMagnitude = 0.05f;
 
+    [Header("PopUp Values")]
+    [SerializeField] private GameObject scorePopUp;
+    [SerializeField] private string scorePopUpMsg = "";
+    [Tooltip("Text after getting points, e.g. 100 {Poitns}")]
+    [SerializeField] private float popupDestroyDelay = 0.7f;
+
     private Rigidbody2D rb;
     private CameraShaker cameraShaker;
     private SoundManager soundManager;
@@ -76,6 +82,12 @@ public class Sheep : MonoBehaviour
         soundManager.PlayChickenHit();
 
         // Damage Poultry
+        if (chickenHealth.health - damage <= 0)
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            gameManager.AddPlayerScore(chickenHealth.pointsReward);
+            ShowPopup(chickenHealth.transform.position, $"{chickenHealth.pointsReward} {scorePopUpMsg}");
+        }
         chickenHealth.TakeDamage(damage);
 
         // Canera Shake
@@ -100,5 +112,17 @@ public class Sheep : MonoBehaviour
 
         // Destroy after hitting chicken
         Destroy(gameObject);
+    }
+
+    private void ShowPopup(Vector3 position, string msg)
+    {
+        // Point Indicator
+        ScorePopup newPopUp = Instantiate(
+            scorePopUp,
+            position,
+            Quaternion.identity
+        ).GetComponent<ScorePopup>();
+        newPopUp.SetText(msg);
+        Destroy(newPopUp.gameObject, popupDestroyDelay);
     }
 }

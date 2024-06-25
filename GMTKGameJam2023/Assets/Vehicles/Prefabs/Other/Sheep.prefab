@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Sheep
   objectSprite: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: 61b5405af87a9a54bb34510620a05109, type: 3}
   objectDescription: 
 --- !u!114 &2032628398341768708
@@ -201,6 +202,9 @@ MonoBehaviour:
   allowSheepOnWater: 0
   camShakeDuration: 0.15
   camShakeMagnitude: 0.05
+  scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
+  scorePopUpMsg: 
+  popupDestroyDelay: 0.7
 --- !u!1001 &8034363633045514521
 PrefabInstance:
   m_ObjectHideFlags: 0

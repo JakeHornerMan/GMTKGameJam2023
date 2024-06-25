@@ -36,25 +36,42 @@ public class CardDraw : Ultimate
     private Transform normalChickenContainer;
     private Transform specialChickenContainer;
 
+    private Pause pause;
+
+    // private AudioSource musicAudio;
+    // private AudioSource sfxAudio;
+
     private List<UltimateCardSO> shuffledConfigs;
 
     private void Awake()
     {
         normalChickenContainer = GameObject.Find("ChickenContainer").transform;
         specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
+
+        // musicAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        // sfxAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
+        // Debug.Log(musicAudio.name + "" + sfxAudio.name);
+
+        pause = FindObjectOfType<Pause>();
     }
 
     private void Start()
     {
         resumeBtn.SetActive(false);
 
-        // Pause Game and Hide UI If Setting is enabled
+        //Hide UI If Setting is enabled
         if (hideUIOnUltimateActivation)
         {
-            // Find "GameCanvas" Object
+            // Find "GameCanvas" Objectk
             GameObject.Find("GameCanvas").SetActive(false);
         }
-        Time.timeScale = 0f;
+
+        // Pause Game and  Audio
+        pause.PauseGame(showUI: false);
+
+        // Time.timeScale = 0f;
+        // musicAudio.Pause();
+        // sfxAudio.Pause();
 
         // Shuffle the card configs and assign them to the cards
         shuffledConfigs = Shuffle(cardConfigs);
@@ -124,7 +141,12 @@ public class CardDraw : Ultimate
     public void ResumeAndEnd()
     {
         GameObject.Find("GameCanvas").SetActive(true);
-        Time.timeScale = 1f;
+
+        // Unpause Game and Restart Music
+        pause.UnpauseGame();
+        // Time.timeScale = 1f;
+        // musicAudio.UnPause();
+        // sfxAudio.UnPause();
 
         // Deactivate the card draw UI
         foreach (GameObject obj in ultimateUIs)
