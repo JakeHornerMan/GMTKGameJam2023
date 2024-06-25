@@ -4,61 +4,70 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Toggle musicToggle;
-    [SerializeField] private Toggle sfxToggle;
+    [SerializeField] private Toggle musicCheckbox;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Toggle sfxCheckbox;
+    [SerializeField] private Slider sfxVolumeSlider;
+    [SerializeField] private Toggle roadShineCheckbox;
 
-    private const string musicToggleKey = "MusicEnabled";
-    private const string sfxToggleKey = "SFXEnabled";
-
-    public static bool musicAllowed { get; private set; } = true;
-    public static bool sfxAllowed { get; private set; } = true;
+    public static bool MusicEnabled { get; private set; } = true;
+    public static int MusicVolume { get; private set; } = 10;
+    public static int SfxVolume { get; private set; } = 10;
+    public static bool SfxEnabled { get; private set; } = true;
+    public static bool RoadShineEnabled { get; private set; } = true;
 
     private void Start()
     {
-        SetDefaultSettings();
-        UpdateToggles();
+        MatchUIToVariables();
     }
 
-    private void SetDefaultSettings()
+    public void ResetToDefault()
     {
-        // Check if PlayerPrefs keys exist
-        if (!PlayerPrefs.HasKey(musicToggleKey))
-        {
-            // Set music toggle to enabled by default
-            PlayerPrefs.SetInt(musicToggleKey, BoolToInt(true));
-            musicToggle.isOn = true;
-        }
+        MusicEnabled = true;
+        SfxEnabled = true;
+        RoadShineEnabled = true;
+        MusicVolume = 10;
+        SfxVolume = 10;
 
-        if (!PlayerPrefs.HasKey(sfxToggleKey))
-        {
-            // Set sound effects toggle to enabled by default
-            PlayerPrefs.SetInt(sfxToggleKey, BoolToInt(true));
-            sfxToggle.isOn = true;
-        }
+        MatchUIToVariables();
     }
 
-    private void UpdateToggles()
+    private void MatchUIToVariables()
     {
-        // Update UI based on PlayerPrefs values
-        musicToggle.isOn = IntToBool(PlayerPrefs.GetInt(musicToggleKey));
-        sfxToggle.isOn = IntToBool(PlayerPrefs.GetInt(sfxToggleKey));
+        musicCheckbox.isOn = MusicEnabled;
+        musicVolumeSlider.value = MusicVolume;
 
-        // Update public static variables
-        musicAllowed = musicToggle.isOn;
-        sfxAllowed = sfxToggle.isOn;
+        sfxCheckbox.isOn = SfxEnabled;
+        sfxVolumeSlider.value = SfxVolume;
+
+        roadShineCheckbox.isOn = RoadShineEnabled;
     }
 
     // Checkbox Update Functions
     public void MusicToggle(bool on)
     {
-        PlayerPrefs.SetInt(musicToggleKey, BoolToInt(on));
-        UpdateToggles();
+        MusicEnabled = on;
     }
 
     public void SFXToggle(bool on)
     {
-        PlayerPrefs.SetInt(sfxToggleKey, BoolToInt(on));
-        UpdateToggles();
+        SfxEnabled = on;
+    }
+
+    public void RoadShineToggle(bool on)
+    {
+        RoadShineEnabled = on;
+    }
+
+    // Slider Update Functions
+    public void MusicVolumeSlider(int value)
+    {
+        MusicVolume = value;
+    }
+
+    public void SFXVolumeSlider(int value)
+    {
+        SfxVolume = value;
     }
 
     // Utility Functions

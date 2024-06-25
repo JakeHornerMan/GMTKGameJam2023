@@ -19,7 +19,7 @@ public class ChickenHealth : MonoBehaviour
 
     [Header("Chicken Health Values")]
     [SerializeField] private int startHealth = 100;
-    private float invinsibleForTime = 0.2f;
+    [SerializeField] private float invinsibleForTime = 1f;
 
     [Header("Scoring")]
     [SerializeField] public int pointsReward = 100;
