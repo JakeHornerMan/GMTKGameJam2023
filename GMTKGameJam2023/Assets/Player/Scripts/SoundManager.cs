@@ -57,6 +57,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Game Music")]
     [SerializeField] private AudioClip endMusic;
+    [SerializeField] private bool isMenu = false;
     private SoundConfig gameMusic;
 
     private AudioSource audioSrc;
@@ -83,7 +84,10 @@ public class SoundManager : MonoBehaviour
         if (musicAllowed)
         {
             gameMusic = SetGameMusic();
-            musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
+            musicAudio.clip = gameMusic.clip;
+            musicAudio.loop = isMenu;
+            musicAudio.Play();
+            // musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
         }
     }
 

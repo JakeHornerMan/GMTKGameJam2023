@@ -42,6 +42,7 @@ public class Pause : MonoBehaviour
     public void UnpauseGame()
     {
         isPaused = false;
+        if(FindObjectOfType<CardDraw>() == null || FindObjectOfType<ObjectBlueprint>().isTutorial == true)
         Time.timeScale = startTimeScale;
         musicAudio.UnPause();
         sfxAudio.UnPause();

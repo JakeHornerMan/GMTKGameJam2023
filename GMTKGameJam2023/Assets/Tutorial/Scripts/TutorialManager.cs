@@ -293,7 +293,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OpenInfoBluePrintPauseGame(string description, bool isOver = false)
     {
-        pause.PauseGame(false);
+        Time.timeScale = 0;
         pause.isTutorialText = true;
         bluePrint.DisplayDescription(description);
         bluePrint.activateContinue(isOver);
@@ -301,7 +301,8 @@ public class TutorialManager : MonoBehaviour
 
     public void CloseInfoBluePrintResumeGame()
     {
-        pause.UnpauseGame();
+        // pause.UnpauseGame();
+        Time.timeScale = 1;
         pause.isTutorialText = false;
         bluePrint.HandleClose();
     }
