@@ -169,7 +169,7 @@ public class GameFlowManager : MonoBehaviour
     }
 
     private void SpecialWave(){
-        int getWave = Random.Range(0,bonusWaves.Length);
+        int getWave = Random.Range(0,bonusWaves.Length-1);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
         copyWave.coinAmount = 20;
         gameManager.waves.Add(copyWave);

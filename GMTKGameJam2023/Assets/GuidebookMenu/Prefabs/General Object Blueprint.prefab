@@ -1729,14 +1729,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366bccb9dc9370047acbeb4dc4260ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorial: 0
   objectNameText: {fileID: 5100226569455958983}
   objectImage: {fileID: 8246797589661463884}
   objectDescriptionText: {fileID: 939023378518944155}
   objectTypeText: {fileID: 6479355452635606984}
+  closeBtn: {fileID: 0}
+  continueBtn: {fileID: 0}
   tokenCostText: {fileID: 8945371153812670049}
   shopUnlockCostText: {fileID: 8679234131540179010}
   laneLabelGridContainer: {fileID: 8415706275606240237}
   laneLabelPrefab: {fileID: 979061176367484472, guid: 9733bb5a1e0ae6f4c9b254fa1be809d9, type: 3}
+  laneImages: []
   debugCar: {fileID: 0}
   debugUltimate: {fileID: 0}
   debugChicken: {fileID: 0}
