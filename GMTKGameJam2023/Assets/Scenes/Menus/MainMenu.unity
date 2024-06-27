@@ -6829,15 +6829,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5284886, g: 0.30196083, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a035e466e921604fb6ee025a25d2ceb, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -18267,15 +18267,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5284886, g: 0.30196083, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a035e466e921604fb6ee025a25d2ceb, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: ad944962b961ac6418e5d12de8a825b1, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -46059,6 +46059,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a5cebdb4de62cd04f86156aa18aabc58, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
+  isMenu: 0
   musicAudio: {fileID: 0}
   sfxAllowed: 1
   musicAllowed: 0
