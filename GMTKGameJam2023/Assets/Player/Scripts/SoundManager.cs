@@ -94,20 +94,16 @@ public class SoundManager : MonoBehaviour
         LoadSettings();
         if (musicAllowed)
         {
-        PlayMusic();
+            PlayMusic();
         }
     }
 
     public void PlayMusic(){
-        // if (musicAllowed)
-        // {
-            gameMusic = SetGameMusic();
-            musicAudio.clip = gameMusic.clip;
-            musicAudio.volume = musicVolume;
-            musicAudio.loop = isMenu;
-            musicAudio.Play();
-            // musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
-        // }
+        gameMusic = SetGameMusic();
+        musicAudio.clip = gameMusic.clip;
+        musicAudio.volume = musicVolume;
+        musicAudio.loop = isMenu;
+        musicAudio.Play();
     }
 
     private SoundConfig SetGameMusic()

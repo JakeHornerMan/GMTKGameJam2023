@@ -10,12 +10,15 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle sfxCheckbox;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Toggle roadShineCheckbox;
+    [SerializeField] private Toggle fullscreenCheckbox;
 
     public static bool MusicEnabled;
     public static float MusicVolume;
     public static float SfxVolume;
     public static bool SfxEnabled;
     public static bool RoadShineEnabled;
+    public static bool FullscreenEnabled;
+    public static Vector2 WindowedSize;
 
     [SerializeField] private SoundManager musicManager;
     [SerializeField] private SoundManager sfxManager;
@@ -32,10 +35,13 @@ public class Settings : MonoBehaviour
         RoadShineEnabled = true;
         MusicVolume = 8;
         SfxVolume = 10;
+        FullscreenEnabled = true;
+        WindowedSize = new Vector2(1920f,1080f);
 
         SaveSettings();
 
         MatchUIToVariables();
+        Fullscreen(FullscreenEnabled);
     }
 
     private void MatchUIToVariables()
@@ -49,6 +55,8 @@ public class Settings : MonoBehaviour
         sfxVolumeSlider.value = SfxVolume;
 
         roadShineCheckbox.isOn = RoadShineEnabled;
+        fullscreenCheckbox.isOn = FullscreenEnabled;
+        // Fullscreen(FullscreenEnabled);
     }
 
     // Checkbox Update Functions
@@ -85,6 +93,12 @@ public class Settings : MonoBehaviour
         RoadShineEnabled = roadShineCheckbox.isOn;
     }
 
+    public void FullScreenToggle()
+    {
+        FullscreenEnabled = fullscreenCheckbox.isOn;
+        Fullscreen(fullscreenCheckbox.isOn);
+    }
+
     // Slider Update Functions
     public void MusicVolumeSlider()
     {
@@ -106,8 +120,23 @@ public class Settings : MonoBehaviour
     private int BoolToInt(bool x) => x ? 1 : 0;
     private bool IntToBool(int i) => i != 0;
 
+    public void Fullscreen(bool answer)
+    {
+        if(answer){
+            int width = Screen.width;
+            int height = Screen.height;
+            WindowedSize = new Vector2(width, height);
+            Screen.SetResolution(1920, 1080, true);
+        }
+
+        if(!answer){
+            Screen.SetResolution((int)WindowedSize.x, (int)WindowedSize.y, true);
+        }
+        Screen.fullScreen = answer;
+    }
+
     public static void SaveSettings(){
-        SettingsData settingsData = new SettingsData(SfxEnabled, SfxVolume, MusicEnabled, MusicVolume, RoadShineEnabled);
+        SettingsData settingsData = new SettingsData(SfxEnabled, SfxVolume, MusicEnabled, MusicVolume, RoadShineEnabled, FullscreenEnabled, WindowedSize);
         string jsonData = JsonUtility.ToJson(settingsData);
         string filePath = Application.persistentDataPath + "/SettingData.json";
         System.IO.File.WriteAllText(filePath, jsonData);
@@ -131,9 +160,12 @@ public class Settings : MonoBehaviour
             Settings.MusicEnabled = settingsData.MusicEnabled;
             Settings.MusicVolume = settingsData.MusicVolume;
             Settings.RoadShineEnabled = settingsData.RoadShineEnabled;
+            Settings.FullscreenEnabled = settingsData.FullscreenEnabled;
+            Settings.WindowedSize = settingsData.WindowedSize;
 
             ToString();
             MatchUIToVariables();
+            Fullscreen(settingsData.FullscreenEnabled);
         }
         catch(System.Exception e){
             Debug.Log("Error finding file: "+ filePath);
@@ -156,16 +188,20 @@ public class SettingsData
     public bool MusicEnabled;
     public float MusicVolume;
     public bool RoadShineEnabled;
+    public bool FullscreenEnabled;
+    public Vector2 WindowedSize;
 
      public SettingsData() { }
 
-    public SettingsData(bool sfxEnabled, float sfxVolume, bool musicEnabled, float musicVolume, bool roadShineEnabled)
+    public SettingsData(bool sfxEnabled, float sfxVolume, bool musicEnabled, float musicVolume, bool roadShineEnabled, bool fullscreenEnabled, Vector2 windowSize)
     {
         MusicEnabled = musicEnabled;
         MusicVolume = musicVolume;
         SfxEnabled = sfxEnabled;
         SfxVolume = sfxVolume;
         RoadShineEnabled = roadShineEnabled;
+        FullscreenEnabled = fullscreenEnabled;
+        WindowedSize = windowSize;
     } 
 
 }
