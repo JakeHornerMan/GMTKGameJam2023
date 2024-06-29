@@ -31,7 +31,7 @@ public class Settings : MonoBehaviour
         SfxEnabled = true;
         RoadShineEnabled = true;
         MusicVolume = 8;
-        SfxVolume = 8;
+        SfxVolume = 10;
 
         SaveSettings();
 
