@@ -104,31 +104,27 @@ public class GameFlowManager : MonoBehaviour
 
     private List<SpecialChicken> SpecialChickenListSet(){
         List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
-        // for (int i = 1; i <= GameProgressionValues.RoundNumber*2; i++){
-        //     int getChickenAt = Random.Range(0, chickenPot.Count);
-        //     SpecialChicken specialChicken = chickenPot[getChickenAt].DeepClone();
-        //     // Debug.Log(specialChicken.chicken.name);
-
-        //     if(GameProgressionValues.RoundNumber < GameProgressionValues.standardRoundTime){
-        //         specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
-        //     }
-        //     else{
-        //         if(i < GameProgressionValues.standardRoundTime)
-        //             specialChicken.timeToSpawn = (float)i; 
-        //         if(i > GameProgressionValues.standardRoundTime)
-        //             specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
-        //     }
-        //     specialChickensList.Add(specialChicken);
-        // }
 
         //find amount of point for the wave
-        int chickenPoints = GameProgressionValues.RoundNumber*2;
-        //new list to store potential chickens theat we can use
-        // List<SpecialChicken> potCandidates = new List<SpecialChicken>();
-        // foreach (SpecialChicken chic in chickenPot){
-        //     if(chic.difficultyRank <= chickenPoints)
-        //         potCandidates.Add(chic);
-        // }
+        int multiplier;
+        switch(GameProgressionValues.RoundNumber){
+            case int r when (r < 5):
+                multiplier = 2;
+                break;
+            case int r when (r < 10):
+                multiplier = 3;
+                break;
+            case int r when (r < 15):
+                multiplier = 4;
+                break;
+            case int r when (r < 20):
+                multiplier = 5;
+                break;
+            default:
+                multiplier = 2;
+                break;
+        }
+        int chickenPoints = GameProgressionValues.RoundNumber*multiplier;
 
         //find random chickens in candidates for our wave
         do{
@@ -154,26 +150,26 @@ public class GameFlowManager : MonoBehaviour
 
     private int chickenIntesitySet(){
         int intensity = 1;
-        if(GameProgressionValues.RoundNumber <= 8){
+        if(GameProgressionValues.RoundNumber <= 5){
             intensity = Random.Range(1,3);
         }
-        if(GameProgressionValues.RoundNumber <= 16){
+        if(GameProgressionValues.RoundNumber <= 8){
             intensity = Random.Range(2,4);
         }
-        if(GameProgressionValues.RoundNumber <= 24){
+        if(GameProgressionValues.RoundNumber <= 12){
             intensity = Random.Range(3,5);
         }
-        if(GameProgressionValues.RoundNumber <= 32){
+        if(GameProgressionValues.RoundNumber <= 16){
             intensity = Random.Range(4,5);
         }
-        if(GameProgressionValues.RoundNumber > 32){
+        if(GameProgressionValues.RoundNumber > 20){
             intensity = 5;
         }
         return intensity;
     }
 
     private void SpecialWave(){
-        int getWave = Random.Range(0,bonusWaves.Length);
+        int getWave = Random.Range(0,bonusWaves.Length-1);
         ChickenWave copyWave = bonusWaves[getWave].DeepClone();
         copyWave.coinAmount = 20;
         gameManager.waves.Add(copyWave);
