@@ -16694,6 +16694,8 @@ MonoBehaviour:
   sfxCheckbox: {fileID: 302951464}
   sfxVolumeSlider: {fileID: 405856199}
   roadShineCheckbox: {fileID: 1496255034}
+  musicManager: {fileID: 2050317706}
+  sfxManager: {fileID: 6606148992238852075}
 --- !u!1 &1683869436
 GameObject:
   m_ObjectHideFlags: 0
@@ -20009,6 +20011,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.250165}
   m_SizeDelta: {x: 33.0066, y: 7.9016504}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2050317706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 857756469018871382, guid: 360515fee1ade2245840a5f63cd4318f, type: 3}
+  m_PrefabInstance: {fileID: 1564024340}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2070377126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3019719179053846538, guid: f252a7b39b35b1643861c5a20714883d, type: 3}
@@ -46062,6 +46075,8 @@ MonoBehaviour:
   musicAudio: {fileID: 0}
   sfxAllowed: 1
   musicAllowed: 0
+  musicVolume: 8
+  sfxVolume: 10
 --- !u!114 &6606148992238852076
 MonoBehaviour:
   m_ObjectHideFlags: 0
