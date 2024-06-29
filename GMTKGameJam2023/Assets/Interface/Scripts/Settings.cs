@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Settings : MonoBehaviour
 {
@@ -10,15 +11,15 @@ public class Settings : MonoBehaviour
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Toggle roadShineCheckbox;
 
-    public static bool MusicEnabled { get; private set; } = true;
-    public static int MusicVolume { get; private set; } = 10;
-    public static int SfxVolume { get; private set; } = 10;
-    public static bool SfxEnabled { get; private set; } = true;
-    public static bool RoadShineEnabled { get; private set; } = true;
+    public static bool MusicEnabled;
+    public static int MusicVolume;
+    public static int SfxVolume;
+    public static bool SfxEnabled;
+    public static bool RoadShineEnabled;
 
     private void Start()
     {
-        MatchUIToVariables();
+        LoadSettings();
     }
 
     public void ResetToDefault()
@@ -26,14 +27,18 @@ public class Settings : MonoBehaviour
         MusicEnabled = true;
         SfxEnabled = true;
         RoadShineEnabled = true;
-        MusicVolume = 10;
-        SfxVolume = 10;
+        MusicVolume = 8;
+        SfxVolume = 8;
+
+        SaveSettings();
 
         MatchUIToVariables();
     }
 
     private void MatchUIToVariables()
     {
+        // LoadSettings();
+
         musicCheckbox.isOn = MusicEnabled;
         musicVolumeSlider.value = MusicVolume;
 
@@ -44,33 +49,83 @@ public class Settings : MonoBehaviour
     }
 
     // Checkbox Update Functions
-    public void MusicToggle(bool on)
+    public void MusicToggle()
     {
-        MusicEnabled = on;
+        MusicEnabled = musicCheckbox.isOn;
     }
 
-    public void SFXToggle(bool on)
+    public void SFXToggle()
     {
-        SfxEnabled = on;
+        SfxEnabled = sfxCheckbox.isOn;
     }
 
-    public void RoadShineToggle(bool on)
+    public void RoadShineToggle()
     {
-        RoadShineEnabled = on;
+        RoadShineEnabled = roadShineCheckbox.isOn;
     }
 
     // Slider Update Functions
-    public void MusicVolumeSlider(int value)
+    public void MusicVolumeSlider()
     {
-        MusicVolume = value;
+        MusicVolume = (int)musicVolumeSlider.value;
     }
 
-    public void SFXVolumeSlider(int value)
+    public void SFXVolumeSlider()
     {
-        SfxVolume = value;
+        SfxVolume = (int)sfxVolumeSlider.value;
     }
 
     // Utility Functions
     private int BoolToInt(bool x) => x ? 1 : 0;
     private bool IntToBool(int i) => i != 0;
+
+    public static void SaveSettings(){
+        SettingsData settingsData = new SettingsData(SfxEnabled, SfxVolume, MusicEnabled, MusicVolume, RoadShineEnabled);
+        string jsonData = JsonUtility.ToJson(settingsData);
+        string filePath = Application.persistentDataPath + "/SettingData.json";
+        System.IO.File.WriteAllText(filePath, jsonData);
+        Debug.Log("Settings saved to: "+ filePath);
+    }
+
+    public void LoadSettings(){
+        string filePath = Application.persistentDataPath + "/SettingData.json";
+        string jsonData = System.IO.File.ReadAllText(filePath);
+
+        SettingsData settingsData = JsonUtility.FromJson<SettingsData>(jsonData);
+
+        Settings.SfxEnabled = settingsData.SfxEnabled;
+        Settings.SfxVolume = settingsData.SfxVolume;
+        Settings.MusicEnabled = settingsData.MusicEnabled;
+        Settings.MusicVolume = settingsData.MusicVolume;
+        Settings.RoadShineEnabled = settingsData.RoadShineEnabled;
+
+        ToString();
+        MatchUIToVariables();
+    }
+
+    public void ToString(){
+        Debug.Log("SfxEnabled: " + SfxEnabled +", SfxVolume: "+ SfxVolume + ", MusicEnabled: " + MusicEnabled + ", MusicVolume: " + MusicVolume + ", RoadShineEnabled: " + RoadShineEnabled);
+    }
+}
+
+[System.Serializable]
+public class SettingsData
+{
+    public int SfxVolume;
+    public bool SfxEnabled;
+    public bool MusicEnabled;
+    public int MusicVolume;
+    public bool RoadShineEnabled;
+
+     public SettingsData() { }
+
+    public SettingsData(bool sfxEnabled, int sfxVolume, bool musicEnabled, int musicVolume, bool roadShineEnabled)
+    {
+        MusicEnabled = musicEnabled;
+        MusicVolume = musicVolume;
+        SfxEnabled = sfxEnabled;
+        SfxVolume = sfxVolume;
+        RoadShineEnabled = roadShineEnabled;
+    } 
+
 }
