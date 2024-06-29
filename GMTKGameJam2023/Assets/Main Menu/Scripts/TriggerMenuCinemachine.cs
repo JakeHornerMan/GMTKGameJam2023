@@ -25,6 +25,8 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     // private float speed = 3f;
 
+    private bool isSettings = false;
+
     private void Start()
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
@@ -158,6 +160,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
     }
 
     public void GoToSettings(){
+        isSettings = true;
         carVeerLeft.SetActive(true);
         anim.Play("Settings");
     }
@@ -171,6 +174,10 @@ public class TriggerMenuCinemachine : MonoBehaviour
     public void GoToStart(){
         MenuManager.instance.HideBackButton();
         anim.Play("Start");
+        if(isSettings){
+            Settings.SaveSettings();
+        }
+        isSettings = false;
     }
 
     public void GoToBeginGame(){

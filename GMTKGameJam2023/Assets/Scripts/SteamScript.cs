@@ -69,7 +69,7 @@ public class Steam : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Reset All Stats & Achievements!");
-                resetAchievements();
+                // resetAchievements();
             }
         }
     }
