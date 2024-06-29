@@ -61,11 +61,14 @@ public class SoundManager : MonoBehaviour
     private SoundConfig gameMusic;
 
     private AudioSource audioSrc;
-    [SerializeField] private AudioSource musicAudio;
+    [SerializeField] public AudioSource musicAudio;
 
     [Header("Settings")]
-    [SerializeField] private bool sfxAllowed = true;
-    [SerializeField] private bool musicAllowed;
+    [HideInInspector] public bool sfxAllowed = true;
+    [HideInInspector] public bool musicAllowed;
+    [HideInInspector] public float musicVolume = 8;
+    [HideInInspector] public float sfxVolume = 10;
+
 
     void Awake()
     {
@@ -76,19 +79,35 @@ public class SoundManager : MonoBehaviour
 
         audioSrc = GetComponent<AudioSource>();
 
+        // LoadSettings();
+    }
 
+    public void LoadSettings(){
+        musicAllowed = Settings.MusicEnabled;
+        musicVolume = ((float)Settings.MusicVolume/10);
+        sfxAllowed = Settings.SfxEnabled;
+        sfxVolume = Settings.SfxVolume;
     }
 
     void Start()
     {
+        LoadSettings();
         if (musicAllowed)
         {
+        PlayMusic();
+        }
+    }
+
+    public void PlayMusic(){
+        // if (musicAllowed)
+        // {
             gameMusic = SetGameMusic();
             musicAudio.clip = gameMusic.clip;
+            musicAudio.volume = musicVolume;
             musicAudio.loop = isMenu;
             musicAudio.Play();
             // musicAudio.PlayOneShot(gameMusic.clip, gameMusic.volume);
-        }
+        // }
     }
 
     private SoundConfig SetGameMusic()
@@ -170,9 +189,11 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(SoundConfig soundConfig)
     {
-        // if (!Settings.sfxAllowed) return;
         if (soundConfig == null) return;
-        audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
+        if (sfxAllowed){
+            audioSrc.PlayOneShot(soundConfig.clip, (soundConfig.volume/10)*sfxVolume);
+            // audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
+        }
     }
 
     public void RandomPlaySound(params SoundConfig[] soundConfigs)

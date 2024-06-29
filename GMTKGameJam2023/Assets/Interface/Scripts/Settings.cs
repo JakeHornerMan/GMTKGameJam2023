@@ -12,12 +12,15 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle roadShineCheckbox;
 
     public static bool MusicEnabled;
-    public static int MusicVolume;
-    public static int SfxVolume;
+    public static float MusicVolume;
+    public static float SfxVolume;
     public static bool SfxEnabled;
     public static bool RoadShineEnabled;
 
-    private void Start()
+    [SerializeField] private SoundManager musicManager;
+    [SerializeField] private SoundManager sfxManager;
+
+    private void Awake()
     {
         LoadSettings();
     }
@@ -52,11 +55,29 @@ public class Settings : MonoBehaviour
     public void MusicToggle()
     {
         MusicEnabled = musicCheckbox.isOn;
+        if(!musicCheckbox.isOn){
+            musicManager.musicAudio.Pause();
+        }
+        else{
+            musicManager.musicAudio.UnPause();
+            musicManager.musicAudio.volume = MusicVolume/10f;
+        }
+
+        if(musicCheckbox.isOn && musicManager.musicAudio.clip == null){
+            musicManager.PlayMusic();
+        }
     }
 
     public void SFXToggle()
     {
         SfxEnabled = sfxCheckbox.isOn;
+        if(!sfxCheckbox.isOn){
+            sfxManager.sfxAllowed = false;
+        }
+        else{
+            sfxManager.sfxAllowed = true;
+            sfxManager.sfxVolume = SfxVolume/10f;
+        }
     }
 
     public void RoadShineToggle()
@@ -67,12 +88,18 @@ public class Settings : MonoBehaviour
     // Slider Update Functions
     public void MusicVolumeSlider()
     {
-        MusicVolume = (int)musicVolumeSlider.value;
+        MusicVolume = musicVolumeSlider.value;
+        if(musicCheckbox.isOn){
+            musicManager.musicAudio.volume = MusicVolume/10;
+        }
     }
 
     public void SFXVolumeSlider()
     {
-        SfxVolume = (int)sfxVolumeSlider.value;
+        SfxVolume = sfxVolumeSlider.value;
+        if(!sfxCheckbox.isOn){
+            sfxManager.sfxVolume = SfxVolume/10f;
+        }
     }
 
     // Utility Functions
@@ -111,15 +138,15 @@ public class Settings : MonoBehaviour
 [System.Serializable]
 public class SettingsData
 {
-    public int SfxVolume;
+    public float SfxVolume;
     public bool SfxEnabled;
     public bool MusicEnabled;
-    public int MusicVolume;
+    public float MusicVolume;
     public bool RoadShineEnabled;
 
      public SettingsData() { }
 
-    public SettingsData(bool sfxEnabled, int sfxVolume, bool musicEnabled, int musicVolume, bool roadShineEnabled)
+    public SettingsData(bool sfxEnabled, float sfxVolume, bool musicEnabled, float musicVolume, bool roadShineEnabled)
     {
         MusicEnabled = musicEnabled;
         MusicVolume = musicVolume;
