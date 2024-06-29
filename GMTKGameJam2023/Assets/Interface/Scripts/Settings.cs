@@ -116,18 +116,31 @@ public class Settings : MonoBehaviour
 
     public void LoadSettings(){
         string filePath = Application.persistentDataPath + "/SettingData.json";
-        string jsonData = System.IO.File.ReadAllText(filePath);
+        try{
+            string jsonData = System.IO.File.ReadAllText(filePath);
 
-        SettingsData settingsData = JsonUtility.FromJson<SettingsData>(jsonData);
+            SettingsData settingsData = JsonUtility.FromJson<SettingsData>(jsonData);
 
-        Settings.SfxEnabled = settingsData.SfxEnabled;
-        Settings.SfxVolume = settingsData.SfxVolume;
-        Settings.MusicEnabled = settingsData.MusicEnabled;
-        Settings.MusicVolume = settingsData.MusicVolume;
-        Settings.RoadShineEnabled = settingsData.RoadShineEnabled;
+            // if(settingsData == null){
+            //    ResetToDefault();
+            //    return; 
+            // }
 
-        ToString();
-        MatchUIToVariables();
+            Settings.SfxEnabled = settingsData.SfxEnabled;
+            Settings.SfxVolume = settingsData.SfxVolume;
+            Settings.MusicEnabled = settingsData.MusicEnabled;
+            Settings.MusicVolume = settingsData.MusicVolume;
+            Settings.RoadShineEnabled = settingsData.RoadShineEnabled;
+
+            ToString();
+            MatchUIToVariables();
+        }
+        catch(System.Exception e){
+            Debug.Log("Error finding file: "+ filePath);
+            ResetToDefault();
+            return; 
+        }
+        
     }
 
     public void ToString(){
