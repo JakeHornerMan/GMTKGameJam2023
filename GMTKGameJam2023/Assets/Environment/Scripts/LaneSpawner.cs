@@ -21,67 +21,70 @@ public class LaneSpawner : MonoBehaviour
         laneContainer = GameObject.Find("Lanes");
         // PopulateLanesArray();
         lanes = GameProgressionValues.LaneMap;
+        
+        if(lanes.Count <= 0) PopulateLanesArray();
+
         GenerateRoad();
     }
 
-    // public void PopulateLanesArray(){
-    //     for (int i = 0; i < 12; i++){
-    //         GameObject laneSelected;
-    //         if(i == 0 || i == 11){
-    //             laneSelected = laneTypes[1];
-    //             lanes.Add(laneSelected);
-    //             continue;
-    //         }
-    //         int randomNumber = Random.Range(0, laneTypes.Count);
-    //         laneSelected = laneTypes[randomNumber];
-    //         lanes.Add(laneSelected);
-    //     }
-    //     LaneCount();
+    public void PopulateLanesArray(){
+        for (int i = 0; i < 12; i++){
+            GameObject laneSelected;
+            if(i == 0 || i == 11){
+                laneSelected = laneTypes[1];
+                lanes.Add(laneSelected);
+                continue;
+            }
+            int randomNumber = Random.Range(0, laneTypes.Count);
+            laneSelected = laneTypes[randomNumber];
+            lanes.Add(laneSelected);
+        }
+        LaneCount();
 
-    //     if(roadCount < 4){
-    //         do{
-    //             int randomNumber;
-    //             bool isRoad = true;
-    //             do{
-    //                 randomNumber = Random.Range(1, 10);
-    //                 if(lanes[randomNumber].name != "RoadLane"){
-    //                     isRoad = false;
-    //                 }
-    //             }
-    //             while(isRoad);
-    //             lanes[randomNumber] = laneTypes[0];
-    //             roadCount++;
-    //         }
-    //         while(roadCount != 4);
-    //         LaneCount();
-    //     }
+        if(roadCount < 4){
+            do{
+                int randomNumber;
+                bool isRoad = true;
+                do{
+                    randomNumber = Random.Range(1, 10);
+                    if(lanes[randomNumber].name != "RoadLane"){
+                        isRoad = false;
+                    }
+                }
+                while(isRoad);
+                lanes[randomNumber] = laneTypes[0];
+                roadCount++;
+            }
+            while(roadCount != 4);
+            LaneCount();
+        }
 
-    //     if(busCount >= 2){
-    //         for(int i = 0; i < lanes.Count; i++){
-    //             if(lanes[i].name == "BusLane"){
-    //                 lanes[i] = laneTypes[3];
-    //                 busCount--;
-    //             }
-    //             if(busCount == 1){
-    //                 break;
-    //             }
-    //         } 
-    //         LaneCount();
-    //     }
+        if(busCount >= 2){
+            for(int i = 0; i < lanes.Count; i++){
+                if(lanes[i].name == "BusLane"){
+                    lanes[i] = laneTypes[3];
+                    busCount--;
+                }
+                if(busCount == 1){
+                    break;
+                }
+            } 
+            LaneCount();
+        }
 
-    //     if(pavementCount >= 3){
-    //         for(int i = 0; i < lanes.Count; i++){
-    //             if(lanes[i].name == "PavementLane"){
-    //                 lanes[i] = laneTypes[2];
-    //                 pavementCount--;
-    //             }
-    //             if(pavementCount == 2){
-    //                 break;
-    //             }
-    //         } 
-    //         LaneCount();
-    //     }
-    // }
+        if(pavementCount >= 3){
+            for(int i = 0; i < lanes.Count; i++){
+                if(lanes[i].name == "PavementLane"){
+                    lanes[i] = laneTypes[2];
+                    pavementCount--;
+                }
+                if(pavementCount == 2){
+                    break;
+                }
+            } 
+            LaneCount();
+        }
+    }
 
     private void LaneCount(){
         roadCount = 0;
