@@ -264,13 +264,14 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 560810137659508473}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
   popupDestroyDelay: 1.2
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 3
-  camShakeMagnitude: 5
+  camShakeDuration: 1.75
+  camShakeMagnitude: 2
   spawnSound:
   - clip: {fileID: 8300000, guid: a63fa8978cdbbbe47a97e8190745fcca, type: 3}
     volume: 1
@@ -478,6 +479,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+--- !u!1 &560810137659508473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+  m_PrefabInstance: {fileID: 8424206924125483973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1048508896171970171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}

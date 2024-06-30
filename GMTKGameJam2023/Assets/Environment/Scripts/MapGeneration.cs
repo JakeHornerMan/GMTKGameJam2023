@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class MapGeneration : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class MapGeneration : MonoBehaviour
 
     public List<GameObject> lanes;
 
-    private GameObject laneContainer;
+    [SerializeField] private GameObject laneContainer;
     
     private void Awake()
     {
         // GameProgressionValues.ResetLaneMap();
-        PopulateLanesArray();
+        
         // GenerateRoad();
     }
 
@@ -133,16 +134,16 @@ public class MapGeneration : MonoBehaviour
         }
     }
 
-    
 
-    // private void GenerateRoad()
-    // {
-    //     float instantiatePosX = -13.4f;
-    //     for (int i = 0; i < lanes.Count; i++)
-    //     {
-    //         Vector3 pos = new Vector3(instantiatePosX, 0, 0);
-    //         Instantiate(lanes[i], pos, Quaternion.identity, laneContainer.transform);
-    //         instantiatePosX = instantiatePosX + 2.5f;
-    //     }
-    // }
+
+    private void GenerateRoad()
+    {
+        float instantiatePosX = -13.4f;
+        for (int i = 0; i < lanes.Count; i++)
+        {
+            Vector3 pos = new Vector3(instantiatePosX, 0, 0);
+            Instantiate(lanes[i], pos, Quaternion.identity, laneContainer.transform);
+            instantiatePosX = instantiatePosX + 2.5f;
+        }
+    }
 }

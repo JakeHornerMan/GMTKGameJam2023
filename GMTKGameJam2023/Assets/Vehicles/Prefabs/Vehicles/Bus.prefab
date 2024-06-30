@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Touring Bus
   objectSprite: {fileID: 21300000, guid: c0fd137101a079f4e8946c91b1ceee23, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: 6a58921643d1cca418d19b07b0c2a093, type: 3}
   objectDescription: Can travel down bus lanes, and will stop at a bus stop to block
     chickens. Never on-time.
@@ -263,6 +264,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 6623514681445824420}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
