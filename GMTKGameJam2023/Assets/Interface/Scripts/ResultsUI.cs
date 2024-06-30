@@ -53,7 +53,9 @@ public class ResultsUI : MonoBehaviour
 
     public void Restart()
     {
-        // sceneFader.RestartLevel();
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
         sceneFader.ScreenWipeOut("Level01");
     }
 

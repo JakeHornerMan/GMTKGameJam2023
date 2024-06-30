@@ -28,7 +28,12 @@ public class MainMenu : MonoBehaviour
     }
 
     public void EnterWorldSelect() => sceneFader.FadeToWorlds();
-    public void EnterGame() => sceneFader.ScreenWipeOut("Level01");
+    public void EnterGame() {
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
+        sceneFader.ScreenWipeOut("Level01");
+    }
     public void EnterTutorial() => sceneFader.FadeToTutorial();
     public void EnterCredits() => sceneFader.FadeToCredits();
     public void EnterSettings() => sceneFader.FadeToSettings();
