@@ -365,6 +365,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 6623514681445824420}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
@@ -373,7 +374,7 @@ MonoBehaviour:
   camShakeDuration: 0.7
   camShakeMagnitude: 1.2
   spawnSound:
-  - clip: {fileID: 8300000, guid: 98b824afff7398b4e9770521cc92f022, type: 3}
+  - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}

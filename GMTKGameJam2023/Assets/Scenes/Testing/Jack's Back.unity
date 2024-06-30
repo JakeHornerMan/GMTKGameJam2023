@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &138021410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6207481932054021418, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+  m_PrefabInstance: {fileID: 4031766030395596951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &138021411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138021410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4608fbd4e40891c4bbfac85373e52ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneTypes:
+  - {fileID: 8249777430176998236, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
+  - {fileID: 485518899938049808, guid: 9f245c2d88d04c7489b69154a14cedf1, type: 3}
+  - {fileID: 412543907778505779, guid: c627289e1144d9141b86fecaef2e39ff, type: 3}
+  - {fileID: 7991264885057282889, guid: 2a7d3def716aff74ba3a2d152098206c, type: 3}
+  - {fileID: 7991264885057282889, guid: 0e0be535c58bf874587ef7a0b32f8d48, type: 3}
+  - {fileID: 7991264885057282889, guid: 290236cc89473724f8134fa98ff0abf5, type: 3}
+  - {fileID: 4996905425380085931, guid: a7c133c2acc6f3f46b862a6cb708991d, type: 3}
+  roadCount: 0
+  busCount: 0
+  dirtCount: 0
+  grassCount: 0
+  riverCount: 0
+  pavementCount: 0
+  lanes: []
 --- !u!1 &324269986
 GameObject:
   m_ObjectHideFlags: 0
@@ -5142,38 +5174,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 477890122295091617, guid: 290236cc89473724f8134fa98ff0abf5, type: 3}
   m_PrefabInstance: {fileID: 1712315826}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1438356024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6207481932054021418, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
-  m_PrefabInstance: {fileID: 4031766030395596951}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1438356025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438356024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf18953b1c7965449a87e3cf78ae1ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laneTypes:
-  - {fileID: 8249777430176998236, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
-  - {fileID: 485518899938049808, guid: 9f245c2d88d04c7489b69154a14cedf1, type: 3}
-  - {fileID: 412543907778505779, guid: c627289e1144d9141b86fecaef2e39ff, type: 3}
-  - {fileID: 7991264885057282889, guid: 2a7d3def716aff74ba3a2d152098206c, type: 3}
-  - {fileID: 7991264885057282889, guid: 0e0be535c58bf874587ef7a0b32f8d48, type: 3}
-  - {fileID: 7991264885057282889, guid: 290236cc89473724f8134fa98ff0abf5, type: 3}
-  - {fileID: 4996905425380085931, guid: a7c133c2acc6f3f46b862a6cb708991d, type: 3}
-  roadCount: 0
-  busCount: 0
-  dirtCount: 0
-  grassCount: 0
-  riverCount: 0
-  pavementCount: 0
-  lanes: []
 --- !u!4 &1636831143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3256984501352468851, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
@@ -5386,7 +5386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4173655568478535620, guid: 19760c0a7a4f6bd47bb8c5d01490fa2e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5955,7 +5955,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6207481932054021418, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1438356025}
+      addedObject: {fileID: 138021411}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
 --- !u!1001 &6108627401256980950
 PrefabInstance:

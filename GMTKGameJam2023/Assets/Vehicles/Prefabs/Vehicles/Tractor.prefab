@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Trusty Tractor
   objectSprite: {fileID: 21300000, guid: 7a1afee718f8c014c8d5eb3fc1aa3b16, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: c9f8e2fe32c93ec4983f0f9b19810b62, type: 3}
   objectDescription: A precious farm tractor, bringing with it a herd of sheep to
     control the chicken swarm.
@@ -573,6 +574,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 6623514681445824420}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash

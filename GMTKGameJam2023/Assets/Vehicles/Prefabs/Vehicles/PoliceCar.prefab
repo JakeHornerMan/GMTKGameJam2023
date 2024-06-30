@@ -276,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Police Car
   objectSprite: {fileID: -218839352, guid: b41f9bb12029b7e469d5fef77ad08e0d, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: f126d11f7820eb14c903395f2ba47321, type: 3}
   objectDescription: Deploys spike traps on the road to eliminate chickens in their
     tracks. Emergency vehicles can also be placed in bus lanes (emergencies only).
@@ -317,6 +318,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 5320878867040617769}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
