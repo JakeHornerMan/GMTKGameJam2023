@@ -311,13 +311,13 @@ public class VehicleSpawner : MonoBehaviour
             spawnedVehiclesContainer
         );
 
+        ultimateManager.ultimateEnabled = false;
+
         lastLaneSpawned = hit.collider;
         currentTimeUntilNextSpawn = timeUntilNextSpawn;
 
         // // Reduce Car Wallet Count
         // carWallet.carCount--;
-
-        ultimateManager.ultimateEnabled = false;
 
         if(gameManager != null) gameManager.ultimateSpawnCount++;
 
@@ -344,10 +344,12 @@ public class VehicleSpawner : MonoBehaviour
         if (gameManager != null)
         {
             SetActiveCar(car, shineLane, gameManager.tokens);
+            SelectUltimate(null);
         }
         if (tutorialManager != null)
         {
             SetActiveCar(car, shineLane, tutorialManager.tokens);
+            SelectUltimate(null);
         }
     }
 

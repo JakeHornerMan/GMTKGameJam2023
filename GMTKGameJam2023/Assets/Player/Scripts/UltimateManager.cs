@@ -51,13 +51,13 @@ public class UltimateManager : MonoBehaviour
         {
             StartCoroutine(RefillUltimate());
             timeUntilRefill -= Time.deltaTime;
-            // Debug.LogWarning(timeUntilRefill);
+            // Debug.LogWarning("Refillultimate: "+ ultimateEnabled);
         }
-
     }
 
     private IEnumerator RefillUltimate()
     {
+        // Debug.Log("Refillultimate: "+ timeUntilRefill);
         // infinite loop, be careful with these!
         while (ultimateEnabled == false)
         {
@@ -65,8 +65,11 @@ public class UltimateManager : MonoBehaviour
             refillDelaySeconds = correspondingUltimate.ultimateResetTime;
             yield return new WaitForSeconds(refillDelaySeconds);
             // reset timeUntilRefill
-            timeUntilRefill = correspondingUltimate.ultimateResetTime;
-            ultimateEnabled = true;
+            if(timeUntilRefill <= 0){
+                ultimateEnabled = true;
+                timeUntilRefill = correspondingUltimate.ultimateResetTime;
+            }
+            
         }
     }
 }
