@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         if (!devMode)
         {
-            if (PlayerValues.Cars != null)
+            if (PlayerValues.Cars.Count > 0)
             {
                 carsInLevel = PlayerValues.Cars;
             }

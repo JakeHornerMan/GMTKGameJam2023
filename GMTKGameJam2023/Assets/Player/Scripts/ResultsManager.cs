@@ -18,12 +18,12 @@ public class ResultsManager : MonoBehaviour
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
         mainCamera = FindObjectOfType<CameraMenuMove>();
-        ResetSpawnChicken();
     }
 
     void Start()
     {
         leaderboardManager.UploadToLeaderboardAndUpdate(Points.playerScore);
+        ResetSpawnChicken();
     }
 
     public void GoToLeaderboard(){
@@ -35,6 +35,7 @@ public class ResultsManager : MonoBehaviour
     }    
 
     public void ResetSpawnChicken(){
+        Debug.Log("Start Chicken spawned");
         IEnumerator coroutine = SpawnChickenForResults(timeBetweenSpawns);
         StartCoroutine(coroutine);
     }
