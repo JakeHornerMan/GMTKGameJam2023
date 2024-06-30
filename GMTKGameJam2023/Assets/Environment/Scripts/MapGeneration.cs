@@ -21,7 +21,7 @@ public class MapGeneration : MonoBehaviour
     private void Awake()
     {
         // GameProgressionValues.ResetLaneMap();
-        
+        PopulateLanesArray();
         // GenerateRoad();
     }
 
