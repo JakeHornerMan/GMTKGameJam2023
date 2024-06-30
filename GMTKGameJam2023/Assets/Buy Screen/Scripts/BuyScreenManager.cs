@@ -148,7 +148,7 @@ public class BuyScreenManager : MonoBehaviour
             
             GameObject newBuyCar = Instantiate(rosterCarPrefab, child.transform);
 
-            newBuyCar.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+            newBuyCar.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
             
             buyScreenCar.correspondingCar = playerCars[i];
@@ -162,7 +162,7 @@ public class BuyScreenManager : MonoBehaviour
             
             GameObject newBuyUltimate = Instantiate(rosterUltimatePrefab, child.transform);
 
-            newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+            newBuyUltimate.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
             
             buyScreenUltimate.correspondingUltimate = playerUltimate;
