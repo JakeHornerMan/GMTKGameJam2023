@@ -83,7 +83,7 @@ public class InterfaceManager : MonoBehaviour
             }
         }
 
-        youSurvived.SetActive(false);
+        if(youSurvived != null) youSurvived.SetActive(false);
 
         for (int i = 0; i < carWalletNodeContainers.Length; i++)
         {
@@ -248,14 +248,11 @@ public class InterfaceManager : MonoBehaviour
 
     public void survivedPopup()
     {
-
         youSurvived.SetActive(true);
         if (youSurvived.transform.GetChild(0).gameObject.activeSelf == false)
         {
             StartCoroutine(WaitForConfetti());
         }
-        
-
     }
 
     private IEnumerator WaitForConfetti()

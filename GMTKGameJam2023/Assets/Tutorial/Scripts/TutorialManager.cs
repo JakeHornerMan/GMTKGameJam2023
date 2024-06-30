@@ -217,8 +217,8 @@ public class TutorialManager : MonoBehaviour
 
     public void Round4TokenWave(){
         vehicleSpawner.disableVehicleSpawn = false;
-        tokenSpawner.SpawnToken(tokenPrefab, tokenContainer.transform);
-        // Instantiate(tokenPrefabs, new Vector3(1f, 1f, 1f),Quaternion.identity, tokenContainer.transform);
+        // tokenSpawner.SpawnToken(tokenPrefab, tokenContainer.transform);
+        Instantiate(tokenPrefab, new Vector3(4f, 1f, 1f),Quaternion.identity, tokenContainer.transform);
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
