@@ -98,6 +98,10 @@ public class Ultimate : MonoBehaviour
 
         if (car != null)
             car.LaunchCar();
+
+        
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+            wall?.WallHit();
     }
 
     private void HandleTokenCollision(TokenController token)
