@@ -83,8 +83,8 @@ public abstract class Car : MonoBehaviour
     [Header("Sound")]
     [SerializeField] private SoundConfig[] spawnSound;
 
-    private int carKillCount = 0;
-    protected int totalPoints = 0;
+    public int carKillCount = 0;
+    public int totalPoints = 0;
 
     protected GameManager gameManager;
     protected TutorialManager tutorialManager;
@@ -131,12 +131,16 @@ public abstract class Car : MonoBehaviour
             }
 
         }
+        UpdateComboText();
+    }
 
+    public void UpdateComboText()
+    {
         if (comboText != null)
         {
             comboText.text = $"{comboSymbol}{carKillCount}";
         }
-    }
+    } 
 
     public virtual void SetCarSpeed(float speed)
     {

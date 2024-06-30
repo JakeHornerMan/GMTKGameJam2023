@@ -22,14 +22,14 @@ public class PsychicHen : ChickenHealth
 
     public void SpawnPortal(GameObject hitcar)
     {
-        Vector3 portalPos = new(GetRandomRoad(hitcar.GetComponent<Car>().placeableLaneTags, hitcar).transform.position.x, transform.position.y -2, 0);
+        Vector3 portalPos = new(GetRandomRoad(hitcar.GetComponent<Car>().placeableLaneTags).transform.position.x, transform.position.y -2, 0);
         GameObject spawnedPortal = Instantiate(spawnPortal, portalPos, Quaternion.identity);
         soundManager.PlayEnterPortal();
         spawnedPortal.GetComponent<PortalController>().capturedVehicle = hitcar;
         hitcar.SetActive(false);
     }
 
-    private GameObject GetRandomRoad(List<string> placeableLaneTags, GameObject hitcar)
+    private GameObject GetRandomRoad(List<string> placeableLaneTags)
     {
         if(placeableLaneTags.Contains("Road")){
             roadLanes = GameObject.FindGameObjectsWithTag("Road");
