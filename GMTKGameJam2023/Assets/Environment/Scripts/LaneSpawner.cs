@@ -84,6 +84,24 @@ public class LaneSpawner : MonoBehaviour
             } 
             LaneCount();
         }
+
+        if(riverCount < 1){
+            do{
+                int randomNumber;
+                bool isWater = true;
+                do{
+                    randomNumber = Random.Range(1, 10);
+                    if(lanes[randomNumber].name != "RoadLane" && lanes[randomNumber].name != "River"){
+                        isWater = false;
+                    }
+                }
+                while(isWater);
+                lanes[randomNumber] = laneTypes[5];
+                riverCount++;
+            }
+            while(riverCount < 1);
+            LaneCount();
+        }
     }
 
     private void LaneCount(){

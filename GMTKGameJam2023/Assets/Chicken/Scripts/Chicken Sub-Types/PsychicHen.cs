@@ -56,6 +56,8 @@ public class PsychicHen : ChickenHealth
             AddToAllLanes(pavementLanes);
         }
 
+        RemoveClosestLane();
+
         int randomRoad = Random.Range(0, allLanes.Count-1);
         return allLanes[randomRoad];
     }
@@ -72,6 +74,31 @@ public class PsychicHen : ChickenHealth
 
     private void RemoveClosestLane()
     {
-        
+        float distanceToClosestRoad = Mathf.Infinity;
+        int position = -1;
+
+        for (int i = 0; i < allLanes.Count; i++)
+        {
+            float distanceToRoad = (allLanes[i].transform.position - this.transform.position).sqrMagnitude;
+            if (distanceToRoad < distanceToClosestRoad)
+            {
+                distanceToClosestRoad = distanceToRoad;
+                position = i;
+            }
+        }
+        if(LaneCount(allLanes[position].name) > 1){
+            allLanes.RemoveAt(position);
+        }
+    }
+
+    private int LaneCount(string name){
+        int amount = 0;
+        foreach (GameObject item in allLanes)
+        {
+            if(item.name == name){
+                amount ++;
+            }
+        }
+        return amount;
     }
 }
