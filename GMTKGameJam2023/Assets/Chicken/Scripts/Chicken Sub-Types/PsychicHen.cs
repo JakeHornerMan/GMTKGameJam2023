@@ -29,7 +29,7 @@ public class PsychicHen : ChickenHealth
         hitcar.SetActive(false);
     }
 
-    private GameObject GetRandomRoad(List<string> placeableLaneTags)
+    private GameObject GetRandomRoad(List<string> placeableLaneTags, GameObject hitcar)
     {
         if(placeableLaneTags.Contains("Road")){
             roadLanes = GameObject.FindGameObjectsWithTag("Road");
