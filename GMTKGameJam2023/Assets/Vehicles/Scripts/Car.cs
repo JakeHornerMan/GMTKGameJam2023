@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using System.Linq;
 
 public abstract class Car : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public abstract class Car : MonoBehaviour
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
     [SerializeField] private float particleDestroyDelay = 2f;
+    [SerializeField] private GameObject exhaustParticleParent;
 
     //[Header("References to Children")]
     private GameObject carSpriteObject;
@@ -655,6 +657,36 @@ public abstract class Car : MonoBehaviour
             if (gameManager != null) gameManager.AddPlayerScore(totalPoints);
             if (gameManager != null) gameManager.SetHighestCombo(carKillCount);
             if (tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
+        }
+
+        if (exhaustParticleParent != null)
+        {
+            bool parentDestroyed = false;
+
+            exhaustParticleParent.transform.SetParent(null);
+
+            if (exhaustParticleParent.transform.childCount == 0)
+            {
+                var main = exhaustParticleParent.GetComponent<ParticleSystem>().main;
+                main.stopAction = ParticleSystemStopAction.None;
+                main.loop = false;
+                Destroy(exhaustParticleParent.gameObject, main.duration + main.startLifetime.constantMax);
+                return;
+            }
+
+            for (int i = 0; i < exhaustParticleParent.transform.childCount; i++)
+            {
+                var main = exhaustParticleParent.transform.GetChild(i).GetComponent<ParticleSystem>().main;
+                main.stopAction = ParticleSystemStopAction.None;
+                main.loop = false;
+                if (!parentDestroyed)
+                {
+                    Destroy(exhaustParticleParent.gameObject, main.duration + main.startLifetime.constantMax);
+                    parentDestroyed = true;
+                }
+                
+            }
+            
         }
 
         Destroy(gameObject);

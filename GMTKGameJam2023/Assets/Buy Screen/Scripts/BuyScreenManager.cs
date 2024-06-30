@@ -184,6 +184,11 @@ public class BuyScreenManager : MonoBehaviour
         playerCars = CreateRosterList();
     }
 
+    public void UpdatePlayerUltimate()
+    {
+        playerUltimate = GetUltimateSetInBuyScreen();
+    }
+
     public List<Car> CreateRosterList()
     {
         // Get a list/array from all children of "RosterHolder" that have the CarButton component, and return it
@@ -338,7 +343,6 @@ public class BuyScreenManager : MonoBehaviour
                 if (ultimate == playerUltimate)
                 {
                     isUnique = false;
-                    break;
                 }
 
                 if (isUnique)
@@ -376,6 +380,7 @@ public class BuyScreenManager : MonoBehaviour
             remainingRerolls--;
             UpdateRerollCounter(); // Update visual counter
             UpdatePlayerCarsList();
+            UpdatePlayerUltimate();
             PopulateShops();
             UpdateSlotColors();
         }

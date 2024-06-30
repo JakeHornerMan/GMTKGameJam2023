@@ -681,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Limousine
   objectSprite: {fileID: 21300000, guid: ea6d29369c7d0f94796d333d0544ba97, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: a9713f14b3c5bf54abc91d1ea0d52f30, type: 3}
   objectDescription: Call the press, a celebrity's in town! But chickens beware,
     the paparazzi are out in full force, with stunning cameras following the celebrity
@@ -722,6 +723,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 93226976787537863}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash

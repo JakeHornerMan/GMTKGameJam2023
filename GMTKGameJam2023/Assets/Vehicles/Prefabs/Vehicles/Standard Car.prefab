@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: HatchBack
   objectSprite: {fileID: 21300000, guid: abbdbcb5403c3294b9898085dac144c1, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: fee5b1d9b3a8d3549bafcfd63822c156, type: 3}
   objectDescription: The standard car, selected by default and gets the job done.
     Travels in a straight line down the road, eliminating any chicken it collides
@@ -264,6 +265,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 6623514681445824420}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
@@ -456,6 +458,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 239649986962395248}
     m_Modifications:
+    - target: {fileID: 2159207730562167585, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
       propertyPath: m_Name
       value: Exhaust

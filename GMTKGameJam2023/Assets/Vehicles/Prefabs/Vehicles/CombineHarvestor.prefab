@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Combine Harvestor
   objectSprite: {fileID: 1668997639, guid: a7338e324dd7376459f2d3d1297307fe, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 21300000, guid: fc04fc7322ef07e45a1a3fef97cfd31b, type: 3}
   objectDescription: Large but slow-moving vehicle, with high capabilities for carnage.
     Can be placed on grass to stop chickens where most can't.
@@ -284,6 +285,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 560810137659508473}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
@@ -498,6 +500,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+--- !u!1 &560810137659508473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8295822143166395708, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}
+  m_PrefabInstance: {fileID: 8424206924125483973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1048508896171970171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8819674081772731838, guid: b3498f8184a8ca5488633f733c5a5229, type: 3}

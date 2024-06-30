@@ -415,6 +415,7 @@ MonoBehaviour:
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   particleDestroyDelay: 2
+  exhaustParticleParent: {fileID: 499467861673513022}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
@@ -661,6 +662,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
+--- !u!1 &499467861673513022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7826078791388366233, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
+  m_PrefabInstance: {fileID: 7671220531658102183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1129031108899297468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7340508548992126235, guid: d40bcabd0c6192d44b188d1fd4dd8d8f, type: 3}
