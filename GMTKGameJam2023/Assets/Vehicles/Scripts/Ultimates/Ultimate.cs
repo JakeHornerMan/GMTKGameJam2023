@@ -21,6 +21,7 @@ public class Ultimate : MonoBehaviour
     [Tooltip("Synbol used before combo count, e.g. {x}4")]
     [SerializeField] private TextMeshProUGUI comboText;
     protected GameManager gameManager;
+    protected TutorialManager tutorialManager;
     private Rigidbody2D rb;
 
     [Header("Damage")]
@@ -61,6 +62,7 @@ public class Ultimate : MonoBehaviour
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
         gameManager = FindObjectOfType<GameManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         soundManager = FindObjectOfType<SoundManager>();
         rb = GetComponent<Rigidbody2D>();
         soundManager?.RandomPlaySound(spawnSound);
@@ -68,10 +70,12 @@ public class Ultimate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameManager.isGameOver)
-        {
-            rb.velocity = Vector2.zero;
-            return;
+        if(gameManager != null){
+            if (gameManager.isGameOver)
+            {
+                rb.velocity = Vector2.zero;
+                return;
+            }
         }
 
         // Debug.Log(collision.gameObject.name);
@@ -92,8 +96,12 @@ public class Ultimate : MonoBehaviour
 
         Car car = collision.gameObject.GetComponent<Car>();
 
-        if (collision != null)
+        if (car != null)
             car.LaunchCar();
+
+        
+        WallController wall = collision.gameObject.GetComponent<WallController>();
+            wall?.WallHit();
     }
 
     private void HandleTokenCollision(TokenController token)
@@ -115,7 +123,8 @@ public class Ultimate : MonoBehaviour
         // Collect Tokens
         token.TokenCollected();
 
-        gameManager.UpdateTokens(1);
+        if(gameManager != null) gameManager.UpdateTokens(1);
+        if(tutorialManager != null)tutorialManager.UpdateTokens(1);
 
     }
 
@@ -154,7 +163,8 @@ public class Ultimate : MonoBehaviour
     private void KillChicken(ChickenHealth chickenHealth)
     {
         // Increase Kill Count
-        gameManager.killCount++;
+        if(gameManager != null) gameManager.killCount++;
+        if(tutorialManager != null) tutorialManager.killCount++;
 
         // Increase Car-Specific Kill Count
         carKillCount++;
@@ -195,8 +205,10 @@ public class Ultimate : MonoBehaviour
 
     public void OnDestroy()
     {
-        if (totalPoints > 0)
-            gameManager.AddPlayerScore(totalPoints);
+        if (totalPoints > 0){
+            if(gameManager != null) gameManager.AddPlayerScore(totalPoints);
+            if(tutorialManager != null) tutorialManager.AddPlayerScore(totalPoints);
+        }
         StopAllCoroutines();
         Destroy(gameObject);
     }

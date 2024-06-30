@@ -22,6 +22,7 @@ public class ChickenMovement : MonoBehaviour
     [SerializeField] private float minMoveTime = 0.5f;
     [SerializeField] public float maxMoveTime = 3.5f;
     [SerializeField] private float laneDistance = 2f;
+    [SerializeField] private bool isTutorialChicken = false;
 
     [Header("Per-Level Logic")]
     [HideInInspector] public float maxYHeight = 5f; //THESE DO NOT WORK ATM, WILL BE ADDRESSED IN THE FUTURE BUT IGNORE THIS FOR NOW PLZ TY
@@ -289,7 +290,12 @@ public class ChickenMovement : MonoBehaviour
                     break;
             }
 
+            if(isTutorialChicken){
+                directionVector = new Vector2(1, 0);
+            }
+
             directionApproved = CheckDirection();
+            
 
             //// Check boundaries.
             //if ((directionVector.y == 1 && transform.position.y + (1 * laneDistance) < maxYHeight) ||
