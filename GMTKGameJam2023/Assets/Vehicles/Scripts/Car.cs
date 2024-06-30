@@ -60,6 +60,7 @@ public abstract class Car : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem tokenCollectParticles;
+    [SerializeField] private ParticleSystem cashCollectParticles;
     [SerializeField] private float particleDestroyDelay = 2f;
     [SerializeField] private GameObject exhaustParticleParent;
 
@@ -304,12 +305,15 @@ public abstract class Car : MonoBehaviour
     public void HandleEnergyTokenCollision(TokenController token)
     {
         // Token Particles
-        GameObject newTokenParticles = Instantiate(
-                        tokenCollectParticles.gameObject,
-                        token.transform.position,
-                        Quaternion.identity
-                    );
-        Destroy(newTokenParticles, particleDestroyDelay);
+        if (tokenCollectParticles != null)
+        {
+            GameObject newTokenParticles = Instantiate(
+                            tokenCollectParticles.gameObject,
+                            token.transform.position,
+                            Quaternion.identity
+                        );
+            Destroy(newTokenParticles, particleDestroyDelay);
+        }
 
         // +1 Token Popup
         ShowPopup(
@@ -329,12 +333,15 @@ public abstract class Car : MonoBehaviour
     public void HandleCashTokenCollision(TokenController token)
     {
         // Token Particles
-        GameObject newTokenParticles = Instantiate(
-                        tokenCollectParticles.gameObject,
-                        token.transform.position,
-                        Quaternion.identity
-                    );
-        Destroy(newTokenParticles, particleDestroyDelay);
+        if (cashCollectParticles != null)
+        {
+            GameObject newTokenParticles = Instantiate(
+                            cashCollectParticles.gameObject,
+                            token.transform.position,
+                            Quaternion.identity
+                        );
+            Destroy(newTokenParticles, particleDestroyDelay);
+        }
 
         // +1 Token Popup
         ShowPopup(
@@ -684,9 +691,9 @@ public abstract class Car : MonoBehaviour
                     Destroy(exhaustParticleParent.gameObject, main.duration + main.startLifetime.constantMax);
                     parentDestroyed = true;
                 }
-                
+
             }
-            
+
         }
 
         Destroy(gameObject);
