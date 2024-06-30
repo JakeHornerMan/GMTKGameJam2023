@@ -370,12 +370,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3631246900296472120, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
       propertyPath: m_Name
       value: PsychicHen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7432632716323759472, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
@@ -426,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[0]
       value: 
-      objectReference: {fileID: 1351260878151097129, guid: d88b644156c3a224697efd3585e1337a, type: 3}
+      objectReference: {fileID: -2607371565145683835, guid: 2332c580762107d4db060d36a551bdb9, type: 3}
     - target: {fileID: 549575233066788368, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: carsInLevel.Array.data[1]
       value: 
