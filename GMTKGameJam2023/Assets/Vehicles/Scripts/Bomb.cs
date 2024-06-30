@@ -57,7 +57,7 @@ public class Bomb : MonoBehaviour
         else
         {
             yield return null;
-        }    
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -79,7 +79,7 @@ public class Bomb : MonoBehaviour
         WallController wall = collision.gameObject.GetComponent<WallController>();
 
         // TODO: Fox explosion breaking walls
-        if(wall != null)
+        if (wall != null)
             HandleWallCollision(wall);
     }
 
@@ -133,6 +133,7 @@ public class Bomb : MonoBehaviour
 
     private void HandleWallCollision(WallController wall)
     {
+        Debug.Log("Explosion hit a wall!!!");
         wall.WallHit();
         CameraShaker.instance.Shake(camShakeDuration, camShakeMagnitude);
     }
