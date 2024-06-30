@@ -411,7 +411,7 @@ public abstract class Car : MonoBehaviour
         sheep.HandleDeath();
     }
 
-    private void KillChicken(ChickenHealth chickenHealth)
+    public void KillChicken(ChickenHealth chickenHealth)
     {
         // Increase Kill Count
         if (gameManager != null)

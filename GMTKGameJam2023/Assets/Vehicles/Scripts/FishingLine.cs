@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FishingLine : MonoBehaviour
 {
+    private GameObject specialChickenContainer;
     private GameObject chickenContainer;
-    public GameObject specialChicken;
+    public GameObject chicken;
     public GameObject chickenSprite;
     public GameObject hook;
     private LineRenderer lineRenderer;
@@ -13,26 +14,38 @@ public class FishingLine : MonoBehaviour
     [SerializeField] private int damage = 20;
     private bool chipDamageChicken = false;
 
+    [SerializeField] private Car car;
+    private ChickenHealth chickenHealth;
+
     private bool isAttached = false;
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        chickenContainer = GameObject.Find("SpecialChickenContainer");
+        specialChickenContainer = GameObject.Find("SpecialChickenContainer");
+        chickenContainer = GameObject.Find("ChickenContainer");
         // hook.SetActive(false);
         FindTarget();
     }
 
     public void FindTarget()
     {
+        if(gameObject.transform.position.y > 6f){
+            //car.DestroySelf();
+            Destroy(gameObject);
+        }
         StartCoroutine(WaitAndFindTargetChicken());
     }
 
     private IEnumerator WaitAndFindTargetChicken()
     {
         yield return new WaitForSeconds(1f);
-        specialChicken = GetClosestSpecialChicken();
-        chickenSprite = specialChicken.GetComponent<ChickenHealth>().chickenSprite;
+        chicken = GetClosestSpecialChicken();
+        if(chicken == null){
+            chicken = GetClosestChicken();
+        }
+        chickenHealth = chicken.GetComponent<ChickenHealth>();
+        chickenSprite = chicken.GetComponent<ChickenHealth>().chickenSprite;
         StartCoroutine(AnimateLineOut());
     }
 
@@ -45,7 +58,7 @@ public class FishingLine : MonoBehaviour
     {
         if (chickenSprite == null && isAttached)
         {
-            Debug.Log("chickenDied");
+            // Debug.Log("chickenDied");
             isAttached = false;
             StartCoroutine(AnimateLineIn());
         }
@@ -60,6 +73,24 @@ public class FishingLine : MonoBehaviour
     }
 
     private GameObject GetClosestSpecialChicken()
+    {
+        GameObject bestTarget = null;
+        Vector3 currentPosition = transform.position;
+        float closestDistanceSqr = Mathf.Infinity;
+        foreach (Transform child in specialChickenContainer.transform)
+        {
+            Vector3 directionToTarget = child.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = child.gameObject;
+            }
+        }
+        return bestTarget;
+    }
+
+    private GameObject GetClosestChicken()
     {
         GameObject bestTarget = null;
         Vector3 currentPosition = transform.position;
@@ -81,7 +112,7 @@ public class FishingLine : MonoBehaviour
     {
         if (!chipDamageChicken)
         {
-            StartCoroutine(specialChicken.GetComponent<ChickenHealth>().ChipDamage(damage));
+            StartCoroutine(chicken.GetComponent<ChickenHealth>().ChipDamage(damage));
             chipDamageChicken = true;
         }
     }
@@ -119,7 +150,7 @@ public class FishingLine : MonoBehaviour
         Debug.Log("FishingLine In Fishing line");
         chipDamageChicken = false;
         isAttached = false;
-        specialChicken = null;
+        chicken = null;
         chickenSprite = null;
 
         lineRenderer.SetPosition(0, gameObject.transform.position);
@@ -144,7 +175,8 @@ public class FishingLine : MonoBehaviour
             }
             yield return null;
         }
-
+        car.KillChicken(chickenHealth);
+        chickenHealth = null;
     }
 
 }
