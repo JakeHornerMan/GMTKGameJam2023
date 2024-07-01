@@ -888,10 +888,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsText: {fileID: 1838654265459237576}
   killsText: {fileID: 7124129047202810438}
+  tokensText: {fileID: 4422079444002120288}
+  timeText: {fileID: 7625437685788678360}
+  roundText: {fileID: 8638104035687795768}
+  currentCarNameText: {fileID: 736786533477114674}
+  speedUpText: {fileID: 3906398578797441894}
+  missedChickenCountText: {fileID: 4153025628551972278}
+  youSurvived: {fileID: 9003743512710487022}
+  canvas: {fileID: 4430397549852096543}
   carWalletCountText: {fileID: 8144291567973061954}
   carWalletIcon: {fileID: 8426202767138733122}
-  carWalletRadialUI: {fileID: 3420721294669365155}
-  ultimateRadialUI: {fileID: 5339635319658689625}
   carWalletNodes:
   - {fileID: 5727953508784074969}
   - {fileID: 2303563531158082622}
@@ -914,14 +920,10 @@ MonoBehaviour:
   - {fileID: 8934239382990315101}
   - {fileID: 8690305494781056730}
   - {fileID: 6585979510832643365}
-  tokensText: {fileID: 4422079444002120288}
-  timeText: {fileID: 7625437685788678360}
-  roundText: {fileID: 8638104035687795768}
-  currentCarNameText: {fileID: 736786533477114674}
-  speedUpText: {fileID: 3906398578797441894}
-  missedChickenCountText: {fileID: 4153025628551972278}
-  youSurvived: {fileID: 9003743512710487022}
-  canvas: {fileID: 4430397549852096543}
+  carWalletRadialUI: {fileID: 3420721294669365155}
+  ultimateRadialUI: {fileID: 5339635319658689625}
+  ultimateRadialFlash: {fileID: 4422299912222011059}
+  ultimateIconAnimator: {fileID: 8717966259304743779}
   speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
   speedUpTextDeactivationDelay: 2
@@ -1650,6 +1652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4422299912222011059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8220183527706927809, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4430397549852096543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8230099699654669421, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -1764,6 +1771,11 @@ MonoBehaviour:
 --- !u!1 &8690305494781056730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4023673550761761448, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8717966259304743779 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4012899771826409233, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8934239382990315101 stripped
