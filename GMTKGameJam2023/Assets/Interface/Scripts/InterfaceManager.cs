@@ -126,7 +126,7 @@ public class InterfaceManager : MonoBehaviour
         }
 
         // Show Effects when ultimate is charged up fully
-        if (ultimateRadialUI.fillAmount == 1)
+        if (ultimateRadialUI.fillAmount == 1 && gameManager.ultimateInLevel != null)
         {
             ultimateRadialFlash.SetActive(true);
             ultimateIconAnimator.SetBool("FullyCharged", true);
