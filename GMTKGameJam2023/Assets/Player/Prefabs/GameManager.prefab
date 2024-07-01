@@ -923,7 +923,11 @@ MonoBehaviour:
   carWalletRadialUI: {fileID: 3420721294669365155}
   ultimateRadialUI: {fileID: 5339635319658689625}
   ultimateRadialFlash: {fileID: 4422299912222011059}
+  ultimateBackgroundFlash: {fileID: 3689705143910736777}
   ultimateIconAnimator: {fileID: 8717966259304743779}
+  enableBackgroundFlash: 0
+  enableUltParticles: 1
+  ultParticles: {fileID: 5924066069694291635}
   speedUpTextFadeOutTrigger: FadeOut
   speedUpTextDuration: 3
   speedUpTextDeactivationDelay: 2
@@ -1614,6 +1618,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3689705143910736777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8969103705634631675, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3906398578797441894 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8753466898580586260, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
@@ -1681,6 +1690,11 @@ GameObject:
 --- !u!1 &5727953508784074969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 13819027449199787, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
+  m_PrefabInstance: {fileID: 5714187266826882162}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5924066069694291635 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2124113250341900993, guid: c0b42cb39e9da204b8aed3584bc27aa1, type: 3}
   m_PrefabInstance: {fileID: 5714187266826882162}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6585979510832643365 stripped

@@ -28,7 +28,11 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image carWalletRadialUI;
     [SerializeField] private Image ultimateRadialUI;
     [SerializeField] private GameObject ultimateRadialFlash;
+    [SerializeField] private GameObject ultimateBackgroundFlash;
     [SerializeField] private Animator ultimateIconAnimator;
+    [SerializeField] private bool enableBackgroundFlash = false;
+    [SerializeField] private bool enableUltParticles = true;
+    [SerializeField] private ParticleSystem ultParticles;
     // [SerializeField] private GameObject ultimateNotification;
 
     [HideInInspector] private GameObject ultimateButton;
@@ -126,11 +130,17 @@ public class InterfaceManager : MonoBehaviour
         {
             ultimateRadialFlash.SetActive(true);
             ultimateIconAnimator.SetBool("FullyCharged", true);
+            if (enableBackgroundFlash)
+                ultimateBackgroundFlash.SetActive(true);
+            if (enableUltParticles)
+                ultParticles.gameObject.SetActive(true);
         }
         else
         {
             ultimateRadialFlash.SetActive(false);
             ultimateIconAnimator.SetBool("FullyCharged", false);
+            ultimateBackgroundFlash.SetActive(false);
+            ultParticles.gameObject.SetActive(false);
         }
     }
 
