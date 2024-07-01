@@ -17,6 +17,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject[] carWalletNodeContainers;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private TextMeshProUGUI currentCarNameText;
     [SerializeField] private TextMeshProUGUI speedUpText;
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
@@ -96,6 +97,8 @@ public class InterfaceManager : MonoBehaviour
                 carWalletNodeContainers[i].SetActive(false);
             }
         }
+
+        roundText.text = "LVL. " + GameProgressionValues.RoundNumber.ToString("0");
     }
 
     private void Update()

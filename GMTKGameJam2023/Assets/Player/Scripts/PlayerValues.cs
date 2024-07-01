@@ -12,14 +12,14 @@ public static class PlayerValues
     public static int playerCash = 0;
 
     public static void SetDefaultValues(){
-        Cars.Clear();
+        Cars = null;
         ultimate = null;
         missedChickenLives = 3;
         carWalletNodes = 3;
         playerCash = 0;
     }
 
-    public static void ResetCasj(){
+    public static void ResetCash(){
         playerCash = 0;
     }
 }

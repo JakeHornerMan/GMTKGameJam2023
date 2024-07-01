@@ -11,6 +11,7 @@ public class ResultsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI killsText;
     [SerializeField] private TextMeshProUGUI missedChickensText;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI roundText;
     private GameManager gameManager;
 
     [Header("Settings")]
@@ -35,7 +36,6 @@ public class ResultsUI : MonoBehaviour
 
     private void Start()
     {
-        SetStaticValuesToDefault();
         gameManager = FindObjectOfType<GameManager>();
         SetUI();
         LevelEndAudio();
@@ -53,7 +53,9 @@ public class ResultsUI : MonoBehaviour
 
     public void Restart()
     {
-        // sceneFader.RestartLevel();
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
         sceneFader.ScreenWipeOut("Level01");
     }
 
@@ -64,6 +66,7 @@ public class ResultsUI : MonoBehaviour
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString();
+        roundText.text = "Round "+ GameProgressionValues.RoundNumber.ToString("00");
         SetChickenWave();
     }
 
@@ -78,9 +81,5 @@ public class ResultsUI : MonoBehaviour
 
         gameManager.waves.Add(chickenWave);
         // gameManager.SetStart();
-    }
-
-    private void SetStaticValuesToDefault(){
-        GameProgressionValues.SetDefaultValues();
     }
 }

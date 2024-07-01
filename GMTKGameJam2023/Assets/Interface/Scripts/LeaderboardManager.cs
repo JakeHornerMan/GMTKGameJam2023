@@ -38,7 +38,7 @@ public class LeaderboardManager : MonoBehaviour
         if(SteamManager.Initialized)
         {
             SteamLeaderboards.UpdateScore(score);
-            RefreshLeaderboardValues();
+            // RefreshLeaderboardValues();
         }
     }
 
