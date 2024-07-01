@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SteamLeaderboards : MonoBehaviour
 {
-    private const string s_leaderboardName = "LEADERBOARD";
+    private const string s_leaderboardName = "TEST_LEADERBOARD";
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
 
