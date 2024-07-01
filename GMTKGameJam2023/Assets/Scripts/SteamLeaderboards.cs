@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SteamLeaderboards : MonoBehaviour
 {
-    private const string s_leaderboardName = "LEADERBOARD";
+    private const string s_leaderboardName = "TEST_LEADERBOARD";
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
 
@@ -76,6 +76,7 @@ public class SteamLeaderboards : MonoBehaviour
     static private void OnLeaderboardUploadResult(LeaderboardScoreUploaded_t pCallback, bool failure)
     {
         UnityEngine.Debug.Log("STEAM LEADERBOARDS: failure - " + failure + " Completed - " + pCallback.m_bSuccess + " NewScore: " + pCallback.m_nGlobalRankNew + " Score " + pCallback.m_nScore + " HasChanged - " + pCallback.m_bScoreChanged);
+        InitAndFindScores();
     }
 
     public static void DownloadScoresTop(int toValue = 10)
