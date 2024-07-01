@@ -54,22 +54,28 @@ public class BuyScreenManager : MonoBehaviour
     public static Canvas canvasInstance;
 
     //Health Properties
+    [Header("Health Properties")]
     [SerializeField] private Slider healthSlider;
     //private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
     private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumberText;
+    [SerializeField] private Image healthPlusImage;
 
     //Wallet Properties
+    [Header("Wallet Properties")]
     [SerializeField] private Slider walletSlider;
     private static float[] walletSliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI walletNumberText;
+    [SerializeField] private Image walletPlusImage;
 
     //Energy Properties
+    [Header("Energy Properties")]
     [SerializeField] private Slider energySlider;
     private int energyIncrement;
-    [SerializeField] private int energyMultiplier = 5;
+    [SerializeField] private int energyMultiplier = 3;
     private static float[] energySliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI energyNumberText;
+    [SerializeField] private Image energyPlusImage;
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
@@ -432,26 +438,25 @@ public class BuyScreenManager : MonoBehaviour
 
             ultimateSlot.GetComponent<BuyScreenCarSlot>().UpdateBGColour();
         }
+
+        UpdateUpgradeButtonColors();
     }
 
-    public void RemoveFromShop(GameObject car)
+    void UpdateUpgradeButtonColors()
     {
-        if (car != null)
+        if (!CheckMoneyAmount(lifePrice))
         {
-            Destroy(car);
+            healthPlusImage.enabled = false;
+        }
 
-            //GameObject carSlot = FindScrapyardSlot();
+        if (!CheckMoneyAmount(walletPrice))
+        {
+            walletPlusImage.enabled = false;
+        }
 
-            //if (carSlot != null)
-            //{
-            //    car.transform.parent = carSlot.transform;
-            //    car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            //    car.GetComponent<DragDrop>().canBePlaced = true;
-
-
-            //    //GameObject carRoster = Instantiate(rosterCarPrefab, carSlot.transform);
-            //    //carRoster.GetComponent<CarButton>().correspondingCar = car.GetComponent<CarButton>().correspondingCar;
-            //}
+        if (!CheckMoneyAmount(energyPrice))
+        {
+            energyPlusImage.enabled = false;
         }
     }
 
@@ -523,6 +528,7 @@ public class BuyScreenManager : MonoBehaviour
         healthNumberText.text = PlayerValues.missedChickenLives.ToString();
 
         healthSlider.value = healthSliderValues[PlayerValues.missedChickenLives];
+
     }
 
     private void UpdateWalletBar()
@@ -530,6 +536,8 @@ public class BuyScreenManager : MonoBehaviour
         walletNumberText.text = PlayerValues.carWalletNodes.ToString();
 
         walletSlider.value = walletSliderValues[PlayerValues.carWalletNodes];
+
+        
     }
 
     private void UpdateEnergyBar()
