@@ -50,13 +50,13 @@ public class Ultimate : MonoBehaviour
     [SerializeField] private float camShakeMagnitude = 0.05f;
 
     [Header("Sound")]
-    [SerializeField] private SoundConfig[] spawnSound;
+    [SerializeField] public SoundConfig[] spawnSound;
 
     private int carKillCount = 0;
     protected int totalPoints = 0;
 
     [HideInInspector] public CameraShaker cameraShaker;
-    [HideInInspector] public SoundManager soundManager;
+    public SoundManager soundManager;
 
     private void Awake()
     {

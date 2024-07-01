@@ -35,6 +35,8 @@ public class RoadRage : Ultimate
             childIndex++;
         }
 
+        soundManager?.PlaySound(0f ,spawnSound[0]);
+
         StartCoroutine(SpawnVehiclesOnRoad());
     }
 

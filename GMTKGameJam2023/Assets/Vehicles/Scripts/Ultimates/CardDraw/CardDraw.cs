@@ -47,12 +47,14 @@ public class CardDraw : Ultimate
     {
         normalChickenContainer = GameObject.Find("ChickenContainer").transform;
         specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
+        soundManager = FindObjectOfType<SoundManager>();
 
         // musicAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
         // sfxAudio = FindObjectOfType<GameManager>().GetComponent<AudioSource>();
         // Debug.Log(musicAudio.name + "" + sfxAudio.name);
 
         pause = FindObjectOfType<Pause>();
+        soundManager?.PlaySound(0,spawnSound[0]);
     }
 
     private void Start()
@@ -80,6 +82,7 @@ public class CardDraw : Ultimate
         foreach (var card in cardsList)
         {
             card.gameObject.SetActive(false);
+            soundManager?.PlaySound(0f ,spawnSound[1]);
         }
 
         // Start coroutine to enable cards one by one with delay
@@ -122,6 +125,7 @@ public class CardDraw : Ultimate
             card.FlipCard(front: true);
             card.SetUIActivation(true);
             card.GetComponent<Button>().interactable = false;
+            soundManager?.PlaySound(0f ,spawnSound[5]);
         }
 
         // Show on UI that this card is "SELECTED"
@@ -130,6 +134,9 @@ public class CardDraw : Ultimate
         if (cardClicked.correspondingConfig.cardType == UltimateCardSO.UltimateCardType.KillChickenFraction)
         {
             chosenKillInterval = cardClicked.correspondingConfig.chickenKillInterval;
+            if(chosenKillInterval == 0) soundManager?.PlaySound(0f ,spawnSound[2]);
+            if(chosenKillInterval == 4) soundManager?.PlaySound(0f ,spawnSound[3]);
+            if(chosenKillInterval == 2) soundManager?.PlaySound(0f ,spawnSound[4]);
         }
     }
 
@@ -167,12 +174,13 @@ public class CardDraw : Ultimate
 
     private IEnumerator KillChickensWithDelay()
     {
-        SoundManager soundManager = FindObjectOfType<SoundManager>();
+        // SoundManager soundManager = FindObjectOfType<SoundManager>();
 
         // Combine normal and special chickens
         ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
         ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
         ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+        soundManager?.PlaySound(0f ,spawnSound[6]);
 
         gameManager = FindObjectOfType<GameManager>();
         for (int i = 0; i < allChickens.Length; i++)
