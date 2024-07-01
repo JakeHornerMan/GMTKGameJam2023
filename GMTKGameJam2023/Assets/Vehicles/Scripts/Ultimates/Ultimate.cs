@@ -185,7 +185,7 @@ public class Ultimate : MonoBehaviour
 
         if (comboText != null)
         {
-            Debug.Log(comboSymbol + carKillCount);
+            // Debug.Log(comboSymbol + carKillCount);
             comboText.text = comboSymbol + carKillCount;
             Debug.Log(comboText.text);
         }

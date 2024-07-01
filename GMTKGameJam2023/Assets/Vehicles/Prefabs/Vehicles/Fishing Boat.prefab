@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b631e368ec04c4daff94e82f786c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialChicken: {fileID: 0}
+  chicken: {fileID: 0}
   chickenSprite: {fileID: 0}
   hook: {fileID: 7535029397371635719}
   damage: 90
+  car: {fileID: -2607371565145683835}
 --- !u!120 &7374250779628513986
 LineRenderer:
   serializedVersion: 2
@@ -427,6 +428,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &7535029397371635719
