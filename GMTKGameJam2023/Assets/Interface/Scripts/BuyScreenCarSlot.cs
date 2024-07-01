@@ -141,7 +141,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                 }
 
                                 // NEW: HIDE THE LABEL TEXT (Car/Ult)
-                                GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(false);
+                                GetComponentInChildren<TextMeshProUGUI>(true).gameObject.SetActive(false);
                             }
 
                         }
@@ -164,7 +164,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                             eventData.pointerDrag.gameObject.transform.parent = transform;
                             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                             eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
-                        }    
+                        }
                         else
                         {
                             eventData.pointerDrag.gameObject.transform.parent = eventData.pointerDrag.GetComponent<DragDrop>().startingParent;
@@ -262,7 +262,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                 Destroy(car.gameObject);
             }
         }
-        
+
     }
 
     public void UpdateBGColour()
