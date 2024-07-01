@@ -35,7 +35,6 @@ public class ResultsManager : MonoBehaviour
     }    
 
     public void ResetSpawnChicken(){
-        Debug.Log("Start Chicken spawned");
         IEnumerator coroutine = SpawnChickenForResults(timeBetweenSpawns);
         StartCoroutine(coroutine);
     }
@@ -45,7 +44,7 @@ public class ResultsManager : MonoBehaviour
         int chickenNum = 0;
         if(chickenAmount % 5 ==0) chickenNum = Random.Range(1, 8);
         chickenSpawn.AlternateSpawnAChicken(chickens[chickenNum]);
-        Debug.Log("Chicken: " + chickens[chickenNum].name);
+        // Debug.Log("Chicken: " + chickens[chickenNum].name);
         chickenAmount++;
         yield return new WaitForSeconds(timeToSpawn);
         ResetSpawnChicken();

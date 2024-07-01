@@ -303,17 +303,17 @@ MonoBehaviour:
   chickenPot:
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
-    difficultyRank: 4
+    difficultyRank: 3
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 0fda7338282c4be43836e5bb58b98d95, type: 3}
-    difficultyRank: 2
+    difficultyRank: 1
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
-    difficultyRank: 5
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 8a564645e186f8d4dae32d278c4e0e8a, type: 3}
-    difficultyRank: 4
+    difficultyRank: 3
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -349,6 +349,11 @@ MonoBehaviour:
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 161f4aae8ac7f5e48b2c63b2c9f1427b, type: 3}
     difficultyRank: 4
+    topSpawn: 0
+    bottomSpawn: 0
+  - timeToSpawn: 0
+    chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -1067,9 +1072,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
+  isMenu: 0
   musicAudio: {fileID: 5995303635059143458}
   sfxAllowed: 1
   musicAllowed: 1
+  musicVolume: 8
+  sfxVolume: 10
 --- !u!114 &4517704102987042158
 MonoBehaviour:
   m_ObjectHideFlags: 0

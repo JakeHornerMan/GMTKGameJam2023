@@ -12,7 +12,7 @@ public static class PlayerValues
     public static int playerCash = 0;
 
     public static void SetDefaultValues(){
-        Cars = new List<Car>();
+        Cars = null;
         ultimate = null;
         missedChickenLives = 3;
         carWalletNodes = 3;

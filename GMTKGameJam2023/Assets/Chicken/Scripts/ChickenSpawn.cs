@@ -196,7 +196,6 @@ public class ChickenSpawn : MonoBehaviour
     }
     public void AlternateSpawnAChicken(GameObject chicken){
         SpawnAChicken(chicken, SelectSpawn());
-        Debug.Log("Chicken spawned");
     }
 
 }
