@@ -68,6 +68,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             transform.parent = startingParent;
             rectTransform.anchoredPosition = startingPosition;
         }
+
+        startingParent = transform.parent;
     }
 
     public void OnPointerDown(PointerEventData eventData)
