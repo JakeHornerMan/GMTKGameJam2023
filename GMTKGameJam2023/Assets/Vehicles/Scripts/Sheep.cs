@@ -85,7 +85,9 @@ public class Sheep : MonoBehaviour
         if (chickenHealth.health - damage <= 0)
         {
             GameManager gameManager = FindObjectOfType<GameManager>();
-            gameManager.AddPlayerScore(chickenHealth.pointsReward);
+            if(gameManager != null) gameManager.AddPlayerScore(chickenHealth.pointsReward);
+            TutorialManager tutorialManager = FindObjectOfType<TutorialManager>();
+            if(tutorialManager != null) tutorialManager.AddPlayerScore(chickenHealth.pointsReward);
             ShowPopup(chickenHealth.transform.position, $"{chickenHealth.pointsReward} {scorePopUpMsg}");
         }
         chickenHealth.TakeDamage(damage);

@@ -35,6 +35,8 @@ public class ObjectBlueprint : MonoBehaviour
     [SerializeField] private Image objectImage;
     [SerializeField] private TextMeshProUGUI objectDescriptionText;
     [SerializeField] private TextMeshProUGUI objectTypeText;
+    [SerializeField] private GameObject nextRoundContainer;
+    [SerializeField] private TextMeshProUGUI nextRoundText;
 
     [SerializeField] private GameObject closeBtn;
     [SerializeField] private GameObject continueBtn;
@@ -105,8 +107,11 @@ public class ObjectBlueprint : MonoBehaviour
         // gameObject.SetActive(false);
 
         // for when lanes need to be shown on buy screen i need to disable the object image
-        if(objectImage != null) objectImage.enabled = true;
-        if(lanesContainer != null) lanesContainer.SetActive(false);
+        if (objectImage != null) objectImage.enabled = true;
+        if (lanesContainer != null) lanesContainer.SetActive(false);
+
+        nextRoundContainer.SetActive(false);
+        nextRoundText.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -160,6 +165,15 @@ public class ObjectBlueprint : MonoBehaviour
             ).GetComponent<LaneLabel>();
             newLabel.SetLabelLane(placeableLaneTag);
         }
+        if (vehicle.placeableLaneTags.Contains("Grass") && !vehicle.placeableLaneTags.Contains("Dirt"))
+        {
+            // Instantiate new dirt labels
+            LaneLabel newLabel = Instantiate(
+                laneLabelPrefab.gameObject,
+                laneLabelGridContainer.transform
+            ).GetComponent<LaneLabel>();
+            newLabel.SetLabelLane("Dirt");
+        }
 
         return vehicle;
     }
@@ -206,18 +220,22 @@ public class ObjectBlueprint : MonoBehaviour
     /// Override of Display Info for Lanes in next level, 
     /// Shows all lane in order of appearance.
     /// </summary>
-    /// <param name="List<GameObject>">The list of lanes whose information to display.</param>
+    /// <param name="laneMap">The list of lanes whose information to display.</param>
     /// <returns>Sends back null as object is only being sent to static script for next level to access</returns>
     public ObjectInfo DisplayInfo(List<GameObject> laneMap)
     {
         ClearUI();
         objectTypeText.text = "Lane Map";
+        nextRoundContainer.SetActive(true);
+        int nextRoundNumber = GameProgressionValues.RoundNumber;
+        nextRoundText.text = $"Round {nextRoundNumber}";
+        nextRoundText.gameObject.SetActive(true);
         gameObject.SetActive(true);
 
-        if(lanesContainer != null) lanesContainer.SetActive(true);
-        if(objectImage != null) objectImage.enabled = false;
+        if (lanesContainer != null) lanesContainer.SetActive(true);
+        if (objectImage != null) objectImage.enabled = false;
 
-        for(int i = 0; i < laneMap.Count; i++)
+        for (int i = 0; i < laneMap.Count; i++)
         {
             laneImages[i].sprite = laneMap[i].GetComponent<SpriteRenderer>().sprite;
         }

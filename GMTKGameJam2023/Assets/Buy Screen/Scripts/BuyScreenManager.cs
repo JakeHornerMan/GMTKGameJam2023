@@ -79,7 +79,10 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
+    [Header("Pointer")]
+    [SerializeField] private GameObject pointer;
 
+    public bool itemPurchased = false;
 
     private void Awake()
     {
@@ -93,11 +96,11 @@ public class BuyScreenManager : MonoBehaviour
             canvasInstance = GetComponent<Canvas>();
         }
 
-        
+
 
         SetPlayerValuesInBuyScreen();
         PopulateShops();
-        
+
     }
 
     void Start()
@@ -121,26 +124,37 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateSlotColors();
 
+        pointer.SetActive(false);
+        itemPurchased = false;
+
+        StartCoroutine(nameof(PlayPointer));
     }
 
-    private void SetPlayerValuesInBuyScreen(){
-        if(!devMode){
-            if(PlayerValues.Cars != null){
+    private void SetPlayerValuesInBuyScreen()
+    {
+        if (!devMode)
+        {
+            if (PlayerValues.Cars != null)
+            {
                 playerCars = PlayerValues.Cars;
                 // Debug.Log("Cars: " + playerCars[0]);
             }
-            else{
+            else
+            {
                 playerCars = defaultCars;
             }
-            if(PlayerValues.ultimate != null){
+            if (PlayerValues.ultimate != null)
+            {
                 playerUltimate = PlayerValues.ultimate;
             }
-            else{
+            else
+            {
                 playerUltimate = null;
             }
-            PopulateRoster();   
+            PopulateRoster();
         }
-        else{
+        else
+        {
             //we can add some devMode settings
         }
     }
@@ -151,29 +165,30 @@ public class BuyScreenManager : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Transform child = RosterHolder.transform.GetChild(i);
-            
+
             GameObject newBuyCar = Instantiate(rosterCarPrefab, child.transform);
 
-            newBuyCar.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+            newBuyCar.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
-            
+
             buyScreenCar.correspondingCar = playerCars[i];
 
-            
+
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
         }
 
-        if(playerUltimate != null){
+        if (playerUltimate != null)
+        {
             Transform child = RosterHolder.transform.GetChild(5);
-            
+
             GameObject newBuyUltimate = Instantiate(rosterUltimatePrefab, child.transform);
 
-            newBuyUltimate.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+            newBuyUltimate.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
-            
+
             buyScreenUltimate.correspondingUltimate = playerUltimate;
 
-            
+
             Debug.Log("We have set the ultimateBtn to" + buyScreenUltimate.correspondingUltimate);
         }
 
@@ -223,11 +238,12 @@ public class BuyScreenManager : MonoBehaviour
         // Now, rosterCars contains all CarButton components from the children of RosterHolder
     }
 
-    public Ultimate GetUltimateSetInBuyScreen(){
+    public Ultimate GetUltimateSetInBuyScreen()
+    {
         Ultimate ultimate = null;
         Transform child = RosterHolder.transform.GetChild(5);
         BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
-         if (buyScreenUltimate != null)
+        if (buyScreenUltimate != null)
         {
             // Then check if the correspondingCar is not null
             if (buyScreenUltimate.correspondingUltimate != null)
@@ -557,7 +573,7 @@ public class BuyScreenManager : MonoBehaviour
 
     private void UpdateMoneyText()
     {
-        moneyText.text = "Cash: " + currentAmount.ToString();
+        moneyText.text = "Cash: $" + currentAmount.ToString();
 
         UpdateSlotColors();
     }
@@ -574,7 +590,7 @@ public class BuyScreenManager : MonoBehaviour
 
     public void ToNextLevel()
     {
-        
+
         setPlayerValues();
         //Load next scene
         sceneFader.ScreenWipeOut("ProceduralGeneration");
@@ -586,5 +602,24 @@ public class BuyScreenManager : MonoBehaviour
         PlayerValues.ultimate = GetUltimateSetInBuyScreen();
         PlayerValues.playerCash = 0;
 
+    }
+
+    public IEnumerator PlayPointer()
+    {
+        yield return new WaitForSeconds(5f);
+        if (!itemPurchased)
+        {
+            pointer.SetActive(true);
+            StartCoroutine(nameof(WaitToHidePointer));
+        }
+    }
+
+    private IEnumerator WaitToHidePointer()
+    {
+        // Wait until itemPurchased is true
+        yield return new WaitUntil(() => itemPurchased);
+
+        // Once itemPurchased is true, destroy the pointer
+        Destroy(pointer);
     }
 }

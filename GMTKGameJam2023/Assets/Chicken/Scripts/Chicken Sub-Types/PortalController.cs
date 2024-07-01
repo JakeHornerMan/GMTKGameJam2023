@@ -36,9 +36,12 @@ public class PortalController : MonoBehaviour
         yield return new WaitForSeconds(spawnAfterTime);
 
         Vector3 spawnPos = new(transform.position.x, transform.position.y, 0);
-        GameObject spawnedVehicle = Instantiate(capturedVehicle, spawnPos, Quaternion.identity);
+
+        capturedVehicle.transform.position = spawnPos;
         soundManager.PlayExitPortal();
-        spawnedVehicle.SetActive(true);
-        spawnedVehicle.GetComponent<Car>().carTeleporting = false;
+        capturedVehicle.SetActive(true);
+        float speed = capturedVehicle.GetComponent<Car>().carSpeed;
+        capturedVehicle.GetComponent<Car>().SetCarSpeed(speed);
+        capturedVehicle.GetComponent<Car>().carTeleporting = false;
     }
 }

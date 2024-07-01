@@ -184,6 +184,10 @@ public class TriggerMenuCinemachine : MonoBehaviour
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Enter Game");
 
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
+
         MenuManager.instance.EnterScene("Level01");
         //mainMenu.EnterGame();
     }

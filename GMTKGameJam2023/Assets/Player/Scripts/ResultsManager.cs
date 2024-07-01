@@ -18,12 +18,12 @@ public class ResultsManager : MonoBehaviour
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
         mainCamera = FindObjectOfType<CameraMenuMove>();
-        ResetSpawnChicken();
     }
 
     void Start()
     {
         leaderboardManager.UploadToLeaderboardAndUpdate(Points.playerScore);
+        ResetSpawnChicken();
     }
 
     public void GoToLeaderboard(){
@@ -44,7 +44,7 @@ public class ResultsManager : MonoBehaviour
         int chickenNum = 0;
         if(chickenAmount % 5 ==0) chickenNum = Random.Range(1, 8);
         chickenSpawn.AlternateSpawnAChicken(chickens[chickenNum]);
-        Debug.Log("Chicken: " + chickens[chickenNum].name);
+        // Debug.Log("Chicken: " + chickens[chickenNum].name);
         chickenAmount++;
         yield return new WaitForSeconds(timeToSpawn);
         ResetSpawnChicken();

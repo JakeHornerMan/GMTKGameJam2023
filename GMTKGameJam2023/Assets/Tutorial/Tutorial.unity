@@ -1008,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3019719179053846538, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.04
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3019719179053846538, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1065,6 +1065,10 @@ PrefabInstance:
     - target: {fileID: 8089028048643985026, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
       propertyPath: chickenIntesity
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8089028048643985026, guid: 3ba70fd82b686594b9e9a6189c561027, type: 3}
+      propertyPath: isTutorialChicken
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2513,7 +2517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 44, y: -43}
+  m_AnchoredPosition: {x: 44, y: -44.2}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183984173647223179
@@ -5174,8 +5178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -25, y: 0}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1230097393418079983
 GameObject:
@@ -7968,6 +7972,8 @@ MonoBehaviour:
   shopUnlockCostText: {fileID: 0}
   laneLabelGridContainer: {fileID: 0}
   laneLabelPrefab: {fileID: 979061176367484472, guid: 9733bb5a1e0ae6f4c9b254fa1be809d9, type: 3}
+  laneImages: []
+  lanesContainer: {fileID: 0}
   debugCar: {fileID: 0}
   debugUltimate: {fileID: 0}
   debugChicken: {fileID: 0}
@@ -10739,14 +10745,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 16
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10775,7 +10781,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.6016846, y: 0, z: 0, w: 0}
+  m_margin: {x: 65.791595, y: 0, z: 83.83684, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11700,8 +11706,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14485,7 +14491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9517bf20227804e4b85b63c83d18aac9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 272f9e0a6038e3c4eb33c44d063cbe80, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16806,9 +16812,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb5f55e22a5f2c342a24ebf6975e5dd1, type: 3}
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
+  isMenu: 0
   musicAudio: {fileID: 0}
   sfxAllowed: 1
   musicAllowed: 0
+  musicVolume: 8
+  sfxVolume: 10
 --- !u!212 &5813577584964644938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18052,7 +18061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 10}
+  m_AnchoredPosition: {x: 110, y: 5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &6238463708264758903
@@ -18228,7 +18237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6321398605433006749
 GameObject:
   m_ObjectHideFlags: 0
@@ -18706,10 +18715,10 @@ MonoBehaviour:
   carName: {fileID: 1002246474527112083}
   carCost: {fileID: 2785571779051765662}
   totalTokens: {fileID: 1032285051987120065}
-  tokenIcon: {fileID: 0}
+  tokenIcon: {fileID: 1239427829696329487}
   walletRefillTimer: {fileID: 8337390990399285215}
-  walletRefillTimerBG: {fileID: 0}
-  walletRefillTimerCircle: {fileID: 0}
+  walletRefillTimerBG: {fileID: 733528870748099329}
+  walletRefillTimerCircle: {fileID: 1610488984691779790}
   carWalletCountText: {fileID: 1821687980318218566}
   combinedTokenDisplay: {fileID: 8169976057759608667}
   tokenLabel: Token
@@ -20771,6 +20780,7 @@ MonoBehaviour:
       topSpawn: 0
       bottomSpawn: 0
   carsInLevel:
+  - {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
   defaultCars: []
   ultimateInLevel: {fileID: -1257477323556779182, guid: f24eefc0757a4544fbb487eec041d0f9, type: 3}
@@ -20779,7 +20789,7 @@ MonoBehaviour:
   isGameOver: 0
   pauseGameplay: 0
   startTime: 180
-  devMode: 0
+  devMode: 1
   cheatTokenAmount: 500
   cheatLives: 10
   startLives: 10
@@ -23676,8 +23686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 30, y: 1.7000008}
+  m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &8401028241468634787
 RectTransform:

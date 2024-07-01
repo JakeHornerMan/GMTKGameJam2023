@@ -247,15 +247,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tokenPriceText: {fileID: 5965897396342762261}
+  tokenIcon: {fileID: 687248599344678166}
   carWeightText: {fileID: 1739100393077619208}
   correspCarIcon: {fileID: 9060692797566081209}
   buttonOutline: {fileID: 9080266891773309436}
+  blueprintBG: {fileID: 8197709331965974813}
   correspondingCar: {fileID: 7127396023849450930, guid: f1e55ff5a2be053499db551f75633327, type: 3}
-  positiveColor: {r: 0.8356621, g: 0.8396226, b: 0.8366832, a: 0.83137256}
-  negativeColor: {r: 0.8679245, g: 0.36436453, b: 0.36436453, a: 0.83137256}
+  positiveColor: {r: 0.3019608, g: 0.6509804, b: 1, a: 1}
+  negativeColor: {r: 0.5092381, g: 0.5092381, b: 0.6320754, a: 0.83137256}
+  iconPositiveSprite: {fileID: 21300000, guid: 4a5955869b2c52f4a9acb0363192046c, type: 3}
+  iconNegativeSprite: {fileID: 21300000, guid: b236a92d79a721745a5b06e076e79df1, type: 3}
+  backgroundPositiveSprite: {fileID: 21300000, guid: 3f88a32e1b60b374ca5a7710b32618b8, type: 3}
+  backgroundNegativeSprite: {fileID: 21300000, guid: 28c56703c5b90e840bfffb6ecab35899, type: 3}
   positiveColorOutline: {r: 0.37647063, g: 0.8078432, b: 0.8941177, a: 1}
   negativeColorOutline: {r: 0.7924528, g: 0.26464927, b: 0.35070246, a: 1}
   standardCarColorOutline: {r: 1, g: 1, b: 1, a: 1}
+  enableBackgroundColoration: 1
+  enableIconColoration: 1
+  enableOutlineColoration: 1
+  enableTextColoration: 1
 --- !u!223 &-733600015580433777
 Canvas:
   m_ObjectHideFlags: 0
@@ -548,6 +558,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1840918532578676462}
+  - {fileID: 7153653023812025121}
   m_Father: {fileID: 8578238793636220914}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -556,6 +567,82 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &3166139991668286253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7153653023812025121}
+  - component: {fileID: 3058530153892612112}
+  - component: {fileID: 687248599344678166}
+  m_Layer: 5
+  m_Name: TokenIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7153653023812025121
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166139991668286253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 271898409760788764}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -5.9, y: 0}
+  m_SizeDelta: {x: 60, y: 60}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!222 &3058530153892612112
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166139991668286253}
+  m_CullTransparentMesh: 1
+--- !u!114 &687248599344678166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166139991668286253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c0000fad6b7714a40817c75d7632c3be, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4563859787499006891
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +852,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &562322028305618532
 CanvasRenderer:
@@ -795,7 +882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $12
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8268cbcaa4c212746b7f22eb76d2ac6a, type: 2}
   m_sharedMaterial: {fileID: -4160959663767560498, guid: 8268cbcaa4c212746b7f22eb76d2ac6a, type: 2}
@@ -804,8 +891,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292204245
-  m_fontColor: {r: 0.8356621, g: 0.8396226, b: 0.8366832, a: 1}
+    rgba: 4294944333
+  m_fontColor: {r: 0.3019608, g: 0.6509804, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -829,7 +916,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -3.2
@@ -858,7 +945,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 40, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

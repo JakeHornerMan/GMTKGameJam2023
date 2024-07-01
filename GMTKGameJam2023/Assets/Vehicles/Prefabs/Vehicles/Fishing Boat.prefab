@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b631e368ec04c4daff94e82f786c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialChicken: {fileID: 0}
+  chicken: {fileID: 0}
   chickenSprite: {fileID: 0}
   hook: {fileID: 7535029397371635719}
   damage: 90
+  car: {fileID: -2607371565145683835}
 --- !u!120 &7374250779628513986
 LineRenderer:
   serializedVersion: 2
@@ -375,7 +376,7 @@ MonoBehaviour:
   objectName: Fishing Boat
   objectSprite: {fileID: 21300000, guid: 0547692c647db5546b1ffb550be2bc55, type: 3}
   bluePrintSprite: {fileID: 0}
-  objectIcon: {fileID: 21300000, guid: d75d68793572de54eb7dbb3043d37343, type: 3}
+  objectIcon: {fileID: 21300000, guid: 920e7403c34584a4684c751e893b8406, type: 3}
   objectDescription: This fishing boat will latch onto any special chickens unfortunate
     enough to be near it.
 --- !u!114 &-2607371565145683835
@@ -414,6 +415,7 @@ MonoBehaviour:
   comboMultiplier: 0.2
   DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
+  cashCollectParticles: {fileID: 4650723062051862710, guid: 6b26b9eb453c7cb4990cd328bb258ae0, type: 3}
   particleDestroyDelay: 2
   exhaustParticleParent: {fileID: 499467861673513022}
   scorePopUpMsg: 
@@ -426,6 +428,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &7535029397371635719

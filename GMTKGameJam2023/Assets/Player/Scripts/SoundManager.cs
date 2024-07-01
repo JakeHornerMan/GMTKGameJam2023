@@ -84,7 +84,7 @@ public class SoundManager : MonoBehaviour
 
     public void LoadSettings(){
         musicAllowed = Settings.MusicEnabled;
-        musicVolume = ((float)Settings.MusicVolume/10);
+        musicVolume = Settings.MusicVolume/10;
         sfxAllowed = Settings.SfxEnabled;
         sfxVolume = Settings.SfxVolume;
     }

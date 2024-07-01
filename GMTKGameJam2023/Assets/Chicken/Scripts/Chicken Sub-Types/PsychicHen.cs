@@ -22,14 +22,14 @@ public class PsychicHen : ChickenHealth
 
     public void SpawnPortal(GameObject hitcar)
     {
-        Vector3 portalPos = new(GetRandomRoad(hitcar.GetComponent<Car>().placeableLaneTags).transform.position.x, transform.position.y -2, 0);
+        Vector3 portalPos = new(GetRandomRoad(hitcar.GetComponent<Car>().placeableLaneTags, hitcar).transform.position.x, transform.position.y -2, 0);
         GameObject spawnedPortal = Instantiate(spawnPortal, portalPos, Quaternion.identity);
         soundManager.PlayEnterPortal();
         spawnedPortal.GetComponent<PortalController>().capturedVehicle = hitcar;
         hitcar.SetActive(false);
     }
 
-    private GameObject GetRandomRoad(List<string> placeableLaneTags)
+    private GameObject GetRandomRoad(List<string> placeableLaneTags, GameObject hitcar)
     {
         if(placeableLaneTags.Contains("Road")){
             roadLanes = GameObject.FindGameObjectsWithTag("Road");
@@ -56,6 +56,8 @@ public class PsychicHen : ChickenHealth
             AddToAllLanes(pavementLanes);
         }
 
+        RemoveClosestLane();
+
         int randomRoad = Random.Range(0, allLanes.Count-1);
         return allLanes[randomRoad];
     }
@@ -68,5 +70,35 @@ public class PsychicHen : ChickenHealth
                 allLanes.Add(value);
             }
         }
+    }
+
+    private void RemoveClosestLane()
+    {
+        float distanceToClosestRoad = Mathf.Infinity;
+        int position = -1;
+
+        for (int i = 0; i < allLanes.Count; i++)
+        {
+            float distanceToRoad = (allLanes[i].transform.position - this.transform.position).sqrMagnitude;
+            if (distanceToRoad < distanceToClosestRoad)
+            {
+                distanceToClosestRoad = distanceToRoad;
+                position = i;
+            }
+        }
+        if(LaneCount(allLanes[position].name) > 1){
+            allLanes.RemoveAt(position);
+        }
+    }
+
+    private int LaneCount(string name){
+        int amount = 0;
+        foreach (GameObject item in allLanes)
+        {
+            if(item.name == name){
+                amount ++;
+            }
+        }
+        return amount;
     }
 }
