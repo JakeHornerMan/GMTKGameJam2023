@@ -165,6 +165,15 @@ public class ObjectBlueprint : MonoBehaviour
             ).GetComponent<LaneLabel>();
             newLabel.SetLabelLane(placeableLaneTag);
         }
+        if (vehicle.placeableLaneTags.Contains("Grass") && !vehicle.placeableLaneTags.Contains("Dirt"))
+        {
+            // Instantiate new dirt labels
+            LaneLabel newLabel = Instantiate(
+                laneLabelPrefab.gameObject,
+                laneLabelGridContainer.transform
+            ).GetComponent<LaneLabel>();
+            newLabel.SetLabelLane("Dirt");
+        }
 
         return vehicle;
     }
