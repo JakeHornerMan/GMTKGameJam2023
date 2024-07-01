@@ -29,6 +29,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image ultimateRadialUI;
     [SerializeField] private GameObject ultimateRadialFlash;
     [SerializeField] private Animator ultimateIconAnimator;
+    // [SerializeField] private GameObject ultimateNotification;
 
     [HideInInspector] private GameObject ultimateButton;
 
@@ -79,6 +80,8 @@ public class InterfaceManager : MonoBehaviour
             Ultimate ultimateInLevel = null;
             if (gameManager != null) { ultimateInLevel = gameManager.ultimateInLevel; }
             if (tutorialManager != null) { ultimateInLevel = tutorialManager.ultimateInLevel; }
+
+            // ultimateNotification.SetActive(false);
 
             if (ultimateInLevel == null)
             {
