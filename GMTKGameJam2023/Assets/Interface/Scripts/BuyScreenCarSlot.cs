@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
-    [SerializeField] private Color redColor = new (255 / 255f, 123 / 255f, 111 / 255f);
-    [SerializeField] private Color greenColor = new (154 / 255f, 255 / 255f, 124 / 255f);
+    [SerializeField] private Color redColor = new(255 / 255f, 123 / 255f, 111 / 255f);
+    [SerializeField] private Color greenColor = new(154 / 255f, 255 / 255f, 124 / 255f);
 
     public enum SlotType
     {
@@ -22,7 +22,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
     [SerializeField] private TextMeshProUGUI priceText;
 
-    public void OnDrop(PointerEventData eventData) {
+    public void OnDrop(PointerEventData eventData)
+    {
+        FindObjectOfType<BuyScreenManager>().itemPurchased = true;
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
@@ -105,8 +107,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     if (car != null)
                                         BuyScreenManager.instance.RemoveMoney(car.correspondingCar.carShopPrice);
                                 }
-                                
-                                    
+
+
                             }
 
                         }
@@ -166,9 +168,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                 }
             }
-            
-            
-            
+
+
+
 
 
 
@@ -239,8 +241,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                     priceText.color = redColor;
                 }
             }
-             
-                
+
+
         }
     }
 
