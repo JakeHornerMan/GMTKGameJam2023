@@ -73,7 +73,10 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
+    [Header("Pointer")]
+    [SerializeField] private GameObject pointer;
 
+    public bool itemPurchased = false;
 
     private void Awake()
     {
@@ -115,6 +118,10 @@ public class BuyScreenManager : MonoBehaviour
 
         UpdateSlotColors();
 
+        pointer.SetActive(false);
+        itemPurchased = false;
+
+        StartCoroutine(nameof(PlayPointer));
     }
 
     private void SetPlayerValuesInBuyScreen()
@@ -587,5 +594,24 @@ public class BuyScreenManager : MonoBehaviour
         PlayerValues.ultimate = GetUltimateSetInBuyScreen();
         PlayerValues.playerCash = 0;
 
+    }
+
+    public IEnumerator PlayPointer()
+    {
+        yield return new WaitForSeconds(5f);
+        if (!itemPurchased)
+        {
+            pointer.SetActive(true);
+            StartCoroutine(nameof(WaitToHidePointer));
+        }
+    }
+
+    private IEnumerator WaitToHidePointer()
+    {
+        // Wait until itemPurchased is true
+        yield return new WaitUntil(() => itemPurchased);
+
+        // Once itemPurchased is true, destroy the pointer
+        Destroy(pointer);
     }
 }

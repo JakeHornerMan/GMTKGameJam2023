@@ -9,12 +9,6 @@ public class InterfaceManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private GameObject pointsText;
     [SerializeField] private TextMeshProUGUI killsText;
-    [SerializeField] private TextMeshProUGUI carWalletCountText;
-    [SerializeField] private Image carWalletIcon;
-    [SerializeField] private Image carWalletRadialUI;
-    [SerializeField] private Image ultimateRadialUI;
-    [SerializeField] private GameObject[] carWalletNodes;
-    [SerializeField] private GameObject[] carWalletNodeContainers;
     [SerializeField] private TextMeshProUGUI tokensText;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI roundText;
@@ -23,6 +17,23 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI missedChickenCountText;
     [SerializeField] private GameObject youSurvived;
     [SerializeField] private GameObject canvas;
+
+    [Header("Car Wallet")]
+    [SerializeField] private TextMeshProUGUI carWalletCountText;
+    [SerializeField] private Image carWalletIcon;
+    [SerializeField] private GameObject[] carWalletNodes;
+    [SerializeField] private GameObject[] carWalletNodeContainers;
+
+    [Header("Ultimate Recharge Radial")]
+    [SerializeField] private Image carWalletRadialUI;
+    [SerializeField] private Image ultimateRadialUI;
+    [SerializeField] private GameObject ultimateRadialFlash;
+    [SerializeField] private GameObject ultimateBackgroundFlash;
+    [SerializeField] private Animator ultimateIconAnimator;
+    [SerializeField] private bool enableBackgroundFlash = false;
+    [SerializeField] private bool enableUltParticles = true;
+    [SerializeField] private ParticleSystem ultParticles;
+    // [SerializeField] private GameObject ultimateNotification;
 
     [HideInInspector] private GameObject ultimateButton;
 
@@ -74,6 +85,8 @@ public class InterfaceManager : MonoBehaviour
             if (gameManager != null) { ultimateInLevel = gameManager.ultimateInLevel; }
             if (tutorialManager != null) { ultimateInLevel = tutorialManager.ultimateInLevel; }
 
+            // ultimateNotification.SetActive(false);
+
             if (ultimateInLevel == null)
             {
                 ultimateButton.SetActive(false);
@@ -84,7 +97,7 @@ public class InterfaceManager : MonoBehaviour
             }
         }
 
-        if(youSurvived != null) youSurvived.SetActive(false);
+        if (youSurvived != null) youSurvived.SetActive(false);
 
         for (int i = 0; i < carWalletNodeContainers.Length; i++)
         {
@@ -110,6 +123,24 @@ public class InterfaceManager : MonoBehaviour
         if (tutorialManager != null)
         {
             UpdateValues(tutorialManager.killCount, tutorialManager.tokens, tutorialManager.time, tutorialManager.missedChickenLives);
+        }
+
+        // Show Effects when ultimate is charged up fully
+        if (ultimateRadialUI.fillAmount == 1)
+        {
+            ultimateRadialFlash.SetActive(true);
+            ultimateIconAnimator.SetBool("FullyCharged", true);
+            if (enableBackgroundFlash)
+                ultimateBackgroundFlash.SetActive(true);
+            if (enableUltParticles)
+                ultParticles.gameObject.SetActive(true);
+        }
+        else
+        {
+            ultimateRadialFlash.SetActive(false);
+            ultimateIconAnimator.SetBool("FullyCharged", false);
+            ultimateBackgroundFlash.SetActive(false);
+            ultParticles.gameObject.SetActive(false);
         }
     }
 
@@ -265,6 +296,6 @@ public class InterfaceManager : MonoBehaviour
         {
             youSurvived.transform.GetChild(i).gameObject.SetActive(true);
         }
-        
+
     }
 }
