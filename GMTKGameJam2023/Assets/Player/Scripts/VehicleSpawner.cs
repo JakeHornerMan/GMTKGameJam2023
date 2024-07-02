@@ -223,7 +223,13 @@ public class VehicleSpawner : MonoBehaviour
             return;
 
         // Raycast toward Click
-        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
+        // RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
+
+        // Define the LayerMask to ignore the "Cement" layer.
+        int cementLayer = LayerMask.NameToLayer("Cement"); // Get the layer index for "Cement".
+        int layerMask = ~(1 << cementLayer); // Create a mask that ignores the "Cement" layer.
+        // Perform the raycast while ignoring the "Cement" layer.
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero, Mathf.Infinity, layerMask);
 
         // Return if Clicked Nothing
         if (hit.collider == null)
@@ -267,7 +273,7 @@ public class VehicleSpawner : MonoBehaviour
 
         // Reduce Car Wallet Count
         carWallet.carCount--;
-        if(gameManager != null) gameManager.vehicleSpawnCount++;
+        if (gameManager != null) gameManager.vehicleSpawnCount++;
 
         // Reduce Player Money
         if (currentActiveCar.carPrice > 0 && !isForWorldSelect)
@@ -319,7 +325,7 @@ public class VehicleSpawner : MonoBehaviour
         // // Reduce Car Wallet Count
         // carWallet.carCount--;
 
-        if(gameManager != null) gameManager.ultimateSpawnCount++;
+        if (gameManager != null) gameManager.ultimateSpawnCount++;
 
         if (selectDefaultOnPlace)
         {
@@ -369,7 +375,7 @@ public class VehicleSpawner : MonoBehaviour
                 laneHighlight.DisableShineObject();
                 if (currentActiveCar.placeableLaneTags.Contains(laneHighlight.gameObject.tag))
                 {
-                    if(Settings.RoadShineEnabled)
+                    if (Settings.RoadShineEnabled)
                         laneHighlight.ShineLane();
                 }
             }

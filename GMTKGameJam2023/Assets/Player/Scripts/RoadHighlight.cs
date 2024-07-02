@@ -34,7 +34,14 @@ public class RoadHighlight : MonoBehaviour
     private void UpdateHighlight()
     {
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        // RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        // Define the LayerMask to ignore the "Cement" layer.
+        int cementLayer = LayerMask.NameToLayer("Cement"); // Get the layer index for "Cement".
+        int layerMask = ~(1 << cementLayer); // Create a mask that ignores the "Cement" layer.
+
+        // Perform the raycast while ignoring the "Cement" layer.
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, layerMask);
 
         if (vehicleSpawner != null && vehicleSpawner.currentActiveCar != null)
         {

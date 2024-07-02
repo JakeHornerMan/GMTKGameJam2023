@@ -82,9 +82,10 @@ public class SoundManager : MonoBehaviour
         // LoadSettings();
     }
 
-    public void LoadSettings(){
+    public void LoadSettings()
+    {
         musicAllowed = Settings.MusicEnabled;
-        musicVolume = Settings.MusicVolume/10;
+        musicVolume = Settings.MusicVolume / 10;
         sfxAllowed = Settings.SfxEnabled;
         sfxVolume = Settings.SfxVolume;
     }
@@ -98,7 +99,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(){
+    public void PlayMusic()
+    {
         gameMusic = SetGameMusic();
         musicAudio.clip = gameMusic.clip;
         musicAudio.volume = musicVolume;
@@ -186,8 +188,9 @@ public class SoundManager : MonoBehaviour
     private void PlaySound(SoundConfig soundConfig)
     {
         if (soundConfig == null) return;
-        if (sfxAllowed){
-            audioSrc.PlayOneShot(soundConfig.clip, (soundConfig.volume/10)*sfxVolume);
+        if (sfxAllowed)
+        {
+            audioSrc.PlayOneShot(soundConfig.clip, (soundConfig.volume / 10) * sfxVolume);
             // audioSrc.PlayOneShot(soundConfig.clip, soundConfig.volume);
         }
     }

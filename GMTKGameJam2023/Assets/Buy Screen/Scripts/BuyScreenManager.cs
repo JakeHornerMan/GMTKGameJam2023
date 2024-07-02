@@ -540,7 +540,7 @@ public class BuyScreenManager : MonoBehaviour
 
         walletSlider.value = walletSliderValues[PlayerValues.carWalletNodes];
 
-        
+
     }
 
     private void UpdateEnergyBar()
@@ -561,6 +561,8 @@ public class BuyScreenManager : MonoBehaviour
         currentAmount = currentAmount + value;
 
         UpdateMoneyText();
+
+        GetComponent<SoundManager>().PlayPurchase();
     }
 
     public void RemoveMoney(int value)
@@ -570,8 +572,9 @@ public class BuyScreenManager : MonoBehaviour
             currentAmount = currentAmount - value;
         }
 
-        UpdateMoneyText();
+        GetComponent<SoundManager>().PlayPurchase();
 
+        UpdateMoneyText();
     }
 
     private void UpdateMoneyText()
@@ -588,7 +591,9 @@ public class BuyScreenManager : MonoBehaviour
             return true;
         }
 
+        // GetComponent<SoundManager>().PlayCantPurchase();
         return false;
+
     }
 
     public void ToNextLevel()
