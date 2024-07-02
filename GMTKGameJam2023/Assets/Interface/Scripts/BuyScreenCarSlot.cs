@@ -249,14 +249,10 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                 car.GetComponent<DragDrop>().canBePlaced = true;
 
                 // Add Money
-                if (car.correspondingCar.carShopPrice < 5)
-                {
-                    BuyScreenManager.instance.AddMoney(3);
-                }
-                else
-                {
-                    BuyScreenManager.instance.AddMoney(5);
-                }
+                
+                int moneyRefunded = Mathf.FloorToInt(car.correspondingCar.carShopPrice / 2);
+
+                BuyScreenManager.instance.AddMoney(moneyRefunded);
 
                 //DESTROY THE VEHICLE
                 Destroy(car.gameObject);
