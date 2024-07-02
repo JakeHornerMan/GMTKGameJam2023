@@ -30,6 +30,10 @@ public class LeaderboardEntryVisual : MonoBehaviour
 
         rankText.text = leaderboardEntry.GlobalRank.ToString() + ".";
         usernameText.text = leaderboardEntry.UserName.ToString();
+        if(usernameText.text.Length > 12){
+            usernameText.fontSize = 30;
+        }
+
         scoreText.text = leaderboardEntry.Score.ToString();
 
         entrySpriteImg.sprite = normalEntrySprite;

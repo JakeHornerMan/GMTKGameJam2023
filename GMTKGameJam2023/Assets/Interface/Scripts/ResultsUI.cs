@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultsUI : MonoBehaviour
 {
@@ -17,6 +18,13 @@ public class ResultsUI : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private string missedChickensLabel = " Missed Chickens";
     [SerializeField] private string failureRanking = "You Failed";
+
+    [SerializeField] private Color gold;
+    [SerializeField] private Image goldTrophy;
+    [SerializeField] private Color silver;
+    [SerializeField] private Image silverTrophy;
+    [SerializeField] private Color bronze;
+    [SerializeField] private Image bronzeTrophy;
 
     [Header("Audio")]
     [SerializeField] private AudioClip levelSuccessClip;
@@ -48,6 +56,9 @@ public class ResultsUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
         sceneFader.FadeToMainMenu();
     }
 
@@ -62,24 +73,72 @@ public class ResultsUI : MonoBehaviour
     public void SetUI()
     {
         // TODO: RankingRequirement based off points
-        rankingText.text = "Meh";
+        rankingText.text = SetRankText();
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString();
         roundText.text = "Round "+ GameProgressionValues.RoundNumber.ToString("00");
-        SetChickenWave();
     }
 
-    public void SetChickenWave()
-    {
-        ChickenWave chickenWave = new ChickenWave();
-        chickenWave.roundTime = 5f;
-        chickenWave.standardChickenAmounts = Points.safelyCrossedChickens;
-        chickenWave.chickenIntesity = 5;
-        chickenWave.coinAmount = Points.totalTokens;
-        chickenWave.specialChickens = null;
+    public string SetRankText(){
+        if (GameProgressionValues.RoundNumber >= 30)
+        {
+            goldTrophy.enabled = false;
+            silverTrophy.enabled = false;
+            bronzeTrophy.enabled = false;
+            rankingText.color = gold;
+            return "1. Master Chicken Assassin";
+        }
+        else if (GameProgressionValues.RoundNumber >= 25)
+        {
+            goldTrophy.enabled = false;
+            silverTrophy.enabled = false;
+            bronzeTrophy.enabled = false;
+            rankingText.color = gold;
+            return "2. The Colonel";
+        }
+        else if (GameProgressionValues.RoundNumber >= 20)
+        {
+            goldTrophy.enabled = false;
+            silverTrophy.enabled = false;
+            bronzeTrophy.enabled = false;
+            rankingText.color = gold;
+            return "3. The Cluck Slayer";
+        }
+        else if (GameProgressionValues.RoundNumber >= 15)
+        {
+            goldTrophy.enabled = true;
+            silverTrophy.enabled = false;
+            bronzeTrophy.enabled = false;
+            rankingText.color = silver;
+            return "4. The Eggs-terminator";
+        }
+        else if (GameProgressionValues.RoundNumber >= 10)
+        {
+            goldTrophy.enabled = true;
+            silverTrophy.enabled = false;
+            bronzeTrophy.enabled = false;
+            rankingText.color = silver;
+            return "5. Average Fast Food worker";
+        }
+        else if (GameProgressionValues.RoundNumber >= 5)
+        {
+            goldTrophy.enabled = true;
+            silverTrophy.enabled = true;
+            bronzeTrophy.enabled = false;
+            rankingText.color = bronze;
+            return "6. Chicken Lover";
+        }
+        else if (GameProgressionValues.RoundNumber < 5)
+        {
+            goldTrophy.enabled = true;
+            silverTrophy.enabled = true;
+            bronzeTrophy.enabled = false;
+            rankingText.color = bronze;
+            return "7. Animals Crossing";
+        }
 
-        gameManager.waves.Add(chickenWave);
-        // gameManager.SetStart();
+
+        return "Meh...";
     }
 }

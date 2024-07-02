@@ -6,7 +6,7 @@ using System.Threading;
 
 public class SteamLeaderboards : MonoBehaviour
 {
-    private const string s_leaderboardName = "TEST_LEADERBOARD";
+    private const string s_leaderboardName = "LEADERBOARD";
     private const ELeaderboardUploadScoreMethod s_leaderboardMethod = ELeaderboardUploadScoreMethod.k_ELeaderboardUploadScoreMethodKeepBest;
 
 
@@ -79,7 +79,7 @@ public class SteamLeaderboards : MonoBehaviour
         InitAndFindScores();
     }
 
-    public static void DownloadScoresTop(int toValue = 10)
+    public static void DownloadScoresTop(int toValue = 10, LeaderboardType currentLeaderboardType = LeaderboardType.Top10)
     {
         if (initialized)
         {
@@ -132,6 +132,7 @@ public class SteamLeaderboards : MonoBehaviour
         if (failure || result.m_cEntryCount == 0)
         {
             Debug.LogError("Failed to download leaderboard scores or no entries found.");
+            DownloadScoresTop(20, LeaderboardType.Leaderboard);
             return;
         }
 

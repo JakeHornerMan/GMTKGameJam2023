@@ -428,6 +428,7 @@ MonoBehaviour:
   minMoveTime: 1
   maxMoveTime: 3
   laneDistance: 1.25
+  isTutorialChicken: 0
   maxYHeight: 5
   minYHeight: -5
   ignoreCement: 0
@@ -463,6 +464,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
+  invinsibleForTime: 1
   pointsReward: 10
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
@@ -481,6 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Chicken
   objectSprite: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 515337790, guid: e207df0ca6d3cdc439e8234f6abdbca9, type: 3}
   objectDescription: The standard chicken. Vanilla. Plain. Simple. Common. Basic.
     Natural. Average. Straightforward. Conventional. Evil...?

@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canIBeBombed: 0
-  ultimateResetTime: 20
+  ultimateResetTime: 30
   placeableAnywhere: 1
   ignoreTokens: 1
   ultimateShopPrice: 40
@@ -589,7 +589,21 @@ MonoBehaviour:
   carHitStopEffectMultiplier: 0
   camShakeDuration: 0
   camShakeMagnitude: 0
-  spawnSound: []
+  spawnSound:
+  - clip: {fileID: 8300000, guid: a551eeffeb62fd14ab6737cf5ac4e2cb, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: a3cff888977d9584daf3aa071111c735, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: d4baef6ce488ce648b335ea894450b50, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 4eb96bf7087716b42ba5fda136f2cc31, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 087dd230e21855442b682fabb1333cdb, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: c7c807b35c57f7344ab236e99796b57d, type: 3}
+    volume: 1
+  - clip: {fileID: 8300000, guid: 66aa3b15b66ed194699f7c43dcaa0138, type: 3}
+    volume: 1
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   cardsList:
