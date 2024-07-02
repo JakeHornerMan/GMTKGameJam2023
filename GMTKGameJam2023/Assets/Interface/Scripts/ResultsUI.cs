@@ -56,6 +56,9 @@ public class ResultsUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
         sceneFader.FadeToMainMenu();
     }
 
@@ -75,21 +78,7 @@ public class ResultsUI : MonoBehaviour
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString();
         roundText.text = "Round "+ GameProgressionValues.RoundNumber.ToString("00");
-        SetChickenWave();
     }
-
-    // public void SetChickenWave()
-    // {
-    //     ChickenWave chickenWave = new ChickenWave();
-    //     chickenWave.roundTime = 5f;
-    //     chickenWave.standardChickenAmounts = Points.safelyCrossedChickens;
-    //     chickenWave.chickenIntesity = 5;
-    //     chickenWave.coinAmount = Points.totalTokens;
-    //     chickenWave.specialChickens = null;
-
-    //     gameManager.waves.Add(chickenWave);
-    //     // gameManager.SetStart();
-    // }
 
     public string SetRankText(){
         if (GameProgressionValues.RoundNumber >= 30)

@@ -6,7 +6,7 @@ public static class Points
 {
     public static int killCount = 0;
     public static int safelyCrossedChickens = 0;
-    public static int playerScore = 123;
+    public static int playerScore = 123123123;
     public static int totalTokens = 0;
 
     public static void SetDefaultValues(){
