@@ -190,6 +190,7 @@ MonoBehaviour:
   minMoveTime: 0.75
   maxMoveTime: 0.8
   laneDistance: 1.25
+  isTutorialChicken: 0
   maxYHeight: 5
   minYHeight: -5
   ignoreCement: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   damagedByHose: 1
   hoseWaterTag: Hose Water
   startHealth: 100
+  invinsibleForTime: 1
   pointsReward: 200
   health: 0
   flashMaterial: {fileID: 2100000, guid: d8b7171e90600a24389e8c984b166f94, type: 2}
@@ -243,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Golden Chicken
   objectSprite: {fileID: 218766053, guid: 9d5e95a62f0220a47aeaac6b67c87dfa, type: 3}
+  bluePrintSprite: {fileID: 0}
   objectIcon: {fileID: 218766053, guid: 9d5e95a62f0220a47aeaac6b67c87dfa, type: 3}
   objectDescription: The standard chicken, but golden. Rewards bonus points, so if
     you're looking to climb the leaderboard, these are your best friends.

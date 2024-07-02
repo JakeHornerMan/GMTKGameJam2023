@@ -29,8 +29,11 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Start()
     {
-        if(onStart)
-            RefreshLeaderboardValues();
+        if(onStart){
+            SteamLeaderboards.Init();
+            UploadToLeaderboardAndUpdate(Points.playerScore);
+            // RefreshLeaderboardValues();
+        }
     }
 
      public void UploadToLeaderboardAndUpdate(int score = 1)
