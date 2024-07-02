@@ -11,6 +11,7 @@ public class BuyScreenCar : MonoBehaviour
     [SerializeField] public TextMeshProUGUI tokenPriceText;
     [SerializeField] private Image correspCarIcon;
     [SerializeField] private GameObject purchaseParticles;
+    [SerializeField] private GameObject sellParticles;
 
 
     [Header("Car Values")]
@@ -28,9 +29,21 @@ public class BuyScreenCar : MonoBehaviour
             correspCarIcon.sprite = correspondingCar.GetComponent<ObjectInfo>().objectIcon;
     }
 
-    public void EnableParticles()
+    public void EnablePurchaseParticles()
     {
         purchaseParticles.SetActive(true);
     }
+
+    public void EnableSellParticles()
+    {
+
+        sellParticles.SetActive(true);
+
+        sellParticles.transform.parent = BuyScreenManager.instance.gameObject.transform;
+
+        //GameObject particles = Instantiate(sellParticles, transform.position, Quaternion.identity, BuyScreenManager.instance.gameObject.transform);
+    }
+
+
 
 }

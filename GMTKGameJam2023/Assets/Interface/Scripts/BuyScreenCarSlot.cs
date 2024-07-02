@@ -54,7 +54,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     // Take away any money
                                     BuyScreenManager.instance.RemoveMoney(ultimate.correspondingUltimate.ultimateShopPrice);
 
-                                    ultimate.EnableParticles();
+                                    ultimate.EnablePurchaseParticles();
                                 }
                                 else if (gameObject.name != "Ultimate Slot" && car != null)
                                 {
@@ -65,7 +65,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                                     // Take away any money
                                     BuyScreenManager.instance.RemoveMoney(car.correspondingCar.carShopPrice);
-                                    car.EnableParticles();
+                                    car.EnablePurchaseParticles();
 
 
 
@@ -123,7 +123,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     // Take away any money
                                     BuyScreenManager.instance.RemoveMoney(ultimate.correspondingUltimate.ultimateShopPrice);
 
-                                    ultimate.EnableParticles();
+                                    ultimate.EnablePurchaseParticles();
                                 }
                                 else if (gameObject.name != "Ultimate Slot" && car != null)
                                 {
@@ -136,7 +136,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     if (car != null)
                                     {
                                         BuyScreenManager.instance.RemoveMoney(car.correspondingCar.carShopPrice);
-                                        car.EnableParticles();
+                                        car.EnablePurchaseParticles();
                                     }
                                 }
 
@@ -239,8 +239,12 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                 // Add Money
                 BuyScreenManager.instance.AddMoney(25);
 
+                ultimate.EnableSellParticles();
+
+                ultimate.gameObject.GetComponent<Animator>().Play("SellShrink");
+
                 //DESTROY THE VEHICLE
-                Destroy(ultimate.gameObject);
+                Destroy(ultimate.gameObject, 0.6f);
             }
             else if (car != null)
             {
@@ -254,8 +258,14 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                 BuyScreenManager.instance.AddMoney(moneyRefunded);
 
+                car.EnableSellParticles();
+
+                car.gameObject.GetComponent<Animator>().enabled = true;
+
+                car.gameObject.GetComponent<Animator>().Play("SellShrink");
+
                 //DESTROY THE VEHICLE
-                Destroy(car.gameObject);
+                Destroy(car.gameObject, 0.6f);
             }
         }
 

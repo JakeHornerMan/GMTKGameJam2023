@@ -11,6 +11,7 @@ public class BuyScreenUltimate : MonoBehaviour
     [SerializeField] public TextMeshProUGUI tokenPriceText;
     [SerializeField] private Image correspUltIcon;
     [SerializeField] private GameObject purchaseParticles;
+    [SerializeField] private GameObject sellParticles;
 
     [Header("Car Values")]
     [SerializeField] public Ultimate correspondingUltimate;
@@ -26,8 +27,18 @@ public class BuyScreenUltimate : MonoBehaviour
         correspUltIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
     }
 
-    public void EnableParticles()
+    public void EnablePurchaseParticles()
     {
         purchaseParticles.SetActive(true);
+    }
+
+    public void EnableSellParticles()
+    {
+
+        sellParticles.SetActive(true);
+
+        sellParticles.transform.parent = BuyScreenManager.instance.gameObject.transform;
+
+        //GameObject particles = Instantiate(sellParticles, transform.position, Quaternion.identity, BuyScreenManager.instance.gameObject.transform);
     }
 }
