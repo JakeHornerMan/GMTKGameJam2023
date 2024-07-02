@@ -750,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4497043752865100838}
   - component: {fileID: 8931045091152983278}
+  - component: {fileID: 3270732771593643076}
   m_Layer: 0
   m_Name: LeaderBoardUIElement
   m_TagString: Untagged
@@ -808,6 +809,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3270732771593643076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2542981233895421877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d96494cb70a7e43a6e8500d59faca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLeaderboardType: 0
+  onStart: 1
+  entriesContainer: {fileID: 5851473676691611976}
+  leaderboardEntryPrefab: {fileID: 4644229961253616383, guid: 82b81838862021d418f0ca6279062428, type: 3}
 --- !u!1 &2675305280531461790
 GameObject:
   m_ObjectHideFlags: 0

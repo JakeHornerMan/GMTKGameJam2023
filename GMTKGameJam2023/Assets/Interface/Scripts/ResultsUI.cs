@@ -78,18 +78,18 @@ public class ResultsUI : MonoBehaviour
         SetChickenWave();
     }
 
-    public void SetChickenWave()
-    {
-        ChickenWave chickenWave = new ChickenWave();
-        chickenWave.roundTime = 5f;
-        chickenWave.standardChickenAmounts = Points.safelyCrossedChickens;
-        chickenWave.chickenIntesity = 5;
-        chickenWave.coinAmount = Points.totalTokens;
-        chickenWave.specialChickens = null;
+    // public void SetChickenWave()
+    // {
+    //     ChickenWave chickenWave = new ChickenWave();
+    //     chickenWave.roundTime = 5f;
+    //     chickenWave.standardChickenAmounts = Points.safelyCrossedChickens;
+    //     chickenWave.chickenIntesity = 5;
+    //     chickenWave.coinAmount = Points.totalTokens;
+    //     chickenWave.specialChickens = null;
 
-        gameManager.waves.Add(chickenWave);
-        // gameManager.SetStart();
-    }
+    //     gameManager.waves.Add(chickenWave);
+    //     // gameManager.SetStart();
+    // }
 
     public string SetRankText(){
         if (GameProgressionValues.RoundNumber >= 30)

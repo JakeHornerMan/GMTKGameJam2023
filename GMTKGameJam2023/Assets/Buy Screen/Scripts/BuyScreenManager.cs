@@ -478,6 +478,9 @@ public class BuyScreenManager : MonoBehaviour
 
     public void AddLives(int value)
     {
+        if(PlayerValues.missedChickenLives >= 5){
+            return;
+        }
         if (CheckMoneyAmount(lifePrice))
         {
             if (PlayerValues.missedChickenLives < maxHealthAllowed)
