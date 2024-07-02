@@ -5471,7 +5471,7 @@ MonoBehaviour:
   comboText: {fileID: 1465436027404781649}
   carType: 1
   carHealth: 300
-  carPrice: 10
+  carPrice: 8
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 0
@@ -5480,7 +5480,7 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 20
+  carShopPrice: 15
   deathboxTag: Death Box
   placeableLaneTags:
   - Road
@@ -5505,6 +5505,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &4524734424282421569
