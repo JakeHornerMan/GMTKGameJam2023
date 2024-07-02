@@ -318,7 +318,7 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-    difficultyRank: 2
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -377,51 +377,31 @@ MonoBehaviour:
     chickenIntesity: 0
     coinAmount: 0
     specialChickens:
-    - timeToSpawn: 0
+    - timeToSpawn: 1
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 2
+    - timeToSpawn: 5
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 4
+    - timeToSpawn: 9
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 6
+    - timeToSpawn: 13
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 8
+    - timeToSpawn: 17
       chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
-    - timeToSpawn: 10
-      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-      difficultyRank: 0
-      topSpawn: 0
-      bottomSpawn: 0
-    - timeToSpawn: 12
-      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-      difficultyRank: 0
-      topSpawn: 0
-      bottomSpawn: 0
-    - timeToSpawn: 14
-      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-      difficultyRank: 0
-      topSpawn: 0
-      bottomSpawn: 0
-    - timeToSpawn: 15
-      chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-      difficultyRank: 0
-      topSpawn: 0
-      bottomSpawn: 1
   - roundTime: 20
     wavePrompt: Its getting Explosive
     waveSound: 
