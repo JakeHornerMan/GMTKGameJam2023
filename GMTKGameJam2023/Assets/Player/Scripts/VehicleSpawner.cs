@@ -218,6 +218,8 @@ public class VehicleSpawner : MonoBehaviour
 
     private void PlaceSelectedCar()
     {
+        if(gameManager != null && gameManager.isGameOver) return; 
+        if(tutorialManager != null && tutorialManager.isGameOver) return;
         // Check Money, Check Car Wallet Budget
         if (NotEnoughCarWallet())
             return;
@@ -289,6 +291,8 @@ public class VehicleSpawner : MonoBehaviour
 
     private void PlaceSelectedUltimate()
     {
+        if(gameManager != null && gameManager.isGameOver) return; 
+        if(tutorialManager != null && tutorialManager.isGameOver) return;
         // Raycast toward Click
         RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero);
 
