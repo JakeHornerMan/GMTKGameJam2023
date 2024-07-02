@@ -203,7 +203,7 @@ public class TutorialManager : MonoBehaviour
         carCursorUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(0, 0, 0);
         carCursorTokenUI.transform.localScale = new Vector3(0, 0, 0);
-        OpenInfoBluePrintPauseGame("<b>Oh No!</b> <br><br>You have let a chicken cross the road, and attack your corn <i>(displayed on top)</i>. <br><br>You can now send standard car to stop them from eating your crops <br><br><i>(Please select a road to place them!)</i>");
+        OpenInfoBluePrintPauseGame("<b>Oh No!</b> <br><br>You let a chicken cross the road, and they've attacked your corn (<i>displayed above</i>). <br><br>To defend yourself, send cars down the road to hit the chickens and stop them from eating your crops! <br><br>We'll start with the default car for now, but you'll get the chance to buy other, more advanced vehicles later <br><br>(<i>Click a road to place them!</i>)");
     }
 
     public void Round3ChickenWaveAndCarWallet(){
@@ -212,7 +212,7 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         walletUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("You can only place a limited amount of vehicles at one time. <br><br>This is shown by the cogs on the left side of the screen, or the number and spinner attached to the game cursor. <br><br>These vehicles are recharged every few seconds to keep you fighting the chicken menace.");
+        OpenInfoBluePrintPauseGame("You can only place a limited amount of vehicles at one time. <br><br>Placing a vehicle uses a cog (<i>located on the left</i>), which regenerates every few seconds. <br><br>The time it takes to regenerate, as well as the number of cogs you have, are also shown on the game cursor.");
     }
 
     public void Round4TokenWave(){
@@ -223,7 +223,7 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorTokenUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("Energy tokens are a very important resourse to collect! <br><br>They show up randomly during your playtime and are collected by vehicles. <br><br>Soon you will be able to able to afford a new set of wheels");
+        OpenInfoBluePrintPauseGame("Make sure to collect blue energy tokens when you spot them by sending a car towards it!  <br><br>These can be used to send better vehicles which can hit more chickens- but you'll only get so many, so use them wisely!");
     }
 
     public void Round5NewVehiclesAndLanes(){
@@ -236,12 +236,12 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.setStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carSelectorUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br><br>You can now select the new bluprint icons <i>(on the bottom of the screen)</i>. Place them on different roads that highlight when selected. <br><br>You need to have the corrrect amount of energy to purchase a vehicle");
+        OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br><br>Use them by clicking on a blueprint (<i>at the bottom of the screen</i>) or using the number keys (1, 2, 3, 4 etc), and then clicking on the lane you want to send it down. <br><br>You need to have the correct amount of energy to purchase a vehicle. <br><br>Different vehicles can be sent down different lanes, depending on their type.");
     }
 
     public void Round6SpecialChickens(){
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
-        OpenInfoBluePrintPauseGame("The Chickens are Evolving! <br><br> There is many different special types of chickens with different mechanics to throw a wrench in your plans.");
+        OpenInfoBluePrintPauseGame("The Chickens are Evolving! <br><br> There are many different special types of chickens, each with unique mechanics designed to throw a wrench in your plans.");
     }
 
     public void Round7TopContainerShow(){
@@ -250,31 +250,31 @@ public class TutorialManager : MonoBehaviour
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         cornContainerUI.GetComponent<RectTransform>().anchoredPosition = originalCornContainerlocation;
         SetRoundTime();
-        OpenInfoBluePrintPauseGame("You have just recieved a Ultimate ability. Select the ability <i>(top center button)</i> and click any where on the screen to place. <br><br> On the left, you have timer for the round counting down until the next chicken horde. <br><br>On the right we have your player score, rack this up for bragging rights");
+        OpenInfoBluePrintPauseGame("You have just received an Ultimate ability. Use it by selecting the button (<i>located at the top</i>) and click anywhere on the screen to place. <br><br>Also found above, on the left is the time remaining for the round. <br><br>On the right we have your total score, rack this up for bragging rights! <br><br> Pro tip: The more chickens you defeat with a single vehicle, the higher your combo.");
     }
 
     public void Round8IntenseWave(){
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
         SetRoundTime();
-        OpenInfoBluePrintPauseGame("Congratulations! <br><br>You have completed the tuttorial. <br><br>Now lets see if you can survive this round.");
+        OpenInfoBluePrintPauseGame("Congratulations! <br><br>That's all you need to know to stop the chicken menace. <br><br>Now let's see if you can survive this round...");
     }
 
     public void TutorialFail(){
         missedChickenLives = startLives;
         healthCorn.ResetCorn();
-        OpenInfoBluePrintPauseGame("Clucking hell! <br><br> You let too many chickens cross the road, pay close attension to your lives counter with the corn icons. <br><br>It's ok you were curious why the chickens crossed the road.  <br><br>We have reset your corn (lives) to complete the tutorial!");   
+        OpenInfoBluePrintPauseGame("Clucking hell! <br><br> You let too many chickens cross the road, pay close attension to your lives counter indicated by the corn icons. <br><br>We understand, you got curious as to why the chickens crossed the road, but this is serious business!  <br><br>We have reset your corn (lives), so get back out there and try again!");
     }
 
     public void TutorialSuccess(bool success){
         tutorialOver = true;
         string text;
         if(success){
-            text = "You did it! <br><br>";
+            text = "You did it! Nice work. <br><br>";
         }
         else{
             text = "They got to the other side! <br><br>";
         }
-        OpenInfoBluePrintPauseGame(text + "You completed the tutorial. <br><br> Now lets see what you are made off.", true);   
+        OpenInfoBluePrintPauseGame(text + "You completed the tutorial! <br><br>Good luck and have fun!", true);   
     }
 
     public void SetRoundTime(){
