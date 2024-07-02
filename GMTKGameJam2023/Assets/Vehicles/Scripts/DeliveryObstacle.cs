@@ -60,7 +60,7 @@ public class DeliveryObstacle : EnvironmentalObstacle
         float randomYPos = Random.Range(-3.00f, -0.5f);
         //target = closestRoad.transform.position;
 
-        target = new Vector3(transform.position.x + randomXPos, transform.position.y + randomYPos, 0);
+        target = new Vector3(transform.position.x + randomXPos, transform.position.y + randomYPos, 1);
     }
 
     private void TravelToRoad()
@@ -96,4 +96,12 @@ public class DeliveryObstacle : EnvironmentalObstacle
         //    }
         //}
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.TryGetComponent<Car>(out Car car) || collision.gameObject.TryGetComponent<Ultimate>(out Ultimate ultimate))
+    //    {
+    //        LaunchObject();
+    //    }
+    //}
 }

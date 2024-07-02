@@ -27,6 +27,8 @@ public class TankTargeting : MonoBehaviour
     [SerializeField] private float fireCooldown = 2.0f;
     [SerializeField] private float rotationSpeed = 5.0f;  // Speed at which the cannon rotates
     [SerializeField] private float activationDelay = 3.0f;  // Time before the cannon starts targeting
+    [SerializeField] private float aimThresholdDegrees = 5f; // Threshold in degrees for considering aim complete
+    private bool isAimingComplete = false;
 
     private GameObject specialChickenContainer;
     private GameObject normalChickenContainer;
@@ -42,6 +44,7 @@ public class TankTargeting : MonoBehaviour
         specialChickenContainer = GameObject.Find("SpecialChickenContainer");
         normalChickenContainer = GameObject.Find("ChickenContainer");
         activationDelayTimer = activationDelay;
+        fireCooldownTimer = 2f;
         InitializeChickenList();
     }
 
@@ -57,13 +60,15 @@ public class TankTargeting : MonoBehaviour
 
         if (currentTarget != null)
         {
-            AimAtTarget(currentTarget.transform.position);
+            isAimingComplete = AimAtTarget(currentTarget.transform.position);
 
             fireCooldownTimer -= Time.deltaTime;
-            if (fireCooldownTimer <= 0f)
+            if (fireCooldownTimer <= 0f && isAimingComplete)
             {
                 FireProjectile();
                 fireCooldownTimer = fireCooldown;
+
+                InitializeChickenList();
             }
         }
     }
@@ -121,12 +126,20 @@ public class TankTargeting : MonoBehaviour
         return bestTarget;
     }
 
-    private void AimAtTarget(Vector3 targetPosition)
+    private bool AimAtTarget(Vector3 targetPosition)
     {
         Vector2 direction = (targetPosition - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;  // Adjust angle if necessary
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, targetAngle);
+
         cannonTransform.rotation = Quaternion.Lerp(cannonTransform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        // Calculate the angle difference, considering the wraparound at 360 degrees
+        float currentAngle = cannonTransform.rotation.eulerAngles.z;
+        float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle));
+
+        // Return true if the angle difference is within the threshold
+        return angleDifference <= aimThresholdDegrees;
     }
 
     private void FireProjectile()

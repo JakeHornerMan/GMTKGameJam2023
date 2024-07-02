@@ -110,8 +110,12 @@ public class ObjectBlueprint : MonoBehaviour
         if (objectImage != null) objectImage.enabled = true;
         if (lanesContainer != null) lanesContainer.SetActive(false);
 
-        nextRoundContainer.SetActive(false);
-        nextRoundText.gameObject.SetActive(false);
+        if (nextRoundContainer != null)
+        {
+            nextRoundContainer.SetActive(false);
+            nextRoundText.gameObject.SetActive(false);
+        }
+        
     }
 
     /// <summary>

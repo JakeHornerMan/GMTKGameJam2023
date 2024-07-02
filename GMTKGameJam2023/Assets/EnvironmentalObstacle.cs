@@ -33,6 +33,14 @@ public class EnvironmentalObstacle : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isKnockable)
+        {
+            LaunchObject();
+        }
+    }
+
     private IEnumerator Spin()
     {
         while (isSpinning)
