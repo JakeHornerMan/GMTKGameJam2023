@@ -39,7 +39,7 @@ public class PlaceObjectOnRoad : MonoBehaviour
         // Raycast down from drop point to find the road that the chicken is currently on
         Collider2D raycastHit = Physics2D.Raycast(transform.position, Vector2.zero).collider;
         if (!raycastHit) return;
-        
+
         RoadHighlight road = raycastHit.GetComponent<RoadHighlight>();
         if (
             road != null // Is a road
@@ -47,16 +47,20 @@ public class PlaceObjectOnRoad : MonoBehaviour
         )
         {
             GameObject gameObject;
-            if(objectToPlace2 != null){
+            if (objectToPlace2 != null)
+            {
                 int randomNumber = Random.Range(1, probabilityOfSecondObject);
-                if(randomNumber == 1){
+                if (randomNumber == 1)
+                {
                     gameObject = objectToPlace2;
                 }
-                else{
+                else
+                {
                     gameObject = objectToPlace;
                 }
             }
-            else{
+            else
+            {
                 gameObject = objectToPlace;
             }
             // Drop horizontally centered on road
@@ -69,7 +73,8 @@ public class PlaceObjectOnRoad : MonoBehaviour
     private void InstantiateObject(Vector2 dropPos, GameObject gameObject)
     {
         int randomNumber = Random.Range(1, probabilityOfSpawn);
-        if(randomNumber == 1){
+        if (randomNumber == 1)
+        {
             GameObject newlyPlacedObject = Instantiate(
                 gameObject,
                 dropPos,
