@@ -106,25 +106,35 @@ public class GameFlowManager : MonoBehaviour
         List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
 
         //find amount of point for the wave
-        int multiplier;
+        float multiplier;
         switch(GameProgressionValues.RoundNumber){
             case int r when (r < 5):
                 multiplier = 2;
                 break;
             case int r when (r < 10):
-                multiplier = 3;
+                multiplier = 2.5f;
                 break;
             case int r when (r < 15):
-                multiplier = 4;
+                multiplier = 3;
                 break;
             case int r when (r < 20):
-                multiplier = 5;
+                multiplier = 3.5f;
+                break;
+            case int r when (r < 25):
+                multiplier = 4f;
+                break;
+            case int r when (r < 30):
+                multiplier = 4.5f;
+                break;
+            case int r when (r < 30):
+                multiplier = 5f;
                 break;
             default:
                 multiplier = 2;
                 break;
         }
-        int chickenPoints = GameProgressionValues.RoundNumber*multiplier;
+        
+        int chickenPoints = (int)Mathf.Round(GameProgressionValues.RoundNumber*multiplier);
 
         //find random chickens in candidates for our wave
         do{
