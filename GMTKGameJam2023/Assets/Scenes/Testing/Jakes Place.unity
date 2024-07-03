@@ -188,7 +188,8 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6069660275563900758, guid: 7e10be4b5550dd042a6177e49a62fe3d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -269,55 +270,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 477890122295091617, guid: 290236cc89473724f8134fa98ff0abf5, type: 3}
   m_PrefabInstance: {fileID: 878583216}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1179376183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1179376185}
-  - component: {fileID: 1179376184}
-  m_Layer: 3
-  m_Name: PostProcessLayer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1179376184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179376183}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 5c649dfd8660aee46b04def9ed20dfb4, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
---- !u!4 &1179376185
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179376183}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4031766030395596951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,6 +605,18 @@ PrefabInstance:
     - target: {fileID: 3914593322252315468, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: emptyWaveTime
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914593322252315468, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: prompts.Array.data[5].prompt
+      value: Flock Inbound!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914593322252315468, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: prompts.Array.data[5].includesNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914593322252315468, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: prompts.Array.data[6].includesNum
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3914593322252315468, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: chickenPot.Array.data[5].difficultyRank
