@@ -24,11 +24,14 @@ public class PauseUI : MonoBehaviour
     public void Restart()
     {
         pause.UnpauseGame();
-        sceneFader.ReloadScene();
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
+        sceneFader.ScreenWipeOut("Level01");
     }
 
     public void QuitGame()
     {
-       Application.Quit();
+        Application.Quit();
     }
 }

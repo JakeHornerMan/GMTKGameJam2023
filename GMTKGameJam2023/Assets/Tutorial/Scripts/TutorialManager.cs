@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour
     [Header("Cars in Level")]
     [SerializeField] public List<Car> carsInLevel;
     // [SerializeField] public Car[] carsInLevel;
-    
+
     [SerializeField] public List<Car> defaultCars;
     [SerializeField] public Ultimate ultimateInLevel;
 
@@ -70,7 +70,7 @@ public class TutorialManager : MonoBehaviour
     private bool changingRound = true;
     private bool tutorialOver = false;
     private VehicleSpawner vehicleSpawner;
-    [SerializeField] private GameObject tokenPrefab; 
+    [SerializeField] private GameObject tokenPrefab;
     [SerializeField] private Car bonusCar;
     [SerializeField] private GameObject topContainerUI;
     [SerializeField] private GameObject tokensUI;
@@ -104,86 +104,94 @@ public class TutorialManager : MonoBehaviour
         // }
     }
 
-    private void SetPlayerValuesInLevel(){
+    private void SetPlayerValuesInLevel()
+    {
         missedChickenLives = startLives;
     }
 
     private void FixedUpdate()
-    {   
-        if(missedChickenLives <= 0){
-            if(tutroialRoundCounter < 8){
+    {
+        if (missedChickenLives <= 0)
+        {
+            if (tutroialRoundCounter < 8)
+            {
                 TutorialFail();
             }
-            else{
-                if(!tutorialOver) TutorialSuccess(false);
+            else
+            {
+                if (!tutorialOver) TutorialSuccess(false);
             }
         }
-        if(!roundTimerStarted && chickenContainer.transform.childCount <= 0 && tokenContainer.transform.childCount <= 0 && !changingRound){
+        if (!roundTimerStarted && chickenContainer.transform.childCount <= 0 && tokenContainer.transform.childCount <= 0 && !changingRound)
+        {
             tutroialRoundCounter++;
             changingRound = true;
         }
-        if(changingRound && !tutorialOver)
+        if (changingRound && !tutorialOver)
             TutorialRoundChanging();
-        if(!roundOver){
-            SetTime();
-        } 
-    }
-
-    public void TutorialRoundChanging(){
-        switch(tutroialRoundCounter) 
+        if (!roundOver)
         {
-            case 1:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round1LetChickenCrossIntroCornHealth();
-            changingRound = false;
-            break;
-        case 2:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round2ChickenWaveAndStandardCar();
-            changingRound = false;
-            break;
-        case 3:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round3ChickenWaveAndCarWallet();
-            changingRound = false;
-            break;
-        case 4:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round4TokenWave();
-            changingRound = false;
-            break;
-        case 5:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round5NewVehiclesAndLanes();
-            changingRound = false;
-            break;
-        case 6:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round6SpecialChickens();
-            changingRound = false;
-            break;
-        case 7:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round7TopContainerShow();
-            changingRound = false;
-            break;
-        case 8:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            Round8IntenseWave();
-            changingRound = false;
-            break;
-        case 9:
-            Debug.Log("Tutorial Round" + tutroialRoundCounter);
-            TutorialSuccess(true);
-            changingRound = false;
-            break;
-        default:
-            // code block
-            break;
+            SetTime();
         }
     }
 
-    public void Round1LetChickenCrossIntroCornHealth(){
+    public void TutorialRoundChanging()
+    {
+        switch (tutroialRoundCounter)
+        {
+            case 1:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round1LetChickenCrossIntroCornHealth();
+                changingRound = false;
+                break;
+            case 2:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round2ChickenWaveAndStandardCar();
+                changingRound = false;
+                break;
+            case 3:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round3ChickenWaveAndCarWallet();
+                changingRound = false;
+                break;
+            case 4:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round4TokenWave();
+                changingRound = false;
+                break;
+            case 5:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round5NewVehiclesAndLanes();
+                changingRound = false;
+                break;
+            case 6:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round6SpecialChickens();
+                changingRound = false;
+                break;
+            case 7:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round7TopContainerShow();
+                changingRound = false;
+                break;
+            case 8:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                Round8IntenseWave();
+                changingRound = false;
+                break;
+            case 9:
+                Debug.Log("Tutorial Round" + tutroialRoundCounter);
+                TutorialSuccess(true);
+                changingRound = false;
+                break;
+            default:
+                // code block
+                break;
+        }
+    }
+
+    public void Round1LetChickenCrossIntroCornHealth()
+    {
         //disable visuals fo elements
         topContainerUI.transform.localScale = new Vector3(0, 0, 0);
         tokensUI.transform.localScale = new Vector3(0, 0, 0);
@@ -196,98 +204,111 @@ public class TutorialManager : MonoBehaviour
         vehicleSpawner.disableVehicleSpawn = true;
     }
 
-    public void Round2ChickenWaveAndStandardCar(){
+    public void Round2ChickenWaveAndStandardCar()
+    {
         vehicleSpawner.disableVehicleSpawn = false;
-        vehicleSpawner.setStandardCar();
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        vehicleSpawner.SetStandardCar();
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         carCursorUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(0, 0, 0);
         carCursorTokenUI.transform.localScale = new Vector3(0, 0, 0);
         OpenInfoBluePrintPauseGame("<b>Oh No!</b> <br><br>You let a chicken cross the road, and they've attacked your corn (<i>displayed above</i>). <br><br>To defend yourself, send cars down the road to hit the chickens and stop them from eating your crops! <br><br>We'll start with the default car for now, but you'll get the chance to buy other, more advanced vehicles later <br><br>(<i>Click a road to place them!</i>)");
     }
 
-    public void Round3ChickenWaveAndCarWallet(){
+    public void Round3ChickenWaveAndCarWallet()
+    {
         vehicleSpawner.disableVehicleSpawn = false;
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
-        vehicleSpawner.setStandardCar();
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
+        vehicleSpawner.SetStandardCar();
         walletUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorWalletUI.transform.localScale = new Vector3(1f, 1f, 1f);
         OpenInfoBluePrintPauseGame("You can only place a limited amount of vehicles at one time. <br><br>Placing a vehicle uses a cog (<i>located on the left</i>), which regenerates every few seconds. <br><br>The time it takes to regenerate, as well as the number of cogs you have, are also shown on the game cursor.");
     }
 
-    public void Round4TokenWave(){
+    public void Round4TokenWave()
+    {
         vehicleSpawner.disableVehicleSpawn = false;
         // tokenSpawner.SpawnToken(tokenPrefab, tokenContainer.transform);
-        Instantiate(tokenPrefab, new Vector3(4f, 1f, 1f),Quaternion.identity, tokenContainer.transform);
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
-        vehicleSpawner.setStandardCar();
+        Instantiate(tokenPrefab, new Vector3(4f, 1f, 1f), Quaternion.identity, tokenContainer.transform);
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
+        vehicleSpawner.SetStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carCursorTokenUI.transform.localScale = new Vector3(1f, 1f, 1f);
         OpenInfoBluePrintPauseGame("Make sure to collect blue energy tokens when you spot them by sending a car towards it!  <br><br>These can be used to send better vehicles which can hit more chickens- but you'll only get so many, so use them wisely!");
     }
 
-    public void Round5NewVehiclesAndLanes(){
+    public void Round5NewVehiclesAndLanes()
+    {
         vehicleSpawner.disableVehicleSpawn = false;
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         vehicleSpawner.disableVehicleSpawn = false;
         carsInLevel.Add(bonusCar);
         vehicleSpawner.DestroyButtons();
         vehicleSpawner.CreateButtons(carsInLevel);
-        vehicleSpawner.setStandardCar();
+        vehicleSpawner.SetStandardCar();
         tokensUI.transform.localScale = new Vector3(1f, 1f, 1f);
         carSelectorUI.transform.localScale = new Vector3(1f, 1f, 1f);
         OpenInfoBluePrintPauseGame("Now you have a new set of wheels! <br><br>Use them by clicking on a blueprint (<i>at the bottom of the screen</i>) or using the number keys (1, 2, 3, 4 etc), and then clicking on the lane you want to send it down. <br><br>You need to have the correct amount of energy to purchase a vehicle. <br><br>Different vehicles can be sent down different lanes, depending on their type.");
     }
 
-    public void Round6SpecialChickens(){
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+    public void Round6SpecialChickens()
+    {
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         OpenInfoBluePrintPauseGame("The Chickens are Evolving! <br><br> There are many different special types of chickens, each with unique mechanics designed to throw a wrench in your plans.");
     }
 
-    public void Round7TopContainerShow(){
+    public void Round7TopContainerShow()
+    {
         vehicleSpawner.disableVehicleSpawn = false;
         topContainerUI.transform.localScale = new Vector3(1f, 1f, 1f);
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         cornContainerUI.GetComponent<RectTransform>().anchoredPosition = originalCornContainerlocation;
         SetRoundTime();
         OpenInfoBluePrintPauseGame("You have just received an Ultimate ability. Use it by selecting the button (<i>located at the top</i>) and click anywhere on the screen to place. <br><br>Also found above, on the left is the time remaining for the round. <br><br>On the right we have your total score, rack this up for bragging rights! <br><br> Pro tip: The more chickens you defeat with a single vehicle, the higher your combo.");
     }
 
-    public void Round8IntenseWave(){
-        SettingWaveInChickenSpawn(waves[tutroialRoundCounter-1]);
+    public void Round8IntenseWave()
+    {
+        SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         SetRoundTime();
         OpenInfoBluePrintPauseGame("Congratulations! <br><br>That's all you need to know to stop the chicken menace. <br><br>Now let's see if you can survive this round...");
     }
 
-    public void TutorialFail(){
+    public void TutorialFail()
+    {
         missedChickenLives = startLives;
         healthCorn.ResetCorn();
         OpenInfoBluePrintPauseGame("Clucking hell! <br><br> You let too many chickens cross the road, pay close attension to your lives counter indicated by the corn icons. <br><br>We understand, you got curious as to why the chickens crossed the road, but this is serious business!  <br><br>We have reset your corn (lives), so get back out there and try again!");
     }
 
-    public void TutorialSuccess(bool success){
+    public void TutorialSuccess(bool success)
+    {
         tutorialOver = true;
         string text;
-        if(success){
+        if (success)
+        {
             text = "You did it! Nice work. <br><br>";
         }
-        else{
+        else
+        {
             text = "They got to the other side! <br><br>";
         }
-        OpenInfoBluePrintPauseGame(text + "You completed the tutorial! <br><br>Good luck and have fun!", true);   
+        OpenInfoBluePrintPauseGame(text + "You completed the tutorial! <br><br>Good luck and have fun!", true);
     }
 
-    public void SetRoundTime(){
+    public void SetRoundTime()
+    {
         roundTimerStarted = true;
-        time = waves[tutroialRoundCounter-1].roundTime;
+        time = waves[tutroialRoundCounter - 1].roundTime;
         roundOver = false;
     }
 
-    private void SetPointsValuesInLevel(){
+    private void SetPointsValuesInLevel()
+    {
         safelyCrossedChickens = Points.safelyCrossedChickens;
         killCount = Points.killCount;
         totalTokens = Points.totalTokens;
-        playerScore =  Points.playerScore;
+        playerScore = Points.playerScore;
         interfaceManager.scoreForText = playerScore;
     }
 
@@ -325,7 +346,7 @@ public class TutorialManager : MonoBehaviour
 
         chickenSpawn.SetNewWave(currentWave);
 
-        if(tokenSpawner != null)
+        if (tokenSpawner != null)
             tokenSpawner.SetNewWave(currentWave);
 
         IEnumerator coroutine = WaitAndNextWave(currentWave.roundTime);
@@ -343,18 +364,21 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         waveNumber++;
-        if (waveNumber < waves.Count){
+        if (waveNumber < waves.Count)
+        {
             // SettingWaveInChickenSpawn();
-        }    
+        }
     }
 
     //Increments time value for UI
     private void SetTime()
     {
-        if (time > 0){
+        if (time > 0)
+        {
             time -= Time.deltaTime;
         }
-        else{
+        else
+        {
             roundOver = true;
             tutroialRoundCounter++;
             changingRound = true;
@@ -367,7 +391,7 @@ public class TutorialManager : MonoBehaviour
         safelyCrossedChickens++;
         missedChickenLives--;
         healthCorn.DeadCorn(missedChickenLives);
-        if(topContainerUI.transform.localScale != new Vector3(0, 0, 0))
+        if (topContainerUI.transform.localScale != new Vector3(0, 0, 0))
             RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         CameraShaker.instance.Shake(0.25f, -0.5f);
@@ -376,7 +400,7 @@ public class TutorialManager : MonoBehaviour
     public void AddPlayerScore(int addAmount)
     {
         playerScore += addAmount;
-        if(interfaceManager)
+        if (interfaceManager)
             interfaceManager.ScoreUI(addAmount, true);
     }
 
@@ -422,7 +446,8 @@ public class TutorialManager : MonoBehaviour
         sceneFader.FadeToBuyScreen();
     }
 
-    private void HandleGameOver(){
+    private void HandleGameOver()
+    {
         isGameOver = true;
         SetPointsValues();
         GameProgressionValues.sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -430,12 +455,14 @@ public class TutorialManager : MonoBehaviour
     }
 
     //Updates Static scripts
-    private void SetPlayerValues(){
+    private void SetPlayerValues()
+    {
         PlayerValues.Cars = carsInLevel;
-        PlayerValues.startingEnergy =0;
+        PlayerValues.startingEnergy = 0;
     }
 
-    private void SetPointsValues(){
+    private void SetPointsValues()
+    {
         Points.killCount = killCount;
         Points.safelyCrossedChickens = safelyCrossedChickens;
         Points.playerScore = playerScore;

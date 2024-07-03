@@ -481,7 +481,8 @@ public class BuyScreenManager : MonoBehaviour
 
     public void AddLives(int value)
     {
-        if(PlayerValues.missedChickenLives >= 5){
+        if (PlayerValues.missedChickenLives >= 5)
+        {
             return;
         }
         if (CheckMoneyAmount(lifePrice))
@@ -617,7 +618,7 @@ public class BuyScreenManager : MonoBehaviour
 
     public IEnumerator PlayPointer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         if (!itemPurchased)
         {
             pointer.SetActive(true);
