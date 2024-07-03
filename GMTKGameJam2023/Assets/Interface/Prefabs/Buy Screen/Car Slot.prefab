@@ -616,6 +616,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspCar: {fileID: 7892994525631704402}
   correspUlt: {fileID: 0}
+  upgradeBar: {fileID: 0}
+  otherObject: {fileID: 0}
 --- !u!1 &9147583249569074600
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,10 +663,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4007968612830984764}
     m_Modifications:
-    - target: {fileID: 5386714386388248379, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5941939536339446406, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
       propertyPath: m_Name
       value: Roster Car
@@ -675,7 +673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484336041068501168, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6484336041068501168, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
       propertyPath: m_RootOrder
@@ -739,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484336041068501168, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6484336041068501168, guid: 8742f7d1c16d06d45b337ffb76d57bc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

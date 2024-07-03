@@ -79,8 +79,9 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
-    [Header("Pointer")]
+    [Header("Other References")]
     [SerializeField] private GameObject pointer;
+    [SerializeField] private GameObject sellPopup;
 
     public bool itemPurchased = false;
 
@@ -126,6 +127,8 @@ public class BuyScreenManager : MonoBehaviour
 
         pointer.SetActive(false);
         itemPurchased = false;
+
+        SellPopupClose();
 
         StartCoroutine(nameof(PlayPointer));
     }
@@ -630,5 +633,15 @@ public class BuyScreenManager : MonoBehaviour
 
         // Once itemPurchased is true, destroy the pointer
         Destroy(pointer);
+    }
+
+    public void SellPopup()
+    {
+        sellPopup.SetActive(true);
+    }
+
+    public void SellPopupClose()
+    {
+        sellPopup.SetActive(false);
     }
 }

@@ -239,8 +239,11 @@ public class VehicleSpawner : MonoBehaviour
         // Define the LayerMask to ignore the "Cement" layer.
         int cementLayer = LayerMask.NameToLayer("Cement"); // Get the layer index for "Cement".
         int layerMask = ~(1 << cementLayer); // Create a mask that ignores the "Cement" layer.
+
+        LayerMask mask = LayerMask.GetMask("Ignore Raycast", "Cement");
+
         // Perform the raycast while ignoring the "Cement" layer.
-        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero, Mathf.Infinity, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(inputPos, Vector2.zero, Mathf.Infinity, ~mask);
 
         // Return if Clicked Nothing
         if (hit.collider == null)
