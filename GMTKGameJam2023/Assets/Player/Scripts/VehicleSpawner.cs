@@ -108,8 +108,11 @@ public class VehicleSpawner : MonoBehaviour
             btn.correspondingCar = car;
         }
 
-        if (carButtons.Count >= 1)
-            currentActiveCar = standardCar;
+        // Old implementation, when standard car used to be part of normal inventory
+        // if (carButtons.Count >= 1)
+        //     currentActiveCar = standardCar;
+
+        SetStandardCar();
     }
 
     public void DestroyButtons()
@@ -211,7 +214,7 @@ public class VehicleSpawner : MonoBehaviour
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public void setStandardCar()
+    public void SetStandardCar()
     {
         SelectCar(standardCar);
     }
