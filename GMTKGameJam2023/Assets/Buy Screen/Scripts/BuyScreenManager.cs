@@ -79,8 +79,9 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
-    [Header("Pointer")]
+    [Header("Other References")]
     [SerializeField] private GameObject pointer;
+    [SerializeField] private GameObject sellPopup;
 
     public bool itemPurchased = false;
 
@@ -126,6 +127,8 @@ public class BuyScreenManager : MonoBehaviour
 
         pointer.SetActive(false);
         itemPurchased = false;
+
+        SellPopupClose();
 
         StartCoroutine(nameof(PlayPointer));
     }
@@ -478,7 +481,8 @@ public class BuyScreenManager : MonoBehaviour
 
     public void AddLives(int value)
     {
-        if(PlayerValues.missedChickenLives >= 5){
+        if (PlayerValues.missedChickenLives >= 5)
+        {
             return;
         }
         if (CheckMoneyAmount(lifePrice))
@@ -614,7 +618,7 @@ public class BuyScreenManager : MonoBehaviour
 
     public IEnumerator PlayPointer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
         if (!itemPurchased)
         {
             pointer.SetActive(true);
@@ -629,5 +633,15 @@ public class BuyScreenManager : MonoBehaviour
 
         // Once itemPurchased is true, destroy the pointer
         Destroy(pointer);
+    }
+
+    public void SellPopup()
+    {
+        sellPopup.SetActive(true);
+    }
+
+    public void SellPopupClose()
+    {
+        sellPopup.SetActive(false);
     }
 }
