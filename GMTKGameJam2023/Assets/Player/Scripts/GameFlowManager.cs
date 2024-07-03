@@ -126,20 +126,33 @@ public class GameFlowManager : MonoBehaviour
             case int r when (r < 30):
                 multiplier = 4.5f;
                 break;
-            case int r when (r < 30):
+            case int r when (r > 30):
                 multiplier = 5f;
                 break;
             default:
                 multiplier = 2;
                 break;
         }
-        
+
         int chickenPoints = (int)Mathf.Round(GameProgressionValues.RoundNumber*multiplier);
+        int turboCount = 0;
+        int rocketCount = 0;
+        int toughGuyLimit = Mathf.FloorToInt(multiplier);
 
         //find random chickens in candidates for our wave
         do{
             int getChickenAt = Random.Range(0, potCandidates.Count);
             SpecialChicken specialChicken = potCandidates[getChickenAt].DeepClone();
+
+            if(specialChicken.chicken.name.Contains("Turbo")){
+                if(turboCount >= toughGuyLimit) continue;
+                turboCount++;
+            }
+            if(specialChicken.chicken.name.Contains("Rocket")){
+                if(rocketCount >= toughGuyLimit) continue;
+                rocketCount++;
+            }
+
             if(specialChicken.difficultyRank <= chickenPoints){
                 specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
                 chickenPoints = chickenPoints - specialChicken.difficultyRank;
