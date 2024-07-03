@@ -316,11 +316,13 @@ public class GameManager : MonoBehaviour
         interfaceManager.survivedPopup();
 
         chickenManager.StopAllChickens();
-
-        yield return new WaitForSeconds(0.8f);
+        
+        yield return new WaitForSeconds(0.5f);
+        
         chickenManager.WipeAllChickens();
+        isGameOver = true;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
