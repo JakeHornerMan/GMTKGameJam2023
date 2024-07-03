@@ -50,7 +50,7 @@ public class MapGeneration : MonoBehaviour
             lanes.Add(laneSelected);
         }
 
-        if(!IsthereRoadHere(1,3)){
+        if(!IsthereRoadHere(1,2)){
             int randomNumber = Random.Range(1, 3);
             lanes[randomNumber] = laneTypes[0];
         }
