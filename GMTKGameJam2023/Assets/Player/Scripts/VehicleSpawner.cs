@@ -142,8 +142,16 @@ public class VehicleSpawner : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && standardCar != null)
+        if (Input.GetKeyDown(KeyCode.Space) && ultimateManager.correspondingUltimate != null)
+        {
+            // SelectCar(standardCar);
+            SelectUltimate(ultimateManager.correspondingUltimate);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && standardCar != null)
+        {
             SelectCar(standardCar);
+        }
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) && carButtons.Count >= 1)
             SetStandardCar();
@@ -166,8 +174,8 @@ public class VehicleSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.U) && carButtons.Count >= 7)
             SelectCar(carButtons[5].correspondingCar);
 
-        if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.P))
-            SelectUltimate(ultimateManager.correspondingUltimate);
+        // if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.P))
+        //     SelectUltimate(ultimateManager.correspondingUltimate);
 
         UpdateMousePos();
 
