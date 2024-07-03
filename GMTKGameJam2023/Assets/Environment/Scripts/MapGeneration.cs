@@ -29,6 +29,14 @@ public class MapGeneration : MonoBehaviour
         FindObjectOfType<ObjectBlueprint>(true).DisplayInfo(lanes);
     }
 
+    public bool IsthereRoadHere(int start, int end){
+        for(int i = start; i <= end; i++){
+            if(lanes[i].name == "RoadLane")
+                return true;
+        }
+        return false;
+    }
+
     public void PopulateLanesArray(){
         for (int i = 0; i < 12; i++){
             GameObject laneSelected;
@@ -41,6 +49,17 @@ public class MapGeneration : MonoBehaviour
             laneSelected = laneTypes[randomNumber];
             lanes.Add(laneSelected);
         }
+
+        if(!IsthereRoadHere(1,3)){
+            int randomNumber = Random.Range(1, 3);
+            lanes[randomNumber] = laneTypes[0];
+        }
+
+        if(!IsthereRoadHere(9, 10)){
+            int randomNumber = Random.Range(9, 10);
+            lanes[randomNumber] = laneTypes[0];
+        }
+
         LaneCount();
 
         if(roadCount < 4){
