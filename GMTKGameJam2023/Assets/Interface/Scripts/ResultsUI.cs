@@ -77,10 +77,11 @@ public class ResultsUI : MonoBehaviour
         killsText.text = Points.killCount.ToString("000");
         missedChickensText.text = Points.safelyCrossedChickens.ToString("00") + " " + missedChickensLabel;
         finalScoreText.text = Points.playerScore.ToString();
-        roundText.text = "Round "+ GameProgressionValues.RoundNumber.ToString("00");
+        roundText.text = "Round " + GameProgressionValues.RoundNumber.ToString("00");
     }
 
-    public string SetRankText(){
+    public string SetRankText()
+    {
         if (GameProgressionValues.RoundNumber >= 30)
         {
             goldTrophy.enabled = false;

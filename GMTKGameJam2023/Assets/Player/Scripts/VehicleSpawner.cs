@@ -108,8 +108,11 @@ public class VehicleSpawner : MonoBehaviour
             btn.correspondingCar = car;
         }
 
-        if (carButtons.Count >= 1)
-            currentActiveCar = standardCar;
+        // Old implementation, when standard car used to be part of normal inventory
+        // if (carButtons.Count >= 1)
+        //     currentActiveCar = standardCar;
+
+        SetStandardCar();
     }
 
     public void DestroyButtons()
@@ -139,32 +142,40 @@ public class VehicleSpawner : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && standardCar != null)
+        if (Input.GetKeyDown(KeyCode.Space) && ultimateManager.correspondingUltimate != null)
+        {
+            // SelectCar(standardCar);
+            SelectUltimate(ultimateManager.correspondingUltimate);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && standardCar != null)
+        {
             SelectCar(standardCar);
+        }
 
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q) && carButtons.Count >= 1)
-            SelectCar(carButtons[0].correspondingCar);
+            SetStandardCar();
 
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.W) && carButtons.Count >= 2)
-            SelectCar(carButtons[1].correspondingCar);
+            SelectCar(carButtons[0].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.E) && carButtons.Count >= 3)
-            SelectCar(carButtons[2].correspondingCar);
+            SelectCar(carButtons[1].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.R) && carButtons.Count >= 4)
-            SelectCar(carButtons[3].correspondingCar);
+            SelectCar(carButtons[2].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.T) && carButtons.Count >= 5)
-            SelectCar(carButtons[4].correspondingCar);
+            SelectCar(carButtons[3].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.Y) && carButtons.Count >= 6)
-            SelectCar(carButtons[5].correspondingCar);
+            SelectCar(carButtons[4].correspondingCar);
 
         if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.U) && carButtons.Count >= 7)
-            SelectCar(carButtons[6].correspondingCar);
+            SelectCar(carButtons[5].correspondingCar);
 
-        if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.P))
-            SelectUltimate(ultimateManager.correspondingUltimate);
+        // if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Slash) || Input.GetKeyDown(KeyCode.P))
+        //     SelectUltimate(ultimateManager.correspondingUltimate);
 
         UpdateMousePos();
 
@@ -211,7 +222,7 @@ public class VehicleSpawner : MonoBehaviour
         inputPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public void setStandardCar()
+    public void SetStandardCar()
     {
         SelectCar(standardCar);
     }
