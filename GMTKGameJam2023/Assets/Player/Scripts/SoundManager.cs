@@ -79,7 +79,7 @@ public class SoundManager : MonoBehaviour
 
         audioSrc = GetComponent<AudioSource>();
 
-        // LoadSettings();
+        LoadSettings();
     }
 
     public void LoadSettings()
@@ -92,7 +92,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        LoadSettings();
+        // LoadSettings();
         if (musicAllowed)
         {
             PlayMusic();

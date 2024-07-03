@@ -403,7 +403,7 @@ MonoBehaviour:
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
-    wavePrompt: Its getting Explosive
+    wavePrompt: Its getting Eggs-plosive
     waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
@@ -700,6 +700,21 @@ MonoBehaviour:
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
+  prompts:
+  - prompt: Poultry Panic!
+    includesNum: 0
+  - prompt: 'Chicken Horde of '
+    includesNum: 1
+  - prompt: Chickens Incoming!
+    includesNum: 0
+  - prompt: Chicken Run!
+    includesNum: 0
+  - prompt: The Sky is falling!
+    includesNum: 0
+  - prompt: Flock Inbound!
+    includesNum: 1
+  - prompt: Coop Cooperation!
+    includesNum: 0
 --- !u!114 &7716956080788538566
 MonoBehaviour:
   m_ObjectHideFlags: 0

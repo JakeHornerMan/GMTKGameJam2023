@@ -21,8 +21,8 @@ public class FreezeMissile : Ultimate
     public override void HandleChickenCollision(ChickenHealth chickenHealth)
     {
         didHitChicken = true;
-        Debug.Log("Freezing this chciken: " + chickenHealth.gameObject.name
-            + ". For seconds: " + freezeLength);
+        // Debug.Log("Freezing this chciken: " + chickenHealth.gameObject.name
+        //     + ". For seconds: " + freezeLength);
         chickenHealth.FreezeChicken(freezeLength);
     }
 
