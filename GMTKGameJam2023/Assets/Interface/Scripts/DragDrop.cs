@@ -14,6 +14,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public Vector2 startingPosition;
     public Transform startingParent;
 
+    public Transform emergencyParent;
+
     public bool canBePlaced;
 
     public int itemPrice;

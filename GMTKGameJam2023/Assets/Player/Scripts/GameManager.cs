@@ -315,6 +315,8 @@ public class GameManager : MonoBehaviour
         //Show "You Survived!" popup
         interfaceManager.survivedPopup();
 
+        chickenManager.StopAllChickens();
+
         yield return new WaitForSeconds(0.8f);
         chickenManager.WipeAllChickens();
 

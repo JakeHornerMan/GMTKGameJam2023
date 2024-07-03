@@ -59,6 +59,17 @@ public class ChickenManager : MonoBehaviour
         UpdateChickenCount();
     }
 
+    public void StopAllChickens()
+    {
+        ChickenHealth[] allChickens = MakeChickenList();
+
+        for (int i = 0; i < allChickens.Length; i++)
+        {
+            if (allChickens[i] == null) continue;
+            allChickens[i].GetComponent<ChickenMovement>().stopMovement = true; // Disable the chicken movement
+        }
+    }
+
     public void WipeAllChickens()
     {
         StartCoroutine(WipeThemOut());
@@ -66,10 +77,7 @@ public class ChickenManager : MonoBehaviour
 
     private IEnumerator WipeThemOut()
     {
-        // Combine normal and special chickens
-        ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
-        ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
-        ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+        ChickenHealth[] allChickens = MakeChickenList();
 
         killDelay = 1.5f / allChickens.Length;
 
@@ -79,5 +87,15 @@ public class ChickenManager : MonoBehaviour
             allChickens[i].TakeDamage(1000);
             yield return new WaitForSecondsRealtime(killDelay);
         }
+    }
+
+    private ChickenHealth[] MakeChickenList()
+    {
+        // Combine normal and special chickens
+        ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
+        ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+
+        return allChickens;
     }
 }
