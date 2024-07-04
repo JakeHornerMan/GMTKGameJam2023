@@ -11,13 +11,14 @@ public class FishingLine : MonoBehaviour
     public GameObject hook;
     private LineRenderer lineRenderer;
     private List<Transform> points;
-    [SerializeField] private int damage = 20;
+    [SerializeField] private int damage = 30;
     private bool chipDamageChicken = false;
 
     [SerializeField] private Car car;
     private ChickenHealth chickenHealth;
 
     private bool isAttached = false;
+    private bool startDamage = false;
 
     private void Awake()
     {
@@ -30,11 +31,17 @@ public class FishingLine : MonoBehaviour
 
     public void FindTarget()
     {
-        if(gameObject.transform.position.y > 6f){
-            //car.DestroySelf();
-            Destroy(gameObject);
+        // if(gameObject.transform.position.y > 6f){
+        //     //car.DestroySelf();
+        //     Destroy(gameObject);
+        // }
+        if(car.carInAction){
+            StartCoroutine(WaitAndFindTargetChicken());
         }
-        StartCoroutine(WaitAndFindTargetChicken());
+        else{
+            Destroy(gameObject);
+            Destroy(hook);
+        }
     }
 
     private IEnumerator WaitAndFindTargetChicken()
@@ -45,31 +52,65 @@ public class FishingLine : MonoBehaviour
             chicken = GetClosestChicken();
         }
         chickenHealth = chicken.GetComponent<ChickenHealth>();
+        chickenHealth.isAttached = true;
         chickenSprite = chicken.GetComponent<ChickenHealth>().chickenSprite;
         StartCoroutine(AnimateLineOut());
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        FishingForChickens();
+        if(car.carInAction){
+            FishingForChickens();
+        }
+        else{
+            Destroy(gameObject);
+            Destroy(hook);
+            if(chickenHealth != null){
+                chickenHealth.isAttached = false;
+            }
+        }
     }
 
     private void FishingForChickens()
     {
-        if (chickenSprite == null && isAttached)
-        {
-            // Debug.Log("chickenDied");
-            isAttached = false;
-            StartCoroutine(AnimateLineIn());
-        }
-        if (isAttached)
+        //while hooks are attached
+        if (isAttached && chickenSprite != null)
         {
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, gameObject.transform.position);
             lineRenderer.SetPosition(1, chickenSprite.transform.position);
             hook.transform.position = chickenSprite.transform.position;
+            if(startDamage){
+                StartCoroutine(DamageAndKillChicken());
+            }
         }
 
+        //when Chicken has died
+        if (chickenSprite == null && isAttached)
+        {
+            isAttached = false;
+            StartCoroutine(AnimateLineIn());
+        }
+    }
+
+    private IEnumerator DamageAndKillChicken()
+    {
+        startDamage = false;
+        if (chickenHealth.health - damage <= 0)
+        {
+            car.KillChicken(chickenHealth);
+        }
+        chickenHealth.TakeDamage(damage);
+        if (chickenHealth.health > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            RedoDamageAndKillChicken();
+        }
+        yield return new WaitForSeconds(0f);
+    }
+
+    public void RedoDamageAndKillChicken(){
+        StartCoroutine(DamageAndKillChicken());
     }
 
     private GameObject GetClosestSpecialChicken()
@@ -83,8 +124,10 @@ public class FishingLine : MonoBehaviour
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = child.gameObject;
+                if(!child.GetComponent<ChickenHealth>().isAttached){
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = child.gameObject;
+                }
             }
         }
         return bestTarget;
@@ -101,21 +144,23 @@ public class FishingLine : MonoBehaviour
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = child.gameObject;
+                if(!child.GetComponent<ChickenHealth>().isAttached){
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = child.gameObject;
+                }
             }
         }
         return bestTarget;
     }
 
-    private void ChipDamageChicken()
-    {
-        if (!chipDamageChicken)
-        {
-            StartCoroutine(chicken.GetComponent<ChickenHealth>().ChipDamage(damage));
-            chipDamageChicken = true;
-        }
-    }
+    // private void ChipDamageChicken()
+    // {
+    //     if (!chipDamageChicken)
+    //     {
+    //         StartCoroutine(chicken.GetComponent<ChickenHealth>().ChipDamage(damage));
+    //         chipDamageChicken = true;
+    //     }
+    // }
 
     private IEnumerator AnimateLineOut()
     {
@@ -138,7 +183,9 @@ public class FishingLine : MonoBehaviour
             if (pos == chickenSprite.transform.position)
             {
                 isAttached = true;
-                ChipDamageChicken();
+                chickenHealth.isAttached = isAttached;
+                // ChipDamageChicken();
+                startDamage = true;
             }
             yield return null;
         }
@@ -147,7 +194,7 @@ public class FishingLine : MonoBehaviour
 
     private IEnumerator AnimateLineIn()
     {
-        Debug.Log("FishingLine In Fishing line");
+        Debug.Log("FishingLine In");
         chipDamageChicken = false;
         isAttached = false;
         chicken = null;
@@ -175,8 +222,6 @@ public class FishingLine : MonoBehaviour
             }
             yield return null;
         }
-        car.KillChicken(chickenHealth);
-        chickenHealth = null;
     }
 
 }

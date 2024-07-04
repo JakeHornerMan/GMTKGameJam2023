@@ -65,7 +65,7 @@ public abstract class Car : MonoBehaviour
     [SerializeField] private GameObject exhaustParticleParent;
 
     //[Header("References to Children")]
-    private GameObject carSpriteObject;
+    public GameObject carSpriteObject;
 
     [Header("PopUp Values")]
     [SerializeField] private string scorePopUpMsg = "";
@@ -657,12 +657,14 @@ public abstract class Car : MonoBehaviour
     }
 
     public virtual void CarGoesOffscreen()
-    {
+    {   
+        carInAction = false;
         DestroySelf();
     }
 
     public void DestroySelf()
     {
+        carSpriteObject.SetActive(false);
         if (totalPoints > 0)
         {
             if (gameManager != null) gameManager.AddPlayerScore(totalPoints);
