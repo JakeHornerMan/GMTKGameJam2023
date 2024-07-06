@@ -144,6 +144,7 @@ public class VehicleSpawner : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && ultimateManager.correspondingUltimate != null)
         {
+            if(!ultimateManager.ultimateEnabled) return;
             // SelectCar(standardCar);
             SelectUltimate(ultimateManager.correspondingUltimate);
         }

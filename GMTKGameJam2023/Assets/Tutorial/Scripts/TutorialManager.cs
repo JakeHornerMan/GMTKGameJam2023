@@ -264,7 +264,7 @@ public class TutorialManager : MonoBehaviour
         SettingWaveInChickenSpawn(waves[tutroialRoundCounter - 1]);
         cornContainerUI.GetComponent<RectTransform>().anchoredPosition = originalCornContainerlocation;
         SetRoundTime();
-        OpenInfoBluePrintPauseGame("You have just received an Ultimate ability. Use it by selecting the button (<i>located at the top</i>) and click anywhere on the screen to place. <br><br>Also found above, on the left is the time remaining for the round. <br><br>On the right we have your total score, rack this up for bragging rights! <br><br> Pro tip: The more chickens you defeat with a single vehicle, the higher your combo.");
+        OpenInfoBluePrintPauseGame("You have just received an Ultimate ability. Use it by selecting the button (<i>located at the top</i>), or by pressing the space key, and click anywhere on the screen to place. <br><br>Also found above, on the left is the time remaining for the round. <br><br>On the right we have your total score, rack this up for bragging rights! <br><br> Pro tip: The more chickens you defeat with a single vehicle, the higher your combo.");
     }
 
     public void Round8IntenseWave()

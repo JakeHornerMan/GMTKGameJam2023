@@ -46,7 +46,7 @@ public class FishingLine : MonoBehaviour
 
     private IEnumerator WaitAndFindTargetChicken()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         chicken = GetClosestSpecialChicken();
         if(chicken == null){
             chicken = GetClosestChicken();
