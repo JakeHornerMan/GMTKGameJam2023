@@ -24,7 +24,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
     private GameObject tempSellVehicle;
 
-    [SerializeField] private BuyScreenItemInfoBtn correspondingInfoBtn;
+    [SerializeField] public BuyScreenItemInfoBtn correspondingInfoBtn;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -339,6 +339,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
     public void AcceptSell()
     {
         SellVehicle(tempSellVehicle);
+        GameObject obj = tempSellVehicle.GetComponent<DragDrop>().emergencyParent.gameObject;
+        obj.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.DisableInfo();
     }
 
     public void DeclineSell()

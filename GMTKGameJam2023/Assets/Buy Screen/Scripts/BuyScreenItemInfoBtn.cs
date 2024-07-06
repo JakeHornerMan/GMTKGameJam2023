@@ -11,22 +11,28 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
 
     [Header("RosterSlot References")]
     [SerializeField] private bool IsRosterSlot = false;
-    [SerializeField] private ObjectBlueprint objectBlueprint;
+    // [SerializeField] private ObjectBlueprint objectBlueprint;
 
 
-    public void Awake(){
-        // if(IsRosterSlot){
-        //     if(correspCar == null || correspUlt == null){
-        //         DisableInfo();
-        //     }
-        // }
-        objectBlueprint = FindObjectOfType<ObjectBlueprint>();
+    public void Start(){
+        if(IsRosterSlot){
+            DisableOrEnable(correspCar, correspUlt);
+        }
+    }
+
+    public void DisableOrEnable(BuyScreenCar car, BuyScreenUltimate ult){
+        if(car == null || ult == null){
+            DisableInfo();
+        }
+        else{
+            ActiveInfo(car, ult);
+        }
     }
 
     public void ShowInfo()
     {
         if (correspCar != null)
-            objectBlueprint.DisplayInfo(correspCar.correspondingCar);
+            FindObjectOfType<ObjectBlueprint>(true).DisplayInfo(correspCar.correspondingCar);
         else if (upgradeBar != null)
             FindObjectOfType<ObjectBlueprint>(true).ShowObjectInfo(upgradeBar, "Upgrade");
         else if (correspUlt != null)
