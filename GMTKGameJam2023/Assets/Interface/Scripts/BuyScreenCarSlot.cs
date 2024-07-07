@@ -115,13 +115,18 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                             //Takes the pre-existing item and moves it to where your new car used to be 
                             replacedCar.transform.SetParent(oldParent.transform);
+                            replacedCar.transform.SetSiblingIndex(1);
                             replacedCar.gameObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
                             //Takes your held car and moves it to where the old car used to be
                             heldCar.transform.SetParent(gameObject.transform);
+                            heldCar.transform.SetSiblingIndex(1);
                             heldCar.gameObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
                             heldCar.GetComponent<DragDrop>().canBePlaced = true;
+
+                            oldParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(replacedCar.GetComponent<BuyScreenCar>(), null);
+                            newParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(heldCar.GetComponent<BuyScreenCar>(), null);
 
                         }
 
