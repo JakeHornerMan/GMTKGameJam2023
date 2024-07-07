@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -79,7 +78,7 @@ public class SoundManager : MonoBehaviour
 
         audioSrc = GetComponent<AudioSource>();
 
-        // LoadSettings();
+        LoadSettings();
     }
 
     public void LoadSettings()
@@ -92,7 +91,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        LoadSettings();
+        // LoadSettings();
         if (musicAllowed)
         {
             PlayMusic();
@@ -102,10 +101,13 @@ public class SoundManager : MonoBehaviour
     public void PlayMusic()
     {
         gameMusic = SetGameMusic();
-        musicAudio.clip = gameMusic.clip;
-        musicAudio.volume = musicVolume;
-        musicAudio.loop = isMenu;
-        musicAudio.Play();
+        if (musicAudio)
+        {
+            musicAudio.clip = gameMusic.clip;
+            musicAudio.volume = musicVolume;
+            musicAudio.loop = isMenu;
+            musicAudio.Play();
+        }
     }
 
     private SoundConfig SetGameMusic()
@@ -113,24 +115,14 @@ public class SoundManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         // Debug.Log(sceneName);
 
-        switch (sceneName)
+        return sceneName switch
         {
-            case "MainMenu":
-                return levelMusic[0];
-                break;
-            case "Tutorial":
-                return levelMusic[1];
-                break;
-            case "Guidebook":
-                return levelMusic[2];
-                break;
-            case "BuyScreenImproved":
-                return levelMusic[3];
-                break;
-            default:
-                return GetLevelTrack();
-                break;
-        }
+            "MainMenu" => levelMusic[0],
+            "Tutorial" => levelMusic[1],
+            "Guidebook" => levelMusic[2],
+            "BuyScreenImproved" => levelMusic[3],
+            _ => GetLevelTrack(),
+        };
     }
 
     private SoundConfig GetLevelTrack()
@@ -182,7 +174,8 @@ public class SoundManager : MonoBehaviour
     public void PlayEndMusic()
     {
         audioSrc.Stop();
-        musicAudio.PlayOneShot(endMusic, 0.05f);
+        if (musicAudio != null)
+            musicAudio.PlayOneShot(endMusic, 0.05f);
     }
 
     private void PlaySound(SoundConfig soundConfig)

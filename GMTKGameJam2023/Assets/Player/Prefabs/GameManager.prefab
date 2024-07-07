@@ -303,7 +303,7 @@ MonoBehaviour:
   chickenPot:
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 77cdfd9c2f655af4d998222fafd99776, type: 3}
-    difficultyRank: 3
+    difficultyRank: 4
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -313,12 +313,12 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 2013693792624936376, guid: 7e20e0ded9071584e83134b7424da0cc, type: 3}
-    difficultyRank: 4
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 37d711f5f31a85a4da273bc0d74e14d6, type: 3}
-    difficultyRank: 4
+    difficultyRank: 5
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: d5b4a0d4de351674889695455e2056e2, type: 3}
-    difficultyRank: 5
+    difficultyRank: 8
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
     bottomSpawn: 0
   - timeToSpawn: 0
     chicken: {fileID: 7467406142021207113, guid: 2f90d978cc3932a47b9bfe24da1b9fb8, type: 3}
-    difficultyRank: 5
+    difficultyRank: 6
     topSpawn: 0
     bottomSpawn: 0
   - timeToSpawn: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
       topSpawn: 0
       bottomSpawn: 0
   - roundTime: 20
-    wavePrompt: Its getting Explosive
+    wavePrompt: Its getting Eggs-plosive
     waveSound: 
     standardChickenAmounts: 0
     chickenIntesity: 0
@@ -700,6 +700,21 @@ MonoBehaviour:
       difficultyRank: 0
       topSpawn: 0
       bottomSpawn: 0
+  prompts:
+  - prompt: Poultry Panic!
+    includesNum: 0
+  - prompt: 'Chicken Horde of '
+    includesNum: 1
+  - prompt: Chickens Incoming!
+    includesNum: 0
+  - prompt: Chicken Run!
+    includesNum: 0
+  - prompt: The Sky is falling!
+    includesNum: 0
+  - prompt: Flock Inbound!
+    includesNum: 1
+  - prompt: Coop Cooperation!
+    includesNum: 0
 --- !u!114 &7716956080788538566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1060,7 @@ MonoBehaviour:
     volume: 1
   turboChickenDeath:
     clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
-    volume: 1
+    volume: 0.5
   wagonChickenDeath:
     clip: {fileID: 8300000, guid: ca9c2a9734d42a341ae0fdad334c3d81, type: 3}
     volume: 1

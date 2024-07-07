@@ -17,8 +17,10 @@ public class ChickenManager : MonoBehaviour
 
     void Start()
     {
-        normalChickenContainer = GameObject.Find("ChickenContainer").transform;
-        specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
+        if (GameObject.Find("ChickenContainer") != null)
+            normalChickenContainer = GameObject.Find("ChickenContainer").transform;
+        if (GameObject.Find("SpecialChickenContainer") != null)
+            specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
 
         // Start the coroutine to play chicken sounds
         if (soundManager != null)

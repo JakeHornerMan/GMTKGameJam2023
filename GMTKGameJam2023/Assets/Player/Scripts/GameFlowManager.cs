@@ -9,6 +9,7 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] private List<SpecialChicken> chickenPot;
     [SerializeField] private List<SpecialChicken> potCandidates;
     [SerializeField] public ChickenWave[] bonusWaves;
+    [SerializeField] private List<WavePrompt> prompts;
     private GameManager gameManager;
 
     private int standardChickenAmount = 0;
@@ -40,13 +41,14 @@ public class GameFlowManager : MonoBehaviour
         newChickenWave.roundTime = GameProgressionValues.standardRoundTime;
         newChickenWave.standardChickenAmounts = standardChickenAmount;
 
-        if(waveNumber == 1){
-            newChickenWave.wavePrompt = "Round: " + GameProgressionValues.RoundNumber;
-        }
-        else {
-            newChickenWave.wavePrompt = "Chciken Amounts: " + newChickenWave.standardChickenAmounts;
+        // if(waveNumber == 1){
+        //     newChickenWave.wavePrompt = "Level: " + GameProgressionValues.RoundNumber;
+        // }
+        // else {
+            // newChickenWave.wavePrompt = "Chicken Amounts: " + newChickenWave.standardChickenAmounts;
             //TODO: insert funny prompts funtiality
-        }
+            newChickenWave.wavePrompt = SetWavePrompt(newChickenWave.standardChickenAmounts);
+        // }
         newChickenWave.chickenIntesity = chickenIntesitySet();
         newChickenWave.coinAmount = RoundCoinSet();
         newChickenWave.specialChickens = SpecialChickenListSet();
@@ -54,27 +56,18 @@ public class GameFlowManager : MonoBehaviour
         // Debug.Log(newChickenWave.wavePrompt);
     }
 
-    // Old System
-    // private int standardChickenAmount(){
-        
-    //     float amount = GameProgressionValues.standardChickenAmountForStart;
-    //     if(GameProgressionValues.RoundNumber <= 30){
-    //         for(int i = 0; i < GameProgressionValues.RoundNumber; i ++)
-    //         {
-    //             amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
-    //         }
-    //     }
-    //     else{
-    //         int rando = Random.Range(15,30);
-    //         for(int i = 0; i < rando; i ++)
-    //         {
-    //             amount = amount * GameProgressionValues.standardChickenAmountMultiplier;
-    //         }
-    //     }
-    //     return (int)amount;
-
-    //     new System
-    // }
+    public string SetWavePrompt(int amount){
+        int getPromptAt = Random.Range(0, prompts.Count-1);
+        string line = prompts[getPromptAt].prompt;
+        if(!prompts[getPromptAt].includesNum){
+            prompts.RemoveAt(getPromptAt);
+            return line;
+        }
+        else{
+            prompts.RemoveAt(getPromptAt);
+            return line + amount +"!";
+        }
+    }
 
     private void setStandardAmount(){
         if(GameProgressionValues.RoundNumber > 25){
@@ -106,30 +99,53 @@ public class GameFlowManager : MonoBehaviour
         List<SpecialChicken> specialChickensList = new List<SpecialChicken>();
 
         //find amount of point for the wave
-        int multiplier;
+        float multiplier;
         switch(GameProgressionValues.RoundNumber){
             case int r when (r < 5):
                 multiplier = 2;
                 break;
             case int r when (r < 10):
-                multiplier = 3;
+                multiplier = 2.5f;
                 break;
             case int r when (r < 15):
-                multiplier = 4;
+                multiplier = 3;
                 break;
             case int r when (r < 20):
-                multiplier = 5;
+                multiplier = 3.5f;
+                break;
+            case int r when (r < 25):
+                multiplier = 4f;
+                break;
+            case int r when (r < 30):
+                multiplier = 4.5f;
+                break;
+            case int r when (r > 30):
+                multiplier = 5f;
                 break;
             default:
                 multiplier = 2;
                 break;
         }
-        int chickenPoints = GameProgressionValues.RoundNumber*multiplier;
+
+        int chickenPoints = (int)Mathf.Round(GameProgressionValues.RoundNumber*multiplier);
+        int turboCount = 0;
+        int rocketCount = 0;
+        int toughGuyLimit = Mathf.FloorToInt(multiplier);
 
         //find random chickens in candidates for our wave
         do{
-            int getChickenAt = Random.Range(0, potCandidates.Count);
+            int getChickenAt = Random.Range(0, potCandidates.Count-1);
             SpecialChicken specialChicken = potCandidates[getChickenAt].DeepClone();
+
+            if(specialChicken.chicken.name.Contains("Turbo")){
+                if(turboCount >= toughGuyLimit) continue;
+                turboCount++;
+            }
+            if(specialChicken.chicken.name.Contains("Rocket")){
+                if(rocketCount >= toughGuyLimit) continue;
+                rocketCount++;
+            }
+
             if(specialChicken.difficultyRank <= chickenPoints){
                 specialChicken.timeToSpawn = Random.Range(1,GameProgressionValues.standardRoundTime-1);
                 chickenPoints = chickenPoints - specialChicken.difficultyRank;
@@ -254,4 +270,11 @@ public class RankingRequirement
 {
     public int minScore = 0;
     public string rankingString = "Poultry Terrorizer";
+}
+
+[System.Serializable]
+public class WavePrompt
+{
+    public string prompt;
+    public bool includesNum = false;
 }
