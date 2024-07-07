@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 2892160016967350447}
   m_Layer: 2
   m_Name: Limo Car
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -707,7 +707,7 @@ MonoBehaviour:
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
-  canSpinOut: 1
+  canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
@@ -735,6 +735,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   cameraObject: {fileID: 3829337068989291492}

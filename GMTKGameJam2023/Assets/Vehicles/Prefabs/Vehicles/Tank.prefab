@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 9186345294892116853}
   m_Layer: 2
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,8 +412,8 @@ MonoBehaviour:
   cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.5
-  camShakeMagnitude: 1
+  camShakeDuration: 4
+  camShakeMagnitude: 2
   spawnSound:
   - clip: {fileID: 8300000, guid: a63fa8978cdbbbe47a97e8190745fcca, type: 3}
     volume: 1

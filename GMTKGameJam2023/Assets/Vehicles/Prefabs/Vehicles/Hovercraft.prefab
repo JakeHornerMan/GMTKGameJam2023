@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 330613492512159617}
   m_Layer: 2
   m_Name: Hovercraft
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,6 +377,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &6623514681445824420

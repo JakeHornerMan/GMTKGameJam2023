@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: -4110808594857532012}
   m_Layer: 2
   m_Name: PoliceCar
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,6 +334,8 @@ MonoBehaviour:
     volume: 1
   - clip: {fileID: 8300000, guid: 51588a543a9297f4d8644eb7db1b6c7d, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   policeShakeDuration: 1

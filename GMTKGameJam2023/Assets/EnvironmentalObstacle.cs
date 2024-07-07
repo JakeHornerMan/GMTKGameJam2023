@@ -27,19 +27,19 @@ public class EnvironmentalObstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isKnockable)
+        if (isKnockable && collision.gameObject.tag != "Chicken")
         {
             LaunchObject();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isKnockable)
-        {
-            LaunchObject();
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (isKnockable)
+    //    {
+    //        LaunchObject();
+    //    }
+    //}
 
     private IEnumerator Spin()
     {

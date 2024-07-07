@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 686004220599660150}
   m_Layer: 2
   m_Name: SpikedCar
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -439,6 +439,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   spikes:

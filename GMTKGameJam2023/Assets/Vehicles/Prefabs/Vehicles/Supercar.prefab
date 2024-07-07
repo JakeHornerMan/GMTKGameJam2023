@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: -6620607820944972574}
   m_Layer: 2
   m_Name: Supercar
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +210,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: d9f208d7d6c1be14e87983f906622617, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1 &2239554991188837143

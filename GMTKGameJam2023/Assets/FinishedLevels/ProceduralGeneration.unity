@@ -603,6 +603,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -500
       objectReference: {fileID: 0}
+    - target: {fileID: 5219866841727397064, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5238147574694473794, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_Camera
       value: 
@@ -715,6 +719,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8697874663835478264, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 4031766030395596952}
     - target: {fileID: 8731842054829148352, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -755,6 +763,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 491474754}
   m_SourcePrefab: {fileID: 100100000, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+--- !u!114 &4031766030395596952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7448871825172233189, guid: 9c55bf49a6d2f754a8b9ff24873090a6, type: 3}
+  m_PrefabInstance: {fileID: 4031766030395596951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6108627401256980950
 PrefabInstance:
   m_ObjectHideFlags: 0

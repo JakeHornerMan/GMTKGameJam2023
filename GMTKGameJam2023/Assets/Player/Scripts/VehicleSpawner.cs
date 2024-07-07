@@ -129,7 +129,6 @@ public class VehicleSpawner : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject())
             {
-                // Debug.Log("Clicked on the UI");
                 return;
             }
             if (currentUltimateAbility)
@@ -142,11 +141,11 @@ public class VehicleSpawner : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && ultimateManager.correspondingUltimate != null)
+        if (Input.GetKeyDown(KeyCode.Space) && currentUltimateAbility != null)
         {
             if(!ultimateManager.ultimateEnabled) return;
             // SelectCar(standardCar);
-            SelectUltimate(ultimateManager.correspondingUltimate);
+            SelectUltimate(currentUltimateAbility);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && standardCar != null)

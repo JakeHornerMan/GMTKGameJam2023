@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 367647572244851810}
   m_Layer: 2
   m_Name: Bombing Jet
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,17 +327,19 @@ MonoBehaviour:
   cashPopUpMsg: Cash
   popupDestroyDelay: 1.2
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.1
+  camShakeDuration: 1.5
   camShakeMagnitude: 0.075
   spawnSound:
   - clip: {fileID: 8300000, guid: e18f82c3e6a958545be1acd504f7fdd1, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: e188c742249368940bac28ad6dec2066, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   jetShakeDuration: 1.5
-  jetShakeMagnitude: 0.125
+  jetShakeMagnitude: 1
   laneSpacing: 2.5
   delayBeforeBombsAppear: 0.5
   bombPrefab: {fileID: 3716947289871644993, guid: 8a5c6f74d3c540444a232ec8d7370f0d, type: 3}

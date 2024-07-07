@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: -5277356840032745507}
   m_Layer: 2
   m_Name: Bulldozer
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +276,8 @@ MonoBehaviour:
   spawnSound:
   - clip: {fileID: 8300000, guid: a63fa8978cdbbbe47a97e8190745fcca, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1001 &1487286075734635948

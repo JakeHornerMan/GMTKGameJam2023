@@ -6,11 +6,12 @@ public class CarSprite : MonoBehaviour
 {
     private void OnBecameInvisible()
     {
-        if ((gameObject.transform.position.y > 0) || (gameObject.transform.parent.gameObject.GetComponent<Car>()?.carInAction == false))
+        if ((gameObject.transform.position.y > 0) || (transform.parent.gameObject.GetComponent<Car>()?.carInAction == false))
         {
-            if (gameObject.transform.parent.gameObject.GetComponent<Car>()?.carTeleporting == false)
+            if (transform.parent.gameObject.GetComponent<Car>()?.carTeleporting == false)
             {
-                StartCoroutine(Wait());
+                if (gameObject.activeInHierarchy)
+                    StartCoroutine(Wait());
             }
 
         }
