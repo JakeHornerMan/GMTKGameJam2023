@@ -3013,7 +3013,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 765274550}
+  sellSlot: {fileID: 34690575}
 --- !u!1 &234574538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,7 +3498,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 618348581}
+  sellSlot: {fileID: 34690575}
 --- !u!224 &268995348 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4007968612830984764, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
@@ -7245,7 +7249,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 2
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 0}
+  sellSlot: {fileID: 0}
 --- !u!1 &819064980
 GameObject:
   m_ObjectHideFlags: 0
@@ -8568,9 +8574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devMode: 0
   playerCars: []
-  defaultCars:
-  - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
-  - {fileID: 686004220599660150, guid: d88b644156c3a224697efd3585e1337a, type: 3}
+  defaultCars: []
   playerUltimate: {fileID: 0}
   cars:
   - {fileID: -6620607820944972574, guid: aa9ec4ee8b66a0048ac53d6b65bd082e, type: 3}
@@ -21159,7 +21163,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 2
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 0}
+  sellSlot: {fileID: 0}
 --- !u!1 &1751531979
 GameObject:
   m_ObjectHideFlags: 0
@@ -23011,7 +23017,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 2
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 0}
+  sellSlot: {fileID: 0}
 --- !u!1001 &1920669600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23564,7 +23572,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 2068989816}
+  sellSlot: {fileID: 34690575}
 --- !u!1001 &1977200853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23822,7 +23832,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 1076404768}
+  sellSlot: {fileID: 34690575}
 --- !u!1 &2033118764
 GameObject:
   m_ObjectHideFlags: 0
@@ -23996,7 +24008,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 1172136903}
+  sellSlot: {fileID: 34690575}
 --- !u!1001 &2041855776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25264,7 +25278,9 @@ MonoBehaviour:
   greenColor: {r: 0.6039216, g: 1, b: 0.4862745, a: 1}
   slotType: 0
   priceText: {fileID: 0}
+  tempSellVehicle: {fileID: 0}
   correspondingInfoBtn: {fileID: 819064982}
+  sellSlot: {fileID: 34690575}
 --- !u!1 &2134044650
 GameObject:
   m_ObjectHideFlags: 0

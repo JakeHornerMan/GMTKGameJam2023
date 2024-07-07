@@ -236,11 +236,12 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
             sellSlot.GetComponent<BuyScreenCarSlot>().SellVehicle();
         }
 
+        sellCar.GetComponent<DragDrop>().emergencyParent = sellCar.GetComponent<DragDrop>().startingParent;
+
         sellCar.gameObject.transform.SetParent(sellSlot.transform);
         sellCar.gameObject.transform.SetSiblingIndex(1);
         sellCar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         sellCar.GetComponent<DragDrop>().canBePlaced = true;
-        sellCar.GetComponent<DragDrop>().emergencyParent = sellCar.GetComponent<DragDrop>().startingParent;
         sellCar.GetComponent<DragDrop>().startingParent = sellSlot.transform;
         // DecideOnSell(oldCar.gameObject);
 
@@ -255,11 +256,12 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
             sellSlot.GetComponent<BuyScreenCarSlot>().SellVehicle();
         }
 
+        sellUlt.GetComponent<DragDrop>().emergencyParent = sellUlt.GetComponent<DragDrop>().startingParent;
+
         sellUlt.gameObject.transform.SetParent(sellSlot.transform);
         sellUlt.gameObject.transform.SetSiblingIndex(1);
         sellUlt.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         sellUlt.GetComponent<DragDrop>().canBePlaced = true;
-        sellUlt.GetComponent<DragDrop>().emergencyParent = sellUlt.GetComponent<DragDrop>().startingParent;
         sellUlt.GetComponent<DragDrop>().startingParent = sellSlot.transform;
         // DecideOnSell(oldUlt.gameObject);
 

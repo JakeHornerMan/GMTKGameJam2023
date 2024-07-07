@@ -177,6 +177,8 @@ public class BuyScreenManager : MonoBehaviour
 
             buyScreenCar.correspondingCar = playerCars[i];
 
+            newBuyCar.GetComponent<DragDrop>().startingParent = child;
+
             child.gameObject.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(buyScreenCar, null);
 
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
@@ -193,6 +195,8 @@ public class BuyScreenManager : MonoBehaviour
             BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
 
             buyScreenUltimate.correspondingUltimate = playerUltimate;
+
+            newBuyUltimate.GetComponent<DragDrop>().startingParent = child;
 
             child.gameObject.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(null, buyScreenUltimate);
 
