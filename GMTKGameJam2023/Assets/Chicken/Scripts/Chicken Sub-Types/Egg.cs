@@ -11,12 +11,22 @@ public class Egg : MonoBehaviour
     [SerializeField] private float featherParticleLifetime = 2f;  
     [SerializeField] private float objectLifetime = 6f;
 
+    private GameObject chickenContainer;
+
+    private void Start()
+    {
+        chickenContainer = FindObjectOfType<ChickenManager>().gameObject;
+
+        transform.parent = chickenContainer.transform;
+    }
+
     // Run by animation event
     public void Hatch()
     {
         GameObject newFeather = Instantiate(featherParticles, new Vector3(transform.position.x, transform.position.y, -5), Quaternion.identity);
         Destroy(newFeather, featherParticleLifetime);
-        Instantiate(chickenPrefab, transform.position, Quaternion.identity);
+
+        Instantiate(chickenPrefab, transform.position, Quaternion.identity, chickenContainer.transform);
         Destroy(gameObject, objectLifetime);
     }
 
