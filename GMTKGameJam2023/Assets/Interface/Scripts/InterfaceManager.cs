@@ -111,7 +111,8 @@ public class InterfaceManager : MonoBehaviour
             }
         }
 
-        roundText.text = "LVL. " + GameProgressionValues.RoundNumber.ToString("0");
+        if (roundText != null)
+            roundText.text = "LVL. " + GameProgressionValues.RoundNumber.ToString("0");
     }
 
     private void Update()
@@ -126,21 +127,31 @@ public class InterfaceManager : MonoBehaviour
         }
 
         // Show Effects when ultimate is charged up fully
-        if (ultimateRadialUI.fillAmount == 1 && gameManager.ultimateInLevel != null)
+        if (ultimateRadialUI != null
+            && gameManager != null
+            && ultimateRadialFlash != null
+            && ultimateIconAnimator != null
+            && ultimateBackgroundFlash != null
+            && ultParticles != null)
         {
-            ultimateRadialFlash.SetActive(true);
-            ultimateIconAnimator.SetBool("FullyCharged", true);
-            if (enableBackgroundFlash)
-                ultimateBackgroundFlash.SetActive(true);
-            if (enableUltParticles)
-                ultParticles.gameObject.SetActive(true);
-        }
-        else
-        {
-            ultimateRadialFlash.SetActive(false);
-            ultimateIconAnimator.SetBool("FullyCharged", false);
-            ultimateBackgroundFlash.SetActive(false);
-            ultParticles.gameObject.SetActive(false);
+            // Check Ultimate Fully Charged
+            if (ultimateRadialUI.fillAmount == 1 && gameManager.ultimateInLevel != null)
+            {
+                ultimateRadialFlash.SetActive(true);
+                ultimateIconAnimator.SetBool("FullyCharged", true);
+                if (enableBackgroundFlash)
+                    ultimateBackgroundFlash.SetActive(true);
+                if (enableUltParticles)
+                    ultParticles.gameObject.SetActive(true);
+            }
+            // No Ultimate or Only Partially Charged
+            else
+            {
+                ultimateRadialFlash.SetActive(false);
+                ultimateIconAnimator.SetBool("FullyCharged", false);
+                ultimateBackgroundFlash.SetActive(false);
+                ultParticles.gameObject.SetActive(false);
+            }
         }
     }
 

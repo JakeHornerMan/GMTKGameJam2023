@@ -1744,6 +1744,11 @@ RectTransform:
   m_AnchoredPosition: {x: 64800, y: 66825}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &1316508209 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4369464107847703595, guid: 360515fee1ade2245840a5f63cd4318f, type: 3}
+  m_PrefabInstance: {fileID: 1128226587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472358563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,7 +3774,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5093909374334170123}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d93d2e6ea27f782419f8f7be30d25a3f, type: 3}
@@ -16803,12 +16808,34 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5093909374334170123}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b098785cbe16de4392c92a4b2790a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMusic: []
+  levelMusic:
+  - clip: {fileID: 8300000, guid: 11a15d58de20bcf48b76d6d1dc21f55c, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: d93d2e6ea27f782419f8f7be30d25a3f, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: b7442396bccd1bc4c8ff223985bc3e58, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: c4d6346808636f64f81d62c4d3bba8a5, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 95e77a71bd767e841b090a1b08e7a416, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 92f5f9e571c3a47479e799de9cee5640, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: fd0a5ae6bdb91984c8eba129589eda61, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: ef9e8d071993ef344b664cc1fe7e0f87, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 4565beed6d7feef47a6dc91b642b2dd7, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: 10c2a84f98f9d8a41b3229d8701ec875, type: 3}
+    volume: 0.7
+  - clip: {fileID: 8300000, guid: da6e39e2f5e95e74cb210483853f3718, type: 3}
+    volume: 0.7
   deathConfigs:
   - clip: {fileID: 8300000, guid: 43d87fb0bba38ff4080ba1b55566ae7c, type: 3}
     volume: 0.6
@@ -16906,7 +16933,7 @@ MonoBehaviour:
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   isMenu: 0
-  musicAudio: {fileID: 0}
+  musicAudio: {fileID: 506717265180706618}
   sfxAllowed: 1
   musicAllowed: 0
   musicVolume: 8
@@ -19500,7 +19527,7 @@ MonoBehaviour:
   pauseTimeScale: 0
   isPaused: 0
   isTutorialText: 0
-  musicAudio: {fileID: 0}
+  musicAudio: {fileID: 1316508209}
   sfxAudio: {fileID: 506717265180706618}
 --- !u!1 &6878878552882789059
 GameObject:
