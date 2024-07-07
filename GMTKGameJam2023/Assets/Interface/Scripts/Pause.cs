@@ -42,11 +42,12 @@ public class Pause : MonoBehaviour
     public void UnpauseGame()
     {
         isPaused = false;
-        if(FindObjectOfType<CardDraw>() == null)
+        if (FindObjectOfType<CardDraw>() == null)
             Time.timeScale = startTimeScale;
-        if(FindObjectOfType<ObjectBlueprint>() == null)
+        if (FindObjectOfType<ObjectBlueprint>() == null)
             Time.timeScale = startTimeScale;
-        musicAudio.UnPause();
+
+        if (musicAudio != null) musicAudio.UnPause();
         sfxAudio.UnPause();
         pauseUI.SetActive(false);
     }
@@ -55,9 +56,9 @@ public class Pause : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = pauseTimeScale;
-        musicAudio.Pause();
+        if (musicAudio != null) musicAudio.Pause();
         sfxAudio.Pause();
-        if(FindObjectOfType<CardDraw>() != null)
+        if (FindObjectOfType<CardDraw>() != null)
             sfxAudio.UnPause();
         if (showUI)
             pauseUI.SetActive(true);

@@ -141,7 +141,7 @@ public abstract class Car : MonoBehaviour
         {
             comboText.text = $"{comboSymbol}{carKillCount}";
         }
-    } 
+    }
 
     public virtual void SetCarSpeed(float speed)
     {
@@ -383,11 +383,13 @@ public abstract class Car : MonoBehaviour
         // if(chickenHealth.gameObject.name.Contains("Turbo")){
         if (chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>())
         {
-            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<AlternativeChickenMovement>().GetChickenHitstop()));
         }
         else
         {
-            StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(CarHitStop(chickenHealth.gameObject.GetComponent<ChickenMovement>().GetChickenHitstop()));
         }
 
         // Damage Poultry

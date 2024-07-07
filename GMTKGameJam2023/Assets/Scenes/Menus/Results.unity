@@ -1965,7 +1965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4387628408231119144, guid: e5edd408162fb9445baa9176f6486717, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3416,14 +3416,14 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: e170e2ad2beb53045ab845838494341d, type: 3}
     volume: 0
   turboChicken:
-    clip: {fileID: 8300000, guid: ac1db09c0c898c344b23880a5f875b5c, type: 3}
+    clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 0.7
   wagonChicken:
     clip: {fileID: 0}
     volume: 1
   turboChickenDeath:
     clip: {fileID: 8300000, guid: 4dcd18d9c44e2e644a304446a01e5187, type: 3}
-    volume: 1
+    volume: 0.7
   wagonChickenDeath:
     clip: {fileID: 0}
     volume: 1
