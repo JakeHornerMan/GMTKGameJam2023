@@ -21,7 +21,7 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
     }
 
     public void DisableOrEnable(BuyScreenCar car, BuyScreenUltimate ult){
-        if(car == null || ult == null){
+        if(car == null && ult == null){
             DisableInfo();
         }
         else{

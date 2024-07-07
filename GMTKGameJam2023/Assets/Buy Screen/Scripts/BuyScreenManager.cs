@@ -170,12 +170,14 @@ public class BuyScreenManager : MonoBehaviour
             Transform child = RosterHolder.transform.GetChild(i);
 
             GameObject newBuyCar = Instantiate(rosterCarPrefab, child.transform);
+            newBuyCar.transform.SetSiblingIndex(1);
 
             newBuyCar.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenCar buyScreenCar = child.GetComponentInChildren<BuyScreenCar>();
 
             buyScreenCar.correspondingCar = playerCars[i];
 
+            child.gameObject.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(buyScreenCar, null);
 
             Debug.Log("We have set the carbutton to" + buyScreenCar.correspondingCar);
         }
@@ -185,12 +187,14 @@ public class BuyScreenManager : MonoBehaviour
             Transform child = RosterHolder.transform.GetChild(5);
 
             GameObject newBuyUltimate = Instantiate(rosterUltimatePrefab, child.transform);
+            newBuyUltimate.transform.SetSiblingIndex(1);
 
             newBuyUltimate.transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
             BuyScreenUltimate buyScreenUltimate = child.GetComponentInChildren<BuyScreenUltimate>();
 
             buyScreenUltimate.correspondingUltimate = playerUltimate;
 
+            child.gameObject.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(null, buyScreenUltimate);
 
             Debug.Log("We have set the ultimateBtn to" + buyScreenUltimate.correspondingUltimate);
         }
