@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 4056007719366264636}
   m_Layer: 2
   m_Name: Truck
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,10 +390,12 @@ MonoBehaviour:
   popupDestroyDelay: 1.2
   carHitStopEffectMultiplier: 0.25
   camShakeDuration: 3
-  camShakeMagnitude: 5
+  camShakeMagnitude: 4
   spawnSound:
   - clip: {fileID: 8300000, guid: 39c3c896535d26440b9525d417886034, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
 --- !u!1001 &611936938623978944

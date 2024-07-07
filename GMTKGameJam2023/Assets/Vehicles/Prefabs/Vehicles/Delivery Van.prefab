@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4384981886227108248}
   m_Layer: 2
   m_Name: Delivery Van
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,6 +275,8 @@ MonoBehaviour:
   camShakeDuration: 0.5
   camShakeMagnitude: 1
   spawnSound: []
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   obstaclePrefabs:

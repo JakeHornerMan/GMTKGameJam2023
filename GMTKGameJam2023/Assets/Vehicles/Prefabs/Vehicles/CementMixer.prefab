@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 6250562015194746558}
   m_Layer: 2
   m_Name: CementMixer
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,13 +303,15 @@ MonoBehaviour:
   cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 2
-  camShakeMagnitude: 3
+  camShakeDuration: 1.5
+  camShakeMagnitude: 1.75
   spawnSound:
   - clip: {fileID: 8300000, guid: 98d3b07ac69fd2b448072ae55bac79ce, type: 3}
     volume: 1
   - clip: {fileID: 8300000, guid: c744622939b9e1940bcb80c6d02c12cc, type: 3}
     volume: 1
+  carKillCount: 0
+  totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   cementPrefab: {fileID: 3519391268483037607, guid: 4b7a09ab34bb7af4f94cfa4814c29f37, type: 3}

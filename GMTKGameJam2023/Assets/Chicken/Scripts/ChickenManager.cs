@@ -21,7 +21,11 @@ public class ChickenManager : MonoBehaviour
         specialChickenContainer = GameObject.Find("SpecialChickenContainer").transform;
 
         // Start the coroutine to play chicken sounds
-        playChickenSoundsCoroutine = StartCoroutine(PlayChickenSounds());
+        if (soundManager != null)
+        {
+            playChickenSoundsCoroutine = StartCoroutine(PlayChickenSounds());
+        }
+        
     }
 
     void UpdateChickenCount()
@@ -77,9 +81,20 @@ public class ChickenManager : MonoBehaviour
 
     private IEnumerator WipeThemOut()
     {
+
+        Egg[] allEggs = MakeEggList();
         ChickenHealth[] allChickens = MakeChickenList();
 
         killDelay = 1.5f / allChickens.Length;
+
+        for (int i = 0; i < allEggs.Length; i++)
+        {
+            if (allEggs[i] == null) continue;
+            allEggs[i].Hatch();
+            yield return new WaitForSecondsRealtime(killDelay);
+        }
+
+        allChickens = MakeChickenList();
 
         for (int i = 0; i < allChickens.Length; i++)
         {
@@ -94,8 +109,14 @@ public class ChickenManager : MonoBehaviour
         // Combine normal and special chickens
         ChickenHealth[] normalChickens = normalChickenContainer.GetComponentsInChildren<ChickenHealth>();
         ChickenHealth[] specialChickens = specialChickenContainer.GetComponentsInChildren<ChickenHealth>();
-        ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
+        ChickenHealth[] allChickens = specialChickens.Concat(normalChickens).ToArray();
 
         return allChickens;
+    }
+
+    private Egg[] MakeEggList()
+    {
+        Egg[] allEggs = normalChickenContainer.GetComponentsInChildren<Egg>();
+        return allEggs;
     }
 }

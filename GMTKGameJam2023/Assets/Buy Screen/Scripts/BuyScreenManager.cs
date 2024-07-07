@@ -408,6 +408,7 @@ public class BuyScreenManager : MonoBehaviour
             UpdatePlayerUltimate();
             PopulateShops();
             UpdateSlotColors();
+            
         }
     }
 

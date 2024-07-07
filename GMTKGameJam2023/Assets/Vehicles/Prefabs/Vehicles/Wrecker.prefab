@@ -5339,7 +5339,7 @@ GameObject:
   - component: {fileID: -1135978355812094493}
   m_Layer: 2
   m_Name: Wrecker
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5500,8 +5500,8 @@ MonoBehaviour:
   cashPopUpMsg: Cash
   popupDestroyDelay: 0.7
   carHitStopEffectMultiplier: 1
-  camShakeDuration: 0.15
-  camShakeMagnitude: 0.05
+  camShakeDuration: 1.3
+  camShakeMagnitude: 1.5
   spawnSound:
   - clip: {fileID: 8300000, guid: 1b0b60ab5d668ff4aaa93cc7d9071ee5, type: 3}
     volume: 1
