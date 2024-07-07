@@ -51,6 +51,9 @@ public class TokenSpawner : MonoBehaviour
                         
                     if(car.placeableLaneTags[i].Contains("Grass")){
                         grassLanes = GameObject.FindGameObjectsWithTag("Grass");
+                        grassLanes[0] = roadLanes[1];
+                        int last = grassLanes.Length-1;
+                        grassLanes[last] = roadLanes[3];
                         AddToAllLanes(grassLanes);
                     }
                         

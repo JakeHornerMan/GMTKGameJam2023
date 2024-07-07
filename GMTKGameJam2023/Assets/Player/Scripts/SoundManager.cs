@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private bool isMenu = false;
     private SoundConfig gameMusic;
 
-    private AudioSource audioSrc;
+    public AudioSource audioSrc;
     [SerializeField] public AudioSource musicAudio;
 
     [Header("Settings")]
@@ -87,6 +87,10 @@ public class SoundManager : MonoBehaviour
         musicVolume = Settings.MusicVolume / 10;
         sfxAllowed = Settings.SfxEnabled;
         sfxVolume = Settings.SfxVolume;
+        Debug.Log("MusicEnabled = " + musicAllowed);
+        Debug.Log("MusicVolume = " + musicVolume);
+        Debug.Log("SSfxEnabled = " + sfxAllowed);
+        Debug.Log("sfxVolume = " + sfxVolume);
     }
 
     void Start()

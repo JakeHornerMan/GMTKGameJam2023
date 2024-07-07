@@ -17,6 +17,8 @@ public class ChickenManager : MonoBehaviour
 
     void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
+        
         if (GameObject.Find("ChickenContainer") != null)
             normalChickenContainer = GameObject.Find("ChickenContainer").transform;
         if (GameObject.Find("SpecialChickenContainer") != null)
@@ -55,7 +57,7 @@ public class ChickenManager : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
             // Play a random chicken sound
-            SoundManager.instance.PlayRandomChicken();
+            soundManager.PlayRandomChicken();
         }
     }
 

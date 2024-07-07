@@ -64,10 +64,12 @@ public class Settings : MonoBehaviour
     {
         MusicEnabled = musicCheckbox.isOn;
         if(!musicCheckbox.isOn){
-            musicManager.musicAudio.Pause();
+            // musicManager.musicAudio.Pause();
+            musicManager.musicAudio.mute = true;
         }
         else{
-            musicManager.musicAudio.UnPause();
+            // musicManager.musicAudio.UnPause();
+            musicManager.musicAudio.mute = false;
             musicManager.musicAudio.volume = MusicVolume/10f;
         }
 
@@ -80,9 +82,11 @@ public class Settings : MonoBehaviour
     {
         SfxEnabled = sfxCheckbox.isOn;
         if(!sfxCheckbox.isOn){
+            sfxManager.audioSrc.mute = true;
             sfxManager.sfxAllowed = false;
         }
         else{
+            sfxManager.audioSrc.mute = false;
             sfxManager.sfxAllowed = true;
             sfxManager.sfxVolume = SfxVolume/10f;
         }
