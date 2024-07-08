@@ -242,7 +242,7 @@ MonoBehaviour:
   comboText: {fileID: 5412796862197277110}
   carType: 0
   carHealth: 150
-  carPrice: 5
+  carPrice: 4
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
@@ -251,7 +251,7 @@ MonoBehaviour:
   carInHitStop: 0
   carInAction: 1
   carTeleporting: 0
-  carShopPrice: 10
+  carShopPrice: 8
   deathboxTag: Death Box
   placeableLaneTags:
   - Water
@@ -264,6 +264,7 @@ MonoBehaviour:
   cashCollectParticles: {fileID: 4650723062051862710, guid: 6b26b9eb453c7cb4990cd328bb258ae0, type: 3}
   particleDestroyDelay: 2
   exhaustParticleParent: {fileID: 499467861673513022}
+  carSpriteObject: {fileID: 0}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash

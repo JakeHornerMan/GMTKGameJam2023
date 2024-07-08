@@ -18,6 +18,9 @@ public class PauseUI : MonoBehaviour
     public void ReturnToMenu()
     {
         pause.UnpauseGame();
+        GameProgressionValues.SetDefaultValues();
+        PlayerValues.SetDefaultValues();
+        Points.SetDefaultValues();
         sceneFader.FadeToMainMenu();
     }
 
