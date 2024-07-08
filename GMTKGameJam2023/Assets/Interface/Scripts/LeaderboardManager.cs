@@ -38,11 +38,19 @@ public class LeaderboardManager : MonoBehaviour
 
      public void UploadToLeaderboardAndUpdate(int score = 1)
     {
-        if(SteamManager.Initialized)
+        if(SteamManager.Initialized && SteamLeaderboards.initialized)
         {
             SteamLeaderboards.UpdateScore(score);
             // RefreshLeaderboardValues();
         }
+        else{
+            Debug.Log("Waiting for leaderboard to be initialized...");
+            RetryUploadToLeaderboardAndUpdate(score);
+        }
+    }
+
+    private void RetryUploadToLeaderboardAndUpdate(int score){
+        UploadToLeaderboardAndUpdate(score);
     }
 
     public void RefreshLeaderboardValues()
