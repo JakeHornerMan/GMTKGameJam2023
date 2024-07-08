@@ -11,7 +11,7 @@ public class SteamLeaderboards : MonoBehaviour
 
 
     private static SteamLeaderboard_t currentLeaderboard;
-    private static bool initialized = false;
+    public static bool initialized = false;
     private static string playerName;
     public static List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
     public static List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
