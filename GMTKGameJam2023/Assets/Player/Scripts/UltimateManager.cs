@@ -24,22 +24,25 @@ public class UltimateManager : MonoBehaviour
     private void Awake()
     {
         vehicleSpawner = FindObjectOfType<VehicleSpawner>();
-        gameManager = FindObjectOfType<GameManager>(); 
+        gameManager = FindObjectOfType<GameManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
         interfaceManager = GetComponent<InterfaceManager>();
     }
 
     private void Start()
     {
-        if(gameManager != null && gameManager.ultimateInLevel){
+        if (gameManager != null && gameManager.ultimateInLevel)
+        {
             SetUltimate(gameManager.ultimateInLevel);
         }
-        if(tutorialManager != null && tutorialManager.ultimateInLevel){
+        if (tutorialManager != null && tutorialManager.ultimateInLevel)
+        {
             SetUltimate(tutorialManager.ultimateInLevel);
         }
     }
-    
-    public void SetUltimate(Ultimate ultimateInLevel){
+
+    public void SetUltimate(Ultimate ultimateInLevel)
+    {
         correspondingUltimate = ultimateInLevel;
         correspUltimateIcon.sprite = correspondingUltimate.GetComponent<ObjectInfo>().objectIcon;
         timeUntilRefill = correspondingUltimate.ultimateResetTime;
@@ -65,11 +68,12 @@ public class UltimateManager : MonoBehaviour
             refillDelaySeconds = correspondingUltimate.ultimateResetTime;
             yield return new WaitForSeconds(refillDelaySeconds);
             // reset timeUntilRefill
-            if(timeUntilRefill <= 0){
+            if (timeUntilRefill <= 0)
+            {
                 ultimateEnabled = true;
                 timeUntilRefill = correspondingUltimate.ultimateResetTime;
             }
-            
+
         }
     }
 }
