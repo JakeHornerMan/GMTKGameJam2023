@@ -140,13 +140,14 @@ public class VehicleSpawner : MonoBehaviour
                 PlaceSelectedCar();
             }
         }
-
+        
         if (Input.GetKeyDown(KeyCode.Space) && currentUltimateAbility != null)
         {
             if(!ultimateManager.ultimateEnabled) return;
             // SelectCar(standardCar);
             SelectUltimate(currentUltimateAbility);
         }
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && standardCar != null)
         {
