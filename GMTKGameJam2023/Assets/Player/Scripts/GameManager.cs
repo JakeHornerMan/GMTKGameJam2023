@@ -312,6 +312,10 @@ public class GameManager : MonoBehaviour
             GameProgressionValues.RoundNumber ++;
         }
 
+        if(pause != null){
+            pause.cancelPause = true;
+        }
+
         //Show "You Survived!" popup
         interfaceManager.survivedPopup();
 
@@ -322,7 +326,7 @@ public class GameManager : MonoBehaviour
         chickenManager.WipeAllChickens();
         isGameOver = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }

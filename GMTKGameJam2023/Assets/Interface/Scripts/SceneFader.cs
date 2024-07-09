@@ -119,8 +119,15 @@ public class SceneFader : MonoBehaviour
 
     public IEnumerator WipeToScene(string targetScene)
     {
+        if(FindObjectOfType<Pause>() != null){
+            FindObjectOfType<Pause>().cancelPause = true;
+        }
         StartCoroutine(MoveOutScreenWiper());
         yield return new WaitForSecondsRealtime(3);
+
+        if(FindObjectOfType<Pause>() != null){
+            FindObjectOfType<Pause>().cancelPause = false;
+        }
         LoadScene(targetScene);
     }
 
