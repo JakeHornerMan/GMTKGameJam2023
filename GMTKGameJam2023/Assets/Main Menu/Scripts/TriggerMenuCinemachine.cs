@@ -154,33 +154,39 @@ public class TriggerMenuCinemachine : MonoBehaviour
         }
     }
 
-    public void GoToGameSelect(){
+    public void GoToGameSelect()
+    {
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Play");
     }
 
-    public void GoToSettings(){
+    public void GoToSettings()
+    {
         isSettings = true;
         carVeerLeft.SetActive(true);
         anim.Play("Settings");
     }
 
-    public void GoToCredits(){
+    public void GoToCredits()
+    {
         carVeerRight.SetActive(true);
         anim.Play("Credits");
         leaderboardManager.SetLeaderboardList();
     }
 
-    public void GoToStart(){
+    public void GoToStart()
+    {
         MenuManager.instance.HideBackButton();
         anim.Play("Start");
-        if(isSettings){
+        if (isSettings)
+        {
             Settings.SaveSettings();
         }
         isSettings = false;
     }
 
-    public void GoToBeginGame(){
+    public void GoToBeginGame()
+    {
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Enter Game");
 
@@ -188,11 +194,12 @@ public class TriggerMenuCinemachine : MonoBehaviour
         PlayerValues.SetDefaultValues();
         Points.SetDefaultValues();
 
-        MenuManager.instance.EnterScene("Level01");
+        MenuManager.instance.EnterMainMenuScene();
         //mainMenu.EnterGame();
     }
 
-    public void GoToCollection(){
+    public void GoToCollection()
+    {
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Collection");
 
@@ -200,7 +207,8 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     }
 
-    public void GoToTutorial(){
+    public void GoToTutorial()
+    {
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Tutorial");
 
