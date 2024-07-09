@@ -38,6 +38,7 @@ public class MenuInteraction : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         pointer.SetActive(false);
         StartCoroutine(PlayPointer());
+        TopRound.LoadRound();
     }
 
     void Update()

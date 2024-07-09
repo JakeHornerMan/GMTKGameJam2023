@@ -370,5 +370,6 @@ public class GameManager : MonoBehaviour
         SteamStats.SetTopCombo(highestCombo);
         SteamStats.SetTotalUltimates(ultimateSpawnCount);
         SteamStats.SetTotalMissedChickens(safelyCrossedChickens);
+        TopRound.SaveRound();
     }
 }

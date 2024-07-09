@@ -195,7 +195,7 @@ public class SettingsData
     public bool FullscreenEnabled;
     public Vector2 WindowedSize;
 
-     public SettingsData() { }
+    public SettingsData() { }
 
     public SettingsData(bool sfxEnabled, float sfxVolume, bool musicEnabled, float musicVolume, bool roadShineEnabled, bool fullscreenEnabled, Vector2 windowSize)
     {
