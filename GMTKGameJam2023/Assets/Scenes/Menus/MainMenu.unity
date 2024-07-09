@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: -2.92
+  m_characterSpacing: -5.06
   m_wordSpacing: 0
   m_lineSpacing: -33.22
   m_lineSpacingMax: 0
@@ -5818,13 +5818,14 @@ GameObject:
   - component: {fileID: 590913519}
   - component: {fileID: 590913521}
   - component: {fileID: 590913520}
+  - component: {fileID: 590913522}
   m_Layer: 5
   m_Name: PopupContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &590913519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5888,6 +5889,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590913518}
   m_CullTransparentMesh: 1
+--- !u!95 &590913522
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590913518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cefe5b7c8e26524438a44b75c91e43f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &591660078
 GameObject:
   m_ObjectHideFlags: 0
@@ -9844,7 +9866,7 @@ GameObject:
   - component: {fileID: 996103938}
   - component: {fileID: 996103937}
   - component: {fileID: 996103936}
-  - component: {fileID: 996103940}
+  - component: {fileID: 996103941}
   m_Layer: 5
   m_Name: RoundSkipOverlayCanvas
   m_TagString: Untagged
@@ -9936,27 +9958,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &996103940
-Animator:
-  serializedVersion: 5
+--- !u!114 &996103941
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996103935}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cefe5b7c8e26524438a44b75c91e43f6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b731fc5e7c8418c48a4ba82156cbe0fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupUI: {fileID: 590913518}
+  headerText: {fileID: 123723347}
+  skipRoundButton: {fileID: 1048378335}
+  roundOneButton: {fileID: 1692950939}
+  skipRoundButtonText: {fileID: 2110884248}
+  headerTextTemplate: You have already made it to <color=#3DDD7D>round $</color>.
+  skipButtonTextTemplate: Skip to round $
+  numberKey: 36
 --- !u!1 &1001573177
 GameObject:
   m_ObjectHideFlags: 0
@@ -10635,7 +10656,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1048378336}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 590913518}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1048378336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17958,7 +17991,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1692950940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 590913518}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1692950940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30291,6 +30336,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 2022936020}
           m_ObjectArgumentAssemblyTypeName: MenuRoad, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 590913518}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -58263,6 +58320,7 @@ MonoBehaviour:
   musicTag: Music
   backButton: {fileID: 2676710151449610993}
   sceneFader: {fileID: 1384654434}
+  showRoundSkipPopupBeforeLoad: 0
 --- !u!114 &8280651595496457418
 MonoBehaviour:
   m_ObjectHideFlags: 0
