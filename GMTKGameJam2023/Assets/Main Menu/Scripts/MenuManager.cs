@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour
 
     public void EnterScene(string sceneName)
     {
-        StartCoroutine(WipeAndLoadGame(sceneName));   
+        StartCoroutine(WipeAndLoadGame(sceneName));
     }
 
     private IEnumerator WipeAndLoadGame(string sceneName)
@@ -52,6 +52,10 @@ public class MenuManager : MonoBehaviour
         GameProgressionValues.SetDefaultValues();
         Points.SetDefaultValues();
         yield return new WaitForSeconds(2.5f);
+
+        // Do Round Skip Popup Here
+        Debug.Log("WIPE AND LOADED");
+
         sceneFader.ScreenWipeOut(sceneName);
     }
 }
