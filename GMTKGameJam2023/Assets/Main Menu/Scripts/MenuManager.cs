@@ -73,8 +73,7 @@ public class MenuManager : MonoBehaviour
             if (playerChoseToSkip)
             {
                 // Set Gameprogression Values here for that chosen round
-                // Load ProceduralGeneration scene
-                sceneName = "ProceduralGeneration"; // replace with the actual scene name for the checkpoint round
+                sceneName = "ProceduralGeneration";
             }
             // "Start from first round" chosen
             else sceneName = "Level01";
