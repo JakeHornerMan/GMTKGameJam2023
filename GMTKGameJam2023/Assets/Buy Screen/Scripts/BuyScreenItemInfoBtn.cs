@@ -24,4 +24,12 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
         else
             return;
     }
+
+    public void UpdateInfo()
+    {
+        if (correspCar != null)
+            correspCar = gameObject.transform.parent.GetComponentInChildren<BuyScreenCar>();
+        else if (correspUlt != null)
+            correspUlt = gameObject.transform.parent.GetComponentInChildren<BuyScreenUltimate>();
+    }
 }
