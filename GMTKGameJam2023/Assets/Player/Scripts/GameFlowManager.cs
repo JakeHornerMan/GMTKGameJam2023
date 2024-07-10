@@ -59,14 +59,16 @@ public class GameFlowManager : MonoBehaviour
     public string SetWavePrompt(int amount){
         int getPromptAt = Random.Range(0, prompts.Count-1);
         string line = prompts[getPromptAt].prompt;
+        string answer;
         if(!prompts[getPromptAt].includesNum){
             prompts.RemoveAt(getPromptAt);
-            return line;
+            answer = line;
         }
         else{
-            prompts.RemoveAt(getPromptAt);
-            return line + amount +"!";
+            answer = line.Replace("#", amount.ToString());
         }
+        Debug.Log(answer);
+        return answer;
     }
 
     private void setStandardAmount(){

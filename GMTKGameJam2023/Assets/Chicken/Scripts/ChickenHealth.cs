@@ -31,6 +31,7 @@ public class ChickenHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Material originalMaterial;
     [HideInInspector] protected bool isInvinsible;
+    [HideInInspector] public bool isAttached = false;
     [HideInInspector] private Color originalColor = Color.white;
     [SerializeField] private Color hurtColor;
 

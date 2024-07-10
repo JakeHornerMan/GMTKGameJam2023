@@ -22,7 +22,10 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
     [SerializeField] private TextMeshProUGUI priceText;
 
-    private GameObject tempSellVehicle;
+    public GameObject tempSellVehicle;
+
+    [SerializeField] public BuyScreenItemInfoBtn correspondingInfoBtn;
+    [SerializeField] public GameObject sellSlot;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -36,20 +39,26 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
             if (eventData.pointerDrag.TryGetComponent<BuyScreenCar>(out car) || eventData.pointerDrag.TryGetComponent<BuyScreenUltimate>(out ultimate)) //eventData.pointerDrag = The car being held by the mouse
             {
-                //if (transform.childCount > 0)
-                if ((transform.GetComponentInChildren<BuyScreenCar>() != null) || (transform.GetComponentInChildren<BuyScreenUltimate>() != null)) //If the slot is not empty
+                
+                //If the slot is not empty
+                if ((transform.GetComponentInChildren<BuyScreenCar>() != null) || (transform.GetComponentInChildren<BuyScreenUltimate>() != null))
                 {
 
-
-                    if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == SlotType.CarShop) // If the car came from the shop
+                    // If the car came from the shop
+                    if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == SlotType.CarShop) 
                     {
-                        if ((car != null && BuyScreenManager.instance.CheckMoneyAmount(car.correspondingCar.carShopPrice)) || (ultimate != null && BuyScreenManager.instance.CheckMoneyAmount(ultimate.correspondingUltimate.ultimateShopPrice))) // If the player has enough money to buy the car
+                        // If the player has enough money to buy the car
+                        if ((car != null && BuyScreenManager.instance.CheckMoneyAmount(car.correspondingCar.carShopPrice)) || (ultimate != null && BuyScreenManager.instance.CheckMoneyAmount(ultimate.correspondingUltimate.ultimateShopPrice)))
                         {
                             if (slotType == SlotType.Roster)
                             {
                                 if (gameObject.name == "Ultimate Slot" && ultimate != null)
                                 {
-                                    ultimate.gameObject.transform.parent = transform;
+                                    SendOldItemToSellSlot(transform.GetComponentInChildren<BuyScreenUltimate>());
+                                     
+                                    // ultimate.gameObject.transform.parent = transform;
+                                    ultimate.gameObject.transform.SetParent(transform);
+                                    ultimate.gameObject.transform.SetSiblingIndex(1);
                                     ultimate.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                                     ultimate.GetComponent<DragDrop>().canBePlaced = true;
                                     ultimate.GetComponent<DragDrop>().startingParent = transform;
@@ -58,10 +67,20 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     BuyScreenManager.instance.RemoveMoney(ultimate.correspondingUltimate.ultimateShopPrice);
 
                                     ultimate.EnablePurchaseParticles();
+
+                                    if(correspondingInfoBtn != null){
+                                        // Debug.Log("Droped on rosterslot");
+                                        correspondingInfoBtn.ActiveInfo(null, ultimate);
+                                    }
+
                                 }
                                 else if (gameObject.name != "Ultimate Slot" && car != null)
                                 {
-                                    car.gameObject.transform.parent = transform;
+                                    SendOldItemToSellSlot(transform.GetComponentInChildren<BuyScreenCar>());
+
+                                    // car.gameObject.transform.parent = transform;
+                                    car.gameObject.transform.SetParent(transform);
+                                    car.gameObject.transform.SetSiblingIndex(1);
                                     car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                                     car.GetComponent<DragDrop>().canBePlaced = true;
                                     car.GetComponent<DragDrop>().startingParent = transform;
@@ -70,13 +89,15 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                     BuyScreenManager.instance.RemoveMoney(car.correspondingCar.carShopPrice);
                                     car.EnablePurchaseParticles();
 
-
-
+                                    if(correspondingInfoBtn != null){
+                                        // Debug.Log("Droped on rosterslot");
+                                        correspondingInfoBtn.ActiveInfo(car, null);
+                                    }
                                 }
 
                                 // Sells the vehicle being replaced
-                                GameObject oldItem = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
-                                SellVehicle(oldItem);
+                                // GameObject oldItem = eventData.pointerEnter.GetComponentInChildren<DragDrop>().gameObject;
+                                // SellVehicle(oldItem);
                             }
                         }
 
@@ -94,13 +115,18 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                             //Takes the pre-existing item and moves it to where your new car used to be 
                             replacedCar.transform.SetParent(oldParent.transform);
+                            replacedCar.transform.SetSiblingIndex(1);
                             replacedCar.gameObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
                             //Takes your held car and moves it to where the old car used to be
                             heldCar.transform.SetParent(gameObject.transform);
+                            heldCar.transform.SetSiblingIndex(1);
                             heldCar.gameObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
                             heldCar.GetComponent<DragDrop>().canBePlaced = true;
+
+                            oldParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(replacedCar.GetComponent<BuyScreenCar>(), null);
+                            newParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.ActiveInfo(heldCar.GetComponent<BuyScreenCar>(), null);
 
                         }
 
@@ -117,7 +143,14 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                             {
                                 if (gameObject.name == "Ultimate Slot" && ultimate != null)
                                 {
-                                    ultimate.gameObject.transform.parent = transform;
+                                    if(correspondingInfoBtn != null){
+                                        // Debug.Log("Droped on rosterslot");
+                                        correspondingInfoBtn.ActiveInfo(null, ultimate);
+                                    }
+
+                                    // ultimate.gameObject.transform.parent = transform;
+                                    ultimate.gameObject.transform.SetParent(transform);
+                                    ultimate.gameObject.transform.SetSiblingIndex(1);
                                     ultimate.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                                     ultimate.GetComponent<DragDrop>().canBePlaced = true;
                                     ultimate.GetComponent<DragDrop>().startingParent = transform;
@@ -130,7 +163,14 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                                 }
                                 else if (gameObject.name != "Ultimate Slot" && car != null)
                                 {
-                                    car.gameObject.transform.parent = transform;
+                                    if(correspondingInfoBtn != null){
+                                        // Debug.Log("Droped on rosterslot");
+                                        correspondingInfoBtn.ActiveInfo(car, null);
+                                    }
+
+                                    // car.gameObject.transform.parent = transform;
+                                    car.gameObject.transform.SetParent(transform);
+                                    car.gameObject.transform.SetSiblingIndex(1);
                                     car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                                     car.GetComponent<DragDrop>().canBePlaced = true;
                                     car.GetComponent<DragDrop>().startingParent = transform;
@@ -195,6 +235,46 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
     }
 
+    private void SendOldItemToSellSlot(BuyScreenCar sellCar){
+        //if sell slot os already populated, sell car in sell slot
+        if(sellSlot.GetComponent<BuyScreenCarSlot>().tempSellVehicle != null){
+            sellSlot.GetComponent<BuyScreenCarSlot>().SellVehicle();
+        }
+
+        sellCar.GetComponent<DragDrop>().emergencyParent = sellCar.GetComponent<DragDrop>().startingParent;
+
+        sellCar.gameObject.transform.SetParent(sellSlot.transform);
+        sellCar.gameObject.transform.SetSiblingIndex(1);
+        sellCar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        sellCar.GetComponent<DragDrop>().canBePlaced = true;
+        sellCar.GetComponent<DragDrop>().startingParent = sellSlot.transform;
+        // DecideOnSell(oldCar.gameObject);
+
+        sellSlot.GetComponent<BuyScreenCarSlot>().tempSellVehicle = sellCar.gameObject;
+        // BuyScreenManager.instance.SellPopup();
+        sellSlot.GetComponent<BuyScreenCarSlot>().AcceptSell();
+    }
+
+    private void SendOldItemToSellSlot(BuyScreenUltimate sellUlt){
+        //if sell slot os already populated, sell car in sell slot
+        if(sellSlot.GetComponent<BuyScreenCarSlot>().tempSellVehicle != null){
+            sellSlot.GetComponent<BuyScreenCarSlot>().SellVehicle();
+        }
+
+        sellUlt.GetComponent<DragDrop>().emergencyParent = sellUlt.GetComponent<DragDrop>().startingParent;
+
+        sellUlt.gameObject.transform.SetParent(sellSlot.transform);
+        sellUlt.gameObject.transform.SetSiblingIndex(1);
+        sellUlt.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+        sellUlt.GetComponent<DragDrop>().canBePlaced = true;
+        sellUlt.GetComponent<DragDrop>().startingParent = sellSlot.transform;
+        // DecideOnSell(oldUlt.gameObject);
+
+        sellSlot.GetComponent<BuyScreenCarSlot>().tempSellVehicle = sellUlt.gameObject;
+        // BuyScreenManager.instance.SellPopup();
+        sellSlot.GetComponent<BuyScreenCarSlot>().AcceptSell();
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         //When the player clicks on the item slot, the info box will be filled out with the corresponding information
@@ -229,6 +309,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
         vehicle.GetComponent<DragDrop>().emergencyParent = vehicle.GetComponent<DragDrop>().startingParent;
 
         vehicle.gameObject.transform.parent = transform;
+        vehicle.gameObject.transform.SetSiblingIndex(1);
         vehicle.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         vehicle.GetComponent<DragDrop>().canBePlaced = true;
         vehicle.GetComponent<DragDrop>().startingParent = transform;
@@ -238,7 +319,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
         BuyScreenManager.instance.SellPopup();
     }
 
-    public void SellVehicle(GameObject vehicle)
+    public void SellVehicle(GameObject vehicle = null)
     {
         if (tempSellVehicle != null)
         {
@@ -253,7 +334,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
         {
             if (ultimate != null)
             {
-                ultimate.gameObject.transform.parent = transform;
+                // ultimate.gameObject.transform.parent = transform;
+                ultimate.gameObject.transform.SetParent(transform);
+                ultimate.gameObject.transform.SetSiblingIndex(1);
                 ultimate.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 ultimate.GetComponent<DragDrop>().canBePlaced = true;
 
@@ -271,7 +354,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
             }
             else if (car != null)
             {
-                car.gameObject.transform.parent = transform;
+                // car.gameObject.transform.parent = transform;
+                car.gameObject.transform.SetParent(transform);
+                car.gameObject.transform.SetSiblingIndex(1);
                 car.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 car.GetComponent<DragDrop>().canBePlaced = true;
 
@@ -309,15 +394,24 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
     public void AcceptSell()
     {
         SellVehicle(tempSellVehicle);
+        GameObject obj = tempSellVehicle.GetComponent<DragDrop>().emergencyParent.gameObject;
+        obj.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.DisableInfo();
     }
 
     public void DeclineSell()
     {
-        tempSellVehicle.gameObject.transform.parent = tempSellVehicle.GetComponent<DragDrop>().emergencyParent;
-        tempSellVehicle.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        tempSellVehicle.GetComponent<DragDrop>().canBePlaced = true;
+        Transform originalParent = tempSellVehicle.GetComponent<DragDrop>().emergencyParent;
+        if(originalParent.GetComponentInChildren<BuyScreenUltimate>() == null && originalParent.GetComponentInChildren<BuyScreenCar>() == null){
+            tempSellVehicle.gameObject.transform.parent = originalParent;
+            // tempSellVehicle.gameObject.transform.parent = tempSellVehicle.GetComponent<DragDrop>().emergencyParent;
+            tempSellVehicle.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            tempSellVehicle.GetComponent<DragDrop>().canBePlaced = true;
 
-        BuyScreenManager.instance.SellPopupClose();
+            BuyScreenManager.instance.SellPopupClose();
+        }
+        else{
+            Debug.Log("You have populated the slot!");
+        }
 
     }
 

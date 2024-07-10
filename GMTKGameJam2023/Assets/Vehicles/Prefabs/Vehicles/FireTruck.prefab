@@ -5278,7 +5278,7 @@ MonoBehaviour:
   carPrice: 10
   ignoreTokens: 0
   isSlicingCar: 0
-  canIBeBombed: 1
+  canIBeBombed: 0
   canSpinOut: 0
   isSpinning: 0
   carInHitStop: 0
@@ -5298,6 +5298,7 @@ MonoBehaviour:
   cashCollectParticles: {fileID: 4650723062051862710, guid: 6b26b9eb453c7cb4990cd328bb258ae0, type: 3}
   particleDestroyDelay: 2
   exhaustParticleParent: {fileID: 6075273258459567834}
+  carSpriteObject: {fileID: 0}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
