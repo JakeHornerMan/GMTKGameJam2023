@@ -19,6 +19,14 @@ public static class PlayerValues
         playerCash = 0;
     }
 
+    public static void SetRound5Values(){
+        Cars = null;
+        ultimate = null;
+        missedChickenLives = 3;
+        carWalletNodes = 3;
+        playerCash = 75;
+    }
+
     public static void ResetCash(){
         playerCash = 0;
     }

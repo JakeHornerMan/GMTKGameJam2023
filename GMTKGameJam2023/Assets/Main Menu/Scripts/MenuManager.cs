@@ -51,7 +51,12 @@ public class MenuManager : MonoBehaviour
     // Run Coroutine with a parameter telling it to do main menu round skip popup
     public void EnterMainMenuScene()
     {
-        StartCoroutine(WipeAndLoadGame("", loadingGameScene: true));
+        if(TopRound.topRound >= 10){
+            StartCoroutine(WipeAndLoadGame("", loadingGameScene: true));
+        }
+        else{
+            StartCoroutine(WipeAndLoadGame("Level01"));
+        }
     }
 
     // Loading game scene is set to true only when clicking begin to start the game.
@@ -72,8 +77,9 @@ public class MenuManager : MonoBehaviour
             // Chose to skip to checkpoint
             if (playerChoseToSkip)
             {
+                PlayerValues.SetRound5Values();
                 // Set Gameprogression Values here for that chosen round
-                sceneName = "ProceduralGeneration";
+                sceneName = "BuyScreenImproved";
             }
             // "Start from first round" chosen
             else sceneName = "Level01";

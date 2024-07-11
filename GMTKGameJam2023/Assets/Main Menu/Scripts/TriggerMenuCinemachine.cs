@@ -12,7 +12,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     //[SerializeField] public string option;
     [SerializeField] private Animator anim;
-    private MainMenu mainMenu;
+    [SerializeField] private MainMenu mainMenu;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject settings;
 
@@ -56,49 +56,6 @@ public class TriggerMenuCinemachine : MonoBehaviour
         carVeerRight.transform.position = carVeerRightOrigin;
         carVeerRight.SetActive(false);
     }
-
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (!other.gameObject.GetComponent<CarMenu>()) return;
-
-    //    // Debug.Log("This was hit");
-    //    //other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-    //    switch(option) 
-    //    {
-    //    case "GoToGameSelect":
-    //        Debug.Log(option);
-    //        GoToGameSelect();
-    //        break;
-    //    case "GoToStart":
-    //        Debug.Log(option);
-    //        GoToStart();
-    //        break;
-    //    case "GoToSettings":
-    //        Debug.Log(option);
-    //        GoToSettings();
-    //        break;
-    //    case "GoToCredits":
-    //        Debug.Log(option);
-    //        GoToCredits();
-    //        break;
-    //    case "PlayGame":
-    //        Debug.Log(option);
-    //        GoToPlayGame();
-    //        break;
-    //    case "Bestiary":
-    //        Debug.Log(option);
-    //        GoToBeastiary();
-    //        break;
-    //    case "Tutorial":
-    //        Debug.Log(option);
-    //        GoToTutorial();
-    //        break;
-    //    default:
-    //        Debug.Log("There is nothing set");
-    //        break;
-    //    }  
-    //}
 
     public void LaneSelect(MenuRoad road)
     {
@@ -160,7 +117,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     public void GoToSettings()
     {
-        isSettings = true;
+        // isSettings = true;
         carVeerLeft.SetActive(true);
         anim.Play("Settings");
     }
@@ -174,6 +131,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     public void GoToStart()
     {
+        // isSettings = false;
         MenuManager.instance.HideBackButton();
         anim.Play("Start");
     }
@@ -188,7 +146,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
         Points.SetDefaultValues();
 
         MenuManager.instance.EnterMainMenuScene();
-        //mainMenu.EnterGame();
+        // mainMenu.EnterGame();
     }
 
     public void GoToCollection()
