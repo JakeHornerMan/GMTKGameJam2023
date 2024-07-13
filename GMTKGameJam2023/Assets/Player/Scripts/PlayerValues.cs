@@ -24,7 +24,7 @@ public static class PlayerValues
         ultimate = null;
         missedChickenLives = 3;
         carWalletNodes = 3;
-        playerCash = 75;
+        playerCash = 50;
     }
 
     public static void ResetCash(){

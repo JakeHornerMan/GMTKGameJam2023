@@ -33,7 +33,7 @@ public class Settings : MonoBehaviour
         MusicEnabled = true;
         SfxEnabled = true;
         RoadShineEnabled = true;
-        MusicVolume = 8;
+        MusicVolume = 5;
         SfxVolume = 10;
         FullscreenEnabled = true;
         WindowedSize = new Vector2(1920f,1080f);
