@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool endSound = false;
     [HideInInspector] private bool roundOverNotActivated = true;
     [HideInInspector] public int waveNumber = 0;
-    [HideInInspector] public bool roundOver = false;
+    [HideInInspector] private bool roundOver = false;
     [HideInInspector] public bool storedValues = true;
     [SerializeField] public GameObject chickenContainer;
 
@@ -238,8 +238,10 @@ public class GameManager : MonoBehaviour
     public void SafelyCrossedChicken()
     {
         safelyCrossedChickens++;
-        missedChickenLives--;
-        healthCorn.DeadCorn(missedChickenLives);
+        if(!roundOver){
+            missedChickenLives--;
+            healthCorn.DeadCorn(missedChickenLives);
+        }
         RemovePlayerScore(lostChickenScore * safelyCrossedChickens);
         soundManager.PlayMissedChicken();
         CameraShaker.instance.Shake(0.25f, -0.5f);
@@ -312,6 +314,10 @@ public class GameManager : MonoBehaviour
             GameProgressionValues.RoundNumber ++;
         }
 
+        if(pause != null){
+            pause.cancelPause = true;
+        }
+
         //Show "You Survived!" popup
         interfaceManager.survivedPopup();
 
@@ -322,7 +328,7 @@ public class GameManager : MonoBehaviour
         chickenManager.WipeAllChickens();
         isGameOver = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
@@ -364,5 +370,6 @@ public class GameManager : MonoBehaviour
         SteamStats.SetTopCombo(highestCombo);
         SteamStats.SetTotalUltimates(ultimateSpawnCount);
         SteamStats.SetTotalMissedChickens(safelyCrossedChickens);
+        TopRound.SaveRound();
     }
 }

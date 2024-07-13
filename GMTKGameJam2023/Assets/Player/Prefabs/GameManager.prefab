@@ -811,7 +811,6 @@ MonoBehaviour:
   time: 120
   endSound: 0
   waveNumber: 0
-  roundOver: 0
   storedValues: 1
   chickenContainer: {fileID: 0}
   sceneFader: {fileID: 0}
@@ -905,6 +904,7 @@ MonoBehaviour:
   pauseTimeScale: 0
   isPaused: 0
   isTutorialText: 0
+  cancelPause: 0
   musicAudio: {fileID: 0}
   sfxAudio: {fileID: 0}
 --- !u!114 &5068059985661225512
@@ -994,9 +994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic:
-  - clip: {fileID: 8300000, guid: 11a15d58de20bcf48b76d6d1dc21f55c, type: 3}
+  - clip: {fileID: 8300000, guid: b4457f453c80e7443bc9dd6bec44fe32, type: 3}
     volume: 0.7
-  - clip: {fileID: 8300000, guid: d93d2e6ea27f782419f8f7be30d25a3f, type: 3}
+  - clip: {fileID: 8300000, guid: f071862723af4f344816a959b149d4eb, type: 3}
     volume: 0.7
   - clip: {fileID: 8300000, guid: b7442396bccd1bc4c8ff223985bc3e58, type: 3}
     volume: 0.7
@@ -1113,6 +1113,7 @@ MonoBehaviour:
     volume: 1
   endMusic: {fileID: 8300000, guid: e20f8edc53f554b43a88a34e6c301c18, type: 3}
   isMenu: 0
+  audioSrc: {fileID: 0}
   musicAudio: {fileID: 5995303635059143458}
   sfxAllowed: 1
   musicAllowed: 1

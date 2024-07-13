@@ -22,7 +22,7 @@ public class ResultsManager : MonoBehaviour
 
     void Start()
     {
-        // leaderboardManager.UploadToLeaderboardAndUpdate(Points.playerScore);
+        TopRound.SaveRound();
         ResetSpawnChicken();
     }
 
@@ -50,3 +50,4 @@ public class ResultsManager : MonoBehaviour
         ResetSpawnChicken();
     }
 }
+

@@ -19,6 +19,7 @@ public class Pause : MonoBehaviour
 
     [HideInInspector] public bool isPaused = false;
     [HideInInspector] public bool isTutorialText = false;
+    [HideInInspector] public bool cancelPause = false;
 
     [SerializeField] private AudioSource musicAudio;
     [SerializeField] private AudioSource sfxAudio;
@@ -54,13 +55,15 @@ public class Pause : MonoBehaviour
 
     public void PauseGame(bool showUI = true)
     {
-        isPaused = true;
-        Time.timeScale = pauseTimeScale;
-        if (musicAudio != null) musicAudio.Pause();
-        sfxAudio.Pause();
-        if (FindObjectOfType<CardDraw>() != null)
-            sfxAudio.UnPause();
-        if (showUI)
-            pauseUI.SetActive(true);
+        if(!cancelPause){
+            isPaused = true;
+            Time.timeScale = pauseTimeScale;
+            if (musicAudio != null) musicAudio.Pause();
+            sfxAudio.Pause();
+            if (FindObjectOfType<CardDraw>() != null)
+                sfxAudio.UnPause();
+            if (showUI)
+                pauseUI.SetActive(true);
+        }
     }
 }

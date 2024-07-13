@@ -124,7 +124,7 @@ public class FishingLine : MonoBehaviour
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr)
             {
-                if(!child.GetComponent<ChickenHealth>().isAttached){
+                if(!child.GetComponent<ChickenHealth>().isAttached && child.GetComponent<ChickenHealth>() != null){
                     closestDistanceSqr = dSqrToTarget;
                     bestTarget = child.gameObject;
                 }

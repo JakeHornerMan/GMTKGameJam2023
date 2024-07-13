@@ -10498,6 +10498,7 @@ MonoBehaviour:
   leaderboardManager: {fileID: 0}
   currentRoad: {fileID: 0}
   anim: {fileID: 284204840}
+  mainMenu: {fileID: 0}
   credits: {fileID: 0}
   settings: {fileID: 0}
   carVeerLeft: {fileID: 6077706268506139307}
@@ -14805,6 +14806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTag: Music
+  car1: {fileID: 0}
+  car2: {fileID: 0}
 --- !u!114 &1445096259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16532,6 +16535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTag: Music
+  car1: {fileID: 0}
+  car2: {fileID: 0}
 --- !u!114 &1566524171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58321,6 +58326,8 @@ MonoBehaviour:
   backButton: {fileID: 2676710151449610993}
   sceneFader: {fileID: 1384654434}
   showRoundSkipPopupBeforeLoad: 0
+  car1: {fileID: 0}
+  car2: {fileID: 0}
 --- !u!114 &8280651595496457418
 MonoBehaviour:
   m_ObjectHideFlags: 0
