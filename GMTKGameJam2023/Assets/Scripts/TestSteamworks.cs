@@ -41,7 +41,7 @@ public class TestSteamworks : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.End))
         {
             Debug.Log("Reset Achievement!");
-            resetAchievements();
+            // resetAchievements();
         }
     }
 
