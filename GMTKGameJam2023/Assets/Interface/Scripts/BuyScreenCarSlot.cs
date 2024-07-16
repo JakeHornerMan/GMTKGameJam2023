@@ -204,9 +204,24 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                         }
                         else if (slotType == SlotType.Roster)
                         {
+                            //Clear the other's info button
+                            if (eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn != null)
+                            {
+
+                                eventData.pointerDrag.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().correspondingInfoBtn.DisableInfo();
+                            }
+
+                            //If the vehicle is moving from one roster slot to an empty slot
                             eventData.pointerDrag.gameObject.transform.parent = transform;
                             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                             eventData.pointerDrag.GetComponent<DragDrop>().canBePlaced = true;
+                            eventData.pointerDrag.gameObject.transform.SetSiblingIndex(1);
+
+                            if (correspondingInfoBtn != null)
+                            {
+                                // Debug.Log("Droped on rosterslot");
+                                correspondingInfoBtn.ActiveInfo(car, null);
+                            }
                         }
                         else
                         {
