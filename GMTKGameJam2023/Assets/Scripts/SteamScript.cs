@@ -134,7 +134,7 @@ public class Steam : MonoBehaviour
     void resetAchievements(){
         if(SteamManager.Initialized)
         {
-            SteamUserStats.ResetAllStats(true);
+            // SteamUserStats.ResetAllStats(true);
             Debug.Log("Reset all stats");
         }
     }
