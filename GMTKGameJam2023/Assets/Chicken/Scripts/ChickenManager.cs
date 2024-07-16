@@ -41,11 +41,16 @@ public class ChickenManager : MonoBehaviour
     void UpdateChickenAudioFrequency()
     {
         // Adjust these values to control the ramping and leveling off behavior
-        float maxFrequency = 2f; // Maximum frequency to level off at
-        float rampUpSpeed = 0.5f; // How quickly the frequency ramps up
+        float maxFrequency = 4f; // Maximum frequency to level off at
+        float rampUpSpeed = 0.04f; // How quickly the frequency ramps up
 
         // Calculate the frequency based on the number of chickens
         chickenAudioFrequency = maxFrequency * (1f - Mathf.Exp(-rampUpSpeed * chickenCount));
+
+        if (chickenAudioFrequency < 0.5f)
+        {
+            chickenAudioFrequency = 0.5f;
+        }
     }
 
     IEnumerator PlayChickenSounds()
@@ -53,7 +58,7 @@ public class ChickenManager : MonoBehaviour
         while (true)
         {
             // Wait for a random time between 0 and chickenAudioFrequency seconds
-            float waitTime = Random.Range(0f, chickenAudioFrequency);
+            float waitTime = Random.Range(0.2f, chickenAudioFrequency);
             yield return new WaitForSeconds(waitTime);
 
             // Play a random chicken sound
