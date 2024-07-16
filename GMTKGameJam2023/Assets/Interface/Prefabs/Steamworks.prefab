@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5733412856002690213}
   - component: {fileID: 7971479807608596150}
-  - component: {fileID: 7467278558033849553}
-  - component: {fileID: 8360756609211186158}
   m_Layer: 0
   m_Name: Steamworks
   m_TagString: Untagged
@@ -44,31 +42,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7467278558033849553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556993525935289679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff4614f3b62b5742892b41b487ca9c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 1
-  devMode: 0
---- !u!114 &8360756609211186158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556993525935289679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbe560eab15d5848bdac6a2d2e02fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -14,6 +14,7 @@ public class Steam : MonoBehaviour
 			string name = SteamFriends.GetPersonaName();
 			Debug.Log("Steam Account: " + name);
             SteamLeaderboards.Init();
+            resetAchievements();
 		}
 	}
 
@@ -68,8 +69,8 @@ public class Steam : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("Reset All Stats & Achievements!");
-                // resetAchievements();
+                // Debug.Log("Reset All Stats & Achievements!");
+                resetAchievements();
             }
         }
     }

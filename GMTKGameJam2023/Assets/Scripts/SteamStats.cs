@@ -15,37 +15,51 @@ public class SteamStats : MonoBehaviour
 
     public static StatResultValue GetChickenKills(){
         int score = GetStat(chickenKills_statName);
-        return new StatResultValue("Total chicken stopped", score);
+        StatResultValue stat = new StatResultValue("Total chicken stopped", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetTotalCars(){
         int score = GetStat(totalCars_statName);
-        return new StatResultValue("Total cars placed", score);
+        StatResultValue stat = new StatResultValue("Total cars placed", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetHighestScoreVehicle(){
         int score = GetStat(scoreVehicle_statName);
-        return new StatResultValue("Highest score from a vehicle", score);
+        StatResultValue stat = new StatResultValue("Highest score from a vehicle", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetTopRound(){
         int score = GetStat(topRound_statName);
-        return new StatResultValue("Highest round reached", score);
+        StatResultValue stat = new StatResultValue("Highest round reached", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetTopCombo(){
         int score = GetStat(topCombo_statName);
-        return new StatResultValue("Highest vehicle combo", score);
+        StatResultValue stat = new StatResultValue("Highest vehicle combo", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetTotalUltimates(){
         int score = GetStat(totalUlt_statName);
-        return new StatResultValue("Total ultimates placed", score);
+        StatResultValue stat = new StatResultValue("Total ultimates placed", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static StatResultValue GetTotalMissedChickens(){
         int score = GetStat(totalMissedChickens_statName);
-        return new StatResultValue("Chickens that crossed the road", score);
+        StatResultValue stat = new StatResultValue("Chickens that crossed the road", score);
+        Debug.Log(stat.ToString());
+        return stat;
     }
 
     public static void SetChickenKills(int score){

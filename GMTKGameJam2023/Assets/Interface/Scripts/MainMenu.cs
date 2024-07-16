@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     private SceneFader sceneFader;
     private TriggerMenuFunction triggerMenuFunction;
 
+
     private void Awake()
     {
         triggerMenuFunction = FindObjectOfType<TriggerMenuFunction>();
@@ -34,6 +35,7 @@ public class MainMenu : MonoBehaviour
         Points.SetDefaultValues();
         sceneFader.ScreenWipeOut("Level01");
     }
+
     public void EnterTutorial() => sceneFader.FadeToTutorial();
     public void EnterCredits() => sceneFader.FadeToCredits();
     public void EnterSettings() => sceneFader.FadeToSettings();

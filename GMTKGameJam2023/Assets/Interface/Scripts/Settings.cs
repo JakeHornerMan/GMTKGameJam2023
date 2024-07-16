@@ -33,7 +33,7 @@ public class Settings : MonoBehaviour
         MusicEnabled = true;
         SfxEnabled = true;
         RoadShineEnabled = true;
-        MusicVolume = 8;
+        MusicVolume = 5;
         SfxVolume = 10;
         FullscreenEnabled = true;
         WindowedSize = new Vector2(1920f,1080f);
@@ -195,7 +195,7 @@ public class SettingsData
     public bool FullscreenEnabled;
     public Vector2 WindowedSize;
 
-     public SettingsData() { }
+    public SettingsData() { }
 
     public SettingsData(bool sfxEnabled, float sfxVolume, bool musicEnabled, float musicVolume, bool roadShineEnabled, bool fullscreenEnabled, Vector2 windowSize)
     {
