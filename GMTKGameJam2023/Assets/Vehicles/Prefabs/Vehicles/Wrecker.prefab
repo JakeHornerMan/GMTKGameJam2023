@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4dcf9e5b57afe49bae9ef60290d36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: -1135978355812094493}
+  car: {fileID: 4990575098033403819}
   wreckerCart: {fileID: 1761417369981310633}
   hook: {fileID: 8686834062049952884}
   camShakeDuration: 0.15
@@ -5336,7 +5336,7 @@ GameObject:
   - component: {fileID: 2089861779733227409}
   - component: {fileID: 322576651139750340}
   - component: {fileID: 3039123858054664968}
-  - component: {fileID: -1135978355812094493}
+  - component: {fileID: 4990575098033403819}
   m_Layer: 2
   m_Name: Wrecker
   m_TagString: Vehicle
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   objectIcon: {fileID: 21300000, guid: c835af7cd292b2e4b9c10e56774fe770, type: 3}
   objectDescription: Call in the demolition services to take care of the chicken
     infestation, with a rotating wrecking ball that won't stop for anything.
---- !u!114 &-1135978355812094493
+--- !u!114 &4990575098033403819
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5463,7 +5463,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4421891079327587070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb21e2f3fb9b3b744b40c5e8ec101350, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fa309ab07042904b9d507ef4e004094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scorePopUp: {fileID: 687218032513753274, guid: 0199b7d48a5931c4abb370fb88658edc, type: 3}
@@ -5490,11 +5490,12 @@ MonoBehaviour:
   carSpeed: 3
   damage: 200
   comboMultiplier: 0.2
-  DeathExplosion: {fileID: 3716947289871644993, guid: 8bf8a96adaeda424fa759bc6a25245c9, type: 3}
+  DeathExplosion: {fileID: 0}
   tokenCollectParticles: {fileID: 4650723062051862710, guid: 4cf4d571ae3b79047a486b9b52624b2d, type: 3}
   cashCollectParticles: {fileID: 4650723062051862710, guid: 6b26b9eb453c7cb4990cd328bb258ae0, type: 3}
   particleDestroyDelay: 2
   exhaustParticleParent: {fileID: 561754080742888748}
+  carSpriteObject: {fileID: 0}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash
@@ -5509,6 +5510,7 @@ MonoBehaviour:
   totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
+  wreckingColliders: {fileID: 0}
 --- !u!1 &4524734424282421569
 GameObject:
   m_ObjectHideFlags: 0

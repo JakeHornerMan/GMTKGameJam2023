@@ -9,6 +9,7 @@ public class Limousine : Car, ISpecialLaunch
     [SerializeField] private GameObject cameraObject;
 
     [SerializeField] public float flashDuration;
+    [SerializeField] private SoundConfig flashSound;
 
     private Collider2D mainTrigger;
     private Collider2D childTrigger;
@@ -25,6 +26,9 @@ public class Limousine : Car, ISpecialLaunch
         // Ensure both are set to be triggers
         if (mainTrigger != null) mainTrigger.isTrigger = true;
         if (childTrigger != null) childTrigger.isTrigger = true;
+
+        soundManager?.PlaySound(0f, flashSound);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

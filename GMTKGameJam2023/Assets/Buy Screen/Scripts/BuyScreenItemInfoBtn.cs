@@ -61,8 +61,17 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
         correspCar = car;
         correspUlt = ult;
         // gameObject.SetActive(false);
-        //this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(0.399869949f,0.399869949f,0.999674976f);
-        // this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);
+        if (IsRosterSlot)
+        {
+            this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(0.399869949f, 0.399869949f, 0.999674976f);
+        }
+        else
+        {
+            this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+        }
+        
+        
+        
     }
 
     public void DisableInfo(){

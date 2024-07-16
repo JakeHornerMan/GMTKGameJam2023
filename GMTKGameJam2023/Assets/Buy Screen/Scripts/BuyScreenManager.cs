@@ -34,6 +34,7 @@ public class BuyScreenManager : MonoBehaviour
 
     [SerializeField] private int maxRerolls; // Maximum number of rerolls allowed
     private int remainingRerolls; // Tracks remaining rerolls
+    [SerializeField] private SoundConfig rerollSound;
 
     [Header("Other")]
     [SerializeField] private GameObject RosterHolder;
@@ -420,7 +421,9 @@ public class BuyScreenManager : MonoBehaviour
             UpdatePlayerUltimate();
             PopulateShops();
             UpdateSlotColors();
-            
+
+            GetComponent<SoundManager>().PlaySound(0f, rerollSound);
+
         }
     }
 

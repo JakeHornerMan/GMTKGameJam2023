@@ -748,13 +748,16 @@ MonoBehaviour:
   camShakeMagnitude: 1.25
   spawnSound:
   - clip: {fileID: 8300000, guid: 68d2e57e4938e0148b386a9f7f86b018, type: 3}
-    volume: 1
+    volume: 0.6
   carKillCount: 0
   totalPoints: 0
   cameraShaker: {fileID: 0}
   soundManager: {fileID: 0}
   cameraObject: {fileID: 3829337068989291492}
   flashDuration: 5
+  flashSound:
+    clip: {fileID: 8300000, guid: caed65117aa431e4dbc14e777c388029, type: 3}
+    volume: 0.65
 --- !u!1 &8232570909257359154
 GameObject:
   m_ObjectHideFlags: 0
