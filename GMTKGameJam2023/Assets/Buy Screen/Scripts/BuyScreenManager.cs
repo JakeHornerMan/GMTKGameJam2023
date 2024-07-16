@@ -330,13 +330,15 @@ public class BuyScreenManager : MonoBehaviour
 
             BuyScreenCarSlot carSlot = carShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            BuyScreenCar rosterCar = carSlot.transform.GetComponentInChildren<BuyScreenCar>();
+            BuyScreenCar buyScreenCar = carSlot.transform.GetComponentInChildren<BuyScreenCar>();
 
-            rosterCar.correspondingCar = car;
+            buyScreenCar.correspondingCar = car;
 
-            rosterCar.UpdateSprite();
+            buyScreenCar.UpdateSprite();
 
             carSlot.UpdatePriceText();
+
+            carSlot.correspondingInfoBtn.ActiveInfo(buyScreenCar, null);
 
             carSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
 
@@ -392,13 +394,15 @@ public class BuyScreenManager : MonoBehaviour
 
             BuyScreenCarSlot ultimateSlot = ultimateShop.transform.GetChild(i).gameObject.GetComponent<BuyScreenCarSlot>();
 
-            BuyScreenUltimate rosterUltimate = ultimateSlot.transform.GetComponentInChildren<BuyScreenUltimate>();
+            BuyScreenUltimate buyScreenUltimate = ultimateSlot.transform.GetComponentInChildren<BuyScreenUltimate>();
 
-            rosterUltimate.correspondingUltimate = ultimate;
+            buyScreenUltimate.correspondingUltimate = ultimate;
 
-            rosterUltimate.UpdateSprite();
+            buyScreenUltimate.UpdateSprite();
 
             ultimateSlot.GetComponent<BuyScreenCarSlot>().UpdatePriceText();
+
+            ultimateSlot.correspondingInfoBtn.ActiveInfo(null, buyScreenUltimate);
 
             ultimateSlot.gameObject.GetComponent<Animator>().Play("RerollShake");
 

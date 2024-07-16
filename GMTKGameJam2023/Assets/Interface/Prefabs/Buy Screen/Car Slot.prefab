@@ -59,6 +59,9 @@ MonoBehaviour:
   greenColor: {r: 0, g: 0, b: 0, a: 1}
   slotType: 1
   priceText: {fileID: 8941729405479430977}
+  tempSellVehicle: {fileID: 0}
+  correspondingInfoBtn: {fileID: 8180819362528417104}
+  sellSlot: {fileID: 0}
 --- !u!222 &768304986675385319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -618,6 +621,7 @@ MonoBehaviour:
   correspUlt: {fileID: 0}
   upgradeBar: {fileID: 0}
   otherObject: {fileID: 0}
+  IsRosterSlot: 0
 --- !u!1 &9147583249569074600
 GameObject:
   m_ObjectHideFlags: 0

@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 5730992406402968800}
   - component: {fileID: 1651115058357389278}
   - component: {fileID: 1595029277678184360}
+  - component: {fileID: 3221182719149983756}
   m_Layer: 2
   m_Name: Camera Object
   m_TagString: Untagged
@@ -423,6 +424,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3221182719149983756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3829337068989291492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfd96dc117af984eb1f912527e89e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4274198929705841831
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +678,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 3.7815528}
+  m_Size: {x: 1.2, y: 3.7815528}
   m_EdgeRadius: 0
 --- !u!114 &2961327546358186584
 MonoBehaviour:
@@ -702,12 +715,12 @@ MonoBehaviour:
   comboSymbol: x
   comboText: {fileID: 8978222805321400964}
   carType: 1
-  carHealth: 150
+  carHealth: 100
   carPrice: 8
   ignoreTokens: 0
   isSlicingCar: 0
   canIBeBombed: 1
-  canSpinOut: 0
+  canSpinOut: 1
   isSpinning: 0
   carInHitStop: 0
   carInAction: 1
@@ -725,6 +738,7 @@ MonoBehaviour:
   cashCollectParticles: {fileID: 4650723062051862710, guid: 6b26b9eb453c7cb4990cd328bb258ae0, type: 3}
   particleDestroyDelay: 2
   exhaustParticleParent: {fileID: 93226976787537863}
+  carSpriteObject: {fileID: 0}
   scorePopUpMsg: 
   tokenPopUpMsg: Token
   cashPopUpMsg: Cash

@@ -53,13 +53,15 @@ public class BuyScreenItemInfoBtn : MonoBehaviour
         else if (correspUlt != null)
             correspUlt = gameObject.transform.parent.GetComponentInChildren<BuyScreenUltimate>();
     }
+
+
     public void ActiveInfo(BuyScreenCar car, BuyScreenUltimate ult){
         // this.gameObject.SetActive(true);
         Debug.Log("InforButtonCall!");
         correspCar = car;
         correspUlt = ult;
         // gameObject.SetActive(false);
-        this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(0.399869949f,0.399869949f,0.999674976f);
+        //this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(0.399869949f,0.399869949f,0.999674976f);
         // this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);
     }
 

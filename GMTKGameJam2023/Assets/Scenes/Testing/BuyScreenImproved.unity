@@ -1954,6 +1954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5578488337601606723, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: correspondingInfoBtn
+      value: 
+      objectReference: {fileID: 1227925484}
     - target: {fileID: 6738691707576589895, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.149994
@@ -6468,6 +6472,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1889958539033141684, guid: c1215acb0e7777746b1d84c3aa026512, type: 3}
   m_PrefabInstance: {fileID: 1920669600}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &741909997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8180819362528417104, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+  m_PrefabInstance: {fileID: 8357157990555337127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3389a12c45eebd4aa7101995899ebdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &743497527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10807,6 +10822,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5edd408162fb9445baa9176f6486717, type: 3}
+--- !u!114 &1227925484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8180819362528417104, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+  m_PrefabInstance: {fileID: 125892430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3389a12c45eebd4aa7101995899ebdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1240241482
 GameObject:
   m_ObjectHideFlags: 0
@@ -26023,6 +26049,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5578488337601606723, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
+      propertyPath: correspondingInfoBtn
+      value: 
+      objectReference: {fileID: 741909997}
     - target: {fileID: 6100669326651768849, guid: 3ecbfef07536c6f4181e7fd24b40628e, type: 3}
       propertyPath: m_IsActive
       value: 1
