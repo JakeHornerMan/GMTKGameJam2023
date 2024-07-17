@@ -23,11 +23,14 @@ public class TriggerMenuCinemachine : MonoBehaviour
     [SerializeField] private GameObject carVeerRight;
     private Vector3 carVeerRightOrigin;
 
+    private RoundSkipPopup roundSkipPopup;
+
     // private float speed = 3f;
 
     private void Start()
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
+        roundSkipPopup = FindObjectOfType<RoundSkipPopup>();
 
         if (instance == null)
         {
@@ -71,7 +74,10 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
         ResetAllSpecialObjects();
 
-        MenuManager.instance.ShowBackButton();
+        if (option != "Begin")
+            MenuManager.instance.ShowBackButton();
+        else
+            MenuManager.instance.HideBackButton();
 
         switch (option)
         {
@@ -133,6 +139,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
     {
         // isSettings = false;
         MenuManager.instance.HideBackButton();
+        roundSkipPopup.HidePopupUI();
         anim.Play("Start");
     }
 
