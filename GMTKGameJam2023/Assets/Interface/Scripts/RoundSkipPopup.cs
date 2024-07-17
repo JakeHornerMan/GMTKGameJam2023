@@ -32,4 +32,9 @@ public class RoundSkipPopup : MonoBehaviour
 
         popupUI.SetActive(true);
     }
+
+    public void HidePopupUI()
+    {
+        popupUI.SetActive(false);
+    }
 }
