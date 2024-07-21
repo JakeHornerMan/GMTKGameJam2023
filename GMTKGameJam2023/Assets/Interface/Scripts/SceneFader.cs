@@ -117,8 +117,10 @@ public class SceneFader : MonoBehaviour
         return name.Substring(0, dot);
     }
 
-    public IEnumerator WipeToScene(string targetScene)
+    public IEnumerator WipeToScene(string targetScene, float delay)
     {
+        yield return new WaitForSecondsRealtime(delay);
+
         if(FindObjectOfType<Pause>() != null){
             FindObjectOfType<Pause>().cancelPause = true;
         }
@@ -138,7 +140,12 @@ public class SceneFader : MonoBehaviour
 
     public void ScreenWipeOut(string targetScene)
     {
-        StartCoroutine(WipeToScene(targetScene));
+        StartCoroutine(WipeToScene(targetScene, 0f));
+    }
+
+    public void ScreenWipeOutDelayed(string targetScene, float delay)
+    {
+        StartCoroutine(WipeToScene(targetScene, delay));
     }
 
     IEnumerator MoveInScreenWiper()

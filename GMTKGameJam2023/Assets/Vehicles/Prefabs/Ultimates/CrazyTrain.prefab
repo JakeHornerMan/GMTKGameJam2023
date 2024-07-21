@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3132681948914186115}
   - component: {fileID: 7344741203160822997}
   - component: {fileID: 3035615612104782968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Carriage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5830875686696461527}
   - component: {fileID: 950624073553617103}
   - component: {fileID: 6957379803759522635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Carriage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 7303249329149059119}
   - component: {fileID: 2123668580675045057}
   - component: {fileID: 6443355138021235755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Carriage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5517721425750037808}
   - component: {fileID: 6738185685667540834}
   - component: {fileID: 7546657656385259497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrainFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,8 @@ GameObject:
   - component: {fileID: 4960325638903188508}
   - component: {fileID: 6413012680814957019}
   - component: {fileID: 554778897067897336}
-  m_Layer: 0
+  - component: {fileID: -2309357170732320603}
+  m_Layer: 6
   m_Name: CrazyTrain
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -569,6 +570,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.62718, y: 5}
   m_EdgeRadius: 0
+--- !u!50 &-2309357170732320603
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3039549670729880301}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8289553832824795020
 GameObject:
   m_ObjectHideFlags: 0

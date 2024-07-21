@@ -101,7 +101,7 @@ public class Ultimate : MonoBehaviour
 
         
         WallController wall = collision.gameObject.GetComponent<WallController>();
-            wall?.WallHit();
+        wall?.WallHit();
     }
 
     private void HandleTokenCollision(TokenController token)
