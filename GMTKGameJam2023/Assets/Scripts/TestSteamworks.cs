@@ -81,7 +81,7 @@ public class TestSteamworks : MonoBehaviour
     }
 
     void resetAchievements(){
-        SteamUserStats.ResetAllStats(true);
+        // SteamUserStats.ResetAllStats(true);
         Debug.Log("Reset all stats");
     }
 }

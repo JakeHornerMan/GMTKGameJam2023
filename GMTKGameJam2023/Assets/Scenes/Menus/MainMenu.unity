@@ -4868,7 +4868,7 @@ GameObject:
   - component: {fileID: 533264846}
   - component: {fileID: 533264845}
   m_Layer: 2
-  m_Name: Audio People (2)
+  m_Name: Footnote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4891,7 +4891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -8.7}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 10, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &533264845
@@ -4914,20 +4914,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "This   project   started   off   as   a   Game   Jam   submission   for   
-    'GMTK 2023'.\nThe   team   has   worked   over   the   past   10   months   to   
-    flesh   out   the   experience.\nWe   hope   you   have   as   much   fun   playing  
-    as   we   did   developing! \nThanks!   -   Scrambled   Eggs   Team"
+  m_text: "This project started off as a Game Jam submission for 'GMTK 2023'.\nThe
+    team has worked over the past 10 months to flesh out the experience. \nWe hope
+    you have as much fun playing as we did developing! Thanks!\n- Scrambled Eggs
+    Team\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0d4cb8e627517b94eb1299fc6e20f93b, type: 2}
-  m_sharedMaterial: {fileID: 3405775689692870, guid: 0d4cb8e627517b94eb1299fc6e20f93b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dd6661ffc301f1f439a163f1376207f0, type: 2}
+  m_sharedMaterial: {fileID: 3405775689692870, guid: dd6661ffc301f1f439a163f1376207f0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4950,12 +4950,12 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: -3.38
-  m_wordSpacing: -19.91
+  m_characterSpacing: -7.05
+  m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -6584,7 +6584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 2.13}
+  m_AnchoredPosition: {x: 8, y: 2.9803302}
   m_SizeDelta: {x: 10, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653019090
@@ -7079,7 +7079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: 1.3998349}
+  m_AnchoredPosition: {x: -8, y: 2.250165}
   m_SizeDelta: {x: 10, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685204827
@@ -7289,7 +7289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -1.7}
+  m_AnchoredPosition: {x: 0, y: -0.84966946}
   m_SizeDelta: {x: 15, y: 5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &686577340
@@ -8160,7 +8160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -2.250165}
+  m_AnchoredPosition: {x: -8, y: -1.3998349}
   m_SizeDelta: {x: 10, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800515796
@@ -8431,7 +8431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -0.5}
+  m_AnchoredPosition: {x: 8, y: 0.35033005}
   m_SizeDelta: {x: 10, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &833447243
@@ -9545,7 +9545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -6.16}
+  m_AnchoredPosition: {x: 8, y: -5.30967}
   m_SizeDelta: {x: 10, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944770740
@@ -14882,7 +14882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -3.12}
+  m_AnchoredPosition: {x: 8, y: -2.2696698}
   m_SizeDelta: {x: 10, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444319775
@@ -15210,8 +15210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTag: Music
-  car1: {fileID: 0}
-  car2: {fileID: 0}
 --- !u!114 &1445096259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16939,8 +16937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTag: Music
-  car1: {fileID: 0}
-  car2: {fileID: 0}
 --- !u!114 &1566524171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19029,7 +19025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1780917208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58718,8 +58714,6 @@ MonoBehaviour:
   backButton: {fileID: 2676710151449610993}
   sceneFader: {fileID: 1384654434}
   showRoundSkipPopupBeforeLoad: 0
-  car1: {fileID: 0}
-  car2: {fileID: 0}
 --- !u!114 &8280651595496457418
 MonoBehaviour:
   m_ObjectHideFlags: 0
