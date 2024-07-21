@@ -321,16 +321,18 @@ public class GameManager : MonoBehaviour
         //Show "You Survived!" popup
         interfaceManager.survivedPopup();
 
+        sceneFader.ScreenWipeOutDelayed("BuyScreenImproved", 2f);
+
         chickenManager.StopAllChickens();
         
-        yield return new WaitForSeconds(0.5f);
-        
+        yield return new WaitForSecondsRealtime(0.5f);
+
         chickenManager.WipeAllChickens();
         isGameOver = true;
 
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSecondsRealtime(1.5f);
 
-        sceneFader.ScreenWipeOut("BuyScreenImproved");
+        //sceneFader.ScreenWipeOut("BuyScreenImproved");
     }
 
     private void HandleGameOver()
