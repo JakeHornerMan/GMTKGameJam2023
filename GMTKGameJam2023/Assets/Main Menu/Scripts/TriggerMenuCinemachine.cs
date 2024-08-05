@@ -152,7 +152,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
         PlayerValues.SetDefaultValues();
         Points.SetDefaultValues();
 
-        MenuManager.instance.EnterMainMenuScene();
+        MenuManager.instance.EnterGameScene();
         // mainMenu.EnterGame();
     }
 
