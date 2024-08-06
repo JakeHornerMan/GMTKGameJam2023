@@ -15,10 +15,12 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private bool onStart = false;
     [SerializeField] private Transform entriesContainer;
     [SerializeField] private GameObject leaderboardEntryPrefab;
+    [SerializeField] private Scrollbar scrollbar;
 
     public List<LeaderboardEntry> leaderboardEntries = new List<LeaderboardEntry>();
     public List<LeaderboardEntry> top10LeaderboardEntries = new List<LeaderboardEntry>();
     public List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
+    public int leaderboardEntriesAmount = 0;
 
     private void Awake() 
     {
@@ -95,6 +97,7 @@ public class LeaderboardManager : MonoBehaviour
             ).GetComponent<LeaderboardEntryVisual>();
             obj.SetValues(entry);
         }
+        scrollbar.value = 0.5f;
     }
 
     public void ShowTop10()
@@ -111,6 +114,7 @@ public class LeaderboardManager : MonoBehaviour
             ).GetComponent<LeaderboardEntryVisual>();
             obj.SetValues(entry);
         }
+        scrollbar.value = 0f;
     }
 
     public void ShowFriends()
@@ -127,5 +131,6 @@ public class LeaderboardManager : MonoBehaviour
             ).GetComponent<LeaderboardEntryVisual>();
             obj.SetValues(entry);
         }
+        scrollbar.value = 0f;
     }
 }
