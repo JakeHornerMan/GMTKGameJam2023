@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
     // When Begin Clicked, Determine whether or not to do a popup
     public void EnterGameScene()
     {
+        // bool unlockedCheckpoint = true;
         bool unlockedCheckpoint = TopRound.topRound >= 10;
         bool hasSavedGame = true; // PLACEHOLDER boolean, determines whether save will show or not
 
@@ -87,6 +88,7 @@ public class MenuManager : MonoBehaviour
         {
             PlayerValues.SetRound5Values();
             // Set Gameprogression Values here for that chosen round
+            GameProgressionValues.SetRound5Values();
             sceneName = "BuyScreenImproved";
         }
         // "Start from first round" chosen
