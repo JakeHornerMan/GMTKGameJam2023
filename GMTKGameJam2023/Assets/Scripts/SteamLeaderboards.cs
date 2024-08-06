@@ -18,6 +18,7 @@ public class SteamLeaderboards : MonoBehaviour
     public static List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
     public enum LeaderboardType { Leaderboard, Top10, Friends }
     public static LeaderboardManager leaderboardManager;
+    private static int score;
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();
     private static CallResult<LeaderboardScoreUploaded_t> uploadScoreResult = new CallResult<LeaderboardScoreUploaded_t>();
@@ -31,6 +32,29 @@ public class SteamLeaderboards : MonoBehaviour
         playerName = SteamFriends.GetPersonaName();
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
         InitTimer();
+    }
+
+    public static void InitAndUpdateScore(int uploadScore)
+    {
+        if (!initialized)
+        {
+            score = uploadScore;
+            SteamAPICall_t hSteamAPICall = SteamUserStats.FindLeaderboard(s_leaderboardName);
+            leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFoundUpdateScores123);
+            InitTimer();
+        }
+        else{
+            UpdateScore(uploadScore);
+        }
+    }
+
+    static private void OnLeaderboardFoundUpdateScores123(LeaderboardFindResult_t pCallback, bool failure)
+    {
+        UnityEngine.Debug.Log("STEAM LEADERBOARDS: Found - " + pCallback.m_bLeaderboardFound + " leaderboardID - " + pCallback.m_hSteamLeaderboard.m_SteamLeaderboard);
+        currentLeaderboard = pCallback.m_hSteamLeaderboard;
+        initialized = true;
+        UpdateScore(score);
+        score = 0;
     }
 
     public static void InitAndFindScores()
