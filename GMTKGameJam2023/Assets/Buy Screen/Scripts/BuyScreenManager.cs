@@ -624,6 +624,13 @@ public class BuyScreenManager : MonoBehaviour
         sceneFader.ScreenWipeOut("ProceduralGeneration");
     }
 
+    public void SaveAndQuit()
+    {
+        SteamLeaderboards.InitAndUpdateScore(Points.playerScore);
+        SaveGame.SaveTheGame();
+        sceneFader.ScreenWipeOut("MainMenu");
+    }
+
     public void setPlayerValues()
     {
         PlayerValues.Cars = CreateRosterList();

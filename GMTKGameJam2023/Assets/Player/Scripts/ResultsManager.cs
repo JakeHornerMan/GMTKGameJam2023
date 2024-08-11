@@ -22,6 +22,7 @@ public class ResultsManager : MonoBehaviour
 
     void Start()
     {
+        SaveGame.DeleteSaveFileAndStaticData();
         TopRound.SaveRound();
         ResetSpawnChicken();
     }

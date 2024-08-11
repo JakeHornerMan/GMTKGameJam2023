@@ -27,7 +27,6 @@ public class MenuInteraction : MonoBehaviour
 
     void Start()
     {
-
         if (instance == null)
         {
             instance = this;

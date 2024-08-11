@@ -32,4 +32,10 @@ public static class GameProgressionValues
         // List<GameObject> LaneMap = new List<GameObject>();
         LaneMap = lanes;
     }
+
+    public static void LoadSaveData(GameSave data)
+    {
+        RoundNumber = data.RoundNumber;
+    }
+
 }
