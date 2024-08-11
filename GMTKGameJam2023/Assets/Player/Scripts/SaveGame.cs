@@ -66,8 +66,7 @@ public class SaveGame : MonoBehaviour
         
         saveDataLoaded = null;
     }
-
-    // Update is called once per frame
+    
     public static string Encrypts(String input){
         byte[] data = UTF8Encoding.UTF8.GetBytes(input);
         using(MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
