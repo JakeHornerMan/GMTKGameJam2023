@@ -635,7 +635,7 @@ public class BuyScreenManager : MonoBehaviour
     public IEnumerator PlayPointer()
     {
         yield return new WaitForSeconds(7f);
-        if (!itemPurchased)
+        if (!itemPurchased && GameProgressionValues.RoundNumber < 3)
         {
             pointer.SetActive(true);
             StartCoroutine(nameof(WaitToHidePointer));

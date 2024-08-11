@@ -11,7 +11,8 @@ public static class PlayerValues
     public static int startingEnergy = 0;
     public static int playerCash = 0;
 
-    public static void SetDefaultValues(){
+    public static void SetDefaultValues()
+    {
         Cars = null;
         ultimate = null;
         missedChickenLives = 3;
@@ -19,7 +20,8 @@ public static class PlayerValues
         playerCash = 0;
     }
 
-    public static void SetRound5Values(){
+    public static void SetRound5Values()
+    {
         Cars = null;
         ultimate = null;
         missedChickenLives = 3;
@@ -27,7 +29,8 @@ public static class PlayerValues
         playerCash = 50;
     }
 
-    public static void ResetCash(){
+    public static void ResetCash()
+    {
         playerCash = 0;
     }
 }
