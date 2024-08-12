@@ -26,7 +26,7 @@ public class PauseUI : MonoBehaviour
     public void ReturnToMenu()
     {
         pause.UnpauseGame();
-        SteamLeaderboards.InitAndUpdateScore(Points.playerScore);
+        SteamLeaderboards.InitAndUpdateScore(Points.playerScore, GameProgressionValues.RoundNumber);
         SaveGame.DeleteSaveFileAndStaticData();
         GameProgressionValues.SetDefaultValues();
         PlayerValues.SetDefaultValues();
