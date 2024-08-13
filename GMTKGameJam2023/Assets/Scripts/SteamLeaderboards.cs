@@ -185,10 +185,12 @@ public class SteamLeaderboards : MonoBehaviour
         for (int i = 0; i < result.m_cEntryCount; i++)
         {
             LeaderboardEntry_t entry;
-            SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, null, 0);
+            int[] details = new int[1];
+
+            SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, details, details.Length);
             string userName = SteamFriends.GetFriendPersonaName(entry.m_steamIDUser);
             bool isPlayer = (userName == playerName) ? true : false;
-            list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer));
+            list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer, details[0]));
         }
 
         // foreach (var entry in list)
@@ -229,19 +231,21 @@ public class LeaderboardEntry
     public int Score;
     public string UserName;
     public bool IsPlayer;
+    public int Rank;
 
-    public LeaderboardEntry(CSteamID user, int globalRank, int score, string userName, bool isPlayer)
+    public LeaderboardEntry(CSteamID user, int globalRank, int score, string userName, bool isPlayer, int rank)
     {
         User = user;
         GlobalRank = globalRank;
         Score = score;
         UserName = userName;
         IsPlayer = isPlayer;
+        Rank = rank;
     }
 
     public void Log()
     {
         // Uncomment if needed again
-        // Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}");
+        Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}, Rank: {Rank}");
     }
 }
