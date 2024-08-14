@@ -45,8 +45,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private float speedUpTextDeactivationDelay = 2;
 
     public int scoreForText;
-    private int scoreMoverPositive;
-    private int scoreMoverNegative;
+    private int scoreMoverPositive = 0;
+    private int scoreMoverNegative = 0;
 
     private GameManager gameManager;
     private TutorialManager tutorialManager;
@@ -195,10 +195,19 @@ public class InterfaceManager : MonoBehaviour
     {
         if (scoreForText < playerScore)
         {
+            if (scoreMoverPositive > playerScore - scoreForText)
+            {
+                scoreMoverPositive = playerScore - scoreForText;
+            }
             scoreForText += scoreMoverPositive;
         }
         else if (scoreForText > playerScore)
         {
+            if (scoreMoverNegative > scoreForText - playerScore)
+            {
+                scoreMoverNegative = scoreForText - playerScore;
+                scoreMoverPositive = 5;
+            }
             scoreForText -= scoreMoverNegative;
         }
         pointsText.GetComponent<TextMeshProUGUI>().text = scoreForText.ToString("0000");

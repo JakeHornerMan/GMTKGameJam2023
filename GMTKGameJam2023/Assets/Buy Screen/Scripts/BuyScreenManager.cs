@@ -82,7 +82,9 @@ public class BuyScreenManager : MonoBehaviour
 
     [Header("Other References")]
     [SerializeField] private GameObject pointer;
-    [SerializeField] private GameObject sellPopup;
+    [SerializeField] private GameObject sellButtonPopup;
+    [SerializeField] private TextMeshProUGUI sellButtonAmountText;
+    [SerializeField] private TextMeshProUGUI sellValuePopup;
 
     public bool itemPurchased = false;
 
@@ -129,7 +131,7 @@ public class BuyScreenManager : MonoBehaviour
         pointer.SetActive(false);
         itemPurchased = false;
 
-        SellPopupClose();
+        SellButtonClose();
 
         StartCoroutine(nameof(PlayPointer));
     }
@@ -619,6 +621,8 @@ public class BuyScreenManager : MonoBehaviour
     public void ToNextLevel()
     {
 
+        DumpMoneyIntoTokens();
+
         setPlayerValues();
         //Load next scene
         sceneFader.ScreenWipeOut("ProceduralGeneration");
@@ -630,6 +634,19 @@ public class BuyScreenManager : MonoBehaviour
         PlayerValues.ultimate = GetUltimateSetInBuyScreen();
         PlayerValues.playerCash = 0;
 
+    }
+
+    public void DumpMoneyIntoTokens()
+    {
+        while (currentAmount >= 5)
+        {
+            AddEnergy(1);
+
+            if (currentAmount < 5)
+            {
+                break;
+            }
+        }
     }
 
     public IEnumerator PlayPointer()
@@ -651,13 +668,27 @@ public class BuyScreenManager : MonoBehaviour
         Destroy(pointer);
     }
 
-    public void SellPopup()
+    public void SellButtonOpen(float sellAmount)
     {
-        sellPopup.SetActive(true);
+        sellButtonPopup.SetActive(true);
+        sellButtonAmountText.text = "+$" + sellAmount.ToString();
     }
 
-    public void SellPopupClose()
+    public void SellButtonClose()
     {
-        sellPopup.SetActive(false);
+        sellButtonPopup.SetActive(false);
     }
+
+    public void SellAmountShowPopup(int sellAmount)
+    {
+        sellValuePopup.text = "+$" + sellAmount.ToString();
+        sellValuePopup.gameObject.SetActive(true);
+    }
+
+    public void SellAmountHidePopup()
+    {
+        sellValuePopup.gameObject.SetActive(false);
+    }
+
+
 }
