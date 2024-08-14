@@ -13,8 +13,8 @@ public class MenuManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject backButton;
     [SerializeField] private SceneFader sceneFader;
+    [SerializeField] private RoundSkipPopup roundSkipPopup;
 
-    private RoundSkipPopup roundSkipPopup;
     public bool showRoundSkipPopupBeforeLoad = false;
 
     private void Awake()
@@ -45,55 +45,101 @@ public class MenuManager : MonoBehaviour
     // Function for regular scene transitions (from TriggerMenuCinemachine)
     public void EnterScene(string sceneName)
     {
-        StartCoroutine(WipeAndLoadGame(sceneName));
+        StartCoroutine(NormalWipeAndLoad(sceneName));
     }
 
-    // Run Coroutine with a parameter telling it to do main menu round skip popup
-    public void EnterMainMenuScene()
+    // When Begin Clicked, Determine whether or not to do a popup
+    public void EnterGameScene()
     {
-        if(TopRound.topRound >= 10){
-            StartCoroutine(WipeAndLoadGame("", loadingGameScene: true));
+        // bool unlockedCheckpoint = true;
+        bool unlockedCheckpoint = TopRound.topRound >= 10;
+        bool hasSavedGame = true; // PLACEHOLDER boolean, determines whether save will show or not
+
+        if (hasSavedGame)
+        {
+            StartCoroutine(WipeAndLoadGameWithSavedRound());
         }
-        else{
-            StartCoroutine(WipeAndLoadGame("Level01"));
+        else if (unlockedCheckpoint)
+        {
+            StartCoroutine(WipeAndLoadGameWithCheckpoint());
+        }
+        else
+        {
+            StartCoroutine(NormalWipeAndLoad("Level01"));
         }
     }
 
-    // Loading game scene is set to true only when clicking begin to start the game.
-    private IEnumerator WipeAndLoadGame(string sceneName, bool loadingGameScene = false)
+    // Handle start from round 1 or 5 When player clicked begin 
+    private IEnumerator WipeAndLoadGameWithCheckpoint()
     {
+        string sceneName;
+
         // Reset Game Progression Values
         GameProgressionValues.SetDefaultValues();
         Points.SetDefaultValues();
         yield return new WaitForSeconds(2.5f);
 
-        // When player clicked begin
-        if (loadingGameScene)
+        // Open Round Skip Popup and wait for user response
+        bool playerChoseToSkip = false;
+        yield return StartCoroutine(WaitForRoundSkipResponse((response) => playerChoseToSkip = response));
+
+        // Chose to skip to checkpoint
+        if (playerChoseToSkip)
         {
-            // Open Round Skip Popup and wait for user response
-            bool playerChoseToSkip = false;
-            yield return StartCoroutine(WaitForRoundSkipResponse((response) => playerChoseToSkip = response));
+            PlayerValues.SetRound5Values();
+            // Set Gameprogression Values here for that chosen round
+            GameProgressionValues.SetRound5Values();
+            sceneName = "BuyScreenImproved";
+        }
+        // "Start from first round" chosen
+        else sceneName = "Level01";
 
-            // Chose to skip to checkpoint
-            if (playerChoseToSkip)
-            {
-                PlayerValues.SetRound5Values();
-                // Set Gameprogression Values here for that chosen round
-                sceneName = "BuyScreenImproved";
-            }
-            // "Start from first round" chosen
-            else sceneName = "Level01";
+        // Wipe out to level 1
+        sceneFader.ScreenWipeOut(sceneName);
+    }
 
-            // Wipe out to level 1
+    // See if player wants to continue save or start new game
+    private IEnumerator WipeAndLoadGameWithSavedRound()
+    {
+        string sceneName = "BuyScreenImproved";
+
+        // Reset Game Progression Values
+        GameProgressionValues.SetDefaultValues();
+        Points.SetDefaultValues();
+        yield return new WaitForSeconds(2.5f);
+
+        // Open Popup and wait for response
+        bool playerChoseToResumeSave = false;
+        yield return StartCoroutine(WaitForSavedRoundResponse((response) => playerChoseToResumeSave = response));
+
+        // Chose to skip to checkpoint
+        if (playerChoseToResumeSave)
+        {
+            // PLACEHOLDER: SET VALUES FOR SAVED GAME
+            sceneName = "BuyScreenImproved";
+            // Wipe out to saved Game
             sceneFader.ScreenWipeOut(sceneName);
         }
-        // Normal Scene Wipe (not for play game)
+        // Player does not want to resume save, so ask them about Checkpoint
         else
         {
-            sceneFader.ScreenWipeOut(sceneName);
+            // bool unlockedCheckpoint = true; // DEBUG THING IF DEV HAS NOT REACHED ROUND 10
+            bool unlockedCheckpoint = TopRound.topRound >= 10;
+            if (unlockedCheckpoint)
+            {
+                roundSkipPopup.ShowLoadingIndicator();
+                StartCoroutine(WipeAndLoadGameWithCheckpoint());
+            }
+            else
+            {
+                roundSkipPopup.ShowLoadingIndicator();
+                StartCoroutine(NormalWipeAndLoad("Level01"));
+            }
+            roundSkipPopup.HideSavegamePopupUI();
         }
     }
 
+    // Open popup UI and Wait for player to choose either skip to checkpoint or start from round 1
     private IEnumerator WaitForRoundSkipResponse(System.Action<bool> callback)
     {
         bool responseReceived = false;
@@ -127,5 +173,52 @@ public class MenuManager : MonoBehaviour
 
         // Execute callback with the player's choice
         callback(playerChoseToSkip);
+    }
+
+    // Open popup UI and Wait for player to choose either resume saved game or start new game
+    private IEnumerator WaitForSavedRoundResponse(System.Action<bool> callback)
+    {
+        bool responseReceived = false;
+        bool playerChoseToResumeSave = false;
+
+        // Open popup UI
+        roundSkipPopup.OpenSavedGamePopupUI();
+
+        // Subscribe to button click events
+        roundSkipPopup.resumeSavedGameButton.onClick.AddListener(() =>
+        {
+            playerChoseToResumeSave = true;
+            responseReceived = true;
+        });
+
+        roundSkipPopup.newGameButton.onClick.AddListener(() =>
+        {
+            playerChoseToResumeSave = false;
+            responseReceived = true;
+        });
+
+        // Wait until a response is received
+        while (!responseReceived)
+        {
+            yield return null;
+        }
+
+        // Unsubscribe from button click events
+        roundSkipPopup.resumeSavedGameButton.onClick.RemoveAllListeners();
+        roundSkipPopup.newGameButton.onClick.RemoveAllListeners();
+
+        // Execute callback with the player's choice
+        callback(playerChoseToResumeSave);
+    }
+
+    // Normal Scene wipe transition
+    private IEnumerator NormalWipeAndLoad(string sceneName)
+    {
+        // Reset Game Progression Values
+        GameProgressionValues.SetDefaultValues();
+        Points.SetDefaultValues();
+        yield return new WaitForSeconds(2.5f);
+
+        sceneFader.ScreenWipeOut(sceneName);
     }
 }

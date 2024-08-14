@@ -18,6 +18,7 @@ public class SteamLeaderboards : MonoBehaviour
     public static List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
     public enum LeaderboardType { Leaderboard, Top10, Friends }
     public static LeaderboardManager leaderboardManager;
+    private static int score;
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();
     private static CallResult<LeaderboardScoreUploaded_t> uploadScoreResult = new CallResult<LeaderboardScoreUploaded_t>();
@@ -31,6 +32,29 @@ public class SteamLeaderboards : MonoBehaviour
         playerName = SteamFriends.GetPersonaName();
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
         InitTimer();
+    }
+
+    public static void InitAndUpdateScore(int uploadScore)
+    {
+        if (!initialized)
+        {
+            score = uploadScore;
+            SteamAPICall_t hSteamAPICall = SteamUserStats.FindLeaderboard(s_leaderboardName);
+            leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFoundUpdateScores123);
+            InitTimer();
+        }
+        else{
+            UpdateScore(uploadScore);
+        }
+    }
+
+    static private void OnLeaderboardFoundUpdateScores123(LeaderboardFindResult_t pCallback, bool failure)
+    {
+        UnityEngine.Debug.Log("STEAM LEADERBOARDS: Found - " + pCallback.m_bLeaderboardFound + " leaderboardID - " + pCallback.m_hSteamLeaderboard.m_SteamLeaderboard);
+        currentLeaderboard = pCallback.m_hSteamLeaderboard;
+        initialized = true;
+        UpdateScore(score);
+        score = 0;
     }
 
     public static void InitAndFindScores()
@@ -59,7 +83,7 @@ public class SteamLeaderboards : MonoBehaviour
         DownloadScoresForFriends();
     }
 
-     public static void UpdateScore(int score)
+    public static void UpdateScore(int score)
     {
         if (!initialized)
         {
@@ -136,18 +160,22 @@ public class SteamLeaderboards : MonoBehaviour
             return;
         }
 
-        if(currentLeaderboardType == LeaderboardType.Leaderboard) {
+        if (currentLeaderboardType == LeaderboardType.Leaderboard)
+        {
             PopulateListWithLeaderboardEntries(leaderboardEntries, result, currentLeaderboardType);
         }
-        if(currentLeaderboardType == LeaderboardType.Top10) {
+        if (currentLeaderboardType == LeaderboardType.Top10)
+        {
             PopulateListWithLeaderboardEntries(top10LeaderboardEntries, result, currentLeaderboardType);
         }
-        if(currentLeaderboardType == LeaderboardType.Friends) {
+        if (currentLeaderboardType == LeaderboardType.Friends)
+        {
             PopulateListWithLeaderboardEntries(friendsLeaderboardEntries, result, currentLeaderboardType);
         }
     }
 
-    public static void PopulateListWithLeaderboardEntries(List<LeaderboardEntry> list, LeaderboardScoresDownloaded_t result, LeaderboardType currentLeaderboardType){
+    public static void PopulateListWithLeaderboardEntries(List<LeaderboardEntry> list, LeaderboardScoresDownloaded_t result, LeaderboardType currentLeaderboardType)
+    {
         list.Clear();
 
         for (int i = 0; i < result.m_cEntryCount; i++)
@@ -159,31 +187,34 @@ public class SteamLeaderboards : MonoBehaviour
             list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer));
         }
 
-        foreach (var entry in list)
-        {
-            Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
-        }
+        // foreach (var entry in list)
+        // {
+        //     Debug.Log($"Rank: {entry.GlobalRank}, Score: {entry.Score}, User: {entry.UserName}");
+        // }
 
-        if(currentLeaderboardType == LeaderboardType.Leaderboard) {
+        if (currentLeaderboardType == LeaderboardType.Leaderboard)
+        {
             leaderboardManager.SetLeaderboardList();
         }
-        if(currentLeaderboardType == LeaderboardType.Top10) {
+        if (currentLeaderboardType == LeaderboardType.Top10)
+        {
             leaderboardManager.SetTop10LeaderboardList();
         }
-        if(currentLeaderboardType == LeaderboardType.Friends) {
+        if (currentLeaderboardType == LeaderboardType.Friends)
+        {
             leaderboardManager.SetFriendsLeaderboardList();
         }
     }
 
-    private static Timer timer1; 
+    private static Timer timer1;
     public static void InitTimer()
     {
-        timer1 = new Timer(timer1_Tick, null,0,1000);
+        timer1 = new Timer(timer1_Tick, null, 0, 1000);
     }
 
     private static void timer1_Tick(object state)
     {
-        SteamAPI.RunCallbacks(); 
+        SteamAPI.RunCallbacks();
     }
 }
 
@@ -204,7 +235,9 @@ public class LeaderboardEntry
         IsPlayer = isPlayer;
     }
 
-    public void Log(){
-        Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}");
+    public void Log()
+    {
+        // Uncomment if needed again
+        // Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}");
     }
 }

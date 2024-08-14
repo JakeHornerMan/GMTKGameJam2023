@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PauseUI : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject confirmExitDialog;
+
     private SceneFader sceneFader;
     private Pause pause;
 
@@ -13,11 +16,17 @@ public class PauseUI : MonoBehaviour
         pause = FindObjectOfType<Pause>();
     }
 
+    private void Start()
+    {
+        confirmExitDialog.SetActive(false);
+    }
+
     public void ResumeGame() => pause.UnpauseGame();
 
     public void ReturnToMenu()
     {
         pause.UnpauseGame();
+        SteamLeaderboards.InitAndUpdateScore(Points.playerScore);
         GameProgressionValues.SetDefaultValues();
         PlayerValues.SetDefaultValues();
         Points.SetDefaultValues();

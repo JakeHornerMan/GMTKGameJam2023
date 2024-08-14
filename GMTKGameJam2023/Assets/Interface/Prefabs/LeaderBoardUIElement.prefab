@@ -599,7 +599,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2537729915776677801}
   m_HandleRect: {fileID: 3300382452749858443}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.5
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -825,6 +825,7 @@ MonoBehaviour:
   onStart: 1
   entriesContainer: {fileID: 5851473676691611976}
   leaderboardEntryPrefab: {fileID: 4644229961253616383, guid: 82b81838862021d418f0ca6279062428, type: 3}
+  scrollbar: {fileID: 8033214885324575466}
 --- !u!1 &2675305280531461790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1803,7 @@ MonoBehaviour:
   onStart: 0
   entriesContainer: {fileID: 5851473676691611976}
   leaderboardEntryPrefab: {fileID: 4644229961253616383, guid: 82b81838862021d418f0ca6279062428, type: 3}
+  scrollbar: {fileID: 0}
 --- !u!1 &5166115232853912678
 GameObject:
   m_ObjectHideFlags: 0
