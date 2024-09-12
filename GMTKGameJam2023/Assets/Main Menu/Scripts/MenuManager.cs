@@ -27,6 +27,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        SaveGame.LoadTheGame();
         musicAudioSource = GameObject.FindGameObjectWithTag(musicTag).GetComponent<AudioSource>();
         roundSkipPopup = FindObjectOfType<RoundSkipPopup>();
     }
@@ -55,7 +56,7 @@ public class MenuManager : MonoBehaviour
         bool unlockedCheckpoint = TopRound.topRound >= 10;
         bool hasSavedGame = true; // PLACEHOLDER boolean, determines whether save will show or not
 
-        if (hasSavedGame)
+        if (SaveGame.DoesSaveFileExist())
         {
             StartCoroutine(WipeAndLoadGameWithSavedRound());
         }
@@ -94,6 +95,8 @@ public class MenuManager : MonoBehaviour
         // "Start from first round" chosen
         else sceneName = "Level01";
 
+        SaveGame.DeleteSaveFileAndStaticData();
+
         // Wipe out to level 1
         sceneFader.ScreenWipeOut(sceneName);
     }
@@ -115,6 +118,15 @@ public class MenuManager : MonoBehaviour
         // Chose to skip to checkpoint
         if (playerChoseToResumeSave)
         {
+            if(SaveGame.DoesSaveFileExist()){
+                if(SaveGame.saveDataLoaded == null){
+                    SaveGame.saveDataLoaded.SetValues();
+                }
+                else{
+                    SaveGame.LoadTheGame();
+                    SaveGame.saveDataLoaded.SetValues();
+                }
+            }
             // PLACEHOLDER: SET VALUES FOR SAVED GAME
             sceneName = "BuyScreenImproved";
             // Wipe out to saved Game

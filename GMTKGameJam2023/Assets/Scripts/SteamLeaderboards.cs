@@ -19,6 +19,7 @@ public class SteamLeaderboards : MonoBehaviour
     public enum LeaderboardType { Leaderboard, Top10, Friends }
     public static LeaderboardManager leaderboardManager;
     private static int score;
+    private static int roundNumber;
 
     private static CallResult<LeaderboardFindResult_t> leaderboardFindResult = new CallResult<LeaderboardFindResult_t>();
     private static CallResult<LeaderboardScoreUploaded_t> uploadScoreResult = new CallResult<LeaderboardScoreUploaded_t>();
@@ -34,17 +35,18 @@ public class SteamLeaderboards : MonoBehaviour
         InitTimer();
     }
 
-    public static void InitAndUpdateScore(int uploadScore)
+    public static void InitAndUpdateScore(int uploadScore, int roundNum)
     {
         if (!initialized)
         {
             score = uploadScore;
+            roundNumber = roundNum;
             SteamAPICall_t hSteamAPICall = SteamUserStats.FindLeaderboard(s_leaderboardName);
             leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFoundUpdateScores123);
             InitTimer();
         }
         else{
-            UpdateScore(uploadScore);
+            UpdateScore(uploadScore, roundNum);
         }
     }
 
@@ -53,8 +55,9 @@ public class SteamLeaderboards : MonoBehaviour
         UnityEngine.Debug.Log("STEAM LEADERBOARDS: Found - " + pCallback.m_bLeaderboardFound + " leaderboardID - " + pCallback.m_hSteamLeaderboard.m_SteamLeaderboard);
         currentLeaderboard = pCallback.m_hSteamLeaderboard;
         initialized = true;
-        UpdateScore(score);
+        UpdateScore(score, roundNumber);
         score = 0;
+        roundNumber = 0;
     }
 
     public static void InitAndFindScores()
@@ -83,8 +86,9 @@ public class SteamLeaderboards : MonoBehaviour
         DownloadScoresForFriends();
     }
 
-    public static void UpdateScore(int score)
+    public static void UpdateScore(int score, int roundNum)
     {
+        int[] roundNums = new int[] { roundNum };
         if (!initialized)
         {
             UnityEngine.Debug.Log("Can't upload to the leaderboard because isn't loadded yet");
@@ -92,7 +96,7 @@ public class SteamLeaderboards : MonoBehaviour
         else
         {
             UnityEngine.Debug.Log("uploading score(" + score + ") to steam leaderboard(" + s_leaderboardName + ")");
-            SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(currentLeaderboard, s_leaderboardMethod, score, null, 0);
+            SteamAPICall_t hSteamAPICall = SteamUserStats.UploadLeaderboardScore(currentLeaderboard, s_leaderboardMethod, score, roundNums, roundNums.Length);
             uploadScoreResult.Set(hSteamAPICall, OnLeaderboardUploadResult);
         }
     }
@@ -123,7 +127,7 @@ public class SteamLeaderboards : MonoBehaviour
     {
         if (initialized)
         {
-            SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobalAroundUser, -10, 10);
+            SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobalAroundUser, -50, 50);
             // aroundPlayerScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
             CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
             callResult.Set(handle, (result, failure) => OnLeaderboardScoresDownloaded(result, failure, LeaderboardType.Leaderboard));
@@ -181,10 +185,12 @@ public class SteamLeaderboards : MonoBehaviour
         for (int i = 0; i < result.m_cEntryCount; i++)
         {
             LeaderboardEntry_t entry;
-            SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, null, 0);
+            int[] details = new int[1];
+
+            SteamUserStats.GetDownloadedLeaderboardEntry(result.m_hSteamLeaderboardEntries, i, out entry, details, details.Length);
             string userName = SteamFriends.GetFriendPersonaName(entry.m_steamIDUser);
             bool isPlayer = (userName == playerName) ? true : false;
-            list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer));
+            list.Add(new LeaderboardEntry(entry.m_steamIDUser, entry.m_nGlobalRank, entry.m_nScore, userName, isPlayer, details[0]));
         }
 
         // foreach (var entry in list)
@@ -225,19 +231,21 @@ public class LeaderboardEntry
     public int Score;
     public string UserName;
     public bool IsPlayer;
+    public int Rank;
 
-    public LeaderboardEntry(CSteamID user, int globalRank, int score, string userName, bool isPlayer)
+    public LeaderboardEntry(CSteamID user, int globalRank, int score, string userName, bool isPlayer, int rank)
     {
         User = user;
         GlobalRank = globalRank;
         Score = score;
         UserName = userName;
         IsPlayer = isPlayer;
+        Rank = rank;
     }
 
     public void Log()
     {
         // Uncomment if needed again
-        // Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}");
+        Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}, Rank: {Rank}");
     }
 }

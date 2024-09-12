@@ -338,6 +338,7 @@ public class GameManager : MonoBehaviour
     private void HandleGameOver()
     {
         isGameOver = true;
+        SaveGame.DeleteSaveFileAndStaticData();
         if(storedValues){
             storedValues = false;
             UpdateStats();

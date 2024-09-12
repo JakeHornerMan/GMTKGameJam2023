@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameProgressionValues
 {
     public static int sceneIndex = 0; //stores scene index
-    public static int RoundNumber = 20; //default : 1
+    public static int RoundNumber = 0; //default : 0
     public static float standardRoundTime = 15f; //default : 30f
     public static int standardChickenAmountForStart = 30; //default : 30
     public static float standardChickenAmountMultiplier = 1.1f; //default : 1.1f
@@ -32,4 +32,10 @@ public static class GameProgressionValues
         // List<GameObject> LaneMap = new List<GameObject>();
         LaneMap = lanes;
     }
+
+    public static void LoadSaveData(GameSave data)
+    {
+        RoundNumber = data.RoundNumber;
+    }
+
 }

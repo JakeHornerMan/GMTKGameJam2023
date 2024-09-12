@@ -75,12 +75,12 @@ public class Steam : MonoBehaviour
         }
     }
 
-    public void UploadLeaderboard(int score = 1)
+    public void UploadLeaderboard(int score = 1, int round = 0)
     {
         if(SteamManager.Initialized)
         {
             // SteamLeaderboards.Init();
-            SteamLeaderboards.UpdateScore(score);
+            SteamLeaderboards.UpdateScore(score, round);
         }
     }
 
