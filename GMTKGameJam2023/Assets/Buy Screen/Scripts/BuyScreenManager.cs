@@ -626,6 +626,7 @@ public class BuyScreenManager : MonoBehaviour
     public void SaveAndQuit()
     {
         SteamLeaderboards.InitAndUpdateScore(Points.playerScore, GameProgressionValues.RoundNumber);
+        SteamLeaderboardsElim.InitAndUpdateScore(Points.killCount, GameProgressionValues.RoundNumber);
         SaveGame.SaveTheGame();
         sceneFader.ScreenWipeOut("MainMenu");
     }

@@ -38,7 +38,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-     public void UploadToLeaderboardAndUpdate(int score = 1 , int roundNumber = 0)
+     public void UploadToLeaderboardAndUpdate(int score = 0 , int roundNumber = 0)
     {
         if(SteamManager.Initialized && SteamLeaderboards.initialized)
         {
