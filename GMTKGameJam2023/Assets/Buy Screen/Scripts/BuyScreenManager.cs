@@ -101,7 +101,6 @@ public class BuyScreenManager : MonoBehaviour
         }
 
 
-
         SetPlayerValuesInBuyScreen();
         PopulateShops();
 
@@ -626,6 +625,13 @@ public class BuyScreenManager : MonoBehaviour
         setPlayerValues();
         //Load next scene
         sceneFader.ScreenWipeOut("ProceduralGeneration");
+    }
+
+    public void SaveAndQuit()
+    {
+        SteamLeaderboards.InitAndUpdateScore(Points.playerScore, GameProgressionValues.RoundNumber);
+        SaveGame.SaveTheGame();
+        sceneFader.ScreenWipeOut("MainMenu");
     }
 
     public void setPlayerValues()

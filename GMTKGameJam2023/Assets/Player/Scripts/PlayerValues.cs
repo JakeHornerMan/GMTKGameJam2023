@@ -33,4 +33,16 @@ public static class PlayerValues
     {
         playerCash = 0;
     }
+
+    public static void LoadSaveData(GameSave data)
+    {
+        Cars = data.Cars;
+        ultimate = data.ultimate;
+        missedChickenLives = data.missedChickenLives;
+        carWalletNodes = data.carWalletNodes;
+        startingEnergy = data.startingEnergy;
+        playerCash = data.playerCash;
+    }
+
+    
 }

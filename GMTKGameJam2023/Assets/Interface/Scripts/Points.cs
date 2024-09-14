@@ -16,4 +16,12 @@ public static class Points
         totalTokens = 0;
     }
 
+    public static void LoadSaveData(GameSave data)
+    {
+        killCount = data.killCount;
+        safelyCrossedChickens = data.safelyCrossedChickens;
+        playerScore = data.playerScore;
+        totalTokens = data.totalTokens;
+    }
+
 }
