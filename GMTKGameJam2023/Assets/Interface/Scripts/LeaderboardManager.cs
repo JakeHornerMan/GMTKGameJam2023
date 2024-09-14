@@ -33,16 +33,16 @@ public class LeaderboardManager : MonoBehaviour
     {
         if(onStart){
             SteamLeaderboards.Init();
-            UploadToLeaderboardAndUpdate(Points.playerScore);
+            UploadToLeaderboardAndUpdate(Points.playerScore, GameProgressionValues.RoundNumber);
             // RefreshLeaderboardValues();
         }
     }
 
-     public void UploadToLeaderboardAndUpdate(int score = 1)
+     public void UploadToLeaderboardAndUpdate(int score = 1 , int roundNumber = 0)
     {
         if(SteamManager.Initialized && SteamLeaderboards.initialized)
         {
-            SteamLeaderboards.UpdateScore(score);
+            SteamLeaderboards.UpdateScore(score, roundNumber);
             // RefreshLeaderboardValues();
         }
         else{

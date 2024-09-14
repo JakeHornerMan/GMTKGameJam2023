@@ -16,6 +16,7 @@ public class LeaderboardEntryVisual : MonoBehaviour
     [SerializeField] private TextMeshProUGUI rankText;
     [SerializeField] private TextMeshProUGUI usernameText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Color playerColor;
 
     [Header("Sprite images")]
@@ -35,6 +36,14 @@ public class LeaderboardEntryVisual : MonoBehaviour
         }
 
         scoreText.text = leaderboardEntry.Score.ToString();
+
+        if(leaderboardEntry.Rank > 0){
+            levelText.text = "LVL: "+ leaderboardEntry.Rank;
+        }
+        else{
+            levelText.text = "";
+        }
+        
 
         entrySpriteImg.sprite = normalEntrySprite;
 
