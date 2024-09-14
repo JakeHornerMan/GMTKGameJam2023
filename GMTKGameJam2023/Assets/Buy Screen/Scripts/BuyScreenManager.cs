@@ -58,7 +58,7 @@ public class BuyScreenManager : MonoBehaviour
     [Header("Health Properties")]
     [SerializeField] private Slider healthSlider;
     //private static float[] healthSliderValues = new float[] { 0, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.75f, 0.85f, 1 }; //its shit code, dont worry about it
-    private static float[] healthSliderValues = new float[] { 0, 0.15f, 0.25f, 0.35f, 0.42f, 0.52f, 0.6f, 0.7f, 0.78f, 0.87f, 1 }; //its shit code, dont worry about it
+    private static float[] healthSliderValues = new float[] { 0, 0.25f, 0.4f, 0.6f, 0.8f, 1f, 1f, 1f, 1f, 1f, 1f }; //its shit code, dont worry about it
     [SerializeField] private TextMeshProUGUI healthNumberText;
     [SerializeField] private Image healthPlusImage;
 

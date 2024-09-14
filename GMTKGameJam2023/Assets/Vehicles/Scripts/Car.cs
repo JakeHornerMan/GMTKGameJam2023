@@ -436,12 +436,18 @@ public abstract class Car : MonoBehaviour
         // gameManager.AddPlayerScore(chickenHealth.pointsReward * carKillCount);
 
         // Change Combo Multiplier
-        float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1));
+        // float currentComboMultiplier = defaultComboMultiplier + (comboMultiplier * (carKillCount - 1)); **THE BIGGEST CODE FUCK UP IVE EVER SEEN HOW DID WE NOT SEE THIS???!?!?!?!?!**
+
+        //// +100 Points Pop-Up
+        //ShowPopup(
+        //    chickenHealth.transform.position,
+        //    $"{chickenHealth.pointsReward * currentComboMultiplier} {scorePopUpMsg}"
+        //);
 
         // +100 Points Pop-Up
         ShowPopup(
             chickenHealth.transform.position,
-            $"{chickenHealth.pointsReward * currentComboMultiplier} {scorePopUpMsg}"
+            $"{chickenHealth.pointsReward * carKillCount} {scorePopUpMsg}"
         );
     }
 

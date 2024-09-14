@@ -41,7 +41,7 @@ public class ChickenManager : MonoBehaviour
     void UpdateChickenAudioFrequency()
     {
         // Adjust these values to control the ramping and leveling off behavior
-        float maxFrequency = 4f; // Maximum frequency to level off at
+        float maxFrequency = 3f; // Maximum frequency to level off at
         float rampUpSpeed = 0.04f; // How quickly the frequency ramps up
 
         // Calculate the frequency based on the number of chickens
