@@ -331,7 +331,23 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
         tempSellVehicle = vehicle;
 
-        BuyScreenManager.instance.SellPopup();
+        float sellAmount = 0;
+        BuyScreenCar car = null;
+        BuyScreenUltimate ultimate = null;
+
+        if (tempSellVehicle.TryGetComponent<BuyScreenCar>(out car) || vehicle.TryGetComponent<BuyScreenUltimate>(out ultimate))
+        {
+            if (car != null)
+            {
+                sellAmount = car.correspondingCar.carShopPrice / 2;
+            }
+            else if (ultimate != null)
+            {
+                sellAmount = 25f;
+            }
+        }
+
+        BuyScreenManager.instance.SellButtonOpen(sellAmount);
     }
 
     public void SellVehicle(GameObject vehicle = null)
@@ -344,6 +360,8 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
         BuyScreenCar car = null;
         BuyScreenUltimate ultimate = null;
 
+        int sellAmount = 0;
+
 
         if (vehicle.TryGetComponent<BuyScreenCar>(out car) || vehicle.TryGetComponent<BuyScreenUltimate>(out ultimate))
         {
@@ -355,8 +373,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
                 ultimate.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 ultimate.GetComponent<DragDrop>().canBePlaced = true;
 
+                sellAmount = 25;
                 // Add Money
-                BuyScreenManager.instance.AddMoney(25);
+                BuyScreenManager.instance.AddMoney(sellAmount);
 
                 ultimate.EnableSellParticles();
 
@@ -377,9 +396,9 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 
                 // Add Money
                 
-                int moneyRefunded = Mathf.FloorToInt(car.correspondingCar.carShopPrice / 2);
+                sellAmount = Mathf.FloorToInt(car.correspondingCar.carShopPrice / 2);
 
-                BuyScreenManager.instance.AddMoney(moneyRefunded);
+                BuyScreenManager.instance.AddMoney(sellAmount);
 
                 if (car.GetComponent<DragDrop>().startingParent.GetComponent<BuyScreenCarSlot>().slotType == BuyScreenCarSlot.SlotType.Scrapyard)
                 {
@@ -402,7 +421,10 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
             }
         }
 
-        BuyScreenManager.instance.SellPopupClose();
+        BuyScreenManager.instance.SellButtonClose();
+
+        BuyScreenManager.instance.SellAmountHidePopup(); //Resets animation, necessary
+        BuyScreenManager.instance.SellAmountShowPopup(sellAmount);
 
     }
 
@@ -422,7 +444,7 @@ public class BuyScreenCarSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
             tempSellVehicle.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             tempSellVehicle.GetComponent<DragDrop>().canBePlaced = true;
 
-            BuyScreenManager.instance.SellPopupClose();
+            BuyScreenManager.instance.SellButtonClose();
         }
         else{
             Debug.Log("You have populated the slot!");

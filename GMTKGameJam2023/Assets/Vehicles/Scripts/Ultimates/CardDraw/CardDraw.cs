@@ -182,6 +182,8 @@ public class CardDraw : Ultimate
         ChickenHealth[] allChickens = normalChickens.Concat(specialChickens).ToArray();
         soundManager?.PlaySound(0f ,spawnSound[6]);
 
+        int totalChickenPoints = 0;
+
         gameManager = FindObjectOfType<GameManager>();
         for (int i = 0; i < allChickens.Length; i++)
         {
@@ -190,10 +192,13 @@ public class CardDraw : Ultimate
             {
                 if (allChickens[i] == null) continue;
                 allChickens[i].TakeDamage(1000);
-                gameManager.AddPlayerScore(allChickens[i].pointsReward);
+                totalChickenPoints += allChickens[i].pointsReward;
+                //gameManager.AddPlayerScore(allChickens[i].pointsReward);
                 yield return new WaitForSecondsRealtime(killDelay);
             }
         }
+
+        gameManager.AddPlayerScore(totalChickenPoints);
 
         Destroy(gameObject);
     }

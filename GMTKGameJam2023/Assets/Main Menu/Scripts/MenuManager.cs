@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject beginBackButton;
     [SerializeField] private SceneFader sceneFader;
     [SerializeField] private RoundSkipPopup roundSkipPopup;
 
@@ -32,15 +33,26 @@ public class MenuManager : MonoBehaviour
         roundSkipPopup = FindObjectOfType<RoundSkipPopup>();
     }
 
-    public void ShowBackButton()
+    public void ShowPlayBackButton()
     {
         backButton.SetActive(true);
         backButton.GetComponent<Animator>().Play("ShowBackButton");
     }
 
-    public void HideBackButton()
+    public void HidePlayBackButton()
     {
         backButton.GetComponent<Animator>().Play("HideBackButton");
+    }
+
+    public void ShowBeginBackButton()
+    {
+        beginBackButton.SetActive(true);
+        beginBackButton.GetComponent<Animator>().Play("ShowBackButton");
+    }
+
+    public void HideBeginBackButton()
+    {
+        beginBackButton.GetComponent<Animator>().Play("HideBackButton");
     }
 
     // Function for regular scene transitions (from TriggerMenuCinemachine)
@@ -160,6 +172,8 @@ public class MenuManager : MonoBehaviour
         // Open popup UI
         roundSkipPopup.OpenPopupUI(5); // Replace 5 with the actual round number
 
+        ShowBeginBackButton();
+
         // Subscribe to button click events
         roundSkipPopup.skipRoundButton.onClick.AddListener(() =>
         {
@@ -195,6 +209,8 @@ public class MenuManager : MonoBehaviour
 
         // Open popup UI
         roundSkipPopup.OpenSavedGamePopupUI();
+
+        ShowBeginBackButton();
 
         // Subscribe to button click events
         roundSkipPopup.resumeSavedGameButton.onClick.AddListener(() =>
