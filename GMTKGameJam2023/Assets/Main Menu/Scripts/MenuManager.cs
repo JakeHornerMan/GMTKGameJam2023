@@ -132,11 +132,12 @@ public class MenuManager : MonoBehaviour
         {
             if(SaveGame.DoesSaveFileExist()){
                 if(SaveGame.saveDataLoaded == null){
-                    SaveGame.saveDataLoaded.SetValues();
+                    // SaveGame.saveDataLoaded.SetValues();
+                    SaveGame.SetGameDataForGame();
                 }
                 else{
                     SaveGame.LoadTheGame();
-                    SaveGame.saveDataLoaded.SetValues();
+                    SaveGame.SetGameDataForGame();
                 }
             }
             // PLACEHOLDER: SET VALUES FOR SAVED GAME

@@ -36,6 +36,9 @@ public static class GameProgressionValues
     public static void LoadSaveData(GameSave data)
     {
         RoundNumber = data.RoundNumber;
+        standardRoundTime = 30f;
+        standardChickenAmountForStart = 30;
+        standardChickenAmountMultiplier = 1.1f;
     }
 
 }

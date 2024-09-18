@@ -21,7 +21,7 @@ public class SaveGame : MonoBehaviour
 
         string filePath = Application.persistentDataPath + "/SaveGameDoNotTouch.txt";
         System.IO.File.WriteAllText(filePath, saveData);
-        Debug.Log("Settings game to: "+ filePath);
+        Debug.Log("Save Game to: "+ filePath);
     }
 
     public static void LoadTheGame(){
