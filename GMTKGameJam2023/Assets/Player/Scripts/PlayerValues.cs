@@ -36,7 +36,11 @@ public static class PlayerValues
 
     public static void LoadSaveData(GameSave data)
     {
-        Cars = data.Cars;
+        Cars = new List<Car>();
+        foreach (Car car in data.Cars){
+            Debug.Log("Jake - car: "+  car);
+            Cars.Add(car);
+        }
         ultimate = data.ultimate;
         missedChickenLives = data.missedChickenLives;
         carWalletNodes = data.carWalletNodes;

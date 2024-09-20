@@ -75,9 +75,9 @@ public class TriggerMenuCinemachine : MonoBehaviour
         ResetAllSpecialObjects();
 
         if (option != "Begin")
-            MenuManager.instance.ShowBackButton();
+            MenuManager.instance.ShowPlayBackButton();
         else
-            MenuManager.instance.HideBackButton();
+            MenuManager.instance.HidePlayBackButton();
 
         switch (option)
         {
@@ -117,6 +117,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
 
     public void GoToGameSelect()
     {
+        MenuManager.instance.HideBeginBackButton();
         MenuInteraction.instance.PlaceSelectedCar(currentRoad);
         anim.Play("Play");
     }
@@ -138,7 +139,7 @@ public class TriggerMenuCinemachine : MonoBehaviour
     public void GoToStart()
     {
         // isSettings = false;
-        MenuManager.instance.HideBackButton();
+        MenuManager.instance.HidePlayBackButton();
         roundSkipPopup.HidePopupUI();
         anim.Play("Start");
     }
