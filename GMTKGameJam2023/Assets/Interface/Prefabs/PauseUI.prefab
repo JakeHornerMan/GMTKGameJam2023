@@ -70,7 +70,7 @@ MonoBehaviour:
     and exit</color> from the shop.
 
     Quitting in the middle of a round will <color=#D41812>Lose
-    progress</color>.'
+    progress</color> and <color=#D41812>Delete the saved game</color>.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 521cbdff1994d3640a780f0a9870f258, type: 2}
   m_sharedMaterial: {fileID: 3405775689692870, guid: 521cbdff1994d3640a780f0a9870f258, type: 2}
@@ -711,7 +711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -135}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1790084403336524922
@@ -1385,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2202009703564963468
@@ -1822,7 +1822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &40117268692640444
 RectTransform:
   m_ObjectHideFlags: 0
