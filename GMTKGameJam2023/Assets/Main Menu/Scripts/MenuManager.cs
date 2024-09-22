@@ -116,6 +116,7 @@ public class MenuManager : MonoBehaviour
     // See if player wants to continue save or start new game
     private IEnumerator WipeAndLoadGameWithSavedRound()
     {
+        SaveGame.SetGameDataForGame();
         string sceneName = "BuyScreenImproved";
 
         // Reset Game Progression Values
@@ -131,14 +132,14 @@ public class MenuManager : MonoBehaviour
         if (playerChoseToResumeSave)
         {
             if(SaveGame.DoesSaveFileExist()){
-                if(SaveGame.saveDataLoaded == null){
-                    // SaveGame.saveDataLoaded.SetValues();
-                    SaveGame.SetGameDataForGame();
-                }
-                else{
-                    SaveGame.LoadTheGame();
-                    SaveGame.SetGameDataForGame();
-                }
+                // if(SaveGame.saveDataLoaded == null){
+                //     // SaveGame.saveDataLoaded.SetValues();
+                //     SaveGame.SetGameDataForGame();
+                // }
+                // else{
+                //     SaveGame.LoadTheGame();
+                //     SaveGame.SetGameDataForGame();
+                // }
             }
             // PLACEHOLDER: SET VALUES FOR SAVED GAME
             sceneName = "BuyScreenImproved";
@@ -148,6 +149,9 @@ public class MenuManager : MonoBehaviour
         // Player does not want to resume save, so ask them about Checkpoint
         else
         {
+            GameProgressionValues.SetDefaultValues();
+            PlayerValues.SetDefaultValues();
+            Points.SetDefaultValues();
             // bool unlockedCheckpoint = true; // DEBUG THING IF DEV HAS NOT REACHED ROUND 10
             bool unlockedCheckpoint = TopRound.topRound >= 10;
             if (unlockedCheckpoint)
