@@ -18,6 +18,7 @@ public static class PlayerValues
         missedChickenLives = 3;
         carWalletNodes = 3;
         playerCash = 0;
+        startingEnergy = 0;
     }
 
     public static void SetRound5Values()
@@ -27,6 +28,7 @@ public static class PlayerValues
         missedChickenLives = 3;
         carWalletNodes = 3;
         playerCash = 50;
+        startingEnergy = 0;
     }
 
     public static void ResetCash()
@@ -36,15 +38,15 @@ public static class PlayerValues
 
     public static void LoadSaveData(GameSave data)
     {
-        Cars = new List<Car>();
-        foreach (Car car in data.Cars){
-            Debug.Log("Jake - car: "+  car);
-            Cars.Add(car);
-        }
+        // Cars = new List<Car>();
+        // foreach (Car car in data.Cars){
+        //     Debug.Log("Jake - car: "+  car);
+        //     Cars.Add(car);
+        // }
         ultimate = data.ultimate;
         missedChickenLives = data.missedChickenLives;
         carWalletNodes = data.carWalletNodes;
-        startingEnergy = data.startingEnergy;
+        startingEnergy = 0;
         playerCash = data.playerCash;
     }
 

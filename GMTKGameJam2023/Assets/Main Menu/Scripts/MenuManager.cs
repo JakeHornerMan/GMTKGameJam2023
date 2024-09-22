@@ -141,6 +141,7 @@ public class MenuManager : MonoBehaviour
                 //     SaveGame.SetGameDataForGame();
                 // }
             }
+            SaveGame.isLoadingASave = true;
             // PLACEHOLDER: SET VALUES FOR SAVED GAME
             sceneName = "BuyScreenImproved";
             // Wipe out to saved Game
