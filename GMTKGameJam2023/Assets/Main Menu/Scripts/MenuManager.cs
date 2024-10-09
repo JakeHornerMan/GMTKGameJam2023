@@ -116,7 +116,7 @@ public class MenuManager : MonoBehaviour
     // See if player wants to continue save or start new game
     private IEnumerator WipeAndLoadGameWithSavedRound()
     {
-        SaveGame.SetGameDataForGame();
+        // SaveGame.SetGameDataForGame();
         string sceneName = "BuyScreenImproved";
 
         // Reset Game Progression Values
@@ -131,6 +131,7 @@ public class MenuManager : MonoBehaviour
         // Chose to skip to checkpoint
         if (playerChoseToResumeSave)
         {
+            SaveGame.SetGameDataForGame();
             if(SaveGame.DoesSaveFileExist()){
                 // if(SaveGame.saveDataLoaded == null){
                 //     // SaveGame.saveDataLoaded.SetValues();
