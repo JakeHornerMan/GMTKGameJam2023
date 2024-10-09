@@ -87,10 +87,10 @@ public class SoundManager : MonoBehaviour
         musicVolume = Settings.MusicVolume / 10;
         sfxAllowed = Settings.SfxEnabled;
         sfxVolume = Settings.SfxVolume;
-        Debug.Log("MusicEnabled = " + musicAllowed);
-        Debug.Log("MusicVolume = " + musicVolume);
-        Debug.Log("SSfxEnabled = " + sfxAllowed);
-        Debug.Log("sfxVolume = " + sfxVolume);
+        // Debug.Log("MusicEnabled = " + musicAllowed);
+        // Debug.Log("MusicVolume = " + musicVolume);
+        // Debug.Log("SSfxEnabled = " + sfxAllowed);
+        // Debug.Log("sfxVolume = " + sfxVolume);
     }
 
     void Start()

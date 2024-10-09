@@ -6,6 +6,7 @@ public class PauseUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject confirmExitDialog;
+    [SerializeField] private GameObject confirmRestartDialog;
 
     private SceneFader sceneFader;
     private Pause pause;
@@ -19,6 +20,7 @@ public class PauseUI : MonoBehaviour
     private void Start()
     {
         confirmExitDialog.SetActive(false);
+        confirmRestartDialog.SetActive(false);
     }
 
     public void ResumeGame() => pause.UnpauseGame();
