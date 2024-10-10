@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
         {
             missedChickenLives = cheatLives;
         }
+        Debug.Log("Jake- Points: " + Points.playerScore);
     }
 
     private void SetPointsValuesInLevel()
