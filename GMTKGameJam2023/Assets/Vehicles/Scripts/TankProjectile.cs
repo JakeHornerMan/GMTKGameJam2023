@@ -16,7 +16,7 @@ public class TankProjectile : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 target;
-    private bool isFired = false;
+    public bool isFired = false;
 
     private void Awake()
     {

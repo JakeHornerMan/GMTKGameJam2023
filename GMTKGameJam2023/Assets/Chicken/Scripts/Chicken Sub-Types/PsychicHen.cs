@@ -22,6 +22,10 @@ public class PsychicHen : ChickenHealth
 
     public void SpawnPortal(GameObject hitcar)
     {
+        if(hitcar.name.Contains("Explosion")){
+            // Debug.Log("hit by bomb");
+            return;
+        }
         Vector3 portalPos = new(GetRandomRoad(hitcar.GetComponent<Car>().placeableLaneTags, hitcar).transform.position.x, transform.position.y -2, 0);
         GameObject spawnedPortal = Instantiate(spawnPortal, portalPos, Quaternion.identity);
         soundManager.PlayEnterPortal();
