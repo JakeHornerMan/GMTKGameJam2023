@@ -16,7 +16,7 @@ public class Ultimate : MonoBehaviour
     [SerializeField] public int ultimateShopPrice;
 
     [Header("References")]
-    [SerializeField] private GameObject scorePopUp;
+    [SerializeField] public GameObject scorePopUp;
     [SerializeField] private string comboSymbol = "x";
     [Tooltip("Synbol used before combo count, e.g. {x}4")]
     [SerializeField] private TextMeshProUGUI comboText;

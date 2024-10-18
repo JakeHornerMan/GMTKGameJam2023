@@ -183,6 +183,7 @@ public class CardDraw : Ultimate
         soundManager?.PlaySound(0f ,spawnSound[6]);
 
         int totalChickenPoints = 0;
+        int numberOfChickens = 0;
 
         gameManager = FindObjectOfType<GameManager>();
         for (int i = 0; i < allChickens.Length; i++)
@@ -192,7 +193,13 @@ public class CardDraw : Ultimate
             {
                 if (allChickens[i] == null) continue;
                 allChickens[i].TakeDamage(1000);
-                totalChickenPoints += allChickens[i].pointsReward;
+                numberOfChickens++;
+                int pointsToAdd = allChickens[i].pointsReward + ((numberOfChickens - 1) * 5);
+                totalChickenPoints += pointsToAdd;
+                ShowPopup(
+                    allChickens[i].transform.position,
+                    $"{pointsToAdd}"
+                );
                 //gameManager.AddPlayerScore(allChickens[i].pointsReward);
                 yield return new WaitForSecondsRealtime(killDelay);
             }
@@ -201,5 +208,17 @@ public class CardDraw : Ultimate
         gameManager.AddPlayerScore(totalChickenPoints);
 
         Destroy(gameObject);
+    }
+
+    private void ShowPopup(Vector3 position, string msg)
+    {
+        // Point Indicator
+        ScorePopup newPopUp = Instantiate(
+            scorePopUp,
+            position,
+            Quaternion.identity
+        ).GetComponent<ScorePopup>();
+        newPopUp.SetText(msg);
+        Destroy(newPopUp.gameObject, 0.7f);
     }
 }
