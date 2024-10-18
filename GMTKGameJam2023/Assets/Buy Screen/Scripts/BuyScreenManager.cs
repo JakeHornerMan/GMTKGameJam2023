@@ -133,21 +133,39 @@ public class BuyScreenManager : MonoBehaviour
         SellButtonClose();
 
         StartCoroutine(nameof(PlayPointer));
+
+        SaveGame.SaveTheGame();
     }
 
     private void SetPlayerValuesInBuyScreen()
     {
         if (!devMode)
         {
-            if (PlayerValues.Cars != null)
-            {
-                playerCars = PlayerValues.Cars;
-                // Debug.Log("Cars: " + playerCars[0]);
+            if(SaveGame.isLoadingASave){
+                if(SaveGame.saveDataLoaded.Cars != null){
+                    foreach (var carName in SaveGame.saveDataLoaded.Cars){
+                        for (int i = 0; i < cars.Length; i++) {
+                            if(cars[i].GetComponent<ObjectInfo>().objectName == carName){
+                                Debug.Log("Jake - Car added: " + carName);
+                                playerCars.Add(cars[i]);
+                            }
+                        }
+                    }
+                }
+                SaveGame.isLoadingASave = false;
             }
-            else
-            {
-                playerCars = defaultCars;
+            else{
+                if (PlayerValues.Cars != null)
+                {
+                    playerCars = PlayerValues.Cars;
+                    // Debug.Log("Cars: " + playerCars[0]);
+                }
+                else
+                {
+                    playerCars = defaultCars;
+                }
             }
+
             if (PlayerValues.ultimate != null)
             {
                 playerUltimate = PlayerValues.ultimate;
@@ -630,7 +648,7 @@ public class BuyScreenManager : MonoBehaviour
     public void SaveAndQuit()
     {
         SteamLeaderboards.InitAndUpdateScore(Points.playerScore, GameProgressionValues.RoundNumber);
-        SaveGame.SaveTheGame();
+        // SaveGame.SaveTheGame();
         sceneFader.ScreenWipeOut("MainMenu");
     }
 

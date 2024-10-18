@@ -11,6 +11,7 @@ public class SaveGame : MonoBehaviour
     static string hash = "123456@abc";
 
     public static GameSave saveDataLoaded = null;
+    public static bool isLoadingASave = false;
 
     public static void SaveTheGame(){
         GameSave gameSave= new GameSave();
@@ -21,7 +22,7 @@ public class SaveGame : MonoBehaviour
 
         string filePath = Application.persistentDataPath + "/SaveGameDoNotTouch.txt";
         System.IO.File.WriteAllText(filePath, saveData);
-        Debug.Log("Settings game to: "+ filePath);
+        Debug.Log("Save Game to: "+ filePath);
     }
 
     public static void LoadTheGame(){
@@ -99,7 +100,7 @@ public class SaveGame : MonoBehaviour
 public class GameSave
 {
     //PlayerValues
-    public List<Car> Cars;
+    public List<string> Cars;
     public Ultimate ultimate;
     public int missedChickenLives;
     public int carWalletNodes;
@@ -117,7 +118,15 @@ public class GameSave
 
     public GameSave(){
         //PlayerValues
-        Cars = PlayerValues.Cars;
+        // foreach(string c in Cars){
+        //     Cars.Add(c);
+        // }
+        // Cars = PlayerValues.Cars;
+        Cars = new List<string>();
+        foreach(var car in PlayerValues.Cars){
+            string carName = car.GetComponent<ObjectInfo>().objectName;
+            Cars.Add(carName);
+        }
         ultimate = PlayerValues.ultimate;
         missedChickenLives = PlayerValues.missedChickenLives;
         carWalletNodes = PlayerValues.carWalletNodes;
@@ -136,7 +145,7 @@ public class GameSave
 
     public void SetValues(){
         //PlayerValues
-        PlayerValues.Cars = Cars;
+        // PlayerValues.Cars = Cars;
         PlayerValues.ultimate = ultimate;
         PlayerValues.missedChickenLives = missedChickenLives;
         PlayerValues.carWalletNodes = carWalletNodes;

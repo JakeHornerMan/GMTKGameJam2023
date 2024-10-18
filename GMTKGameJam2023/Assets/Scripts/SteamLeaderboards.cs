@@ -45,7 +45,8 @@ public class SteamLeaderboards : MonoBehaviour
             leaderboardFindResult.Set(hSteamAPICall, OnLeaderboardFoundUpdateScores123);
             InitTimer();
         }
-        else{
+        else
+        {
             UpdateScore(uploadScore, roundNum);
         }
     }
@@ -127,7 +128,7 @@ public class SteamLeaderboards : MonoBehaviour
     {
         if (initialized)
         {
-            SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobalAroundUser, -50, 50);
+            SteamAPICall_t handle = SteamUserStats.DownloadLeaderboardEntries(currentLeaderboard, ELeaderboardDataRequest.k_ELeaderboardDataRequestGlobalAroundUser, -10, 10);
             // aroundPlayerScoreResult.Set(handle, OnLeaderboardScoresDownloaded);
             CallResult<LeaderboardScoresDownloaded_t> callResult = new CallResult<LeaderboardScoresDownloaded_t>();
             callResult.Set(handle, (result, failure) => OnLeaderboardScoresDownloaded(result, failure, LeaderboardType.Leaderboard));
@@ -246,6 +247,6 @@ public class LeaderboardEntry
     public void Log()
     {
         // Uncomment if needed again
-        Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}, Rank: {Rank}");
+        // Debug.Log($"Rank: {GlobalRank}, Score: {Score}, User: {UserName}, isPlayer: {IsPlayer}, Rank: {Rank}");
     }
 }

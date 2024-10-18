@@ -510,13 +510,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6475287820640923002}
-  m_Father: {fileID: 4497043752865100838}
+  m_Father: {fileID: 4309813224082003904}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1799, y: 952}
-  m_SizeDelta: {x: 35, y: 888}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.000061035156}
+  m_SizeDelta: {x: 35, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5732580536584935954
 CanvasRenderer:
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2537729915776677801}
   m_HandleRect: {fileID: 3300382452749858443}
   m_Direction: 2
-  m_Value: 0.5
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -774,8 +774,6 @@ RectTransform:
   - {fileID: 6757237318034945692}
   - {fileID: 245847014506986236}
   - {fileID: 4309813224082003904}
-  - {fileID: 8411351365417279912}
-  - {fileID: 1496529759445957010}
   - {fileID: 8703878020809641071}
   - {fileID: 5183309439394615645}
   - {fileID: 5463762937524368433}
@@ -826,6 +824,7 @@ MonoBehaviour:
   entriesContainer: {fileID: 5851473676691611976}
   leaderboardEntryPrefab: {fileID: 4644229961253616383, guid: 82b81838862021d418f0ca6279062428, type: 3}
   scrollbar: {fileID: 8033214885324575466}
+  leaderboardEntriesAmount: 0
 --- !u!1 &2675305280531461790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1651,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8411351365417279912}
+  - {fileID: 1496529759445957010}
   m_Father: {fileID: 4497043752865100838}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1718,7 +1719,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 0.01
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 8411351365417279912}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 8033214885324575466}
@@ -1804,6 +1805,7 @@ MonoBehaviour:
   entriesContainer: {fileID: 5851473676691611976}
   leaderboardEntryPrefab: {fileID: 4644229961253616383, guid: 82b81838862021d418f0ca6279062428, type: 3}
   scrollbar: {fileID: 0}
+  leaderboardEntriesAmount: 0
 --- !u!1 &5166115232853912678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,13 +1973,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5851473676691611976}
-  m_Father: {fileID: 4497043752865100838}
+  m_Father: {fileID: 4309813224082003904}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 239, y: 900}
-  m_SizeDelta: {x: 1543, y: 780}
+  m_AnchoredPosition: {x: 0.000061035156, y: -52.000122}
+  m_SizeDelta: {x: -17, y: -125}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5213776571875454293
 CanvasRenderer:

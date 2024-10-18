@@ -12,11 +12,11 @@ public class Settings : MonoBehaviour
     [SerializeField] private Toggle roadShineCheckbox;
     [SerializeField] private Toggle fullscreenCheckbox;
 
-    public static bool MusicEnabled = true;
-    public static float MusicVolume = 10;
-    public static float SfxVolume = 10;
-    public static bool SfxEnabled = true;
-    public static bool RoadShineEnabled = true;
+    public static bool MusicEnabled;// = true;
+    public static float MusicVolume;// = 10;
+    public static float SfxVolume;// = 10;
+    public static bool SfxEnabled;// = true;
+    public static bool RoadShineEnabled;// = true;
     public static bool FullscreenEnabled;
     public static Vector2 WindowedSize;
 
@@ -173,7 +173,7 @@ public class Settings : MonoBehaviour
         }
         catch(System.Exception e){
             Debug.Log("Error finding file: "+ filePath);
-            ResetToDefault();
+            // ResetToDefault();
             return; 
         }
         

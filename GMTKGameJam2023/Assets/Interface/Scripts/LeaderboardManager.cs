@@ -22,36 +22,40 @@ public class LeaderboardManager : MonoBehaviour
     public List<LeaderboardEntry> friendsLeaderboardEntries = new List<LeaderboardEntry>();
     public int leaderboardEntriesAmount = 0;
 
-    private void Awake() 
+    private void Awake()
     {
-        if(SteamManager.Initialized) {
+        if (SteamManager.Initialized)
+        {
             SteamLeaderboards.Init();
-		}
+        }
     }
 
     private void Start()
     {
-        if(onStart){
+        if (onStart)
+        {
             SteamLeaderboards.Init();
             UploadToLeaderboardAndUpdate(Points.playerScore, GameProgressionValues.RoundNumber);
             // RefreshLeaderboardValues();
         }
     }
 
-     public void UploadToLeaderboardAndUpdate(int score = 1 , int roundNumber = 0)
+    public void UploadToLeaderboardAndUpdate(int score = 1, int roundNumber = 0)
     {
-        if(SteamManager.Initialized && SteamLeaderboards.initialized)
+        if (SteamManager.Initialized && SteamLeaderboards.initialized)
         {
             SteamLeaderboards.UpdateScore(score, roundNumber);
             // RefreshLeaderboardValues();
         }
-        else{
+        else
+        {
             Debug.Log("Waiting for leaderboard to be initialized...");
             RetryUploadToLeaderboardAndUpdate(score);
         }
     }
 
-    private void RetryUploadToLeaderboardAndUpdate(int score){
+    private void RetryUploadToLeaderboardAndUpdate(int score)
+    {
         UploadToLeaderboardAndUpdate(score);
     }
 
@@ -63,16 +67,19 @@ public class LeaderboardManager : MonoBehaviour
         // SteamLeaderboards.DownloadScoresForFriends();
     }
 
-    public void SetLeaderboardList(){
+    public void SetLeaderboardList()
+    {
         leaderboardEntries = SteamLeaderboards.leaderboardEntries;
-        if(leaderboardEntries.Count > 0) ShowLeaderboard();
+        if (leaderboardEntries.Count > 0) ShowLeaderboard();
     }
 
-    public void SetTop10LeaderboardList(){
+    public void SetTop10LeaderboardList()
+    {
         top10LeaderboardEntries = SteamLeaderboards.top10LeaderboardEntries;
     }
 
-    public void SetFriendsLeaderboardList(){
+    public void SetFriendsLeaderboardList()
+    {
         friendsLeaderboardEntries = SteamLeaderboards.friendsLeaderboardEntries;
     }
 
