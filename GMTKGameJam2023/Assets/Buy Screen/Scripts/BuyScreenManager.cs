@@ -662,11 +662,10 @@ public class BuyScreenManager : MonoBehaviour
 
     public void DumpMoneyIntoTokens()
     {
-        while (currentAmount >= 5)
-        {
+        while(currentAmount >= 5 && PlayerValues.startingEnergy < 30){
             AddEnergy(1);
 
-            if (currentAmount < 5)
+            if (currentAmount < 5 || PlayerValues.startingEnergy >= 30)
             {
                 break;
             }
